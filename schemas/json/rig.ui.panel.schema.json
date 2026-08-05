@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.ui.panel.schema.json",
+  "title": "rig.ui.panel",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "order": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "visible": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "order",
+    "visible"
+  ]
+}

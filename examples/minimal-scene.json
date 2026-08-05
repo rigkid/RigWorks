@@ -1,0 +1,170 @@
+{
+  "rig": "0.4.0",
+  "document": {
+    "title": "Minimal scene",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "demo-rect",
+      "components": {
+        "rig.meta.named": { "name": "demo-rect", "stableId": "demo-rect" },
+        "rig.spatial.transform": {
+          "position": [64, 64, 0],
+          "rotation": [0, 0, 0, 1],
+          "scale": [1, 1, 1]
+        },
+        "rig.geometry.shape": {
+          "type": "rectangle",
+          "x1": 0,
+          "y1": 0,
+          "x2": 180,
+          "y2": 110,
+          "sides": 5,
+          "innerRadius": 0.5
+        },
+        "rig.paint.fill_stroke": {
+          "fillRgba": [0.25, 0.65, 1, 1],
+          "strokeRgba": [0, 0, 0, 1],
+          "strokeWidth": 1,
+          "hasFill": true,
+          "hasStroke": false
+        },
+        "rig.interact.selectable": { "enabled": true }
+      }
+    },
+    {
+      "id": "demo-circle",
+      "components": {
+        "rig.meta.named": { "name": "demo-circle", "stableId": "demo-circle" },
+        "rig.spatial.transform": {
+          "position": [360, 120, 0],
+          "rotation": [0, 0, 0, 1],
+          "scale": [1, 1, 1]
+        },
+        "rig.geometry.shape": {
+          "type": "ellipse",
+          "x1": -48,
+          "y1": -48,
+          "x2": 48,
+          "y2": 48,
+          "sides": 5,
+          "innerRadius": 0.5
+        },
+        "rig.paint.fill_stroke": {
+          "fillRgba": [1, 0.45, 0.3, 1],
+          "strokeRgba": [1, 1, 1, 1],
+          "strokeWidth": 2,
+          "hasFill": true,
+          "hasStroke": true
+        },
+        "rig.interact.selectable": { "enabled": true }
+      }
+    },
+    {
+      "id": "demo-parent",
+      "components": {
+        "rig.meta.named": { "name": "demo-parent", "stableId": "demo-parent" },
+        "rig.spatial.transform": {
+          "position": [200, 320, 0],
+          "rotation": [0, 0, 0, 1],
+          "scale": [1, 1, 1]
+        },
+        "rig.geometry.shape": {
+          "type": "rectangle",
+          "x1": 0,
+          "y1": 0,
+          "x2": 120,
+          "y2": 80,
+          "sides": 5,
+          "innerRadius": 0.5
+        },
+        "rig.paint.fill_stroke": {
+          "fillRgba": [0.55, 0.35, 0.9, 1],
+          "strokeRgba": [0, 0, 0, 1],
+          "strokeWidth": 1,
+          "hasFill": true,
+          "hasStroke": false
+        },
+        "rig.interact.selectable": { "enabled": true }
+      }
+    },
+    {
+      "id": "demo-child",
+      "components": {
+        "rig.meta.named": { "name": "demo-child", "stableId": "demo-child" },
+        "rig.spatial.transform": {
+          "position": [40, 30, 0],
+          "rotation": [0, 0, 0, 1],
+          "scale": [1, 1, 1]
+        },
+        "rig.spatial.relationship": { "parent": "demo-parent" },
+        "rig.geometry.shape": {
+          "type": "rectangle",
+          "x1": 0,
+          "y1": 0,
+          "x2": 70,
+          "y2": 50,
+          "sides": 5,
+          "innerRadius": 0.5
+        },
+        "rig.paint.fill_stroke": {
+          "fillRgba": [0.95, 0.55, 0.2, 1],
+          "strokeRgba": [0, 0, 0, 1],
+          "strokeWidth": 1,
+          "hasFill": true,
+          "hasStroke": false
+        },
+        "rig.interact.selectable": { "enabled": true }
+      }
+    },
+    {
+      "id": "demo-tri",
+      "components": {
+        "rig.meta.named": { "name": "demo-tri", "stableId": "demo-tri" },
+        "rig.spatial.transform": {
+          "position": [0, 0, 0],
+          "rotation": [0, 0, 0, 1],
+          "scale": [1, 1, 1]
+        },
+        "rig.geometry.mesh": {
+          "positions": [520, 60, 0, 640, 200, 0, 400, 200, 0],
+          "indices": [0, 1, 2],
+          "mode": "triangles"
+        },
+        "rig.paint.fill_stroke": {
+          "fillRgba": [0.95, 0.8, 0.2, 1],
+          "strokeRgba": [0, 0, 0, 1],
+          "strokeWidth": 1,
+          "hasFill": true,
+          "hasStroke": false
+        },
+        "rig.interact.selectable": { "enabled": true }
+      }
+    },
+    {
+      "id": "demo-quad",
+      "components": {
+        "rig.meta.named": { "name": "demo-quad", "stableId": "demo-quad" },
+        "rig.spatial.transform": {
+          "position": [700, 80, 0],
+          "rotation": [0, 0, 0, 1],
+          "scale": [1, 1, 1]
+        },
+        "rig.geometry.mesh": {
+          "positions": [0, 0, 0, 140, 0, 0, 140, 140, 0, 0, 140, 0],
+          "indices": [0, 1, 2, 0, 2, 3],
+          "mode": "triangles"
+        },
+        "rig.paint.fill_stroke": {
+          "fillRgba": [0.35, 0.85, 0.55, 1],
+          "strokeRgba": [0, 0, 0, 1],
+          "strokeWidth": 1,
+          "hasFill": true,
+          "hasStroke": false
+        },
+        "rig.interact.selectable": { "enabled": true }
+      }
+    }
+  ]
+}

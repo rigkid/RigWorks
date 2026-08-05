@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.geometry.shape.schema.json",
+  "title": "rig.geometry.shape",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "rectangle",
+        "ellipse",
+        "line",
+        "polygon",
+        "star"
+      ]
+    },
+    "x1": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "y1": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "x2": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "y2": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "sides": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "innerRadius": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "type",
+    "x1",
+    "y1",
+    "x2",
+    "y2",
+    "sides",
+    "innerRadius"
+  ]
+}
