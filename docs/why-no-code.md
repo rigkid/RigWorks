@@ -64,7 +64,7 @@ Whether that drives a C++ audio thread, a web worker, or a strip of LEDs is exec
 
 This is why Rig invests its effort where it does. The repository contains schemas, units, and rules — the parts that are expensive to agree on and cheap to keep. It contains no renderer, because renderers are the easy, disposable part.
 
-It is also why "ship what you support" is not a compromise. A host that implements six schemas and ignores thirty-eight is fully Rig. Partial execution of a shared concept still interoperates; a partial library does not link.
+It is also why "ship what you support" is not a compromise. A host that implements six schemas and ignores sixty-three is fully Rig. Partial execution of a shared concept still interoperates; a partial library does not link.
 
 ## The honest price
 

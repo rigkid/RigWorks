@@ -6,7 +6,7 @@ No particular registry library. No GPU or UI toolkit types inside Contract-facin
 
 ## Why ECS
 
-We use entity–component composition because we build for change. Composition over inheritance. Portable fields stay reusable across hosts and packs making your tools highly flexible and therefore reusable.
+We use entity–component composition because we build for change. Composition over inheritance. Portable fields stay reusable across hosts and packs.
 
 ## Registry
 

@@ -21,6 +21,7 @@ Rig defines SUDE + ECS rules and POD schemas (prose + JSON Schema). Emit JSON do
 - [docs/interchange.md](docs/interchange.md): JSON wire format + RigKit aliases
 - [docs/properties.md](docs/properties.md): portable datatype ids
 - [docs/honors.md](docs/honors.md): what counts as Rig
+- [docs/gaps.md](docs/gaps.md): where the Contract is silent, ambiguous, or wrong
 - [docs/versioning.md](docs/versioning.md): version ranges and stability
 
 ## Schemas and examples

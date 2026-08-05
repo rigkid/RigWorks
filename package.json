@@ -15,7 +15,7 @@
     "check:svg": "node tools/render-svg.mjs --check",
     "sync": "node tools/sync-snippets.mjs",
     "gen:svg": "node tools/render-svg.mjs",
-    "check:examples": "node tools/rig-validate/cli.js --strict examples/minimal-scene.json examples/lfo-binding.json examples/ui-panel.json",
+    "check:examples": "node tools/rig-validate/cli.js --strict examples/minimal-scene.json examples/lfo-binding.json examples/ui-panel.json examples/portable-tool.json",
     "test": "node --test tools/test/*.test.mjs"
   }
 }

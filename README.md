@@ -115,7 +115,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 
 ## Version
 
-**0.8.0** — draft vocabulary
+**0.9.0** — draft vocabulary
 
 > See [docs/versioning.md](docs/versioning.md).
 
@@ -141,7 +141,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 | [schemas/document.md](schemas/document.md) | Document envelope |
 | [docs/properties.md](docs/properties.md) | Portable datatypes |
 | [docs/interchange.md](docs/interchange.md) | Wire format and host aliases |
-| [docs/fantasy-console.md](https://github.com/rigkid/rigPico8/blob/main/docs/fantasy-console.md) | PICO-8 as a Rig fulfillment (rigPico8) |
+| [rigPico8 · fantasy-console](https://github.com/rigkid/rigPico8/blob/main/docs/fantasy-console.md) | PICO-8 as a Rig fulfillment |
 | [examples/](examples/) | Golden documents |
 
 | Working with models | |

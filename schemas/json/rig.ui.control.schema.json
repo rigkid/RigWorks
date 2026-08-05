@@ -8,6 +8,9 @@
     "panel": {
       "$ref": "./_defs.schema.json#/$defs/entity"
     },
+    "group": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
     "order": {
       "$ref": "./_defs.schema.json#/$defs/int"
     },
@@ -62,5 +65,5 @@
     "propertyKey",
     "type"
   ],
-  "description": "View over one POD field — never a second store. widget is an advisory hint a host may ignore."
+  "description": "View over one POD field — never a second store. group is optional; widget is an advisory hint a host may ignore."
 }

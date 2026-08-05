@@ -6,6 +6,7 @@ Canonical Rig JSON documents. Copy the pattern; validate before you trust the ou
 node tools/rig-validate/cli.js examples/minimal-scene.json
 node tools/rig-validate/cli.js examples/lfo-binding.json
 node tools/rig-validate/cli.js examples/ui-panel.json
+node tools/rig-validate/cli.js examples/portable-tool.json
 ```
 
 Fantasy-console carts (PICO-8) live in [rigPico8](https://github.com/rigkid/rigPico8).
@@ -87,4 +88,8 @@ One entity (excerpt):
 
 ## `ui-panel.json`
 
-An LED-install flavoured control surface: `rig.ui.panel` with controls driving `rig.paint.solid` colour and `rig.mod.lfo` frequency, plus a reset `rig.ui.action`. Same schemas a desktop panel or an ESP32 web page would speak.
+An LED-install flavoured control surface: `rig.ui.panel` (`role: led.install`) with controls driving `rig.paint.solid` colour and `rig.mod.lfo` frequency, plus a shared `lfo.resetPhase` action. Same schemas a desktop panel or an ESP32 web page would speak.
+
+## `portable-tool.json`
+
+A tool document meant to travel: panel + nested `rig.ui.group` sections, controls bound to LFO and paint fields, shared action id. Author in one UI pack; load in another app that speaks the same schema ids.

@@ -60,7 +60,7 @@ Never deliver an unvalidated document. Eyeballing JSON is exactly the review tha
 
 | Do | Why |
 |----|-----|
-| Point the agent at the skill, not the whole repo | 159 lines beats 119 files; the skill exists for this |
+| Point the agent at the skill, not the whole repo | A short skill beats the whole tree; the skill exists for this |
 | Run `--strict` on unfamiliar output | Invented ids are the most common confident error |
 | Prefer additive schema changes | Documents, prompts, and model habits in the wild all age better |
 | Keep prose and JSON Schema in parity | Models read prose, tools read grammar — drift teaches the model something false |
@@ -74,4 +74,4 @@ node tools/check-schema-parity/check.mjs
 
 ## Why "co-"
 
-The division of labour is the same one the Contract already draws. **the concept** — which ids exist, what they mean, what units they carry, what stays portable. **The model is very good at execution** — emitting documents, filling catalogs, writing the host that consumes them, porting a fulfillment to a new language.
+The division of labour is the same one the Contract already draws. **You own the concept** — which ids exist, what they mean, what units they carry, what stays portable. **The model is very good at execution** — emitting documents, filling catalogs, writing the host that consumes them, porting a fulfillment to a new language.

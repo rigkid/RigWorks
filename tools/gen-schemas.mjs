@@ -631,16 +631,45 @@ add("rig.interact.selectable", {
 }, { required: [], minProperties: 0 });
 
 // --- ui (control surfaces: desktop, web, ESP) ---
-// Defaults: order 0, visible true.
-add("rig.ui.panel", {
-  order: ref("int"),
-  visible: ref("bool"),
-}, { required: [] });
+// Defaults: order 0, visible true. role / preferred* are optional.
+add(
+  "rig.ui.panel",
+  {
+    role: ref("string"),
+    order: ref("int"),
+    visible: ref("bool"),
+    preferredWidth: ref("float"),
+    preferredHeight: ref("float"),
+  },
+  {
+    required: [],
+    description:
+      "Portable tool surface. role is a stable tool id; preferred sizes are advisory. Dock/chrome is fulfillment.",
+  }
+);
+
+// Defaults: orientation vertical, collapsed false, parent null (top-level in panel).
+add(
+  "rig.ui.group",
+  {
+    panel: ref("entity"),
+    parent: ref("entity"),
+    order: ref("int"),
+    orientation: enumOf(["vertical", "horizontal"]),
+    collapsed: ref("bool"),
+  },
+  {
+    required: ["panel", "order"],
+    description:
+      "Section/row inside a panel. Nesting via parent (group entity). Flow hints are advisory.",
+  }
+);
 
 add(
   "rig.ui.control",
   {
     panel: ref("entity"),
+    group: ref("entity"),
     order: ref("int"),
     target: ref("entity"),
     propertyKey: ref("string"),
@@ -665,7 +694,7 @@ add(
   {
     required: ["panel", "order", "target", "propertyKey", "type"],
     description:
-      "View over one POD field — never a second store. widget is an advisory hint a host may ignore.",
+      "View over one POD field — never a second store. group is optional; widget is an advisory hint a host may ignore.",
   }
 );
 
@@ -673,6 +702,7 @@ add(
   "rig.ui.action",
   {
     panel: ref("entity"),
+    group: ref("entity"),
     order: ref("int"),
     actionId: ref("string"),
     enabled: ref("bool"),
@@ -680,7 +710,7 @@ add(
   {
     required: ["panel", "order", "actionId"],
     description:
-      "Command button. actionId is a host-owned catalog id (like node.typeId). Most likely to change before 1.0.0.",
+      "Command button. Prefer shared actionId names for portable tools; unknown ids may be hidden. Most likely to change before 1.0.0.",
   }
 );
 
@@ -825,7 +855,7 @@ catalog["rig.document"] = {
   properties: {
     rig: {
       type: "string",
-      description: "Contract version this document targets (e.g. 0.4.0).",
+      description: "Contract version this document targets (e.g. 0.9.0).",
       pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$",
     },
     document: {

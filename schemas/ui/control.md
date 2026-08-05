@@ -5,7 +5,8 @@ A view over one POD field on a target entity — never a second store. Addressin
 | Field | Type | Meaning |
 |-------|------|---------|
 | `panel` | entity | Owning [`rig.ui.panel`](panel.md) |
-| `order` | int | Sort key within the panel |
+| `group` | entity | Optional. Owning [`rig.ui.group`](group.md); absent or `null` = direct child of the panel |
+| `order` | int | Sort key within the panel or group |
 | `target` | entity | Entity whose field is shown / edited |
 | `propertyKey` | string | Field name or dotted path on the target |
 | `type` | propertyType | Datatype id from [properties.md](../../docs/properties.md) (or host-prefixed) |

@@ -147,6 +147,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | Id | Doc |
 |----|-----|
 | `rig.ui.panel` | [ui/panel.md](ui/panel.md) |
+| `rig.ui.group` | [ui/group.md](ui/group.md) |
 | `rig.ui.control` | [ui/control.md](ui/control.md) |
 | `rig.ui.action` | [ui/action.md](ui/action.md) |
 
@@ -170,6 +171,6 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | Effect chain | `parentStep` | [`pixel.effect_chain`](pixel/effect-chain.md) (step `id`) |
 | Tile map | `tileSet` | [`pixel.tile_map`](pixel/tile-map.md) → [`pixel.tile_set`](pixel/tile-set.md) → [`pixel.palette`](pixel/palette.md) |
 | Node editor | `nested` on a node | [`node.node`](node/node.md) + [`node.publish`](node/publish.md) |
-| Control surface | `panel` on control/action | [`ui.panel`](ui/panel.md) + [`ui.control`](ui/control.md) / [`ui.action`](ui/action.md) |
+| Control surface | `panel` / optional `group` | [`ui.panel`](ui/panel.md) + [`ui.group`](ui/group.md) + [`ui.control`](ui/control.md) / [`ui.action`](ui/action.md) |
 
 Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/rigkit/blob/main/docs/contract/port-map.md).

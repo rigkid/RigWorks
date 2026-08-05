@@ -1,5 +1,5 @@
 {
-  "rig": "0.5.0",
+  "rig": "0.9.0",
   "document": {
     "title": "LED panel — colour and pulse",
     "defaultUnit": "px"
@@ -32,7 +32,13 @@
       "id": "install-panel",
       "components": {
         "rig.meta.named": { "name": "Install", "stableId": "install-panel" },
-        "rig.ui.panel": { "order": 0, "visible": true }
+        "rig.ui.panel": {
+          "role": "led.install",
+          "order": 0,
+          "visible": true,
+          "preferredWidth": 320,
+          "preferredHeight": 240
+        }
       }
     },
     {

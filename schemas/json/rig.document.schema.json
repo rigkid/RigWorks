@@ -12,7 +12,7 @@
   "properties": {
     "rig": {
       "type": "string",
-      "description": "Contract version this document targets (e.g. 0.4.0).",
+      "description": "Contract version this document targets (e.g. 0.9.0).",
       "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
     },
     "document": {
@@ -262,6 +262,9 @@
               },
               "rig.ui.control": {
                 "$ref": "./rig.ui.control.schema.json"
+              },
+              "rig.ui.group": {
+                "$ref": "./rig.ui.group.schema.json"
               },
               "rig.ui.panel": {
                 "$ref": "./rig.ui.panel.schema.json"

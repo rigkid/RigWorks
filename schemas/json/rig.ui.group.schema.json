@@ -1,30 +1,33 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://rig.works/schemas/rig.ui.action.schema.json",
-  "title": "rig.ui.action",
+  "$id": "https://rig.works/schemas/rig.ui.group.schema.json",
+  "title": "rig.ui.group",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "panel": {
       "$ref": "./_defs.schema.json#/$defs/entity"
     },
-    "group": {
+    "parent": {
       "$ref": "./_defs.schema.json#/$defs/entity"
     },
     "order": {
       "$ref": "./_defs.schema.json#/$defs/int"
     },
-    "actionId": {
-      "$ref": "./_defs.schema.json#/$defs/string"
+    "orientation": {
+      "type": "string",
+      "enum": [
+        "vertical",
+        "horizontal"
+      ]
     },
-    "enabled": {
+    "collapsed": {
       "$ref": "./_defs.schema.json#/$defs/bool"
     }
   },
   "required": [
     "panel",
-    "order",
-    "actionId"
+    "order"
   ],
-  "description": "Command button. Prefer shared actionId names for portable tools; unknown ids may be hidden. Most likely to change before 1.0.0."
+  "description": "Section/row inside a panel. Nesting via parent (group entity). Flow hints are advisory."
 }

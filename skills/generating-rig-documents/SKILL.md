@@ -49,7 +49,7 @@ Wire format is JSON — [`rig.document`](../../schemas/document.md).
 
 | Root field | Meaning |
 |------------|---------|
-| `rig` | Contract version (`MAJOR.MINOR.PATCH`, e.g. `0.8.0`) |
+| `rig` | Contract version (`MAJOR.MINOR.PATCH`, e.g. `0.9.0`) |
 | `document` | Optional metadata (`title`, `defaultUnit`, …) |
 | `entities` | Array of `{ id, components }` |
 
@@ -67,7 +67,7 @@ A component key may also be `x.<vendor>.<name>` — a host component the Contrac
 
 ## Worked examples
 
-Goldens: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json). Fantasy-console carts: [rigPico8](https://github.com/rigkid/rigPico8).
+Goldens: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json). Fantasy-console carts: [rigPico8](https://github.com/rigkid/rigPico8).
 
 ### Entity with shape + paint
 
@@ -168,7 +168,7 @@ Goldens: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`e
 }
 ```
 
-(Wrap entities in a full document with `"rig": "0.8.0"` before validating.)
+(Wrap entities in a full document with `"rig": "0.9.0"` before validating.)
 
 ## Feedback loop
 
@@ -217,7 +217,7 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Sim | `rigidbody`, `particle_emitter` |
 | Input | `buttons` |
 | Interact | `selectable` |
-| UI | `panel`, `control`, `action` |
+| UI | `panel`, `group`, `control`, `action` |
 | Node | `graph`, `node`, `pin`, `link`, `param`, `publish` |
 
 Prefix every component key with `rig.<domain>.` (e.g. `rig.spatial.transform`).

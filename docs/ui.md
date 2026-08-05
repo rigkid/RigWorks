@@ -8,6 +8,18 @@ Author and tool surfaces inspect and edit the **same portable entity data**. A U
 
 A panel is a view over schemas, not an app-private island. Load a particle panel and an audio panel in different products — if both speak the same POD fields, spatial sound and particles still compose. Layout only arranges those views.
 
+## Cross-lib / cross-app tools
+
+A **tool** is a Rig document: domain entities (or schema ids the host already has) plus [`rig.ui.*`](../schemas/ui/panel.md) surfaces. Author the controls in App A with UI pack X; save JSON; load in App B with UI pack Y. Same meaning — different chrome.
+
+| Portable | Not portable |
+|----------|----------------|
+| Panels, groups, controls, shared `actionId`s | Dock slots, ImGui/Qt/DOM trees, window flags |
+| `role` tool ids, advisory size / orientation | Pixel positions, DPI, focus / hover |
+| Field bindings (`target` + `propertyKey`) | Host-private command catalogs |
+
+Unknown controls or actions: skip or hide. Ship what you support.
+
 ## Rig + UI
 
 A project is **Rig + UI** when:
@@ -28,10 +40,18 @@ Omitting UI remains valid **Rig**.
 | Panel ↔ schema | Edits named POD / Rig schemas |
 | Cross-host reuse | Same panel *role* works wherever those components exist |
 | Compose by data | Particles + audio + … compose because entities share fields |
-| Layout ≠ meaning | Docks/tabs/workspaces are fulfillment |
+| Layout ≠ meaning | Docks/tabs/workspaces are fulfillment; groups are portable structure |
 | Properties ↔ datatypes | A generic property manager draws any field with a known datatype |
 
-Portable panel graphs use [`rig.ui.panel`](../schemas/ui/panel.md), [`rig.ui.control`](../schemas/ui/control.md), and [`rig.ui.action`](../schemas/ui/action.md). A control is a view over `target` + `propertyKey` — the same addressing as [`rig.mod.binding`](../schemas/mod/binding.md) — never a second store.
+Portable tool graphs use [`rig.ui.panel`](../schemas/ui/panel.md), [`rig.ui.group`](../schemas/ui/group.md), [`rig.ui.control`](../schemas/ui/control.md), and [`rig.ui.action`](../schemas/ui/action.md). A control is a view over `target` + `propertyKey` — the same addressing as [`rig.mod.binding`](../schemas/mod/binding.md) — never a second store.
+
+### Actions
+
+Prefer controls that mutate shared POD. When a button is needed:
+
+- Use a **shared** `actionId` both hosts implement (e.g. `lfo.resetPhase`).
+- Treat unknown `actionId`s as non-portable — hide or disable them.
+- Host-private catalogs are fine inside one product; they will not travel.
 
 ## Web and embedded surfaces
 
@@ -45,11 +65,11 @@ The same schemas describe a desktop Properties panel, a generated web form, and 
 
 An LED install that only speaks colour and LFO frequency can ship a panel with two controls and ignore every other schema. Ship what you support — partial execution of a shared concept still interoperates.
 
-See [`examples/ui-panel.json`](../examples/ui-panel.json).
+See [`examples/ui-panel.json`](../examples/ui-panel.json) and [`examples/portable-tool.json`](../examples/portable-tool.json).
 
 ## Non-requirements
 
-Rig + UI does **not** require a particular UI pack, dock model, or GPU editor. The Contract is the seam + ECS editing — not the chrome.
+Rig + UI does **not** require a particular UI pack, dock model, or GPU editor. The Contract is the seam + ECS editing — not the chrome. Do not encode ImGui (or any toolkit) as the wire format.
 
 ## Fulfillment (RigKit)
 
