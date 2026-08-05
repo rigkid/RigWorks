@@ -2,7 +2,7 @@
 
 Freeform 2D path command stream. Format when present.
 
-Not a parametric shape — see [`rig.geometry.shape`](shape.md).
+Not a parametric shape. A contour that stays editable as parameters belongs to one of the primitives — [`rectangle`](rectangle.md), [`ellipse`](ellipse.md), [`line`](line.md), [`polygon`](polygon.md), [`regular_polygon`](regular-polygon.md), [`star`](star.md), [`arc`](arc.md), [`ring`](ring.md). Use a path once it has been resolved to commands, and never both for the same contour.
 
 | Field | Type | Meaning |
 |-------|------|---------|

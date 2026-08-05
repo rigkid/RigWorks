@@ -22,7 +22,7 @@ Formal grammar: [`schemas/json/`](../schemas/json/). Validate with [`tools/rig-v
 | `rig.spatial.transform` | `Transform` |
 | `rig.spatial.relationship` | `Relationship` |
 | `rig.spatial.group` | `Group` |
-| `rig.geometry.shape` | `Shape` |
+| `rig.geometry.rectangle`, `.ellipse`, `.star`, … | `Shape` (tagged union, split in 0.5.0) |
 | `rig.geometry.mesh` | `Mesh` |
 | `rig.paint.fill_stroke` | `DrawStyle` |
 | `rig.interact.selectable` | `Selectable` |

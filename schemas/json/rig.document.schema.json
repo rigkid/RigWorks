@@ -33,6 +33,10 @@
         },
         "defaultUnit": {
           "type": "string"
+        },
+        "colorSpace": {
+          "type": "string",
+          "description": "Colour space for all rgba/rgb values (default: srgb)."
         }
       }
     },
@@ -54,12 +58,24 @@
           "components": {
             "type": "object",
             "propertyNames": {
-              "pattern": "^rig\\.[a-z0-9_]+\\.[a-z0-9_]+$"
+              "pattern": "^(rig|x)\\.[a-z0-9_]+\\.[a-z0-9_]+$"
             },
             "additionalProperties": true,
             "properties": {
               "rig.anim.tween": {
                 "$ref": "./rig.anim.tween.schema.json"
+              },
+              "rig.audio.analysis": {
+                "$ref": "./rig.audio.analysis.schema.json"
+              },
+              "rig.geometry.arc": {
+                "$ref": "./rig.geometry.arc.schema.json"
+              },
+              "rig.geometry.ellipse": {
+                "$ref": "./rig.geometry.ellipse.schema.json"
+              },
+              "rig.geometry.line": {
+                "$ref": "./rig.geometry.line.schema.json"
               },
               "rig.geometry.mesh": {
                 "$ref": "./rig.geometry.mesh.schema.json"
@@ -67,8 +83,23 @@
               "rig.geometry.path": {
                 "$ref": "./rig.geometry.path.schema.json"
               },
-              "rig.geometry.shape": {
-                "$ref": "./rig.geometry.shape.schema.json"
+              "rig.geometry.polygon": {
+                "$ref": "./rig.geometry.polygon.schema.json"
+              },
+              "rig.geometry.rectangle": {
+                "$ref": "./rig.geometry.rectangle.schema.json"
+              },
+              "rig.geometry.regular_polygon": {
+                "$ref": "./rig.geometry.regular_polygon.schema.json"
+              },
+              "rig.geometry.ring": {
+                "$ref": "./rig.geometry.ring.schema.json"
+              },
+              "rig.geometry.star": {
+                "$ref": "./rig.geometry.star.schema.json"
+              },
+              "rig.input.buttons": {
+                "$ref": "./rig.input.buttons.schema.json"
               },
               "rig.interact.selectable": {
                 "$ref": "./rig.interact.selectable.schema.json"
@@ -76,8 +107,14 @@
               "rig.io.osc": {
                 "$ref": "./rig.io.osc.schema.json"
               },
+              "rig.io.sacn": {
+                "$ref": "./rig.io.sacn.schema.json"
+              },
               "rig.io.serial": {
                 "$ref": "./rig.io.serial.schema.json"
+              },
+              "rig.layout.page": {
+                "$ref": "./rig.layout.page.schema.json"
               },
               "rig.led.uv_map": {
                 "$ref": "./rig.led.uv_map.schema.json"
@@ -94,6 +131,9 @@
               "rig.meta.named": {
                 "$ref": "./rig.meta.named.schema.json"
               },
+              "rig.meta.tags": {
+                "$ref": "./rig.meta.tags.schema.json"
+              },
               "rig.mod.binding": {
                 "$ref": "./rig.mod.binding.schema.json"
               },
@@ -102,6 +142,9 @@
               },
               "rig.music.clock": {
                 "$ref": "./rig.music.clock.schema.json"
+              },
+              "rig.music.midi_input": {
+                "$ref": "./rig.music.midi_input.schema.json"
               },
               "rig.music.midi_output": {
                 "$ref": "./rig.music.midi_output.schema.json"
@@ -139,14 +182,23 @@
               "rig.node.publish": {
                 "$ref": "./rig.node.publish.schema.json"
               },
+              "rig.paint.fill": {
+                "$ref": "./rig.paint.fill.schema.json"
+              },
               "rig.paint.fill_stroke": {
                 "$ref": "./rig.paint.fill_stroke.schema.json"
               },
               "rig.paint.gradient": {
                 "$ref": "./rig.paint.gradient.schema.json"
               },
+              "rig.paint.library": {
+                "$ref": "./rig.paint.library.schema.json"
+              },
               "rig.paint.solid": {
                 "$ref": "./rig.paint.solid.schema.json"
+              },
+              "rig.paint.stroke": {
+                "$ref": "./rig.paint.stroke.schema.json"
               },
               "rig.pixel.canvas": {
                 "$ref": "./rig.pixel.canvas.schema.json"
@@ -157,11 +209,20 @@
               "rig.pixel.layer": {
                 "$ref": "./rig.pixel.layer.schema.json"
               },
+              "rig.pixel.palette": {
+                "$ref": "./rig.pixel.palette.schema.json"
+              },
               "rig.pixel.raster": {
                 "$ref": "./rig.pixel.raster.schema.json"
               },
               "rig.pixel.source": {
                 "$ref": "./rig.pixel.source.schema.json"
+              },
+              "rig.pixel.tile_map": {
+                "$ref": "./rig.pixel.tile_map.schema.json"
+              },
+              "rig.pixel.tile_set": {
+                "$ref": "./rig.pixel.tile_set.schema.json"
               },
               "rig.render.light": {
                 "$ref": "./rig.render.light.schema.json"
@@ -169,8 +230,17 @@
               "rig.render.material": {
                 "$ref": "./rig.render.material.schema.json"
               },
+              "rig.render.visibility": {
+                "$ref": "./rig.render.visibility.schema.json"
+              },
               "rig.sensor.gpio": {
                 "$ref": "./rig.sensor.gpio.schema.json"
+              },
+              "rig.sim.particle_emitter": {
+                "$ref": "./rig.sim.particle_emitter.schema.json"
+              },
+              "rig.sim.rigidbody": {
+                "$ref": "./rig.sim.rigidbody.schema.json"
               },
               "rig.spatial.camera": {
                 "$ref": "./rig.spatial.camera.schema.json"

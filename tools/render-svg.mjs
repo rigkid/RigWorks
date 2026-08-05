@@ -4,9 +4,12 @@
  *
  * SUDE mapping for this tool (honest, incomplete loop):
  *   Setup — load the Rig document
- *   Draw  — emit SVG from shape / mesh / transform / relationship / fill_stroke
+ *   Draw  — emit SVG from the 2D primitives, mesh, transform, relationship, fill_stroke
  *   Exit  — write site/scene.svg
  *   (no Update — this is a still frame)
+ *
+ * Ships what it supports: rig.geometry.arc, .ring, and .path are skipped rather
+ * than approximated.
  *
  *   node tools/render-svg.mjs           # write
  *   node tools/render-svg.mjs --check   # exit 1 if stale
@@ -53,10 +56,28 @@ function rgba(arr, fallback = "none") {
 
 function paintAttrs(paint) {
   if (!paint) return 'fill="none" stroke="none"';
-  const fill = paint.hasFill ? rgba(paint.fillRgba) : "none";
-  const stroke = paint.hasStroke ? rgba(paint.strokeRgba) : "none";
-  const sw = paint.hasStroke ? paint.strokeWidth ?? 1 : 0;
+  // Absent hasFill / hasStroke default to whether the colour is present.
+  const hasFill = paint.hasFill ?? paint.fillRgba != null;
+  const hasStroke = paint.hasStroke ?? paint.strokeRgba != null;
+  const fill = hasFill ? rgba(paint.fillRgba) : "none";
+  const stroke = hasStroke ? rgba(paint.strokeRgba) : "none";
+  const sw = hasStroke ? paint.strokeWidth ?? 1 : 0;
   return `fill="${fill}" stroke="${stroke}" stroke-width="${sw}"`;
+}
+
+// Vertices evenly spaced around a centre; radiusAt varies them for stars.
+function radialPoints(cx, cy, count, radiusAt, rotationDegrees) {
+  const start = (rotationDegrees * Math.PI) / 180;
+  const out = [];
+  for (let i = 0; i < count; i++) {
+    const a = start + (i * 2 * Math.PI) / count;
+    const r = radiusAt(i);
+    const x = cx + Math.cos(a) * r;
+    const y = cy + Math.sin(a) * r;
+    expand(x, y);
+    out.push(`${x},${y}`);
+  }
+  return out.join(" ");
 }
 
 const parts = [];
@@ -79,32 +100,76 @@ for (const e of doc.entities) {
   const attrs = paintAttrs(paint);
   const name = c["rig.meta.named"]?.name ?? e.id;
 
-  const shape = c["rig.geometry.shape"];
-  if (shape) {
-    const x1 = wx + shape.x1;
-    const y1 = wy + shape.y1;
-    const x2 = wx + shape.x2;
-    const y2 = wy + shape.y2;
+  const tag = `data-id="${e.id}" data-name="${name}"`;
+
+  const rect = c["rig.geometry.rectangle"];
+  if (rect) {
+    const x = wx + rect.x;
+    const y = wy + rect.y;
+    expand(x, y);
+    expand(x + rect.width, y + rect.height);
+    const round = rect.cornerRadius ? ` rx="${rect.cornerRadius}"` : "";
+    parts.push(
+      `  <rect ${tag} x="${x}" y="${y}" width="${rect.width}" height="${rect.height}"${round} ${attrs} />`
+    );
+  }
+
+  const ellipse = c["rig.geometry.ellipse"];
+  if (ellipse) {
+    const cx = wx + ellipse.cx;
+    const cy = wy + ellipse.cy;
+    expand(cx - ellipse.rx, cy - ellipse.ry);
+    expand(cx + ellipse.rx, cy + ellipse.ry);
+    parts.push(
+      `  <ellipse ${tag} cx="${cx}" cy="${cy}" rx="${ellipse.rx}" ry="${ellipse.ry}" ${attrs} />`
+    );
+  }
+
+  const line = c["rig.geometry.line"];
+  if (line) {
+    const x1 = wx + line.x1;
+    const y1 = wy + line.y1;
+    const x2 = wx + line.x2;
+    const y2 = wy + line.y2;
     expand(x1, y1);
     expand(x2, y2);
-    if (shape.type === "ellipse") {
-      const cx = (x1 + x2) / 2;
-      const cy = (y1 + y2) / 2;
-      const rx = Math.abs(x2 - x1) / 2;
-      const ry = Math.abs(y2 - y1) / 2;
-      parts.push(
-        `  <ellipse data-id="${e.id}" data-name="${name}" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" ${attrs} />`
-      );
-    } else {
-      // rectangle (and other bbox shapes as rect for this still frame)
-      const x = Math.min(x1, x2);
-      const y = Math.min(y1, y2);
-      const w = Math.abs(x2 - x1);
-      const h = Math.abs(y2 - y1);
-      parts.push(
-        `  <rect data-id="${e.id}" data-name="${name}" x="${x}" y="${y}" width="${w}" height="${h}" ${attrs} />`
-      );
-    }
+    parts.push(`  <line ${tag} x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" ${attrs} />`);
+  }
+
+  const poly = c["rig.geometry.polygon"];
+  if (poly) {
+    const pts = poly.points.map(([px, py]) => {
+      const x = wx + px;
+      const y = wy + py;
+      expand(x, y);
+      return `${x},${y}`;
+    });
+    const el = poly.closed === false ? "polyline" : "polygon";
+    parts.push(`  <${el} ${tag} points="${pts.join(" ")}" ${attrs} />`);
+  }
+
+  const ngon = c["rig.geometry.regular_polygon"];
+  if (ngon) {
+    const pts = radialPoints(
+      wx + ngon.cx,
+      wy + ngon.cy,
+      ngon.sides,
+      () => ngon.radius,
+      ngon.rotationDegrees ?? 0
+    );
+    parts.push(`  <polygon ${tag} points="${pts}" ${attrs} />`);
+  }
+
+  const star = c["rig.geometry.star"];
+  if (star) {
+    const pts = radialPoints(
+      wx + star.cx,
+      wy + star.cy,
+      star.points * 2,
+      (i) => (i % 2 === 0 ? star.radius : star.innerRadius),
+      star.rotationDegrees ?? 0
+    );
+    parts.push(`  <polygon ${tag} points="${pts}" ${attrs} />`);
   }
 
   const mesh = c["rig.geometry.mesh"];

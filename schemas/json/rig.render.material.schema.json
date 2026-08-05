@@ -20,12 +20,5 @@
     "emissive": {
       "$ref": "./_defs.schema.json#/$defs/rgb"
     }
-  },
-  "required": [
-    "albedoRgb",
-    "albedoMap",
-    "metallic",
-    "roughness",
-    "emissive"
-  ]
+  }
 }

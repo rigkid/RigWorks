@@ -4,8 +4,8 @@ Grouping and ordering for a control surface. Labels compose [`rig.meta.named`](.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `order` | int | Sort key among sibling panels |
-| `visible` | bool | Whether the panel is shown |
+| `order` | int | Optional. Sort key among sibling panels; absent = 0 |
+| `visible` | bool | Optional. Whether the panel is shown; absent = true |
 
 Controls and actions reference this entity via their `panel` field. Layout chrome (docks, tabs, ESP page shells) is fulfillment — not this schema.
 

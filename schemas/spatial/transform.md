@@ -4,11 +4,11 @@ Local pose. Format when present.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `position` | vec3 | Local translation |
-| `rotation` | quat | Local orientation (**authoritative**). Field order: x, y, z, w |
-| `scale` | vec3 | Local scale; default (1, 1, 1) |
+| `position` | vec3 | Optional. Local translation; absent = (0, 0, 0) |
+| `rotation` | quat | Optional. Local orientation (**authoritative**); absent = identity (0, 0, 0, 1). Field order: x, y, z, w |
+| `scale` | vec3 | Optional. Local scale; absent = (1, 1, 1) |
 
-Serialize these three fields. Do not serialize derived values a host may keep beside them (editor Euler angles, world matrix cache) — rebuild those from local pose + parent.
+All fields optional; an absent field means identity, so hosts may emit only what differs. Serialize at most these three fields. Do not serialize derived values a host may keep beside them (editor Euler angles, world matrix cache) — rebuild those from local pose + parent.
 
 ## Quat + Euler (hosts)
 

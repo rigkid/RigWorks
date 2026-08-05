@@ -9,15 +9,15 @@ Ordered effect steps. Format when present.
 | `id` | uint | Stable id within the chain |
 | `stage` | enum | image, draw, generate |
 | `effectId` | string | Registry name |
-| `enabled` | bool | Skip when false |
-| `parentStep` | uint | Input step id; none = the preceding step |
+| `enabled` | bool | Optional. Skip when false; absent = true |
+| `parentStep` | uint | Optional. Input step id; absent = the preceding step |
 
 ## Chain
 
 | Field | Type | Meaning |
 |-------|------|---------|
 | `steps` | step[] | Ordered list |
-| `nextId` | uint | Next id allocator for steps |
+| `nextId` | uint | Optional. Next id allocator for steps; absent = highest step id + 1 |
 
 Effect-specific parameters are **host / pack extension** (side table or JSON text keyed by step). No GPU programs in the schema.
 

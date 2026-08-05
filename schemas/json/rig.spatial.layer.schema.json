@@ -17,11 +17,5 @@
     "rgba": {
       "$ref": "./_defs.schema.json#/$defs/rgba"
     }
-  },
-  "required": [
-    "order",
-    "visible",
-    "locked",
-    "rgba"
-  ]
+  }
 }

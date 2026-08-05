@@ -160,6 +160,19 @@ for (const file of files) {
       if (!comps || typeof comps !== "object") return;
       for (const [schemaId, payload] of Object.entries(comps)) {
         const base = `/entities/${ei}/components/${schemaId}`;
+
+        // x.<vendor>.<name> is a host component the Contract has not named.
+        // There is no schema to check it against, so report it and move on —
+        // reporting is the point, since none of it is portable.
+        if (schemaId.startsWith("x.")) {
+          errors.push({
+            level: "note",
+            path: base,
+            message: `extension component "${schemaId}" — carried, not portable`,
+          });
+          continue;
+        }
+
         const schemaUri = `https://rig.works/schemas/${schemaId}.schema.json`;
         const validateComp = ajv.getSchema(schemaUri);
         if (!validateComp) {
@@ -198,14 +211,12 @@ for (const file of files) {
   const hard = errors.filter((e) => e.level === "error");
   const soft = errors.filter((e) => e.level === "warn");
 
-  if (hard.length === 0 && soft.length === 0) {
-    console.log(`ok  ${file}`);
-  } else {
-    if (hard.length) failed = true;
-    console.log(`${hard.length ? "FAIL" : "WARN"} ${file}`);
-    for (const e of errors) {
-      console.log(`  [${e.level}] ${e.path}: ${e.message}`);
-    }
+  // Notes report extension components. They are listed but never change the
+  // verdict, so a host carrying its own components still validates clean.
+  if (hard.length) failed = true;
+  console.log(`${hard.length ? "FAIL" : soft.length ? "WARN" : "ok  "} ${file}`);
+  for (const e of errors) {
+    console.log(`  [${e.level}] ${e.path}: ${e.message}`);
   }
 }
 

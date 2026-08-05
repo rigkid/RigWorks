@@ -31,13 +31,6 @@
     }
   },
   "required": [
-    "ticksPerQuarter",
-    "phaseTicks",
-    "swingAmount",
-    "swingSubdiv",
-    "externalSync",
-    "syncBeat",
-    "syncPhase",
-    "syncPeriodBars"
+    "ticksPerQuarter"
   ]
 }

@@ -17,7 +17,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 - Ids are `rig.<domain>.<name>` (snake_case multi-word segments). Fields are camelCase. Enum literals are lowerCamelCase.
 - Display names live on [`rig.meta.named`](meta/named.md) — compose it; do not re-declare `name` on every schema.
 - File identity lives on [`rig.media.asset_ref`](media/asset-ref.md) — other schemas reference it by `entity` id when they need a path.
-- `rgba` / `rgb` / `clearRgba` are floats 0–1. Colour space is host-documented per document (default: sRGB).
+- `rgba` / `rgb` / `clearRgba` are floats 0–1. Colour space is the envelope's `document.colorSpace` key (default: srgb) — see [document.md](document.md).
 - Domain meaning lives in field names — not extra property datatype ids. See [properties.md](../docs/properties.md).
 
 ## Catalog
@@ -37,25 +37,38 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | `rig.spatial.group` | [spatial/group.md](spatial/group.md) |
 | `rig.spatial.camera` | [spatial/camera.md](spatial/camera.md) |
 | `rig.spatial.layer` | [spatial/layer.md](spatial/layer.md) |
+| `rig.layout.page` | [layout/page.md](layout/page.md) |
 
 ### Geometry / paint
 
 | Id | Doc |
 |----|-----|
 | `rig.geometry.mesh` | [geometry/mesh.md](geometry/mesh.md) |
-| `rig.geometry.shape` | [geometry/shape.md](geometry/shape.md) |
 | `rig.geometry.path` | [geometry/path.md](geometry/path.md) |
+| `rig.geometry.rectangle` | [geometry/rectangle.md](geometry/rectangle.md) |
+| `rig.geometry.ellipse` | [geometry/ellipse.md](geometry/ellipse.md) |
+| `rig.geometry.line` | [geometry/line.md](geometry/line.md) |
+| `rig.geometry.polygon` | [geometry/polygon.md](geometry/polygon.md) |
+| `rig.geometry.regular_polygon` | [geometry/regular-polygon.md](geometry/regular-polygon.md) |
+| `rig.geometry.star` | [geometry/star.md](geometry/star.md) |
+| `rig.geometry.arc` | [geometry/arc.md](geometry/arc.md) |
+| `rig.geometry.ring` | [geometry/ring.md](geometry/ring.md) |
 | `rig.paint.solid` | [paint/solid.md](paint/solid.md) |
 | `rig.paint.gradient` | [paint/gradient.md](paint/gradient.md) |
 | `rig.paint.fill_stroke` | [paint/fill-stroke.md](paint/fill-stroke.md) |
+| `rig.paint.fill` | [paint/fill.md](paint/fill.md) |
+| `rig.paint.stroke` | [paint/stroke.md](paint/stroke.md) |
+| `rig.paint.library` | [paint/library.md](paint/library.md) |
 
 ### Meta / render
 
 | Id | Doc |
 |----|-----|
 | `rig.meta.named` | [meta/named.md](meta/named.md) |
+| `rig.meta.tags` | [meta/tags.md](meta/tags.md) |
 | `rig.render.light` | [render/light.md](render/light.md) |
 | `rig.render.material` | [render/material.md](render/material.md) |
+| `rig.render.visibility` | [render/visibility.md](render/visibility.md) |
 
 ### Animation / modulators
 
@@ -76,6 +89,13 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | `rig.music.step` | [music/step.md](music/step.md) |
 | `rig.music.note` | [music/note.md](music/note.md) |
 | `rig.music.midi_output` | [music/midi-output.md](music/midi-output.md) |
+| `rig.music.midi_input` | [music/midi-input.md](music/midi-input.md) |
+
+### Audio
+
+| Id | Doc |
+|----|-----|
+| `rig.audio.analysis` | [audio/analysis.md](audio/analysis.md) |
 
 ### Media
 
@@ -93,6 +113,9 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | `rig.pixel.source` | [pixel/source.md](pixel/source.md) |
 | `rig.pixel.layer` | [pixel/layer.md](pixel/layer.md) |
 | `rig.pixel.raster` | [pixel/raster.md](pixel/raster.md) |
+| `rig.pixel.palette` | [pixel/palette.md](pixel/palette.md) |
+| `rig.pixel.tile_set` | [pixel/tile-set.md](pixel/tile-set.md) |
+| `rig.pixel.tile_map` | [pixel/tile-map.md](pixel/tile-map.md) |
 | `rig.pixel.effect_chain` | [pixel/effect-chain.md](pixel/effect-chain.md) |
 
 ### Install / I/O
@@ -101,8 +124,17 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 |----|-----|
 | `rig.io.osc` | [io/osc.md](io/osc.md) |
 | `rig.io.serial` | [io/serial.md](io/serial.md) |
+| `rig.io.sacn` | [io/sacn.md](io/sacn.md) |
 | `rig.led.uv_map` | [led/uv-map.md](led/uv-map.md) |
 | `rig.sensor.gpio` | [sensor/gpio.md](sensor/gpio.md) |
+| `rig.input.buttons` | [input/buttons.md](input/buttons.md) |
+
+### Simulation
+
+| Id | Doc |
+|----|-----|
+| `rig.sim.rigidbody` | [sim/rigidbody.md](sim/rigidbody.md) |
+| `rig.sim.particle_emitter` | [sim/particle-emitter.md](sim/particle-emitter.md) |
 
 ### Interaction
 
@@ -136,6 +168,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | Scene pose | `parent` | [`spatial.relationship`](spatial/relationship.md) + optional [`spatial.group`](spatial/group.md) marker |
 | Compositor stack | `groupParent` | [`pixel.layer`](pixel/layer.md) (`kind=group`) |
 | Effect chain | `parentStep` | [`pixel.effect_chain`](pixel/effect-chain.md) (step `id`) |
+| Tile map | `tileSet` | [`pixel.tile_map`](pixel/tile-map.md) → [`pixel.tile_set`](pixel/tile-set.md) → [`pixel.palette`](pixel/palette.md) |
 | Node editor | `nested` on a node | [`node.node`](node/node.md) + [`node.publish`](node/publish.md) |
 | Control surface | `panel` on control/action | [`ui.panel`](ui/panel.md) + [`ui.control`](ui/control.md) / [`ui.action`](ui/action.md) |
 

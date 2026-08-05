@@ -8,8 +8,8 @@ Replaces a separate “pulse” schema — use waveform + binding.
 |-------|------|---------|
 | `waveform` | enum | sine, tri, saw, square |
 | `frequency` | float | Hz |
-| `amplitude` | float | Depth |
-| `offset` | float | Bias |
-| `phase` | float | 0–1 (wrap) |
+| `amplitude` | float | Optional. Depth; absent = 1 |
+| `offset` | float | Optional. Bias; absent = 0 |
+| `phase` | float | Optional. 0–1 (wrap); absent = 0 |
 
 Last sample is a runtime cache — do not serialize. Drive targets through [`rig.mod.binding`](binding.md).

@@ -1,5 +1,5 @@
 {
-  "rig": "0.4.0",
+  "rig": "0.5.0",
   "document": {
     "title": "LED panel — colour and pulse",
     "defaultUnit": "px"

@@ -36,8 +36,6 @@
     }
   },
   "required": [
-    "width",
-    "height",
     "pixels"
   ]
 }

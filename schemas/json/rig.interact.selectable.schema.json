@@ -9,7 +9,5 @@
       "$ref": "./_defs.schema.json#/$defs/bool"
     }
   },
-  "required": [
-    "enabled"
-  ]
+  "minProperties": 0
 }

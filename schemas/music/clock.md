@@ -7,12 +7,12 @@ Does **not** own bpm — read [`rig.music.transport`](transport.md).
 | Field | Type | Meaning |
 |-------|------|---------|
 | `ticksPerQuarter` | int | Pulses per quarter (e.g. 96) |
-| `phaseTicks` | float | Running tick count |
-| `swingAmount` | float | 0 = straight |
-| `swingSubdiv` | int | Swing subdivision |
-| `externalSync` | bool | External writer owns phase |
-| `syncBeat` | float | External beat when `externalSync` |
-| `syncPhase` | float | External phase 0–1 when `externalSync` |
-| `syncPeriodBars` | float | External sync period in bars |
+| `phaseTicks` | float | Optional. Running tick count; absent = 0 |
+| `swingAmount` | float | Optional. 0 = straight; absent = 0 |
+| `swingSubdiv` | int | Optional. Swing subdivision; absent = 2 |
+| `externalSync` | bool | Optional. External writer owns phase; absent = false |
+| `syncBeat` | float | External beat; required when `externalSync` |
+| `syncPhase` | float | External phase 0–1; required when `externalSync` |
+| `syncPeriodBars` | float | Optional. External sync period in bars |
 
 Product protocol names stay out of the schema id.

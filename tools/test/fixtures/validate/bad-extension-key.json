@@ -1,0 +1,11 @@
+{
+  "rig": "0.6.0",
+  "entities": [
+    {
+      "id": "a",
+      "components": {
+        "xofkitty": { "radius": 40 }
+      }
+    }
+  ]
+}

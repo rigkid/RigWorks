@@ -32,10 +32,7 @@
   },
   "required": [
     "pitch",
-    "velocity",
-    "channel",
     "start",
-    "duration",
-    "clip"
+    "duration"
   ]
 }

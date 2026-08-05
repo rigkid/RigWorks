@@ -16,8 +16,6 @@
     }
   },
   "required": [
-    "text",
-    "language",
-    "readOnly"
+    "text"
   ]
 }

@@ -57,7 +57,7 @@ Data has none of these. A `rig.spatial.transform` payload written by a Rust CLI 
 Executions have a half-life. Renderers get rewritten, GPUs are replaced, frameworks are abandoned, languages fall out of fashion. Concepts do not decay:
 
 ```json
-"rig.music.transport": { "bpm": 128, "timeSigNumerator": 4, "timeSigDenominator": 4 }
+"rig.music.transport": { "bpm": 128, "timeSigNum": 4, "timeSigDen": 4 }
 ```
 
 Whether that drives a C++ audio thread, a web worker, or a strip of LEDs is execution, and it will be rewritten several times. `"bpm": 128` will still mean 128. Every document ever written against the concept survives every rewrite of every execution.

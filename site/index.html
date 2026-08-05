@@ -42,8 +42,8 @@
   </p>
 
   <p class="badges">
-    <span class="badge">v0.4.0 · draft</span>
-    <span class="badge">47 schemas</span>
+    <span class="badge">v0.8.0 · draft</span>
+    <span class="badge">69 schemas</span>
     <span class="badge">MIT</span>
     <span class="badge">0 dependencies</span>
   </p>
@@ -133,7 +133,7 @@ Exit   → tear down</code></pre>
   <p>One entity, in full — and the picture below is that document drawn by a second fulfillment (static SVG, zero client JavaScript):</p>
 
   <figure class="scene">
-    <img src="scene.svg" alt="Minimal Rig scene — shapes from examples/minimal-scene.json" width="900" height="400" />
+    <img src="scene.svg" alt="Minimal Rig scene — shapes from examples/minimal-scene.json" width="900" height="356" />
     <figcaption>Setup loads <code>examples/minimal-scene.json</code>. Draw emits this SVG. No Update — still frame.</figcaption>
   </figure>
 
@@ -147,8 +147,8 @@ Exit   → tear down</code></pre>
     },
     "rig.spatial.transform": {
       "position": [
-        64,
-        64,
+        20,
+        65,
         0
       ],
       "rotation": [
@@ -163,14 +163,12 @@ Exit   → tear down</code></pre>
         1
       ]
     },
-    "rig.geometry.shape": {
-      "type": "rectangle",
-      "x1": 0,
-      "y1": 0,
-      "x2": 180,
-      "y2": 110,
-      "sides": 5,
-      "innerRadius": 0.5
+    "rig.geometry.rectangle": {
+      "x": 0,
+      "y": 0,
+      "width": 140,
+      "height": 90,
+      "cornerRadius": 10
     },
     "rig.paint.fill_stroke": {
       "fillRgba": [
@@ -178,16 +176,7 @@ Exit   → tear down</code></pre>
         0.65,
         1,
         1
-      ],
-      "strokeRgba": [
-        0,
-        0,
-        0,
-        1
-      ],
-      "strokeWidth": 1,
-      "hasFill": true,
-      "hasStroke": false
+      ]
     },
     "rig.interact.selectable": {
       "enabled": true
@@ -203,7 +192,7 @@ Exit   → tear down</code></pre>
   </p>
   <p class="aside">
     <a href="https://github.com/rigkid/rigworks/tree/master/examples">Golden documents</a> ·
-    <a href="https://github.com/rigkid/rigworks/tree/master/schemas">All 47 schemas</a> ·
+    <a href="https://github.com/rigkid/rigworks/tree/master/schemas">All 69 schemas</a> ·
     <a href="https://github.com/rigkid/rigworks/blob/master/schemas/document.md">Document envelope</a>
   </p>
 </section>

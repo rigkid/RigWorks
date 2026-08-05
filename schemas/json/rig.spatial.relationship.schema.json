@@ -7,6 +7,9 @@
   "properties": {
     "parent": {
       "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "order": {
+      "$ref": "./_defs.schema.json#/$defs/int"
     }
   },
   "required": [

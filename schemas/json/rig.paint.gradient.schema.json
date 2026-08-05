@@ -42,8 +42,6 @@
   },
   "required": [
     "kind",
-    "stops",
-    "p0",
-    "p1"
+    "stops"
   ]
 }

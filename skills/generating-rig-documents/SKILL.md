@@ -49,7 +49,7 @@ Wire format is JSON — [`rig.document`](../../schemas/document.md).
 
 | Root field | Meaning |
 |------------|---------|
-| `rig` | Contract version (`MAJOR.MINOR.PATCH`, e.g. `0.4.0`) |
+| `rig` | Contract version (`MAJOR.MINOR.PATCH`, e.g. `0.8.0`) |
 | `document` | Optional metadata (`title`, `defaultUnit`, …) |
 | `entities` | Array of `{ id, components }` |
 
@@ -59,12 +59,15 @@ Wire format is JSON — [`rig.document`](../../schemas/document.md).
 - `vec*` / `quat` — JSON number arrays; **quat order x, y, z, w**
 - Enums — lowerCamelCase literals from the schema
 - Serialize only portable fields; omit host caches
+- Optional fields have documented defaults — omit what you did not measure rather than inventing a value (an absent `gate` means 1; an invented `gate` looks like data)
 
 Exact grammar: [`schemas/json/`](../../schemas/json/).
 
+A component key may also be `x.<vendor>.<name>` — a host component the Contract has not named. Validators carry it unchecked and report it. Do **not** reach for this when generating documents: if a `rig.*` id fits, use it, and if none fits, say so rather than inventing an extension. It exists so a host can adopt `.rig` natively, not so a generator can route around the catalog — [`rig.document`](../../schemas/document.md#extension-components).
+
 ## Worked examples
 
-Goldens: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json).
+Goldens: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json). Fantasy-console carts: [rigPico8](https://github.com/rigkid/rigPico8).
 
 ### Entity with shape + paint
 
@@ -79,8 +82,8 @@ Goldens: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`e
     },
     "rig.spatial.transform": {
       "position": [
-        64,
-        64,
+        20,
+        65,
         0
       ],
       "rotation": [
@@ -95,14 +98,12 @@ Goldens: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`e
         1
       ]
     },
-    "rig.geometry.shape": {
-      "type": "rectangle",
-      "x1": 0,
-      "y1": 0,
-      "x2": 180,
-      "y2": 110,
-      "sides": 5,
-      "innerRadius": 0.5
+    "rig.geometry.rectangle": {
+      "x": 0,
+      "y": 0,
+      "width": 140,
+      "height": 90,
+      "cornerRadius": 10
     },
     "rig.paint.fill_stroke": {
       "fillRgba": [
@@ -110,16 +111,7 @@ Goldens: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`e
         0.65,
         1,
         1
-      ],
-      "strokeRgba": [
-        0,
-        0,
-        0,
-        1
-      ],
-      "strokeWidth": 1,
-      "hasFill": true,
-      "hasStroke": false
+      ]
     },
     "rig.interact.selectable": {
       "enabled": true
@@ -176,7 +168,7 @@ Goldens: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`e
 }
 ```
 
-(Wrap entities in a full document with `"rig": "0.4.0"` before validating.)
+(Wrap entities in a full document with `"rig": "0.8.0"` before validating.)
 
 ## Feedback loop
 
@@ -198,6 +190,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 
 - **Do not** serialize Euler angles, world matrices, selection state, dirty flags, GPU handles, or LFO last-sample caches
 - **Do not** invent schema ids or use PascalCase keys (`Transform`, `Shape`) — those are RigKit host aliases; see [docs/interchange.md](../../docs/interchange.md)
+- **Do not** use `x.<vendor>.<name>` to stand in for a catalog id you could not find — report the gap instead
 - **Do not** nest SUDE hooks or skip calling `Draw`
 - **Do not** re-declare `name` on domain schemas — compose `rig.meta.named`
 - SUDE does **not** require a window, GPU, UI pack, filesystem, or audio
@@ -211,14 +204,18 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 |--------|------------|
 | Document | `rig.document` |
 | Spatial | `transform`, `relationship`, `group`, `camera`, `layer` |
-| Geometry | `mesh`, `shape`, `path` |
-| Paint | `solid`, `gradient`, `fill_stroke` |
-| Meta / render | `named`, `light`, `material` |
+| Layout | `page` |
+| Geometry | `mesh`, `path`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `ring` |
+| Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `library` |
+| Meta / render | `named`, `tags`, `light`, `material`, `visibility` |
 | Anim / mod | `tween`, `lfo`, `binding` |
-| Music | `transport`, `clock`, `sequencer`, `pattern`, `step`, `note`, `midi_output` |
+| Music | `transport`, `clock`, `sequencer`, `pattern`, `step`, `note`, `midi_output`, `midi_input` |
+| Audio | `analysis` |
 | Media | `asset_ref`, `text`, `code` |
-| Pixel | `canvas`, `source`, `layer`, `raster`, `effect_chain` |
-| I/O | `osc`, `serial`, `led.uv_map`, `sensor.gpio` |
+| Pixel | `canvas`, `source`, `layer`, `raster`, `palette`, `tile_set`, `tile_map`, `effect_chain` |
+| I/O | `osc`, `serial`, `sacn`, `led.uv_map`, `sensor.gpio` |
+| Sim | `rigidbody`, `particle_emitter` |
+| Input | `buttons` |
 | Interact | `selectable` |
 | UI | `panel`, `control`, `action` |
 | Node | `graph`, `node`, `pin`, `link`, `param`, `publish` |

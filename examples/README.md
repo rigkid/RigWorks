@@ -5,7 +5,10 @@ Canonical Rig JSON documents. Copy the pattern; validate before you trust the ou
 ```bash
 node tools/rig-validate/cli.js examples/minimal-scene.json
 node tools/rig-validate/cli.js examples/lfo-binding.json
+node tools/rig-validate/cli.js examples/ui-panel.json
 ```
+
+Fantasy-console carts (PICO-8) live in [rigPico8](https://github.com/rigkid/rigPico8).
 
 ## SUDE sketch
 
@@ -24,7 +27,7 @@ Exit:
 
 ## `minimal-scene.json`
 
-Shapes + hierarchy matching the RigKit `minimal` demo narrative: rect, circle, parent/child, triangle mesh, quad mesh.
+A specimen sheet of the geometry vocabulary: rounded rectangle, circle, regular polygons (triangle, hexagon), star, parent/child hierarchy, closed and open polygons, line, and a quad mesh. Rendered to [`site/scene.svg`](../site/scene.svg) by [`tools/render-svg.mjs`](../tools/render-svg.mjs). Note what is *absent*: fill-only shapes carry just `fillRgba` and stroke-only shapes just `strokeRgba` — 0.8.0 defaults cover the rest.
 
 One entity (excerpt):
 
@@ -39,8 +42,8 @@ One entity (excerpt):
     },
     "rig.spatial.transform": {
       "position": [
-        64,
-        64,
+        20,
+        65,
         0
       ],
       "rotation": [
@@ -55,14 +58,12 @@ One entity (excerpt):
         1
       ]
     },
-    "rig.geometry.shape": {
-      "type": "rectangle",
-      "x1": 0,
-      "y1": 0,
-      "x2": 180,
-      "y2": 110,
-      "sides": 5,
-      "innerRadius": 0.5
+    "rig.geometry.rectangle": {
+      "x": 0,
+      "y": 0,
+      "width": 140,
+      "height": 90,
+      "cornerRadius": 10
     },
     "rig.paint.fill_stroke": {
       "fillRgba": [
@@ -70,16 +71,7 @@ One entity (excerpt):
         0.65,
         1,
         1
-      ],
-      "strokeRgba": [
-        0,
-        0,
-        0,
-        1
-      ],
-      "strokeWidth": 1,
-      "hasFill": true,
-      "hasStroke": false
+      ]
     },
     "rig.interact.selectable": {
       "enabled": true

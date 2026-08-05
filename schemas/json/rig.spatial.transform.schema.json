@@ -14,10 +14,5 @@
     "scale": {
       "$ref": "./_defs.schema.json#/$defs/vec3"
     }
-  },
-  "required": [
-    "position",
-    "rotation",
-    "scale"
-  ]
+  }
 }

@@ -8,9 +8,9 @@ Compositor stacks use [`rig.pixel.layer`](../pixel/layer.md) on the same entity 
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `order` | int | Draw / list order |
-| `visible` | bool | Drawn when true |
-| `locked` | bool | Edit lock hint |
-| `rgba` | vec4 | Tint / label colour (0–1); hosts may store as four floats |
+| `order` | int | Optional. Draw / list order; absent = 0 |
+| `visible` | bool | Optional. Drawn when true; absent = true |
+| `locked` | bool | Optional. Edit lock hint; absent = false |
+| `rgba` | vec4 | Optional. Tint / label colour (0–1); absent = no label colour. Hosts may store as four floats |
 
 Parenting stays on [`rig.spatial.relationship`](relationship.md).

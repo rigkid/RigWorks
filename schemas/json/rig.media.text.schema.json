@@ -19,9 +19,6 @@
     }
   },
   "required": [
-    "text",
-    "font",
-    "fontSize",
-    "rgba"
+    "text"
   ]
 }

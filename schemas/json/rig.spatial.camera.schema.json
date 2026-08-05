@@ -30,14 +30,5 @@
     "aspect": {
       "$ref": "./_defs.schema.json#/$defs/float"
     }
-  },
-  "required": [
-    "active",
-    "projection",
-    "fovYDegrees",
-    "orthoHeight",
-    "nearClip",
-    "farClip",
-    "aspect"
-  ]
+  }
 }

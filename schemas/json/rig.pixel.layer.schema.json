@@ -61,16 +61,6 @@
     }
   },
   "required": [
-    "kind",
-    "blendMode",
-    "opacity",
-    "image",
-    "rgba",
-    "maskSource",
-    "maskAsset",
-    "maskLayer",
-    "maskPathEntity",
-    "invertMask",
-    "groupParent"
+    "kind"
   ]
 }

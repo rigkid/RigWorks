@@ -7,16 +7,16 @@ Compositor stack entry. Format when present.
 | Field | Type | Meaning |
 |-------|------|---------|
 | `kind` | enum | vector, overlayImage, solid, group |
-| `blendMode` | enum | normal, multiply, screen, overlay, add |
-| `opacity` | float | 0–1 |
+| `blendMode` | enum | Optional. normal, multiply, screen, overlay, add; absent = normal |
+| `opacity` | float | Optional. 0–1; absent = 1 |
 | `image` | entity | Overlay [`rig.media.asset_ref`](../media/asset-ref.md) when kind needs it |
-| `rgba` | vec4 | Solid fill when `kind=solid` |
-| `maskSource` | enum | none, luma, alpha, path |
+| `rgba` | vec4 | Solid fill; required when `kind=solid` |
+| `maskSource` | enum | Optional. none, luma, alpha, path; absent = none |
 | `maskAsset` | entity | Luma image asset when `maskSource=luma` |
 | `maskLayer` | entity | Alpha source layer when `maskSource=alpha` |
 | `maskPathEntity` | entity | Path entity when `maskSource=path` |
-| `invertMask` | bool | Invert mask |
-| `groupParent` | entity | Compositor group parent; none = root |
+| `invertMask` | bool | Optional. Invert mask; absent = false |
+| `groupParent` | entity | Optional. Compositor group parent; absent or none = root |
 
 `groupParent` is **not** `parent` on [`rig.spatial.relationship`](../spatial/relationship.md) — different graph.
 

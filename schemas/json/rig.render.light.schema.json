@@ -30,14 +30,5 @@
     "bands": {
       "$ref": "./_defs.schema.json#/$defs/int"
     }
-  },
-  "required": [
-    "enabled",
-    "type",
-    "rgb",
-    "intensity",
-    "ambient",
-    "banded",
-    "bands"
-  ]
+  }
 }

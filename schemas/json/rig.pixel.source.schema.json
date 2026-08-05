@@ -42,14 +42,6 @@
     }
   },
   "required": [
-    "kind",
-    "asset",
-    "generatorName",
-    "sequenceFps",
-    "sequenceFrame",
-    "webcamDevice",
-    "webcamWidth",
-    "webcamHeight",
-    "videoTime"
+    "kind"
   ]
 }

@@ -16,8 +16,6 @@
     }
   },
   "required": [
-    "pattern",
-    "currentStep",
-    "clock"
+    "pattern"
   ]
 }

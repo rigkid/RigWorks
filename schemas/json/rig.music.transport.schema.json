@@ -31,13 +31,6 @@
     }
   },
   "required": [
-    "playing",
-    "bpm",
-    "timeSigNum",
-    "timeSigDen",
-    "positionBeats",
-    "loop",
-    "loopStartBeats",
-    "loopEndBeats"
+    "bpm"
   ]
 }

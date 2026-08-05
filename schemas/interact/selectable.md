@@ -4,7 +4,7 @@ Opt-in selection eligibility. Format when present.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `enabled` | bool | Eligible for selection when true |
+| `enabled` | bool | Optional. Eligible for selection when true; absent = true |
 
 Selection *state* (is-selected, multi-select index) stays in the host — do not serialize here.
 Hit-test geometry from transform / shape / mesh — not from this component.

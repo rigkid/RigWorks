@@ -11,9 +11,5 @@
     "visible": {
       "$ref": "./_defs.schema.json#/$defs/bool"
     }
-  },
-  "required": [
-    "order",
-    "visible"
-  ]
+  }
 }

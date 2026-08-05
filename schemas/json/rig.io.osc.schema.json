@@ -23,12 +23,5 @@
     "addressPrefix": {
       "$ref": "./_defs.schema.json#/$defs/string"
     }
-  },
-  "required": [
-    "listenEnabled",
-    "listenPort",
-    "sendEnabled",
-    "sendHost",
-    "sendPort"
-  ]
+  }
 }

@@ -8,12 +8,27 @@
     "portName": {
       "$ref": "./_defs.schema.json#/$defs/string"
     },
+    "portIndex": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
+    },
     "open": {
       "$ref": "./_defs.schema.json#/$defs/bool"
     }
   },
-  "required": [
-    "portName",
-    "open"
+  "allOf": [
+    {
+      "anyOf": [
+        {
+          "required": [
+            "portName"
+          ]
+        },
+        {
+          "required": [
+            "portIndex"
+          ]
+        }
+      ]
+    }
   ]
 }

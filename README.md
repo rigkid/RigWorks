@@ -1,15 +1,21 @@
 # RigWorks
 
-![preview](examples/img/install_tool.png)
+![The geometry vocabulary — examples/minimal-scene.json drawn by the repo's own SVG fulfillment](site/scene.svg)
 
 **A no-code creative application framework.**  
 *Because no code is the best code.*
 
 RigWorks — **Rig** for short, and Rig in all running text — is a shared data vocabulary for creative applications. It is a framework you never install — no library to link, no runtime to embed, no API to version. It ships as agreement: two loop rules and a shared vocabulary. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
 
+## It runs
+
+A Rig document is not a diagram of a format. The same schemas compile to a playable cartridge for PICO-8 — a console we did not write, which has never heard of Rig. That fulfillment lives in [rigPico8](https://github.com/rigkid/rigPico8): converters, cart documents, and showcase games. The cart's `_init` / `_update` / `_draw` **are** the SUDE loop. Palette, tiles, map, input, and music travel as `rig.pixel.*`, `rig.input.*`, and `rig.music.*` components.
+
 **Concept is more important than execution.** What a transform *is* outlives every renderer that ever drew one. Rig keeps the concept and leaves the execution to you — [why no code](docs/why-no-code.md).
 
 **AI co-coding is here to stay.** When execution gets cheap, the shared concept becomes the scarce asset. Rig publishes it in a form people and models read the same way — [AI collaboration](docs/ai-collaboration.md).
+
+**What it costs.** A data framework moves work rather than deleting it. You write the loop; nothing fails to build when you drift; a schema only pays off once a second host speaks it — [the honest price](docs/why-no-code.md#the-honest-price).
 
 ## The framework
 
@@ -52,8 +58,8 @@ One entity in Contract JSON ([`examples/minimal-scene.json`](examples/minimal-sc
     },
     "rig.spatial.transform": {
       "position": [
-        64,
-        64,
+        20,
+        65,
         0
       ],
       "rotation": [
@@ -68,14 +74,12 @@ One entity in Contract JSON ([`examples/minimal-scene.json`](examples/minimal-sc
         1
       ]
     },
-    "rig.geometry.shape": {
-      "type": "rectangle",
-      "x1": 0,
-      "y1": 0,
-      "x2": 180,
-      "y2": 110,
-      "sides": 5,
-      "innerRadius": 0.5
+    "rig.geometry.rectangle": {
+      "x": 0,
+      "y": 0,
+      "width": 140,
+      "height": 90,
+      "cornerRadius": 10
     },
     "rig.paint.fill_stroke": {
       "fillRgba": [
@@ -83,16 +87,7 @@ One entity in Contract JSON ([`examples/minimal-scene.json`](examples/minimal-sc
         0.65,
         1,
         1
-      ],
-      "strokeRgba": [
-        0,
-        0,
-        0,
-        1
-      ],
-      "strokeWidth": 1,
-      "hasFill": true,
-      "hasStroke": false
+      ]
     },
     "rig.interact.selectable": {
       "enabled": true
@@ -116,13 +111,11 @@ node tools/rig-validate/cli.js path/to/doc.json
 
 ## Reference host
 
-[RigKit](https://github.com/rigkid/rigkit) fulfills Rig on desktop (GLFW / OpenGL / packs). The family lives under the [rigkid](https://github.com/rigkid) org: **RigWorks** is the spec, **RigKit** is the reference host. RigKit's `minimal` demo presents the same scene shape family as `examples/minimal-scene.json`:
-
-![RigKit minimal — shapes on a dark clear color](docs/media/rigkit-minimal.png)
+[RigKit](https://github.com/rigkid/rigkit) fulfills Rig on desktop (GLFW / OpenGL / packs). The family lives under the [rigkid](https://github.com/rigkid) org: **RigWorks** is the spec, **RigKit** is the reference host. RigKit's `minimal` demo presents the same scene shape family as `examples/minimal-scene.json` — the picture at the top of this page is that document drawn by a third fulfillment, [`tools/render-svg.mjs`](tools/render-svg.mjs).
 
 ## Version
 
-**0.4.0** — draft vocabulary
+**0.8.0** — draft vocabulary
 
 > See [docs/versioning.md](docs/versioning.md).
 
@@ -133,6 +126,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 | [docs/why-no-code.md](docs/why-no-code.md) | Why a framework with no code, and what it costs |
 | [docs/terms.md](docs/terms.md) | Contract, fulfillment, host, pack, POD |
 | [docs/honors.md](docs/honors.md) | The minimum bar — is it Rig? |
+| [docs/gaps.md](docs/gaps.md) | Where the Contract is silent, ambiguous, or wrong |
 
 | The rules | |
 |-----------|--|
@@ -147,6 +141,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 | [schemas/document.md](schemas/document.md) | Document envelope |
 | [docs/properties.md](docs/properties.md) | Portable datatypes |
 | [docs/interchange.md](docs/interchange.md) | Wire format and host aliases |
+| [docs/fantasy-console.md](https://github.com/rigkid/rigPico8/blob/main/docs/fantasy-console.md) | PICO-8 as a Rig fulfillment (rigPico8) |
 | [examples/](examples/) | Golden documents |
 
 | Working with models | |

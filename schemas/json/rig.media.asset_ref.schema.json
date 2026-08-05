@@ -25,7 +25,6 @@
   },
   "required": [
     "kind",
-    "path",
-    "loop"
+    "path"
   ]
 }

@@ -51,6 +51,26 @@ describe("rig-validate", () => {
     assert.match(r.stdout, /\[error\].*unknown schema id/);
   });
 
+  it("carries x.<vendor>.<name> extension components without failing", () => {
+    const r = run([fix("extension-component.json")]);
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+    assert.match(r.stdout, /\[note\].*extension component "x\.ofkitty\.flower_of_life"/);
+  });
+
+  // The point of the namespace is that a host can adopt .rig natively, which
+  // only works if --strict stays clean.
+  it("still passes --strict with extension components present", () => {
+    const r = run(["--strict", fix("extension-component.json")]);
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+    assert.match(r.stdout, /\[note\].*not portable/);
+  });
+
+  it("rejects a malformed extension key", () => {
+    const r = run([fix("bad-extension-key.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /property name must be valid/);
+  });
+
   it("warns when document targets a newer version", () => {
     const r = run([fix("future-version.json")]);
     assert.equal(r.status, 0, r.stderr + r.stdout);

@@ -44,10 +44,6 @@
     "propertyKey",
     "from",
     "to",
-    "duration",
-    "elapsed",
-    "easing",
-    "loop",
-    "playing"
+    "duration"
   ]
 }

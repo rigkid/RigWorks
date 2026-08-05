@@ -30,10 +30,6 @@
   "required": [
     "source",
     "target",
-    "propertyKey",
-    "depth",
-    "min",
-    "max",
-    "additive"
+    "propertyKey"
   ]
 }

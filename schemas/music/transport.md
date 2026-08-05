@@ -4,14 +4,14 @@
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `playing` | bool | Running |
+| `playing` | bool | Optional. Running; absent = false |
 | `bpm` | float | Tempo |
-| `timeSigNum` | int | Beats per bar |
-| `timeSigDen` | int | Note value of beat |
-| `positionBeats` | float | Playhead in beats |
-| `loop` | bool | Loop |
-| `loopStartBeats` | float | Loop in |
-| `loopEndBeats` | float | Loop out |
+| `timeSigNum` | int | Optional. Beats per bar; absent = 4 |
+| `timeSigDen` | int | Optional. Note value of beat; absent = 4 |
+| `positionBeats` | float | Optional. Playhead in beats; absent = 0 |
+| `loop` | bool | Optional. Loop; absent = false |
+| `loopStartBeats` | float | Loop in; required when `loop` |
+| `loopEndBeats` | float | Loop out; required when `loop` |
 
 `barIndex` / `beatInBar` are derived from `positionBeats` — do not serialize; recompute.
 Pause = `playing=false` while keeping `positionBeats`.

@@ -25,11 +25,22 @@
         "dorian",
         "pentatonic"
       ]
+    },
+    "lane": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "stepsPerBeat": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "loopStartStep": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "loopEndStep": {
+      "$ref": "./_defs.schema.json#/$defs/int"
     }
   },
   "required": [
-    "steps",
-    "rootNote",
-    "scale"
+    "steps"
   ]
 }

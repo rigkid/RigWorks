@@ -29,9 +29,6 @@
   },
   "required": [
     "waveform",
-    "frequency",
-    "amplitude",
-    "offset",
-    "phase"
+    "frequency"
   ]
 }

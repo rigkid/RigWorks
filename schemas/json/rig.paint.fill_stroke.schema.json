@@ -20,12 +20,5 @@
     "hasStroke": {
       "$ref": "./_defs.schema.json#/$defs/bool"
     }
-  },
-  "required": [
-    "fillRgba",
-    "strokeRgba",
-    "strokeWidth",
-    "hasFill",
-    "hasStroke"
-  ]
+  }
 }
