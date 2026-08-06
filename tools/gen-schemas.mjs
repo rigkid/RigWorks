@@ -432,12 +432,24 @@ add("rig.media.asset_ref", {
 }, { required: ["kind", "path"] });
 
 // Defaults: font absent = host default face, fontSize host default,
-// rgba black.
+// rgba black, useKerning true, axes/features absent.
+const textAxis = {
+  type: "object",
+  additionalProperties: false,
+  required: ["tag", "value"],
+  properties: {
+    tag: ref("uint32"),
+    value: ref("float"),
+  },
+};
 add("rig.media.text", {
   text: ref("string"),
   font: ref("entity"),
   fontSize: ref("float"),
   rgba: ref("rgba"),
+  axes: { type: "array", items: textAxis },
+  features: ref("string"),
+  useKerning: ref("bool"),
 }, { required: ["text"] });
 
 // Defaults: language absent = plain text, readOnly false.
