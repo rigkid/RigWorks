@@ -28,7 +28,7 @@ npm run check          # all of the below
 npm run check:schemas  # schemas/json/ matches tools/gen-schemas.mjs
 npm run check:parity   # prose schema ids <-> JSON Schema files
 npm run check:links    # relative links in all markdown resolve
-npm run check:examples # goldens validate in --strict mode
+npm run check:examples # reference documents validate in --strict mode
 ```
 
 Regenerate the machine grammar after editing the catalog in [`tools/gen-schemas.mjs`](../gen-schemas.mjs):

@@ -31,7 +31,7 @@ Wire format is **JSON** ([`rig.document`](schemas/document.md)). Validate genera
 ```bash
 npm run setup                                          # once — installs the validator
 node tools/rig-validate/cli.js examples/minimal-scene.json
-npm run check                                          # schemas, parity, links, goldens
+npm run check                                          # schemas, parity, links, reference documents
 ```
 
 ## Worked example
@@ -142,7 +142,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 | [docs/properties.md](docs/properties.md) | Portable datatypes |
 | [docs/interchange.md](docs/interchange.md) | Wire format and host aliases |
 | [PicoForge · fantasy-console](https://github.com/GitBruno/PicoForge/blob/master/docs/fantasy-console.md) | PICO-8 as a Rig fulfillment |
-| [examples/](examples/) | Golden documents |
+| [examples/](examples/) | Reference documents |
 
 | Working with models | |
 |---------------------|--|

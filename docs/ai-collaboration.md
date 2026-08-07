@@ -35,7 +35,7 @@ A no-code framework is, conveniently, the exact shape a model works best with: n
 | [`AGENTS.md`](../AGENTS.md) | Cross-agent onboarding, pointing at the skill and the validator |
 | [`schemas/`](../schemas/) | Prose — meaning and units, for the reasoning step |
 | [`schemas/json/`](../schemas/json/) | Machine grammar — the checkable truth |
-| [`examples/`](../examples/) | Golden documents to copy instead of invent |
+| [`examples/`](../examples/) | Reference documents to copy instead of invent |
 | [`tools/rig-validate/`](../tools/rig-validate/) | The verdict: JSON Pointer paths and an exit code |
 
 Two documents deliberately say the same things at different densities. Prose is for understanding, the skill is for working memory, JSON Schema is for enforcement.
@@ -45,7 +45,7 @@ Two documents deliberately say the same things at different densities. Prose is 
 Generation without verification is a guess. The loop is what makes AI-authored Rig trustworthy:
 
 ```text
-read the skill → copy a golden example → emit JSON → validate → fix at the reported path → repeat until ok
+read the skill → copy a reference example → emit JSON → validate → fix at the reported path → repeat until ok
 ```
 
 ```bash

@@ -22,7 +22,7 @@ Do not deliver unvalidated output.
 | [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-documents/SKILL.md) | Condensed AI-facing rules + examples |
 | [`schemas/json/`](schemas/json/) | JSON Schema grammar |
 | [`schemas/`](schemas/) | Prose field meaning |
-| [`examples/`](examples/) | Golden documents |
+| [`examples/`](examples/) | Reference documents |
 | [`docs/interchange.md`](docs/interchange.md) | Wire format + RigKit key aliases |
 | [`docs/terms.md`](docs/terms.md) | Contract vs fulfillment, host, pack, POD |
 | [`tools/rig-validate/`](tools/rig-validate/) | Validator CLI |

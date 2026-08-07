@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Inject golden entity snippets into docs from examples/*.json.
+ * Inject reference entity snippets into docs from examples/*.json.
  *
  * SUDE sketches are deliberately different densities across README /
  * examples / skill — leave them alone. This tool only syncs marked JSON.

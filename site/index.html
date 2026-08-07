@@ -95,9 +95,9 @@
     document written against it.
   </p>
   <p>
-    So Rig keeps the concept and leaves the execution to you. The specification contains
+    So Rig is the data and leaves the execution to you. The specification contains
     schemas, units, and rules — the parts that are expensive to agree on and cheap to keep.
-    It contains no renderer, because renderers are the easy, disposable part.
+    It contains no renderer, no runtime and nothing to install — it just works.
   </p>
   <div class="split">
     <div class="card accent">
@@ -190,7 +190,7 @@ Exit   → tear down</code></pre>
     ignores the other sixty-three is fully Rig — ship what you support.
   </p>
   <p class="aside">
-    <a href="https://github.com/rigkid/RigWorks/tree/master/examples">Golden documents</a> ·
+    <a href="https://github.com/rigkid/RigWorks/tree/master/examples">Reference documents</a> ·
     <a href="https://github.com/rigkid/RigWorks/tree/master/schemas">All 69 schemas</a> ·
     <a href="https://github.com/rigkid/RigWorks/blob/master/schemas/document.md">Document envelope</a>
   </p>
@@ -205,7 +205,7 @@ Exit   → tear down</code></pre>
   </p>
   <p>
     So the specification is published in a form people and models read the same way: prose
-    for meaning, JSON Schema for enforcement, golden examples to copy instead of invent, and
+    for meaning, JSON Schema for enforcement, reference examples to copy instead of invent, and
     a validator that closes the loop.
   </p>
 
@@ -288,7 +288,7 @@ Exit   → tear down</code></pre>
 <pre class="code"><code>git clone https://github.com/rigkid/RigWorks
 cd rigworks
 npm run setup    # installs the validator
-npm run check    # schemas, parity, links, golden documents</code></pre>
+npm run check    # schemas, parity, links, reference documents</code></pre>
 
   <p>
     Being Rig takes two rules:

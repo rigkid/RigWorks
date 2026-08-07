@@ -62,7 +62,7 @@ Executions have a half-life. Renderers get rewritten, GPUs are replaced, framewo
 
 Whether that drives a C++ audio thread, a web worker, or a strip of LEDs is execution, and it will be rewritten several times. `"bpm": 128` will still mean 128. Every document ever written against the concept survives every rewrite of every execution.
 
-This is why Rig invests its effort where it does. The repository contains schemas, units, and rules — the parts that are expensive to agree on and cheap to keep. It contains no renderer, because renderers are the easy, disposable part.
+This is why Rig invests its effort where it does. The repository contains schemas, units, and rules — the parts that are expensive to agree on and cheap to keep. It contains no renderer, no runtime and nothing to install — it just works.
 
 It is also why "ship what you support" is not a compromise. A host that implements six schemas and ignores sixty-three is fully Rig. Partial execution of a shared concept still interoperates; a partial library does not link.
 
