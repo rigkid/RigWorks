@@ -379,6 +379,25 @@ add("rig.music.pattern", {
   loopEndStep: ref("int"),
 }, { required: ["steps"] });
 
+const arrangementFrame = {
+  type: "object",
+  additionalProperties: false,
+  required: ["patterns"],
+  properties: {
+    patterns: { type: "array", items: ref("entity") },
+  },
+};
+
+// Defaults: currentFrame 0, loop false, loopStartFrame 0,
+// loopEndFrame = frames.length (loop the whole arrangement).
+add("rig.music.arrangement", {
+  frames: { type: "array", items: arrangementFrame },
+  currentFrame: ref("int"),
+  loop: ref("bool"),
+  loopStartFrame: ref("int"),
+  loopEndFrame: ref("int"),
+}, { required: ["frames"] });
+
 // Defaults: currentStep 0; clock absent = the host's default clock.
 add("rig.music.sequencer", {
   pattern: ref("entity"),
