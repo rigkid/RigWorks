@@ -35,7 +35,7 @@ A key matching `x.<vendor>.<name>` carries a component the Contract has not name
 ```json
 "components": {
   "rig.spatial.transform": { "position": [0, 0, 0], "rotation": [0, 0, 0, 1], "scale": [1, 1, 1] },
-  "x.ofkitty.flower_of_life": { "radius": 40, "rings": 3 }
+  "x.acme.flower_of_life": { "radius": 40, "rings": 3 }
 }
 ```
 

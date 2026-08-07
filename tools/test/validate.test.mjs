@@ -54,7 +54,7 @@ describe("rig-validate", () => {
   it("carries x.<vendor>.<name> extension components without failing", () => {
     const r = run([fix("extension-component.json")]);
     assert.equal(r.status, 0, r.stderr + r.stdout);
-    assert.match(r.stdout, /\[note\].*extension component "x\.ofkitty\.flower_of_life"/);
+    assert.match(r.stdout, /\[note\].*extension component "x\.acme\.flower_of_life"/);
   });
 
   // The point of the namespace is that a host can adopt .rig natively, which
