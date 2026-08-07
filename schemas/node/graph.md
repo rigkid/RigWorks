@@ -27,6 +27,6 @@ Editor mirrors (`nodeCount`, …) and dive UI state are host-only — do not ser
 
 ## Fulfillment
 
-[RigKit](https://github.com/rigkid/rigkit)'s node editor over the same PODs — two value nodes into an add node, one link per pin pair. Canvas positions, live pin readouts, and selection are host state; only the fields above travel.
+[RigKit](https://github.com/rigkid/RigKit)'s node editor over the same PODs — two value nodes into an add node, one link per pin pair. Canvas positions, live pin readouts, and selection are host state; only the fields above travel.
 
 ![RigKit node editor — Value A and Value B into an Add node](../../examples/img/node_editor.png)

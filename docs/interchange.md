@@ -15,7 +15,7 @@ Formal grammar: [`schemas/json/`](../schemas/json/). Validate with [`tools/rig-v
 
 ## Legacy RigKit PascalCase keys
 
-[RigKit](https://github.com/rigkid/rigkit) currently still saves `{ "document", "entities" }` with **PascalCase short keys** (`Transform`, `Shape`, …) — a host alias of the same field payloads, not the Contract key spelling. That alias layer is being retired: Contract JSON uses full `rig.*` schema ids, and `.rig` is the portable format.
+[RigKit](https://github.com/rigkid/RigKit) currently still saves `{ "document", "entities" }` with **PascalCase short keys** (`Transform`, `Shape`, …) — a host alias of the same field payloads, not the Contract key spelling. That alias layer is being retired: Contract JSON uses full `rig.*` schema ids, and `.rig` is the portable format.
 
 | Rig schema id | Typical RigKit key (legacy) |
 |---------------|-----------------------------|

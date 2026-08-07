@@ -17,7 +17,7 @@ When a document says a detail is "fulfillment, not Contract", it means: implemen
 
 | Term | Meaning |
 |------|---------|
-| **Host** | The program that runs the SUDE loop and owns the registry, clock, and windowing. [RigKit](https://github.com/rigkid/rigkit) is the reference host. |
+| **Host** | The program that runs the SUDE loop and owns the registry, clock, and windowing. [RigKit](https://github.com/rigkid/RigKit) is the reference host. |
 | **Pack** | An optional module a host loads to add capability — a UI pack, a device pack, a render backend. Packs are fulfillment; they interoperate through shared schema ids, not through a shared API. |
 | **App** | The piece being authored. Owns its entities. Runs inside a host. |
 | **Document** | A [`rig.document`](../schemas/document.md) JSON payload — entities and their components, on the wire. |
