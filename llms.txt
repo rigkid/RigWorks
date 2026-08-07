@@ -35,5 +35,6 @@ Rig defines SUDE + ECS rules and POD schemas (prose + JSON Schema). Emit JSON do
 
 - [tools/rig-validate/README.md](tools/rig-validate/README.md): validate CLI (`node tools/rig-validate/cli.js <file.json>`)
 - [https://github.com/GitBruno/PicoForge](https://github.com/GitBruno/PicoForge): PICO-8 fulfillment (converters + carts)
+- [https://github.com/ofxyz/ofxDocumentKit](https://github.com/ofxyz/ofxDocumentKit): openFrameworks fulfillment (EnTT components + `rig.document` codec)
 - [tools/check-schema-parity/check.mjs](tools/check-schema-parity/check.mjs): prose ↔ JSON Schema parity
 - [tools/gen-schemas.mjs](tools/gen-schemas.mjs): regenerate `schemas/json/` (`--check` to detect drift)
