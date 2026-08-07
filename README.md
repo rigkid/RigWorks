@@ -9,7 +9,7 @@ RigWorks — **Rig** for short, and Rig in all running text — is a shared data
 
 ## It runs
 
-A Rig document is not a diagram of a format. The same schemas compile to a playable cartridge for PICO-8 — a console we did not write, which has never heard of Rig. That fulfillment lives in [rigPico8](https://github.com/rigkid/rigPico8): converters, cart documents, and showcase games. The cart's `_init` / `_update` / `_draw` **are** the SUDE loop. Palette, tiles, map, input, and music travel as `rig.pixel.*`, `rig.input.*`, and `rig.music.*` components.
+A Rig document is not a diagram of a format. The same schemas compile to a playable cartridge for PICO-8 — a console we did not write, which has never heard of Rig. That fulfillment lives in [PicoForge](https://github.com/GitBruno/PicoForge): converters, cart documents, and showcase games. The cart's `_init` / `_update` / `_draw` **are** the SUDE loop. Palette, tiles, map, input, and music travel as `rig.pixel.*`, `rig.input.*`, and `rig.music.*` components.
 
 **Concept is more important than execution.** What a transform *is* outlives every renderer that ever drew one. Rig keeps the concept and leaves the execution to you — [why no code](docs/why-no-code.md).
 
@@ -141,7 +141,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 | [schemas/document.md](schemas/document.md) | Document envelope |
 | [docs/properties.md](docs/properties.md) | Portable datatypes |
 | [docs/interchange.md](docs/interchange.md) | Wire format and host aliases |
-| [rigPico8 · fantasy-console](https://github.com/rigkid/rigPico8/blob/main/docs/fantasy-console.md) | PICO-8 as a Rig fulfillment |
+| [PicoForge · fantasy-console](https://github.com/GitBruno/PicoForge/blob/master/docs/fantasy-console.md) | PICO-8 as a Rig fulfillment |
 | [examples/](examples/) | Golden documents |
 
 | Working with models | |

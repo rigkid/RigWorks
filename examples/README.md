@@ -9,7 +9,7 @@ node tools/rig-validate/cli.js examples/ui-panel.json
 node tools/rig-validate/cli.js examples/portable-tool.json
 ```
 
-Fantasy-console carts (PICO-8) live in [rigPico8](https://github.com/rigkid/rigPico8).
+Fantasy-console carts (PICO-8) live in [PicoForge](https://github.com/GitBruno/PicoForge).
 
 ## SUDE sketch
 
