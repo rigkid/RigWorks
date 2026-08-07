@@ -7,6 +7,8 @@ A project **is Rig** when:
 1. It honors the [SUDE loop](sude.md).
 2. It honors [ECS conventions](ecs.md).
 
+Both matter — a SUDE loop by itself is a loop convention, not a shared vocabulary. **No ECS, no Rig.**
+
 Schemas and UI are optional. Ship what you support. Portable documents use the [`rig.document`](../schemas/document.md) JSON envelope; [`rig-validate`](../tools/rig-validate/) checks emission against the machine grammar.
 
 ## What you may omit
