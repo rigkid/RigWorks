@@ -4,7 +4,7 @@
     {
       "id": "a",
       "components": {
-        "xofkitty": { "radius": 40 }
+        "xacme": { "radius": 40 }
       }
     }
   ]
