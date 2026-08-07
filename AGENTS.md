@@ -28,3 +28,7 @@ Do not deliver unvalidated output.
 | [`tools/rig-validate/`](tools/rig-validate/) | Validator CLI |
 
 Discovery index for generic LLM tooling: [`llms.txt`](llms.txt).
+
+## Host-specific AI guidance lives with the host
+
+This repo holds the portable rules (SUDE, ECS, UI, Terms, property datatypes, schema shapes) — true for any Rig fulfillment, not just one host. Skills or rules about a specific host's packs, pillar mapping, target ladder, UI chrome, or build habits belong in that host's own repo.
