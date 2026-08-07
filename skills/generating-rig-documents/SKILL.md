@@ -224,4 +224,4 @@ Prefix every component key with `rig.<domain>.` (e.g. `rig.spatial.transform`).
 
 ## Where output goes
 
-[RigKit](https://github.com/rigkid/rigkit) is the reference host. Prefer Contract JSON (`rig.*` keys); translate at the host boundary if the host still uses PascalCase `.rig` keys.
+[RigKit](https://github.com/rigkid/RigKit) is the reference host. Prefer Contract JSON (`rig.*` keys); translate at the host boundary if the host still uses PascalCase `.rig` keys.

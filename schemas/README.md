@@ -173,4 +173,4 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | Node editor | `nested` on a node | [`node.node`](node/node.md) + [`node.publish`](node/publish.md) |
 | Control surface | `panel` / optional `group` | [`ui.panel`](ui/panel.md) + [`ui.group`](ui/group.md) + [`ui.control`](ui/control.md) / [`ui.action`](ui/action.md) |
 
-Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/rigkit/blob/main/docs/contract/port-map.md).
+Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).

@@ -16,5 +16,5 @@ You do not need a particular implementation to be Rig.
 
 ## Reference fulfillment
 
-[RigKit](https://github.com/rigkid/rigkit) is the reference host: a desktop fulfillment (GLFW / OpenGL / packs) that runs the SUDE loop, owns an ECS registry, and reads and writes the schemas it supports. Read it as one worked answer, not as the definition — see [terms.md](terms.md) for what "fulfillment" claims and does not claim.
+[RigKit](https://github.com/rigkid/RigKit) is the reference host: a desktop fulfillment (GLFW / OpenGL / packs) that runs the SUDE loop, owns an ECS registry, and reads and writes the schemas it supports. Read it as one worked answer, not as the definition — see [terms.md](terms.md) for what "fulfillment" claims and does not claim.
 

@@ -111,7 +111,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 
 ## Reference host
 
-[RigKit](https://github.com/rigkid/rigkit) fulfills Rig on desktop (GLFW / OpenGL / packs). The family lives under the [rigkid](https://github.com/rigkid) org: **RigWorks** is the spec, **RigKit** is the reference host. RigKit's `minimal` demo presents the same scene shape family as `examples/minimal-scene.json` — the picture at the top of this page is that document drawn by a third fulfillment, [`tools/render-svg.mjs`](tools/render-svg.mjs).
+[RigKit](https://github.com/rigkid/RigKit) fulfills Rig on desktop (GLFW / OpenGL / packs). The family lives under the [rigkid](https://github.com/rigkid) org: **RigWorks** is the spec, **RigKit** is the reference host. RigKit's `minimal` demo presents the same scene shape family as `examples/minimal-scene.json` — the picture at the top of this page is that document drawn by a third fulfillment, [`tools/render-svg.mjs`](tools/render-svg.mjs).
 
 ## Version
 
