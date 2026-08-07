@@ -140,6 +140,9 @@
               "rig.mod.lfo": {
                 "$ref": "./rig.mod.lfo.schema.json"
               },
+              "rig.music.arrangement": {
+                "$ref": "./rig.music.arrangement.schema.json"
+              },
               "rig.music.clock": {
                 "$ref": "./rig.music.clock.schema.json"
               },

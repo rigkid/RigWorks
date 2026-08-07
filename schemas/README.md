@@ -87,6 +87,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | `rig.music.sequencer` | [music/sequencer.md](music/sequencer.md) |
 | `rig.music.pattern` | [music/pattern.md](music/pattern.md) |
 | `rig.music.step` | [music/step.md](music/step.md) |
+| `rig.music.arrangement` | [music/arrangement.md](music/arrangement.md) |
 | `rig.music.note` | [music/note.md](music/note.md) |
 | `rig.music.midi_output` | [music/midi-output.md](music/midi-output.md) |
 | `rig.music.midi_input` | [music/midi-input.md](music/midi-input.md) |
@@ -171,6 +172,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | Effect chain | `parentStep` | [`pixel.effect_chain`](pixel/effect-chain.md) (step `id`) |
 | Tile map | `tileSet` | [`pixel.tile_map`](pixel/tile-map.md) → [`pixel.tile_set`](pixel/tile-set.md) → [`pixel.palette`](pixel/palette.md) |
 | Node editor | `nested` on a node | [`node.node`](node/node.md) + [`node.publish`](node/publish.md) |
+| Song arrangement | frame `patterns` | [`music.arrangement`](music/arrangement.md) → [`music.pattern`](music/pattern.md) (by `lane`) |
 | Control surface | `panel` / optional `group` | [`ui.panel`](ui/panel.md) + [`ui.group`](ui/group.md) + [`ui.control`](ui/control.md) / [`ui.action`](ui/action.md) |
 
 Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).
