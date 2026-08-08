@@ -5,7 +5,7 @@
 **A no-code creative application framework.**  
 *Because no code is the best code.*
 
-RigWorks — **Rig** for short, and Rig in all running text — is a shared data vocabulary for creative applications. It is a framework you never install — no library to link, no runtime to embed, no API to version. It ships as agreement: two loop rules and a shared vocabulary. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
+[RigWorks](rig.works) — **Rig** for short, and Rig in all running text — is a shared data vocabulary for creative applications. It is a framework you never install — no library to link, no runtime to embed, no API to version. It ships as agreement: two loop rules and a shared vocabulary. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
 
 ## It runs
 
