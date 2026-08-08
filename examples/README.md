@@ -9,8 +9,6 @@ node tools/rig-validate/cli.js examples/ui-panel.json
 node tools/rig-validate/cli.js examples/portable-tool.json
 ```
 
-Fantasy-console carts (PICO-8) live in [PicoForge](https://github.com/GitBruno/PicoForge).
-
 ## SUDE sketch
 
 Hosts honor Setup / Update / Draw / Exit. Data is ECS POD composed onto entities — the JSON below is what travels; the loop is how a host runs it.

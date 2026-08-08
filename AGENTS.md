@@ -29,6 +29,8 @@ Do not deliver unvalidated output.
 
 Discovery index for generic LLM tooling: [`llms.txt`](llms.txt).
 
+**Viewer presents; Player plays.** Sketches → [RigViewer](https://github.com/rigkid/RigViewer); carts that need Lua → [RigPlayer](https://github.com/rigkid/RigPlayer).
+
 ## Host-specific AI guidance lives with the host
 
 This repo holds the portable rules (SUDE, ECS, UI, Terms, property datatypes, schema shapes) — true for any Rig fulfillment, not just one host. Skills or rules about a specific host's packs, pillar mapping, target ladder, UI chrome, or build habits belong in that host's own repo.

@@ -9,9 +9,14 @@ RigWorks — **Rig** for short, and Rig in all running text — is a shared data
 
 ## It runs
 
-A Rig document is not a diagram of a format. The same schemas compile to a playable cartridge for PICO-8 — a console we did not write, which has never heard of Rig. That fulfillment lives in [PicoForge](https://github.com/GitBruno/PicoForge): converters, cart documents, and showcase games. The cart's `_init` / `_update` / `_draw` **are** the SUDE loop. Palette, tiles, map, input, and music travel as `rig.pixel.*`, `rig.input.*`, and `rig.music.*` components.
+A Rig document is not a diagram of a format. The same JSON presents in more than one host without either host knowing the other:
 
-[openFrameworks](https://openframeworks.cc/) can be Rigged the same way. An oF app is already a SUDE host — `ofBaseApp::setup` / `update` / `draw` / `exit` **is** the loop — and the [ofxyz](https://github.com/ofxyz) addons make its content travel: [ofxEnTT](https://github.com/ofxyz/ofxEnTT) and [ofxEnTTKit](https://github.com/ofxyz/ofxEnTTKit) hold entity data, [ofxDocumentKit](https://github.com/ofxyz/ofxDocumentKit) saves and loads the `rig.document` wire format. Transforms, geometry, paints, pages, and modulators travel as `rig.*` components; host-only fields ride along as `x.ofkitty.*` extensions instead of polluting the portable ones. Emitted documents pass `rig-validate --strict`.
+- **SVG** — [`examples/minimal-scene.json`](examples/minimal-scene.json) drawn by [`tools/render-svg.mjs`](tools/render-svg.mjs) (the picture at the top of this page)
+- **[RigViewer](https://github.com/rigkid/RigViewer)** — sketches in the browser (`?src=` / `?doc=`)
+- **[RigPlayer](https://github.com/rigkid/RigPlayer)** — fantasy-console carts that need Lua Update/Draw
+- **[RigKit](https://github.com/rigkid/RigKit)** — desktop / Pi reference host (GLFW, packs)
+
+Any app that already has Setup / Update / Draw / Exit can honor the same schemas. Host-only fields stay in `x.<vendor>.*` extensions so they do not pollute the portable ones. Emitted documents pass `rig-validate --strict`.
 
 **Concept is more important than execution.** What a transform *is* outlives every renderer that ever drew one. Rig keeps the concept and leaves the execution to you — [why no code](docs/why-no-code.md).
 
@@ -143,8 +148,6 @@ node tools/rig-validate/cli.js path/to/doc.json
 | [schemas/document.md](schemas/document.md) | Document envelope |
 | [docs/properties.md](docs/properties.md) | Portable datatypes |
 | [docs/interchange.md](docs/interchange.md) | Wire format and host aliases |
-| [PicoForge · fantasy-console](https://github.com/GitBruno/PicoForge/blob/master/docs/fantasy-console.md) | PICO-8 as a Rig fulfillment |
-| [ofxyz addons](https://github.com/ofxyz) | openFrameworks as a Rig fulfillment |
 | [examples/](examples/) | Reference documents |
 
 | Working with models | |
