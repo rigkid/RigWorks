@@ -29,7 +29,7 @@ Do not deliver unvalidated output.
 
 Discovery index for generic LLM tooling: [`llms.txt`](llms.txt).
 
-**Viewer presents; Player plays.** Sketches → [RigViewer](https://github.com/rigkid/RigViewer); carts that need Lua → [RigPlayer](https://github.com/rigkid/RigPlayer).
+Reference host: [RigKit](https://github.com/rigkid/RigKit). In-repo SVG fulfillment: [`tools/render-svg.mjs`](tools/render-svg.mjs).
 
 ## Host-specific AI guidance lives with the host
 

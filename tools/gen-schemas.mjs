@@ -351,8 +351,7 @@ add("rig.music.clock", {
 }, { required: ["ticksPerQuarter"] });
 
 // Defaults: pitch 60, velocity 100, gate 1, waveform 0, effect 0.
-// waveform 0-7 are the portable synth shapes; 8+ are host instrument slots
-// (a PICO-8 nibble 8-F references sfx 0-7 as a custom instrument).
+// waveform 0-7 are the portable synth shapes; 8+ are host instrument slots.
 add("rig.music.step", {
   active: ref("bool"),
   pitch: { type: "integer", minimum: 0, maximum: 127 },

@@ -31,12 +31,9 @@ Rig defines SUDE + ECS rules and POD schemas (prose + JSON Schema). Emit JSON do
 - [schemas/document.md](schemas/document.md): document envelope
 - [examples/](examples/): reference documents (all validate)
 
-## Hosts (look vs play)
+## Reference host
 
-**Viewer presents; Player plays.**
-
-- [RigViewer](https://github.com/rigkid/RigViewer) (`viewer.rigs.works`): present sketches — geometry / UI / GLSL. Share via `?src=` / `?doc=`. Does **not** run cart Lua.
-- [RigPlayer](https://github.com/rigkid/RigPlayer): run fantasy-console `.pg` (SUDE + Lua).
+- [RigKit](https://github.com/rigkid/RigKit): desktop / Pi reference host (GLFW, packs). In-repo SVG fulfillment: [`tools/render-svg.mjs`](tools/render-svg.mjs).
 
 ## Tools
 

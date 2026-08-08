@@ -14,4 +14,4 @@ Compose [`rig.meta.named`](../meta/named.md) for a label. Portable state only â€
 | `o` | bool | Optional. Primary action (O / A / confirm); absent = false |
 | `x` | bool | Optional. Secondary action (X / B / cancel); absent = false |
 
-Hosts poll hardware into these fields during `Update`. Fantasy-console carts often mirror this layout (d-pad + two face buttons).
+Hosts poll hardware into these fields during `Update`. A common layout is a d-pad plus two face buttons; hosts may map more buttons through extension components.

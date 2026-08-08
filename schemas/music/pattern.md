@@ -18,7 +18,7 @@ A [`rig.music.sequencer`](sequencer.md) **has** a pattern. A pattern **has** ste
 
 No parallel `numSteps` — use `steps.length`.
 
-`stepsPerBeat` is musical time: the wall-clock rate comes from transport bpm, so a tracker's absolute per-pattern speed converts through the transport (a PICO-8 sfx at speed *s* with the transport at 1800⁄*s* bpm is `stepsPerBeat` 4; a sfx at a different speed scales it proportionally).
+`stepsPerBeat` is musical time: the wall-clock rate comes from transport bpm. A tracker that used an absolute per-pattern speed converts through the transport — pick bpm and `stepsPerBeat` so the step rate matches the original (default `stepsPerBeat` 4 is sixteenth notes at the transport tempo).
 
 `steps` is a single row. A drum grid is several pattern entities sharing one [`rig.music.sequencer`](sequencer.md), each with its own `lane` — not one pattern holding a matrix. Lanes advance together, so patterns in one stack should be the same length; a host running unequal lengths is polymetric, which the Contract does not describe.
 

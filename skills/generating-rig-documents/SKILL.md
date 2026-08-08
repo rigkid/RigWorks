@@ -67,9 +67,7 @@ A component key may also be `x.<vendor>.<name>` — a host component the Contrac
 
 ## Worked examples
 
-Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json).
-
-**Preview hosts:** geometry / UI / GLSL sketches → [RigViewer](https://github.com/rigkid/RigViewer) (`?src=` / `?doc=`). Carts that need Lua Update/Draw → [RigPlayer](https://github.com/rigkid/RigPlayer) (Viewer presents; Player plays).
+Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json). Validate before you trust the output.
 
 ### Entity with shape + paint
 

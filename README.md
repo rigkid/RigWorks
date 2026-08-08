@@ -9,11 +9,9 @@ RigWorks — **Rig** for short, and Rig in all running text — is a shared data
 
 ## It runs
 
-A Rig document is not a diagram of a format. The same JSON presents in more than one host without either host knowing the other:
+A Rig document is not a diagram of a format. The same JSON presents in more than one fulfillment without either knowing the other:
 
 - **SVG** — [`examples/minimal-scene.json`](examples/minimal-scene.json) drawn by [`tools/render-svg.mjs`](tools/render-svg.mjs) (the picture at the top of this page)
-- **[RigViewer](https://github.com/rigkid/RigViewer)** — sketches in the browser (`?src=` / `?doc=`)
-- **[RigPlayer](https://github.com/rigkid/RigPlayer)** — fantasy-console carts that need Lua Update/Draw
 - **[RigKit](https://github.com/rigkid/RigKit)** — desktop / Pi reference host (GLFW, packs)
 
 Any app that already has Setup / Update / Draw / Exit can honor the same schemas. Host-only fields stay in `x.<vendor>.*` extensions so they do not pollute the portable ones. Emitted documents pass `rig-validate --strict`.
@@ -118,7 +116,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 
 ## Reference host
 
-[RigKit](https://github.com/rigkid/RigKit) fulfills Rig on desktop (GLFW / OpenGL / packs). The family lives under the [rigkid](https://github.com/rigkid) org: **RigWorks** is the spec, **RigKit** is the reference host. RigKit's `minimal` demo presents the same scene shape family as `examples/minimal-scene.json` — the picture at the top of this page is that document drawn by a third fulfillment, [`tools/render-svg.mjs`](tools/render-svg.mjs).
+[RigKit](https://github.com/rigkid/RigKit) fulfills Rig on desktop (GLFW / OpenGL / packs). The family lives under the [rigkid](https://github.com/rigkid) org: **RigWorks** is the spec, **RigKit** is the reference host. RigKit's `minimal` demo presents the same scene shape family as `examples/minimal-scene.json` — the picture at the top of this page is that document drawn by the in-repo SVG fulfillment, [`tools/render-svg.mjs`](tools/render-svg.mjs).
 
 ## Version
 

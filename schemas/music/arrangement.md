@@ -1,6 +1,6 @@
 # `rig.music.arrangement`
 
-Ordered playback frames — a tracker's order list / a fantasy console's music track. Format when present.
+Ordered playback frames — a tracker's order list / a sequencer song chain. Format when present.
 
 An arrangement **has** frames. A frame **has** patterns. A pattern **has** steps.
 
