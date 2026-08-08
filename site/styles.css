@@ -214,6 +214,14 @@ section p:last-child { margin-bottom: 0; }
   border-radius: 10px;
   background: #090b0e;
 }
+.scene iframe {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #090b0e;
+}
 .scene figcaption {
   margin-top: 0.7rem;
   font-size: 0.88rem;

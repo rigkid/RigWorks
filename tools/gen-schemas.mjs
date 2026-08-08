@@ -193,6 +193,12 @@ add("rig.geometry.mesh", {
       { type: "array", items: ref("vec3") },
     ],
   },
+  normals: {
+    oneOf: [
+      { type: "array", items: { type: "number" } },
+      { type: "array", items: ref("vec3") },
+    ],
+  },
   indices: { type: "array", items: ref("uint32") },
   texcoords: {
     oneOf: [
