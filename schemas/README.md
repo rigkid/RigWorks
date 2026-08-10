@@ -75,6 +75,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | Id | Doc |
 |----|-----|
 | `rig.anim.tween` | [anim/tween.md](anim/tween.md) |
+| `rig.anim.curve` | [anim/curve.md](anim/curve.md) |
 | `rig.mod.lfo` | [mod/lfo.md](mod/lfo.md) |
 | `rig.mod.binding` | [mod/binding.md](mod/binding.md) |
 

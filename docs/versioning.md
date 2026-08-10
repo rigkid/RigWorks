@@ -1,6 +1,6 @@
 # Versioning
 
-**Current: 0.9.0** ([VERSION](../VERSION))
+**Current: 0.10.0** ([VERSION](../VERSION))
 
 | Range | Meaning |
 |-------|---------|
@@ -13,6 +13,7 @@ Until 1.0.0, prefer additive schema fields. Tag releases `v0.1.0`, `v0.2.0`, …
 
 | Version | Notes |
 |---------|-------|
+| **0.10.0** | Additive. `rig.anim.curve` — editable 1D transfer curve (points + interp + named presets). Property datatype table gains `curve`. A 0.9.0 document is a valid 0.10.0 document. |
 | **0.9.0** | Additive. Portable tool surfaces: `rig.ui.panel` gained `role` and advisory `preferredWidth` / `preferredHeight`; new `rig.ui.group` for nested sections; controls and actions may parent to a `group`. Cross-app / cross-lib tool documents are first-class — see [ui.md](ui.md). A 0.8.0 document is a valid 0.9.0 document. |
 | **0.8.0** | Additive. The required-field audit: every schema was revisited and genuinely optional fields are now optional with documented defaults, so hosts ship what they measured instead of inventing values ([gaps.md](gaps.md) had carried this since 0.4.0). Named `colorSpace` on the document envelope (default `srgb`). `rig.music.pattern` gained optional `stepsPerBeat`, `loopStartStep`, `loopEndStep`; `rig.music.step.waveform` widened to 0–255 (8+ are host instrument slots); `rig.pixel.tile_map` gained optional `originX` / `originY`; `rig.sim.rigidbody.gravity` became an optional per-body override; MIDI ports may be identified by `portIndex` as well as `portName`. A 0.7.0 document is a valid 0.8.0 document. |
 | **0.7.0** | Additive. Completed the shared-paint story: `rig.paint.fill` and `rig.paint.stroke` reference a paint entity from a drawable (the counterpart to inline `rig.paint.fill_stroke`), and `rig.paint.library` records which paint entities are the document's swatches and in what order. Added `rig.layout.page` — pages, artboards, and frames with trim size, margins, bleed, and slug. `rig.media.asset_ref.loop` is now optional — it only means something for time-based media. A 0.6.0 document is a valid 0.7.0 document. |

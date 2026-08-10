@@ -92,6 +92,43 @@
       ],
       "$comment": "Entity id within the document; null = none / unset"
     },
+    "curve": {
+      "type": "object",
+      "description": "1D transfer curve — see schemas/anim/curve.md / rig.anim.curve",
+      "additionalProperties": false,
+      "properties": {
+        "points": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/vec2"
+          }
+        },
+        "interp": {
+          "type": "string",
+          "enum": [
+            "linear",
+            "smooth"
+          ]
+        },
+        "preset": {
+          "type": "string",
+          "enum": [
+            "linear",
+            "easeIn",
+            "easeOut",
+            "easeInOut",
+            "sCurve",
+            "bulge",
+            "squeeze",
+            "custom"
+          ]
+        }
+      },
+      "required": [
+        "points"
+      ]
+    },
     "propertyType": {
       "type": "string",
       "description": "Property datatype id from docs/properties.md (or host-prefixed)."

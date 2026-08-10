@@ -35,12 +35,13 @@ Exact host types are fulfillment. The row meaning is Contract.
 | `quat` | Four floats (x, y, z, w) |
 | `entity` | Entity id (host integer / handle encoding) |
 | `enum` | Named choice; schema lists the literals |
+| `curve` | 1D transfer curve (`rig.anim.curve` shape: points + optional interp/preset) |
 
 Domain meaning (colour, pitch, …) lives in **schema field names**, not extra type ids. A host may draw a `vec4` named `rgba` with a colour control — fulfillment, not a Contract type.
 
 Node graph pins and params reuse this table — see [`rig.node.pin`](../schemas/node/pin.md) / [`rig.node.param`](../schemas/node/param.md). Group interface pins ([`rig.node.publish`](../schemas/node/publish.md)) map outer pins to interior pins; the outer pin’s `type` is still one of these datatype ids.
 
-Arrays and nested structs are schema-local until a later properties version. Property managers skip or stub unknown types without crashing.
+Arrays and nested structs other than `curve` are schema-local until a later properties version. `curve` is a first-class datatype for editable 1D transfer curves. Property managers skip or stub unknown types without crashing.
 
 Hosts may add prefixed ids.
 
