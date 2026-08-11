@@ -22,7 +22,10 @@ Two agents working in two unrelated applications converge on compatible data —
 
 ## Not another editor
 
-Rig is **not** a node editor, a patcher, or an agentic design canvas. Those are fulfillments — including excellent ones that still bottom out in code (TouchDesigner, Max, vvvv). Rig is the vocabulary editors and agents could share so their content interoperates without anyone linking a library.
+Rig is **not** a node editor, a patcher, or an agentic design canvas. Those are
+fulfillments — including excellent ones that still bottom out in code. Rig is the
+vocabulary editors and agents could share so their content interoperates without
+anyone linking a library.
 
 ## What Rig hands a model
 

@@ -74,6 +74,7 @@ Wire format is JSON — [`rig.document`](../../schemas/document.md).
 - `entity`-typed fields — string id or `null`
 - `vec*` / `quat` — JSON number arrays; **quat order x, y, z, w**
 - Enums — lowerCamelCase literals from the schema
+- Field names — lowerCamelCase, spelled out ([`schemas/README.md` Field naming](../../schemas/README.md#field-naming)); no SVG abbreviations (`radiusX` not `rx`)
 - Serialize only portable fields; omit host caches
 - Optional fields have documented defaults — omit what you did not measure rather than inventing a value (an absent `gate` means 1; an invented `gate` looks like data)
 
@@ -242,7 +243,7 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Document | `rig.document` |
 | Spatial | `transform`, `relationship`, `group`, `camera`, `layer` |
 | Layout | `page` |
-| Geometry | `mesh`, `path`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `ring` |
+| Geometry | `mesh`, `path`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `ring` |
 | Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `library` |
 | Meta / render | `named`, `tags`, `light`, `material`, `visibility` |
 | Anim / mod | `tween`, `curve`, `lfo`, `binding` |

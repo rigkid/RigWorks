@@ -24,13 +24,13 @@
               "close"
             ]
           },
-          "p": {
+          "point": {
             "$ref": "./_defs.schema.json#/$defs/vec2"
           },
-          "c1": {
+          "control1": {
             "$ref": "./_defs.schema.json#/$defs/vec2"
           },
-          "c2": {
+          "control2": {
             "$ref": "./_defs.schema.json#/$defs/vec2"
           }
         }

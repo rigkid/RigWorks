@@ -24,7 +24,7 @@
       "components": {
         "rig.meta.named": { "name": "demo-circle", "stableId": "demo-circle" },
         "rig.spatial.transform": { "position": [270, 110, 0] },
-        "rig.geometry.ellipse": { "cx": 0, "cy": 0, "rx": 48, "ry": 48 },
+        "rig.geometry.ellipse": { "centerX": 0, "centerY": 0, "radiusX": 48, "radiusY": 48 },
         "rig.paint.fill_stroke": {
           "fillRgba": [1, 0.45, 0.3, 1],
           "strokeRgba": [1, 1, 1, 1],
@@ -38,7 +38,7 @@
       "components": {
         "rig.meta.named": { "name": "demo-tri", "stableId": "demo-tri" },
         "rig.spatial.transform": { "position": [450, 118, 0] },
-        "rig.geometry.regular_polygon": { "cx": 0, "cy": 0, "radius": 55, "sides": 3, "rotationDegrees": -90 },
+        "rig.geometry.regular_polygon": { "centerX": 0, "centerY": 0, "radius": 55, "sides": 3, "rotationDegrees": -90 },
         "rig.paint.fill_stroke": { "fillRgba": [0.95, 0.8, 0.2, 1] },
         "rig.interact.selectable": { "enabled": true }
       }
@@ -48,7 +48,7 @@
       "components": {
         "rig.meta.named": { "name": "demo-hex", "stableId": "demo-hex" },
         "rig.spatial.transform": { "position": [630, 110, 0] },
-        "rig.geometry.regular_polygon": { "cx": 0, "cy": 0, "radius": 52, "sides": 6, "rotationDegrees": 0 },
+        "rig.geometry.regular_polygon": { "centerX": 0, "centerY": 0, "radius": 52, "sides": 6, "rotationDegrees": 0 },
         "rig.paint.fill_stroke": { "fillRgba": [0.35, 0.85, 0.55, 1] },
         "rig.interact.selectable": { "enabled": true }
       }
@@ -58,7 +58,7 @@
       "components": {
         "rig.meta.named": { "name": "demo-star", "stableId": "demo-star" },
         "rig.spatial.transform": { "position": [810, 112, 0] },
-        "rig.geometry.star": { "cx": 0, "cy": 0, "radius": 55, "innerRadius": 22, "points": 5, "rotationDegrees": -90 },
+        "rig.geometry.star": { "centerX": 0, "centerY": 0, "radius": 55, "innerRadius": 22, "points": 5, "rotationDegrees": -90 },
         "rig.paint.fill_stroke": { "fillRgba": [0.95, 0.4, 0.7, 1] },
         "rig.interact.selectable": { "enabled": true }
       }

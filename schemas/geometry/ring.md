@@ -4,8 +4,8 @@ Annulus — a disc with a concentric hole. Format when present.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `cx` | float | Centre X, local space |
-| `cy` | float | Centre Y, local space |
+| `centerX` | float | Centre X, local space |
+| `centerY` | float | Centre Y, local space |
 | `outerRadius` | float | Outer edge |
 | `innerRadius` | float | Inner edge; must not exceed `outerRadius` |
 

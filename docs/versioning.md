@@ -7,7 +7,7 @@ RigWorks uses [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`). 
 | **0.x.y** | Draft. Core rules (SUDE + ECS) hold. Schemas may grow or tighten. |
 | **1.0.0** | First stable release. Breaking schema or core-rule changes need a major bump. |
 
-Until 1.0.0, prefer additive schema fields. Tag releases `v0.1.0`, `v0.2.0`, … then `v1.0.0`.
+Until 1.0.0, prefer additive schema fields — and do **not** keep dual-field legacy aliases for renamed keys. Tag releases `v0.1.0`, `v0.2.0`, … then `v1.0.0`.
 
 When you bump `VERSION`, add a History row below (release notes, not a second source of truth). Do not copy the number into README or elsewhere. `npm run check:version` checks SemVer + site badges; full CI is `npm run check` (pre-push after `npm run hooks:install`).
 
@@ -15,6 +15,7 @@ When you bump `VERSION`, add a History row below (release notes, not a second so
 
 | Version | Notes |
 |---------|-------|
+| **0.11.0** | **Breaking** field-name sweep: geometry centres / radii are `centerX`/`centerY`/`radiusX`/`radiusY` (no SVG `cx`/`rx`, no dual `radius` on arc). Path commands use `point`/`control1`/`control2`; gradient axes use `start`/`end`; node canvas `position`; curve `interpolation`. Field-naming rules live under [`schemas/README.md`](../schemas/README.md#field-naming). New `rig.geometry.spline`. No dual-field legacy aliases until 1.0. |
 | **0.10.0** | Additive. `rig.anim.curve` — editable 1D transfer curve (points + interp + named presets). Property datatype table gains `curve`. A 0.9.0 document is a valid 0.10.0 document. |
 | **0.9.0** | Additive. Portable tool surfaces: `rig.ui.panel` gained `role` and advisory `preferredWidth` / `preferredHeight`; new `rig.ui.group` for nested sections; controls and actions may parent to a `group`. Cross-app / cross-lib tool documents are first-class — see [ui.md](ui.md). A 0.8.0 document is a valid 0.9.0 document. |
 | **0.8.0** | Additive. The required-field audit: every schema was revisited and genuinely optional fields are now optional with documented defaults, so hosts ship what they measured instead of inventing values ([gaps.md](gaps.md) had carried this since 0.4.0). Named `colorSpace` on the document envelope (default `srgb`). `rig.music.pattern` gained optional `stepsPerBeat`, `loopStartStep`, `loopEndStep`; `rig.music.step.waveform` widened to 0–255 (8+ are host instrument slots); `rig.pixel.tile_map` gained optional `originX` / `originY`; `rig.sim.rigidbody.gravity` became an optional per-body override; MIDI ports may be identified by `portIndex` as well as `portName`. A 0.7.0 document is a valid 0.8.0 document. |

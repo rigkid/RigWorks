@@ -35,7 +35,7 @@ Exact host types are fulfillment. The row meaning is Contract.
 | `quat` | Four floats (x, y, z, w) |
 | `entity` | Entity id (host integer / handle encoding) |
 | `enum` | Named choice; schema lists the literals |
-| `curve` | 1D transfer curve (`rig.anim.curve` shape: points + optional interp/preset) |
+| `curve` | 1D transfer curve (`rig.anim.curve` shape: points + optional interpolation/preset) |
 
 Domain meaning (colour, pitch, …) lives in **schema field names**, not extra type ids. A host may draw a `vec4` named `rgba` with a colour control — fulfillment, not a Contract type.
 

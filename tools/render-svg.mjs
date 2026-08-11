@@ -115,12 +115,12 @@ for (const e of doc.entities) {
 
   const ellipse = c["rig.geometry.ellipse"];
   if (ellipse) {
-    const cx = wx + ellipse.cx;
-    const cy = wy + ellipse.cy;
-    expand(cx - ellipse.rx, cy - ellipse.ry);
-    expand(cx + ellipse.rx, cy + ellipse.ry);
+    const cx = wx + ellipse.centerX;
+    const cy = wy + ellipse.centerY;
+    expand(cx - ellipse.radiusX, cy - ellipse.radiusY);
+    expand(cx + ellipse.radiusX, cy + ellipse.radiusY);
     parts.push(
-      `  <ellipse ${tag} cx="${cx}" cy="${cy}" rx="${ellipse.rx}" ry="${ellipse.ry}" ${attrs} />`
+      `  <ellipse ${tag} cx="${cx}" cy="${cy}" rx="${ellipse.radiusX}" ry="${ellipse.radiusY}" ${attrs} />`
     );
   }
 
@@ -150,8 +150,8 @@ for (const e of doc.entities) {
   const ngon = c["rig.geometry.regular_polygon"];
   if (ngon) {
     const pts = radialPoints(
-      wx + ngon.cx,
-      wy + ngon.cy,
+      wx + ngon.centerX,
+      wy + ngon.centerY,
       ngon.sides,
       () => ngon.radius,
       ngon.rotationDegrees ?? 0
@@ -162,8 +162,8 @@ for (const e of doc.entities) {
   const star = c["rig.geometry.star"];
   if (star) {
     const pts = radialPoints(
-      wx + star.cx,
-      wy + star.cy,
+      wx + star.centerX,
+      wy + star.centerY,
       star.points * 2,
       (i) => (i % 2 === 0 ? star.radius : star.innerRadius),
       star.rotationDegrees ?? 0

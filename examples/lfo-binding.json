@@ -27,7 +27,7 @@
           "rotation": [0, 0, 0, 1],
           "scale": [1, 1, 1]
         },
-        "rig.geometry.ellipse": { "cx": 0, "cy": 0, "rx": 16, "ry": 16 },
+        "rig.geometry.ellipse": { "centerX": 0, "centerY": 0, "radiusX": 16, "radiusY": 16 },
         "rig.paint.fill_stroke": {
           "fillRgba": [0.2, 0.85, 0.7, 1],
           "strokeRgba": [0, 0, 0, 1],

@@ -33,10 +33,10 @@
         }
       }
     },
-    "p0": {
+    "start": {
       "$ref": "./_defs.schema.json#/$defs/vec2"
     },
-    "p1": {
+    "end": {
       "$ref": "./_defs.schema.json#/$defs/vec2"
     }
   },

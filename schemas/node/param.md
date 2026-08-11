@@ -17,4 +17,6 @@ Serialize `key`, `type`, and **only** the storage field that `type` selects. Omi
 
 `enum` literals are catalog / host-documented for that node `typeId` + param `key` (same idea as schema enum fields).
 
-Default `type` when omitted on read: `float` (legacy float-only params).
+`f` / `i` / `s` / `v` are the intentional exception to spelled-out field names — compact tagged-union storage slots selected by `type`. Do not invent more single-letter fields outside this pattern.
+
+Default `type` when omitted on read: `float`.

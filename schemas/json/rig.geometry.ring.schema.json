@@ -5,10 +5,10 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "cx": {
+    "centerX": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
-    "cy": {
+    "centerY": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
     "outerRadius": {
@@ -19,8 +19,8 @@
     }
   },
   "required": [
-    "cx",
-    "cy",
+    "centerX",
+    "centerY",
     "outerRadius",
     "innerRadius"
   ]

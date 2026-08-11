@@ -119,10 +119,10 @@ add("rig.geometry.rectangle", {
 }, { required: ["x", "y", "width", "height"] });
 
 add("rig.geometry.ellipse", {
-  cx: ref("float"),
-  cy: ref("float"),
-  rx: ref("float"),
-  ry: ref("float"),
+  centerX: ref("float"),
+  centerY: ref("float"),
+  radiusX: ref("float"),
+  radiusY: ref("float"),
 });
 
 add("rig.geometry.line", {
@@ -138,37 +138,50 @@ add("rig.geometry.polygon", {
 }, { required: ["points"] });
 
 add("rig.geometry.regular_polygon", {
-  cx: ref("float"),
-  cy: ref("float"),
+  centerX: ref("float"),
+  centerY: ref("float"),
   radius: ref("float"),
   sides: { type: "integer", minimum: 3 },
   rotationDegrees: ref("float"),
-}, { required: ["cx", "cy", "radius", "sides"] });
+}, { required: ["centerX", "centerY", "radius", "sides"] });
 
 add("rig.geometry.star", {
-  cx: ref("float"),
-  cy: ref("float"),
+  centerX: ref("float"),
+  centerY: ref("float"),
   radius: ref("float"),
   innerRadius: ref("float"),
   points: { type: "integer", minimum: 3 },
   rotationDegrees: ref("float"),
-}, { required: ["cx", "cy", "radius", "innerRadius", "points"] });
+}, { required: ["centerX", "centerY", "radius", "innerRadius", "points"] });
 
+// Circular when radiusX == radiusY. Rotation of an elliptical arc belongs on
+// rig.spatial.transform, not here.
 add("rig.geometry.arc", {
-  cx: ref("float"),
-  cy: ref("float"),
-  radius: ref("float"),
+  centerX: ref("float"),
+  centerY: ref("float"),
+  radiusX: ref("float"),
+  radiusY: ref("float"),
   startAngleDegrees: ref("float"),
   endAngleDegrees: ref("float"),
   pie: ref("bool"),
-}, { required: ["cx", "cy", "radius", "startAngleDegrees", "endAngleDegrees"] });
+}, { required: ["centerX", "centerY", "radiusX", "radiusY", "startAngleDegrees", "endAngleDegrees"] });
 
 add("rig.geometry.ring", {
-  cx: ref("float"),
-  cy: ref("float"),
+  centerX: ref("float"),
+  centerY: ref("float"),
   outerRadius: ref("float"),
   innerRadius: ref("float"),
 });
+
+// NURBS / DXF-style spline. Tessellation is host fulfillment.
+add("rig.geometry.spline", {
+  degree: ref("int"),
+  closed: ref("bool"),
+  controlPoints: { type: "array", items: ref("vec2"), minItems: 2 },
+  knots: { type: "array", items: { type: "number" } },
+  weights: { type: "array", items: { type: "number" } },
+  fitPoints: { type: "array", items: ref("vec2") },
+}, { required: ["degree", "controlPoints", "knots"] });
 
 const pathCommand = {
   type: "object",
@@ -176,9 +189,9 @@ const pathCommand = {
   required: ["type"],
   properties: {
     type: enumOf(["moveTo", "lineTo", "cubicTo", "quadTo", "close"]),
-    p: ref("vec2"),
-    c1: ref("vec2"),
-    c2: ref("vec2"),
+    point: ref("vec2"),
+    control1: ref("vec2"),
+    control2: ref("vec2"),
   },
 };
 
@@ -227,7 +240,7 @@ add("rig.paint.solid", {
   cmyk: ref("vec4"),
 }, { required: ["rgba"] });
 
-// p0/p1 default to (0,0) -> (1,0) in object space (SVG's default axis).
+// start/end default to (0,0) -> (1,0) in object space.
 add("rig.paint.gradient", {
   kind: enumOf(["linear", "radial"]),
   stops: {
@@ -242,8 +255,8 @@ add("rig.paint.gradient", {
       },
     },
   },
-  p0: ref("vec2"),
-  p1: ref("vec2"),
+  start: ref("vec2"),
+  end: ref("vec2"),
 }, { required: ["kind", "stops"] });
 
 // Paint by reference — several drawables sharing one paint entity. The inline
@@ -311,7 +324,7 @@ add("rig.anim.tween", {
   playing: ref("bool"),
 }, { required: ["target", "propertyKey", "from", "to", "duration"] });
 
-// 1D transfer curve (property datatype `curve`). Defaults: interp smooth;
+// 1D transfer curve (property datatype `curve`). Defaults: interpolation smooth;
 // preset custom when points are authored.
 add(
   "rig.anim.curve",
@@ -321,7 +334,7 @@ add(
       minItems: 2,
       items: ref("vec2"),
     },
-    interp: enumOf(["linear", "smooth"]),
+    interpolation: enumOf(["linear", "smooth"]),
     preset: enumOf([
       "linear",
       "easeIn",
@@ -806,12 +819,12 @@ catalog["rig.node.node"] = {
   title: "rig.node.node",
   type: "object",
   additionalProperties: false,
-  required: ["id", "typeId", "title", "pos", "pins", "params"],
+  required: ["id", "typeId", "title", "position", "pins", "params"],
   properties: {
     id: ref("uint"),
     typeId: ref("string"),
     title: ref("string"),
-    pos: ref("vec2"),
+    position: ref("vec2"),
     pins: { type: "array", items: { $ref: "./rig.node.pin.schema.json" } },
     params: { type: "array", items: { $ref: "./rig.node.param.schema.json" } },
     nested: { $ref: "./rig.node.graph.schema.json" },
@@ -1013,7 +1026,7 @@ catalog["_defs"] = {
           minItems: 2,
           items: { $ref: "#/$defs/vec2" },
         },
-        interp: {
+        interpolation: {
           type: "string",
           enum: ["linear", "smooth"],
         },

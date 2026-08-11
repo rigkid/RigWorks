@@ -4,8 +4,8 @@ Alternating-radius star. Format when present.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `cx` | float | Centre X, local space |
-| `cy` | float | Centre Y, local space |
+| `centerX` | float | Centre X, local space |
+| `centerY` | float | Centre Y, local space |
 | `radius` | float | Centre to outer point |
 | `innerRadius` | float | Centre to inner point, in the same units as `radius` |
 | `points` | int | Number of outer points; at least 3 |

@@ -5,13 +5,16 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "cx": {
+    "centerX": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
-    "cy": {
+    "centerY": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
-    "radius": {
+    "radiusX": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "radiusY": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
     "startAngleDegrees": {
@@ -25,9 +28,10 @@
     }
   },
   "required": [
-    "cx",
-    "cy",
-    "radius",
+    "centerX",
+    "centerY",
+    "radiusX",
+    "radiusY",
     "startAngleDegrees",
     "endAngleDegrees"
   ]

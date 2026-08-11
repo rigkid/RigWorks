@@ -8,7 +8,7 @@
     "id",
     "typeId",
     "title",
-    "pos",
+    "position",
     "pins",
     "params"
   ],
@@ -22,7 +22,7 @@
     "title": {
       "$ref": "./_defs.schema.json#/$defs/string"
     },
-    "pos": {
+    "position": {
       "$ref": "./_defs.schema.json#/$defs/vec2"
     },
     "pins": {

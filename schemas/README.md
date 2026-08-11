@@ -11,14 +11,29 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 ## Rules
 
 - Field **meaning and units** are the contract; C++ type names are host-specific.
-- One type per field. No dual representations.
+- One type per field. No dual representations. No dual-field legacy aliases until 1.0.
 - No device handles, GPU objects, UI toolkit types, callbacks, dirty flags, or ephemeral edge state in portable fields.
 - Runtime caches and queues (last sample, pending MIDI, hover) stay in the host.
-- Ids are `rig.<domain>.<name>` (snake_case multi-word segments). Fields are camelCase. Enum literals are lowerCamelCase.
+- Ids are `rig.<domain>.<name>` (snake_case multi-word segments). Enum literals are lowerCamelCase.
 - Display names live on [`rig.meta.named`](meta/named.md) — compose it; do not re-declare `name` on every schema.
 - File identity lives on [`rig.media.asset_ref`](media/asset-ref.md) — other schemas reference it by `entity` id when they need a path.
 - `rgba` / `rgb` / `clearRgba` are floats 0–1. Colour space is the envelope's `document.colorSpace` key (default: srgb) — see [document.md](document.md).
 - Domain meaning lives in field names — not extra property datatype ids. See [properties.md](../docs/properties.md).
+
+### Field naming
+
+Fields are **lowerCamelCase** and spelled out. Prefer `radiusX` over `rx`, `centerX` over `cx`, `position` over `pos`, `interpolation` over `interp`.
+
+| Pattern | Use |
+|---------|-----|
+| Spelled words | `innerRadius`, `rotationDegrees`, `startAngleDegrees` |
+| Axis suffix | Split scalars get `X` / `Y` / `Z` — `centerX`, `radiusY`, `originX`, `fovYDegrees` |
+| Angles | `*Degrees` (not radians) |
+| Domain acronyms | Keep the common short form when it *is* the name: `bpm`, `rgb`, `rgba`, `uv` |
+| Indexed edges | Bare `x` / `y` / `x1` / `y1` for rectangle corners and line endpoints |
+| Tagged-union slots | Only [`rig.node.param`](node/param.md) uses `f` / `i` / `s` / `v` — do not invent more single-letter fields |
+
+Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wire format) is a host fulfillment mapping, not the Contract vocabulary.
 
 ## Catalog
 
@@ -52,6 +67,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 | `rig.geometry.regular_polygon` | [geometry/regular-polygon.md](geometry/regular-polygon.md) |
 | `rig.geometry.star` | [geometry/star.md](geometry/star.md) |
 | `rig.geometry.arc` | [geometry/arc.md](geometry/arc.md) |
+| `rig.geometry.spline` | [geometry/spline.md](geometry/spline.md) |
 | `rig.geometry.ring` | [geometry/ring.md](geometry/ring.md) |
 | `rig.paint.solid` | [paint/solid.md](paint/solid.md) |
 | `rig.paint.gradient` | [paint/gradient.md](paint/gradient.md) |

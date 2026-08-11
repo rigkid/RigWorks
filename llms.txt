@@ -28,6 +28,7 @@ Rig defines SUDE + ECS rules and POD schemas (prose + JSON Schema). Emit JSON do
 
 - [schemas/json/](schemas/json/): machine-readable JSON Schema catalog
 - [schemas/](schemas/): prose field layouts
+- [schemas/README.md](schemas/README.md): catalog + field-naming rules
 - [schemas/document.md](schemas/document.md): document envelope
 - [examples/](examples/): reference documents (all validate)
 

@@ -4,12 +4,12 @@ Axis-aligned ellipse. Format when present.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `cx` | float | Centre X, local space |
-| `cy` | float | Centre Y, local space |
-| `rx` | float | Radius along X |
-| `ry` | float | Radius along Y |
+| `centerX` | float | Centre X, local space |
+| `centerY` | float | Centre Y, local space |
+| `radiusX` | float | Radius along X |
+| `radiusY` | float | Radius along Y |
 
-A circle is an ellipse with `rx` equal to `ry`. There is no separate circle schema — a reader that only draws circles should treat unequal radii as an ellipse rather than pick one radius.
+A circle is an ellipse with `radiusX` equal to `radiusY`. There is no separate circle schema — a reader that only draws circles should treat unequal radii as an ellipse rather than pick one radius.
 
 Rotation belongs to [`rig.spatial.transform`](../spatial/transform.md).
 

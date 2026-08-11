@@ -5,23 +5,23 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "cx": {
+    "centerX": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
-    "cy": {
+    "centerY": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
-    "rx": {
+    "radiusX": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
-    "ry": {
+    "radiusY": {
       "$ref": "./_defs.schema.json#/$defs/float"
     }
   },
   "required": [
-    "cx",
-    "cy",
-    "rx",
-    "ry"
+    "centerX",
+    "centerY",
+    "radiusX",
+    "radiusY"
   ]
 }

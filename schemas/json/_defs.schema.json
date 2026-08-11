@@ -104,7 +104,7 @@
             "$ref": "#/$defs/vec2"
           }
         },
-        "interp": {
+        "interpolation": {
           "type": "string",
           "enum": [
             "linear",

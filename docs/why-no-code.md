@@ -32,7 +32,11 @@ A library asks you to trust a team's release cadence forever. A contract asks yo
 
 ## Not the same as a visual programming app
 
-TouchDesigner, Max/MSP, vvvv, and Cables are often called "no-code," but they **are code**: Python, GLSL, expressions, and node ABIs under a GUI. Their project formats (`.toe`, `.v4p`, …) are private. Rig's "no code" means the *framework* ships none — not that authoring never involves programming. Those tools are excellent fulfillments; Rig is what two of them would need to speak to exchange work.
+Commercial node hosts and patchers are often called "no-code," but they **are code**:
+scripting, shaders, expressions, and node ABIs under a GUI. Their project formats are
+private. Rig's "no code" means the *framework* ships none — not that authoring never
+involves programming. Those apps are excellent fulfillments; Rig is what two of them
+would need to speak to exchange work.
 
 ## Railway gauge
 
