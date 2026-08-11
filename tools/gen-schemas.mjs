@@ -311,6 +311,31 @@ add("rig.anim.tween", {
   playing: ref("bool"),
 }, { required: ["target", "propertyKey", "from", "to", "duration"] });
 
+// 1D transfer curve (property datatype `curve`). Defaults: interp smooth;
+// preset custom when points are authored.
+add(
+  "rig.anim.curve",
+  {
+    points: {
+      type: "array",
+      minItems: 2,
+      items: ref("vec2"),
+    },
+    interp: enumOf(["linear", "smooth"]),
+    preset: enumOf([
+      "linear",
+      "easeIn",
+      "easeOut",
+      "easeInOut",
+      "sCurve",
+      "bulge",
+      "squeeze",
+      "custom",
+    ]),
+  },
+  { required: ["points"] }
+);
+
 // Defaults: amplitude 1, offset 0, phase 0.
 add("rig.mod.lfo", {
   waveform: enumOf(["sine", "tri", "saw", "square"]),
@@ -977,6 +1002,36 @@ catalog["_defs"] = {
     entity: {
       type: ["string", "null"],
       $comment: "Entity id within the document; null = none / unset",
+    },
+    curve: {
+      type: "object",
+      description: "1D transfer curve — see schemas/anim/curve.md / rig.anim.curve",
+      additionalProperties: false,
+      properties: {
+        points: {
+          type: "array",
+          minItems: 2,
+          items: { $ref: "#/$defs/vec2" },
+        },
+        interp: {
+          type: "string",
+          enum: ["linear", "smooth"],
+        },
+        preset: {
+          type: "string",
+          enum: [
+            "linear",
+            "easeIn",
+            "easeOut",
+            "easeInOut",
+            "sCurve",
+            "bulge",
+            "squeeze",
+            "custom",
+          ],
+        },
+      },
+      required: ["points"],
     },
     propertyType: {
       type: "string",

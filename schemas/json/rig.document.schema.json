@@ -62,6 +62,9 @@
             },
             "additionalProperties": true,
             "properties": {
+              "rig.anim.curve": {
+                "$ref": "./rig.anim.curve.schema.json"
+              },
               "rig.anim.tween": {
                 "$ref": "./rig.anim.tween.schema.json"
               },

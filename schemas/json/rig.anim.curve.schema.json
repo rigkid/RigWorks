@@ -14,7 +14,10 @@
     },
     "interp": {
       "type": "string",
-      "enum": ["linear", "smooth"]
+      "enum": [
+        "linear",
+        "smooth"
+      ]
     },
     "preset": {
       "type": "string",
@@ -30,5 +33,7 @@
       ]
     }
   },
-  "required": ["points"]
+  "required": [
+    "points"
+  ]
 }
