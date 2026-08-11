@@ -2,11 +2,10 @@
 /**
  * Still-frame SVG fulfillment of examples/minimal-scene.json.
  *
- * SUDE mapping for this tool (honest, incomplete loop):
+ * SUDE mapping for this tool (still frame — no Update):
  *   Setup — load the Rig document
  *   Draw  — emit SVG from the 2D primitives, mesh, transform, relationship, fill_stroke
  *   Exit  — write site/scene.svg
- *   (no Update — this is a still frame)
  *
  * Ships what it supports: rig.geometry.arc, .ring, and .path are skipped rather
  * than approximated.

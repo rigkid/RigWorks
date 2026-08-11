@@ -9,7 +9,7 @@ RigWorks (Rig for short) is a no-code creative application framework — a share
 3. Validate every document you produce:
 
 ```bash
-cd tools/rig-validate && npm install && cd ../..
+npm run setup
 node tools/rig-validate/cli.js path/to/doc.json
 ```
 

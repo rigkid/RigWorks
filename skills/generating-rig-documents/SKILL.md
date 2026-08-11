@@ -193,7 +193,7 @@ Never deliver unvalidated Rig JSON.
 2. Validate:
 
 ```bash
-cd tools/rig-validate && npm install && cd ../..
+npm run setup
 node tools/rig-validate/cli.js path/to/doc.json
 ```
 
@@ -225,8 +225,8 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Geometry | `mesh`, `path`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `ring` |
 | Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `library` |
 | Meta / render | `named`, `tags`, `light`, `material`, `visibility` |
-| Anim / mod | `tween`, `lfo`, `binding` |
-| Music | `transport`, `clock`, `sequencer`, `pattern`, `step`, `note`, `midi_output`, `midi_input` |
+| Anim / mod | `tween`, `curve`, `lfo`, `binding` |
+| Music | `transport`, `clock`, `sequencer`, `pattern`, `arrangement`, `step`, `note`, `midi_output`, `midi_input` |
 | Audio | `analysis` |
 | Media | `asset_ref`, `text`, `code` |
 | Pixel | `canvas`, `source`, `layer`, `raster`, `palette`, `tile_set`, `tile_map`, `effect_chain` |
