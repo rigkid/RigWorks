@@ -82,7 +82,7 @@ One entity (excerpt):
 
 ## `lfo-binding.json`
 
-`rig.mod.lfo` on one entity, `rig.mod.binding` driving another entity’s `position.y` — Update-side data with no UI required.
+`rig.mod.lfo` on one entity, `rig.mod.binding` driving another entity’s `position.y` — Update-system data (advance LFO + apply binding each `dt`); no UI required.
 
 ## `ui-panel.json`
 

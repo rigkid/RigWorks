@@ -120,9 +120,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 
 ## Version
 
-**0.9.0** — draft vocabulary
-
-> See [docs/versioning.md](docs/versioning.md).
+See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 
 ## More reading
 

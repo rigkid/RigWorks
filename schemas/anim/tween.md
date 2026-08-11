@@ -15,3 +15,9 @@ Drive one float property over time. Format when present.
 | `playing` | bool | Optional. Active; absent = true |
 
 No onComplete callbacks — host flags / events only.
+
+## Fulfillment
+
+Advance in **Update** as an ECS system over tween components; write the target field
+through the same property addressing as [`rig.mod.binding`](../mod/binding.md). Do not
+introduce a free-function tick over an import side-table.

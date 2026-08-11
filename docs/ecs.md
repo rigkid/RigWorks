@@ -32,6 +32,10 @@ We use entity–component composition because we build for change. Composition o
 
 Light hosts may run only simulation.
 
+Cross-entity wires (`rig.mod.binding`, `rig.anim.tween` → property, orbit → camera)
+belong in **Update systems**, not free ticks after import. UI controls are views over
+the same property addressing — never a second store.
+
 ## Hierarchy (optional shape)
 
 When you have a scene graph:

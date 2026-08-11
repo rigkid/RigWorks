@@ -2,10 +2,11 @@
 name: generating-rig-documents
 description: >-
   Generate and edit Rig JSON documents, SUDE-loop hosts, and ECS component
-  data against the Rig shared vocabulary. Use when generating or editing
-  Rig entity data, SUDE hooks, or ECS component schemas; when creating or
-  modifying rig.* components, rig.document JSON, or .rig interchange; or
-  when the user mentions Rig, SUDE, or RigKit.
+  data against the Rig shared vocabulary (Semantic Versioning). Use when
+  generating or editing Rig entity data, SUDE hooks, or ECS component schemas;
+  when creating or modifying rig.* components, rig.document JSON, or .rig
+  interchange; when bumping Contract VERSION; or when the user mentions Rig,
+  SUDE, or RigKit.
 ---
 
 # Generating Rig documents
@@ -43,13 +44,27 @@ Do not nest hooks. No display/UI required for SUDE compliance.
 | Simulate / Present | Mutate in `Update`; present in `Draw` |
 | Hierarchy (optional) | Parent as entity id; local `position` / `rotation` (quat) / `scale` |
 
+## Semantic versioning
+
+The Contract uses [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`). **One source of truth:** [`VERSION`](../../VERSION). Ranges and History: [`docs/versioning.md`](../../docs/versioning.md).
+
+| When | Bump |
+|------|------|
+| Additive schema / optional fields (0.x draft) | `MINOR` (e.g. `0.9.0` → `0.10.0`) |
+| Breaking schema or core-rule change after `1.0.0` | `MAJOR` |
+| Docs-only / tooling / no schema meaning change | leave `VERSION` alone |
+
+When you change schemas: bump [`VERSION`](../../VERSION) and add a History row in `docs/versioning.md` (release notes). Do not copy the number into README or other docs. `npm run check:version` (also the pre-commit hook) only requires `VERSION` to be SemVer.
+
+When generating a document, set root `"rig"` to the current `VERSION` (or an older version the document actually targets — older docs stay valid under additive releases).
+
 ## Document shape
 
 Wire format is JSON — [`rig.document`](../../schemas/document.md).
 
 | Root field | Meaning |
 |------------|---------|
-| `rig` | Contract version (`MAJOR.MINOR.PATCH`, e.g. `0.9.0`) |
+| `rig` | Contract version (`MAJOR.MINOR.PATCH` SemVer — see [`VERSION`](../../VERSION)) |
 | `document` | Optional metadata (`title`, `defaultUnit`, …) |
 | `entities` | Array of `{ id, components }` |
 
@@ -168,7 +183,7 @@ Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scen
 }
 ```
 
-(Wrap entities in a full document with `"rig": "0.9.0"` before validating.)
+(Wrap entities in a full document with `"rig"` set to the current [`VERSION`](../../VERSION) before validating.)
 
 ## Feedback loop
 
@@ -185,6 +200,8 @@ node tools/rig-validate/cli.js path/to/doc.json
 3. Fix errors at the reported JSON Pointer paths
 4. Re-run until the CLI prints `ok`
 5. Use `--strict` to treat unknown schema ids as errors
+
+When bumping the Contract version: edit [`VERSION`](../../VERSION) and add a History row in `docs/versioning.md`, then `npm run check:version` (pre-commit runs the same check after `npm run hooks:install`).
 
 ## Common mistakes / non-requirements
 

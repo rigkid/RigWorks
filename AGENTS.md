@@ -25,6 +25,7 @@ Do not deliver unvalidated output.
 | [`examples/`](examples/) | Reference documents |
 | [`docs/interchange.md`](docs/interchange.md) | Wire format + RigKit key aliases |
 | [`docs/terms.md`](docs/terms.md) | Contract vs fulfillment, host, pack, POD |
+| [`docs/versioning.md`](docs/versioning.md) | SemVer ranges + history (`VERSION`) |
 | [`tools/rig-validate/`](tools/rig-validate/) | Validator CLI |
 
 Discovery index for generic LLM tooling: [`llms.txt`](llms.txt).

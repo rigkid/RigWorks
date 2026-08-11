@@ -1,6 +1,6 @@
 # Versioning
 
-**Current: 0.10.0** ([VERSION](../VERSION))
+RigWorks uses [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`). **One source of truth:** [`VERSION`](../VERSION). Document envelopes carry the same value as the root `"rig"` field.
 
 | Range | Meaning |
 |-------|---------|
@@ -8,6 +8,8 @@
 | **1.0.0** | First stable release. Breaking schema or core-rule changes need a major bump. |
 
 Until 1.0.0, prefer additive schema fields. Tag releases `v0.1.0`, `v0.2.0`, … then `v1.0.0`.
+
+When you bump `VERSION`, add a History row below (release notes, not a second source of truth). Do not copy the number into README or elsewhere. `npm run check:version` (CI via `npm run check`; pre-commit after `npm run hooks:install`) only checks that `VERSION` is SemVer.
 
 ## History
 
