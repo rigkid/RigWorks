@@ -202,6 +202,8 @@ node tools/rig-validate/cli.js path/to/doc.json
 4. Re-run until the CLI prints `ok`
 5. Use `--strict` to treat unknown schema ids as errors
 
+`rig.ui.*` panels travel in the same document envelope — validate them like any other schema (`examples/ui-panel.json`, `examples/portable-tool.json`). Rig + UI is optional Contract surface ([docs/ui.md](../../docs/ui.md)), not a separate spec.
+
 When bumping the Contract version: edit [`VERSION`](../../VERSION) and add a History row in `docs/versioning.md`, then `npm run check:version` (pre-commit runs the same check after `npm run hooks:install`).
 
 ## Before commit / push (CI precheck)

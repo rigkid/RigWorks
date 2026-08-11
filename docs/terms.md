@@ -35,4 +35,4 @@ When a document says a detail is "fulfillment, not Contract", it means: implemen
 
 ## Reading the rules
 
-"Is it Rig?" is answered in [honors.md](honors.md): SUDE plus ECS, nothing more. Schemas are opt-in — [ship what you support](../schemas/README.md). UI is a separate, optional layer ([ui.md](ui.md)).
+"Is it Rig?" is answered in [honors.md](honors.md): SUDE plus ECS, nothing more. Schemas are opt-in — [ship what you support](../schemas/README.md). **Rig + UI** is an optional layer in the same Contract ([ui.md](ui.md)) — not a separate named spec.

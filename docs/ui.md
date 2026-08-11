@@ -1,6 +1,10 @@
 # UI (optional companion)
 
-**Rig + UI** sits on top of Rig (SUDE + ECS). It is still **zero code**. Layout chrome and UI packs are fulfillment — not this document.
+**Rig + UI** sits on top of Rig (SUDE + ECS). It is still **zero code**, and it stays in this Contract — not a separate named spec. Layout chrome and UI packs are fulfillment; portable meaning is [`rig.ui.*`](../schemas/ui/panel.md) in the document.
+
+**Litmus:** already Rig, and author/tool surfaces edit ECS POD through a host seam (not a second scene graph). Details below.
+
+Machine check for portable UI payloads: [`rig-validate`](../tools/rig-validate/) against the schema grammar — same gate as any other document. CI runs `--strict` on [`examples/ui-panel.json`](../examples/ui-panel.json) and [`examples/portable-tool.json`](../examples/portable-tool.json).
 
 ## Why UI on ECS
 
@@ -31,7 +35,7 @@ A project is **Rig + UI** when:
 5. Input in **Update**; UI present in **Draw** (after app `Draw`); teardown on **Exit**.
 6. Prefer portable [property datatypes](properties.md) so any Properties surface can show opt-in fields.
 
-Omitting UI remains valid **Rig**.
+Omitting UI remains valid **Rig**. See also the short gate in [honors.md](honors.md).
 
 ## Portable panels (Contract)
 

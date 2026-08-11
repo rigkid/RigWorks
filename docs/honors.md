@@ -9,7 +9,11 @@ A project **is Rig** when:
 
 Both matter — a SUDE loop by itself is a loop convention, not a shared vocabulary. **No ECS, no Rig.**
 
-Schemas and UI are optional. Ship what you support. Portable documents use the [`rig.document`](../schemas/document.md) JSON envelope; [`rig-validate`](../tools/rig-validate/) checks emission against the machine grammar.
+Schemas and UI are optional. Ship what you support. Portable documents use the [`rig.document`](../schemas/document.md) JSON envelope; [`rig-validate`](../tools/rig-validate/) checks emission against the machine grammar — including `rig.ui.*` when present.
+
+### Rig + UI (optional)
+
+A project is **Rig + UI** when it already **is Rig** and author/tool surfaces edit ECS POD through a host seam (not a second scene graph). Full checklist: [ui.md](ui.md). Omitting UI remains valid Rig. Layout chrome and UI packs are fulfillment — portable meaning is `rig.ui.*` in the document.
 
 ## What you may omit
 
