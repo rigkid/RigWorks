@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Install RigWorks git hooks (SemVer pre-commit).
+ * Install RigWorks git hooks (SemVer pre-commit + full CI pre-push).
  * Usage: node tools/install-hooks.mjs
  *        npm run hooks:install
  */
@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const src = path.join(root, "tools", "hooks", "pre-commit.sh");
+const hooksSrc = path.join(root, "tools", "hooks");
 
 const gitPath = spawnSync("git", ["rev-parse", "--git-path", "hooks"], {
   encoding: "utf8",
@@ -22,16 +22,18 @@ if (gitPath.status !== 0) {
 }
 
 const hooksDir = path.resolve(root, gitPath.stdout.trim());
-const dest = path.join(hooksDir, "pre-commit");
 fs.mkdirSync(hooksDir, { recursive: true });
 
-// Normalize to LF so Git for Windows / sh can run the hook.
-const body = fs.readFileSync(src, "utf8").replace(/\r\n/g, "\n");
-fs.writeFileSync(dest, body, { mode: 0o755 });
-try {
-  fs.chmodSync(dest, 0o755);
-} catch {
-  // Windows may ignore mode bits.
+for (const name of ["pre-commit", "pre-push"]) {
+  const src = path.join(hooksSrc, `${name}.sh`);
+  const dest = path.join(hooksDir, name);
+  // Normalize to LF so Git for Windows / sh can run the hook.
+  const body = fs.readFileSync(src, "utf8").replace(/\r\n/g, "\n");
+  fs.writeFileSync(dest, body, { mode: 0o755 });
+  try {
+    fs.chmodSync(dest, 0o755);
+  } catch {
+    // Windows may ignore mode bits.
+  }
+  console.log(`Installed ${name} hook from ${path.relative(root, src)}`);
 }
-
-console.log(`Installed pre-commit hook from ${path.relative(root, src)}`);

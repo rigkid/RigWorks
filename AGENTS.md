@@ -15,6 +15,17 @@ node tools/rig-validate/cli.js path/to/doc.json
 
 Do not deliver unvalidated output.
 
+## Before push
+
+Run the CI precheck — same as GitHub Actions — before pushing Contract changes:
+
+```bash
+npm run setup
+npm run check
+```
+
+Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-documents/SKILL.md#before-commit--push-ci-precheck). Install hooks with `npm run hooks:install` (pre-commit = SemVer; pre-push = full `npm run check`).
+
 ## Key paths
 
 | Path | Role |

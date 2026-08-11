@@ -5,8 +5,9 @@ description: >-
   data against the Rig shared vocabulary (Semantic Versioning). Use when
   generating or editing Rig entity data, SUDE hooks, or ECS component schemas;
   when creating or modifying rig.* components, rig.document JSON, or .rig
-  interchange; when bumping Contract VERSION; or when the user mentions Rig,
-  SUDE, or RigKit.
+  interchange; when bumping Contract VERSION; before committing or pushing
+  Contract changes (run npm run check); or when the user mentions Rig, SUDE,
+  or RigKit.
 ---
 
 # Generating Rig documents
@@ -202,6 +203,23 @@ node tools/rig-validate/cli.js path/to/doc.json
 5. Use `--strict` to treat unknown schema ids as errors
 
 When bumping the Contract version: edit [`VERSION`](../../VERSION) and add a History row in `docs/versioning.md`, then `npm run check:version` (pre-commit runs the same check after `npm run hooks:install`).
+
+## Before commit / push (CI precheck)
+
+Do **not** push Contract changes until the same gate as GitHub Actions passes locally.
+
+```bash
+npm run setup    # once per clone / when validate deps change
+npm run check    # version, schemas, parity, links, snippets, svg, examples, tests
+```
+
+| When | Required |
+|------|----------|
+| Edit schemas / `tools/gen-schemas.mjs` | `npm run check` (at least `check:schemas` — if stale, `npm run gen` then re-check) |
+| Edit `VERSION` / site badges | `npm run check:version` |
+| Any push to `master` / open a PR | full `npm run check` |
+
+Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the same steps as `npm run check` via `node` (so Windows Git hooks work without npm on PATH).** Agents must run `npm run check` themselves before `git push` even if hooks are missing — do not rely on CI to catch schema drift.
 
 ## Common mistakes / non-requirements
 

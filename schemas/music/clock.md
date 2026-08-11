@@ -16,3 +16,5 @@ Does **not** own bpm — read [`rig.music.transport`](transport.md).
 | `syncPeriodBars` | float | Optional. External sync period in bars |
 
 Product protocol names stay out of the schema id.
+
+Fulfillments that own the beat/phase timeline (for example Ableton Link via a host pack) set `externalSync` and write `syncBeat` / `syncPhase` each Update. They do **not** invent a parallel tempo field — bpm stays on [`rig.music.transport`](transport.md).

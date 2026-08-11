@@ -66,7 +66,7 @@ describe("check-version", () => {
   it("exits 0 on the live tree", () => {
     const r = run("tools/check-version.mjs");
     assert.equal(r.status, 0, r.stderr + r.stdout);
-    assert.match(r.stdout, /ok — Contract version/);
+    assert.match(r.stdout, /ok - Contract version/);
   });
 });
 

@@ -38,6 +38,6 @@ Rig defines SUDE + ECS rules and POD schemas (prose + JSON Schema). Emit JSON do
 ## Tools
 
 - [tools/rig-validate/README.md](tools/rig-validate/README.md): validate CLI (`node tools/rig-validate/cli.js <file.json>`)
-- [tools/check-version.mjs](tools/check-version.mjs): SemVer format of [`VERSION`](VERSION); pre-commit via `npm run hooks:install`
+- [tools/check-version.mjs](tools/check-version.mjs): SemVer format of [`VERSION`](VERSION) + site badges; hooks via `npm run hooks:install` (pre-commit SemVer, pre-push full `npm run check`)
 - [tools/check-schema-parity/check.mjs](tools/check-schema-parity/check.mjs): prose ↔ JSON Schema parity
-- [tools/gen-schemas.mjs](tools/gen-schemas.mjs): regenerate `schemas/json/` (`--check` to detect drift)
+- [tools/gen-schemas.mjs](tools/gen-schemas.mjs): regenerate `schemas/json/` (`--check` to detect drift); run `npm run check` before push

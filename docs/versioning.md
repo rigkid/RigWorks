@@ -9,7 +9,7 @@ RigWorks uses [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`). 
 
 Until 1.0.0, prefer additive schema fields. Tag releases `v0.1.0`, `v0.2.0`, … then `v1.0.0`.
 
-When you bump `VERSION`, add a History row below (release notes, not a second source of truth). Do not copy the number into README or elsewhere. `npm run check:version` (CI via `npm run check`; pre-commit after `npm run hooks:install`) only checks that `VERSION` is SemVer.
+When you bump `VERSION`, add a History row below (release notes, not a second source of truth). Do not copy the number into README or elsewhere. `npm run check:version` checks SemVer + site badges; full CI is `npm run check` (pre-push after `npm run hooks:install`).
 
 ## History
 
