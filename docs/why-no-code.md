@@ -2,6 +2,8 @@
 
 **A no-code creative application framework. Because no code is the best code.**
 
+The short tablet — future-proof, host-independent, human-readable — is [design philosophy](design-philosophy.md). This page is the deeper anti-library argument and what it costs.
+
 ## What "no code" means here
 
 The phrase is usually sold as "you will never program again". Rig does not claim that. It claims something narrower and more durable: **the framework itself contains no code.**
@@ -12,7 +14,7 @@ The phrase is usually sold as "you will never program again". Rig does not claim
 | Content is authored as data, not source. A document is the artifact. | **Yes.** [`rig.document`](../schemas/document.md) travels; behavior stays in the host. |
 | Nobody writes code anywhere. | **No.** Someone writes the host. Rig is not that someone. |
 
-Rig is a framework you never install. It frames how a creative app is shaped — [a loop](sude.md), [composed data](ecs.md), [named field layouts](../schemas/) — and then gets out of the way. Adopting it is a decision, not a dependency.
+Rig is a framework you never install. It frames portable meaning — [composed data](ecs.md), [named field layouts](../schemas/) — and, for live hosts, [a loop](sude.md) — then gets out of the way. Adopting it is a decision, not a dependency.
 
 ## Because no code is the best code
 
@@ -76,7 +78,7 @@ A data framework moves work rather than deleting it. Be clear about what you tak
 
 | Cost | Detail |
 |------|--------|
-| You implement the loop | No `rig.h` to include. [SUDE](sude.md) is four hooks; you write them. |
+| You implement the loop (live hosts) | No `rig.h` to include. [SUDE](sude.md) is four hooks; you write them. Document tools need no loop. |
 | No compiler enforcement | Nothing fails to build when you drift. [`rig-validate`](../tools/rig-validate/) is the enforcement, so run it. |
 | Agreement is social | A schema only pays off once a second host speaks it. Ids are cheap; consensus is not. |
 | Underspecification bites | "Colour" without a range, "angle" without units — the Contract is only as good as its prose. |
@@ -92,4 +94,4 @@ Take a library when you want one implementation, in one language, on one platfor
 
 ## Next
 
-[terms.md](terms.md) for the vocabulary · [honors.md](honors.md) for the minimum bar · [ai-collaboration.md](ai-collaboration.md) for why this matters more every year
+[design-philosophy.md](design-philosophy.md) for the tablet · [terms.md](terms.md) for the vocabulary · [honors.md](honors.md) for the minimum bar · [ai-collaboration.md](ai-collaboration.md) for why this matters more every year

@@ -1,8 +1,8 @@
 # RigWorks (Rig)
 
-> A no-code creative application framework — a shared data vocabulary for creative applications, **not character rigging**. Apps and packs that speak the same schema ids interoperate. Not another editor: the vocabulary editors and agents could share.
+> A no-code creative application framework — a shared data vocabulary for creative applications. Apps and packs that speak the same schema ids interoperate. Not another editor: the vocabulary editors and agents could share.
 
-Rig defines SUDE + ECS rules and POD schemas (prose + JSON Schema). Emit JSON documents; validate with rig-validate. Nothing to link into an app.
+Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component documents. Live hosts also honor SUDE + runtime ECS. Emit JSON documents; validate with rig-validate. Nothing to link into an app.
 
 ## AI entry
 
@@ -13,14 +13,15 @@ Rig defines SUDE + ECS rules and POD schemas (prose + JSON Schema). Emit JSON do
 ## Docs
 
 - [README.md](README.md): pitch, worked example, reference host
+- [docs/design-philosophy.md](docs/design-philosophy.md): future-proof, host-independent, human-readable
 - [docs/why-no-code.md](docs/why-no-code.md): why a framework that ships no code
 - [docs/terms.md](docs/terms.md): Contract, fulfillment, host, pack, POD
-- [docs/sude.md](docs/sude.md): Setup / Update / Draw / Exit
-- [docs/ecs.md](docs/ecs.md): ECS / POD conventions
+- [docs/sude.md](docs/sude.md): Setup / Update / Draw / Exit (live hosts)
+- [docs/ecs.md](docs/ecs.md): entity/component POD (floor) + runtime systems (live hosts)
 - [docs/ui.md](docs/ui.md): optional Rig + UI (same Contract; litmus + `rig-validate` on `rig.ui.*`)
 - [docs/interchange.md](docs/interchange.md): JSON wire format + RigKit aliases
 - [docs/properties.md](docs/properties.md): portable datatype ids
-- [docs/honors.md](docs/honors.md): what counts as Rig (and optional Rig + UI)
+- [docs/honors.md](docs/honors.md): what counts as Rig (grammar floor; live hosts; optional Rig + UI)
 - [docs/gaps.md](docs/gaps.md): where the Contract is silent, ambiguous, or wrong
 - [docs/versioning.md](docs/versioning.md): version ranges and stability
 

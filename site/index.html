@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RigWorks — a no-code creative application framework</title>
-<meta name="description" content="A shared data vocabulary for creative applications. No library to link, no runtime to embed. Creative work that AI and humans can pass between tools.">
+<meta name="description" content="A future-proof, host-independent, human-readable vocabulary for creative applications. No library to link, no runtime to embed.">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://rig.works/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="RigWorks — a no-code creative application framework">
-<meta property="og:description" content="Because no code is the best code. A shared data vocabulary that lets creative tools, packs, and AI agents exchange work.">
+<meta property="og:description" content="Future-proof, host-independent, human-readable creative data. Because no code is the best code.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d10'/%3E%3Cpath d='M7 21 L13 11 L19 21 L25 11' stroke='%2340a6ff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,7 +20,7 @@
     <span class="wordmark">RigWorks</span>
     <span class="nav-links">
       <a href="https://github.com/rigkid/RigWorks/tree/master/schemas">Schemas</a>
-      <a href="https://github.com/rigkid/RigWorks/blob/master/docs/why-no-code.md">Why</a>
+      <a href="https://github.com/rigkid/RigWorks/blob/master/docs/design-philosophy.md">Why</a>
       <a href="https://github.com/rigkid/RigWorks/blob/master/docs/ai-collaboration.md">For AI</a>
       <a class="ghost" href="https://github.com/rigkid/RigWorks">GitHub</a>
     </span>
@@ -28,11 +28,13 @@
 
   <h1>A no-code creative <br class="desk-break">application framework.</h1>
   <p class="tagline">Because no code is the best code.</p>
+  <p class="expansion">Rig — Readable Independent Grammar</p>
 
   <p class="lede">
-    Rig is a shared vocabulary for creative work. Tools, packs, and AI agents
-    pass scenes, sequences, graphs, and signals between each other. There is no
-    library to link, no runtime to embed, and no API to version. It ships as agreement.
+    Rig is a future-proof, host-independent, human-readable vocabulary for
+    creative work. Open the JSON, change a field, load it in another tool.
+    There is no library to link, no runtime to embed, and no API to version —
+    it ships as agreement.
   </p>
 
   <p class="cta">
@@ -87,6 +89,39 @@
 </section>
 
 <section>
+  <h2>Three properties that last</h2>
+  <p>
+    Fulfillments rewrite themselves. The document should not need to.
+  </p>
+  <div class="grid three">
+    <div class="card">
+      <h3>Human readable</h3>
+      <p>
+        Plain JSON and named fields. Open the file, change a number, save it —
+        no proprietary blob required to understand the meaning.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Host independent</h3>
+      <p>
+        Agreement travels; editors, players, and renderers come and go. Two apps
+        that never met can exchange work if they speak the same schema ids.
+      </p>
+    </div>
+    <div class="card">
+      <h3>One concept, one home</h3>
+      <p>
+        Compose siblings instead of re-declaring the same idea on every schema.
+        Names, anchors, visibility — each meaning has one portable place.
+      </p>
+    </div>
+  </div>
+  <p class="aside">
+    The short tablet: <a href="https://github.com/rigkid/RigWorks/blob/master/docs/design-philosophy.md">design philosophy</a>.
+  </p>
+</section>
+
+<section>
   <h2>Concept is more important than execution</h2>
   <p>
     What a transform <em>is</em> — position, rotation as a quaternion in <code>x, y, z, w</code>
@@ -104,8 +139,8 @@
     <div class="card accent">
       <h3>Contract — the concept</h3>
       <p>
-        Two loop rules, schema ids, field names, units, datatypes. Portable, versioned,
-        written down, never compiled.
+        Schema ids, field names, units, datatypes, and entity/component documents.
+        Live hosts also share a four-hook loop. Portable, versioned, written down, never compiled.
       </p>
     </div>
     <div class="card">
@@ -121,8 +156,8 @@
 <section id="example">
   <h2>What travels</h2>
   <p>
-    Hosts run a four-hook loop. Content is plain data composed onto entities, keyed by
-    schema id. That is the whole model.
+    Content is plain data composed onto entities, keyed by schema id. That is the
+    grammar floor. Live hosts also run a four-hook loop:
   </p>
 
 <pre class="code sude"><code>Setup  → spawn / load entities
@@ -308,9 +343,12 @@ npm run setup    # installs the validator
 npm run check    # schemas, parity, links, reference documents</code></pre>
 
   <p>
-    Being Rig takes two rules:
-    <a href="https://github.com/rigkid/RigWorks/blob/master/docs/sude.md">a four-hook loop</a> and
-    <a href="https://github.com/rigkid/RigWorks/blob/master/docs/ecs.md">plain-data components</a>.
+    Being Rig takes the grammar:
+    <a href="https://github.com/rigkid/RigWorks/blob/master/docs/ecs.md">plain-data components</a>
+    on entities, against
+    <a href="https://github.com/rigkid/RigWorks/blob/master/docs/honors.md">schemas you support</a>.
+    Live hosts also honor
+    <a href="https://github.com/rigkid/RigWorks/blob/master/docs/sude.md">a four-hook loop</a>.
     Everything else is opt-in.
   </p>
   <p class="aside">

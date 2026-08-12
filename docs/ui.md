@@ -1,8 +1,8 @@
 # UI (optional companion)
 
-**Rig + UI** sits on top of Rig (SUDE + ECS). It is still **zero code**, and it stays in this Contract — not a separate named spec. Layout chrome and UI packs are fulfillment; portable meaning is [`rig.ui.*`](../schemas/ui/panel.md) in the document.
+**Rig + UI** sits on top of Rig (entity/component POD + schemas). It is still **zero code**, and it stays in this Contract — not a separate named spec. Layout chrome and UI packs are fulfillment; portable meaning is [`rig.ui.*`](../schemas/ui/panel.md) in the document.
 
-**Litmus:** already Rig, and author/tool surfaces edit ECS POD through a host seam (not a second scene graph). Details below.
+**Litmus:** already Rig, and author/tool surfaces edit entity POD through a host seam (not a second scene graph). Details below.
 
 Machine check for portable UI payloads: [`rig-validate`](../tools/rig-validate/) against the schema grammar — same gate as any other document. CI runs `--strict` on [`examples/ui-panel.json`](../examples/ui-panel.json) and [`examples/portable-tool.json`](../examples/portable-tool.json).
 
@@ -28,11 +28,11 @@ Unknown controls or actions: skip or hide. Ship what you support.
 
 A project is **Rig + UI** when:
 
-1. It already **is Rig** (SUDE + ECS).
+1. It already **is Rig** (entity/component POD against schemas it supports — [honors.md](honors.md)).
 2. Author/tool surfaces attach through a **host seam** (no toolkit types inside Contract-facing components).
-3. Surfaces edit ECS POD / schemas — not a second scene graph.
+3. Surfaces edit entity POD / schemas — not a second scene graph.
 4. Surfaces register by name (or equivalent); visibility can change.
-5. Input in **Update**; UI present in **Draw** (after app `Draw`); teardown on **Exit**.
+5. On a **live host**: input in **Update**; UI present in **Draw** (after app `Draw`); teardown on **Exit**.
 6. Prefer portable [property datatypes](properties.md) so any Properties surface can show opt-in fields.
 
 Omitting UI remains valid **Rig**. See also the short gate in [honors.md](honors.md).

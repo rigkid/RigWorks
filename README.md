@@ -3,9 +3,10 @@
 ![The geometry vocabulary — examples/minimal-scene.json drawn by the repo's own SVG fulfillment](site/scene.svg)
 
 **A no-code creative application framework.**  
-*Because no code is the best code.*
+*Because no code is the best code.*  
+**Rig** — Readable Independent Grammar.
 
-[RigWorks](https://rig.works) — **Rig** for short, and Rig in all running text — is a shared data vocabulary for creative applications. It is a framework you never install — no library to link, no runtime to embed, no API to version. It ships as agreement: two loop rules and a shared vocabulary. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
+[RigWorks](https://rig.works) — **Rig** for short, and Rig in all running text — is a shared data vocabulary for creative applications. It is future-proof, host-independent, and human-readable: open the JSON, change a field, load it in another app. It is a framework you never install — no library to link, no runtime to embed, no API to version. It ships as agreement: a grammar of schema ids and entity/component POD documents. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
 
 ## It runs
 
@@ -16,18 +17,19 @@ A Rig document is not a diagram of a format. The same JSON presents in more than
 
 Any app that already has Setup / Update / Draw / Exit can honor the same schemas. Host-only fields stay in `x.<vendor>.*` extensions so they do not pollute the portable ones. Emitted documents pass `rig-validate --strict`.
 
-**Concept is more important than execution.** What a transform *is* outlives every renderer that ever drew one. Rig keeps the concept and leaves the execution to you — [why no code](docs/why-no-code.md).
+**Concept is more important than execution.** What a transform *is* outlives every renderer that ever drew one. Rig keeps the concept and leaves the execution to you — [design philosophy](docs/design-philosophy.md), [why no code](docs/why-no-code.md).
 
 **AI co-coding is here to stay.** When execution gets cheap, the shared concept becomes the scarce asset. Rig publishes it in a form people and models read the same way — [AI collaboration](docs/ai-collaboration.md).
 
-**What it costs.** A data framework moves work rather than deleting it. You write the loop; nothing fails to build when you drift; a schema only pays off once a second host speaks it — [the honest price](docs/why-no-code.md#the-honest-price).
+**What it costs.** A data framework moves work rather than deleting it. Live hosts write the loop; nothing fails to build when you drift; a schema only pays off once a second host speaks it — [the honest price](docs/why-no-code.md#the-honest-price).
 
 ## The framework
 
-1. **Rules** — [SUDE](docs/sude.md) (Setup / Update / Draw / Exit) and [ECS](docs/ecs.md). Enough to **be Rig**.
+1. **Grammar** — schema ids, field names, units, and entity/component [POD composition](docs/ecs.md). Enough to **be Rig** ([honors](docs/honors.md)).
 2. **Schemas** — agreed POD field layouts ([prose](schemas/) + [JSON Schema](schemas/json/)). Ship what you support.
 3. **Properties** — portable [datatype](docs/properties.md) rows.
-4. **Optional UI** — [Rig + UI](docs/ui.md) editing the same data.
+4. **Live hosts** — [SUDE](docs/sude.md) (Setup / Update / Draw / Exit) plus runtime ECS systems.
+5. **Optional UI** — [Rig + UI](docs/ui.md) editing the same data.
 
 Words used precisely — Contract, fulfillment, host, pack: [docs/terms.md](docs/terms.md).
 
@@ -41,7 +43,7 @@ npm run check                                          # schemas, parity, links,
 
 ## Worked example
 
-Hosts run a SUDE loop; portable content is ECS components on entities:
+Live hosts run a SUDE loop; portable content is ECS components on entities:
 
 ```text
 Setup  → spawn / load entities
@@ -126,6 +128,7 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 
 | Start here | |
 |------------|--|
+| [docs/design-philosophy.md](docs/design-philosophy.md) | Future-proof, host-independent, human-readable — the tablet |
 | [docs/why-no-code.md](docs/why-no-code.md) | Why a framework with no code, and what it costs |
 | [docs/terms.md](docs/terms.md) | Contract, fulfillment, host, pack, POD |
 | [docs/honors.md](docs/honors.md) | The minimum bar — is it Rig? |

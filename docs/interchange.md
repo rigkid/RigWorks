@@ -1,6 +1,6 @@
 # Interchange
 
-Rig portable documents are **JSON** using the [`rig.document`](../schemas/document.md) envelope. Component object keys are full schema ids (`rig.spatial.transform`). The conventional file extension is **`.rig`**.
+Rig portable documents are **JSON** using the [`rig.document`](../schemas/document.md) envelope. Component object keys are full schema ids (`rig.spatial.transform`). The conventional file extension is **`.rig`**. Other on-disk encodings are host mappings at the boundary. See [design philosophy](design-philosophy.md#encoding).
 
 ## Encoding
 

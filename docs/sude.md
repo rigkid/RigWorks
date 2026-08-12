@@ -2,6 +2,8 @@
 
 **SUDE** = Setup / Update / Draw / Exit.
 
+SUDE is the portable **live-host** convention: how a program that runs creative work over time orders simulation and present. It is not the floor for “being Rig” — that is the grammar and entity/component POD documents ([honors.md](honors.md)). Validators, converters, and static presenters can be Rig without SUDE.
+
 No window, renderer, UI pack, or language is required.
 
 ## Hooks
@@ -33,6 +35,6 @@ Setup → ( Update → Draw )* → Exit
 
 ## Non-requirements
 
-SUDE does not require a UI pack, a GPU present path, ECS, filesystem, networking, or audio.
+SUDE does not require a UI pack, a GPU present path, filesystem, networking, or audio.
 
-**Rig** also requires [ECS](ecs.md). See [honors.md](honors.md).
+Live hosts typically pair SUDE with runtime [ECS](ecs.md) systems (mutate in Update, present in Draw). Document composition — entities and POD components — is the Contract floor whether or not you run a loop.

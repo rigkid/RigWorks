@@ -26,7 +26,7 @@ This is the **Contract wire format** (JSON). Field meaning remains POD; vectors 
 - Component keys **must** be catalog schema ids — not host type names (`Transform`) and not C++ class names.
 - Serialize only portable fields listed on each schema. Omit host caches (Euler, world matrix, selection state, dirty flags, GPU handles).
 - Unknown `rig.*` schema ids: validators **warn** by default; fail with `--strict`.
-- Being Rig still means honoring [SUDE](../docs/sude.md) + [ECS](../docs/ecs.md). This envelope is how shared POD travels between hosts and tools.
+- Being Rig means speaking this envelope: entities with POD components keyed by schema ids — see [honors.md](../docs/honors.md). The envelope *is* the portable composition. Live hosts also honor [SUDE](../docs/sude.md) and runtime [ECS](../docs/ecs.md) conventions.
 
 ## Extension components
 

@@ -4,7 +4,7 @@ RigWorks uses [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`). 
 
 | Range | Meaning |
 |-------|---------|
-| **0.x.y** | Draft. Core rules (SUDE + ECS) hold. Schemas may grow or tighten. |
+| **0.x.y** | Draft. Grammar floor (entity/component POD + schemas) holds. Live-host conventions (SUDE + runtime ECS) hold. Schemas may grow or tighten. |
 | **1.0.0** | First stable release. Breaking schema or core-rule changes need a major bump. |
 
 Until 1.0.0, prefer additive schema fields — and do **not** keep dual-field legacy aliases for renamed keys. Tag releases `v0.1.0`, `v0.2.0`, … then `v1.0.0`.

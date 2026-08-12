@@ -121,9 +121,16 @@ h1 {
 .tagline {
   font-size: clamp(1.1rem, 2.4vw, 1.45rem);
   color: var(--accent);
-  margin: 0 0 2.2rem;
+  margin: 0 0 0.7rem;
   font-style: italic;
   letter-spacing: -0.01em;
+}
+
+.expansion {
+  font-size: 0.98rem;
+  color: var(--muted);
+  margin: 0 0 2.2rem;
+  letter-spacing: 0.01em;
 }
 
 .lede {

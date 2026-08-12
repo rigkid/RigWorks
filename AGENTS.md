@@ -1,6 +1,6 @@
 # AGENTS
 
-RigWorks (Rig for short) is a no-code creative application framework — a shared data vocabulary for creative applications (**not character rigging**). Apps and packs that speak the same schema ids interoperate. It is not a library to link and not another editor; hosts honor SUDE + ECS and emit/consume POD JSON.
+RigWorks (Rig for short) is a no-code creative application framework — a shared data vocabulary for creative applications. Apps and packs that speak the same schema ids interoperate. It is not a library to link and not another editor; speakers emit/consume entity/component POD JSON. Live hosts also honor SUDE and runtime ECS.
 
 ## Before generating Rig data
 
@@ -45,4 +45,4 @@ Reference host: [RigKit](https://github.com/rigkid/RigKit). In-repo SVG fulfillm
 
 ## Host-specific AI guidance lives with the host
 
-This repo holds the portable rules (SUDE, ECS, UI, Terms, property datatypes, schema shapes) — true for any Rig fulfillment, not just one host. Skills or rules about a specific host's packs, pillar mapping, target ladder, UI chrome, or build habits belong in that host's own repo.
+This repo holds the portable rules (grammar, entity/component POD, SUDE for live hosts, UI, Terms, property datatypes, schema shapes) — true for any Rig fulfillment, not just one host. Skills or rules about a specific host's packs, pillar mapping, target ladder, UI chrome, or build habits belong in that host's own repo.

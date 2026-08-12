@@ -18,9 +18,20 @@ Load this skill when generating or editing Rig entity data, SUDE hooks, or ECS c
 
 ## Core model
 
-**Rig** = [SUDE](../../docs/sude.md) + [ECS](../../docs/ecs.md). Schemas are optional; ship what you support. Nothing to link into an app. Rig is a shared vocabulary — not another editor, and not character rigging.
+**Rig** — Readable Independent Grammar: the schema catalog and portable entity/component POD documents ([`rig.document`](../../schemas/document.md)). Schemas are optional; ship what you support. Nothing to link into an app. Not another editor. Floor: [honors.md](../../docs/honors.md).
 
-### SUDE
+**Live hosts** also honor [SUDE](../../docs/sude.md) and runtime [ECS](../../docs/ecs.md) conventions (registry, Update/Draw systems). Document composition (entities + POD components) is always required; the loop is not.
+
+### Document composition (always)
+
+| Rule | Detail |
+|------|--------|
+| Entities + components | Portable meaning is POD keyed by schema ids |
+| POD only | Numbers, small structs, strings, entity ids |
+| No portable handles | No GPU/UI toolkit types, callbacks, dirty flags, hover/press, pending queues |
+| Hierarchy (optional) | Parent as entity id; local `position` / `rotation` (quat) / `scale` |
+
+### SUDE (live hosts)
 
 ```
 Setup → Update → Draw → Exit
@@ -35,15 +46,12 @@ Setup → Update → Draw → Exit
 
 Do not nest hooks. No display/UI required for SUDE compliance.
 
-### ECS
+### Runtime ECS (live hosts)
 
 | Rule | Detail |
 |------|--------|
 | App owns registry | No second hidden registry for app entities |
-| POD only | Numbers, small structs, strings, entity ids |
-| No portable handles | No GPU/UI toolkit types, callbacks, dirty flags, hover/press, pending queues |
 | Simulate / Present | Mutate in `Update`; present in `Draw` |
-| Hierarchy (optional) | Parent as entity id; local `position` / `rotation` (quat) / `scale` |
 
 ## Semantic versioning
 
@@ -229,13 +237,14 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** serialize Euler angles, world matrices, selection state, dirty flags, GPU handles, or LFO last-sample caches
 - **Do not** invent schema ids or use PascalCase keys (`Transform`, `Shape`) — those are RigKit host aliases; see [docs/interchange.md](../../docs/interchange.md)
 - **Do not** use `x.<vendor>.<name>` to stand in for a catalog id you could not find — report the gap instead
-- **Do not** nest SUDE hooks or skip calling `Draw`
+- **Do not** nest SUDE hooks or skip calling `Draw` (when authoring a live host)
 - **Do not** re-declare `name` on domain schemas — compose `rig.meta.named`
 - **Do not** put page/entity origin on `rig.layout.page` or transform — compose `rig.spatial.anchor` (`point` 3×3; absent = no remap / page trim top-left)
 - **Do not** put show/hide on `rig.spatial.layer` — compose `rig.render.visibility`
 - **Do not** put text colour on `rig.media.text` — compose paint (`fill_stroke` / `fill`)
 - SUDE does **not** require a window, GPU, UI pack, filesystem, or audio
-- Being Rig does **not** require implementing every schema
+- Being Rig does **not** require SUDE — only live hosts do — or implementing every schema
+- Being Rig **does** require entity/component POD composition against schemas you support
 
 ## Vocabulary index
 
