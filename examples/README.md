@@ -7,6 +7,7 @@ node tools/rig-validate/cli.js examples/minimal-scene.json
 node tools/rig-validate/cli.js examples/lfo-binding.json
 node tools/rig-validate/cli.js examples/ui-panel.json
 node tools/rig-validate/cli.js examples/portable-tool.json
+node tools/rig-validate/cli.js examples/path3d-spline3d.json
 ```
 
 ## SUDE sketch
@@ -91,3 +92,7 @@ An LED-install flavoured control surface: `rig.ui.panel` (`role: led.install`) w
 ## `portable-tool.json`
 
 A tool document meant to travel: panel + nested `rig.ui.group` sections, controls bound to LFO and paint fields, shared action id. Author in one UI pack; load in another app that speaks the same schema ids.
+
+## `path3d-spline3d.json`
+
+A cubic space curve as `rig.geometry.path3d` (`cubicTo`) and a separate degree-3 NURBS as `rig.geometry.spline3d`. Authored forms stay distinct — do not dual-attach both on one contour.

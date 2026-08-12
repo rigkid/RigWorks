@@ -60,6 +60,7 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 |----|-----|
 | `rig.geometry.mesh` | [geometry/mesh.md](geometry/mesh.md) |
 | `rig.geometry.path` | [geometry/path.md](geometry/path.md) |
+| `rig.geometry.path3d` | [geometry/path3d.md](geometry/path3d.md) |
 | `rig.geometry.rectangle` | [geometry/rectangle.md](geometry/rectangle.md) |
 | `rig.geometry.ellipse` | [geometry/ellipse.md](geometry/ellipse.md) |
 | `rig.geometry.line` | [geometry/line.md](geometry/line.md) |
@@ -68,6 +69,7 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | `rig.geometry.star` | [geometry/star.md](geometry/star.md) |
 | `rig.geometry.arc` | [geometry/arc.md](geometry/arc.md) |
 | `rig.geometry.spline` | [geometry/spline.md](geometry/spline.md) |
+| `rig.geometry.spline3d` | [geometry/spline3d.md](geometry/spline3d.md) |
 | `rig.geometry.ring` | [geometry/ring.md](geometry/ring.md) |
 | `rig.paint.solid` | [paint/solid.md](paint/solid.md) |
 | `rig.paint.gradient` | [paint/gradient.md](paint/gradient.md) |

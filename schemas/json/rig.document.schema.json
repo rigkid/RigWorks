@@ -86,6 +86,9 @@
               "rig.geometry.path": {
                 "$ref": "./rig.geometry.path.schema.json"
               },
+              "rig.geometry.path3d": {
+                "$ref": "./rig.geometry.path3d.schema.json"
+              },
               "rig.geometry.polygon": {
                 "$ref": "./rig.geometry.polygon.schema.json"
               },
@@ -100,6 +103,9 @@
               },
               "rig.geometry.spline": {
                 "$ref": "./rig.geometry.spline.schema.json"
+              },
+              "rig.geometry.spline3d": {
+                "$ref": "./rig.geometry.spline3d.schema.json"
               },
               "rig.geometry.star": {
                 "$ref": "./rig.geometry.star.schema.json"

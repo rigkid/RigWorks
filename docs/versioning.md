@@ -15,6 +15,7 @@ When you bump `VERSION`, add a History row below (release notes, not a second so
 
 | Version | Notes |
 |---------|-------|
+| **0.12.0** | Additive. `rig.layout.page` gained optional `originAnchor` (`topLeft` / `topRight` / `bottomLeft` / `bottomRight` / `center`; absent = `topLeft`). New `rig.geometry.path3d` and `rig.geometry.spline3d` — 3D siblings of path and spline (`vec3` commands / control points). Cubic Bézier is `cubicTo` on path3d; NURBS stays on spline3d. Do not convert-only through NURBS. A 0.11.0 document is a valid 0.12.0 document. |
 | **0.11.0** | **Breaking** field-name sweep: geometry centres / radii are `centerX`/`centerY`/`radiusX`/`radiusY` (no SVG `cx`/`rx`, no dual `radius` on arc). Path commands use `point`/`control1`/`control2`; gradient axes use `start`/`end`; node canvas `position`; curve `interpolation`. Field-naming rules live under [`schemas/README.md`](../schemas/README.md#field-naming). New `rig.geometry.spline`. No dual-field legacy aliases until 1.0. |
 | **0.10.0** | Additive. `rig.anim.curve` — editable 1D transfer curve (points + interp + named presets). Property datatype table gains `curve`. A 0.9.0 document is a valid 0.10.0 document. |
 | **0.9.0** | Additive. Portable tool surfaces: `rig.ui.panel` gained `role` and advisory `preferredWidth` / `preferredHeight`; new `rig.ui.group` for nested sections; controls and actions may parent to a `group`. Cross-app / cross-lib tool documents are first-class — see [ui.md](ui.md). A 0.8.0 document is a valid 0.9.0 document. |

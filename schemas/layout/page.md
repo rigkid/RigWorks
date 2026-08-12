@@ -11,8 +11,9 @@ A page, artboard, or frame — a bounded region content is composed against. For
 | `margins` | number[4] | Optional. Top, right, bottom, left — CSS order. Absent = no margins |
 | `bleed` | number[4] | Optional. Same order. Extent content may run past the trim edge |
 | `slug` | number[4] | Optional. Same order. Notes area outside the bleed, discarded at print |
+| `originAnchor` | string | Optional. Which point of the page is local (0,0): `topLeft`, `topRight`, `bottomLeft`, `bottomRight`, `center`. Absent = `topLeft` |
 
-Margins, bleed, and slug are prepress vocabulary, but a page is not only print — an artboard or a fixed-size frame is the same concept with the arrays omitted. `width` and `height` describe the trim size; bleed and slug extend outward from it.
+Margins, bleed, and slug are prepress vocabulary, but a page is not only print — an artboard or a fixed-size frame is the same concept with the arrays omitted. `width` and `height` describe the trim size; bleed and slug extend outward from it. `originAnchor` is the page-local origin, not a machine-axis convention.
 
 Name the page by composing [`rig.meta.named`](../meta/named.md). Content belongs to a page via [`rig.spatial.relationship`](../spatial/relationship.md), the same as any other parent.
 

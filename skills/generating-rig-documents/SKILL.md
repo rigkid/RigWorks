@@ -84,7 +84,7 @@ A component key may also be `x.<vendor>.<name>` — a host component the Contrac
 
 ## Worked examples
 
-Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json). Validate before you trust the output.
+Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json). Validate before you trust the output.
 
 ### Entity with shape + paint
 
@@ -243,7 +243,7 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Document | `rig.document` |
 | Spatial | `transform`, `relationship`, `group`, `camera`, `layer` |
 | Layout | `page` |
-| Geometry | `mesh`, `path`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `ring` |
+| Geometry | `mesh`, `path`, `path3d`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `spline3d`, `ring` |
 | Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `library` |
 | Meta / render | `named`, `tags`, `light`, `material`, `visibility` |
 | Anim / mod | `tween`, `curve`, `lfo`, `binding` |

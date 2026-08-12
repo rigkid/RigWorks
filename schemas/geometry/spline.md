@@ -1,6 +1,6 @@
 # `rig.geometry.spline`
 
-NURBS / control-point spline in the plane. Format when present.
+NURBS / control-point spline in the plane. Format when present. Space curves use [`rig.geometry.spline3d`](spline3d.md).
 
 | Field | Type | Meaning |
 |-------|------|---------|

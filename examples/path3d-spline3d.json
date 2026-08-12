@@ -1,0 +1,52 @@
+{
+  "rig": "0.12.0",
+  "document": {
+    "title": "3D path and spline",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "cubic-space-curve",
+      "components": {
+        "rig.meta.named": { "name": "cubic-space-curve", "stableId": "cubic-space-curve" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.geometry.path3d": {
+          "commands": [
+            { "type": "moveTo", "point": [0, 0, 0] },
+            {
+              "type": "cubicTo",
+              "point": [100, 0, 40],
+              "control1": [30, 60, 10],
+              "control2": [70, 60, 30]
+            }
+          ]
+        },
+        "rig.paint.fill_stroke": {
+          "strokeRgba": [0.92, 0.94, 0.97, 1],
+          "strokeWidth": 2
+        }
+      }
+    },
+    {
+      "id": "cubic-nurbs",
+      "components": {
+        "rig.meta.named": { "name": "cubic-nurbs", "stableId": "cubic-nurbs" },
+        "rig.spatial.transform": { "position": [160, 0, 0] },
+        "rig.geometry.spline3d": {
+          "degree": 3,
+          "controlPoints": [
+            [0, 0, 0],
+            [30, 80, 20],
+            [70, 80, 80],
+            [100, 0, 100]
+          ],
+          "knots": [0, 0, 0, 0, 1, 1, 1, 1]
+        },
+        "rig.paint.fill_stroke": {
+          "strokeRgba": [0.35, 0.85, 0.55, 1],
+          "strokeWidth": 2
+        }
+      }
+    }
+  ]
+}

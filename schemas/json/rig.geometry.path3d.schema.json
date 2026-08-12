@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.geometry.path3d.schema.json",
+  "title": "rig.geometry.path3d",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "moveTo",
+              "lineTo",
+              "cubicTo",
+              "quadTo",
+              "close"
+            ]
+          },
+          "point": {
+            "$ref": "./_defs.schema.json#/$defs/vec3"
+          },
+          "control1": {
+            "$ref": "./_defs.schema.json#/$defs/vec3"
+          },
+          "control2": {
+            "$ref": "./_defs.schema.json#/$defs/vec3"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "commands"
+  ]
+}

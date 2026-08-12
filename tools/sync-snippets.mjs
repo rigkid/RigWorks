@@ -67,6 +67,10 @@ function wrap(begin, body, isHtml) {
   return `${begin}\n${body}\n<!-- rig:end -->`;
 }
 
+// Working trees with core.autocrlf check these files out as CRLF; compare
+// content, not bytes — same as tools/gen-schemas.mjs.
+const normalize = (text) => text.replace(/\r\n/g, "\n");
+
 let stale = 0;
 let written = 0;
 
@@ -78,7 +82,9 @@ for (const rel of TARGETS) {
     continue;
   }
   const isHtml = rel.endsWith(".html");
-  let text = fs.readFileSync(file, "utf8");
+  const raw = fs.readFileSync(file, "utf8");
+  const eol = raw.includes("\r\n") ? "\r\n" : "\n";
+  const text = normalize(raw);
   const matches = [...text.matchAll(blockRe)];
   if (matches.length === 0) {
     console.error(`${rel}: no rig:begin markers`);
@@ -103,7 +109,8 @@ for (const rel of TARGETS) {
     console.error(`stale ${rel}`);
     stale++;
   } else {
-    fs.writeFileSync(file, next);
+    const out = eol === "\r\n" ? next.replace(/\n/g, "\r\n") : next;
+    fs.writeFileSync(file, out);
     console.log(`wrote ${rel}`);
     written++;
   }

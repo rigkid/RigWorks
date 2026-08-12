@@ -105,6 +105,7 @@ add("rig.layout.page", {
   margins: edges,
   bleed: edges,
   slug: edges,
+  originAnchor: enumOf(["topLeft", "topRight", "bottomLeft", "bottomRight", "center"]),
 }, { required: ["width", "height"] });
 
 // --- geometry ---
@@ -183,6 +184,15 @@ add("rig.geometry.spline", {
   fitPoints: { type: "array", items: ref("vec2") },
 }, { required: ["degree", "controlPoints", "knots"] });
 
+add("rig.geometry.spline3d", {
+  degree: ref("int"),
+  closed: ref("bool"),
+  controlPoints: { type: "array", items: ref("vec3"), minItems: 2 },
+  knots: { type: "array", items: { type: "number" } },
+  weights: { type: "array", items: { type: "number" } },
+  fitPoints: { type: "array", items: ref("vec3") },
+}, { required: ["degree", "controlPoints", "knots"] });
+
 const pathCommand = {
   type: "object",
   additionalProperties: false,
@@ -197,6 +207,22 @@ const pathCommand = {
 
 add("rig.geometry.path", {
   commands: { type: "array", items: pathCommand },
+});
+
+const path3dCommand = {
+  type: "object",
+  additionalProperties: false,
+  required: ["type"],
+  properties: {
+    type: enumOf(["moveTo", "lineTo", "cubicTo", "quadTo", "close"]),
+    point: ref("vec3"),
+    control1: ref("vec3"),
+    control2: ref("vec3"),
+  },
+};
+
+add("rig.geometry.path3d", {
+  commands: { type: "array", items: path3dCommand },
 });
 
 add("rig.geometry.mesh", {

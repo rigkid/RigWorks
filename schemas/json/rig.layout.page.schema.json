@@ -40,6 +40,16 @@
       },
       "minItems": 4,
       "maxItems": 4
+    },
+    "originAnchor": {
+      "type": "string",
+      "enum": [
+        "topLeft",
+        "topRight",
+        "bottomLeft",
+        "bottomRight",
+        "center"
+      ]
     }
   },
   "required": [
