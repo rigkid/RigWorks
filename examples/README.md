@@ -8,6 +8,7 @@ node tools/rig-validate/cli.js examples/lfo-binding.json
 node tools/rig-validate/cli.js examples/ui-panel.json
 node tools/rig-validate/cli.js examples/portable-tool.json
 node tools/rig-validate/cli.js examples/path3d-spline3d.json
+node tools/rig-validate/cli.js examples/page-anchor.json
 ```
 
 ## SUDE sketch
@@ -96,3 +97,7 @@ A tool document meant to travel: panel + nested `rig.ui.group` sections, control
 ## `path3d-spline3d.json`
 
 A cubic space curve as `rig.geometry.path3d` (`cubicTo`) and a separate degree-3 NURBS as `rig.geometry.spline3d`. Authored forms stay distinct — do not dual-attach both on one contour.
+
+## `page-anchor.json`
+
+A page with `rig.spatial.anchor` `center` (page-local origin mid-trim) and a child rectangle with `bottomRight` registration — transform stays TRS; the 3×3 lives on the sibling component.

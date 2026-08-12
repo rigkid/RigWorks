@@ -7,10 +7,11 @@ Scene / canvas text run. Format when present.
 | `text` | string | Content |
 | `font` | entity | Optional. [`rig.media.asset_ref`](asset-ref.md) with kind font; absent = host default face |
 | `fontSize` | float | Optional. Point or pixel size as the host documents; absent = host default |
-| `rgba` | vec4 | Optional. Text colour (0–1); absent = black |
 | `axes` | axis[] | Optional. OpenType variable-font axis values; absent = font defaults |
 | `features` | string | Optional. Comma-separated OpenType feature tags (e.g. `liga,ss01`); absent = host default |
 | `useKerning` | bool | Optional. Apply kerning; absent = true |
+
+Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md) or [`rig.paint.fill`](../paint/fill.md) on the same entity — do not re-declare colour here. Absent paint ⇒ host default (typically black).
 
 ## Axis
 

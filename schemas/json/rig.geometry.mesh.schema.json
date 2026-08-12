@@ -6,36 +6,16 @@
   "additionalProperties": false,
   "properties": {
     "positions": {
-      "oneOf": [
-        {
-          "type": "array",
-          "items": {
-            "type": "number"
-          }
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "./_defs.schema.json#/$defs/vec3"
-          }
-        }
-      ]
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
     },
     "normals": {
-      "oneOf": [
-        {
-          "type": "array",
-          "items": {
-            "type": "number"
-          }
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "./_defs.schema.json#/$defs/vec3"
-          }
-        }
-      ]
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
     },
     "indices": {
       "type": "array",
@@ -44,20 +24,10 @@
       }
     },
     "texcoords": {
-      "oneOf": [
-        {
-          "type": "array",
-          "items": {
-            "type": "number"
-          }
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "./_defs.schema.json#/$defs/vec2"
-          }
-        }
-      ]
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
     },
     "mode": {
       "type": "string",

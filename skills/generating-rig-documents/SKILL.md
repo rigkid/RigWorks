@@ -231,6 +231,9 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** use `x.<vendor>.<name>` to stand in for a catalog id you could not find — report the gap instead
 - **Do not** nest SUDE hooks or skip calling `Draw`
 - **Do not** re-declare `name` on domain schemas — compose `rig.meta.named`
+- **Do not** put page/entity origin on `rig.layout.page` or transform — compose `rig.spatial.anchor` (`point` 3×3; absent = no remap / page trim top-left)
+- **Do not** put show/hide on `rig.spatial.layer` — compose `rig.render.visibility`
+- **Do not** put text colour on `rig.media.text` — compose paint (`fill_stroke` / `fill`)
 - SUDE does **not** require a window, GPU, UI pack, filesystem, or audio
 - Being Rig does **not** require implementing every schema
 
@@ -241,7 +244,7 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Domain | Schema ids |
 |--------|------------|
 | Document | `rig.document` |
-| Spatial | `transform`, `relationship`, `group`, `camera`, `layer` |
+| Spatial | `transform`, `anchor`, `relationship`, `group`, `camera`, `layer` |
 | Layout | `page` |
 | Geometry | `mesh`, `path`, `path3d`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `spline3d`, `ring` |
 | Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `library` |

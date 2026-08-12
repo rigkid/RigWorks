@@ -14,7 +14,7 @@ Circular or elliptical arc (or pie wedge). Format when present.
 
 A circle is an arc with equal radii. Same fields as [`rig.geometry.ellipse`](ellipse.md), plus the angle span.
 
-Rotation of an elliptical arc belongs on [`rig.spatial.transform`](../spatial/transform.md) — do not bake a major-axis angle into this component.
+Rotation of an elliptical arc belongs on [`rig.spatial.transform`](../spatial/transform.md) — do not bake a major-axis angle into this component. Local (0,0) is the authored centre — see [`rig.spatial.anchor`](../spatial/anchor.md).
 
 Angles are degrees, not radians, matching `fovYDegrees` on [`rig.spatial.camera`](../spatial/camera.md).
 

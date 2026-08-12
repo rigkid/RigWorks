@@ -49,6 +49,21 @@ add("rig.spatial.transform", {
   scale: ref("vec3"),
 }, { required: [] });
 
+// 3×3 registration on local bounds. Absent component = topLeft.
+add("rig.spatial.anchor", {
+  point: enumOf([
+    "topLeft",
+    "topCenter",
+    "topRight",
+    "middleLeft",
+    "center",
+    "middleRight",
+    "bottomLeft",
+    "bottomCenter",
+    "bottomRight",
+  ]),
+}, { required: ["point"] });
+
 add(
   "rig.spatial.relationship",
   {
@@ -80,10 +95,10 @@ add("rig.spatial.camera", {
   aspect: ref("float"),
 }, { required: [] });
 
-// Defaults: order 0, visible true, locked false, rgba = no label colour.
+// Defaults: order 0, locked false, rgba = no label colour.
+// Show/hide is rig.render.visibility — do not re-declare visible here.
 add("rig.spatial.layer", {
   order: ref("int"),
-  visible: ref("bool"),
   locked: ref("bool"),
   rgba: ref("rgba"),
 }, { required: [] });
@@ -105,7 +120,6 @@ add("rig.layout.page", {
   margins: edges,
   bleed: edges,
   slug: edges,
-  originAnchor: enumOf(["topLeft", "topRight", "bottomLeft", "bottomRight", "center"]),
 }, { required: ["width", "height"] });
 
 // --- geometry ---
@@ -226,25 +240,10 @@ add("rig.geometry.path3d", {
 });
 
 add("rig.geometry.mesh", {
-  positions: {
-    oneOf: [
-      { type: "array", items: { type: "number" } },
-      { type: "array", items: ref("vec3") },
-    ],
-  },
-  normals: {
-    oneOf: [
-      { type: "array", items: { type: "number" } },
-      { type: "array", items: ref("vec3") },
-    ],
-  },
+  positions: { type: "array", items: { type: "number" } },
+  normals: { type: "array", items: { type: "number" } },
   indices: { type: "array", items: ref("uint32") },
-  texcoords: {
-    oneOf: [
-      { type: "array", items: { type: "number" } },
-      { type: "array", items: ref("vec2") },
-    ],
-  },
+  texcoords: { type: "array", items: { type: "number" } },
   mode: enumOf(["triangles", "lines", "lineStrip"]),
   faceColors: { type: "array", items: ref("rgba") },
   facePalette: { type: "array", items: ref("uint8") },
@@ -534,7 +533,6 @@ add("rig.media.text", {
   text: ref("string"),
   font: ref("entity"),
   fontSize: ref("float"),
-  rgba: ref("rgba"),
   axes: { type: "array", items: textAxis },
   features: ref("string"),
   useKerning: ref("bool"),

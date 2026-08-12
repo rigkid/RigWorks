@@ -48,6 +48,7 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | Id | Doc |
 |----|-----|
 | `rig.spatial.transform` | [spatial/transform.md](spatial/transform.md) |
+| `rig.spatial.anchor` | [spatial/anchor.md](spatial/anchor.md) |
 | `rig.spatial.relationship` | [spatial/relationship.md](spatial/relationship.md) |
 | `rig.spatial.group` | [spatial/group.md](spatial/group.md) |
 | `rig.spatial.camera` | [spatial/camera.md](spatial/camera.md) |

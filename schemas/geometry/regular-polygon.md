@@ -12,6 +12,6 @@ Equilateral n-gon about a centre. Format when present.
 
 A triangle is `sides: 3`. There is no separate triangle schema.
 
-`rotationDegrees` exists so the shape's own phase survives independently of the entity's rotation in [`rig.spatial.transform`](../spatial/transform.md). A host that has only one of the two composes them.
+`rotationDegrees` exists so the shape's own phase survives independently of the entity's rotation in [`rig.spatial.transform`](../spatial/transform.md). A host that has only one of the two composes them. Local (0,0) is the authored centre — see [`rig.spatial.anchor`](../spatial/anchor.md).
 
 Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md).

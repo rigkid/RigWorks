@@ -257,6 +257,9 @@
               "rig.sim.rigidbody": {
                 "$ref": "./rig.sim.rigidbody.schema.json"
               },
+              "rig.spatial.anchor": {
+                "$ref": "./rig.spatial.anchor.schema.json"
+              },
               "rig.spatial.camera": {
                 "$ref": "./rig.spatial.camera.schema.json"
               },

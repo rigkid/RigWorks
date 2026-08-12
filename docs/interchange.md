@@ -20,6 +20,7 @@ Formal grammar: [`schemas/json/`](../schemas/json/). Validate with [`tools/rig-v
 | Rig schema id | Typical RigKit key (legacy) |
 |---------------|-----------------------------|
 | `rig.spatial.transform` | `Transform` |
+| `rig.spatial.anchor` | `Anchor` |
 | `rig.spatial.relationship` | `Relationship` |
 | `rig.spatial.group` | `Group` |
 | `rig.geometry.rectangle`, `.ellipse`, `.star`, … | `Shape` (tagged union, split in 0.5.0) |

@@ -10,6 +10,8 @@ Local pose. Format when present.
 
 All fields optional; an absent field means identity, so hosts may emit only what differs. Serialize at most these three fields. Do not serialize derived values a host may keep beside them (editor Euler angles, world matrix cache) — rebuild those from local pose + parent.
 
+Which point of local bounds `position` attaches to is [`rig.spatial.anchor`](anchor.md) — compose it; do not add pivot fields here.
+
 ## Quat + Euler (hosts)
 
 - **`rotation` (quat)** is the portable / composition source of truth — avoids gimbal lock for accumulated pose.

@@ -14,9 +14,6 @@
     "fontSize": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
-    "rgba": {
-      "$ref": "./_defs.schema.json#/$defs/rgba"
-    },
     "axes": {
       "type": "array",
       "items": {

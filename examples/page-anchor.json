@@ -1,0 +1,29 @@
+{
+  "rig": "0.13.0",
+  "document": {
+    "title": "Page + entity anchor",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "artboard",
+      "components": {
+        "rig.meta.named": { "name": "Artboard" },
+        "rig.layout.page": { "width": 800, "height": 600, "index": 0 },
+        "rig.spatial.anchor": { "point": "center" },
+        "rig.spatial.transform": { "position": [0, 0, 0] }
+      }
+    },
+    {
+      "id": "badge",
+      "components": {
+        "rig.meta.named": { "name": "Badge" },
+        "rig.spatial.relationship": { "parent": "artboard", "order": 0 },
+        "rig.spatial.transform": { "position": [200, -100, 0] },
+        "rig.spatial.anchor": { "point": "bottomRight" },
+        "rig.geometry.rectangle": { "x": 0, "y": 0, "width": 120, "height": 40 },
+        "rig.paint.fill_stroke": { "fillRgba": [0.9, 0.35, 0.2, 1] }
+      }
+    }
+  ]
+}

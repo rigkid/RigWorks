@@ -2,7 +2,7 @@
 
 Compositor stack entry. Format when present.
 
-**Chrome** (`index`, `visible`, `locked`, tint, label) lives on [`rig.spatial.layer`](../spatial/layer.md) + [`rig.meta.named`](../meta/named.md) on the same entity. Do not duplicate those fields here.
+**Chrome** (`order`, `locked`, tint, label) lives on [`rig.spatial.layer`](../spatial/layer.md) + [`rig.meta.named`](../meta/named.md) on the same entity. Show/hide is [`rig.render.visibility`](../render/visibility.md). Do not duplicate those fields here.
 
 | Field | Type | Meaning |
 |-------|------|---------|

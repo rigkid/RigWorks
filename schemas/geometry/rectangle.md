@@ -10,7 +10,7 @@ Axis-aligned rectangle. Format when present.
 | `height` | float | Extent along +Y; negative is invalid |
 | `cornerRadius` | float | Optional. Corner rounding in units; absent or 0 = square corners |
 
-Position is the top-left corner, not the centre. A host that models rectangles from the centre converts on read.
+Position is the top-left corner, not the centre. A host that models rectangles from the centre converts on read. To place a different registration at [`rig.spatial.transform`](../spatial/transform.md) `position`, compose [`rig.spatial.anchor`](../spatial/anchor.md) — do not dual-author the rectangle from the centre.
 
 Rotation belongs to [`rig.spatial.transform`](../spatial/transform.md) — there is no angle field here.
 
