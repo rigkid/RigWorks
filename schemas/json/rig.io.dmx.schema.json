@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.io.dmx.schema.json",
+  "title": "rig.io.dmx",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "universe": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "in",
+        "out"
+      ]
+    },
+    "enabled": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "direction"
+  ]
+}

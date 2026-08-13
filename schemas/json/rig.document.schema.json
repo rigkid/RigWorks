@@ -37,6 +37,27 @@
         "colorSpace": {
           "type": "string",
           "description": "Colour space for all rgba/rgb values (default: srgb)."
+        },
+        "timeZone": {
+          "type": "string",
+          "description": "IANA time zone for wall-clock calendar fields (e.g. Australia/Sydney). Absent = host local."
+        },
+        "pdfX": {
+          "type": "string",
+          "description": "PDF/X identification (e.g. PDF/X-4). Empty/absent = not a PDF/X job."
+        },
+        "outputCondition": {
+          "type": "string",
+          "description": "OutputIntent OutputConditionIdentifier (e.g. FOGRA39, CGATS TR 001)."
+        },
+        "trapped": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "true",
+            "false"
+          ],
+          "description": "PDF Info Trapped; absent = unknown."
         }
       }
     },
@@ -71,6 +92,45 @@
               "rig.audio.analysis": {
                 "$ref": "./rig.audio.analysis.schema.json"
               },
+              "rig.audio.bus": {
+                "$ref": "./rig.audio.bus.schema.json"
+              },
+              "rig.cad.boolean": {
+                "$ref": "./rig.cad.boolean.schema.json"
+              },
+              "rig.cad.chamfer": {
+                "$ref": "./rig.cad.chamfer.schema.json"
+              },
+              "rig.cad.cuboid": {
+                "$ref": "./rig.cad.cuboid.schema.json"
+              },
+              "rig.cad.cylinder": {
+                "$ref": "./rig.cad.cylinder.schema.json"
+              },
+              "rig.cad.extrude": {
+                "$ref": "./rig.cad.extrude.schema.json"
+              },
+              "rig.cad.fillet": {
+                "$ref": "./rig.cad.fillet.schema.json"
+              },
+              "rig.cad.revolve": {
+                "$ref": "./rig.cad.revolve.schema.json"
+              },
+              "rig.cad.sphere": {
+                "$ref": "./rig.cad.sphere.schema.json"
+              },
+              "rig.calendar.exception": {
+                "$ref": "./rig.calendar.exception.schema.json"
+              },
+              "rig.calendar.span": {
+                "$ref": "./rig.calendar.span.schema.json"
+              },
+              "rig.calendar.weekly": {
+                "$ref": "./rig.calendar.weekly.schema.json"
+              },
+              "rig.dmx.fixture": {
+                "$ref": "./rig.dmx.fixture.schema.json"
+              },
               "rig.geometry.arc": {
                 "$ref": "./rig.geometry.arc.schema.json"
               },
@@ -82,6 +142,9 @@
               },
               "rig.geometry.mesh": {
                 "$ref": "./rig.geometry.mesh.schema.json"
+              },
+              "rig.geometry.nurbs_surface": {
+                "$ref": "./rig.geometry.nurbs_surface.schema.json"
               },
               "rig.geometry.path": {
                 "$ref": "./rig.geometry.path.schema.json"
@@ -113,8 +176,17 @@
               "rig.input.buttons": {
                 "$ref": "./rig.input.buttons.schema.json"
               },
+              "rig.install.av_bus": {
+                "$ref": "./rig.install.av_bus.schema.json"
+              },
+              "rig.install.trigger": {
+                "$ref": "./rig.install.trigger.schema.json"
+              },
               "rig.interact.selectable": {
                 "$ref": "./rig.interact.selectable.schema.json"
+              },
+              "rig.io.dmx": {
+                "$ref": "./rig.io.dmx.schema.json"
               },
               "rig.io.osc": {
                 "$ref": "./rig.io.osc.schema.json"
@@ -130,6 +202,9 @@
               },
               "rig.led.uv_map": {
                 "$ref": "./rig.led.uv_map.schema.json"
+              },
+              "rig.light.look": {
+                "$ref": "./rig.light.look.schema.json"
               },
               "rig.media.asset_ref": {
                 "$ref": "./rig.media.asset_ref.schema.json"
@@ -251,6 +326,9 @@
               "rig.sensor.gpio": {
                 "$ref": "./rig.sensor.gpio.schema.json"
               },
+              "rig.sensor.presence": {
+                "$ref": "./rig.sensor.presence.schema.json"
+              },
               "rig.sim.particle_emitter": {
                 "$ref": "./rig.sim.particle_emitter.schema.json"
               },
@@ -274,6 +352,21 @@
               },
               "rig.spatial.transform": {
                 "$ref": "./rig.spatial.transform.schema.json"
+              },
+              "rig.story.character_style": {
+                "$ref": "./rig.story.character_style.schema.json"
+              },
+              "rig.story.flow": {
+                "$ref": "./rig.story.flow.schema.json"
+              },
+              "rig.story.paragraph": {
+                "$ref": "./rig.story.paragraph.schema.json"
+              },
+              "rig.story.paragraph_style": {
+                "$ref": "./rig.story.paragraph_style.schema.json"
+              },
+              "rig.story.table": {
+                "$ref": "./rig.story.table.schema.json"
               },
               "rig.ui.action": {
                 "$ref": "./rig.ui.action.schema.json"

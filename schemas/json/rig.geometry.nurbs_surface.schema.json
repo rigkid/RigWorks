@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.geometry.nurbs_surface.schema.json",
+  "title": "rig.geometry.nurbs_surface",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "degreeU": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "degreeV": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "countU": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "countV": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "controlPoints": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/vec3"
+      },
+      "minItems": 4
+    },
+    "knotsU": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "knotsV": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "weights": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "closedU": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "closedV": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "degreeU",
+    "degreeV",
+    "countU",
+    "countV",
+    "controlPoints",
+    "knotsU",
+    "knotsV"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.calendar.span.schema.json",
+  "title": "rig.calendar.span",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "startDate": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "endDate": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "startDate",
+    "endDate"
+  ]
+}

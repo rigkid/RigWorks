@@ -12,5 +12,7 @@
 
 Pose on transform. Directional shines along local −Z (world). Point uses world translation.
 
+A patched show lamp is this light plus [`rig.dmx.fixture`](../dmx/fixture.md) on the same entity. Looks compose [`rig.light.look`](../light/look.md).
+
 Spot / range / cone are not in the current draft — append later if a host ships them.
 No light object handle.

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.audio.bus.schema.json",
+  "title": "rig.audio.bus",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "gain": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "mute": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  }
+}

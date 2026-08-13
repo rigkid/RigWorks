@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.story.paragraph.schema.json",
+  "title": "rig.story.paragraph",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "style": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "breakType": {
+      "type": "string",
+      "enum": [
+        "column",
+        "page"
+      ]
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "text"
+        ],
+        "properties": {
+          "text": {
+            "$ref": "./_defs.schema.json#/$defs/string"
+          },
+          "style": {
+            "$ref": "./_defs.schema.json#/$defs/entity"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "runs"
+  ]
+}

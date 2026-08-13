@@ -1,0 +1,146 @@
+{
+  "rig": "0.14.0",
+  "document": {
+    "title": "Semantic story"
+  },
+  "entities": [
+    {
+      "id": "style-paragraph",
+      "components": {
+        "rig.meta.named": { "name": "Paragraph", "stableId": "style-paragraph" },
+        "rig.story.paragraph_style": {}
+      }
+    },
+    {
+      "id": "style-header-1",
+      "components": {
+        "rig.meta.named": { "name": "Header 1", "stableId": "style-header-1" },
+        "rig.story.paragraph_style": { "basedOn": "style-paragraph" }
+      }
+    },
+    {
+      "id": "style-unordered-list",
+      "components": {
+        "rig.meta.named": { "name": "Unordered List", "stableId": "style-unordered-list" },
+        "rig.story.paragraph_style": {
+          "basedOn": "style-paragraph",
+          "listKind": "bullet"
+        }
+      }
+    },
+    {
+      "id": "style-bold",
+      "components": {
+        "rig.meta.named": { "name": "Bold", "stableId": "style-bold" },
+        "rig.story.character_style": {}
+      }
+    },
+    {
+      "id": "style-italic",
+      "components": {
+        "rig.meta.named": { "name": "Italic", "stableId": "style-italic" },
+        "rig.story.character_style": {}
+      }
+    },
+    {
+      "id": "p-title",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-header-1",
+          "runs": [{ "text": "Title" }]
+        }
+      }
+    },
+    {
+      "id": "p-body",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "runs": [
+            { "text": "Hello " },
+            { "text": "world", "style": "style-bold" },
+            { "text": " — italic", "style": "style-italic" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "p-li-1",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-unordered-list",
+          "runs": [{ "text": "First item" }]
+        }
+      }
+    },
+    {
+      "id": "p-li-2",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-unordered-list",
+          "runs": [{ "text": "Second item" }]
+        }
+      }
+    },
+    {
+      "id": "p-cell-h0",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "runs": [{ "text": "Name" }]
+        }
+      }
+    },
+    {
+      "id": "p-cell-h1",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "runs": [{ "text": "Role" }]
+        }
+      }
+    },
+    {
+      "id": "p-cell-00",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "runs": [{ "text": "Ada" }]
+        }
+      }
+    },
+    {
+      "id": "p-cell-01",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "runs": [{ "text": "Author" }]
+        }
+      }
+    },
+    {
+      "id": "table-people",
+      "components": {
+        "rig.story.table": {
+          "columnCount": 2,
+          "headerRowCount": 1,
+          "cells": [
+            { "column": 0, "row": 0, "blocks": ["p-cell-h0"] },
+            { "column": 1, "row": 0, "blocks": ["p-cell-h1"] },
+            { "column": 0, "row": 1, "blocks": ["p-cell-00"] },
+            { "column": 1, "row": 1, "blocks": ["p-cell-01"] }
+          ]
+        }
+      }
+    },
+    {
+      "id": "story",
+      "components": {
+        "rig.meta.named": { "name": "Main story", "stableId": "story" },
+        "rig.story.flow": {
+          "blocks": ["p-title", "p-body", "p-li-1", "p-li-2", "table-people"]
+        }
+      }
+    }
+  ]
+}

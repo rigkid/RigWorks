@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.story.table.schema.json",
+  "title": "rig.story.table",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "columnCount": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "headerRowCount": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "footerRowCount": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "cells": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "column",
+          "row"
+        ],
+        "properties": {
+          "column": {
+            "$ref": "./_defs.schema.json#/$defs/int"
+          },
+          "row": {
+            "$ref": "./_defs.schema.json#/$defs/int"
+          },
+          "columnSpan": {
+            "$ref": "./_defs.schema.json#/$defs/int"
+          },
+          "rowSpan": {
+            "$ref": "./_defs.schema.json#/$defs/int"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "./_defs.schema.json#/$defs/entity"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "columnCount",
+    "cells"
+  ]
+}

@@ -18,6 +18,14 @@
         "bottomCenter",
         "bottomRight"
       ]
+    },
+    "height": {
+      "type": "string",
+      "enum": [
+        "min",
+        "center",
+        "max"
+      ]
     }
   },
   "required": [

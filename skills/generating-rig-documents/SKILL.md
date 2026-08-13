@@ -92,7 +92,7 @@ A component key may also be `x.<vendor>.<name>` — a host component the Contrac
 
 ## Worked examples
 
-Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json). Validate before you trust the output.
+Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json). Validate before you trust the output.
 
 ### Entity with shape + paint
 
@@ -234,14 +234,17 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 
 ## Common mistakes / non-requirements
 
-- **Do not** serialize Euler angles, world matrices, selection state, dirty flags, GPU handles, or LFO last-sample caches
+- **Do not** invent a tagged-union CSG blob — split `rig.cad.*` primitives; mesh on a CAD entity is an optional bake
+- **Do not** store a parallel edge table on `rig.geometry.mesh` — name fillet/chamfer edges as `{a,b}` vertex pairs
 - **Do not** invent schema ids or use PascalCase keys (`Transform`, `Shape`) — those are RigKit host aliases; see [docs/interchange.md](../../docs/interchange.md)
 - **Do not** use `x.<vendor>.<name>` to stand in for a catalog id you could not find — report the gap instead
 - **Do not** nest SUDE hooks or skip calling `Draw` (when authoring a live host)
 - **Do not** re-declare `name` on domain schemas — compose `rig.meta.named`
-- **Do not** put page/entity origin on `rig.layout.page` or transform — compose `rig.spatial.anchor` (`point` 3×3; absent = no remap / page trim top-left)
+- **Do not** put page/entity origin on `rig.layout.page` or transform — compose `rig.spatial.anchor` (`point` 3×3 face + optional `height` min/center/max for 3×3×3; absent = no remap / page trim top-left). Origin is a cell offset — never axis invert.
 - **Do not** put show/hide on `rig.spatial.layer` — compose `rig.render.visibility`
 - **Do not** put text colour on `rig.media.text` — compose paint (`fill_stroke` / `fill`)
+- **Do not** flatten editorial copy into `rig.media.text` — that is a canvas run; stories are `rig.story.*` (named styles, no font or colour)
+- **Do not** put bold, italic, underline, strike, super/sub, font, size, or colour on `rig.story.*` — a run is `text` + style identity; unstyled local emphasis becomes a named character style
 - SUDE does **not** require a window, GPU, UI pack, filesystem, or audio
 - Being Rig does **not** require SUDE — only live hosts do — or implementing every schema
 - Being Rig **does** require entity/component POD composition against schemas you support
@@ -255,15 +258,21 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Document | `rig.document` |
 | Spatial | `transform`, `anchor`, `relationship`, `group`, `camera`, `layer` |
 | Layout | `page` |
-| Geometry | `mesh`, `path`, `path3d`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `spline3d`, `ring` |
+| Geometry | `mesh`, `path`, `path3d`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `spline3d`, `nurbs_surface`, `ring` |
+| Cad | `cuboid`, `cylinder`, `sphere`, `extrude`, `revolve`, `boolean`, `fillet`, `chamfer` |
 | Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `library` |
 | Meta / render | `named`, `tags`, `light`, `material`, `visibility` |
 | Anim / mod | `tween`, `curve`, `lfo`, `binding` |
 | Music | `transport`, `clock`, `sequencer`, `pattern`, `arrangement`, `step`, `note`, `midi_output`, `midi_input` |
-| Audio | `analysis` |
+| Audio | `analysis`, `bus` |
 | Media | `asset_ref`, `text`, `code` |
+| Story | `flow`, `paragraph`, `paragraph_style`, `character_style`, `table` |
 | Pixel | `canvas`, `source`, `layer`, `raster`, `palette`, `tile_set`, `tile_map`, `effect_chain` |
-| I/O | `osc`, `serial`, `sacn`, `led.uv_map`, `sensor.gpio` |
+| I/O | `osc`, `serial`, `sacn`, `dmx`, `led.uv_map`, `sensor.gpio`, `sensor.presence` |
+| Dmx | `fixture` |
+| Light | `look` |
+| Calendar | `weekly`, `span`, `exception` |
+| Install | `av_bus`, `trigger` |
 | Sim | `rigidbody`, `particle_emitter` |
 | Input | `buttons` |
 | Interact | `selectable` |

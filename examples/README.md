@@ -9,6 +9,8 @@ node tools/rig-validate/cli.js examples/ui-panel.json
 node tools/rig-validate/cli.js examples/portable-tool.json
 node tools/rig-validate/cli.js examples/path3d-spline3d.json
 node tools/rig-validate/cli.js examples/page-anchor.json
+node tools/rig-validate/cli.js examples/cad-boolean.json
+node tools/rig-validate/cli.js examples/story-flow.json
 ```
 
 ## SUDE sketch
@@ -101,3 +103,37 @@ A cubic space curve as `rig.geometry.path3d` (`cubicTo`) and a separate degree-3
 ## `page-anchor.json`
 
 A page with `rig.spatial.anchor` `center` (page-local origin mid-trim) and a child rectangle with `bottomRight` registration — transform stays TRS; the 3×3 lives on the sibling component.
+
+## `cad-boolean.json`
+
+CSG difference of a cuboid minus a cylinder, fillet intent on every edge, a cube mesh with n-gon `loops` and a named-edge chamfer, plus a bilinear `rig.geometry.nurbs_surface`. The CAD tree is the solid source of truth; mesh on a CAD entity is an optional bake.
+
+## `story-flow.json`
+
+Semantic editorial copy: named paragraph and character styles only (no font, colour, or local bold/italic flags), a heading, a body with Bold and Italic style runs, a bullet list via `listKind`, and a two-column table with a header row. Canvas type stays on `rig.media.text`.
+
+One entity (the flow):
+
+<!-- rig:begin entity=story from=examples/story-flow.json -->
+```json
+{
+  "id": "story",
+  "components": {
+    "rig.meta.named": {
+      "name": "Main story",
+      "stableId": "story"
+    },
+    "rig.story.flow": {
+      "blocks": [
+        "p-title",
+        "p-body",
+        "p-li-1",
+        "p-li-2",
+        "table-people"
+      ]
+    }
+  }
+}
+```
+<!-- rig:end -->
+

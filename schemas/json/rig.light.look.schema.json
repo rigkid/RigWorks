@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.light.look.schema.json",
+  "title": "rig.light.look",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "effectId": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "speed": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "freezeTimeoutMinutes": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "effectId"
+  ]
+}

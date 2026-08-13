@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.install.trigger.schema.json",
+  "title": "rig.install.trigger",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "source": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "colorFlash",
+        "playSample"
+      ]
+    },
+    "enabled": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "cooldownMs": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "calendar": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "fadeInMs": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "holdMs": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "fadeOutMs": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "palette": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/rgba"
+      }
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "forward",
+        "backward",
+        "pendulum",
+        "random"
+      ]
+    },
+    "volume": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "loop": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    }
+  },
+  "required": [
+    "source",
+    "action"
+  ]
+}

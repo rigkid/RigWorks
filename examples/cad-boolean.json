@@ -1,0 +1,84 @@
+{
+  "rig": "0.14.0",
+  "document": {
+    "title": "CAD boolean, fillet, NURBS surface",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "stock",
+      "components": {
+        "rig.meta.named": { "name": "stock", "stableId": "stock" },
+        "rig.cad.cuboid": { "sizeX": 40, "sizeY": 40, "sizeZ": 20 }
+      }
+    },
+    {
+      "id": "cutter",
+      "components": {
+        "rig.meta.named": { "name": "cutter", "stableId": "cutter" },
+        "rig.spatial.transform": { "position": [0, 0, 8] },
+        "rig.cad.cylinder": { "radius": 8, "height": 30 }
+      }
+    },
+    {
+      "id": "part",
+      "components": {
+        "rig.meta.named": { "name": "part", "stableId": "part" },
+        "rig.cad.boolean": {
+          "op": "difference",
+          "operands": ["stock", "cutter"]
+        },
+        "rig.cad.fillet": { "radius": 2, "allEdges": true },
+        "rig.interact.selectable": { "enabled": true }
+      }
+    },
+    {
+      "id": "cube-mesh",
+      "components": {
+        "rig.meta.named": { "name": "cube-mesh", "stableId": "cube-mesh" },
+        "rig.spatial.transform": { "position": [-50, 0, 0] },
+        "rig.geometry.mesh": {
+          "mode": "triangles",
+          "positions": [
+            -5, -5, -5, 5, -5, -5, 5, 5, -5, -5, 5, -5,
+            -5, -5, 5, 5, -5, 5, 5, 5, 5, -5, 5, 5
+          ],
+          "loops": [
+            0, 1, 2, 3,
+            4, 7, 6, 5,
+            0, 4, 5, 1,
+            1, 5, 6, 2,
+            2, 6, 7, 3,
+            3, 7, 4, 0
+          ],
+          "loopSizes": [4, 4, 4, 4, 4, 4]
+        },
+        "rig.cad.chamfer": {
+          "distance": 1,
+          "edges": [{ "a": 0, "b": 1 }, { "a": 1, "b": 2 }]
+        }
+      }
+    },
+    {
+      "id": "patch",
+      "components": {
+        "rig.meta.named": { "name": "patch", "stableId": "patch" },
+        "rig.spatial.transform": { "position": [60, 0, 0] },
+        "rig.geometry.nurbs_surface": {
+          "degreeU": 1,
+          "degreeV": 1,
+          "countU": 2,
+          "countV": 2,
+          "controlPoints": [
+            [0, 0, 0],
+            [20, 0, 0],
+            [0, 20, 4],
+            [20, 20, 0]
+          ],
+          "knotsU": [0, 0, 1, 1],
+          "knotsV": [0, 0, 1, 1]
+        }
+      }
+    }
+  ]
+}

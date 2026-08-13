@@ -2,6 +2,8 @@
 
 Scene / canvas text run. Format when present.
 
+Editorial copy (named styles, paragraphs, runs, tables) is [`rig.story.flow`](../story/flow.md), not this schema. Do not flatten a story into canvas runs.
+
 | Field | Type | Meaning |
 |-------|------|---------|
 | `text` | string | Content |

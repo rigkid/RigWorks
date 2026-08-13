@@ -23,6 +23,18 @@
         "$ref": "./_defs.schema.json#/$defs/uint32"
       }
     },
+    "loops": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/uint32"
+      }
+    },
+    "loopSizes": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/uint32"
+      }
+    },
     "texcoords": {
       "type": "array",
       "items": {

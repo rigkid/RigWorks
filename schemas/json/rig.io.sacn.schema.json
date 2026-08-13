@@ -10,6 +10,18 @@
       "minimum": 1,
       "maximum": 63999
     },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "in",
+        "out"
+      ]
+    },
+    "universeCount": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 63999
+    },
     "startChannel": {
       "type": "integer",
       "minimum": 1,

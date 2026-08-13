@@ -10,6 +10,6 @@ Compose [`rig.meta.named`](../meta/named.md) for the label, and [`rig.media.asse
 | `language` | string | Optional. Lowercase grammar id (`gcode`, `svg`, `python`); absent or empty = plain text |
 | `readOnly` | bool | Optional. Edit lock hint; absent = false |
 
-Distinct from [`rig.media.text`](text.md), which is display copy with font and paint.
+Distinct from [`rig.media.text`](text.md) (positioned canvas run) and [`rig.story.flow`](../story/flow.md) (semantic editorial copy).
 
 Editor state — caret, selection, undo history, modified flags, reload counters — stays in the host.

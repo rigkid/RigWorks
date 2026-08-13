@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.cad.cuboid.schema.json",
+  "title": "rig.cad.cuboid",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "sizeX": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "sizeY": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "sizeZ": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "center": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "sizeX",
+    "sizeY",
+    "sizeZ"
+  ]
+}

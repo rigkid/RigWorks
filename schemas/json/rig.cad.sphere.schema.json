@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.cad.sphere.schema.json",
+  "title": "rig.cad.sphere",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "radius": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "circularSegments": {
+      "type": "integer",
+      "minimum": 3
+    }
+  },
+  "required": [
+    "radius"
+  ]
+}

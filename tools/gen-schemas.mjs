@@ -49,7 +49,8 @@ add("rig.spatial.transform", {
   scale: ref("vec3"),
 }, { required: [] });
 
-// 3×3 registration on local bounds. Absent component = topLeft.
+// 3×3×3 registration on local bounds. Absent component = no remap / page trim top-left.
+// height is the Z slice of the cuboid (absent = min). Axes never invert — origin is a cell.
 add("rig.spatial.anchor", {
   point: enumOf([
     "topLeft",
@@ -62,6 +63,7 @@ add("rig.spatial.anchor", {
     "bottomCenter",
     "bottomRight",
   ]),
+  height: enumOf(["min", "center", "max"]),
 }, { required: ["point"] });
 
 add(
@@ -243,11 +245,92 @@ add("rig.geometry.mesh", {
   positions: { type: "array", items: { type: "number" } },
   normals: { type: "array", items: { type: "number" } },
   indices: { type: "array", items: ref("uint32") },
+  loops: { type: "array", items: ref("uint32") },
+  loopSizes: { type: "array", items: ref("uint32") },
   texcoords: { type: "array", items: { type: "number" } },
   mode: enumOf(["triangles", "lines", "lineStrip"]),
   faceColors: { type: "array", items: ref("rgba") },
   facePalette: { type: "array", items: ref("uint8") },
 }, { required: ["positions", "mode"] });
+
+// NURBS patch. Curves stay on spline / spline3d. Tessellation to mesh is fulfillment.
+add("rig.geometry.nurbs_surface", {
+  degreeU: ref("int"),
+  degreeV: ref("int"),
+  countU: { type: "integer", minimum: 2 },
+  countV: { type: "integer", minimum: 2 },
+  controlPoints: { type: "array", items: ref("vec3"), minItems: 4 },
+  knotsU: { type: "array", items: { type: "number" } },
+  knotsV: { type: "array", items: { type: "number" } },
+  weights: { type: "array", items: { type: "number" } },
+  closedU: ref("bool"),
+  closedV: ref("bool"),
+}, { required: ["degreeU", "degreeV", "countU", "countV", "controlPoints", "knotsU", "knotsV"] });
+
+// --- cad ---
+// CSG tree as split primitives (not a tagged-union solid blob). When any
+// rig.cad.* is present it is the solid source of truth; mesh on the same
+// entity is an optional bake. Edges named for fillet/chamfer are undirected
+// vertex pairs into that entity's mesh positions.
+const meshEdge = {
+  type: "object",
+  additionalProperties: false,
+  required: ["a", "b"],
+  properties: {
+    a: ref("uint32"),
+    b: ref("uint32"),
+  },
+};
+
+add("rig.cad.cuboid", {
+  sizeX: ref("float"),
+  sizeY: ref("float"),
+  sizeZ: ref("float"),
+  center: ref("bool"),
+}, { required: ["sizeX", "sizeY", "sizeZ"] });
+
+add("rig.cad.cylinder", {
+  radius: ref("float"),
+  height: ref("float"),
+  circularSegments: { type: "integer", minimum: 3 },
+  center: ref("bool"),
+}, { required: ["radius", "height"] });
+
+add("rig.cad.sphere", {
+  radius: ref("float"),
+  circularSegments: { type: "integer", minimum: 3 },
+}, { required: ["radius"] });
+
+add("rig.cad.extrude", {
+  profile: ref("entity"),
+  height: ref("float"),
+  nDivisions: { type: "integer", minimum: 1 },
+  twistDegrees: ref("float"),
+  scaleTop: ref("float"),
+}, { required: ["profile", "height"] });
+
+add("rig.cad.revolve", {
+  profile: ref("entity"),
+  revolveDegrees: ref("float"),
+  circularSegments: { type: "integer", minimum: 3 },
+}, { required: ["profile"] });
+
+add("rig.cad.boolean", {
+  op: enumOf(["union", "difference", "intersection"]),
+  operands: { type: "array", items: ref("entity"), minItems: 2 },
+}, { required: ["op", "operands"] });
+
+add("rig.cad.fillet", {
+  radius: ref("float"),
+  edges: { type: "array", items: meshEdge },
+  allEdges: ref("bool"),
+}, { required: ["radius"] });
+
+add("rig.cad.chamfer", {
+  distance: ref("float"),
+  edges: { type: "array", items: meshEdge },
+  allEdges: ref("bool"),
+}, { required: ["distance"] });
 
 // --- paint ---
 // Defaults: hasFill = fillRgba present, hasStroke = strokeRgba present,
@@ -263,6 +346,9 @@ add("rig.paint.fill_stroke", {
 add("rig.paint.solid", {
   rgba: ref("rgba"),
   cmyk: ref("vec4"),
+  ink: ref("string"),
+  overprintFill: ref("bool"),
+  overprintStroke: ref("bool"),
 }, { required: ["rgba"] });
 
 // start/end default to (0,0) -> (1,0) in object space.
@@ -511,6 +597,12 @@ add("rig.audio.analysis", {
   onsetThreshold: ref("float"),
 }, { required: ["source", "bandCount"] });
 
+// Defaults: gain 1, mute false.
+add("rig.audio.bus", {
+  gain: { type: "number", minimum: 0, maximum: 1 },
+  mute: ref("bool"),
+}, { required: [] });
+
 // --- media ---
 add("rig.media.asset_ref", {
   kind: enumOf(["image", "audio", "video", "model", "font", "other"]),
@@ -544,6 +636,59 @@ add("rig.media.code", {
   language: ref("string"),
   readOnly: ref("bool"),
 }, { required: ["text"] });
+
+// --- story (semantic copy) ---
+// Editorial flow: named styles, paragraphs, runs, tables. No font, size, or
+// colour — those stay on rig.media.text + paint. Style labels compose
+// rig.meta.named. Sequence is blocks[], not spatial.relationship.
+add("rig.story.paragraph_style", {
+  basedOn: ref("entity"),
+  listKind: enumOf(["bullet", "numbered"]),
+}, { required: [] });
+
+add("rig.story.character_style", {
+  basedOn: ref("entity"),
+}, { required: [] });
+
+const storyRun = {
+  type: "object",
+  additionalProperties: false,
+  required: ["text"],
+  properties: {
+    text: ref("string"),
+    style: ref("entity"),
+  },
+};
+
+add("rig.story.paragraph", {
+  style: ref("entity"),
+  breakType: enumOf(["column", "page"]),
+  runs: { type: "array", items: storyRun },
+}, { required: ["runs"] });
+
+const storyCell = {
+  type: "object",
+  additionalProperties: false,
+  required: ["column", "row"],
+  properties: {
+    column: ref("int"),
+    row: ref("int"),
+    columnSpan: ref("int"),
+    rowSpan: ref("int"),
+    blocks: { type: "array", items: ref("entity") },
+  },
+};
+
+add("rig.story.table", {
+  columnCount: ref("int"),
+  headerRowCount: ref("int"),
+  footerRowCount: ref("int"),
+  cells: { type: "array", items: storyCell },
+}, { required: ["columnCount", "cells"] });
+
+add("rig.story.flow", {
+  blocks: { type: "array", items: ref("entity") },
+}, { required: ["blocks"] });
 
 // --- pixel ---
 // Default: clearRgba transparent black (0,0,0,0).
@@ -663,10 +808,19 @@ add("rig.io.serial", {
   enabled: ref("bool"),
 }, { required: ["port"] });
 
-// E1.31 / sACN pixel output. Pairs with rig.led.uv_map for the pixel layout.
-// Defaults: startChannel 1, enabled true, host = multicast for the universe.
+// DMX512 port. Defaults: universe 1, enabled true.
+add("rig.io.dmx", {
+  universe: ref("int"),
+  direction: enumOf(["in", "out"]),
+  enabled: ref("bool"),
+}, { required: ["direction"] });
+
+// E1.31 / sACN. direction absent = out (pixel transmit path with uvMap).
+// Defaults: startChannel 1, universeCount 1, enabled true, host = multicast.
 add("rig.io.sacn", {
   universe: { type: "integer", minimum: 1, maximum: 63999 },
+  direction: enumOf(["in", "out"]),
+  universeCount: { type: "integer", minimum: 1, maximum: 63999 },
   startChannel: { type: "integer", minimum: 1, maximum: 512 },
   host: ref("string"),
   fps: ref("float"),
@@ -700,6 +854,76 @@ add("rig.sensor.gpio", {
   level: { type: "number", minimum: 0, maximum: 1 },
   device: ref("entity"),
 }, { required: ["pin", "mode"] });
+
+// Defaults: level 0; device absent = local.
+add("rig.sensor.presence", {
+  level: { type: "number", minimum: 0, maximum: 1 },
+  device: ref("entity"),
+}, { required: [] });
+
+// --- dmx ---
+// Patch on a scene light. Channel layout is fixture-profile fulfillment.
+add("rig.dmx.fixture", {
+  startChannel: { type: "integer", minimum: 1, maximum: 512 },
+  channelCount: { type: "integer", minimum: 1 },
+  port: ref("entity"),
+}, { required: ["startChannel", "channelCount"] });
+
+// --- light ---
+// Show look. speed / freezeTimeoutMinutes absent = host default.
+add("rig.light.look", {
+  effectId: ref("string"),
+  speed: { type: "number", minimum: 0, maximum: 1 },
+  freezeTimeoutMinutes: ref("float"),
+}, { required: ["effectId"] });
+
+// --- calendar (wall-clock show planning) ---
+// days[0] = Sunday … days[6] = Saturday. Times are minutes since midnight
+// in document.timeZone.
+add("rig.calendar.weekly", {
+  days: {
+    type: "array",
+    items: { type: "boolean" },
+    minItems: 7,
+    maxItems: 7,
+  },
+  startMinutes: { type: "integer", minimum: 0, maximum: 1439 },
+  endMinutes: { type: "integer", minimum: 0, maximum: 1439 },
+}, { required: ["days", "startMinutes", "endMinutes"] });
+
+add("rig.calendar.span", {
+  startDate: ref("string"),
+  endDate: ref("string"),
+}, { required: ["startDate", "endDate"] });
+
+add("rig.calendar.exception", {
+  date: ref("string"),
+  skip: ref("bool"),
+}, { required: ["date"] });
+
+// --- install ---
+// Show-level audio / visuals bus. Defaults: both false (open).
+add("rig.install.av_bus", {
+  audioMuted: ref("bool"),
+  visualsBlackout: ref("bool"),
+}, { required: [] });
+
+// Discrete gated event. mode absent = forward; enabled absent = true.
+add("rig.install.trigger", {
+  source: ref("entity"),
+  action: enumOf(["colorFlash", "playSample"]),
+  enabled: ref("bool"),
+  cooldownMs: ref("int"),
+  calendar: ref("entity"),
+  fadeInMs: ref("int"),
+  holdMs: ref("int"),
+  fadeOutMs: ref("int"),
+  palette: { type: "array", items: ref("rgba") },
+  mode: enumOf(["forward", "backward", "pendulum", "random"]),
+  volume: { type: "number", minimum: 0, maximum: 1 },
+  loop: ref("bool"),
+  samples: { type: "array", items: ref("entity") },
+}, { required: ["source", "action"] });
 
 // --- sim ---
 // Authored initial conditions and constants. Positions integrated at runtime
@@ -968,6 +1192,26 @@ catalog["rig.document"] = {
         colorSpace: {
           type: "string",
           description: "Colour space for all rgba/rgb values (default: srgb).",
+        },
+        timeZone: {
+          type: "string",
+          description:
+            "IANA time zone for wall-clock calendar fields (e.g. Australia/Sydney). Absent = host local.",
+        },
+        pdfX: {
+          type: "string",
+          description:
+            "PDF/X identification (e.g. PDF/X-4). Empty/absent = not a PDF/X job.",
+        },
+        outputCondition: {
+          type: "string",
+          description:
+            "OutputIntent OutputConditionIdentifier (e.g. FOGRA39, CGATS TR 001).",
+        },
+        trapped: {
+          type: "string",
+          enum: ["unknown", "true", "false"],
+          description: "PDF Info Trapped; absent = unknown.",
         },
       },
     },

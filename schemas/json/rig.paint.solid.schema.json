@@ -10,6 +10,15 @@
     },
     "cmyk": {
       "$ref": "./_defs.schema.json#/$defs/vec4"
+    },
+    "ink": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "overprintFill": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "overprintStroke": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
     }
   },
   "required": [

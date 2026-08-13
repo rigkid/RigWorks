@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.cad.extrude.schema.json",
+  "title": "rig.cad.extrude",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "profile": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "height": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "nDivisions": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "twistDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "scaleTop": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "profile",
+    "height"
+  ]
+}

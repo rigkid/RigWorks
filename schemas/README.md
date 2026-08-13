@@ -71,6 +71,7 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | `rig.geometry.arc` | [geometry/arc.md](geometry/arc.md) |
 | `rig.geometry.spline` | [geometry/spline.md](geometry/spline.md) |
 | `rig.geometry.spline3d` | [geometry/spline3d.md](geometry/spline3d.md) |
+| `rig.geometry.nurbs_surface` | [geometry/nurbs-surface.md](geometry/nurbs-surface.md) |
 | `rig.geometry.ring` | [geometry/ring.md](geometry/ring.md) |
 | `rig.paint.solid` | [paint/solid.md](paint/solid.md) |
 | `rig.paint.gradient` | [paint/gradient.md](paint/gradient.md) |
@@ -78,6 +79,21 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | `rig.paint.fill` | [paint/fill.md](paint/fill.md) |
 | `rig.paint.stroke` | [paint/stroke.md](paint/stroke.md) |
 | `rig.paint.library` | [paint/library.md](paint/library.md) |
+
+### CAD / solids
+
+CSG tree as split primitives. When `rig.cad.*` is present it is the solid source of truth; mesh on the same entity is an optional bake. Edges for fillet/chamfer are `{a,b}` pairs into mesh `positions` — see [geometry/mesh.md](geometry/mesh.md#edges).
+
+| Id | Doc |
+|----|-----|
+| `rig.cad.cuboid` | [cad/cuboid.md](cad/cuboid.md) |
+| `rig.cad.cylinder` | [cad/cylinder.md](cad/cylinder.md) |
+| `rig.cad.sphere` | [cad/sphere.md](cad/sphere.md) |
+| `rig.cad.extrude` | [cad/extrude.md](cad/extrude.md) |
+| `rig.cad.revolve` | [cad/revolve.md](cad/revolve.md) |
+| `rig.cad.boolean` | [cad/boolean.md](cad/boolean.md) |
+| `rig.cad.fillet` | [cad/fillet.md](cad/fillet.md) |
+| `rig.cad.chamfer` | [cad/chamfer.md](cad/chamfer.md) |
 
 ### Meta / render
 
@@ -117,6 +133,7 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | Id | Doc |
 |----|-----|
 | `rig.audio.analysis` | [audio/analysis.md](audio/analysis.md) |
+| `rig.audio.bus` | [audio/bus.md](audio/bus.md) |
 
 ### Media
 
@@ -125,6 +142,18 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | `rig.media.asset_ref` | [media/asset-ref.md](media/asset-ref.md) |
 | `rig.media.text` | [media/text.md](media/text.md) |
 | `rig.media.code` | [media/code.md](media/code.md) |
+
+### Story (semantic copy)
+
+Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style identity, not face/size/colour or local bold flags). Canvas type stays on [`rig.media.text`](media/text.md).
+
+| Id | Doc |
+|----|-----|
+| `rig.story.flow` | [story/flow.md](story/flow.md) |
+| `rig.story.paragraph` | [story/paragraph.md](story/paragraph.md) |
+| `rig.story.paragraph_style` | [story/paragraph-style.md](story/paragraph-style.md) |
+| `rig.story.character_style` | [story/character-style.md](story/character-style.md) |
+| `rig.story.table` | [story/table.md](story/table.md) |
 
 ### Pixel / raster
 
@@ -146,9 +175,18 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | `rig.io.osc` | [io/osc.md](io/osc.md) |
 | `rig.io.serial` | [io/serial.md](io/serial.md) |
 | `rig.io.sacn` | [io/sacn.md](io/sacn.md) |
+| `rig.io.dmx` | [io/dmx.md](io/dmx.md) |
+| `rig.dmx.fixture` | [dmx/fixture.md](dmx/fixture.md) |
 | `rig.led.uv_map` | [led/uv-map.md](led/uv-map.md) |
 | `rig.sensor.gpio` | [sensor/gpio.md](sensor/gpio.md) |
+| `rig.sensor.presence` | [sensor/presence.md](sensor/presence.md) |
 | `rig.input.buttons` | [input/buttons.md](input/buttons.md) |
+| `rig.light.look` | [light/look.md](light/look.md) |
+| `rig.calendar.weekly` | [calendar/weekly.md](calendar/weekly.md) |
+| `rig.calendar.span` | [calendar/span.md](calendar/span.md) |
+| `rig.calendar.exception` | [calendar/exception.md](calendar/exception.md) |
+| `rig.install.av_bus` | [install/av-bus.md](install/av-bus.md) |
+| `rig.install.trigger` | [install/trigger.md](install/trigger.md) |
 
 ### Simulation
 
@@ -194,5 +232,8 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | Node editor | `nested` on a node | [`node.node`](node/node.md) + [`node.publish`](node/publish.md) |
 | Song arrangement | frame `patterns` | [`music.arrangement`](music/arrangement.md) → [`music.pattern`](music/pattern.md) (by `lane`) |
 | Control surface | `panel` / optional `group` | [`ui.panel`](ui/panel.md) + [`ui.group`](ui/group.md) + [`ui.control`](ui/control.md) / [`ui.action`](ui/action.md) |
+| CSG tree | `operands` | [`cad.boolean`](cad/boolean.md) → cad primitives / mesh solids (not `spatial.relationship`) |
+| Story flow | `blocks` | [`story.flow`](story/flow.md) → [`story.paragraph`](story/paragraph.md) / [`story.table`](story/table.md) |
+| Table cell | `blocks` | [`story.table`](story/table.md) cell → nested paragraphs / tables (not listed on the parent flow) |
 
 Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).

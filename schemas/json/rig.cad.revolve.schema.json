@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.cad.revolve.schema.json",
+  "title": "rig.cad.revolve",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "profile": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "revolveDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "circularSegments": {
+      "type": "integer",
+      "minimum": 3
+    }
+  },
+  "required": [
+    "profile"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.cad.boolean.schema.json",
+  "title": "rig.cad.boolean",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "op": {
+      "type": "string",
+      "enum": [
+        "union",
+        "difference",
+        "intersection"
+      ]
+    },
+    "operands": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      },
+      "minItems": 2
+    }
+  },
+  "required": [
+    "op",
+    "operands"
+  ]
+}
