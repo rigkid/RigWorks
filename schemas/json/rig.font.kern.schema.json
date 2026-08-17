@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.font.kern.schema.json",
+  "title": "rig.font.kern",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "left": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "right": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "value": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "left",
+    "right",
+    "value"
+  ]
+}

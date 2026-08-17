@@ -4,6 +4,8 @@ Scene / canvas text run. Format when present.
 
 Editorial copy (named styles, paragraphs, runs, tables) is [`rig.story.flow`](../story/flow.md), not this schema. Do not flatten a story into canvas runs.
 
+An editable UFO source face is [`rig.font.face`](../font/face.md) — do not put outlines, kern pairs, or glyph names on this schema. `font` here is a compiled [`rig.media.asset_ref`](asset-ref.md).
+
 | Field | Type | Meaning |
 |-------|------|---------|
 | `text` | string | Content |

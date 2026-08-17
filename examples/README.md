@@ -14,6 +14,7 @@ node tools/rig-validate/cli.js examples/story-flow.json
 node tools/rig-validate/cli.js examples/bim-model.json
 node tools/rig-validate/cli.js examples/bim-bcf.json
 node tools/rig-validate/cli.js examples/bim-ids.json
+node tools/rig-validate/cli.js examples/font-ufo.json
 ```
 
 ## SUDE sketch
@@ -151,4 +152,36 @@ BCF thread: topic + comment + viewpoint (camera, selected elements, clip plane, 
 ## `bim-ids.json`
 
 IDS specification: applicability facet (`IfcWall`) and requirement facet (`Pset_WallCommon.FireRating`). Specs-only document — no building model required.
+
+## `font-ufo.json`
+
+UFO source as Rig: face metrics, a foreground layer, glyphs `A` / `V` / `space` / `acute` / `Aacute` (composite), a `top` anchor, pair `A`/`V`, a left kerning group, and AFDKO features as `rig.media.code`. Outlines are `rig.geometry.path` on the glyph. `.ufo` stays a host encoding — [docs/ufo.md](../docs/ufo.md).
+
+One entity (the face):
+
+<!-- rig:begin entity=face from=examples/font-ufo.json -->
+```json
+{
+  "id": "face",
+  "components": {
+    "rig.meta.named": {
+      "name": "LiveFace Regular",
+      "stableId": "LiveFace-Regular"
+    },
+    "rig.font.face": {
+      "family": "LiveFace",
+      "style": "Regular",
+      "unitsPerEm": 1000,
+      "ascender": 800,
+      "descender": -200,
+      "capHeight": 700,
+      "xHeight": 500,
+      "version": "0.1",
+      "features": "features-fea"
+    }
+  }
+}
+```
+<!-- rig:end -->
+
 

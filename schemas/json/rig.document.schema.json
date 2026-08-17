@@ -182,6 +182,27 @@
               "rig.dmx.fixture": {
                 "$ref": "./rig.dmx.fixture.schema.json"
               },
+              "rig.font.anchor": {
+                "$ref": "./rig.font.anchor.schema.json"
+              },
+              "rig.font.component": {
+                "$ref": "./rig.font.component.schema.json"
+              },
+              "rig.font.face": {
+                "$ref": "./rig.font.face.schema.json"
+              },
+              "rig.font.glyph": {
+                "$ref": "./rig.font.glyph.schema.json"
+              },
+              "rig.font.group": {
+                "$ref": "./rig.font.group.schema.json"
+              },
+              "rig.font.kern": {
+                "$ref": "./rig.font.kern.schema.json"
+              },
+              "rig.font.layer": {
+                "$ref": "./rig.font.layer.schema.json"
+              },
               "rig.geometry.arc": {
                 "$ref": "./rig.geometry.arc.schema.json"
               },

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.font.group.schema.json",
+  "title": "rig.font.group",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "members": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/string"
+      }
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "left",
+        "right"
+      ]
+    }
+  },
+  "required": [
+    "members"
+  ]
+}

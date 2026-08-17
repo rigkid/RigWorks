@@ -1,6 +1,6 @@
 # Interchange
 
-Rig portable documents are **JSON** using the [`rig.document`](../schemas/document.md) envelope. Component object keys are full schema ids (`rig.spatial.transform`). The conventional file extension is **`.rig`**. Other on-disk encodings are host mappings at the boundary — including OpenBIM (`.ifc`, `.bcfzip`, `.ids`); see [openbim.md](openbim.md) and [design philosophy](design-philosophy.md#encoding).
+Rig portable documents are **JSON** using the [`rig.document`](../schemas/document.md) envelope. Component object keys are full schema ids (`rig.spatial.transform`). The conventional file extension is **`.rig`**. Other on-disk encodings are host mappings at the boundary — including OpenBIM (`.ifc`, `.bcfzip`, `.ids`) and UFO (`.ufo`, `.ufoz`); see [openbim.md](openbim.md), [ufo.md](ufo.md), and [design philosophy](design-philosophy.md#encoding).
 
 ## Encoding
 

@@ -164,6 +164,20 @@ Thin OpenBIM layer — IFC class is a string on `classify`, not one schema per `
 | `rig.media.text` | [media/text.md](media/text.md) |
 | `rig.media.code` | [media/code.md](media/code.md) |
 
+### Font (UFO source)
+
+Editable face — outlines on [`rig.geometry.path`](geometry/path.md), features on [`rig.media.code`](media/code.md). `.ufo` / `.ufoz` are host encodings — [ufo.md](../docs/ufo.md). Not a compiled TTF; not [`rig.media.text`](media/text.md).
+
+| Id | Doc |
+|----|-----|
+| `rig.font.face` | [font/face.md](font/face.md) |
+| `rig.font.glyph` | [font/glyph.md](font/glyph.md) |
+| `rig.font.component` | [font/component.md](font/component.md) |
+| `rig.font.anchor` | [font/anchor.md](font/anchor.md) |
+| `rig.font.layer` | [font/layer.md](font/layer.md) |
+| `rig.font.kern` | [font/kern.md](font/kern.md) |
+| `rig.font.group` | [font/group.md](font/group.md) |
+
 ### Story (semantic copy)
 
 Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style identity, not face/size/colour or local bold flags). Canvas type stays on [`rig.media.text`](media/text.md).
@@ -262,5 +276,8 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 | BIM type | `type` | [`bim.occurrence`](bim/occurrence.md) → [`bim.type`](bim/type.md) |
 | BCF thread | `topic` | [`bim.comment`](bim/comment.md) / [`bim.viewpoint`](bim/viewpoint.md) → [`bim.topic`](bim/topic.md) |
 | IDS spec | `applicability` / `requirements` | [`bim.spec`](bim/spec.md) → [`bim.facet`](bim/facet.md) |
+| Font face | `parent` | [`spatial.relationship`](spatial/relationship.md) under [`font.face`](font/face.md) / [`font.layer`](font/layer.md) |
+| Font composite | `parent` | [`font.component`](font/component.md) child of [`font.glyph`](font/glyph.md); `glyph` is the source |
+| Font kern | `left` / `right` | [`font.kern`](font/kern.md) — names (`stableId`), not entity ids |
 
 Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).

@@ -92,7 +92,7 @@ A component key may also be `x.<vendor>.<name>` — a host component the Contrac
 
 ## Worked examples
 
-Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json). Validate before you trust the output.
+Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json). Validate before you trust the output.
 
 ### Entity with shape + paint
 
@@ -238,6 +238,7 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** store a parallel edge table on `rig.geometry.mesh` — name fillet/chamfer edges as `{a,b}` vertex pairs
 - **Do not** invent `rig.bim.wall` / `rig.bim.door` — use `rig.bim.classify` with `ifcClass`; geometry on cad / mesh; typed params on `rig.bim.pset`
 - **Do not** invent `rig.ros2.*` — ROS 2 maps onto existing spatial / I/O / sensor / SUDE; TF is `transform` + `relationship`; do not put ROS nodes on `rig.node.*`; see [docs/ros.md](../../docs/ros.md)
+- **Do not** invent `rig.font.ttf` or grow `rig.media.text` with outlines — UFO source is `rig.font.*`; contours compose `rig.geometry.path`; features compose `rig.media.code` (`language` `fea`); `.ufo` is fulfillment — [docs/ufo.md](../../docs/ufo.md)
 - **Do not** invent schema ids or use PascalCase keys (`Transform`, `Shape`) — those are RigKit host aliases; see [docs/interchange.md](../../docs/interchange.md)
 - **Do not** use `x.<vendor>.<name>` to stand in for a catalog id you could not find — report the gap instead
 - **Do not** nest SUDE hooks or skip calling `Draw` (when authoring a live host)
@@ -269,6 +270,7 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Music | `transport`, `clock`, `sequencer`, `pattern`, `arrangement`, `step`, `note`, `midi_output`, `midi_input` |
 | Audio | `analysis`, `bus` |
 | Media | `asset_ref`, `text`, `code` |
+| Font | `face`, `glyph`, `component`, `anchor`, `layer`, `kern`, `group` |
 | Story | `flow`, `paragraph`, `paragraph_style`, `character_style`, `table` |
 | Pixel | `canvas`, `source`, `layer`, `raster`, `palette`, `tile_set`, `tile_map`, `effect_chain` |
 | I/O | `osc`, `serial`, `sacn`, `dmx`, `led.uv_map`, `sensor.gpio`, `sensor.presence` |

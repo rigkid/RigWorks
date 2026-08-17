@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.font.component.schema.json",
+  "title": "rig.font.component",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "glyph": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "scaleX": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "xyScale": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "yxScale": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "scaleY": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "offsetX": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "offsetY": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "glyph"
+  ]
+}

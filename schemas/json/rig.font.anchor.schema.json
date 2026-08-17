@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.font.anchor.schema.json",
+  "title": "rig.font.anchor",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "point": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
+    }
+  },
+  "required": [
+    "point"
+  ]
+}

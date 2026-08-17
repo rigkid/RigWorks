@@ -637,6 +637,56 @@ add("rig.media.code", {
   readOnly: ref("bool"),
 }, { required: ["text"] });
 
+// --- font (UFO source) ---
+// Outlines compose rig.geometry.path on the glyph entity.
+// Features compose rig.media.code (language fea) via face.features.
+// .ufo / .ufoz stay host encodings — docs/ufo.md.
+add("rig.font.face", {
+  family: ref("string"),
+  style: ref("string"),
+  unitsPerEm: ref("float"),
+  ascender: ref("float"),
+  descender: ref("float"),
+  capHeight: ref("float"),
+  xHeight: ref("float"),
+  version: ref("string"),
+  features: ref("entity"),
+}, { required: [] });
+
+add("rig.font.glyph", {
+  unicodes: { type: "array", items: ref("uint32") },
+  width: ref("float"),
+}, { required: ["width"] });
+
+add("rig.font.component", {
+  glyph: ref("entity"),
+  scaleX: ref("float"),
+  xyScale: ref("float"),
+  yxScale: ref("float"),
+  scaleY: ref("float"),
+  offsetX: ref("float"),
+  offsetY: ref("float"),
+}, { required: ["glyph"] });
+
+add("rig.font.anchor", {
+  point: ref("vec2"),
+}, { required: ["point"] });
+
+add("rig.font.layer", {
+  role: enumOf(["foreground", "background", "spare"]),
+}, { required: [] });
+
+add("rig.font.kern", {
+  left: ref("string"),
+  right: ref("string"),
+  value: ref("float"),
+}, { required: ["left", "right", "value"] });
+
+add("rig.font.group", {
+  members: { type: "array", items: ref("string") },
+  side: enumOf(["left", "right"]),
+}, { required: ["members"] });
+
 // --- story (semantic copy) ---
 // Editorial flow: named styles, paragraphs, runs, tables. No font, size, or
 // colour — those stay on rig.media.text + paint. Style labels compose

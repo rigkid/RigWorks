@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.font.face.schema.json",
+  "title": "rig.font.face",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "family": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "style": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "unitsPerEm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "ascender": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "descender": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "capHeight": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "xHeight": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "version": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "features": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

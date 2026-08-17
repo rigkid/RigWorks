@@ -7,7 +7,7 @@ Compose [`rig.meta.named`](../meta/named.md) for the label, and [`rig.media.asse
 | Field | Type | Meaning |
 |-------|------|---------|
 | `text` | string | Buffer content — the source of truth, not a cache of a file |
-| `language` | string | Optional. Lowercase grammar id (`gcode`, `svg`, `python`); absent or empty = plain text |
+| `language` | string | Optional. Lowercase grammar id (`gcode`, `svg`, `python`, `fea`); absent or empty = plain text |
 | `readOnly` | bool | Optional. Edit lock hint; absent = false |
 
 Distinct from [`rig.media.text`](text.md) (positioned canvas run) and [`rig.story.flow`](../story/flow.md) (semantic editorial copy).
