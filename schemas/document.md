@@ -9,12 +9,14 @@ This is the **Contract wire format** (JSON). Field meaning remains POD; vectors 
 | Field | Type | Meaning |
 |-------|------|---------|
 | `rig` | string | Contract version this document targets (`MAJOR.MINOR.PATCH`) |
-| `document` | object | Optional metadata (`title`, `author`, `createdAt`, `modifiedAt`, `defaultUnit`, `colorSpace`, `timeZone`, `pdfX`, `outputCondition`, `trapped`, …) |
+| `document` | object | Optional metadata (`title`, `author`, `createdAt`, `modifiedAt`, `defaultUnit`, `colorSpace`, `timeZone`, `ifcSchema`, `pdfX`, `outputCondition`, `trapped`, …) |
 | `entities` | entity[] | Scene / graph contents |
 
 `colorSpace` names the colour space every `rgba` / `rgb` value in the file is expressed in; absent = `srgb`. One key for the whole document — per-component colour spaces do not exist.
 
 `timeZone` is an IANA id (e.g. `Australia/Sydney`) for wall-clock calendar fields ([`rig.calendar.*`](calendar/weekly.md)). Absent = host local. Do not put NTP hour offsets here — those are a host cache of “now” and break across DST.
+
+`ifcSchema` is the IFC release this document was derived from (`ifc2x3` / `ifc4` / `ifc4x3`). Absent = not an IFC-derived document. Portable BIM meaning lives on [`rig.bim.*`](bim/classify.md); `.ifc` files are a host mapping — [openbim.md](../docs/openbim.md).
 
 Print-job keys (optional):
 

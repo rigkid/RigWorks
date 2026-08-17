@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.bim.topic.schema.json",
+  "title": "rig.bim.topic",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "topicType": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "topicStatus": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "priority": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "assignedTo": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/string"
+      }
+    },
+    "stage": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "description": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "dueAt": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "createdBy": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "createdAt": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "modifiedAt": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  }
+}

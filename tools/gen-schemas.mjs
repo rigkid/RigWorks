@@ -925,6 +925,177 @@ add("rig.install.trigger", {
   samples: { type: "array", items: ref("entity") },
 }, { required: ["source", "action"] });
 
+// --- bim (OpenBIM: IFC model + BCF + IDS) ---
+// Thin layer — classify.ifcClass names the IFC type; do not invent
+// rig.bim.wall / .door. Geometry stays on cad / mesh. Encodings
+// (.ifc, .bcfzip, .ids) are host mappings — see docs/openbim.md.
+add("rig.bim.classify", {
+  ifcClass: ref("string"),
+  predefinedType: ref("string"),
+  scheme: ref("string"),
+  code: ref("string"),
+  uri: ref("string"),
+}, { required: ["ifcClass"] });
+
+add("rig.bim.type", {}, { required: [], minProperties: 0 });
+
+add("rig.bim.occurrence", {
+  type: ref("entity"),
+}, { required: ["type"] });
+
+const bimProperty = {
+  type: "object",
+  oneOf: [
+    {
+      type: "object",
+      additionalProperties: false,
+      required: ["name", "type", "flag"],
+      properties: {
+        name: ref("string"),
+        type: { const: "bool" },
+        flag: ref("bool"),
+        unit: ref("string"),
+      },
+    },
+    {
+      type: "object",
+      additionalProperties: false,
+      required: ["name", "type", "integer"],
+      properties: {
+        name: ref("string"),
+        type: { const: "int" },
+        integer: ref("int"),
+        unit: ref("string"),
+      },
+    },
+    {
+      type: "object",
+      additionalProperties: false,
+      required: ["name", "type", "number"],
+      properties: {
+        name: ref("string"),
+        type: { const: "float" },
+        number: ref("float"),
+        unit: ref("string"),
+      },
+    },
+    {
+      type: "object",
+      additionalProperties: false,
+      required: ["name", "type", "text"],
+      properties: {
+        name: ref("string"),
+        type: { const: "string" },
+        text: ref("string"),
+        unit: ref("string"),
+      },
+    },
+  ],
+};
+
+const bimPset = {
+  type: "object",
+  additionalProperties: false,
+  required: ["name", "properties"],
+  properties: {
+    name: ref("string"),
+    properties: { type: "array", items: bimProperty },
+  },
+};
+
+add("rig.bim.pset", {
+  sets: { type: "array", items: bimPset },
+}, { required: ["sets"] });
+
+add("rig.bim.site", {
+  latitudeDegrees: ref("float"),
+  longitudeDegrees: ref("float"),
+  elevation: ref("float"),
+}, { required: [] });
+
+add("rig.bim.building", {}, { required: [], minProperties: 0 });
+
+add("rig.bim.storey", {
+  elevation: ref("float"),
+}, { required: [] });
+
+add("rig.bim.space", {}, { required: [], minProperties: 0 });
+
+add("rig.bim.relation", {
+  kind: enumOf(["voids", "fills", "connects", "aggregates", "services"]),
+  a: ref("entity"),
+  b: ref("entity"),
+}, { required: ["kind", "a", "b"] });
+
+add("rig.bim.topic", {
+  topicType: ref("string"),
+  topicStatus: ref("string"),
+  priority: ref("string"),
+  assignedTo: ref("string"),
+  labels: { type: "array", items: ref("string") },
+  stage: ref("string"),
+  description: ref("string"),
+  dueAt: ref("string"),
+  createdBy: ref("string"),
+  createdAt: ref("string"),
+  modifiedAt: ref("string"),
+}, { required: [] });
+
+add("rig.bim.comment", {
+  topic: ref("entity"),
+  body: ref("string"),
+  author: ref("string"),
+  createdAt: ref("string"),
+  viewpoint: ref("entity"),
+}, { required: ["topic", "body"] });
+
+const bimClipPlane = {
+  type: "object",
+  additionalProperties: false,
+  required: ["origin", "normal"],
+  properties: {
+    origin: ref("vec3"),
+    normal: ref("vec3"),
+  },
+};
+
+add("rig.bim.viewpoint", {
+  topic: ref("entity"),
+  selected: { type: "array", items: ref("entity") },
+  hidden: { type: "array", items: ref("entity") },
+  clipPlanes: { type: "array", items: bimClipPlane },
+}, { required: ["topic"] });
+
+add("rig.bim.spec", {
+  ifcVersion: enumOf(["ifc2x3", "ifc4", "ifc4x3"]),
+  description: ref("string"),
+  instructions: ref("string"),
+  applicability: { type: "array", items: ref("entity") },
+  requirements: { type: "array", items: ref("entity") },
+}, { required: [] });
+
+add("rig.bim.facet", {
+  role: enumOf(["applicability", "requirement"]),
+  kind: enumOf([
+    "entity",
+    "attribute",
+    "classification",
+    "property",
+    "material",
+    "partOf",
+  ]),
+  cardinality: enumOf(["required", "prohibited", "optional"]),
+  ifcClass: ref("string"),
+  predefinedType: ref("string"),
+  attributeName: ref("string"),
+  propertySet: ref("string"),
+  propertyName: ref("string"),
+  value: ref("string"),
+  scheme: ref("string"),
+  partOfClass: ref("string"),
+  partOfRelation: ref("string"),
+}, { required: ["role", "kind"] });
+
 // --- sim ---
 // Authored initial conditions and constants. Positions integrated at runtime
 // belong to rig.spatial.transform; per-particle state is never serialized.
@@ -1197,6 +1368,12 @@ catalog["rig.document"] = {
           type: "string",
           description:
             "IANA time zone for wall-clock calendar fields (e.g. Australia/Sydney). Absent = host local.",
+        },
+        ifcSchema: {
+          type: "string",
+          enum: ["ifc2x3", "ifc4", "ifc4x3"],
+          description:
+            "IFC schema this document was derived from. Absent = not an IFC-derived document.",
         },
         pdfX: {
           type: "string",

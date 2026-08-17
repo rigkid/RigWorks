@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.bim.occurrence.schema.json",
+  "title": "rig.bim.occurrence",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.bim.facet.schema.json",
+  "title": "rig.bim.facet",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "applicability",
+        "requirement"
+      ]
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "entity",
+        "attribute",
+        "classification",
+        "property",
+        "material",
+        "partOf"
+      ]
+    },
+    "cardinality": {
+      "type": "string",
+      "enum": [
+        "required",
+        "prohibited",
+        "optional"
+      ]
+    },
+    "ifcClass": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "predefinedType": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "attributeName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "propertySet": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "propertyName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "value": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "scheme": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "partOfClass": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "partOfRelation": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "role",
+    "kind"
+  ]
+}

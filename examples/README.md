@@ -11,6 +11,9 @@ node tools/rig-validate/cli.js examples/path3d-spline3d.json
 node tools/rig-validate/cli.js examples/page-anchor.json
 node tools/rig-validate/cli.js examples/cad-boolean.json
 node tools/rig-validate/cli.js examples/story-flow.json
+node tools/rig-validate/cli.js examples/bim-model.json
+node tools/rig-validate/cli.js examples/bim-bcf.json
+node tools/rig-validate/cli.js examples/bim-ids.json
 ```
 
 ## SUDE sketch
@@ -136,4 +139,16 @@ One entity (the flow):
 }
 ```
 <!-- rig:end -->
+
+## `bim-model.json`
+
+OpenBIM model cut: site → building → storey → space, a shared wall type, an extruded wall occurrence, an opening that voids the wall, and a door that fills the opening. IFC class is a string on `rig.bim.classify` — not a per-class schema. See [docs/openbim.md](../docs/openbim.md).
+
+## `bim-bcf.json`
+
+BCF thread: topic + comment + viewpoint (camera, selected elements, clip plane, snapshot asset).
+
+## `bim-ids.json`
+
+IDS specification: applicability facet (`IfcWall`) and requirement facet (`Pset_WallCommon.FireRating`). Specs-only document — no building model required.
 

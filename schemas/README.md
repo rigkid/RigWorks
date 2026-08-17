@@ -95,6 +95,27 @@ CSG tree as split primitives. When `rig.cad.*` is present it is the solid source
 | `rig.cad.fillet` | [cad/fillet.md](cad/fillet.md) |
 | `rig.cad.chamfer` | [cad/chamfer.md](cad/chamfer.md) |
 
+### BIM / OpenBIM
+
+Thin OpenBIM layer — IFC class is a string on `classify`, not one schema per `IfcWall`. `.ifc` / `.bcfzip` / `.ids` are host encodings — [openbim.md](../docs/openbim.md).
+
+| Id | Doc |
+|----|-----|
+| `rig.bim.classify` | [bim/classify.md](bim/classify.md) |
+| `rig.bim.type` | [bim/type.md](bim/type.md) |
+| `rig.bim.occurrence` | [bim/occurrence.md](bim/occurrence.md) |
+| `rig.bim.pset` | [bim/pset.md](bim/pset.md) |
+| `rig.bim.site` | [bim/site.md](bim/site.md) |
+| `rig.bim.building` | [bim/building.md](bim/building.md) |
+| `rig.bim.storey` | [bim/storey.md](bim/storey.md) |
+| `rig.bim.space` | [bim/space.md](bim/space.md) |
+| `rig.bim.relation` | [bim/relation.md](bim/relation.md) |
+| `rig.bim.topic` | [bim/topic.md](bim/topic.md) |
+| `rig.bim.comment` | [bim/comment.md](bim/comment.md) |
+| `rig.bim.viewpoint` | [bim/viewpoint.md](bim/viewpoint.md) |
+| `rig.bim.spec` | [bim/spec.md](bim/spec.md) |
+| `rig.bim.facet` | [bim/facet.md](bim/facet.md) |
+
 ### Meta / render
 
 | Id | Doc |
@@ -226,6 +247,7 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 | Graph | Parent / nest | Schema |
 |-------|---------------|--------|
 | Scene pose | `parent` | [`spatial.relationship`](spatial/relationship.md) + optional [`spatial.group`](spatial/group.md) marker |
+| TF / URDF frame | `parent` | [`spatial.relationship`](spatial/relationship.md) — same graph as scene pose; not a new graph ([ros.md](../docs/ros.md)) |
 | Compositor stack | `groupParent` | [`pixel.layer`](pixel/layer.md) (`kind=group`) |
 | Effect chain | `parentStep` | [`pixel.effect_chain`](pixel/effect-chain.md) (step `id`) |
 | Tile map | `tileSet` | [`pixel.tile_map`](pixel/tile-map.md) → [`pixel.tile_set`](pixel/tile-set.md) → [`pixel.palette`](pixel/palette.md) |
@@ -235,5 +257,10 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 | CSG tree | `operands` | [`cad.boolean`](cad/boolean.md) → cad primitives / mesh solids (not `spatial.relationship`) |
 | Story flow | `blocks` | [`story.flow`](story/flow.md) → [`story.paragraph`](story/paragraph.md) / [`story.table`](story/table.md) |
 | Table cell | `blocks` | [`story.table`](story/table.md) cell → nested paragraphs / tables (not listed on the parent flow) |
+| BIM containment | `parent` | [`spatial.relationship`](spatial/relationship.md) under site / building / storey groups ([`bim.site`](bim/site.md) / [`building`](bim/building.md) / [`storey`](bim/storey.md)) |
+| BIM relation | `a` / `b` | [`bim.relation`](bim/relation.md) (`voids` / `fills` / `connects` / `aggregates` / `services`) |
+| BIM type | `type` | [`bim.occurrence`](bim/occurrence.md) → [`bim.type`](bim/type.md) |
+| BCF thread | `topic` | [`bim.comment`](bim/comment.md) / [`bim.viewpoint`](bim/viewpoint.md) → [`bim.topic`](bim/topic.md) |
+| IDS spec | `applicability` / `requirements` | [`bim.spec`](bim/spec.md) → [`bim.facet`](bim/facet.md) |
 
 Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).

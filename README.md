@@ -147,6 +147,8 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | [schemas/document.md](schemas/document.md) | Document envelope |
 | [docs/properties.md](docs/properties.md) | Portable datatypes |
 | [docs/interchange.md](docs/interchange.md) | Wire format and host aliases |
+| [docs/openbim.md](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) → `rig.bim.*` |
+| [docs/ros.md](docs/ros.md) | ROS 2 → existing schemas; no `rig.ros2.*` |
 | [examples/](examples/) | Reference documents |
 
 | Working with models | |

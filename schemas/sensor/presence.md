@@ -7,4 +7,4 @@ Occupancy / presence reading. Format when present.
 | `level` | float | Optional. 0–1 occupancy; absent = 0 |
 | `device` | entity | Optional board / network entity; absent = local |
 
-Digital hosts threshold `level` themselves. Bus addresses, UART handles, and raw mmWave packets stay in the host (or `x.<vendor>.*` device ops).
+Digital hosts threshold `level` themselves. Bus addresses, UART handles, and raw mmWave packets stay in the host (or `x.<vendor>.*` device ops). A ROS 2 node entity is a valid `device` — [docs/ros.md](../../docs/ros.md).

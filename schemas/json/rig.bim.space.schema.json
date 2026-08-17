@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.bim.space.schema.json",
+  "title": "rig.bim.space",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {},
+  "minProperties": 0
+}

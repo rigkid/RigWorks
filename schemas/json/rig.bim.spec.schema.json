@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.bim.spec.schema.json",
+  "title": "rig.bim.spec",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "ifcVersion": {
+      "type": "string",
+      "enum": [
+        "ifc2x3",
+        "ifc4",
+        "ifc4x3"
+      ]
+    },
+    "description": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "instructions": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "applicability": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    }
+  }
+}

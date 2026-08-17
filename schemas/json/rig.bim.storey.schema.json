@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.bim.storey.schema.json",
+  "title": "rig.bim.storey",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "elevation": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  }
+}

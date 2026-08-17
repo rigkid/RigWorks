@@ -1,0 +1,49 @@
+{
+  "rig": "0.15.0",
+  "document": {
+    "title": "OpenBIM IDS — walls must have fire rating",
+    "ifcSchema": "ifc4"
+  },
+  "entities": [
+    {
+      "id": "facet-walls",
+      "components": {
+        "rig.meta.named": { "name": "All walls", "stableId": "facet-walls" },
+        "rig.bim.facet": {
+          "role": "applicability",
+          "kind": "entity",
+          "ifcClass": "IfcWall"
+        }
+      }
+    },
+    {
+      "id": "facet-fire",
+      "components": {
+        "rig.meta.named": { "name": "FireRating required", "stableId": "facet-fire" },
+        "rig.bim.facet": {
+          "role": "requirement",
+          "kind": "property",
+          "cardinality": "required",
+          "propertySet": "Pset_WallCommon",
+          "propertyName": "FireRating"
+        }
+      }
+    },
+    {
+      "id": "spec-walls-fire",
+      "components": {
+        "rig.meta.named": {
+          "name": "Walls carry FireRating",
+          "stableId": "spec-walls-fire"
+        },
+        "rig.bim.spec": {
+          "ifcVersion": "ifc4",
+          "description": "Every IfcWall must have Pset_WallCommon.FireRating.",
+          "instructions": "Set FireRating on the wall type or occurrence.",
+          "applicability": ["facet-walls"],
+          "requirements": ["facet-fire"]
+        }
+      }
+    }
+  ]
+}

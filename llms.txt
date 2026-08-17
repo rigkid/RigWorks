@@ -20,6 +20,8 @@ Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component 
 - [docs/ecs.md](docs/ecs.md): entity/component POD (floor) + runtime systems (live hosts)
 - [docs/ui.md](docs/ui.md): optional Rig + UI (same Contract; litmus + `rig-validate` on `rig.ui.*`)
 - [docs/interchange.md](docs/interchange.md): JSON wire format + RigKit aliases
+- [docs/openbim.md](docs/openbim.md): OpenBIM (IFC / BCF / IDS) → `rig.bim.*`; encodings are fulfillment
+- [docs/ros.md](docs/ros.md): ROS 2 → existing spatial / I/O / sensor / SUDE; no `rig.ros2.*`
 - [docs/properties.md](docs/properties.md): portable datatype ids
 - [docs/honors.md](docs/honors.md): what counts as Rig (grammar floor; live hosts; optional Rig + UI)
 - [docs/gaps.md](docs/gaps.md): where the Contract is silent, ambiguous, or wrong

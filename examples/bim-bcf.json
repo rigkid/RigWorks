@@ -1,0 +1,80 @@
+{
+  "rig": "0.15.0",
+  "document": {
+    "title": "OpenBIM BCF topic — clash on door",
+    "defaultUnit": "mm",
+    "ifcSchema": "ifc4"
+  },
+  "entities": [
+    {
+      "id": "door-1",
+      "components": {
+        "rig.meta.named": { "name": "D-01", "stableId": "door-guid" },
+        "rig.bim.classify": { "ifcClass": "IfcDoor" },
+        "rig.spatial.transform": { "position": [2000, 0, 0] },
+        "rig.cad.cuboid": { "sizeX": 900, "sizeY": 50, "sizeZ": 2100, "center": false }
+      }
+    },
+    {
+      "id": "topic-clash",
+      "components": {
+        "rig.meta.named": {
+          "name": "Door clashes wall finish",
+          "stableId": "bcf-topic-guid"
+        },
+        "rig.bim.topic": {
+          "topicType": "Clash",
+          "topicStatus": "Open",
+          "priority": "Normal",
+          "assignedTo": "architect@example.com",
+          "labels": ["coordination", "doors"],
+          "stage": "Design",
+          "description": "Door leaf intersects adjacent wall finish at Level 01.",
+          "createdBy": "bim@example.com",
+          "createdAt": "2026-08-17T01:00:00Z",
+          "modifiedAt": "2026-08-17T01:00:00Z"
+        }
+      }
+    },
+    {
+      "id": "vp-1",
+      "components": {
+        "rig.bim.viewpoint": {
+          "topic": "topic-clash",
+          "selected": ["door-1"],
+          "hidden": [],
+          "clipPlanes": [
+            {
+              "origin": [2000, 0, 1000],
+              "normal": [0, 1, 0]
+            }
+          ]
+        },
+        "rig.spatial.transform": {
+          "position": [2500, -4000, 1500],
+          "rotation": [0, 0, 0, 1]
+        },
+        "rig.spatial.camera": {
+          "projection": "perspective",
+          "fovYDegrees": 60
+        },
+        "rig.media.asset_ref": {
+          "kind": "image",
+          "path": "snapshots/vp-1.png"
+        }
+      }
+    },
+    {
+      "id": "comment-1",
+      "components": {
+        "rig.bim.comment": {
+          "topic": "topic-clash",
+          "body": "Please check door swing clear of the finish.",
+          "author": "bim@example.com",
+          "createdAt": "2026-08-17T01:05:00Z",
+          "viewpoint": "vp-1"
+        }
+      }
+    }
+  ]
+}

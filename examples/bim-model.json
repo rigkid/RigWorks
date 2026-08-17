@@ -1,0 +1,171 @@
+{
+  "rig": "0.15.0",
+  "document": {
+    "title": "OpenBIM model — site, storey, wall, opening, door",
+    "defaultUnit": "mm",
+    "ifcSchema": "ifc4"
+  },
+  "entities": [
+    {
+      "id": "site",
+      "components": {
+        "rig.meta.named": { "name": "Demo Site", "stableId": "site-guid" },
+        "rig.bim.site": {
+          "latitudeDegrees": -33.8688,
+          "longitudeDegrees": 151.2093,
+          "elevation": 0
+        },
+        "rig.bim.classify": { "ifcClass": "IfcSite" },
+        "rig.spatial.group": {},
+        "rig.spatial.transform": {}
+      }
+    },
+    {
+      "id": "building",
+      "components": {
+        "rig.meta.named": { "name": "Building A", "stableId": "building-guid" },
+        "rig.bim.building": {},
+        "rig.bim.classify": { "ifcClass": "IfcBuilding" },
+        "rig.spatial.group": {},
+        "rig.spatial.relationship": { "parent": "site" },
+        "rig.spatial.transform": {}
+      }
+    },
+    {
+      "id": "level-01",
+      "components": {
+        "rig.meta.named": { "name": "Level 01", "stableId": "storey-guid" },
+        "rig.bim.storey": { "elevation": 0 },
+        "rig.bim.classify": { "ifcClass": "IfcBuildingStorey" },
+        "rig.spatial.group": {},
+        "rig.spatial.relationship": { "parent": "building" },
+        "rig.spatial.transform": {}
+      }
+    },
+    {
+      "id": "room-101",
+      "components": {
+        "rig.meta.named": { "name": "101", "stableId": "space-guid" },
+        "rig.bim.space": {},
+        "rig.bim.classify": { "ifcClass": "IfcSpace", "predefinedType": "INTERNAL" },
+        "rig.bim.pset": {
+          "sets": [
+            {
+              "name": "Pset_SpaceCommon",
+              "properties": [
+                { "name": "IsExternal", "type": "bool", "flag": false },
+                { "name": "GrossFloorArea", "type": "float", "number": 24.5, "unit": "m2" }
+              ]
+            }
+          ]
+        },
+        "rig.spatial.relationship": { "parent": "level-01" },
+        "rig.spatial.transform": {}
+      }
+    },
+    {
+      "id": "wall-type-200",
+      "components": {
+        "rig.meta.named": { "name": "200mm Partition", "stableId": "wall-type-guid" },
+        "rig.bim.type": {},
+        "rig.bim.classify": { "ifcClass": "IfcWallType", "predefinedType": "PARTITIONING" },
+        "rig.bim.pset": {
+          "sets": [
+            {
+              "name": "Pset_WallCommon",
+              "properties": [
+                { "name": "IsExternal", "type": "bool", "flag": false },
+                { "name": "FireRating", "type": "string", "text": "-/60/60" }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wall-a-plan",
+      "components": {
+        "rig.meta.named": { "name": "wall-a-plan", "stableId": "wall-a-plan" },
+        "rig.geometry.polygon": {
+          "points": [
+            [0, 0],
+            [5000, 0],
+            [5000, 200],
+            [0, 200]
+          ]
+        }
+      }
+    },
+    {
+      "id": "wall-a",
+      "components": {
+        "rig.meta.named": { "name": "A-201", "stableId": "wall-guid" },
+        "rig.bim.classify": {
+          "ifcClass": "IfcWall",
+          "predefinedType": "PARTITIONING",
+          "scheme": "Uniclass2015",
+          "code": "Ss_25_10_30"
+        },
+        "rig.bim.occurrence": { "type": "wall-type-200" },
+        "rig.bim.pset": {
+          "sets": [
+            {
+              "name": "Pset_WallCommon",
+              "properties": [
+                { "name": "Reference", "type": "string", "text": "A-201" }
+              ]
+            }
+          ]
+        },
+        "rig.spatial.relationship": { "parent": "level-01" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.cad.extrude": { "profile": "wall-a-plan", "height": 3000 },
+        "rig.interact.selectable": { "enabled": true }
+      }
+    },
+    {
+      "id": "opening-1",
+      "components": {
+        "rig.meta.named": { "name": "Opening 1", "stableId": "opening-guid" },
+        "rig.bim.classify": { "ifcClass": "IfcOpeningElement" },
+        "rig.spatial.relationship": { "parent": "level-01" },
+        "rig.spatial.transform": { "position": [2000, 0, 0] },
+        "rig.cad.cuboid": { "sizeX": 900, "sizeY": 200, "sizeZ": 2100, "center": false }
+      }
+    },
+    {
+      "id": "door-1",
+      "components": {
+        "rig.meta.named": { "name": "D-01", "stableId": "door-guid" },
+        "rig.bim.classify": { "ifcClass": "IfcDoor", "predefinedType": "DOOR" },
+        "rig.bim.pset": {
+          "sets": [
+            {
+              "name": "Pset_DoorCommon",
+              "properties": [
+                { "name": "FireRating", "type": "string", "text": "-/-/-" },
+                { "name": "IsExternal", "type": "bool", "flag": false }
+              ]
+            }
+          ]
+        },
+        "rig.spatial.relationship": { "parent": "level-01" },
+        "rig.spatial.transform": { "position": [2000, 0, 0] },
+        "rig.cad.cuboid": { "sizeX": 900, "sizeY": 50, "sizeZ": 2100, "center": false },
+        "rig.interact.selectable": { "enabled": true }
+      }
+    },
+    {
+      "id": "rel-voids",
+      "components": {
+        "rig.bim.relation": { "kind": "voids", "a": "opening-1", "b": "wall-a" }
+      }
+    },
+    {
+      "id": "rel-fills",
+      "components": {
+        "rig.bim.relation": { "kind": "fills", "a": "door-1", "b": "opening-1" }
+      }
+    }
+  ]
+}

@@ -42,6 +42,15 @@
           "type": "string",
           "description": "IANA time zone for wall-clock calendar fields (e.g. Australia/Sydney). Absent = host local."
         },
+        "ifcSchema": {
+          "type": "string",
+          "enum": [
+            "ifc2x3",
+            "ifc4",
+            "ifc4x3"
+          ],
+          "description": "IFC schema this document was derived from. Absent = not an IFC-derived document."
+        },
         "pdfX": {
           "type": "string",
           "description": "PDF/X identification (e.g. PDF/X-4). Empty/absent = not a PDF/X job."
@@ -94,6 +103,48 @@
               },
               "rig.audio.bus": {
                 "$ref": "./rig.audio.bus.schema.json"
+              },
+              "rig.bim.building": {
+                "$ref": "./rig.bim.building.schema.json"
+              },
+              "rig.bim.classify": {
+                "$ref": "./rig.bim.classify.schema.json"
+              },
+              "rig.bim.comment": {
+                "$ref": "./rig.bim.comment.schema.json"
+              },
+              "rig.bim.facet": {
+                "$ref": "./rig.bim.facet.schema.json"
+              },
+              "rig.bim.occurrence": {
+                "$ref": "./rig.bim.occurrence.schema.json"
+              },
+              "rig.bim.pset": {
+                "$ref": "./rig.bim.pset.schema.json"
+              },
+              "rig.bim.relation": {
+                "$ref": "./rig.bim.relation.schema.json"
+              },
+              "rig.bim.site": {
+                "$ref": "./rig.bim.site.schema.json"
+              },
+              "rig.bim.space": {
+                "$ref": "./rig.bim.space.schema.json"
+              },
+              "rig.bim.spec": {
+                "$ref": "./rig.bim.spec.schema.json"
+              },
+              "rig.bim.storey": {
+                "$ref": "./rig.bim.storey.schema.json"
+              },
+              "rig.bim.topic": {
+                "$ref": "./rig.bim.topic.schema.json"
+              },
+              "rig.bim.type": {
+                "$ref": "./rig.bim.type.schema.json"
+              },
+              "rig.bim.viewpoint": {
+                "$ref": "./rig.bim.viewpoint.schema.json"
               },
               "rig.cad.boolean": {
                 "$ref": "./rig.cad.boolean.schema.json"

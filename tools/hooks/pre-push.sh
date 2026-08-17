@@ -62,7 +62,10 @@ fail() {
 	examples/path3d-spline3d.json \
 	examples/page-anchor.json \
 	examples/cad-boolean.json \
-	examples/story-flow.json || fail "check:examples"
+	examples/story-flow.json \
+	examples/bim-model.json \
+	examples/bim-bcf.json \
+	examples/bim-ids.json || fail "check:examples"
 "$NODE" --test tools/test/*.test.mjs || fail "test"
 
 echo "Pre-push checks passed"

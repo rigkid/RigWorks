@@ -35,6 +35,8 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`schemas/`](schemas/) | Prose field meaning |
 | [`examples/`](examples/) | Reference documents |
 | [`docs/interchange.md`](docs/interchange.md) | Wire format + RigKit key aliases |
+| [`docs/openbim.md`](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) → `rig.bim.*` |
+| [`docs/ros.md`](docs/ros.md) | ROS 2 → existing schemas; no `rig.ros2.*` |
 | [`docs/terms.md`](docs/terms.md) | Contract vs fulfillment, host, pack, POD |
 | [`docs/versioning.md`](docs/versioning.md) | SemVer ranges + history (`VERSION`) |
 | [`tools/rig-validate/`](tools/rig-validate/) | Validator CLI |

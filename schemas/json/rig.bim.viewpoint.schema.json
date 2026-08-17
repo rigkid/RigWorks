@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.bim.viewpoint.schema.json",
+  "title": "rig.bim.viewpoint",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "topic": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "selected": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    },
+    "hidden": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    },
+    "clipPlanes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "origin",
+          "normal"
+        ],
+        "properties": {
+          "origin": {
+            "$ref": "./_defs.schema.json#/$defs/vec3"
+          },
+          "normal": {
+            "$ref": "./_defs.schema.json#/$defs/vec3"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "topic"
+  ]
+}
