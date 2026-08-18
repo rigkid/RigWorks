@@ -1,17 +1,19 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://rig.works/schemas/rig.calendar.exception.schema.json",
-  "title": "rig.calendar.exception",
+  "$id": "https://rig.works/schemas/rig.calendar.event.schema.json",
+  "title": "rig.calendar.event",
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "date": {
+    "startDate": {
       "type": "string",
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
       "description": "ISO 8601 calendar date."
     },
-    "skip": {
-      "$ref": "./_defs.schema.json#/$defs/bool"
+    "endDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
     },
     "startMinutes": {
       "type": "integer",
@@ -22,9 +24,20 @@
       "type": "integer",
       "minimum": 0,
       "maximum": 1439
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "confirmed",
+        "tentative",
+        "cancelled"
+      ]
+    },
+    "organizer": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
     }
   },
   "required": [
-    "date"
+    "startDate"
   ]
 }

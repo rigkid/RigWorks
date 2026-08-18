@@ -184,6 +184,11 @@ const isoCountry = {
   pattern: "^[A-Z]{2}$",
   description: "ISO 3166-1 alpha-2.",
 };
+const isoCurrency = {
+  type: "string",
+  pattern: "^[A-Z]{3}$",
+  description: "ISO 4217 (ISO 20022 Ccy).",
+};
 
 add(
   "rig.person.name",
@@ -301,11 +306,7 @@ add(
     iban: ref("string"),
     accountNumber: ref("string"),
     accountName: ref("string"),
-    currency: {
-      type: "string",
-      pattern: "^[A-Z]{3}$",
-      description: "ISO 4217 (ISO 20022 Ccy).",
-    },
+    currency: isoCurrency,
     bic: {
       type: "string",
       pattern: "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$",
@@ -318,6 +319,137 @@ add(
     minProperties: 1,
     description:
       "Payment account. Field meanings follow ISO 20022 CashAccount and FinancialInstitutionIdentification. Prefer IBAN when present.",
+  }
+);
+
+// --- commerce (schema.org Offer / PriceSpecification; ISO 4217) ---
+// Not a cart, checkout, or tax engine. List price and sale are
+// different offer entities. Validity is rig.calendar.span.
+add(
+  "rig.commerce.price",
+  {
+    amount: ref("float"),
+    currency: isoCurrency,
+    unit: enumOf([
+      "each",
+      "hour",
+      "day",
+      "week",
+      "month",
+      "year",
+      "metre",
+      "kilogram",
+      "other",
+    ]),
+    vatIncluded: ref("bool"),
+  },
+  {
+    required: ["amount", "currency"],
+    description:
+      "Money amount. Field meanings follow ISO 20022 ActiveOrHistoricCurrencyAndAmount and schema.org PriceSpecification. Not a formatted price string.",
+  }
+);
+
+add(
+  "rig.commerce.offer",
+  {
+    item: ref("entity"),
+    seller: ref("entity"),
+    availability: enumOf([
+      "inStock",
+      "outOfStock",
+      "preOrder",
+      "limited",
+      "unknown",
+    ]),
+    sku: ref("string"),
+  },
+  {
+    required: ["item"],
+    description:
+      "Someone offers an item. Field meanings follow schema.org Offer. Price composes rig.commerce.price; window composes rig.calendar.span.",
+  }
+);
+
+add(
+  "rig.commerce.discount",
+  {
+    kind: enumOf(["percent", "amount"]),
+    percent: { type: "number", minimum: 0, maximum: 100 },
+    amount: ref("float"),
+    currency: isoCurrency,
+    code: ref("string"),
+  },
+  {
+    required: ["kind"],
+    description:
+      "Adjustment on an offer. percent is 0–100 (10 means 10%). amount is money off, not the resulting price. schema.org Discount / PriceSpecification.",
+  }
+);
+
+// --- legal (schema.org Contract / ISO 20022 Agreement; not Rig Contract) ---
+// Rights of a work stay on rig.rights.statement. The signed instrument
+// file is a media.asset_ref entity. Parties are person / organisation
+// entities — do not put name strings here.
+add(
+  "rig.legal.agreement",
+  {
+    kind: enumOf([
+      "employment",
+      "nda",
+      "licence",
+      "lease",
+      "loan",
+      "service",
+      "sale",
+      "other",
+    ]),
+    identifier: ref("string"),
+    status: enumOf([
+      "draft",
+      "offered",
+      "signed",
+      "active",
+      "suspended",
+      "terminated",
+      "expired",
+    ]),
+    governingLaw: ref("string"),
+    signedDate: isoDate,
+    instrument: ref("entity"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "A deal between parties. Field meanings follow schema.org Contract and ISO 20022 AgreementIdentification. Term dates compose rig.calendar.span.",
+  }
+);
+
+add(
+  "rig.legal.party",
+  {
+    agreement: ref("entity"),
+    party: ref("entity"),
+    role: enumOf([
+      "party",
+      "buyer",
+      "seller",
+      "lessor",
+      "lessee",
+      "employer",
+      "employee",
+      "licensor",
+      "licensee",
+      "witness",
+      "guarantor",
+    ]),
+    signedDate: isoDate,
+  },
+  {
+    required: ["agreement", "party"],
+    description:
+      "One side of an agreement. party is a person or organisation entity. A second signatory is another entity.",
   }
 );
 
@@ -1613,14 +1745,47 @@ add("rig.calendar.weekly", {
 }, { required: ["days", "startMinutes", "endMinutes"] });
 
 add("rig.calendar.span", {
-  startDate: ref("string"),
-  endDate: ref("string"),
+  startDate: isoDate,
+  endDate: isoDate,
 }, { required: ["startDate", "endDate"] });
 
 add("rig.calendar.exception", {
-  date: ref("string"),
+  date: isoDate,
   skip: ref("bool"),
+  startMinutes: { type: "integer", minimum: 0, maximum: 1439 },
+  endMinutes: { type: "integer", minimum: 0, maximum: 1439 },
 }, { required: ["date"] });
+
+// Timed happening. Title is rig.meta.named. Place is place.address / geo.
+// Do not encode iCalendar RRULE strings — recurrence is fields below.
+add("rig.calendar.event", {
+  startDate: isoDate,
+  endDate: isoDate,
+  startMinutes: { type: "integer", minimum: 0, maximum: 1439 },
+  endMinutes: { type: "integer", minimum: 0, maximum: 1439 },
+  status: enumOf(["confirmed", "tentative", "cancelled"]),
+  organizer: ref("entity"),
+}, { required: ["startDate"] });
+
+add("rig.calendar.recurrence", {
+  frequency: enumOf(["daily", "weekly", "monthly", "yearly"]),
+  interval: { type: "integer", minimum: 1 },
+  count: { type: "integer", minimum: 1 },
+  untilDate: isoDate,
+  byWeekday: {
+    type: "array",
+    items: { type: "boolean" },
+    minItems: 7,
+    maxItems: 7,
+  },
+}, { required: ["frequency"] });
+
+add("rig.calendar.attendee", {
+  event: ref("entity"),
+  person: ref("entity"),
+  role: enumOf(["chair", "required", "optional", "inform"]),
+  status: enumOf(["needsAction", "accepted", "declined", "tentative"]),
+}, { required: ["event", "person"] });
 
 // --- install ---
 // Show-level audio / visuals bus. Defaults: both false (open).

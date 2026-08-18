@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.calendar.recurrence.schema.json",
+  "title": "rig.calendar.recurrence",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    "interval": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "untilDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    },
+    "byWeekday": {
+      "type": "array",
+      "items": {
+        "type": "boolean"
+      },
+      "minItems": 7,
+      "maxItems": 7
+    }
+  },
+  "required": [
+    "frequency"
+  ]
+}

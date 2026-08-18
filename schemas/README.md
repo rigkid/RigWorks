@@ -74,6 +74,14 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | `rig.organisation.identity` | [organisation/identity.md](organisation/identity.md) |
 | `rig.party.account` | [party/account.md](party/account.md) |
 
+### Commerce
+
+| Id | Doc |
+|----|-----|
+| `rig.commerce.price` | [commerce/price.md](commerce/price.md) |
+| `rig.commerce.offer` | [commerce/offer.md](commerce/offer.md) |
+| `rig.commerce.discount` | [commerce/discount.md](commerce/discount.md) |
+
 ### Plant (botanica)
 
 | Id | Doc |
@@ -109,6 +117,15 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | Id | Doc |
 |----|-----|
 | `rig.rights.statement` | [rights/statement.md](rights/statement.md) |
+
+### Legal (agreements)
+
+Deals between parties — not the Rig Contract, and not copyright of a work ([`rig.rights.statement`](rights/statement.md)).
+
+| Id | Doc |
+|----|-----|
+| `rig.legal.agreement` | [legal/agreement.md](legal/agreement.md) |
+| `rig.legal.party` | [legal/party.md](legal/party.md) |
 
 ### Art (CDWA core)
 
@@ -288,6 +305,9 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 | `rig.calendar.weekly` | [calendar/weekly.md](calendar/weekly.md) |
 | `rig.calendar.span` | [calendar/span.md](calendar/span.md) |
 | `rig.calendar.exception` | [calendar/exception.md](calendar/exception.md) |
+| `rig.calendar.event` | [calendar/event.md](calendar/event.md) |
+| `rig.calendar.recurrence` | [calendar/recurrence.md](calendar/recurrence.md) |
+| `rig.calendar.attendee` | [calendar/attendee.md](calendar/attendee.md) |
 | `rig.install.av_bus` | [install/av-bus.md](install/av-bus.md) |
 | `rig.install.trigger` | [install/trigger.md](install/trigger.md) |
 
@@ -347,5 +367,9 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 | Font face | `parent` | [`spatial.relationship`](spatial/relationship.md) under [`font.face`](font/face.md) / [`font.layer`](font/layer.md) |
 | Font composite | `parent` | [`font.component`](font/component.md) child of [`font.glyph`](font/glyph.md); `glyph` is the source |
 | Font kern | `left` / `right` | [`font.kern`](font/kern.md) — names (`stableId`), not entity ids |
+| Commerce offer | `item` / `seller` | [`commerce.offer`](commerce/offer.md) → item + seller; price / discount compose on the offer |
+| Legal party | `agreement` / `party` | [`legal.party`](legal/party.md) → [`legal.agreement`](legal/agreement.md) |
+| Calendar attendee | `event` | [`calendar.attendee`](calendar/attendee.md) → [`calendar.event`](calendar/event.md) |
+| Calendar recurrence | same entity | [`calendar.recurrence`](calendar/recurrence.md) on the event; not an `RRULE` string |
 
 Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).

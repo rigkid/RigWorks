@@ -92,7 +92,7 @@ A component key may also be `x.<vendor>.<name>` — a host component the Contrac
 
 ## Worked examples
 
-Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json), [`examples/place-address.json`](../../examples/place-address.json), [`examples/person-contact.json`](../../examples/person-contact.json), [`examples/plant-taxon.json`](../../examples/plant-taxon.json), [`examples/book-isbn.json`](../../examples/book-isbn.json), [`examples/paper-citation.json`](../../examples/paper-citation.json), [`examples/art-object.json`](../../examples/art-object.json). Validate before you trust the output.
+Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json), [`examples/place-address.json`](../../examples/place-address.json), [`examples/person-contact.json`](../../examples/person-contact.json), [`examples/plant-taxon.json`](../../examples/plant-taxon.json), [`examples/book-isbn.json`](../../examples/book-isbn.json), [`examples/paper-citation.json`](../../examples/paper-citation.json), [`examples/art-object.json`](../../examples/art-object.json), [`examples/commerce-offer.json`](../../examples/commerce-offer.json), [`examples/legal-agreement.json`](../../examples/legal-agreement.json), [`examples/calendar-event.json`](../../examples/calendar-event.json). Validate before you trust the output.
 
 ### Entity with shape + paint
 
@@ -263,6 +263,14 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** store a formatted bibliography string — compose `rig.paper.citation` (`citing` / `cited` entities)
 - **Do not** put copyright holder or licence on `rig.art.object` or `rig.book.publication` — compose `rig.rights.statement`
 - **Do not** put artist name, medium, or centimetres on `rig.art.object` — compose `attribution`, `material`, `dimensions` (millimetres)
+- **Do not** put a price string or list+sale pair on a book / art schema — compose `rig.commerce.price` on an offer; a discount is `rig.commerce.discount`
+- **Do not** invent a cart, checkout, or tax engine — offer + price + discount + `rig.calendar.span` is the commercial record
+- **Do not** put party name strings on `rig.legal.agreement` — compose `rig.legal.party` (person / organisation entities)
+- **Do not** put copyright of a work on `rig.legal.agreement` — that is `rig.rights.statement`; a licence *deal* is `agreement.kind` `licence`
+- **Do not** copy `jobTitle` onto an employment instrument — job facts stay on `rig.person.employment`
+- **Do not** encode iCalendar `RRULE` / `DTSTART` / `ATTENDEE` strings — compose `rig.calendar.event` / `recurrence` / `attendee`; times are `startMinutes` in `document.timeZone`
+- **Do not** invent `rig.calendar.todo`, `alarm`, `freebusy`, or `timezone` — those stay in the `.ics` source
+- **Do not** put an event title or location string on `rig.calendar.event` — compose `rig.meta.named` and `rig.place.address`
 - **Do not** put show/hide on `rig.spatial.layer` — compose `rig.render.visibility`
 - **Do not** put text colour on `rig.media.text` — compose paint (`fill_stroke` / `fill`)
 - **Do not** flatten editorial copy into `rig.media.text` — that is a canvas run; stories are `rig.story.*` (named styles, no font or colour)
@@ -284,10 +292,12 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Person | `name`, `vital`, `contact`, `employment`, `portrait` |
 | Organisation | `identity` |
 | Party | `account` |
+| Commerce | `price`, `offer`, `discount` |
 | Plant | `taxon`, `cultivar`, `habit`, `occurrence`, `portrait` |
 | Book | `identifier`, `title`, `publication`, `contribution`, `cover`, `subject` |
 | Paper | `identifier`, `article`, `issue`, `citation` |
 | Rights | `statement` |
+| Legal | `agreement`, `party` |
 | Art | `object`, `creation`, `attribution`, `dimensions`, `material`, `location`, `subject`, `image` |
 | Geometry | `mesh`, `path`, `path3d`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `spline3d`, `nurbs_surface`, `ring` |
 | Cad | `cuboid`, `cylinder`, `sphere`, `extrude`, `revolve`, `boolean`, `fillet`, `chamfer` |
@@ -304,7 +314,7 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | I/O | `osc`, `serial`, `sacn`, `dmx`, `led.uv_map`, `sensor.gpio`, `sensor.presence` |
 | Dmx | `fixture` |
 | Light | `look` |
-| Calendar | `weekly`, `span`, `exception` |
+| Calendar | `weekly`, `span`, `exception`, `event`, `recurrence`, `attendee` |
 | Install | `av_bus`, `trigger` |
 | Sim | `rigidbody`, `particle_emitter` |
 | Input | `buttons` |

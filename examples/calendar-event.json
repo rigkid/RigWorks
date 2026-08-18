@@ -1,0 +1,118 @@
+{
+  "rig": "0.18.0",
+  "document": {
+    "title": "Calendar (hours, span, exception, event, recurrence)",
+    "createdAt": "2026-08-18",
+    "timeZone": "Europe/London"
+  },
+  "entities": [
+    {
+      "id": "gallery",
+      "components": {
+        "rig.meta.named": { "name": "National Gallery", "stableId": "gallery" },
+        "rig.place.address": {
+          "streetName": "Trafalgar Square",
+          "townName": "London",
+          "postCode": "WC2N 5DN",
+          "country": "GB"
+        }
+      }
+    },
+    {
+      "id": "hours",
+      "components": {
+        "rig.meta.named": { "name": "Exhibition hours", "stableId": "hours" },
+        "rig.calendar.weekly": {
+          "days": [true, false, true, true, true, true, true],
+          "startMinutes": 600,
+          "endMinutes": 1080
+        },
+        "rig.calendar.span": {
+          "startDate": "2026-09-01",
+          "endDate": "2026-12-31"
+        }
+      }
+    },
+    {
+      "id": "christmas",
+      "components": {
+        "rig.calendar.exception": {
+          "date": "2026-12-25",
+          "skip": true
+        }
+      }
+    },
+    {
+      "id": "christmas-eve",
+      "components": {
+        "rig.calendar.exception": {
+          "date": "2026-12-24",
+          "skip": false,
+          "startMinutes": 600,
+          "endMinutes": 840
+        }
+      }
+    },
+    {
+      "id": "opening",
+      "components": {
+        "rig.meta.named": { "name": "Opening night", "stableId": "opening" },
+        "rig.calendar.event": {
+          "startDate": "2026-09-01",
+          "startMinutes": 1080,
+          "endMinutes": 1260,
+          "status": "confirmed",
+          "organizer": "gallery"
+        },
+        "rig.place.address": {
+          "streetName": "Trafalgar Square",
+          "townName": "London",
+          "country": "GB"
+        }
+      }
+    },
+    {
+      "id": "tour",
+      "components": {
+        "rig.meta.named": { "name": "Curator talk", "stableId": "tour" },
+        "rig.calendar.event": {
+          "startDate": "2026-09-08",
+          "startMinutes": 840,
+          "endMinutes": 900,
+          "status": "confirmed",
+          "organizer": "gallery"
+        },
+        "rig.calendar.recurrence": {
+          "frequency": "weekly",
+          "interval": 1,
+          "untilDate": "2026-12-15",
+          "byWeekday": [false, false, true, false, false, false, false]
+        }
+      }
+    },
+    {
+      "id": "curator",
+      "components": {
+        "rig.meta.named": { "name": "Clara Hunt", "stableId": "curator" },
+        "rig.person.name": {
+          "givenName": "Clara",
+          "familyName": "Hunt"
+        },
+        "rig.person.contact": {
+          "email": "clara@example.org"
+        }
+      }
+    },
+    {
+      "id": "guest",
+      "components": {
+        "rig.calendar.attendee": {
+          "event": "opening",
+          "person": "curator",
+          "role": "chair",
+          "status": "accepted"
+        }
+      }
+    }
+  ]
+}

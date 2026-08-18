@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.offer.schema.json",
+  "title": "rig.commerce.offer",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "item": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "seller": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "availability": {
+      "type": "string",
+      "enum": [
+        "inStock",
+        "outOfStock",
+        "preOrder",
+        "limited",
+        "unknown"
+      ]
+    },
+    "sku": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "item"
+  ],
+  "description": "Someone offers an item. Field meanings follow schema.org Offer. Price composes rig.commerce.price; window composes rig.calendar.span."
+}

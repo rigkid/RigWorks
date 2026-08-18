@@ -1,0 +1,84 @@
+{
+  "rig": "0.18.0",
+  "document": {
+    "title": "Legal agreement (employment instrument)",
+    "createdAt": "2026-08-18"
+  },
+  "entities": [
+    {
+      "id": "analytical-engines",
+      "components": {
+        "rig.meta.named": { "name": "Analytical Engines", "stableId": "analytical-engines" },
+        "rig.organisation.identity": {
+          "registrationNumber": "AE-1843"
+        }
+      }
+    },
+    {
+      "id": "ada",
+      "components": {
+        "rig.meta.named": { "name": "Ada Lovelace", "stableId": "ada" },
+        "rig.person.name": {
+          "givenName": "Ada",
+          "familyName": "Lovelace"
+        },
+        "rig.person.employment": {
+          "jobTitle": "Analyst",
+          "department": "Mathematics",
+          "employeeId": "AE-001",
+          "organisation": "analytical-engines",
+          "startDate": "1843-01-01"
+        }
+      }
+    },
+    {
+      "id": "contract-pdf",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "document",
+          "path": "agreements/ae-001.pdf"
+        }
+      }
+    },
+    {
+      "id": "ae-001",
+      "components": {
+        "rig.meta.named": { "name": "Analyst appointment", "stableId": "ae-001" },
+        "rig.legal.agreement": {
+          "kind": "employment",
+          "identifier": "AE-1843-001",
+          "status": "active",
+          "governingLaw": "England and Wales",
+          "signedDate": "1843-01-01",
+          "instrument": "contract-pdf"
+        },
+        "rig.calendar.span": {
+          "startDate": "1843-01-01",
+          "endDate": "1852-11-27"
+        }
+      }
+    },
+    {
+      "id": "ae-employer",
+      "components": {
+        "rig.legal.party": {
+          "agreement": "ae-001",
+          "party": "analytical-engines",
+          "role": "employer",
+          "signedDate": "1843-01-01"
+        }
+      }
+    },
+    {
+      "id": "ae-employee",
+      "components": {
+        "rig.legal.party": {
+          "agreement": "ae-001",
+          "party": "ada",
+          "role": "employee",
+          "signedDate": "1843-01-01"
+        }
+      }
+    }
+  ]
+}

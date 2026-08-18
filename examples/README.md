@@ -21,6 +21,9 @@ node tools/rig-validate/cli.js examples/plant-taxon.json
 node tools/rig-validate/cli.js examples/book-isbn.json
 node tools/rig-validate/cli.js examples/paper-citation.json
 node tools/rig-validate/cli.js examples/art-object.json
+node tools/rig-validate/cli.js examples/commerce-offer.json
+node tools/rig-validate/cli.js examples/legal-agreement.json
+node tools/rig-validate/cli.js examples/calendar-event.json
 ```
 
 ## SUDE sketch
@@ -213,3 +216,15 @@ Watson & Crick 1953: `rig.paper.identifier` (DOI / PMID), `article` (pages + dat
 ## `art-object.json`
 
 Van Gogh *Irises*: CDWA core composed as `rig.art.object` / `creation` / `attribution` / `dimensions` / `material` / `location` / `subject` / `image`. Copyright is `rig.rights.statement` (`publicDomain` + RightsStatements.org URI), not a year on the object.
+
+## `commerce-offer.json`
+
+Penguin Classics paperback: `rig.commerce.offer` (item + seller), `rig.commerce.price` (GBP amount, not a formatted string), `rig.commerce.discount` (`percent` 20), validity as `rig.calendar.span`. Not a cart or tax engine.
+
+## `legal-agreement.json`
+
+Employment instrument beside job facts: `rig.legal.agreement` + two `rig.legal.party` entities (employer / employee). Term is `rig.calendar.span`. The PDF is `rig.media.asset_ref`. `jobTitle` stays on `rig.person.employment`. Not e-sign workflow.
+
+## `calendar-event.json`
+
+Exhibition hours (`weekly` + `span`), Christmas dark day, Christmas Eve special hours on `exception`, opening-night `event`, weekly curator talk as `recurrence` fields (not an `RRULE` string), and one `attendee`. Venue is `rig.place.address`. Not iCalendar XML.

@@ -212,14 +212,32 @@
               "rig.cad.sphere": {
                 "$ref": "./rig.cad.sphere.schema.json"
               },
+              "rig.calendar.attendee": {
+                "$ref": "./rig.calendar.attendee.schema.json"
+              },
+              "rig.calendar.event": {
+                "$ref": "./rig.calendar.event.schema.json"
+              },
               "rig.calendar.exception": {
                 "$ref": "./rig.calendar.exception.schema.json"
+              },
+              "rig.calendar.recurrence": {
+                "$ref": "./rig.calendar.recurrence.schema.json"
               },
               "rig.calendar.span": {
                 "$ref": "./rig.calendar.span.schema.json"
               },
               "rig.calendar.weekly": {
                 "$ref": "./rig.calendar.weekly.schema.json"
+              },
+              "rig.commerce.discount": {
+                "$ref": "./rig.commerce.discount.schema.json"
+              },
+              "rig.commerce.offer": {
+                "$ref": "./rig.commerce.offer.schema.json"
+              },
+              "rig.commerce.price": {
+                "$ref": "./rig.commerce.price.schema.json"
               },
               "rig.dmx.fixture": {
                 "$ref": "./rig.dmx.fixture.schema.json"
@@ -316,6 +334,12 @@
               },
               "rig.led.uv_map": {
                 "$ref": "./rig.led.uv_map.schema.json"
+              },
+              "rig.legal.agreement": {
+                "$ref": "./rig.legal.agreement.schema.json"
+              },
+              "rig.legal.party": {
+                "$ref": "./rig.legal.party.schema.json"
               },
               "rig.light.look": {
                 "$ref": "./rig.light.look.schema.json"

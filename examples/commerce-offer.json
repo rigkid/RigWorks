@@ -1,0 +1,59 @@
+{
+  "rig": "0.18.0",
+  "document": {
+    "title": "Commerce offer (price / discount)",
+    "createdAt": "2026-08-18"
+  },
+  "entities": [
+    {
+      "id": "penguin",
+      "components": {
+        "rig.meta.named": { "name": "Penguin Classics", "stableId": "penguin" },
+        "rig.organisation.identity": {
+          "registrationNumber": "GB-PENGUIN"
+        }
+      }
+    },
+    {
+      "id": "moby-dick",
+      "components": {
+        "rig.meta.named": { "name": "Moby-Dick", "stableId": "moby-dick" },
+        "rig.book.identifier": {
+          "isbn13": "9780142437247"
+        },
+        "rig.book.publication": {
+          "publisher": "penguin",
+          "publishedDate": "2003",
+          "productForm": "paperback"
+        }
+      }
+    },
+    {
+      "id": "autumn-sale",
+      "components": {
+        "rig.meta.named": { "name": "Autumn paperback", "stableId": "autumn-sale" },
+        "rig.commerce.offer": {
+          "item": "moby-dick",
+          "seller": "penguin",
+          "availability": "inStock",
+          "sku": "PC-MOBY-PB"
+        },
+        "rig.commerce.price": {
+          "amount": 10.99,
+          "currency": "GBP",
+          "unit": "each",
+          "vatIncluded": true
+        },
+        "rig.commerce.discount": {
+          "kind": "percent",
+          "percent": 20,
+          "code": "AUTUMN20"
+        },
+        "rig.calendar.span": {
+          "startDate": "2026-08-01",
+          "endDate": "2026-08-31"
+        }
+      }
+    }
+  ]
+}

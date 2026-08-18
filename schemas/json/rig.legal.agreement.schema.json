@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.legal.agreement.schema.json",
+  "title": "rig.legal.agreement",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "employment",
+        "nda",
+        "licence",
+        "lease",
+        "loan",
+        "service",
+        "sale",
+        "other"
+      ]
+    },
+    "identifier": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "offered",
+        "signed",
+        "active",
+        "suspended",
+        "terminated",
+        "expired"
+      ]
+    },
+    "governingLaw": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "signedDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    },
+    "instrument": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "description": "A deal between parties. Field meanings follow schema.org Contract and ISO 20022 AgreementIdentification. Term dates compose rig.calendar.span.",
+  "minProperties": 1
+}

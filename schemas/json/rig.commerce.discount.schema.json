@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.discount.schema.json",
+  "title": "rig.commerce.discount",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "percent",
+        "amount"
+      ]
+    },
+    "percent": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "amount": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO 4217 (ISO 20022 Ccy)."
+    },
+    "code": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "kind"
+  ],
+  "description": "Adjustment on an offer. percent is 0–100 (10 means 10%). amount is money off, not the resulting price. schema.org Discount / PriceSpecification."
+}

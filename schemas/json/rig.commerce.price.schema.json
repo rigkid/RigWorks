@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.price.schema.json",
+  "title": "rig.commerce.price",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "amount": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO 4217 (ISO 20022 Ccy)."
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "each",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year",
+        "metre",
+        "kilogram",
+        "other"
+      ]
+    },
+    "vatIncluded": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "amount",
+    "currency"
+  ],
+  "description": "Money amount. Field meanings follow ISO 20022 ActiveOrHistoricCurrencyAndAmount and schema.org PriceSpecification. Not a formatted price string."
+}
