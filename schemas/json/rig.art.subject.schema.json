@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.art.subject.schema.json",
+  "title": "rig.art.subject",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "work": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "heading": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "interpretation": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "work"
+  ],
+  "description": "Subject matter. Field meanings follow CDWA Subject Matter. A second heading is another entity.",
+  "minProperties": 2
+}

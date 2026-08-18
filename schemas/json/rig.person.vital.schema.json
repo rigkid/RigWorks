@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.person.vital.schema.json",
+  "title": "rig.person.vital",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "sex": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "male",
+        "female",
+        "notApplicable"
+      ]
+    },
+    "gender": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "birthDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date (ISO 20022 BirthDt)."
+    },
+    "birthTown": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "birthCountrySubDivision": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "birthCountry": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2 (ISO 20022 CtryOfBirth)."
+    },
+    "nationality": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2 (ISO 20022 Ntlty)."
+    },
+    "countryOfResidence": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2 (ISO 20022 CtryOfRes)."
+    }
+  },
+  "description": "Sex, gender identity, and birth. Sex follows ISO/IEC 5218; gender is self-described; birth follows ISO 20022 DateAndPlaceOfBirth.",
+  "minProperties": 1
+}

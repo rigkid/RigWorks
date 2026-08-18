@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.art.material.schema.json",
+  "title": "rig.art.material",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "medium": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "technique": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "support": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Materials and techniques. Field meanings follow CDWA Materials/Techniques and VRA Core material / technique.",
+  "minProperties": 1
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.paper.citation.schema.json",
+  "title": "rig.paper.citation",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "citing": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "cited": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "locator": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "citing",
+    "cited"
+  ],
+  "description": "One bibliographic citation. Field meanings follow CSL / ISO 690 (this work cites that work)."
+}

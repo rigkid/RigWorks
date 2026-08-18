@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.book.identifier.schema.json",
+  "title": "rig.book.identifier",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "isbn13": {
+      "type": "string",
+      "pattern": "^97[89][0-9]{10}$",
+      "description": "ISO 2108 ISBN-13 digits only (ONIX ProductIDType 15)."
+    },
+    "isbn10": {
+      "type": "string",
+      "pattern": "^[0-9]{9}[0-9X]$",
+      "description": "ISO 2108 ISBN-10 (ONIX ProductIDType 02). Legacy."
+    },
+    "doi": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "issn": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{3}[0-9X]$",
+      "description": "ISSN (ISO 3297)."
+    }
+  },
+  "description": "Product identifiers. Prefer isbn13 (ISO 2108). Do not invent isbn10 from isbn13.",
+  "minProperties": 1
+}

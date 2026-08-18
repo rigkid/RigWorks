@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.plant.cultivar.schema.json",
+  "title": "rig.plant.cultivar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cultivarEpithet": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "cultivarGroup": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "grex": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "tradeDesignation": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Cultivated-plant name. Field meanings follow ICNCP and Darwin Core cultivarEpithet. Epithet without quotes.",
+  "minProperties": 1
+}

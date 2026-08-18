@@ -1,0 +1,91 @@
+{
+  "rig": "0.17.0",
+  "document": {
+    "title": "Book ISBN (ISO 2108 / ONIX)",
+    "createdAt": "2026-08-18"
+  },
+  "entities": [
+    {
+      "id": "penguin",
+      "components": {
+        "rig.meta.named": { "name": "Penguin Books", "stableId": "penguin" },
+        "rig.place.address": {
+          "townName": "London",
+          "country": "GB"
+        }
+      }
+    },
+    {
+      "id": "melville",
+      "components": {
+        "rig.meta.named": { "name": "Herman Melville", "stableId": "melville" },
+        "rig.person.name": {
+          "givenName": "Herman",
+          "familyName": "Melville"
+        },
+        "rig.person.vital": {
+          "sex": "male",
+          "birthDate": "1819-08-01",
+          "birthCountry": "US"
+        }
+      }
+    },
+    {
+      "id": "moby-cover",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "image",
+          "path": "covers/moby-dick.jpg"
+        }
+      }
+    },
+    {
+      "id": "moby-dick",
+      "components": {
+        "rig.meta.named": { "name": "Moby-Dick", "stableId": "moby-dick" },
+        "rig.book.identifier": {
+          "isbn13": "9780142437247"
+        },
+        "rig.book.title": {
+          "subtitle": "or, The Whale",
+          "seriesName": "Penguin Classics",
+          "editionStatement": "Penguin Classics"
+        },
+        "rig.book.publication": {
+          "publisher": "penguin",
+          "publishedDate": "2003-02-27",
+          "language": "en",
+          "pageCount": 720,
+          "productForm": "paperback",
+          "cityOfPublication": "London",
+          "copyrightYear": 2003
+        },
+        "rig.book.cover": {
+          "asset": "moby-cover"
+        }
+      }
+    },
+    {
+      "id": "moby-author",
+      "components": {
+        "rig.book.contribution": {
+          "work": "moby-dick",
+          "person": "melville",
+          "role": "author",
+          "sequence": 1
+        }
+      }
+    },
+    {
+      "id": "moby-dewey",
+      "components": {
+        "rig.book.subject": {
+          "work": "moby-dick",
+          "scheme": "dewey",
+          "code": "813.3",
+          "heading": "American fiction"
+        }
+      }
+    }
+  ]
+}

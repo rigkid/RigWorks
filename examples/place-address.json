@@ -1,0 +1,46 @@
+{
+  "rig": "0.17.0",
+  "document": {
+    "title": "Place address (ISO 20022 / UPU S42)",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "town-hall",
+      "components": {
+        "rig.meta.named": { "name": "Sydney Town Hall", "stableId": "town-hall" },
+        "rig.place.address": {
+          "streetName": "George Street",
+          "buildingNumber": "483",
+          "townName": "Sydney",
+          "countrySubDivision": "NSW",
+          "postCode": "2000",
+          "country": "AU"
+        },
+        "rig.place.geo": {
+          "latitudeDegrees": -33.8732,
+          "longitudeDegrees": 151.2069
+        },
+        "rig.spatial.transform": { "position": [0, 0, 0] }
+      }
+    },
+    {
+      "id": "centennial-hall",
+      "components": {
+        "rig.meta.named": { "name": "Centennial Hall" },
+        "rig.spatial.relationship": { "parent": "town-hall", "order": 0 },
+        "rig.place.address": {
+          "streetName": "George Street",
+          "buildingNumber": "483",
+          "floor": "1",
+          "room": "Centennial Hall",
+          "townName": "Sydney",
+          "countrySubDivision": "NSW",
+          "postCode": "2000",
+          "country": "AU"
+        },
+        "rig.spatial.transform": { "position": [0, 0, 0] }
+      }
+    }
+  ]
+}

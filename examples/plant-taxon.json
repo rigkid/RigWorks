@@ -1,0 +1,79 @@
+{
+  "rig": "0.17.0",
+  "document": {
+    "title": "Plant taxon (Darwin Core / ICNCP)",
+    "createdAt": "2026-08-18"
+  },
+  "entities": [
+    {
+      "id": "oak-01",
+      "components": {
+        "rig.meta.named": { "name": "North lawn oak", "stableId": "oak-01" },
+        "rig.plant.taxon": {
+          "kingdom": "Plantae",
+          "order": "Fagales",
+          "family": "Fagaceae",
+          "genus": "Quercus",
+          "specificEpithet": "robur",
+          "taxonRank": "species",
+          "scientificNameAuthorship": "L.",
+          "vernacularName": "English oak",
+          "nomenclaturalCode": "icn",
+          "taxonomicStatus": "accepted"
+        },
+        "rig.plant.habit": {
+          "lifeForm": "tree",
+          "leafPersistence": "deciduous",
+          "heightMetres": 25,
+          "spreadMetres": 20,
+          "hardiness": "USDA 5"
+        },
+        "rig.plant.occurrence": {
+          "catalogNumber": "RBG-Q-1843",
+          "eventDate": "1843-06-01",
+          "establishmentMeans": "cultivated",
+          "vitality": "alive",
+          "organismQuantity": "1",
+          "organismQuantityType": "individuals"
+        },
+        "rig.place.geo": {
+          "latitudeDegrees": -33.8642,
+          "longitudeDegrees": 151.2166
+        }
+      }
+    },
+    {
+      "id": "rose-portrait",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "image",
+          "path": "plants/rosa-korbing.jpg"
+        }
+      }
+    },
+    {
+      "id": "rose-iceberg",
+      "components": {
+        "rig.meta.named": { "name": "Iceberg", "stableId": "rose-iceberg" },
+        "rig.plant.taxon": {
+          "family": "Rosaceae",
+          "genus": "Rosa",
+          "taxonRank": "cultivar",
+          "nomenclaturalCode": "icn"
+        },
+        "rig.plant.cultivar": {
+          "cultivarEpithet": "KORbin",
+          "tradeDesignation": "Iceberg"
+        },
+        "rig.plant.habit": {
+          "lifeForm": "shrub",
+          "leafPersistence": "deciduous",
+          "heightMetres": 1.2
+        },
+        "rig.plant.portrait": {
+          "asset": "rose-portrait"
+        }
+      }
+    }
+  ]
+}

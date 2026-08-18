@@ -1,0 +1,100 @@
+{
+  "rig": "0.17.0",
+  "document": {
+    "title": "Art object (CDWA core / rights)",
+    "createdAt": "2026-08-18"
+  },
+  "entities": [
+    {
+      "id": "getty",
+      "components": {
+        "rig.meta.named": { "name": "J. Paul Getty Museum", "stableId": "getty" },
+        "rig.place.address": {
+          "townName": "Los Angeles",
+          "countrySubDivision": "CA",
+          "country": "US"
+        }
+      }
+    },
+    {
+      "id": "van-gogh",
+      "components": {
+        "rig.meta.named": { "name": "Vincent van Gogh", "stableId": "van-gogh" },
+        "rig.person.name": {
+          "givenName": "Vincent",
+          "familyName": "van Gogh"
+        },
+        "rig.person.vital": {
+          "sex": "male",
+          "birthDate": "1853-03-30",
+          "birthCountry": "NL"
+        }
+      }
+    },
+    {
+      "id": "irises-photo",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "image",
+          "path": "works/irises.jpg"
+        }
+      }
+    },
+    {
+      "id": "irises",
+      "components": {
+        "rig.meta.named": { "name": "Irises", "stableId": "irises" },
+        "rig.art.object": {
+          "workType": "painting",
+          "classification": "Paintings"
+        },
+        "rig.art.creation": {
+          "createdDate": "1889",
+          "period": "Post-Impressionism",
+          "culture": "Dutch"
+        },
+        "rig.art.dimensions": {
+          "heightMillimetres": 710,
+          "widthMillimetres": 930
+        },
+        "rig.art.material": {
+          "medium": "oil",
+          "technique": "painting",
+          "support": "canvas"
+        },
+        "rig.art.location": {
+          "repository": "getty",
+          "accessionNumber": "90.PA.20"
+        },
+        "rig.art.image": {
+          "asset": "irises-photo"
+        },
+        "rig.rights.statement": {
+          "licence": "publicDomain",
+          "rightsStatementUri": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+          "creditLine": "The J. Paul Getty Museum, Los Angeles"
+        }
+      }
+    },
+    {
+      "id": "irises-artist",
+      "components": {
+        "rig.art.attribution": {
+          "work": "irises",
+          "person": "van-gogh",
+          "role": "artist",
+          "sequence": 1
+        }
+      }
+    },
+    {
+      "id": "irises-subject",
+      "components": {
+        "rig.art.subject": {
+          "work": "irises",
+          "heading": "irises"
+        }
+      }
+    }
+  ]
+}

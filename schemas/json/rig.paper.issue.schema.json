@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.paper.issue.schema.json",
+  "title": "rig.paper.issue",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "journal": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "volume": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "issue": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "conferenceName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "conferencePlace": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Issue / proceedings container. Journal is an entity (name + ISSN). Not the article.",
+  "minProperties": 1
+}

@@ -1,0 +1,95 @@
+{
+  "rig": "0.17.0",
+  "document": {
+    "title": "Person contact (ISO 20022 party)",
+    "createdAt": "2026-08-18"
+  },
+  "entities": [
+    {
+      "id": "analytical-engines",
+      "components": {
+        "rig.meta.named": { "name": "Analytical Engines", "stableId": "analytical-engines" },
+        "rig.organisation.identity": {
+          "registrationNumber": "AE-1843"
+        },
+        "rig.place.address": {
+          "streetName": "St James's Square",
+          "buildingNumber": "12",
+          "townName": "London",
+          "postCode": "SW1Y 4LE",
+          "country": "GB"
+        }
+      }
+    },
+    {
+      "id": "ada-portrait",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "image",
+          "path": "portraits/ada.jpg"
+        }
+      }
+    },
+    {
+      "id": "ada",
+      "components": {
+        "rig.meta.named": { "name": "Ada Lovelace", "stableId": "ada" },
+        "rig.person.name": {
+          "givenName": "Ada",
+          "familyName": "Lovelace"
+        },
+        "rig.person.vital": {
+          "sex": "female",
+          "gender": "woman",
+          "birthDate": "1815-12-10",
+          "birthTown": "London",
+          "birthCountry": "GB",
+          "nationality": "GB",
+          "countryOfResidence": "GB"
+        },
+        "rig.person.contact": {
+          "email": "ada@example.org",
+          "phone": "+442079460000",
+          "preferredMethod": "email"
+        },
+        "rig.person.employment": {
+          "jobTitle": "Analyst",
+          "department": "Mathematics",
+          "employeeId": "AE-001",
+          "organisation": "analytical-engines",
+          "startDate": "1843-01-01"
+        },
+        "rig.person.portrait": {
+          "asset": "ada-portrait"
+        },
+        "rig.party.account": {
+          "iban": "GB82WEST12345698765432",
+          "accountName": "ADA LOVELACE",
+          "currency": "GBP",
+          "bic": "WESTGB2L",
+          "bankName": "Westminster Example Bank"
+        },
+        "rig.place.address": {
+          "streetName": "St James's Square",
+          "buildingNumber": "12",
+          "townName": "London",
+          "postCode": "SW1Y 4LE",
+          "country": "GB"
+        }
+      }
+    },
+    {
+      "id": "portia",
+      "components": {
+        "rig.meta.named": { "name": "Portia" },
+        "rig.person.name": {
+          "givenName": "Portia"
+        },
+        "rig.person.vital": {
+          "sex": "female",
+          "gender": "woman"
+        }
+      }
+    }
+  ]
+}

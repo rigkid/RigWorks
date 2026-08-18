@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.paper.identifier.schema.json",
+  "title": "rig.paper.identifier",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "doi": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "pmid": {
+      "type": "string",
+      "pattern": "^[0-9]+$",
+      "description": "PubMed PMID."
+    },
+    "pmcid": {
+      "type": "string",
+      "pattern": "^PMC[0-9]+$",
+      "description": "PubMed Central PMCID."
+    },
+    "arxiv": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Article identifiers. Field meanings follow JATS article-id and Crossref. Prefer doi when present.",
+  "minProperties": 1
+}

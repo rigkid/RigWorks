@@ -4,7 +4,7 @@
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `kind` | enum | image, audio, video, model, font, other |
+| `kind` | enum | image, audio, video, model, font, document, other |
 | `path` | string | File or directory path (host root rules apply) |
 | `loop` | bool | Optional. Playback loop when the asset kind supports it; meaningless for stills, so absent is not false — it is "not applicable" |
 

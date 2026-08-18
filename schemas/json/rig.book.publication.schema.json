@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.book.publication.schema.json",
+  "title": "rig.book.publication",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "publisher": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "publishedDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$",
+      "description": "ISO 8601 date or year (ONIX PublishingDate)."
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}$",
+      "description": "ISO 639-1 or 639-2/T (ONIX Language)."
+    },
+    "pageCount": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
+    },
+    "productForm": {
+      "type": "string",
+      "enum": [
+        "hardcover",
+        "paperback",
+        "ebook",
+        "audiobook",
+        "other"
+      ]
+    },
+    "cityOfPublication": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "copyrightYear": {
+      "type": "integer",
+      "minimum": 1000,
+      "maximum": 9999
+    }
+  },
+  "description": "Publishing detail. Field meanings follow ONIX PublishingDetail. Publisher is an organisation entity.",
+  "minProperties": 1
+}

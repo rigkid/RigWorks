@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.person.contact.schema.json",
+  "title": "rig.person.contact",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "email": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "phone": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "mobile": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "fax": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "preferredMethod": {
+      "type": "string",
+      "enum": [
+        "mail",
+        "email",
+        "phone",
+        "mobile",
+        "fax"
+      ]
+    }
+  },
+  "description": "Reach channels. Field meanings follow ISO 20022 ContactDetails. Not a postal address.",
+  "minProperties": 1
+}

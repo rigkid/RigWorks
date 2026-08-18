@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.art.creation.schema.json",
+  "title": "rig.art.creation",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "createdDate": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "period": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "culture": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Creation date and period. Field meanings follow CDWA Creation. Maker is rig.art.attribution.",
+  "minProperties": 1
+}

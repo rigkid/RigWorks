@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.paper.article.schema.json",
+  "title": "rig.paper.article",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "abstract": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "pageStart": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "pageEnd": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "articleNumber": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "publishedDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$",
+      "description": "ISO 8601 date or year (ONIX PublishingDate)."
+    }
+  },
+  "description": "Article body metadata. Field meanings follow JATS article-meta. Title is rig.meta.named.",
+  "minProperties": 1
+}

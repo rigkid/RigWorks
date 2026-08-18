@@ -92,7 +92,7 @@ A component key may also be `x.<vendor>.<name>` — a host component the Contrac
 
 ## Worked examples
 
-Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json). Validate before you trust the output.
+Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json), [`examples/place-address.json`](../../examples/place-address.json), [`examples/person-contact.json`](../../examples/person-contact.json), [`examples/plant-taxon.json`](../../examples/plant-taxon.json), [`examples/book-isbn.json`](../../examples/book-isbn.json), [`examples/paper-citation.json`](../../examples/paper-citation.json), [`examples/art-object.json`](../../examples/art-object.json). Validate before you trust the output.
 
 ### Entity with shape + paint
 
@@ -244,6 +244,25 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** nest SUDE hooks or skip calling `Draw` (when authoring a live host)
 - **Do not** re-declare `name` on domain schemas — compose `rig.meta.named`
 - **Do not** put page/entity origin on `rig.layout.page` or transform — compose `rig.spatial.anchor` (`point` 3×3 face + optional `height` min/center/max for 3×3×3; absent = no remap / page trim top-left). Origin is a cell offset — never axis invert.
+- **Do not** put postal / civic fields or WGS84 on `rig.spatial.transform` — compose `rig.place.address` and `rig.place.geo`
+- **Do not** put given / family name on `rig.meta.named` — compose `rig.person.name`; `named.name` is the formatted / full name
+- **Do not** put sex, birthday, or email on `rig.person.name` — compose `rig.person.vital` and `rig.person.contact`
+- **Do not** copy `sex` into `gender` — recorded sex is ISO/IEC 5218; gender identity is a separate string
+- **Do not** put job title, department, or organisation name on `rig.person.contact` — compose `rig.person.employment` (employer is an entity)
+- **Do not** put a photo path on a person schema — compose `rig.person.portrait` → `rig.media.asset_ref`
+- **Do not** put IBAN / BIC on a person name schema — compose `rig.party.account`
+- **Do not** put postal fields on a person schema — compose `rig.place.address`
+- **Do not** put a `scientificName` blob on `rig.plant.taxon` — compose `rig.meta.named`; parts stay on taxon
+- **Do not** put cultivar / Group / grex / trade name on `rig.plant.taxon` — compose `rig.plant.cultivar`
+- **Do not** put Darwin Core `habitat` on `rig.plant.habit` — habit is growth form; the site is `rig.place.geo` / `rig.place.address`
+- **Do not** put a photo path on a plant schema — compose `rig.plant.portrait` → `rig.media.asset_ref`
+- **Do not** put a hyphenated ISBN or a title string on `rig.book.identifier` — digits-only `isbn13`; distinctive title is `rig.meta.named`
+- **Do not** put author or publisher name strings on a book schema — compose `rig.book.contribution` (person entity) and `rig.book.publication.publisher` (organisation entity)
+- **Do not** put a cover path on a book schema — compose `rig.book.cover` → `rig.media.asset_ref`
+- **Do not** put ISBN on a paper — compose `rig.paper.identifier` (DOI / PMID / arXiv); journal ISSN stays on the journal entity
+- **Do not** store a formatted bibliography string — compose `rig.paper.citation` (`citing` / `cited` entities)
+- **Do not** put copyright holder or licence on `rig.art.object` or `rig.book.publication` — compose `rig.rights.statement`
+- **Do not** put artist name, medium, or centimetres on `rig.art.object` — compose `attribution`, `material`, `dimensions` (millimetres)
 - **Do not** put show/hide on `rig.spatial.layer` — compose `rig.render.visibility`
 - **Do not** put text colour on `rig.media.text` — compose paint (`fill_stroke` / `fill`)
 - **Do not** flatten editorial copy into `rig.media.text` — that is a canvas run; stories are `rig.story.*` (named styles, no font or colour)
@@ -261,6 +280,15 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Document | `rig.document` |
 | Spatial | `transform`, `anchor`, `relationship`, `group`, `camera`, `layer` |
 | Layout | `page` |
+| Place | `address`, `geo` |
+| Person | `name`, `vital`, `contact`, `employment`, `portrait` |
+| Organisation | `identity` |
+| Party | `account` |
+| Plant | `taxon`, `cultivar`, `habit`, `occurrence`, `portrait` |
+| Book | `identifier`, `title`, `publication`, `contribution`, `cover`, `subject` |
+| Paper | `identifier`, `article`, `issue`, `citation` |
+| Rights | `statement` |
+| Art | `object`, `creation`, `attribution`, `dimensions`, `material`, `location`, `subject`, `image` |
 | Geometry | `mesh`, `path`, `path3d`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `spline3d`, `nurbs_surface`, `ring` |
 | Cad | `cuboid`, `cylinder`, `sphere`, `extrude`, `revolve`, `boolean`, `fillet`, `chamfer` |
 | Bim | `classify`, `type`, `occurrence`, `pset`, `site`, `building`, `storey`, `space`, `relation`, `topic`, `comment`, `viewpoint`, `spec`, `facet` |

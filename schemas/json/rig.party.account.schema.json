@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.party.account.schema.json",
+  "title": "rig.party.account",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "iban": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "accountNumber": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "accountName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO 4217 (ISO 20022 Ccy)."
+    },
+    "bic": {
+      "type": "string",
+      "pattern": "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$",
+      "description": "ISO 9362 BIC (ISO 20022 BICFI)."
+    },
+    "bankName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Payment account. Field meanings follow ISO 20022 CashAccount and FinancialInstitutionIdentification. Prefer IBAN when present.",
+  "minProperties": 1
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.person.employment.schema.json",
+  "title": "rig.person.employment",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "jobTitle": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "responsibility": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "department": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "occupation": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "employeeId": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "organisation": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "reportsTo": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "startDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    },
+    "endDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    }
+  },
+  "description": "Employment. Job title / department follow ISO 20022 ContactDetails; organisation is an entity.",
+  "minProperties": 1
+}

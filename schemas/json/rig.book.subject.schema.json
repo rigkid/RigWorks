@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.book.subject.schema.json",
+  "title": "rig.book.subject",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "work": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "scheme": {
+      "type": "string",
+      "enum": [
+        "thema",
+        "bisac",
+        "bic",
+        "dewey",
+        "keyword"
+      ]
+    },
+    "code": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "heading": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "work"
+  ],
+  "description": "One classification heading on one work. Field meanings follow ONIX Subject.",
+  "minProperties": 2
+}

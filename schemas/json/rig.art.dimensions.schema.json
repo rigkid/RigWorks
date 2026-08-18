@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.art.dimensions.schema.json",
+  "title": "rig.art.dimensions",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "heightMillimetres": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "widthMillimetres": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "depthMillimetres": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "weightGrams": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "description": "Measurements. Field meanings follow CDWA Measurements / Object ID. Values in millimetres and grams.",
+  "minProperties": 1
+}

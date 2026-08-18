@@ -1,0 +1,91 @@
+{
+  "rig": "0.17.0",
+  "document": {
+    "title": "Paper citation (JATS / Crossref / CSL)",
+    "createdAt": "2026-08-18"
+  },
+  "entities": [
+    {
+      "id": "nature",
+      "components": {
+        "rig.meta.named": { "name": "Nature", "stableId": "nature" },
+        "rig.book.identifier": { "issn": "0028-0836" }
+      }
+    },
+    {
+      "id": "watson",
+      "components": {
+        "rig.meta.named": { "name": "James D. Watson", "stableId": "watson" },
+        "rig.person.name": { "givenName": "James", "middleName": "D.", "familyName": "Watson" }
+      }
+    },
+    {
+      "id": "crick",
+      "components": {
+        "rig.meta.named": { "name": "Francis H. C. Crick", "stableId": "crick" },
+        "rig.person.name": { "givenName": "Francis", "middleName": "H. C.", "familyName": "Crick" }
+      }
+    },
+    {
+      "id": "pauling-corey-1953",
+      "components": {
+        "rig.meta.named": { "name": "Two Hydrogen-Bonded Spiral Configurations of the Polypeptide Chain" },
+        "rig.paper.article": { "publishedDate": "1953" }
+      }
+    },
+    {
+      "id": "watson-crick-1953",
+      "components": {
+        "rig.meta.named": {
+          "name": "Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid",
+          "stableId": "watson-crick-1953"
+        },
+        "rig.paper.identifier": {
+          "doi": "10.1038/171737a0",
+          "pmid": "13054692"
+        },
+        "rig.paper.article": {
+          "pageStart": "737",
+          "pageEnd": "738",
+          "publishedDate": "1953-04-25"
+        },
+        "rig.paper.issue": {
+          "journal": "nature",
+          "volume": "171",
+          "issue": "4356"
+        }
+      }
+    },
+    {
+      "id": "wc-watson",
+      "components": {
+        "rig.book.contribution": {
+          "work": "watson-crick-1953",
+          "person": "watson",
+          "role": "author",
+          "sequence": 1
+        }
+      }
+    },
+    {
+      "id": "wc-crick",
+      "components": {
+        "rig.book.contribution": {
+          "work": "watson-crick-1953",
+          "person": "crick",
+          "role": "author",
+          "sequence": 2
+        }
+      }
+    },
+    {
+      "id": "wc-cites-pauling",
+      "components": {
+        "rig.paper.citation": {
+          "citing": "watson-crick-1953",
+          "cited": "pauling-corey-1953"
+        }
+      }
+    }
+  ]
+}

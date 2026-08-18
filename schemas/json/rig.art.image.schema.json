@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.art.image.schema.json",
+  "title": "rig.art.image",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "asset": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "asset"
+  ],
+  "description": "Documentary image of a work. asset is a rig.media.asset_ref entity. Not an inline path."
+}

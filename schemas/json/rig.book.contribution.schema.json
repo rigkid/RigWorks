@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.book.contribution.schema.json",
+  "title": "rig.book.contribution",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "work": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "person": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "author",
+        "editor",
+        "translator",
+        "illustrator",
+        "photographer",
+        "compiler",
+        "introduction",
+        "other"
+      ]
+    },
+    "sequence": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    }
+  },
+  "required": [
+    "work",
+    "person",
+    "role"
+  ],
+  "description": "One contributor on one work. Field meanings follow ONIX Contributor. Name is on the person entity."
+}

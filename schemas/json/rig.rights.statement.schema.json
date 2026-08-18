@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.rights.statement.schema.json",
+  "title": "rig.rights.statement",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "copyrightHolder": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "copyrightYear": {
+      "type": "integer",
+      "minimum": 1000,
+      "maximum": 9999
+    },
+    "licence": {
+      "type": "string",
+      "enum": [
+        "allRightsReserved",
+        "publicDomain",
+        "cc0",
+        "ccBy",
+        "ccBySa",
+        "ccByNd",
+        "ccByNc",
+        "ccByNcSa",
+        "ccByNcNd",
+        "other"
+      ]
+    },
+    "licenceUri": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "rightsStatementUri": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "creditLine": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Copyright and licence. Meanings follow Dublin Core rights and RightsStatements.org. Compose onto the work.",
+  "minProperties": 1
+}

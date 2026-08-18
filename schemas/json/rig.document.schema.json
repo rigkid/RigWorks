@@ -98,6 +98,30 @@
               "rig.anim.tween": {
                 "$ref": "./rig.anim.tween.schema.json"
               },
+              "rig.art.attribution": {
+                "$ref": "./rig.art.attribution.schema.json"
+              },
+              "rig.art.creation": {
+                "$ref": "./rig.art.creation.schema.json"
+              },
+              "rig.art.dimensions": {
+                "$ref": "./rig.art.dimensions.schema.json"
+              },
+              "rig.art.image": {
+                "$ref": "./rig.art.image.schema.json"
+              },
+              "rig.art.location": {
+                "$ref": "./rig.art.location.schema.json"
+              },
+              "rig.art.material": {
+                "$ref": "./rig.art.material.schema.json"
+              },
+              "rig.art.object": {
+                "$ref": "./rig.art.object.schema.json"
+              },
+              "rig.art.subject": {
+                "$ref": "./rig.art.subject.schema.json"
+              },
               "rig.audio.analysis": {
                 "$ref": "./rig.audio.analysis.schema.json"
               },
@@ -145,6 +169,24 @@
               },
               "rig.bim.viewpoint": {
                 "$ref": "./rig.bim.viewpoint.schema.json"
+              },
+              "rig.book.contribution": {
+                "$ref": "./rig.book.contribution.schema.json"
+              },
+              "rig.book.cover": {
+                "$ref": "./rig.book.cover.schema.json"
+              },
+              "rig.book.identifier": {
+                "$ref": "./rig.book.identifier.schema.json"
+              },
+              "rig.book.publication": {
+                "$ref": "./rig.book.publication.schema.json"
+              },
+              "rig.book.subject": {
+                "$ref": "./rig.book.subject.schema.json"
+              },
+              "rig.book.title": {
+                "$ref": "./rig.book.title.schema.json"
               },
               "rig.cad.boolean": {
                 "$ref": "./rig.cad.boolean.schema.json"
@@ -344,6 +386,9 @@
               "rig.node.publish": {
                 "$ref": "./rig.node.publish.schema.json"
               },
+              "rig.organisation.identity": {
+                "$ref": "./rig.organisation.identity.schema.json"
+              },
               "rig.paint.fill": {
                 "$ref": "./rig.paint.fill.schema.json"
               },
@@ -361,6 +406,36 @@
               },
               "rig.paint.stroke": {
                 "$ref": "./rig.paint.stroke.schema.json"
+              },
+              "rig.paper.article": {
+                "$ref": "./rig.paper.article.schema.json"
+              },
+              "rig.paper.citation": {
+                "$ref": "./rig.paper.citation.schema.json"
+              },
+              "rig.paper.identifier": {
+                "$ref": "./rig.paper.identifier.schema.json"
+              },
+              "rig.paper.issue": {
+                "$ref": "./rig.paper.issue.schema.json"
+              },
+              "rig.party.account": {
+                "$ref": "./rig.party.account.schema.json"
+              },
+              "rig.person.contact": {
+                "$ref": "./rig.person.contact.schema.json"
+              },
+              "rig.person.employment": {
+                "$ref": "./rig.person.employment.schema.json"
+              },
+              "rig.person.name": {
+                "$ref": "./rig.person.name.schema.json"
+              },
+              "rig.person.portrait": {
+                "$ref": "./rig.person.portrait.schema.json"
+              },
+              "rig.person.vital": {
+                "$ref": "./rig.person.vital.schema.json"
               },
               "rig.pixel.canvas": {
                 "$ref": "./rig.pixel.canvas.schema.json"
@@ -386,6 +461,27 @@
               "rig.pixel.tile_set": {
                 "$ref": "./rig.pixel.tile_set.schema.json"
               },
+              "rig.place.address": {
+                "$ref": "./rig.place.address.schema.json"
+              },
+              "rig.place.geo": {
+                "$ref": "./rig.place.geo.schema.json"
+              },
+              "rig.plant.cultivar": {
+                "$ref": "./rig.plant.cultivar.schema.json"
+              },
+              "rig.plant.habit": {
+                "$ref": "./rig.plant.habit.schema.json"
+              },
+              "rig.plant.occurrence": {
+                "$ref": "./rig.plant.occurrence.schema.json"
+              },
+              "rig.plant.portrait": {
+                "$ref": "./rig.plant.portrait.schema.json"
+              },
+              "rig.plant.taxon": {
+                "$ref": "./rig.plant.taxon.schema.json"
+              },
               "rig.render.light": {
                 "$ref": "./rig.render.light.schema.json"
               },
@@ -394,6 +490,9 @@
               },
               "rig.render.visibility": {
                 "$ref": "./rig.render.visibility.schema.json"
+              },
+              "rig.rights.statement": {
+                "$ref": "./rig.rights.statement.schema.json"
               },
               "rig.sensor.gpio": {
                 "$ref": "./rig.sensor.gpio.schema.json"

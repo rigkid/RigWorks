@@ -55,6 +55,74 @@ Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wi
 | `rig.spatial.layer` | [spatial/layer.md](spatial/layer.md) |
 | `rig.layout.page` | [layout/page.md](layout/page.md) |
 
+### Place (civic / postal)
+
+| Id | Doc |
+|----|-----|
+| `rig.place.address` | [place/address.md](place/address.md) |
+| `rig.place.geo` | [place/geo.md](place/geo.md) |
+
+### Person / organisation / party
+
+| Id | Doc |
+|----|-----|
+| `rig.person.name` | [person/name.md](person/name.md) |
+| `rig.person.vital` | [person/vital.md](person/vital.md) |
+| `rig.person.contact` | [person/contact.md](person/contact.md) |
+| `rig.person.employment` | [person/employment.md](person/employment.md) |
+| `rig.person.portrait` | [person/portrait.md](person/portrait.md) |
+| `rig.organisation.identity` | [organisation/identity.md](organisation/identity.md) |
+| `rig.party.account` | [party/account.md](party/account.md) |
+
+### Plant (botanica)
+
+| Id | Doc |
+|----|-----|
+| `rig.plant.taxon` | [plant/taxon.md](plant/taxon.md) |
+| `rig.plant.cultivar` | [plant/cultivar.md](plant/cultivar.md) |
+| `rig.plant.habit` | [plant/habit.md](plant/habit.md) |
+| `rig.plant.occurrence` | [plant/occurrence.md](plant/occurrence.md) |
+| `rig.plant.portrait` | [plant/portrait.md](plant/portrait.md) |
+
+### Book
+
+| Id | Doc |
+|----|-----|
+| `rig.book.identifier` | [book/identifier.md](book/identifier.md) |
+| `rig.book.title` | [book/title.md](book/title.md) |
+| `rig.book.publication` | [book/publication.md](book/publication.md) |
+| `rig.book.contribution` | [book/contribution.md](book/contribution.md) |
+| `rig.book.cover` | [book/cover.md](book/cover.md) |
+| `rig.book.subject` | [book/subject.md](book/subject.md) |
+
+### Paper (articles / citations)
+
+| Id | Doc |
+|----|-----|
+| `rig.paper.identifier` | [paper/identifier.md](paper/identifier.md) |
+| `rig.paper.article` | [paper/article.md](paper/article.md) |
+| `rig.paper.issue` | [paper/issue.md](paper/issue.md) |
+| `rig.paper.citation` | [paper/citation.md](paper/citation.md) |
+
+### Rights
+
+| Id | Doc |
+|----|-----|
+| `rig.rights.statement` | [rights/statement.md](rights/statement.md) |
+
+### Art (CDWA core)
+
+| Id | Doc |
+|----|-----|
+| `rig.art.object` | [art/object.md](art/object.md) |
+| `rig.art.creation` | [art/creation.md](art/creation.md) |
+| `rig.art.attribution` | [art/attribution.md](art/attribution.md) |
+| `rig.art.dimensions` | [art/dimensions.md](art/dimensions.md) |
+| `rig.art.material` | [art/material.md](art/material.md) |
+| `rig.art.location` | [art/location.md](art/location.md) |
+| `rig.art.subject` | [art/subject.md](art/subject.md) |
+| `rig.art.image` | [art/image.md](art/image.md) |
+
 ### Geometry / paint
 
 | Id | Doc |

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.plant.occurrence.schema.json",
+  "title": "rig.plant.occurrence",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "catalogNumber": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "recordedBy": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "identifiedBy": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "eventDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    },
+    "establishmentMeans": {
+      "type": "string",
+      "enum": [
+        "native",
+        "introduced",
+        "cultivated",
+        "naturalised",
+        "invasive",
+        "uncertain"
+      ]
+    },
+    "vitality": {
+      "type": "string",
+      "enum": [
+        "alive",
+        "dead",
+        "uncertain"
+      ]
+    },
+    "organismQuantity": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "organismQuantityType": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "This plant record / individual. Field meanings follow Darwin Core Occurrence. Site is rig.place.geo.",
+  "minProperties": 1
+}

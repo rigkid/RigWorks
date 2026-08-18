@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.place.address.schema.json",
+  "title": "rig.place.address",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "streetName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "buildingNumber": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "buildingName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "floor": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "room": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "postBox": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "postCode": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "townName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "townLocationName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "districtName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "countrySubDivision": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2 (ISO 20022 Ctry)."
+    },
+    "department": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "subDepartment": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Civic / postal address. Field meanings follow UPU S42 and ISO 20022 PostalAddress. Not scene pose.",
+  "minProperties": 1
+}

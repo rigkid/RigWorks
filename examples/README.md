@@ -15,6 +15,12 @@ node tools/rig-validate/cli.js examples/bim-model.json
 node tools/rig-validate/cli.js examples/bim-bcf.json
 node tools/rig-validate/cli.js examples/bim-ids.json
 node tools/rig-validate/cli.js examples/font-ufo.json
+node tools/rig-validate/cli.js examples/place-address.json
+node tools/rig-validate/cli.js examples/person-contact.json
+node tools/rig-validate/cli.js examples/plant-taxon.json
+node tools/rig-validate/cli.js examples/book-isbn.json
+node tools/rig-validate/cli.js examples/paper-citation.json
+node tools/rig-validate/cli.js examples/art-object.json
 ```
 
 ## SUDE sketch
@@ -184,4 +190,26 @@ One entity (the face):
 ```
 <!-- rig:end -->
 
+## `place-address.json`
 
+A site and a nested room: `rig.place.address` (UPU S42 / ISO 20022 `PostalAddress` fields) plus a WGS84 `rig.place.geo` pin on the site. Transform stays drawing pose; the civic fields are not scene coordinates.
+
+## `person-contact.json`
+
+A contact, an employer, and a character. Person parts compose: `rig.person.name`, `vital` (sex and gender identity are different fields), `contact`, `employment` (employer is an entity), `portrait` (photo is an `asset_ref`), and `rig.party.account` (ISO 20022 `CashAccount`). The organisation carries `rig.organisation.identity`. Formatted name stays on `rig.meta.named`; postal fields stay on `rig.place.address`. Document `createdAt` is envelope metadata, not a person field.
+
+## `plant-taxon.json`
+
+A site oak and a named rose. Taxon parts follow Darwin Core / ICNafp; the rose adds ICNCP `rig.plant.cultivar` (`cultivarEpithet` without quotes, `tradeDesignation` separate). Habit is growth form, not Darwin Core `habitat`. The oak's pin is `rig.place.geo`; the formatted name stays on `rig.meta.named`.
+
+## `book-isbn.json`
+
+A Penguin Classics edition: `rig.book.identifier` (ISO 2108 ISBN-13 digits only), `title` (subtitle / series — distinctive title stays on `rig.meta.named`), `publication` (publisher is an organisation entity), `contribution` (author is a person entity), `cover` (image `asset_ref`), and `subject` (Dewey). Not an ONIX XML message.
+
+## `paper-citation.json`
+
+Watson & Crick 1953: `rig.paper.identifier` (DOI / PMID), `article` (pages + date), `issue` (journal entity + volume). Authors reuse `rig.book.contribution`. One `rig.paper.citation` points at a cited work. Not a JATS XML file.
+
+## `art-object.json`
+
+Van Gogh *Irises*: CDWA core composed as `rig.art.object` / `creation` / `attribution` / `dimensions` / `material` / `location` / `subject` / `image`. Copyright is `rig.rights.statement` (`publicDomain` + RightsStatements.org URI), not a year on the object.

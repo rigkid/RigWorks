@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.book.title.schema.json",
+  "title": "rig.book.title",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "subtitle": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "originalTitle": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "titlePrefix": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "editionStatement": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "editionNumber": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "seriesName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "seriesNumber": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "description": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Title detail beyond the distinctive title. Field meanings follow ONIX TitleDetail. Distinctive title is rig.meta.named.",
+  "minProperties": 1
+}

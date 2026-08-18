@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.art.attribution.schema.json",
+  "title": "rig.art.attribution",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "work": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "person": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "artist",
+        "attributedTo",
+        "workshopOf",
+        "schoolOf",
+        "after",
+        "photographer",
+        "other"
+      ]
+    },
+    "sequence": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    }
+  },
+  "required": [
+    "work",
+    "person",
+    "role"
+  ],
+  "description": "One maker on one work. Field meanings follow CDWA Creation/Creator. Name is on the person entity."
+}

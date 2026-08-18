@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.person.name.schema.json",
+  "title": "rig.person.name",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "givenName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "middleName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "familyName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "namePrefix": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "nameSuffix": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Structured personal name. Field meanings follow ISO 20022 PersonName. Display name is rig.meta.named.",
+  "minProperties": 1
+}

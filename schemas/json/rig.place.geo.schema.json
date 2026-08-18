@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.place.geo.schema.json",
+  "title": "rig.place.geo",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "latitudeDegrees": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitudeDegrees": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "altitudeMetres": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "latitudeDegrees",
+    "longitudeDegrees"
+  ],
+  "description": "WGS84 geodetic pin. Not a postal address and not scene pose."
+}

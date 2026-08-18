@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.art.location.schema.json",
+  "title": "rig.art.location",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "repository": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "accessionNumber": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Current location. Field meanings follow CDWA Current Location. Repository is an organisation entity.",
+  "minProperties": 1
+}

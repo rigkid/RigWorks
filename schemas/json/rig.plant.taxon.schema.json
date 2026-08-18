@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.plant.taxon.schema.json",
+  "title": "rig.plant.taxon",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kingdom": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "phylum": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "class": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "order": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "family": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "genus": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "specificEpithet": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "infraspecificEpithet": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "taxonRank": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "scientificNameAuthorship": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "vernacularName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "nomenclaturalCode": {
+      "type": "string",
+      "enum": [
+        "icn",
+        "icncp",
+        "iczn",
+        "icnp",
+        "biocode"
+      ]
+    },
+    "taxonomicStatus": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Botanical taxon. Field meanings follow Darwin Core Taxon and ICNafp. Display name is rig.meta.named.",
+  "minProperties": 1
+}

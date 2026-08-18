@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.plant.habit.schema.json",
+  "title": "rig.plant.habit",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "lifeForm": {
+      "type": "string",
+      "enum": [
+        "tree",
+        "shrub",
+        "herb",
+        "vine",
+        "grass",
+        "fern",
+        "moss",
+        "succulent",
+        "aquatic",
+        "palm",
+        "other"
+      ]
+    },
+    "leafPersistence": {
+      "type": "string",
+      "enum": [
+        "deciduous",
+        "evergreen",
+        "semiEvergreen"
+      ]
+    },
+    "heightMetres": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "spreadMetres": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "hardiness": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Growth form and mature size. Not Darwin Core habitat (that is the event site — compose place).",
+  "minProperties": 1
+}

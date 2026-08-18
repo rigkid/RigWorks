@@ -124,6 +124,677 @@ add("rig.layout.page", {
   slug: edges,
 }, { required: ["width", "height"] });
 
+// --- place (civic / postal + geodetic; not scene pose) ---
+// Structured UPU S42 / ISO 20022 PostalAddress elements. All optional;
+// emit what the source measured. Unstructured AdrLine is import residue.
+add(
+  "rig.place.address",
+  {
+    streetName: ref("string"),
+    buildingNumber: ref("string"),
+    buildingName: ref("string"),
+    floor: ref("string"),
+    room: ref("string"),
+    postBox: ref("string"),
+    postCode: ref("string"),
+    townName: ref("string"),
+    townLocationName: ref("string"),
+    districtName: ref("string"),
+    countrySubDivision: ref("string"),
+    country: {
+      type: "string",
+      pattern: "^[A-Z]{2}$",
+      description: "ISO 3166-1 alpha-2 (ISO 20022 Ctry).",
+    },
+    department: ref("string"),
+    subDepartment: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Civic / postal address. Field meanings follow UPU S42 and ISO 20022 PostalAddress. Not scene pose.",
+  }
+);
+
+add(
+  "rig.place.geo",
+  {
+    latitudeDegrees: { type: "number", minimum: -90, maximum: 90 },
+    longitudeDegrees: { type: "number", minimum: -180, maximum: 180 },
+    altitudeMetres: ref("float"),
+  },
+  {
+    required: ["latitudeDegrees", "longitudeDegrees"],
+    description:
+      "WGS84 geodetic pin. Not a postal address and not scene pose.",
+  }
+);
+
+// --- person / organisation / party (ISO 20022 party elements; not MX) ---
+// Display name is rig.meta.named. Postal address is rig.place.address.
+// Photo is an asset entity. Unstructured Nm stays in the source.
+const isoDate = {
+  type: "string",
+  pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+  description: "ISO 8601 calendar date.",
+};
+const isoCountry = {
+  type: "string",
+  pattern: "^[A-Z]{2}$",
+  description: "ISO 3166-1 alpha-2.",
+};
+
+add(
+  "rig.person.name",
+  {
+    givenName: ref("string"),
+    middleName: ref("string"),
+    familyName: ref("string"),
+    namePrefix: ref("string"),
+    nameSuffix: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Structured personal name. Field meanings follow ISO 20022 PersonName. Display name is rig.meta.named.",
+  }
+);
+
+add(
+  "rig.person.vital",
+  {
+    sex: enumOf(["unknown", "male", "female", "notApplicable"]),
+    gender: ref("string"),
+    birthDate: { ...isoDate, description: "ISO 8601 calendar date (ISO 20022 BirthDt)." },
+    birthTown: ref("string"),
+    birthCountrySubDivision: ref("string"),
+    birthCountry: { ...isoCountry, description: "ISO 3166-1 alpha-2 (ISO 20022 CtryOfBirth)." },
+    nationality: { ...isoCountry, description: "ISO 3166-1 alpha-2 (ISO 20022 Ntlty)." },
+    countryOfResidence: { ...isoCountry, description: "ISO 3166-1 alpha-2 (ISO 20022 CtryOfRes)." },
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Sex, gender identity, and birth. Sex follows ISO/IEC 5218; gender is self-described; birth follows ISO 20022 DateAndPlaceOfBirth.",
+  }
+);
+
+add(
+  "rig.person.contact",
+  {
+    email: ref("string"),
+    phone: ref("string"),
+    mobile: ref("string"),
+    fax: ref("string"),
+    preferredMethod: enumOf(["mail", "email", "phone", "mobile", "fax"]),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Reach channels. Field meanings follow ISO 20022 ContactDetails. Not a postal address.",
+  }
+);
+
+add(
+  "rig.person.employment",
+  {
+    jobTitle: ref("string"),
+    responsibility: ref("string"),
+    department: ref("string"),
+    occupation: ref("string"),
+    employeeId: ref("string"),
+    organisation: ref("entity"),
+    reportsTo: ref("entity"),
+    startDate: isoDate,
+    endDate: isoDate,
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Employment. Job title / department follow ISO 20022 ContactDetails; organisation is an entity.",
+  }
+);
+
+add(
+  "rig.person.portrait",
+  {
+    asset: ref("entity"),
+  },
+  {
+    required: ["asset"],
+    description:
+      "Portrait photo. asset is a rig.media.asset_ref entity. Not an inline path.",
+  }
+);
+
+add(
+  "rig.organisation.identity",
+  {
+    lei: {
+      type: "string",
+      pattern: "^[A-Z0-9]{20}$",
+      description: "ISO 17442 LEI (ISO 20022 LEI).",
+    },
+    bic: {
+      type: "string",
+      pattern: "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$",
+      description: "ISO 9362 BIC (ISO 20022 AnyBIC).",
+    },
+    registrationNumber: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Organisation legal identifiers. Field meanings follow ISO 20022 OrganisationIdentification. Name is rig.meta.named.",
+  }
+);
+
+add(
+  "rig.party.account",
+  {
+    iban: ref("string"),
+    accountNumber: ref("string"),
+    accountName: ref("string"),
+    currency: {
+      type: "string",
+      pattern: "^[A-Z]{3}$",
+      description: "ISO 4217 (ISO 20022 Ccy).",
+    },
+    bic: {
+      type: "string",
+      pattern: "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$",
+      description: "ISO 9362 BIC (ISO 20022 BICFI).",
+    },
+    bankName: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Payment account. Field meanings follow ISO 20022 CashAccount and FinancialInstitutionIdentification. Prefer IBAN when present.",
+  }
+);
+
+// --- plant (botanica; Darwin Core Taxon / Occurrence + ICNCP) ---
+// Formatted scientific / display name is rig.meta.named. Site is
+// rig.place.address / rig.place.geo. Unstructured scientificName stays
+// in the source — do not dual-author it here.
+add(
+  "rig.plant.taxon",
+  {
+    kingdom: ref("string"),
+    phylum: ref("string"),
+    class: ref("string"),
+    order: ref("string"),
+    family: ref("string"),
+    genus: ref("string"),
+    specificEpithet: ref("string"),
+    infraspecificEpithet: ref("string"),
+    taxonRank: ref("string"),
+    scientificNameAuthorship: ref("string"),
+    vernacularName: ref("string"),
+    nomenclaturalCode: enumOf(["icn", "icncp", "iczn", "icnp", "biocode"]),
+    taxonomicStatus: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Botanical taxon. Field meanings follow Darwin Core Taxon and ICNafp. Display name is rig.meta.named.",
+  }
+);
+
+add(
+  "rig.plant.cultivar",
+  {
+    cultivarEpithet: ref("string"),
+    cultivarGroup: ref("string"),
+    grex: ref("string"),
+    tradeDesignation: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Cultivated-plant name. Field meanings follow ICNCP and Darwin Core cultivarEpithet. Epithet without quotes.",
+  }
+);
+
+add(
+  "rig.plant.habit",
+  {
+    lifeForm: enumOf([
+      "tree",
+      "shrub",
+      "herb",
+      "vine",
+      "grass",
+      "fern",
+      "moss",
+      "succulent",
+      "aquatic",
+      "palm",
+      "other",
+    ]),
+    leafPersistence: enumOf(["deciduous", "evergreen", "semiEvergreen"]),
+    heightMetres: ref("float"),
+    spreadMetres: ref("float"),
+    hardiness: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Growth form and mature size. Not Darwin Core habitat (that is the event site — compose place).",
+  }
+);
+
+add(
+  "rig.plant.occurrence",
+  {
+    catalogNumber: ref("string"),
+    recordedBy: ref("string"),
+    identifiedBy: ref("string"),
+    eventDate: isoDate,
+    establishmentMeans: enumOf([
+      "native",
+      "introduced",
+      "cultivated",
+      "naturalised",
+      "invasive",
+      "uncertain",
+    ]),
+    vitality: enumOf(["alive", "dead", "uncertain"]),
+    organismQuantity: ref("string"),
+    organismQuantityType: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "This plant record / individual. Field meanings follow Darwin Core Occurrence. Site is rig.place.geo.",
+  }
+);
+
+add(
+  "rig.plant.portrait",
+  {
+    asset: ref("entity"),
+  },
+  {
+    required: ["asset"],
+    description:
+      "Plant photo. asset is a rig.media.asset_ref entity. Not an inline path.",
+  }
+);
+
+// --- book (ISO 2108 ISBN + ONIX for Books elements; not an ONIX message) ---
+// Distinctive title is rig.meta.named. Contributor names are person
+// entities. Publisher is an organisation entity. Cover is an asset.
+const onixDate = {
+  type: "string",
+  pattern: "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$",
+  description: "ISO 8601 date or year (ONIX PublishingDate).",
+};
+
+add(
+  "rig.book.identifier",
+  {
+    isbn13: {
+      type: "string",
+      pattern: "^97[89][0-9]{10}$",
+      description: "ISO 2108 ISBN-13 digits only (ONIX ProductIDType 15).",
+    },
+    isbn10: {
+      type: "string",
+      pattern: "^[0-9]{9}[0-9X]$",
+      description: "ISO 2108 ISBN-10 (ONIX ProductIDType 02). Legacy.",
+    },
+    doi: ref("string"),
+    issn: {
+      type: "string",
+      pattern: "^[0-9]{4}-[0-9]{3}[0-9X]$",
+      description: "ISSN (ISO 3297).",
+    },
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Product identifiers. Prefer isbn13 (ISO 2108). Do not invent isbn10 from isbn13.",
+  }
+);
+
+add(
+  "rig.book.title",
+  {
+    subtitle: ref("string"),
+    originalTitle: ref("string"),
+    titlePrefix: ref("string"),
+    editionStatement: ref("string"),
+    editionNumber: ref("int"),
+    seriesName: ref("string"),
+    seriesNumber: ref("string"),
+    description: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Title detail beyond the distinctive title. Field meanings follow ONIX TitleDetail. Distinctive title is rig.meta.named.",
+  }
+);
+
+add(
+  "rig.book.publication",
+  {
+    publisher: ref("entity"),
+    publishedDate: onixDate,
+    language: {
+      type: "string",
+      pattern: "^[a-z]{2,3}$",
+      description: "ISO 639-1 or 639-2/T (ONIX Language).",
+    },
+    pageCount: ref("uint"),
+    productForm: enumOf(["hardcover", "paperback", "ebook", "audiobook", "other"]),
+    cityOfPublication: ref("string"),
+    copyrightYear: { type: "integer", minimum: 1000, maximum: 9999 },
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Publishing detail. Field meanings follow ONIX PublishingDetail. Publisher is an organisation entity.",
+  }
+);
+
+add(
+  "rig.book.contribution",
+  {
+    work: ref("entity"),
+    person: ref("entity"),
+    role: enumOf([
+      "author",
+      "editor",
+      "translator",
+      "illustrator",
+      "photographer",
+      "compiler",
+      "introduction",
+      "other",
+    ]),
+    sequence: ref("int"),
+  },
+  {
+    required: ["work", "person", "role"],
+    description:
+      "One contributor on one work. Field meanings follow ONIX Contributor. Name is on the person entity.",
+  }
+);
+
+add(
+  "rig.book.cover",
+  {
+    asset: ref("entity"),
+  },
+  {
+    required: ["asset"],
+    description:
+      "Cover image. asset is a rig.media.asset_ref entity. Not an inline path.",
+  }
+);
+
+add(
+  "rig.book.subject",
+  {
+    work: ref("entity"),
+    scheme: enumOf(["thema", "bisac", "bic", "dewey", "keyword"]),
+    code: ref("string"),
+    heading: ref("string"),
+  },
+  {
+    required: ["work"],
+    minProperties: 2,
+    description:
+      "One classification heading on one work. Field meanings follow ONIX Subject.",
+  }
+);
+
+// --- paper (JATS / Crossref article + CSL citation link; not a JATS XML file) ---
+add(
+  "rig.paper.identifier",
+  {
+    doi: ref("string"),
+    pmid: {
+      type: "string",
+      pattern: "^[0-9]+$",
+      description: "PubMed PMID.",
+    },
+    pmcid: {
+      type: "string",
+      pattern: "^PMC[0-9]+$",
+      description: "PubMed Central PMCID.",
+    },
+    arxiv: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Article identifiers. Field meanings follow JATS article-id and Crossref. Prefer doi when present.",
+  }
+);
+
+add(
+  "rig.paper.article",
+  {
+    abstract: ref("string"),
+    pageStart: ref("string"),
+    pageEnd: ref("string"),
+    articleNumber: ref("string"),
+    publishedDate: onixDate,
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Article body metadata. Field meanings follow JATS article-meta. Title is rig.meta.named.",
+  }
+);
+
+add(
+  "rig.paper.issue",
+  {
+    journal: ref("entity"),
+    volume: ref("string"),
+    issue: ref("string"),
+    conferenceName: ref("string"),
+    conferencePlace: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Issue / proceedings container. Journal is an entity (name + ISSN). Not the article.",
+  }
+);
+
+add(
+  "rig.paper.citation",
+  {
+    citing: ref("entity"),
+    cited: ref("entity"),
+    locator: ref("string"),
+  },
+  {
+    required: ["citing", "cited"],
+    description:
+      "One bibliographic citation. Field meanings follow CSL / ISO 690 (this work cites that work).",
+  }
+);
+
+// --- rights (Dublin Core / RightsStatements.org / CC; compose onto any work) ---
+add(
+  "rig.rights.statement",
+  {
+    copyrightHolder: ref("entity"),
+    copyrightYear: { type: "integer", minimum: 1000, maximum: 9999 },
+    licence: enumOf([
+      "allRightsReserved",
+      "publicDomain",
+      "cc0",
+      "ccBy",
+      "ccBySa",
+      "ccByNd",
+      "ccByNc",
+      "ccByNcSa",
+      "ccByNcNd",
+      "other",
+    ]),
+    licenceUri: ref("string"),
+    rightsStatementUri: ref("string"),
+    creditLine: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Copyright and licence. Meanings follow Dublin Core rights and RightsStatements.org. Compose onto the work.",
+  }
+);
+
+// --- art (CDWA core / VRA Core / Object ID; not a LIDO XML file) ---
+add(
+  "rig.art.object",
+  {
+    workType: ref("string"),
+    classification: ref("string"),
+    inscription: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Object / work type. Field meanings follow CDWA Object/Work and Classification. Title is rig.meta.named.",
+  }
+);
+
+add(
+  "rig.art.creation",
+  {
+    createdDate: ref("string"),
+    period: ref("string"),
+    culture: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Creation date and period. Field meanings follow CDWA Creation. Maker is rig.art.attribution.",
+  }
+);
+
+add(
+  "rig.art.attribution",
+  {
+    work: ref("entity"),
+    person: ref("entity"),
+    role: enumOf([
+      "artist",
+      "attributedTo",
+      "workshopOf",
+      "schoolOf",
+      "after",
+      "photographer",
+      "other",
+    ]),
+    sequence: ref("int"),
+  },
+  {
+    required: ["work", "person", "role"],
+    description:
+      "One maker on one work. Field meanings follow CDWA Creation/Creator. Name is on the person entity.",
+  }
+);
+
+add(
+  "rig.art.dimensions",
+  {
+    heightMillimetres: ref("float"),
+    widthMillimetres: ref("float"),
+    depthMillimetres: ref("float"),
+    weightGrams: ref("float"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Measurements. Field meanings follow CDWA Measurements / Object ID. Values in millimetres and grams.",
+  }
+);
+
+add(
+  "rig.art.material",
+  {
+    medium: ref("string"),
+    technique: ref("string"),
+    support: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Materials and techniques. Field meanings follow CDWA Materials/Techniques and VRA Core material / technique.",
+  }
+);
+
+add(
+  "rig.art.location",
+  {
+    repository: ref("entity"),
+    accessionNumber: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Current location. Field meanings follow CDWA Current Location. Repository is an organisation entity.",
+  }
+);
+
+add(
+  "rig.art.subject",
+  {
+    work: ref("entity"),
+    heading: ref("string"),
+    interpretation: ref("string"),
+  },
+  {
+    required: ["work"],
+    minProperties: 2,
+    description:
+      "Subject matter. Field meanings follow CDWA Subject Matter. A second heading is another entity.",
+  }
+);
+
+add(
+  "rig.art.image",
+  {
+    asset: ref("entity"),
+  },
+  {
+    required: ["asset"],
+    description:
+      "Documentary image of a work. asset is a rig.media.asset_ref entity. Not an inline path.",
+  }
+);
+
 // --- geometry ---
 // One schema per primitive family. A tagged union forced every shape to carry
 // every other shape's fields; these carry only what they mean.
@@ -605,7 +1276,7 @@ add("rig.audio.bus", {
 
 // --- media ---
 add("rig.media.asset_ref", {
-  kind: enumOf(["image", "audio", "video", "model", "font", "other"]),
+  kind: enumOf(["image", "audio", "video", "model", "font", "document", "other"]),
   path: ref("string"),
   loop: ref("bool"),
 }, { required: ["kind", "path"] });
