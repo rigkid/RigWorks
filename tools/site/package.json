@@ -1,0 +1,9 @@
+{
+  "name": "rig-site",
+  "version": "0.13.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "marked": "^16.4.1"
+  }
+}

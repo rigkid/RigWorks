@@ -48,9 +48,11 @@ describe("check-links", () => {
       path.join(root, "tools/check-links.mjs"),
       path.join(mini, "tools/check-links.mjs")
     );
-    fs.mkdirSync(path.join(mini, "site"), { recursive: true });
+    // Not under site/ — that tree links to pages only gen.mjs assembles, so
+    // check-links skips it and check:site validates the built output instead.
+    fs.mkdirSync(path.join(mini, "docs"), { recursive: true });
     fs.writeFileSync(
-      path.join(mini, "site/index.html"),
+      path.join(mini, "docs/page.html"),
       '<a href="./gone.html">x</a>\n'
     );
     const r = spawnSync(process.execPath, ["tools/check-links.mjs"], {
@@ -89,5 +91,11 @@ describe("smoke", () => {
   it("render-svg --check exits 0", () => {
     const r = run("tools/render-svg.mjs", ["--check"]);
     assert.equal(r.status, 0, r.stderr + r.stdout);
+  });
+
+  it("gen-site --check builds every schema page without dead links", () => {
+    const r = run("tools/site/gen.mjs", ["--check"]);
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+    assert.match(r.stdout, /site ok/);
   });
 });

@@ -1,7 +1,12 @@
 #!/usr/bin/env node
 /**
- * Check that relative links resolve — markdown links, and href/src in the site HTML.
+ * Check that relative links resolve — markdown links, and href/src in HTML.
  *   node tools/check-links.mjs
+ *
+ * site/ is skipped: the hand-written landing page links to pages that only
+ * exist once tools/site/gen.mjs has assembled them (schemas/index.html,
+ * docs/terms/index.html, …). `npm run check:site` validates every link in the
+ * built _site/, which is the shape readers actually get.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -9,11 +14,13 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const skipDirs = new Set(["node_modules", ".git", ".cursor", "_site", "fixtures"]);
+const skipPaths = new Set([path.join(root, "site")]);
 
 function walk(dir, out = []) {
   for (const name of fs.readdirSync(dir)) {
     if (skipDirs.has(name)) continue;
     const p = path.join(dir, name);
+    if (skipPaths.has(p)) continue;
     if (fs.statSync(p).isDirectory()) walk(p, out);
     else if (name.endsWith(".md") || name.endsWith(".html") || name === "llms.txt") out.push(p);
   }

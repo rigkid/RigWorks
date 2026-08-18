@@ -1,0 +1,376 @@
+/* Generated pages — catalog, schema pages, docs. Extends styles.css tokens.
+   The landing page keeps its hero; these pages get a topbar and an optional
+   sidebar. Only the catalog filter uses script, and it degrades to a full list. */
+
+/* ---------- topbar ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(11, 13, 16, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar nav {
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+}
+
+.topbar .nav-links a.here { color: var(--accent); }
+
+body.doc::before { display: none; }
+
+/* ---------- shell ---------- */
+
+.shell {
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.shell.with-side {
+  display: grid;
+  grid-template-columns: 15.5rem minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+main.content {
+  max-width: 54rem;
+  margin: 0;
+  padding: 2.6rem 0 4rem;
+  min-width: 0;
+}
+
+.content h1 {
+  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+  margin: 0 0 1rem;
+}
+
+.content h1 code.id {
+  font-size: 0.86em;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text);
+}
+
+.content h2 {
+  font-size: 1.25rem;
+  margin: 2.8rem 0 1rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.content > .badges { margin-bottom: 1.6rem; }
+.content .lede { font-size: 1.06rem; margin-bottom: 1.4rem; }
+
+.crumbs {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 0.9rem;
+  text-transform: lowercase;
+}
+.crumbs span { padding: 0 0.3rem; color: var(--line); }
+
+.note {
+  color: var(--muted);
+  font-size: 0.95rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent-dim);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+}
+
+/* ---------- sidebar ---------- */
+
+.sidebar {
+  position: sticky;
+  top: 3.6rem;
+  padding: 2.6rem 0 2rem;
+  font-size: 0.88rem;
+}
+
+.sidebar summary {
+  display: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  padding: 0.6rem 0;
+}
+
+.side-scroll {
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  padding-right: 0.6rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.side-group { margin-bottom: 1.3rem; }
+
+.side-group h4 {
+  margin: 0 0 0.45rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.side-group ul { list-style: none; margin: 0; padding: 0; }
+
+.side-group a {
+  display: block;
+  padding: 0.2rem 0.55rem;
+  margin-left: -0.55rem;
+  border-radius: 5px;
+  color: #aab4c4;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.side-group a:hover { background: var(--surface); color: var(--text); text-decoration: none; }
+.side-group a.here { background: var(--surface-2); color: var(--accent); }
+
+/* ---------- catalog ---------- */
+
+.filter { margin: 0 0 2rem; display: flex; align-items: center; gap: 0.8rem; }
+
+.filter input {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  padding: 0.7rem 0.9rem;
+}
+.filter input:focus { outline: none; border-color: var(--accent-dim); }
+.filter input::placeholder { color: #6b7484; }
+
+.filter-count { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+
+.content section {
+  padding: 2.4rem 0 0;
+  border-top: none;
+}
+
+.content section h2 { margin-top: 1.6rem; }
+
+.grid.cards {
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  margin-top: 1.2rem;
+}
+
+a.card { display: block; color: inherit; }
+a.card:hover { border-color: var(--accent-dim); background: var(--surface-2); text-decoration: none; }
+
+.schema-card h3 {
+  margin: 0 0 0.6rem;
+  font-weight: 500;
+}
+
+.schema-card h3 code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text);
+  font-size: 0.86rem;
+}
+a.card:hover h3 code { color: var(--accent); }
+
+.card-fields {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.card-fields li {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.1rem 0.38rem;
+}
+.card-fields li.more { background: none; border-color: transparent; }
+
+.catalog-list { list-style: none; margin: 1rem 0 0; padding: 0; }
+
+.catalog-list li {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.5rem 0.2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.catalog-list code { background: none; border: none; padding: 0; }
+.catalog-list .row-fields {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* ---------- field table ---------- */
+
+.fields { margin-top: 1.2rem; }
+.fields table { font-size: 0.9rem; }
+.fields td:first-child code { background: none; border: none; padding: 0; color: #cfe6ff; }
+
+.fields .type {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: #9fd0ff;
+  display: block;
+}
+
+.fields .constraint {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: #6b7484;
+  margin-top: 0.15rem;
+}
+
+.fields .req,
+.fields .opt {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+.fields .req { color: #ffd9a0; border-color: #4a3a22; }
+.fields .opt { color: var(--muted); }
+
+.fields td:last-child { color: #b7c1d1; }
+.fields td code { font-size: 0.82em; }
+
+/* ---------- prose ---------- */
+
+.prose { margin-top: 1.4rem; }
+.prose > :first-child { margin-top: 0; }
+
+.prose h2 {
+  font-size: 1.2rem;
+  margin: 2.4rem 0 0.9rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.prose h3 { font-size: 1rem; margin: 1.8rem 0 0.6rem; }
+
+.prose p,
+.prose li {
+  color: #c3ccdb;
+  max-width: var(--measure);
+}
+
+.prose p { margin: 0 0 1.05rem; }
+.prose ul, .prose ol { margin: 0 0 1.2rem; padding-left: 1.3rem; }
+.prose li { margin-bottom: 0.35rem; }
+
+.prose pre {
+  background: #090b0e;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  font-size: 0.84rem;
+}
+.prose pre code { background: none; border: none; padding: 0; color: #cfe6ff; }
+
+.prose blockquote {
+  margin: 0 0 1.2rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent-dim);
+  color: var(--muted);
+}
+
+.prose hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
+
+.prose strong { color: #eef2f8; }
+
+/* ---------- prev / next ---------- */
+
+.prevnext {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding: 1.4rem 0 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+/* ---------- narrow ---------- */
+
+@media (max-width: 60rem) {
+  .shell.with-side { grid-template-columns: minmax(0, 1fr); gap: 0; }
+
+  .sidebar {
+    position: static;
+    padding: 1rem 0 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .sidebar summary { display: block; }
+  .sidebar details[open] .side-scroll { max-height: 22rem; margin-bottom: 1rem; }
+  .side-scroll { columns: 2; column-gap: 1.4rem; }
+}
+
+@media (max-width: 48rem) {
+  /* styles.css stacks tables into cards using data-label; markdown tables have
+     none, so prose keeps a real table and scrolls instead. */
+  .prose table,
+  .prose thead,
+  .prose tbody,
+  .prose tr,
+  .prose th,
+  .prose td { display: revert; }
+
+  .prose thead { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+
+  .prose tr {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .prose th,
+  .prose td {
+    border-bottom: 1px solid var(--line);
+    padding: 0.6rem 0.8rem;
+    min-width: 8rem;
+  }
+
+  .prose td::before { display: none; }
+
+  .catalog-list li { flex-direction: column; gap: 0.15rem; }
+  .catalog-list .row-fields { text-align: left; }
+}
+
+@media (max-width: 34rem) {
+  .shell { padding: 0 1.1rem; }
+  .topbar nav { padding: 0.4rem 1.1rem; }
+  .side-scroll { columns: 1; }
+}

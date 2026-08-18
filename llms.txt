@@ -46,3 +46,4 @@ Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component 
 - [tools/check-version.mjs](tools/check-version.mjs): SemVer format of [`VERSION`](VERSION) + site badges; hooks via `npm run hooks:install` (pre-commit SemVer, pre-push full `npm run check`)
 - [tools/check-schema-parity/check.mjs](tools/check-schema-parity/check.mjs): prose ↔ JSON Schema parity
 - [tools/gen-schemas.mjs](tools/gen-schemas.mjs): regenerate `schemas/json/` (`--check` to detect drift); run `npm run check` before push
+- [tools/site/gen.mjs](tools/site/gen.mjs): render this repo as the static site at https://rig.works (`npm run site`; `--check` gates page coverage and links)

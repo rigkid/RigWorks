@@ -5,9 +5,10 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "setup": "npm install --prefix tools/rig-validate",
+    "setup": "npm install --prefix tools/rig-validate && npm install --prefix tools/site",
     "gen": "node tools/gen-schemas.mjs",
-    "check": "npm run check:version && npm run check:schemas && npm run check:parity && npm run check:links && npm run check:snippets && npm run check:svg && npm run check:examples && npm test",
+    "site": "node tools/site/gen.mjs",
+    "check": "npm run check:version && npm run check:schemas && npm run check:parity && npm run check:links && npm run check:snippets && npm run check:svg && npm run check:examples && npm run check:site && npm test",
     "check:version": "node tools/check-version.mjs",
     "check:schemas": "node tools/gen-schemas.mjs --check",
     "check:parity": "node tools/check-schema-parity/check.mjs",
@@ -17,6 +18,7 @@
     "sync": "node tools/sync-snippets.mjs",
     "gen:svg": "node tools/render-svg.mjs",
     "check:examples": "node tools/rig-validate/cli.js --strict examples/minimal-scene.json examples/lfo-binding.json examples/ui-panel.json examples/portable-tool.json examples/path3d-spline3d.json examples/page-anchor.json examples/cad-boolean.json examples/story-flow.json examples/bim-model.json examples/bim-bcf.json examples/bim-ids.json examples/font-ufo.json examples/place-address.json examples/person-contact.json examples/plant-taxon.json examples/book-isbn.json examples/paper-citation.json examples/art-object.json examples/commerce-offer.json examples/legal-agreement.json examples/calendar-event.json",
+    "check:site": "node tools/site/gen.mjs --check",
     "hooks:install": "node tools/install-hooks.mjs",
     "test": "node --test tools/test/*.test.mjs"
   }
