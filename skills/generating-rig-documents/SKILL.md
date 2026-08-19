@@ -125,6 +125,9 @@ Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scen
         1
       ]
     },
+    "rig.spatial.relationship": {
+      "parent": "world"
+    },
     "rig.geometry.rectangle": {
       "x": 0,
       "y": 0,
@@ -245,7 +248,7 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** use `x.<vendor>.<name>` to stand in for a catalog id you could not find — report the gap instead
 - **Do not** nest SUDE hooks or skip calling `Draw` (when authoring a live host)
 - **Do not** re-declare `name` on domain schemas — compose `rig.meta.named`
-- **Do not** put page/entity origin on `rig.layout.page` or transform — compose `rig.spatial.anchor` (`point` 3×3 face + optional `height` min/center/max for 3×3×3; absent = no remap / page trim top-left). Origin is a cell offset — never axis invert.
+- **Do not** put page/entity origin on `rig.layout.page` or transform — compose `rig.spatial.anchor` (`point` 3×3 face + optional `height` min/center/max for 3×3×3; absent = no remap / page trim top-left). Origin is a cell offset — never axis invert. Not a locator: that is `rig.spatial.vertex`. Not `rig.font.anchor`.
 - **Do not** put postal / civic fields or WGS84 on `rig.spatial.transform` — compose `rig.place.address` and `rig.place.geo`
 - **Do not** put given / family name on `rig.meta.named` — compose `rig.person.name`; `named.name` is the formatted / full name
 - **Do not** put sex, birthday, or email on `rig.person.name` — compose `rig.person.vital` and `rig.person.contact`
@@ -274,6 +277,10 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** invent `rig.calendar.todo`, `alarm`, `freebusy`, or `timezone` — those stay in the `.ics` source
 - **Do not** put an event title or location string on `rig.calendar.event` — compose `rig.meta.named` and `rig.place.address`
 - **Do not** put show/hide on `rig.spatial.layer` — compose `rig.render.visibility`
+- **Do not** use `rig.spatial.group` as the world root — that is an unparented `rig.spatial.vertex` (a scene)
+- **Do not** invent `rig.spatial.scene` or tag vertex with `kind` — the graph is the tag
+- **Do not** put `x` / `y` / `z` on `rig.spatial.vertex` — pose stays on `rig.spatial.transform`
+- **Do not** invent `rig.geometry.vertex` or index `rig.geometry.mesh` `positions` via a vertex component — mesh corners stay packed arrays
 - **Do not** put blend / opacity on `rig.pixel.layer` — compose `rig.render.blend`
 - **Do not** put stroke caps / joins / dash on `rig.paint.fill_stroke` — compose `rig.paint.stroke_style`
 - **Do not** put text colour on `rig.media.text` — compose paint (`fill_stroke` / `fill`)
@@ -290,7 +297,7 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Domain | Schema ids |
 |--------|------------|
 | Document | `rig.document` |
-| Spatial | `transform`, `anchor`, `relationship`, `group`, `camera`, `layer` |
+| Spatial | `transform`, `anchor`, `relationship`, `vertex`, `group`, `camera`, `layer` |
 | Layout | `page` |
 | Place | `address`, `geo` |
 | Person | `name`, `vital`, `contact`, `employment`, `portrait` |

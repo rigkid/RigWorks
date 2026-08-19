@@ -554,6 +554,9 @@
               "rig.spatial.transform": {
                 "$ref": "./rig.spatial.transform.schema.json"
               },
+              "rig.spatial.vertex": {
+                "$ref": "./rig.spatial.vertex.schema.json"
+              },
               "rig.story.character_style": {
                 "$ref": "./rig.story.character_style.schema.json"
               },

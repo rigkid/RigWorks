@@ -298,7 +298,11 @@ function loadSkill() {
 
 const GROUPS = [
   { title: "Document", domains: ["document"] },
-  { title: "Spatial / scene", domains: ["spatial", "layout"] },
+  {
+    title: "Spatial / scene",
+    domains: ["spatial", "layout"],
+    note: "A scene is a root (unparented) vertex. Anchor is a bounds cell — not font.anchor (a glyph point).",
+  },
   { title: "Place (civic / postal)", domains: ["place"] },
   { title: "Person / organisation / party", domains: ["person", "organisation", "party"] },
   { title: "Commerce", domains: ["commerce"] },
@@ -334,6 +338,7 @@ function groupSchemas(byId) {
   const used = new Set();
   const groups = GROUPS.map((g) => ({
     title: g.title,
+    note: g.note ?? "",
     members: ids.filter((id) => {
       const domain = id === "rig.document" ? "document" : byId.get(id).domain;
       if (!g.domains.includes(domain)) return false;
@@ -699,6 +704,7 @@ function catalogPage(ctx) {
         .join("\n");
       return `<section data-section>
 <h2 id="${slugify(g.title)}">${esc(g.title)}</h2>
+${g.note ? `<p class="lede">${esc(g.note)}</p>` : ""}
 <ul class="catalog-list">
 ${rows}
 </ul>

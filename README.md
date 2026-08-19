@@ -81,6 +81,9 @@ One entity in Contract JSON ([`examples/minimal-scene.json`](examples/minimal-sc
         1
       ]
     },
+    "rig.spatial.relationship": {
+      "parent": "world"
+    },
     "rig.geometry.rectangle": {
       "x": 0,
       "y": 0,

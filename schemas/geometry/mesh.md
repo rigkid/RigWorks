@@ -14,7 +14,7 @@ Indexed mesh. Format when present.
 | `faceColors` | vec4[] | Optional per-face colour |
 | `facePalette` | uint8[] | Optional per-face palette index |
 
-One packing only — packed `float[]`, not `vec3[]` / `vec2[]` beside it. Hosts may expand for editors; the wire form stays flat.
+One packing only — packed `float[]`, not `vec3[]` / `vec2[]` beside it. Hosts may expand for editors; the wire form stays flat. Mesh corners are these arrays, not [`rig.spatial.vertex`](../spatial/vertex.md) entities.
 
 `faceColors` and `facePalette` are alternatives. Carrying both on one mesh is a document error (same rule as inline vs referenced paint). When `loops` is present they are one entry per authored face (per `loopSizes` row), not per tessellated triangle.
 

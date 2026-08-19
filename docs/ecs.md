@@ -52,6 +52,7 @@ When you have a scene graph:
 
 - Parent / child as entity ids
 - Local transform: position (vec3), rotation (quat), scale (vec3)
+- Optional locator / scene root: [`rig.spatial.vertex`](../schemas/spatial/vertex.md) (an unparented vertex is a scene)
 - Optional anchor: which point of local bounds that pose attaches to ([`rig.spatial.anchor`](../schemas/spatial/anchor.md))
 - World matrix as a cache written by a transform system
 

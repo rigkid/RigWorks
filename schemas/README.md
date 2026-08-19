@@ -62,11 +62,14 @@ Enum values are **kebab-case** because they show up as choices in UI and authore
 
 ### Spatial / scene
 
+A scene is a root (unparented) [`rig.spatial.vertex`](spatial/vertex.md). [`rig.spatial.anchor`](spatial/anchor.md) is a bounds cell, not [`rig.font.anchor`](font/anchor.md) (a glyph point).
+
 | Id | Doc |
 |----|-----|
 | `rig.spatial.transform` | [spatial/transform.md](spatial/transform.md) |
 | `rig.spatial.anchor` | [spatial/anchor.md](spatial/anchor.md) |
 | `rig.spatial.relationship` | [spatial/relationship.md](spatial/relationship.md) |
+| `rig.spatial.vertex` | [spatial/vertex.md](spatial/vertex.md) |
 | `rig.spatial.group` | [spatial/group.md](spatial/group.md) |
 | `rig.spatial.camera` | [spatial/camera.md](spatial/camera.md) |
 | `rig.spatial.layer` | [spatial/layer.md](spatial/layer.md) |
@@ -367,7 +370,7 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 
 | Graph | Parent / nest | Schema |
 |-------|---------------|--------|
-| Scene pose | `parent` | [`spatial.relationship`](spatial/relationship.md) + optional [`spatial.group`](spatial/group.md) marker |
+| Scene pose | `parent` | [`spatial.relationship`](spatial/relationship.md) + optional [`spatial.vertex`](spatial/vertex.md) / [`spatial.group`](spatial/group.md) markers |
 | TF / URDF frame | `parent` | [`spatial.relationship`](spatial/relationship.md) — same graph as scene pose; not a new graph ([ros.md](../docs/ros.md)) |
 | Compositor stack | `groupParent` | [`pixel.layer`](pixel/layer.md) (`kind=group`) |
 | Effect chain | `parentStep` | [`pixel.effect_chain`](pixel/effect-chain.md) (step `id`) |

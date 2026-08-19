@@ -93,6 +93,17 @@ add(
   }
 );
 
+add(
+  "rig.spatial.vertex",
+  {},
+  {
+    required: [],
+    description:
+      "Marker: presence means a locator / point. Pose on transform. An unparented vertex is a scene. No fields.",
+    minProperties: 0,
+  }
+);
+
 // Defaults: active true, projection perspective, fovYDegrees 60,
 // nearClip 0.1, farClip 1000, aspect = host viewport.
 add("rig.spatial.camera", {

@@ -10,7 +10,7 @@ This is the **Contract wire format** (JSON). Field meaning remains POD; vectors 
 |-------|------|---------|
 | `rig` | string | Contract version this document targets (`MAJOR.MINOR.PATCH`) |
 | `document` | object | Optional metadata (`title`, `author`, `createdAt`, `modifiedAt`, `defaultUnit`, `colorSpace`, `timeZone`, `ifcSchema`, `pdfX`, `outputCondition`, `trapped`, …) |
-| `entities` | entity[] | Scene / graph contents |
+| `entities` | entity[] | Scene / graph contents. An unparented [`rig.spatial.vertex`](spatial/vertex.md) is a scene; without one, unparented entities are the roots. |
 
 `colorSpace` names the colour space every `rgba` / `rgb` value in the file is expressed in; absent = `srgb`. One key for the whole document — per-component colour spaces do not exist.
 

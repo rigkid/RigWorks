@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.spatial.vertex.schema.json",
+  "title": "rig.spatial.vertex",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {},
+  "description": "Marker: presence means a locator / point. Pose on transform. An unparented vertex is a scene. No fields.",
+  "minProperties": 0
+}

@@ -3,6 +3,8 @@
 Which cell of an entity's local bounds is the local origin. Format when present.
 Axes stay +X +Y +Z — the host offsets to the named cell; it does not invert signs.
 
+Not a locator you place — that is [`rig.spatial.vertex`](vertex.md). Not [`rig.font.anchor`](../font/anchor.md) (named glyph point).
+
 | Field | Type | Meaning |
 |-------|------|---------|
 | `point` | string | One of the nine 3×3 face cells (see below) |

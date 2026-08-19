@@ -44,7 +44,7 @@ Exit:
 
 ## `minimal-scene.json`
 
-A specimen sheet of the geometry vocabulary: rounded rectangle, circle, regular polygons (triangle, hexagon), star, parent/child hierarchy, closed and open polygons, line, and a quad mesh. Rendered to [`site/scene.svg`](../site/scene.svg) by [`tools/render-svg.mjs`](../tools/render-svg.mjs). Note what is *absent*: fill-only shapes carry just `fillRgba` and stroke-only shapes just `strokeRgba` — 0.8.0 defaults cover the rest.
+A specimen sheet of the geometry vocabulary: rounded rectangle, circle, regular polygons (triangle, hexagon), star, parent/child hierarchy under a root [`rig.spatial.vertex`](../schemas/spatial/vertex.md) (`world`), closed and open polygons, line, and a quad mesh. Rendered to [`site/scene.svg`](../site/scene.svg) by [`tools/render-svg.mjs`](../tools/render-svg.mjs). Note what is *absent*: fill-only shapes carry just `fillRgba` and stroke-only shapes just `strokeRgba` — 0.8.0 defaults cover the rest.
 
 One entity (excerpt):
 
@@ -74,6 +74,9 @@ One entity (excerpt):
         1,
         1
       ]
+    },
+    "rig.spatial.relationship": {
+      "parent": "world"
     },
     "rig.geometry.rectangle": {
       "x": 0,
