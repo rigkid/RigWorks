@@ -116,7 +116,7 @@ A cubic space curve as `rig.geometry.path3d` (`cubic-to`) and a separate degree-
 
 ## `page-anchor.json`
 
-A page with `rig.spatial.anchor` `center` (page-local origin mid-trim) and a child rectangle with `bottomRight` registration plus a local `offset` — transform stays TRS; the 3×3 lives on the sibling component.
+A page with `rig.spatial.anchor` `center` (page-local origin mid-trim) and a child rectangle with `bottom-right` registration plus a local `offset` — transform stays TRS; the 3×3 lives on the sibling component.
 
 ## `cad-boolean.json`
 
