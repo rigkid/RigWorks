@@ -8,15 +8,15 @@
     "point": {
       "type": "string",
       "enum": [
-        "topLeft",
-        "topCenter",
-        "topRight",
-        "middleLeft",
+        "top-left",
+        "top-center",
+        "top-right",
+        "middle-left",
         "center",
-        "middleRight",
-        "bottomLeft",
-        "bottomCenter",
-        "bottomRight"
+        "middle-right",
+        "bottom-left",
+        "bottom-center",
+        "bottom-right"
       ]
     },
     "height": {

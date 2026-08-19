@@ -17,10 +17,10 @@
           "type": {
             "type": "string",
             "enum": [
-              "moveTo",
-              "lineTo",
-              "cubicTo",
-              "quadTo",
+              "move-to",
+              "line-to",
+              "cubic-to",
+              "quad-to",
               "close"
             ]
           },

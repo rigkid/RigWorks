@@ -35,7 +35,7 @@
         "rig.commerce.offer": {
           "item": "moby-dick",
           "seller": "penguin",
-          "availability": "inStock",
+          "availability": "in-stock",
           "sku": "PC-MOBY-PB"
         },
         "rig.commerce.price": {

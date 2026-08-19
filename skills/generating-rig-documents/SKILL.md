@@ -79,10 +79,10 @@ Wire format is JSON — [`rig.document`](../../schemas/document.md).
 | `entities` | Array of `{ id, components }` |
 
 - `id` — string, unique within the file
-- `components` — map keyed by full schema ids (`rig.spatial.transform`), **not** PascalCase host aliases
+- `components` — map keyed by full schema ids (`rig.spatial.transform`)
 - `entity`-typed fields — string id or `null`
 - `vec*` / `quat` — JSON number arrays; **quat order x, y, z, w**
-- Enums — lowerCamelCase literals from the schema
+- Enums — kebab-case literals from the schema (`top-left`, `color-dodge`)
 - Field names — lowerCamelCase, spelled out ([`schemas/README.md` Field naming](../../schemas/README.md#field-naming)); no SVG abbreviations (`radiusX` not `rx`)
 - Measurements — ratios 0–1; scene lengths in `document.defaultUnit` (page `unit` may override); catalog facts SI in the field name; protocol/clock native — [`schemas/README.md` Measurements](../../schemas/README.md#measurements)
 - Serialize only portable fields; omit host caches
@@ -241,7 +241,7 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** invent `rig.bim.wall` / `rig.bim.door` — use `rig.bim.classify` with `ifcClass`; geometry on cad / mesh; typed params on `rig.bim.pset`
 - **Do not** invent `rig.ros2.*` — ROS 2 maps onto existing spatial / I/O / sensor / SUDE; TF is `transform` + `relationship`; do not put ROS nodes on `rig.node.*`; see [docs/ros.md](../../docs/ros.md)
 - **Do not** invent `rig.font.ttf` or grow `rig.media.text` with outlines — UFO source is `rig.font.*`; contours compose `rig.geometry.path`; features compose `rig.media.code` (`language` `fea`); `.ufo` is fulfillment — [docs/ufo.md](../../docs/ufo.md)
-- **Do not** invent schema ids or use PascalCase keys (`Transform`, `Shape`) — those are RigKit host aliases; see [docs/interchange.md](../../docs/interchange.md)
+- **Do not** invent schema ids or use PascalCase keys (`Transform`, `Shape`) — component keys are full `rig.*` ids; see [docs/interchange.md](../../docs/interchange.md)
 - **Do not** use `x.<vendor>.<name>` to stand in for a catalog id you could not find — report the gap instead
 - **Do not** nest SUDE hooks or skip calling `Draw` (when authoring a live host)
 - **Do not** re-declare `name` on domain schemas — compose `rig.meta.named`
@@ -330,4 +330,4 @@ Prefix every component key with `rig.<domain>.` (e.g. `rig.spatial.transform`).
 
 ## Where output goes
 
-[RigKit](https://github.com/rigkid/RigKit) is the reference host. Prefer Contract JSON (`rig.*` keys); translate at the host boundary if the host still uses PascalCase `.rig` keys.
+[RigKit](https://github.com/rigkid/RigKit) is the reference host. Emit Contract JSON (`rig.*` keys).

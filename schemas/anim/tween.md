@@ -10,7 +10,7 @@ Drive one float property over time. Format when present.
 | `to` | float | End |
 | `duration` | float | Seconds |
 | `elapsed` | float | Optional. Seconds; absent = 0 |
-| `easing` | enum | Optional. linear, easeIn, easeOut, easeInOut; absent = linear |
+| `easing` | enum | Optional. linear, ease-in, ease-out, ease-in-out; absent = linear |
 | `loop` | bool | Optional. Repeat; absent = false |
 | `playing` | bool | Optional. Active; absent = true |
 

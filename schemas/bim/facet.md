@@ -5,7 +5,7 @@ One IDS facet — applicability or requirement. Format when present.
 | Field | Type | Meaning |
 |-------|------|---------|
 | `role` | enum | `applicability` or `requirement` |
-| `kind` | enum | `entity`, `attribute`, `classification`, `property`, `material`, or `partOf` |
+| `kind` | enum | `entity`, `attribute`, `classification`, `property`, `material`, or `part-of` |
 | `cardinality` | enum | Optional. `required`, `prohibited`, or `optional` — requirements only; absent = `required` when `role` is `requirement` |
 | `ifcClass` | string | When `kind` is `entity` (or as needed for other kinds) |
 | `predefinedType` | string | Optional. IFC predefined type filter |
@@ -14,7 +14,7 @@ One IDS facet — applicability or requirement. Format when present.
 | `propertyName` | string | When `kind` is `property` |
 | `value` | string | Optional. Expected value (string form); absent = presence-only |
 | `scheme` | string | When `kind` is `classification` (or material scheme) |
-| `partOfClass` | string | When `kind` is `partOf` — parent IFC class |
-| `partOfRelation` | string | Optional. When `kind` is `partOf` — relation name |
+| `partOfClass` | string | When `kind` is `part-of` — parent IFC class |
+| `partOfRelation` | string | Optional. When `kind` is `part-of` — relation name |
 
 Emit only the fields the chosen `kind` needs; leave the rest absent. List this entity on [`rig.bim.spec`](spec.md) `applicability` or `requirements`.

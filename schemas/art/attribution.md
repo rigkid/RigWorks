@@ -8,7 +8,7 @@ Field meanings follow CDWA Creation — Creator and VRA Core `agent`. The person
 |-------|------|---------|------|
 | `work` | entity | The artwork entity | — |
 | `person` | entity | Maker | Creator |
-| `role` | enum | `artist` / `attributedTo` / `workshopOf` / `schoolOf` / `after` / `photographer` / `other` | Creator — Role |
+| `role` | enum | `artist` / `attributed-to` / `workshop-of` / `school-of` / `after` / `photographer` / `other` | Creator — Role |
 | `sequence` | int | Optional. Credit order, 1-based | — |
 
 `work`, `person`, and `role` are required.

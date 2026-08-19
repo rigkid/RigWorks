@@ -10,7 +10,7 @@ Indexed mesh. Format when present.
 | `loops` | uint32[] | Optional concatenated n-gon vertex indices (authored faces). Empty = faces are implicit triangles from `indices`. |
 | `loopSizes` | uint32[] | Optional vertex count per authored face; sum equals `loops.length`. A cube is six 4-gons, not twelve triangles. |
 | `texcoords` | float[] | Optional per-vertex uv, tightly packed (u0,v0,u1,…); empty = none |
-| `mode` | enum | triangles, lines, lineStrip |
+| `mode` | enum | triangles, lines, line-strip |
 | `faceColors` | vec4[] | Optional per-face colour |
 | `facePalette` | uint8[] | Optional per-face palette index |
 

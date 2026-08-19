@@ -20,7 +20,7 @@
         "classification",
         "property",
         "material",
-        "partOf"
+        "part-of"
       ]
     },
     "cardinality": {

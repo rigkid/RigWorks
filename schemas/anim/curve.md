@@ -8,7 +8,7 @@ Used for easing, distribution, bulge/squeeze, and any host that needs an editabl
 |-------|------|---------|
 | `points` | vec2[] | Control points. Each `x`/`y` in `[0,1]`. Sorted by ascending `x`. At least two points; hosts ensure endpoints at `x=0` and `x=1`. |
 | `interpolation` | enum | Optional. `linear`, `smooth`; absent = `smooth`. |
-| `preset` | enum | Optional. Named seed for `points`: `linear`, `easeIn`, `easeOut`, `easeInOut`, `sCurve`, `bulge`, `squeeze`, `custom`. Absent = `custom` when points are authored, else `linear`. |
+| `preset` | enum | Optional. Named seed for `points`: `linear`, `ease-in`, `ease-out`, `ease-in-out`, `s-curve`, `bulge`, `squeeze`, `custom`. Absent = `custom` when points are authored, else `linear`. |
 
 ## Rules
 

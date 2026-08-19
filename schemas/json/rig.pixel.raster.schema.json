@@ -10,7 +10,7 @@
       "enum": [
         "working",
         "output",
-        "layerPixels",
+        "layer-pixels",
         "mask",
         "composite"
       ]

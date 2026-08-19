@@ -11,8 +11,8 @@
     "action": {
       "type": "string",
       "enum": [
-        "colorFlash",
-        "playSample"
+        "color-flash",
+        "play-sample"
       ]
     },
     "enabled": {

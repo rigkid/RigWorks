@@ -16,15 +16,15 @@
     "licence": {
       "type": "string",
       "enum": [
-        "allRightsReserved",
-        "publicDomain",
+        "all-rights-reserved",
+        "public-domain",
         "cc0",
-        "ccBy",
-        "ccBySa",
-        "ccByNd",
-        "ccByNc",
-        "ccByNcSa",
-        "ccByNcNd",
+        "cc-by",
+        "cc-by-sa",
+        "cc-by-nd",
+        "cc-by-nc",
+        "cc-by-nc-sa",
+        "cc-by-nc-nd",
         "other"
       ]
     },

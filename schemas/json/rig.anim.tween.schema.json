@@ -27,9 +27,9 @@
       "type": "string",
       "enum": [
         "linear",
-        "easeIn",
-        "easeOut",
-        "easeInOut"
+        "ease-in",
+        "ease-out",
+        "ease-in-out"
       ]
     },
     "loop": {

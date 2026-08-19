@@ -48,9 +48,9 @@
         "rig.font.glyph": { "unicodes": [65], "width": 600 },
         "rig.geometry.path": {
           "commands": [
-            { "type": "moveTo", "point": [50, 0] },
-            { "type": "lineTo", "point": [300, 700] },
-            { "type": "lineTo", "point": [550, 0] },
+            { "type": "move-to", "point": [50, 0] },
+            { "type": "line-to", "point": [300, 700] },
+            { "type": "line-to", "point": [550, 0] },
             { "type": "close" }
           ]
         }
@@ -72,9 +72,9 @@
         "rig.font.glyph": { "unicodes": [86], "width": 600 },
         "rig.geometry.path": {
           "commands": [
-            { "type": "moveTo", "point": [50, 700] },
-            { "type": "lineTo", "point": [300, 0] },
-            { "type": "lineTo", "point": [550, 700] }
+            { "type": "move-to", "point": [50, 700] },
+            { "type": "line-to", "point": [300, 0] },
+            { "type": "line-to", "point": [550, 700] }
           ]
         }
       }
@@ -95,8 +95,8 @@
         "rig.font.glyph": { "width": 0 },
         "rig.geometry.path": {
           "commands": [
-            { "type": "moveTo", "point": [280, 720] },
-            { "type": "lineTo", "point": [340, 820] }
+            { "type": "move-to", "point": [280, 720] },
+            { "type": "line-to", "point": [340, 820] }
           ]
         }
       }

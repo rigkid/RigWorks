@@ -14,9 +14,9 @@
     "availability": {
       "type": "string",
       "enum": [
-        "inStock",
-        "outOfStock",
-        "preOrder",
+        "in-stock",
+        "out-of-stock",
+        "pre-order",
         "limited",
         "unknown"
       ]

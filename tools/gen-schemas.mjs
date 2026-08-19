@@ -29,7 +29,14 @@ function objectSchema(id, properties, opts = {}) {
   return schema;
 }
 
+const ENUM_LITERAL = /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
+
 function enumOf(values) {
+  for (const v of values) {
+    if (!ENUM_LITERAL.test(v)) {
+      throw new Error(`enum literal must be kebab-case: ${JSON.stringify(v)}`);
+    }
+  }
   return { type: "string", enum: values };
 }
 
@@ -53,15 +60,15 @@ add("rig.spatial.transform", {
 // height is the Z slice of the cuboid (absent = min). Axes never invert — origin is a cell.
 add("rig.spatial.anchor", {
   point: enumOf([
-    "topLeft",
-    "topCenter",
-    "topRight",
-    "middleLeft",
+    "top-left",
+    "top-center",
+    "top-right",
+    "middle-left",
     "center",
-    "middleRight",
-    "bottomLeft",
-    "bottomCenter",
-    "bottomRight",
+    "middle-right",
+    "bottom-left",
+    "bottom-center",
+    "bottom-right",
   ]),
   height: enumOf(["min", "center", "max"]),
   offset: ref("vec2"),
@@ -211,7 +218,7 @@ add(
 add(
   "rig.person.vital",
   {
-    sex: enumOf(["unknown", "male", "female", "notApplicable"]),
+    sex: enumOf(["unknown", "male", "female", "not-applicable"]),
     gender: ref("string"),
     birthDate: { ...isoDate, description: "ISO 8601 calendar date (ISO 20022 BirthDt)." },
     birthTown: ref("string"),
@@ -357,9 +364,9 @@ add(
     item: ref("entity"),
     seller: ref("entity"),
     availability: enumOf([
-      "inStock",
-      "outOfStock",
-      "preOrder",
+      "in-stock",
+      "out-of-stock",
+      "pre-order",
       "limited",
       "unknown",
     ]),
@@ -515,7 +522,7 @@ add(
       "palm",
       "other",
     ]),
-    leafPersistence: enumOf(["deciduous", "evergreen", "semiEvergreen"]),
+    leafPersistence: enumOf(["deciduous", "evergreen", "semi-evergreen"]),
     heightMetres: ref("float"),
     spreadMetres: ref("float"),
     hardiness: ref("string"),
@@ -779,15 +786,15 @@ add(
     copyrightHolder: ref("entity"),
     copyrightYear: { type: "integer", minimum: 1000, maximum: 9999 },
     licence: enumOf([
-      "allRightsReserved",
-      "publicDomain",
+      "all-rights-reserved",
+      "public-domain",
       "cc0",
-      "ccBy",
-      "ccBySa",
-      "ccByNd",
-      "ccByNc",
-      "ccByNcSa",
-      "ccByNcNd",
+      "cc-by",
+      "cc-by-sa",
+      "cc-by-nd",
+      "cc-by-nc",
+      "cc-by-nc-sa",
+      "cc-by-nc-nd",
       "other",
     ]),
     licenceUri: ref("string"),
@@ -840,9 +847,9 @@ add(
     person: ref("entity"),
     role: enumOf([
       "artist",
-      "attributedTo",
-      "workshopOf",
-      "schoolOf",
+      "attributed-to",
+      "workshop-of",
+      "school-of",
       "after",
       "photographer",
       "other",
@@ -1019,7 +1026,7 @@ const pathCommand = {
   additionalProperties: false,
   required: ["type"],
   properties: {
-    type: enumOf(["moveTo", "lineTo", "cubicTo", "quadTo", "close"]),
+    type: enumOf(["move-to", "line-to", "cubic-to", "quad-to", "close"]),
     point: ref("vec2"),
     control1: ref("vec2"),
     control2: ref("vec2"),
@@ -1036,7 +1043,7 @@ const path3dCommand = {
   additionalProperties: false,
   required: ["type"],
   properties: {
-    type: enumOf(["moveTo", "lineTo", "cubicTo", "quadTo", "close"]),
+    type: enumOf(["move-to", "line-to", "cubic-to", "quad-to", "close"]),
     point: ref("vec3"),
     control1: ref("vec3"),
     control2: ref("vec3"),
@@ -1054,7 +1061,7 @@ add("rig.geometry.mesh", {
   loops: { type: "array", items: ref("uint32") },
   loopSizes: { type: "array", items: ref("uint32") },
   texcoords: { type: "array", items: { type: "number" } },
-  mode: enumOf(["triangles", "lines", "lineStrip"]),
+  mode: enumOf(["triangles", "lines", "line-strip"]),
   faceColors: { type: "array", items: ref("rgba") },
   facePalette: { type: "array", items: ref("uint8") },
 }, { required: ["positions", "mode"] });
@@ -1241,7 +1248,27 @@ add("rig.render.visibility", {
 
 // Defaults: blendMode normal, opacity 1. Compose on any drawable.
 add("rig.render.blend", {
-  blendMode: enumOf(["normal", "multiply", "screen", "overlay", "add"]),
+  blendMode: enumOf([
+    "normal",
+    "multiply",
+    "screen",
+    "overlay",
+    "darken",
+    "lighten",
+    "color-dodge",
+    "color-burn",
+    "hard-light",
+    "soft-light",
+    "difference",
+    "exclusion",
+    "hue",
+    "saturation",
+    "color",
+    "luminosity",
+    "add",
+    "subtract",
+    "disabled",
+  ]),
   opacity: { type: "number", minimum: 0, maximum: 1 },
 }, { required: [] });
 
@@ -1254,7 +1281,7 @@ add("rig.anim.tween", {
   to: ref("float"),
   duration: ref("float"),
   elapsed: ref("float"),
-  easing: enumOf(["linear", "easeIn", "easeOut", "easeInOut"]),
+  easing: enumOf(["linear", "ease-in", "ease-out", "ease-in-out"]),
   loop: ref("bool"),
   playing: ref("bool"),
 }, { required: ["target", "propertyKey", "from", "to", "duration"] });
@@ -1272,10 +1299,10 @@ add(
     interpolation: enumOf(["linear", "smooth"]),
     preset: enumOf([
       "linear",
-      "easeIn",
-      "easeOut",
-      "easeInOut",
-      "sCurve",
+      "ease-in",
+      "ease-out",
+      "ease-in-out",
+      "s-curve",
       "bulge",
       "squeeze",
       "custom",
@@ -1574,7 +1601,7 @@ add("rig.pixel.canvas", {
 
 // Only the fields the chosen kind needs; the rest stay absent.
 add("rig.pixel.source", {
-  kind: enumOf(["none", "imageFile", "generator", "imageSequence", "webcam", "videoFile"]),
+  kind: enumOf(["none", "image-file", "generator", "image-sequence", "webcam", "video-file"]),
   asset: ref("entity"),
   generatorName: ref("string"),
   sequenceFps: ref("float"),
@@ -1587,7 +1614,7 @@ add("rig.pixel.source", {
 
 // Defaults: maskSource none, invertMask false. Blend/opacity live on rig.render.blend.
 add("rig.pixel.layer", {
-  kind: enumOf(["vector", "overlayImage", "solid", "group"]),
+  kind: enumOf(["vector", "overlay-image", "solid", "group"]),
   image: ref("entity"),
   rgba: ref("rgba"),
   maskSource: enumOf(["none", "luma", "alpha", "path"]),
@@ -1599,7 +1626,7 @@ add("rig.pixel.layer", {
 }, { required: ["kind"] });
 
 add("rig.pixel.raster", {
-  role: enumOf(["working", "output", "layerPixels", "mask", "composite"]),
+  role: enumOf(["working", "output", "layer-pixels", "mask", "composite"]),
   width: ref("int"),
   height: ref("int"),
   rgba: { type: "array", items: ref("uint8") },
@@ -1803,7 +1830,7 @@ add("rig.calendar.attendee", {
   event: ref("entity"),
   person: ref("entity"),
   role: enumOf(["chair", "required", "optional", "inform"]),
-  status: enumOf(["needsAction", "accepted", "declined", "tentative"]),
+  status: enumOf(["needs-action", "accepted", "declined", "tentative"]),
 }, { required: ["event", "person"] });
 
 // --- install ---
@@ -1816,7 +1843,7 @@ add("rig.install.av_bus", {
 // Discrete gated event. mode absent = forward; enabled absent = true.
 add("rig.install.trigger", {
   source: ref("entity"),
-  action: enumOf(["colorFlash", "playSample"]),
+  action: enumOf(["color-flash", "play-sample"]),
   enabled: ref("bool"),
   cooldownMs: ref("int"),
   calendar: ref("entity"),
@@ -1987,7 +2014,7 @@ add("rig.bim.facet", {
     "classification",
     "property",
     "material",
-    "partOf",
+    "part-of",
   ]),
   cardinality: enumOf(["required", "prohibited", "optional"]),
   ifcClass: ref("string"),
@@ -2380,19 +2407,16 @@ catalog["_defs"] = {
           type: "string",
           enum: ["linear", "smooth"],
         },
-        preset: {
-          type: "string",
-          enum: [
-            "linear",
-            "easeIn",
-            "easeOut",
-            "easeInOut",
-            "sCurve",
-            "bulge",
-            "squeeze",
-            "custom",
-          ],
-        },
+        preset: enumOf([
+          "linear",
+          "ease-in",
+          "ease-out",
+          "ease-in-out",
+          "s-curve",
+          "bulge",
+          "squeeze",
+          "custom",
+        ]),
       },
       required: ["points"],
     },

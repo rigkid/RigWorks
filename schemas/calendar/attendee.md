@@ -9,7 +9,7 @@ Field meanings follow RFC 5545 `ATTENDEE` / `ROLE` / `PARTSTAT` — as fields, n
 | `event` | entity | The [`rig.calendar.event`](event.md) |
 | `person` | entity | The invitee |
 | `role` | enum | Optional. `chair` / `required` / `optional` / `inform`; absent = `required` |
-| `status` | enum | Optional. `needsAction` / `accepted` / `declined` / `tentative`; absent = `needsAction` |
+| `status` | enum | Optional. `needs-action` / `accepted` / `declined` / `tentative`; absent = `needs-action` |
 
 `event` and `person` are required. Name the person on that entity. A second guest is another entity.
 

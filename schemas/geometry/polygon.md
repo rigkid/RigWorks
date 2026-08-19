@@ -8,7 +8,7 @@ Freeform polygon with explicit vertices. Format when present.
 | `closed` | bool | Optional. Absent means closed |
 | `fillRule` | enum | Optional. nonzero, evenodd; absent = nonzero. Self-intersecting rings only |
 
-This is a **single** ring. Compound shapes with holes use [`rig.geometry.path`](path.md) (extra `moveTo` … `close` subpaths). A lone ring used as a CAD boolean / extrude operand still has orientation: reverse `points` to flip it.
+This is a **single** ring. Compound shapes with holes use [`rig.geometry.path`](path.md) (extra `move-to` … `close` subpaths). A lone ring used as a CAD boolean / extrude operand still has orientation: reverse `points` to flip it.
 
 **2D page space** (+X right, +Y down): clockwise shoelace = outer / solid; counter-clockwise = hole (boolean difference or profile cutout). Under `fillRule: nonzero`, opposite winding punches a hole. Under `evenodd`, overlap toggles.
 

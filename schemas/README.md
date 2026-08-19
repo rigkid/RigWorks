@@ -15,7 +15,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 - Authored fields only. Anything a host can recompute from those fields stays in the host — [Host cache](../docs/terms.md). Do not add it to a schema for convenience (polygon winding from `points`, world matrix from local pose + parent, bar/beat from `positionBeats`).
 - No device handles, GPU objects, UI toolkit types, callbacks, dirty flags, or ephemeral edge state in portable fields.
 - Runtime caches and queues (last sample, pending MIDI, hover) stay in the host.
-- Ids are `rig.<domain>.<name>` (snake_case multi-word segments). Enum literals are lowerCamelCase.
+- Ids are `rig.<domain>.<name>` (snake_case multi-word segments). Enum literals are kebab-case (`top-left`, `color-dodge`) — they are user-facing choice labels, not field names.
 - Display names live on [`rig.meta.named`](meta/named.md) — compose it; do not re-declare `name` on every schema.
 - File identity lives on [`rig.media.asset_ref`](media/asset-ref.md) — other schemas reference it by `entity` id when they need a path.
 - `rgba` / `rgb` / `clearRgba` are floats 0–1. Colour space is the envelope's `document.colorSpace` key (default: srgb) — see [document.md](document.md).
@@ -47,6 +47,10 @@ Fields are **lowerCamelCase** and spelled out. Prefer `radiusX` over `rx`, `cent
 | Tagged-union slots | Only [`rig.node.param`](node/param.md) uses `f` / `i` / `s` / `v` — do not invent more single-letter fields |
 
 Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wire format) is a host fulfillment mapping, not the Contract vocabulary.
+
+### Enum literals
+
+Enum values are **kebab-case** because they show up as choices in UI and authored JSON. Split on word boundaries: `top-left`, `ease-in-out`, `cc-by-sa`. A single lowercase token stays as it is (`linear`, `evenodd`, `ifc4x3`, `cc0`). Do not invent a second case. Field names stay lowerCamelCase (`blendMode`); schema ids stay snake_case (`rig.render.blend`).
 
 ## Catalog
 

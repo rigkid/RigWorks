@@ -23,10 +23,10 @@
       "type": "string",
       "enum": [
         "linear",
-        "easeIn",
-        "easeOut",
-        "easeInOut",
-        "sCurve",
+        "ease-in",
+        "ease-out",
+        "ease-in-out",
+        "s-curve",
         "bulge",
         "squeeze",
         "custom"

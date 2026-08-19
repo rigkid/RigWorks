@@ -8,7 +8,7 @@ Field meanings follow [schema.org](https://schema.org/Offer) `Offer`. This schem
 |-------|------|---------|
 | `item` | entity | What is offered |
 | `seller` | entity | Optional. Person or organisation that offers it |
-| `availability` | enum | Optional. `inStock` / `outOfStock` / `preOrder` / `limited` / `unknown` |
+| `availability` | enum | Optional. `in-stock` / `out-of-stock` / `pre-order` / `limited` / `unknown` |
 | `sku` | string | Optional. Seller's stock-keeping unit |
 
 `item` is required. Name the seller on that entity with [`rig.meta.named`](../meta/named.md). Product identifiers stay on the item (`rig.book.identifier`, and so on) — do not copy an ISBN onto the offer.

@@ -13,9 +13,9 @@ Axes stay +X +Y +Z — the host offsets to the named cell; it does not invert si
 
 | | | |
 |---|---|---|
-| `topLeft` | `topCenter` | `topRight` |
-| `middleLeft` | `center` | `middleRight` |
-| `bottomLeft` | `bottomCenter` | `bottomRight` |
+| `top-left` | `top-center` | `top-right` |
+| `middle-left` | `center` | `middle-right` |
+| `bottom-left` | `bottom-center` | `bottom-right` |
 
 Together with `height`, that is a **3×3×3** cuboid cell (27 corners / edge midpoints / centre) without twenty-seven string ids.
 

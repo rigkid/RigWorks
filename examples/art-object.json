@@ -70,7 +70,7 @@
           "asset": "irises-photo"
         },
         "rig.rights.statement": {
-          "licence": "publicDomain",
+          "licence": "public-domain",
           "rightsStatementUri": "http://rightsstatements.org/vocab/NoC-US/1.0/",
           "creditLine": "The J. Paul Getty Museum, Los Angeles"
         }

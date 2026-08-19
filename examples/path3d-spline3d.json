@@ -12,9 +12,9 @@
         "rig.spatial.transform": { "position": [0, 0, 0] },
         "rig.geometry.path3d": {
           "commands": [
-            { "type": "moveTo", "point": [0, 0, 0] },
+            { "type": "move-to", "point": [0, 0, 0] },
             {
-              "type": "cubicTo",
+              "type": "cubic-to",
               "point": [100, 0, 40],
               "control1": [30, 60, 10],
               "control2": [70, 60, 30]

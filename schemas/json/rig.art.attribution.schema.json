@@ -15,9 +15,9 @@
       "type": "string",
       "enum": [
         "artist",
-        "attributedTo",
-        "workshopOf",
-        "schoolOf",
+        "attributed-to",
+        "workshop-of",
+        "school-of",
         "after",
         "photographer",
         "other"

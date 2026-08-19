@@ -20,7 +20,7 @@
         "rig.meta.named": { "name": "Badge" },
         "rig.spatial.relationship": { "parent": "artboard", "order": 0 },
         "rig.spatial.transform": { "position": [200, -100, 0] },
-        "rig.spatial.anchor": { "point": "bottomRight", "offset": [12, -4] },
+        "rig.spatial.anchor": { "point": "bottom-right", "offset": [12, -4] },
         "rig.geometry.rectangle": { "x": 0, "y": 0, "width": 120, "height": 40 },
         "rig.paint.fill_stroke": { "fillRgba": [0.9, 0.35, 0.2, 1] }
       }
@@ -29,7 +29,7 @@
       "id": "fixture",
       "components": {
         "rig.meta.named": { "name": "Bed fixture (3x3x3)" },
-        "rig.spatial.anchor": { "point": "bottomLeft", "height": "min" },
+        "rig.spatial.anchor": { "point": "bottom-left", "height": "min" },
         "rig.spatial.transform": { "position": [0, 0, 0] },
         "rig.geometry.rectangle": { "x": 0, "y": 0, "width": 40, "height": 40 }
       }

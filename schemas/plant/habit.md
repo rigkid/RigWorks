@@ -7,7 +7,7 @@ This is how the plant grows — not where it was recorded. Darwin Core `habitat`
 | Field | Type | Meaning |
 |-------|------|---------|
 | `lifeForm` | enum | `tree` / `shrub` / `herb` / `vine` / `grass` / `fern` / `moss` / `succulent` / `aquatic` / `palm` / `other` |
-| `leafPersistence` | enum | `deciduous` / `evergreen` / `semiEvergreen` |
+| `leafPersistence` | enum | `deciduous` / `evergreen` / `semi-evergreen` |
 | `heightMetres` | float | Typical mature height, metres |
 | `spreadMetres` | float | Typical mature spread, metres |
 | `hardiness` | string | Zone or rating as the source wrote it (`USDA 7`, `RHS H4`) |

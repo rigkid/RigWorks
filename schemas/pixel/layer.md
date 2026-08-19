@@ -6,7 +6,7 @@ Compositor stack entry. Format when present.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `kind` | enum | vector, overlayImage, solid, group |
+| `kind` | enum | vector, overlay-image, solid, group |
 | `image` | entity | Overlay [`rig.media.asset_ref`](../media/asset-ref.md) when kind needs it |
 | `rgba` | vec4 | Solid fill; required when `kind=solid` |
 | `maskSource` | enum | Optional. none, luma, alpha, path; absent = none |

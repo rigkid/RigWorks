@@ -7,7 +7,7 @@ Unlike [`rig.mod.binding`](../mod/binding.md) (continuous property drive), a tri
 | Field | Type | Meaning |
 |-------|------|---------|
 | `source` | entity | Sensor / GPIO / presence / switch entity that fires this trigger |
-| `action` | enum | `colorFlash` or `playSample` |
+| `action` | enum | `color-flash` or `play-sample` |
 | `enabled` | bool | Optional. Skip when false; absent = true |
 | `cooldownMs` | int | Optional. Minimum ms between successful fires; absent = 0 |
 | `calendar` | entity | Optional. Entity carrying calendar hours / span that must be active; absent = always |

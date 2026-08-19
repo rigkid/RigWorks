@@ -6,7 +6,7 @@ Recorded sex follows [ISO/IEC 5218](https://www.iso.org/standard/36266.html). Ge
 
 | Field | Type | Meaning | Standard |
 |-------|------|---------|----------|
-| `sex` | enum | Recorded sex: `unknown` / `male` / `female` / `notApplicable` | ISO/IEC 5218 `0` / `1` / `2` / `9` |
+| `sex` | enum | Recorded sex: `unknown` / `male` / `female` / `not-applicable` | ISO/IEC 5218 `0` / `1` / `2` / `9` |
 | `gender` | string | Self-described gender identity | — |
 | `birthDate` | string | Calendar day, `YYYY-MM-DD` | ISO 8601; ISO 20022 `BirthDt` |
 | `birthTown` | string | Town / city of birth | ISO 20022 `CityOfBirth` |

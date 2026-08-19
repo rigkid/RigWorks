@@ -4,7 +4,7 @@ RGBA buffer. Usually runtime-only; may appear in small documents when needed.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `role` | enum | working, output, layerPixels, mask, composite |
+| `role` | enum | working, output, layer-pixels, mask, composite |
 | `width` | int | Pixels |
 | `height` | int | Pixels |
 | `rgba` | uint8[] | Tight RGBA, length ≥ w×h×4; empty = omit pixels |

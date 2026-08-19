@@ -9,11 +9,11 @@
       "type": "string",
       "enum": [
         "none",
-        "imageFile",
+        "image-file",
         "generator",
-        "imageSequence",
+        "image-sequence",
         "webcam",
-        "videoFile"
+        "video-file"
       ]
     },
     "asset": {

@@ -9,7 +9,7 @@
       "type": "string",
       "enum": [
         "vector",
-        "overlayImage",
+        "overlay-image",
         "solid",
         "group"
       ]

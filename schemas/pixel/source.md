@@ -6,7 +6,7 @@ File identity is [`rig.media.asset_ref`](../media/asset-ref.md) via `asset`. Com
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `kind` | enum | none, imageFile, generator, imageSequence, webcam, videoFile |
+| `kind` | enum | none, image-file, generator, image-sequence, webcam, video-file |
 | `asset` | entity | Asset ref when kind needs a path; absent otherwise |
 | `generatorName` | string | Generator id; required when `kind=generator` |
 | `sequenceFps` | float | Optional. Sequence playback |
@@ -14,7 +14,7 @@ File identity is [`rig.media.asset_ref`](../media/asset-ref.md) via `asset`. Com
 | `webcamDevice` | int | Optional. Device index when `kind=webcam`; absent = default device |
 | `webcamWidth` | int | Optional. Capture width hint |
 | `webcamHeight` | int | Optional. Capture height hint |
-| `videoTime` | float | Optional. Seconds into clip when `kind=videoFile`; absent = 0 |
+| `videoTime` | float | Optional. Seconds into clip when `kind=video-file`; absent = 0 |
 
 Only `kind` is required — emit the fields the chosen kind needs and leave the rest absent.
 

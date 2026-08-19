@@ -112,7 +112,7 @@ A tool document meant to travel: panel + nested `rig.ui.group` sections, control
 
 ## `path3d-spline3d.json`
 
-A cubic space curve as `rig.geometry.path3d` (`cubicTo`) and a separate degree-3 NURBS as `rig.geometry.spline3d`. Authored forms stay distinct — do not dual-attach both on one contour.
+A cubic space curve as `rig.geometry.path3d` (`cubic-to`) and a separate degree-3 NURBS as `rig.geometry.spline3d`. Authored forms stay distinct — do not dual-attach both on one contour.
 
 ## `page-anchor.json`
 
@@ -220,7 +220,7 @@ Watson & Crick 1953: `rig.paper.identifier` (DOI / PMID), `article` (pages + dat
 
 ## `art-object.json`
 
-Van Gogh *Irises*: CDWA core composed as `rig.art.object` / `creation` / `attribution` / `dimensions` / `material` / `location` / `subject` / `image`. Copyright is `rig.rights.statement` (`publicDomain` + RightsStatements.org URI), not a year on the object.
+Van Gogh *Irises*: CDWA core composed as `rig.art.object` / `creation` / `attribution` / `dimensions` / `material` / `location` / `subject` / `image`. Copyright is `rig.rights.statement` (`public-domain` + RightsStatements.org URI), not a year on the object.
 
 ## `commerce-offer.json`
 

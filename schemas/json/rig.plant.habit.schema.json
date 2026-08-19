@@ -26,7 +26,7 @@
       "enum": [
         "deciduous",
         "evergreen",
-        "semiEvergreen"
+        "semi-evergreen"
       ]
     },
     "heightMetres": {

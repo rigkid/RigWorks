@@ -23,7 +23,7 @@
     "status": {
       "type": "string",
       "enum": [
-        "needsAction",
+        "needs-action",
         "accepted",
         "declined",
         "tentative"

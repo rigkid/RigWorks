@@ -8,7 +8,7 @@ Compose onto any entity that needs rights — an artwork, a book, a paper, a pho
 |-------|------|---------|
 | `copyrightHolder` | entity | Person or organisation that holds copyright |
 | `copyrightYear` | int | Copyright year of this object |
-| `licence` | enum | `allRightsReserved` / `publicDomain` / `cc0` / `ccBy` / `ccBySa` / `ccByNd` / `ccByNc` / `ccByNcSa` / `ccByNcNd` / `other` |
+| `licence` | enum | `all-rights-reserved` / `public-domain` / `cc0` / `cc-by` / `cc-by-sa` / `cc-by-nd` / `cc-by-nc` / `cc-by-nc-sa` / `cc-by-nc-nd` / `other` |
 | `licenceUri` | string | Canonical licence URL |
 | `rightsStatementUri` | string | RightsStatements.org (or similar) URI |
 | `creditLine` | string | Required credit / courtesy line |

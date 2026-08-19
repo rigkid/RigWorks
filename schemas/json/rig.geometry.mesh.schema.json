@@ -46,7 +46,7 @@
       "enum": [
         "triangles",
         "lines",
-        "lineStrip"
+        "line-strip"
       ]
     },
     "faceColors": {
