@@ -35,6 +35,13 @@
           }
         }
       }
+    },
+    "fillRule": {
+      "type": "string",
+      "enum": [
+        "nonzero",
+        "evenodd"
+      ]
     }
   },
   "required": [

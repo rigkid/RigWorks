@@ -24,6 +24,7 @@ node tools/rig-validate/cli.js examples/art-object.json
 node tools/rig-validate/cli.js examples/commerce-offer.json
 node tools/rig-validate/cli.js examples/legal-agreement.json
 node tools/rig-validate/cli.js examples/calendar-event.json
+node tools/rig-validate/cli.js examples/lights.json
 ```
 
 ## SUDE sketch
@@ -115,7 +116,7 @@ A cubic space curve as `rig.geometry.path3d` (`cubicTo`) and a separate degree-3
 
 ## `page-anchor.json`
 
-A page with `rig.spatial.anchor` `center` (page-local origin mid-trim) and a child rectangle with `bottomRight` registration — transform stays TRS; the 3×3 lives on the sibling component.
+A page with `rig.spatial.anchor` `center` (page-local origin mid-trim) and a child rectangle with `bottomRight` registration plus a local `offset` — transform stays TRS; the 3×3 lives on the sibling component.
 
 ## `cad-boolean.json`
 
@@ -161,6 +162,10 @@ BCF thread: topic + comment + viewpoint (camera, selected elements, clip plane, 
 ## `bim-ids.json`
 
 IDS specification: applicability facet (`IfcWall`) and requirement facet (`Pset_WallCommon.FireRating`). Specs-only document — no building model required.
+
+## `lights.json`
+
+Three lamps: directional (local −Z), point with `range`, spot with inner/outer cones. Pose stays on transform.
 
 ## `font-ufo.json`
 

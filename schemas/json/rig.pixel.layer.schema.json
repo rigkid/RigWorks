@@ -14,21 +14,6 @@
         "group"
       ]
     },
-    "blendMode": {
-      "type": "string",
-      "enum": [
-        "normal",
-        "multiply",
-        "screen",
-        "overlay",
-        "add"
-      ]
-    },
-    "opacity": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1
-    },
     "image": {
       "$ref": "./_defs.schema.json#/$defs/entity"
     },

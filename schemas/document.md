@@ -14,6 +14,15 @@ This is the **Contract wire format** (JSON). Field meaning remains POD; vectors 
 
 `colorSpace` names the colour space every `rgba` / `rgb` value in the file is expressed in; absent = `srgb`. One key for the whole document — per-component colour spaces do not exist.
 
+`defaultUnit` is the scene length unit (`"mm"`, `"px"`, `"in"`, …) for transform, geometry, and stroke. A [`rig.layout.page`](layout/page.md) may override with `unit`. Ratios stay 0–1 — [Measurements](README.md#measurements).
+
+## Axes
+
+One convention for the file. A host with another convention converts at the edge — same bargain as `colorSpace`.
+
+- **2D page / geometry:** +X right, +Y down. Rectangle `y` is the top edge.
+- **3D:** right-handed, +Y up. Camera and directional / spot light look along local −Z.
+
 `timeZone` is an IANA id (e.g. `Australia/Sydney`) for wall-clock calendar fields ([`rig.calendar.*`](calendar/weekly.md)). Absent = host local. Do not put NTP hour offsets here — those are a host cache of “now” and break across DST.
 
 `ifcSchema` is the IFC release this document was derived from (`ifc2x3` / `ifc4` / `ifc4x3`). Absent = not an IFC-derived document. Portable BIM meaning lives on [`rig.bim.*`](bim/classify.md); `.ifc` files are a host mapping — [openbim.md](../docs/openbim.md).

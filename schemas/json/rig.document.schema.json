@@ -431,6 +431,9 @@
               "rig.paint.stroke": {
                 "$ref": "./rig.paint.stroke.schema.json"
               },
+              "rig.paint.stroke_style": {
+                "$ref": "./rig.paint.stroke_style.schema.json"
+              },
               "rig.paper.article": {
                 "$ref": "./rig.paper.article.schema.json"
               },
@@ -505,6 +508,9 @@
               },
               "rig.plant.taxon": {
                 "$ref": "./rig.plant.taxon.schema.json"
+              },
+              "rig.render.blend": {
+                "$ref": "./rig.render.blend.schema.json"
               },
               "rig.render.light": {
                 "$ref": "./rig.render.light.schema.json"

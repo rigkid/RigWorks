@@ -29,6 +29,7 @@ Load this skill when generating or editing Rig entity data, SUDE hooks, or ECS c
 | Entities + components | Portable meaning is POD keyed by schema ids |
 | POD only | Numbers, small structs, strings, entity ids |
 | No portable handles | No GPU/UI toolkit types, callbacks, dirty flags, hover/press, pending queues |
+| No derived fields | Hosts may cache winding, world matrices, Euler, bar/beat; do not serialize them — [Host cache](../../docs/terms.md) |
 | Hierarchy (optional) | Parent as entity id; local `position` / `rotation` (quat) / `scale` |
 
 ### SUDE (live hosts)
@@ -83,6 +84,7 @@ Wire format is JSON — [`rig.document`](../../schemas/document.md).
 - `vec*` / `quat` — JSON number arrays; **quat order x, y, z, w**
 - Enums — lowerCamelCase literals from the schema
 - Field names — lowerCamelCase, spelled out ([`schemas/README.md` Field naming](../../schemas/README.md#field-naming)); no SVG abbreviations (`radiusX` not `rx`)
+- Measurements — ratios 0–1; scene lengths in `document.defaultUnit` (page `unit` may override); catalog facts SI in the field name; protocol/clock native — [`schemas/README.md` Measurements](../../schemas/README.md#measurements)
 - Serialize only portable fields; omit host caches
 - Optional fields have documented defaults — omit what you did not measure rather than inventing a value (an absent `gate` means 1; an invented `gate` looks like data)
 
@@ -92,7 +94,7 @@ A component key may also be `x.<vendor>.<name>` — a host component the Contrac
 
 ## Worked examples
 
-Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json), [`examples/place-address.json`](../../examples/place-address.json), [`examples/person-contact.json`](../../examples/person-contact.json), [`examples/plant-taxon.json`](../../examples/plant-taxon.json), [`examples/book-isbn.json`](../../examples/book-isbn.json), [`examples/paper-citation.json`](../../examples/paper-citation.json), [`examples/art-object.json`](../../examples/art-object.json), [`examples/commerce-offer.json`](../../examples/commerce-offer.json), [`examples/legal-agreement.json`](../../examples/legal-agreement.json), [`examples/calendar-event.json`](../../examples/calendar-event.json). Validate before you trust the output.
+Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json), [`examples/place-address.json`](../../examples/place-address.json), [`examples/person-contact.json`](../../examples/person-contact.json), [`examples/plant-taxon.json`](../../examples/plant-taxon.json), [`examples/book-isbn.json`](../../examples/book-isbn.json), [`examples/paper-citation.json`](../../examples/paper-citation.json), [`examples/art-object.json`](../../examples/art-object.json), [`examples/commerce-offer.json`](../../examples/commerce-offer.json), [`examples/legal-agreement.json`](../../examples/legal-agreement.json), [`examples/calendar-event.json`](../../examples/calendar-event.json), [`examples/lights.json`](../../examples/lights.json). Validate before you trust the output.
 
 ### Entity with shape + paint
 
@@ -272,6 +274,8 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** invent `rig.calendar.todo`, `alarm`, `freebusy`, or `timezone` — those stay in the `.ics` source
 - **Do not** put an event title or location string on `rig.calendar.event` — compose `rig.meta.named` and `rig.place.address`
 - **Do not** put show/hide on `rig.spatial.layer` — compose `rig.render.visibility`
+- **Do not** put blend / opacity on `rig.pixel.layer` — compose `rig.render.blend`
+- **Do not** put stroke caps / joins / dash on `rig.paint.fill_stroke` — compose `rig.paint.stroke_style`
 - **Do not** put text colour on `rig.media.text` — compose paint (`fill_stroke` / `fill`)
 - **Do not** flatten editorial copy into `rig.media.text` — that is a canvas run; stories are `rig.story.*` (named styles, no font or colour)
 - **Do not** put bold, italic, underline, strike, super/sub, font, size, or colour on `rig.story.*` — a run is `text` + style identity; unstyled local emphasis becomes a named character style
@@ -302,8 +306,8 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Geometry | `mesh`, `path`, `path3d`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `spline3d`, `nurbs_surface`, `ring` |
 | Cad | `cuboid`, `cylinder`, `sphere`, `extrude`, `revolve`, `boolean`, `fillet`, `chamfer` |
 | Bim | `classify`, `type`, `occurrence`, `pset`, `site`, `building`, `storey`, `space`, `relation`, `topic`, `comment`, `viewpoint`, `spec`, `facet` |
-| Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `library` |
-| Meta / render | `named`, `tags`, `light`, `material`, `visibility` |
+| Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `stroke_style`, `library` |
+| Meta / render | `named`, `tags`, `light`, `material`, `visibility`, `blend` |
 | Anim / mod | `tween`, `curve`, `lfo`, `binding` |
 | Music | `transport`, `clock`, `sequencer`, `pattern`, `arrangement`, `step`, `note`, `midi_output`, `midi_input` |
 | Audio | `analysis`, `bus` |

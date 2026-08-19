@@ -12,6 +12,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 
 - Field **meaning and units** are the contract; C++ type names are host-specific.
 - One type per field. No dual representations. No dual-field legacy aliases until 1.0.
+- Authored fields only. Anything a host can recompute from those fields stays in the host — [Host cache](../docs/terms.md). Do not add it to a schema for convenience (polygon winding from `points`, world matrix from local pose + parent, bar/beat from `positionBeats`).
 - No device handles, GPU objects, UI toolkit types, callbacks, dirty flags, or ephemeral edge state in portable fields.
 - Runtime caches and queues (last sample, pending MIDI, hover) stay in the host.
 - Ids are `rig.<domain>.<name>` (snake_case multi-word segments). Enum literals are lowerCamelCase.
@@ -19,6 +20,18 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 - File identity lives on [`rig.media.asset_ref`](media/asset-ref.md) — other schemas reference it by `entity` id when they need a path.
 - `rgba` / `rgb` / `clearRgba` are floats 0–1. Colour space is the envelope's `document.colorSpace` key (default: srgb) — see [document.md](document.md).
 - Domain meaning lives in field names — not extra property datatype ids. See [properties.md](../docs/properties.md).
+
+### Measurements
+
+One home per quantity class. Convert once at the host edge (cm / in / display units on import).
+
+| Kind | Store |
+|------|--------|
+| Ratio | 0–1. Colour, gain, opacity, UV, phase, metallic, gate, occupancy — and a length authored as a fraction of a **named** extent (page, parent, em). |
+| Scene length | `document.defaultUnit`. A page may override with [`rig.layout.page`](layout/page.md) `unit`. Transform `position`, geometry, stroke width, page size. |
+| Catalog fact | SI in the field name: [`rig.art.dimensions`](art/dimensions.md) millimetres, [`rig.plant.habit`](plant/habit.md) metres, [`rig.place.geo`](place/geo.md) `altitudeMetres`. |
+| Protocol / clock | Native scale. MIDI 0–127, wall-clock `startMinutes` 0–1439, WGS84 degrees. |
+| Commerce percent | 0–100 on [`rig.commerce.discount`](commerce/discount.md) (`10` is 10%). |
 
 ### Field naming
 
@@ -163,6 +176,7 @@ Deals between parties — not the Rig Contract, and not copyright of a work ([`r
 | `rig.paint.fill_stroke` | [paint/fill-stroke.md](paint/fill-stroke.md) |
 | `rig.paint.fill` | [paint/fill.md](paint/fill.md) |
 | `rig.paint.stroke` | [paint/stroke.md](paint/stroke.md) |
+| `rig.paint.stroke_style` | [paint/stroke-style.md](paint/stroke-style.md) |
 | `rig.paint.library` | [paint/library.md](paint/library.md) |
 
 ### CAD / solids
@@ -210,6 +224,7 @@ Thin OpenBIM layer — IFC class is a string on `classify`, not one schema per `
 | `rig.render.light` | [render/light.md](render/light.md) |
 | `rig.render.material` | [render/material.md](render/material.md) |
 | `rig.render.visibility` | [render/visibility.md](render/visibility.md) |
+| `rig.render.blend` | [render/blend.md](render/blend.md) |
 
 ### Animation / modulators
 

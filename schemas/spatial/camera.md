@@ -12,4 +12,6 @@ Projection parameters (pose lives on transform). Format when present.
 | `farClip` | float | Optional. Far plane; absent = 1000 |
 | `aspect` | float | Optional. Absent or 0 = use viewport aspect at present |
 
+Looks along local −Z. 3D is right-handed, +Y up — [Axes](../document.md#axes).
+
 No camera object / GPU handle.

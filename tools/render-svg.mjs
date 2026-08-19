@@ -53,7 +53,7 @@ function rgba(arr, fallback = "none") {
   return a >= 1 ? `rgb(${R},${G},${B})` : `rgba(${R},${G},${B},${a})`;
 }
 
-function paintAttrs(paint) {
+function paintAttrs(paint, strokeStyle) {
   if (!paint) return 'fill="none" stroke="none"';
   // Absent hasFill / hasStroke default to whether the colour is present.
   const hasFill = paint.hasFill ?? paint.fillRgba != null;
@@ -61,7 +61,21 @@ function paintAttrs(paint) {
   const fill = hasFill ? rgba(paint.fillRgba) : "none";
   const stroke = hasStroke ? rgba(paint.strokeRgba) : "none";
   const sw = hasStroke ? paint.strokeWidth ?? 1 : 0;
-  return `fill="${fill}" stroke="${stroke}" stroke-width="${sw}"`;
+  let extra = "";
+  if (hasStroke && strokeStyle) {
+    extra += ` stroke-linecap="${strokeStyle.cap ?? "butt"}"`;
+    extra += ` stroke-linejoin="${strokeStyle.join ?? "miter"}"`;
+    if (strokeStyle.miterLimit != null) {
+      extra += ` stroke-miterlimit="${strokeStyle.miterLimit}"`;
+    }
+    if (Array.isArray(strokeStyle.dash) && strokeStyle.dash.length) {
+      extra += ` stroke-dasharray="${strokeStyle.dash.join(" ")}"`;
+      if (strokeStyle.dashOffset) {
+        extra += ` stroke-dashoffset="${strokeStyle.dashOffset}"`;
+      }
+    }
+  }
+  return `fill="${fill}" stroke="${stroke}" stroke-width="${sw}"${extra}`;
 }
 
 // Vertices evenly spaced around a centre; radiusAt varies them for stars.
@@ -96,7 +110,7 @@ for (const e of doc.entities) {
   const c = comps(e);
   const [wx, wy] = worldPos(e.id);
   const paint = c["rig.paint.fill_stroke"];
-  const attrs = paintAttrs(paint);
+  const attrs = paintAttrs(paint, c["rig.paint.stroke_style"]);
   const name = c["rig.meta.named"]?.name ?? e.id;
 
   const tag = `data-id="${e.id}" data-name="${name}"`;

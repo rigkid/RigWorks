@@ -14,6 +14,13 @@
     },
     "closed": {
       "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "fillRule": {
+      "type": "string",
+      "enum": [
+        "nonzero",
+        "evenodd"
+      ]
     }
   },
   "required": [

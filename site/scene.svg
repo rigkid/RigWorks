@@ -3,7 +3,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 33 890.3081083962335 351" role="img" aria-label="Minimal Rig scene">
   <rect x="-4" y="33" width="890.3081083962335" height="351" fill="#0b0d10" />
   <rect data-id="demo-rect" data-name="demo-rect" x="20" y="65" width="140" height="90" rx="10" fill="rgb(64,166,255)" stroke="none" stroke-width="0" />
-  <ellipse data-id="demo-circle" data-name="demo-circle" cx="270" cy="110" rx="48" ry="48" fill="rgb(255,115,77)" stroke="rgb(255,255,255)" stroke-width="2" />
+  <ellipse data-id="demo-circle" data-name="demo-circle" cx="270" cy="110" rx="48" ry="48" fill="rgb(255,115,77)" stroke="rgb(255,255,255)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   <polygon data-id="demo-tri" data-name="demo-tri" points="450,63 497.6313972081441,145.5 402.3686027918559,145.50000000000003" fill="rgb(242,204,51)" stroke="none" stroke-width="0" />
   <polygon data-id="demo-hex" data-name="demo-hex" points="682,110 656,155.0333209967908 604,155.03332099679082 578,110 604,64.96667900320921 656,64.9666790032092" fill="rgb(89,217,140)" stroke="none" stroke-width="0" />
   <polygon data-id="demo-star" data-name="demo-star" points="810,57 822.9312755504344,94.20162612375115 862.3081083962335,95.00406530937789 830.9232433584933,118.79837387624885 842.3281888760861,156.4959346906221 810,134 777.671811123914,156.4959346906221 789.0767566415067,118.79837387624885 757.6918916037665,95.00406530937789 797.0687244495656,94.20162612375115" fill="rgb(242,102,179)" stroke="none" stroke-width="0" />

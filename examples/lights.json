@@ -1,0 +1,51 @@
+{
+  "rig": "0.19.0",
+  "document": {
+    "title": "Lights",
+    "defaultUnit": "m"
+  },
+  "entities": [
+    {
+      "id": "sun",
+      "components": {
+        "rig.meta.named": { "name": "sun", "stableId": "sun" },
+        "rig.spatial.transform": {
+          "rotation": [0.3827, 0, 0, 0.9239]
+        },
+        "rig.render.light": {
+          "type": "directional",
+          "intensity": 1
+        }
+      }
+    },
+    {
+      "id": "bulb",
+      "components": {
+        "rig.meta.named": { "name": "bulb", "stableId": "bulb" },
+        "rig.spatial.transform": { "position": [0, 2, 0] },
+        "rig.render.light": {
+          "type": "point",
+          "range": 8,
+          "intensity": 1.2
+        }
+      }
+    },
+    {
+      "id": "spot",
+      "components": {
+        "rig.meta.named": { "name": "spot", "stableId": "spot" },
+        "rig.spatial.transform": {
+          "position": [2, 3, 2],
+          "rotation": [0.7071, 0, 0, 0.7071]
+        },
+        "rig.render.light": {
+          "type": "spot",
+          "range": 12,
+          "innerConeDegrees": 15,
+          "outerConeDegrees": 30,
+          "rgb": [1, 0.95, 0.85]
+        }
+      }
+    }
+  ]
+}

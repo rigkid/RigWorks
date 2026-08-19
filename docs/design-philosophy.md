@@ -14,7 +14,7 @@ Rig is a **future-proof**, **host-independent**, **human-readable** vocabulary f
 
 1. **Human readable and human editable.** A document is plain data. Open the file, change a number, save it.
 2. **Host / application independent.** Portable meaning lives in the [Contract](terms.md). Independent of host, runtime, language, and platform — [fulfillments](terms.md) come and go. Two hosts that never met can exchange work if they speak the same schema ids.
-3. **One concept, one home.** Prefer composition over duplication — [`rig.meta.named`](../schemas/meta/named.md), [`rig.spatial.anchor`](../schemas/spatial/anchor.md), [`rig.render.visibility`](../schemas/render/visibility.md) — not the same idea re-declared on every domain schema. The grammar is the schema catalog plus entity/component composition on the wire ([`rig.document`](../schemas/document.md)).
+3. **One concept, one home.** Prefer composition over duplication — [`rig.meta.named`](../schemas/meta/named.md), [`rig.spatial.anchor`](../schemas/spatial/anchor.md), [`rig.render.visibility`](../schemas/render/visibility.md), [`rig.render.blend`](../schemas/render/blend.md) — not the same idea re-declared on every domain schema. The grammar is the schema catalog plus entity/component composition on the wire ([`rig.document`](../schemas/document.md)).
 
 **Future-proof** means concept over execution: what a transform *is* outlives every renderer that draws one.
 

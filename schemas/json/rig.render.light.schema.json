@@ -12,7 +12,8 @@
       "type": "string",
       "enum": [
         "directional",
-        "point"
+        "point",
+        "spot"
       ]
     },
     "rgb": {
@@ -29,6 +30,15 @@
     },
     "bands": {
       "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "range": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "innerConeDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "outerConeDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
     }
   }
 }

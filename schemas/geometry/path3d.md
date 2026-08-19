@@ -21,4 +21,6 @@ A contour that stays editable as NURBS belongs on [`rig.geometry.spline3d`](spli
 
 Closed contours use a `close` command. Unknown types → skip / reject. Extend only by appending enum values.
 
+Fill rule and hole winding are 2D — they live on [`rig.geometry.path`](path.md). Space curves stay unfilled unless the host tessellates to a mesh. Mesh front-face is caller-owned; do not add a winding field here.
+
 Tessellation to polylines or [`rig.geometry.mesh`](mesh.md) is host fulfillment.

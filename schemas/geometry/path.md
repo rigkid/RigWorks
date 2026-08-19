@@ -7,6 +7,7 @@ Not a parametric shape. A contour that stays editable as parameters belongs to o
 | Field | Type | Meaning |
 |-------|------|---------|
 | `commands` | command[] | Ordered path commands |
+| `fillRule` | enum | Optional. nonzero, evenodd; absent = nonzero |
 
 ## Command
 
@@ -18,3 +19,5 @@ Not a parametric shape. A contour that stays editable as parameters belongs to o
 | `control2` | vec2 | Cubic control 2 |
 
 Closed contours use a `close` command. Unknown types → skip / reject. Extend only by appending enum values.
+
+Holes are extra `moveTo` … `close` subpaths — no `holes` array. First subpath is the outer (clockwise in 2D page space). Later subpaths with opposite winding punch holes when `fillRule` is `nonzero`. Under `evenodd`, overlap toggles and winding sign does not matter. Fonts / UFO stay `nonzero`. Glyph contours are in font-unit y-up ([`rig.font.glyph`](../font/glyph.md)); opposite-winding subpaths still punch holes. Do not put `fillRule` on paint. Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md).

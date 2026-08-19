@@ -29,6 +29,7 @@ Formal grammar: [`schemas/json/`](../schemas/json/). Validate with [`tools/rig-v
 | `rig.geometry.spline3d` | `Spline3d` |
 | `rig.geometry.nurbs_surface` | `NurbsSurface` |
 | `rig.paint.fill_stroke` | `DrawStyle` |
+| `rig.paint.stroke_style` | `StrokeStyle` |
 | `rig.interact.selectable` | `Selectable` |
 | `rig.spatial.camera` | `Camera` |
 | `rig.render.light` | `Light` |

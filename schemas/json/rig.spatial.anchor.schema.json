@@ -26,6 +26,9 @@
         "center",
         "max"
       ]
+    },
+    "offset": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
     }
   },
   "required": [

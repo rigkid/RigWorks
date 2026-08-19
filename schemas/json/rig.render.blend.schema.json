@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.render.blend.schema.json",
+  "title": "rig.render.blend",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "blendMode": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "multiply",
+        "screen",
+        "overlay",
+        "add"
+      ]
+    },
+    "opacity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
+}

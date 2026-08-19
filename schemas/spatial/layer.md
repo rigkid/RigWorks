@@ -2,7 +2,7 @@
 
 Document / render-order layer chrome. Format when present.
 
-Compose [`rig.meta.named`](../meta/named.md) for the label. Show/hide is [`rig.render.visibility`](../render/visibility.md) on the same entity — do not re-declare `visible` here.
+Compose [`rig.meta.named`](../meta/named.md) for the label. Show/hide is [`rig.render.visibility`](../render/visibility.md) on the same entity — do not re-declare `visible` here. Blend and opacity are [`rig.render.blend`](../render/blend.md).
 
 Compositor stacks use [`rig.pixel.layer`](../pixel/layer.md) on the same entity when needed — do not duplicate these chrome fields there.
 

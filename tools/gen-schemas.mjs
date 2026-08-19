@@ -64,6 +64,7 @@ add("rig.spatial.anchor", {
     "bottomRight",
   ]),
   height: enumOf(["min", "center", "max"]),
+  offset: ref("vec2"),
 }, { required: ["point"] });
 
 add(
@@ -955,6 +956,7 @@ add("rig.geometry.line", {
 add("rig.geometry.polygon", {
   points: { type: "array", items: ref("vec2"), minItems: 3 },
   closed: ref("bool"),
+  fillRule: enumOf(["nonzero", "evenodd"]),
 }, { required: ["points"] });
 
 add("rig.geometry.regular_polygon", {
@@ -1026,7 +1028,8 @@ const pathCommand = {
 
 add("rig.geometry.path", {
   commands: { type: "array", items: pathCommand },
-});
+  fillRule: enumOf(["nonzero", "evenodd"]),
+}, { required: ["commands"] });
 
 const path3dCommand = {
   type: "object",
@@ -1188,6 +1191,15 @@ add("rig.paint.library", {
   paints: { type: "array", items: ref("entity") },
 }, { required: ["paints"] });
 
+// Defaults: cap butt, join miter, miterLimit 4, dash solid, dashOffset 0.
+add("rig.paint.stroke_style", {
+  cap: enumOf(["butt", "square", "round"]),
+  join: enumOf(["miter", "bevel", "round"]),
+  miterLimit: ref("float"),
+  dash: { type: "array", items: ref("float") },
+  dashOffset: ref("float"),
+}, { required: [] });
+
 // --- meta / render ---
 add("rig.meta.named", {
   name: ref("string"),
@@ -1199,15 +1211,18 @@ add("rig.meta.tags", {
 });
 
 // Defaults: enabled true, type point, rgb white, intensity 1, ambient 0,
-// banded false.
+// banded false. Spot cones: inner 0, outer 45. range absent = infinite.
 add("rig.render.light", {
   enabled: ref("bool"),
-  type: enumOf(["directional", "point"]),
+  type: enumOf(["directional", "point", "spot"]),
   rgb: ref("rgb"),
   intensity: ref("float"),
   ambient: ref("float"),
   banded: ref("bool"),
   bands: ref("int"),
+  range: ref("float"),
+  innerConeDegrees: ref("float"),
+  outerConeDegrees: ref("float"),
 }, { required: [] });
 
 // Defaults: albedoRgb white, metallic 0, roughness 1, emissive black.
@@ -1223,6 +1238,12 @@ add("rig.render.material", {
 add("rig.render.visibility", {
   visible: ref("bool"),
 }, { required: ["visible"] });
+
+// Defaults: blendMode normal, opacity 1. Compose on any drawable.
+add("rig.render.blend", {
+  blendMode: enumOf(["normal", "multiply", "screen", "overlay", "add"]),
+  opacity: { type: "number", minimum: 0, maximum: 1 },
+}, { required: [] });
 
 // --- anim / mod ---
 // Defaults: elapsed 0, easing linear, loop false, playing true.
@@ -1564,11 +1585,9 @@ add("rig.pixel.source", {
   videoTime: ref("float"),
 }, { required: ["kind"] });
 
-// Defaults: blendMode normal, opacity 1, maskSource none, invertMask false.
+// Defaults: maskSource none, invertMask false. Blend/opacity live on rig.render.blend.
 add("rig.pixel.layer", {
   kind: enumOf(["vector", "overlayImage", "solid", "group"]),
-  blendMode: enumOf(["normal", "multiply", "screen", "overlay", "add"]),
-  opacity: { type: "number", minimum: 0, maximum: 1 },
   image: ref("entity"),
   rgba: ref("rgba"),
   maskSource: enumOf(["none", "luma", "alpha", "path"]),

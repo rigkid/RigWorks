@@ -30,6 +30,7 @@
           "strokeRgba": [1, 1, 1, 1],
           "strokeWidth": 2
         },
+        "rig.paint.stroke_style": { "cap": "round", "join": "round" },
         "rig.interact.selectable": { "enabled": true }
       }
     },
@@ -90,8 +91,7 @@
         "rig.meta.named": { "name": "demo-gem", "stableId": "demo-gem" },
         "rig.spatial.transform": { "position": [270, 300, 0] },
         "rig.geometry.polygon": {
-          "points": [[-45, 0], [0, -35], [45, 0], [0, 35]],
-          "closed": true
+          "points": [[-45, 0], [0, -35], [45, 0], [0, 35]]
         },
         "rig.paint.fill_stroke": { "fillRgba": [0.2, 0.8, 0.85, 1] },
         "rig.interact.selectable": { "enabled": true }
