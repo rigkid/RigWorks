@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.dev.machine.schema.json",
+  "title": "rig.dev.machine",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "local",
+        "vm",
+        "ci",
+        "container"
+      ]
+    },
+    "provider": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "base": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "requiresAuth": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/string"
+      }
+    },
+    "snapshotRef": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "memoryBytes": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "diskBytes": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "cpus": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    }
+  },
+  "required": [
+    "kind"
+  ]
+}

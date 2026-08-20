@@ -241,6 +241,7 @@ Thin OpenBIM layer — IFC class is a string on `classify`, not one schema per `
 | `rig.anim.curve` | [anim/curve.md](anim/curve.md) |
 | `rig.mod.lfo` | [mod/lfo.md](mod/lfo.md) |
 | `rig.mod.binding` | [mod/binding.md](mod/binding.md) |
+| `rig.mod.trigger` | [mod/trigger.md](mod/trigger.md) |
 
 ### Music
 
@@ -310,7 +311,7 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 | `rig.pixel.tile_map` | [pixel/tile-map.md](pixel/tile-map.md) |
 | `rig.pixel.effect_chain` | [pixel/effect-chain.md](pixel/effect-chain.md) |
 
-### Install / I/O
+### I/O
 
 | Id | Doc |
 |----|-----|
@@ -330,8 +331,15 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 | `rig.calendar.event` | [calendar/event.md](calendar/event.md) |
 | `rig.calendar.recurrence` | [calendar/recurrence.md](calendar/recurrence.md) |
 | `rig.calendar.attendee` | [calendar/attendee.md](calendar/attendee.md) |
-| `rig.install.av_bus` | [install/av-bus.md](install/av-bus.md) |
-| `rig.install.trigger` | [install/trigger.md](install/trigger.md) |
+
+### Dev environments
+
+Portable development-machine recipes — not a media-show AV bus or gated trigger, not UI docks. Cache fingerprints and credentials stay host-only — [dev.md](../docs/dev.md).
+
+| Id | Doc |
+|----|-----|
+| `rig.dev.machine` | [dev/machine.md](dev/machine.md) |
+| `rig.dev.op` | [dev/op.md](dev/op.md) |
 
 ### Simulation
 

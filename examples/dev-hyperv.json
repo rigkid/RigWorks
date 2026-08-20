@@ -1,0 +1,68 @@
+{
+  "rig": "0.23.0",
+  "document": {
+    "title": "Dev machine — Hyper-V local agent box",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "hyperv-agent",
+      "components": {
+        "rig.meta.named": {
+          "name": "Rig agent Hyper-V",
+          "stableId": "hyperv-agent"
+        },
+        "rig.dev.machine": {
+          "kind": "vm",
+          "provider": "hyper-v",
+          "base": "ubuntu-22.04",
+          "memoryBytes": 4294967296,
+          "diskBytes": 42949672960,
+          "cpus": 2
+        }
+      }
+    },
+    {
+      "id": "op-start",
+      "components": {
+        "rig.meta.named": {
+          "name": "Start",
+          "stableId": "op-start"
+        },
+        "rig.dev.op": {
+          "machine": "hyperv-agent",
+          "order": 0,
+          "opId": "start"
+        }
+      }
+    },
+    {
+      "id": "op-connect",
+      "components": {
+        "rig.meta.named": {
+          "name": "Connect console",
+          "stableId": "op-connect"
+        },
+        "rig.dev.op": {
+          "machine": "hyperv-agent",
+          "order": 1,
+          "opId": "open-console"
+        }
+      }
+    },
+    {
+      "id": "op-stop",
+      "components": {
+        "rig.meta.named": {
+          "name": "Stop",
+          "stableId": "op-stop"
+        },
+        "rig.dev.op": {
+          "machine": "hyperv-agent",
+          "order": 2,
+          "opId": "stop"
+        }
+      }
+    }
+  ]
+}

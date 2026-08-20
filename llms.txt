@@ -23,6 +23,7 @@ Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component 
 - [docs/openbim.md](docs/openbim.md): OpenBIM (IFC / BCF / IDS) → `rig.bim.*`; encodings are fulfillment
 - [docs/ufo.md](docs/ufo.md): UFO / GLIF → `rig.font.*`; encodings are fulfillment
 - [docs/ros.md](docs/ros.md): ROS 2 → existing spatial / I/O / sensor / SUDE; no `rig.ros2.*`
+- [docs/dev.md](docs/dev.md): portable dev machines → `rig.dev.machine` / `rig.dev.op`; [RigDev](https://github.com/rigkid/RigDev) fulfills
 - [docs/properties.md](docs/properties.md): portable datatype ids
 - [docs/honors.md](docs/honors.md): what counts as Rig (grammar floor; live hosts; optional Rig + UI)
 - [docs/gaps.md](docs/gaps.md): where the Contract is silent, ambiguous, or wrong

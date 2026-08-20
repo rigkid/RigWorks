@@ -1,30 +1,81 @@
 #!/usr/bin/env node
 /**
- * Validate Rig JSON documents against schemas/json/.
+ * Scaffold and validate Rig documents.
  *
+ *   node tools/rig-validate/cli.js init my-scene
  *   node tools/rig-validate/cli.js path/to/doc.json
- *   node tools/rig-validate/cli.js --strict examples/*.json
+ *   node tools/rig-validate/cli.js validate --strict examples/*.json
  *
  * Envelope, per-component fields, duplicate ids, and dangling entity refs.
  */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import Ajv2020 from "ajv/dist/2020.js";
-import addFormats from "ajv-formats";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "../..");
-const schemaDir = path.join(repoRoot, "schemas", "json");
+const repoSchemas = path.join(repoRoot, "schemas", "json");
+const packagedSchemas = path.join(__dirname, "schemas");
+const schemaDir = fs.existsSync(repoSchemas) ? repoSchemas : packagedSchemas;
+const starterPath = fs.existsSync(path.join(repoRoot, "examples", "minimal-scene.json"))
+  ? path.join(repoRoot, "examples", "minimal-scene.json")
+  : path.join(__dirname, "starter.rig");
+const versionFile = fs.existsSync(path.join(repoRoot, "VERSION"))
+  ? path.join(repoRoot, "VERSION")
+  : path.join(__dirname, "VERSION");
 
 const args = process.argv.slice(2);
-const strict = args.includes("--strict");
-const files = args.filter((a) => a !== "--strict" && !a.startsWith("-"));
+const help = args.length === 0 || args.includes("--help") || args.includes("-h") || args[0] === "help";
+
+function usage() {
+  console.log(`Usage:
+  rigkit init <name>                  write <name>/scene.rig
+  rigkit validate [--strict] <file>...
+  rigkit [--strict] <file>...         same as validate
+
+A Rig document is JSON. The conventional extension is .rig.`);
+}
+
+if (help) {
+  usage();
+  process.exit(args.length === 0 ? 2 : 0);
+}
+
+if (args[0] === "init") {
+  const name = args[1];
+  if (!name || name.startsWith("-")) {
+    console.error("Usage: rigkit init <name>");
+    process.exit(2);
+  }
+  if (!fs.existsSync(starterPath)) {
+    console.error("starter document is missing from this install");
+    process.exit(1);
+  }
+  const destDir = path.resolve(process.cwd(), name);
+  const dest = path.join(destDir, "scene.rig");
+  if (fs.existsSync(dest)) {
+    console.error(`refusing to overwrite ${path.relative(process.cwd(), dest) || dest}`);
+    process.exit(1);
+  }
+  fs.mkdirSync(destDir, { recursive: true });
+  fs.copyFileSync(starterPath, dest);
+  const shown = path.relative(process.cwd(), dest) || dest;
+  console.log(`wrote ${shown}`);
+  console.log("Open in the viewer: https://viewer.rig.works — drag the file in.");
+  process.exit(0);
+}
+
+const rest = args[0] === "validate" ? args.slice(1) : args;
+const strict = rest.includes("--strict");
+const files = rest.filter((a) => a !== "--strict" && !a.startsWith("-"));
 
 if (files.length === 0) {
-  console.error("Usage: rig-validate [--strict] <file.json>...");
+  usage();
   process.exit(2);
 }
+
+const { default: Ajv2020 } = await import("ajv/dist/2020.js");
+const { default: addFormats } = await import("ajv-formats");
 
 function loadJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
@@ -74,7 +125,7 @@ function collectEntityRefs(schema, value, pointer, out) {
 
 function repoVersion() {
   try {
-    return fs.readFileSync(path.join(repoRoot, "VERSION"), "utf8").trim();
+    return fs.readFileSync(versionFile, "utf8").trim();
   } catch {
     return null;
   }
@@ -87,6 +138,11 @@ function isNewerThan(a, b) {
     if ((pa[i] ?? 0) !== (pb[i] ?? 0)) return (pa[i] ?? 0) > (pb[i] ?? 0);
   }
   return false;
+}
+
+if (!fs.existsSync(schemaDir)) {
+  console.error("Failed to load schemas — this install is missing the catalog");
+  process.exit(1);
 }
 
 const ajv = new Ajv2020({

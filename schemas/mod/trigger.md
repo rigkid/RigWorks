@@ -1,8 +1,8 @@
-# `rig.install.trigger`
+# `rig.mod.trigger`
 
-Discrete gated install event. Format when present.
+Discrete gated event. Format when present.
 
-Unlike [`rig.mod.binding`](../mod/binding.md) (continuous property drive), a trigger fires an action when its source asserts and gates allow.
+Unlike [`rig.mod.binding`](binding.md) (continuous property drive), a trigger fires an action when its source asserts and gates allow.
 
 | Field | Type | Meaning |
 |-------|------|---------|

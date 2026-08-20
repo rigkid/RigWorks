@@ -1,6 +1,8 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -81,5 +83,39 @@ describe("rig-validate", () => {
     const r = run([fix("bad.json")]);
     assert.equal(r.status, 1);
     assert.match(r.stderr + r.stdout, /cannot parse JSON/);
+  });
+
+  it("prints help", () => {
+    const r = run(["--help"]);
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+    assert.match(r.stdout, /init <name>/);
+  });
+
+  it("init writes a valid scene.rig", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "rig-init-"));
+    const name = path.join(dir, "my-scene");
+    try {
+      const r = run(["init", name]);
+      assert.equal(r.status, 0, r.stderr + r.stdout);
+      const dest = path.join(name, "scene.rig");
+      assert.equal(fs.existsSync(dest), true);
+      const v = run(["--strict", dest]);
+      assert.equal(v.status, 0, v.stderr + v.stdout);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("init refuses to overwrite", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "rig-init-"));
+    const name = path.join(dir, "my-scene");
+    try {
+      assert.equal(run(["init", name]).status, 0);
+      const r = run(["init", name]);
+      assert.equal(r.status, 1);
+      assert.match(r.stderr, /refusing to overwrite/);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
   });
 });

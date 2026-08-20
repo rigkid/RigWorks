@@ -239,6 +239,12 @@
               "rig.commerce.price": {
                 "$ref": "./rig.commerce.price.schema.json"
               },
+              "rig.dev.machine": {
+                "$ref": "./rig.dev.machine.schema.json"
+              },
+              "rig.dev.op": {
+                "$ref": "./rig.dev.op.schema.json"
+              },
               "rig.dmx.fixture": {
                 "$ref": "./rig.dmx.fixture.schema.json"
               },
@@ -308,12 +314,6 @@
               "rig.input.buttons": {
                 "$ref": "./rig.input.buttons.schema.json"
               },
-              "rig.install.av_bus": {
-                "$ref": "./rig.install.av_bus.schema.json"
-              },
-              "rig.install.trigger": {
-                "$ref": "./rig.install.trigger.schema.json"
-              },
               "rig.interact.selectable": {
                 "$ref": "./rig.interact.selectable.schema.json"
               },
@@ -364,6 +364,9 @@
               },
               "rig.mod.lfo": {
                 "$ref": "./rig.mod.lfo.schema.json"
+              },
+              "rig.mod.trigger": {
+                "$ref": "./rig.mod.trigger.schema.json"
               },
               "rig.music.arrangement": {
                 "$ref": "./rig.music.arrangement.schema.json"

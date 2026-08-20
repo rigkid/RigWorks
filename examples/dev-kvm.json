@@ -1,0 +1,82 @@
+{
+  "rig": "0.23.0",
+  "document": {
+    "title": "Dev machine — KVM / virt-manager agent box",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "kvm-agent",
+      "components": {
+        "rig.meta.named": {
+          "name": "Rig agent KVM",
+          "stableId": "kvm-agent"
+        },
+        "rig.dev.machine": {
+          "kind": "vm",
+          "provider": "kvm",
+          "base": "ubuntu-22.04",
+          "memoryBytes": 4294967296,
+          "diskBytes": 42949672960,
+          "cpus": 2
+        }
+      }
+    },
+    {
+      "id": "op-start",
+      "components": {
+        "rig.meta.named": {
+          "name": "Start",
+          "stableId": "op-start"
+        },
+        "rig.dev.op": {
+          "machine": "kvm-agent",
+          "order": 0,
+          "opId": "start"
+        }
+      }
+    },
+    {
+      "id": "op-console",
+      "components": {
+        "rig.meta.named": {
+          "name": "Open console",
+          "stableId": "op-console"
+        },
+        "rig.dev.op": {
+          "machine": "kvm-agent",
+          "order": 1,
+          "opId": "open-console"
+        }
+      }
+    },
+    {
+      "id": "op-virt-manager",
+      "components": {
+        "rig.meta.named": {
+          "name": "Open virt-manager",
+          "stableId": "op-virt-manager"
+        },
+        "rig.dev.op": {
+          "machine": "kvm-agent",
+          "order": 2,
+          "opId": "open-virt-manager"
+        }
+      }
+    },
+    {
+      "id": "op-stop",
+      "components": {
+        "rig.meta.named": {
+          "name": "Stop",
+          "stableId": "op-stop"
+        },
+        "rig.dev.op": {
+          "machine": "kvm-agent",
+          "order": 3,
+          "opId": "stop"
+        }
+      }
+    }
+  ]
+}

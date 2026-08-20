@@ -324,8 +324,8 @@ const GROUPS = [
   { title: "Story (semantic copy)", domains: ["story"] },
   { title: "Pixel / raster", domains: ["pixel"] },
   {
-    title: "Install / I/O",
-    domains: ["io", "dmx", "led", "sensor", "input", "light", "calendar", "install"],
+    title: "I/O",
+    domains: ["io", "dmx", "led", "sensor", "input", "light", "calendar"],
   },
   { title: "Simulation", domains: ["sim"] },
   { title: "Interaction", domains: ["interact"] },

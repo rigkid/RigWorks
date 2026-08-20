@@ -24,7 +24,6 @@ const TARGETS = [
   "README.md",
   "examples/README.md",
   "skills/generating-rig-documents/SKILL.md",
-  "site/index.html",
 ];
 
 const beginRe =

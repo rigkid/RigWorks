@@ -1342,6 +1342,24 @@ add("rig.mod.binding", {
   additive: ref("bool"),
 }, { required: ["source", "target", "propertyKey"] });
 
+// Discrete gated event. Binding is continuous property drive; this is edge + gates.
+// mode absent = forward; enabled absent = true.
+add("rig.mod.trigger", {
+  source: ref("entity"),
+  action: enumOf(["color-flash", "play-sample"]),
+  enabled: ref("bool"),
+  cooldownMs: ref("int"),
+  calendar: ref("entity"),
+  fadeInMs: ref("int"),
+  holdMs: ref("int"),
+  fadeOutMs: ref("int"),
+  palette: { type: "array", items: ref("rgba") },
+  mode: enumOf(["forward", "backward", "pendulum", "random"]),
+  volume: { type: "number", minimum: 0, maximum: 1 },
+  loop: ref("bool"),
+  samples: { type: "array", items: ref("entity") },
+}, { required: ["source", "action"] });
+
 // --- music ---
 // Defaults: playing false, timeSig 4/4, positionBeats 0, loop false.
 add("rig.music.transport", {
@@ -1844,29 +1862,27 @@ add("rig.calendar.attendee", {
   status: enumOf(["needs-action", "accepted", "declined", "tentative"]),
 }, { required: ["event", "person"] });
 
-// --- install ---
-// Show-level audio / visuals bus. Defaults: both false (open).
-add("rig.install.av_bus", {
-  audioMuted: ref("bool"),
-  visualsBlackout: ref("bool"),
-}, { required: [] });
+// --- dev (portable development environments) ---
+// Not a media-show AV bus or gated trigger. Credentials / snapshots
+// stay in the host — see docs/dev.md.
+add("rig.dev.machine", {
+  kind: enumOf(["local", "vm", "ci", "container"]),
+  provider: ref("string"),
+  base: ref("string"),
+  requiresAuth: { type: "array", items: ref("string") },
+  snapshotRef: ref("string"),
+  memoryBytes: ref("int"),
+  diskBytes: ref("int"),
+  cpus: ref("int"),
+}, { required: ["kind"] });
 
-// Discrete gated event. mode absent = forward; enabled absent = true.
-add("rig.install.trigger", {
-  source: ref("entity"),
-  action: enumOf(["color-flash", "play-sample"]),
+// enabled absent = true. What the op does is fulfillment.
+add("rig.dev.op", {
+  machine: ref("entity"),
+  order: ref("int"),
+  opId: ref("string"),
   enabled: ref("bool"),
-  cooldownMs: ref("int"),
-  calendar: ref("entity"),
-  fadeInMs: ref("int"),
-  holdMs: ref("int"),
-  fadeOutMs: ref("int"),
-  palette: { type: "array", items: ref("rgba") },
-  mode: enumOf(["forward", "backward", "pendulum", "random"]),
-  volume: { type: "number", minimum: 0, maximum: 1 },
-  loop: ref("bool"),
-  samples: { type: "array", items: ref("entity") },
-}, { required: ["source", "action"] });
+}, { required: ["machine", "order", "opId"] });
 
 // --- bim (OpenBIM: IFC model + BCF + IDS) ---
 // Thin layer — classify.ifcClass names the IFC type; do not invent

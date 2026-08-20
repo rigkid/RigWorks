@@ -1,0 +1,68 @@
+{
+  "rig": "0.23.0",
+  "document": {
+    "title": "Dev machine — agent smoke on a VM",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "agent-smoke",
+      "components": {
+        "rig.meta.named": {
+          "name": "Agent smoke",
+          "stableId": "agent-smoke"
+        },
+        "rig.dev.machine": {
+          "kind": "vm",
+          "provider": "freestyle",
+          "base": "node-22",
+          "requiresAuth": ["github"],
+          "memoryBytes": 4294967296,
+          "cpus": 2
+        }
+      }
+    },
+    {
+      "id": "op-ssh",
+      "components": {
+        "rig.meta.named": {
+          "name": "SSH",
+          "stableId": "op-ssh"
+        },
+        "rig.dev.op": {
+          "machine": "agent-smoke",
+          "order": 0,
+          "opId": "ssh"
+        }
+      }
+    },
+    {
+      "id": "op-editor",
+      "components": {
+        "rig.meta.named": {
+          "name": "Open editor",
+          "stableId": "op-editor"
+        },
+        "rig.dev.op": {
+          "machine": "agent-smoke",
+          "order": 1,
+          "opId": "open-editor"
+        }
+      }
+    },
+    {
+      "id": "op-apply",
+      "components": {
+        "rig.meta.named": {
+          "name": "Apply",
+          "stableId": "op-apply"
+        },
+        "rig.dev.op": {
+          "machine": "agent-smoke",
+          "order": 2,
+          "opId": "apply"
+        }
+      }
+    }
+  ]
+}

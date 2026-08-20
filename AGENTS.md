@@ -38,6 +38,7 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`docs/openbim.md`](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) → `rig.bim.*` |
 | [`docs/ufo.md`](docs/ufo.md) | UFO / GLIF → `rig.font.*`; encodings are fulfillment |
 | [`docs/ros.md`](docs/ros.md) | ROS 2 → existing schemas; no `rig.ros2.*` |
+| [`docs/dev.md`](docs/dev.md) | Dev machines → `rig.dev.machine` / `rig.dev.op`; fulfillments e.g. [RigDev](https://github.com/rigkid/RigDev) |
 | [`docs/terms.md`](docs/terms.md) | Contract vs fulfillment, host, pack, POD |
 | [`docs/versioning.md`](docs/versioning.md) | SemVer ranges + history (`VERSION`) |
 | [`tools/rig-validate/`](tools/rig-validate/) | Validator CLI |

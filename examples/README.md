@@ -25,6 +25,9 @@ node tools/rig-validate/cli.js examples/commerce-offer.json
 node tools/rig-validate/cli.js examples/legal-agreement.json
 node tools/rig-validate/cli.js examples/calendar-event.json
 node tools/rig-validate/cli.js examples/lights.json
+node tools/rig-validate/cli.js examples/dev-machine.json
+node tools/rig-validate/cli.js examples/dev-hyperv.json
+node tools/rig-validate/cli.js examples/dev-kvm.json
 ```
 
 ## SUDE sketch

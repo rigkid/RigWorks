@@ -1,12 +1,31 @@
 {
-  "name": "rig-validate",
-  "version": "0.9.0",
-  "private": true,
+  "name": "rigkit",
+  "version": "0.23.0",
+  "private": false,
+  "description": "Scaffold and validate Rig documents.",
+  "license": "MIT",
   "type": "module",
   "bin": {
+    "rigkit": "./cli.js",
     "rig-validate": "./cli.js"
   },
+  "files": [
+    "cli.js",
+    "starter.rig",
+    "VERSION",
+    "schemas"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rigkid/RigWorks.git",
+    "directory": "tools/rig-validate"
+  },
+  "homepage": "https://rig.works/",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "prepack": "node pack.mjs",
     "validate-examples": "node cli.js ../../examples/minimal-scene.json ../../examples/lfo-binding.json"
   },
   "dependencies": {

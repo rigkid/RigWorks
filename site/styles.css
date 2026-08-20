@@ -113,6 +113,15 @@ nav {
 }
 .nav-links .ghost:hover { border-color: var(--accent-dim); background: var(--surface); }
 
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.98rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin: 0 0 0.85rem;
+  font-weight: 600;
+}
+
 h1 {
   font-size: clamp(2.4rem, 6.2vw, 4.1rem);
   line-height: 1.06;
@@ -270,6 +279,7 @@ section p:last-child { margin-bottom: 0; }
 
 .card.accent { border-color: var(--accent-dim); background: linear-gradient(var(--surface), #0e1620); }
 .card.accent h3 { color: var(--accent); }
+.card h3 a { color: inherit; }
 
 .card.negative h3 { color: #e6e9ef; }
 .card.negative h3::before { content: "— "; color: var(--muted); }

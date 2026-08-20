@@ -1,14 +1,24 @@
-# rig-validate
+# rigkit
 
-Validate Rig JSON documents against [`schemas/json/`](../../schemas/json/).
+Scaffold and validate Rig documents. The conventional extension is `.rig`; JSON is the wire format.
 
 ```bash
-npm run setup                                          # from the repo root
+npx rigkit init my-scene
+npx rigkit validate my-scene/scene.rig
+```
+
+From a RigWorks checkout:
+
+```bash
+npm run setup
+node tools/rig-validate/cli.js init my-scene
 node tools/rig-validate/cli.js examples/minimal-scene.json
 node tools/rig-validate/cli.js --strict path/to/doc.json
 ```
 
-## What it checks
+`init` writes `my-scene/scene.rig` from [`examples/minimal-scene.json`](../../examples/minimal-scene.json) and refuses to overwrite. Bare file arguments still mean validate, so existing scripts keep working.
+
+## What validate checks
 
 | Check | Level |
 |-------|-------|
