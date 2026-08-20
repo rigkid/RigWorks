@@ -11,6 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { isRigzPath, openRigz } from "./rigz.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "../..");
@@ -33,7 +34,7 @@ function usage() {
   rigkit validate [--strict] <file>...
   rigkit [--strict] <file>...         same as validate
 
-A Rig document is JSON. The conventional extension is .rig.`);
+A Rig document is JSON. On disk: .rig, or .rigz (ZIP of one .rig plus data/).`);
 }
 
 if (help) {
@@ -164,16 +165,33 @@ let failed = false;
 for (const file of files) {
   const abs = path.resolve(file);
   let data;
+  let packWarn = null;
   try {
-    data = loadJson(abs);
+    if (isRigzPath(abs)) {
+      const pack = openRigz(fs.readFileSync(abs));
+      packWarn = pack.hasData
+        ? null
+        : "package has no data/ folder — sidecar files live there";
+      data = JSON.parse(pack.jsonText);
+    } else {
+      data = loadJson(abs);
+    }
   } catch (err) {
-    console.error(`${file}: cannot parse JSON — ${err.message}`);
+    const kind = isRigzPath(abs) && err instanceof SyntaxError
+      ? "cannot parse JSON"
+      : isRigzPath(abs)
+        ? "cannot open .rigz"
+        : "cannot parse JSON";
+    console.error(`${file}: ${kind} — ${err.message}`);
     failed = true;
     continue;
   }
 
   const ok = validateDoc(data);
   const errors = [];
+  if (packWarn) {
+    errors.push({ level: "warn", path: "/", message: packWarn });
+  }
 
   if (!ok) {
     for (const e of validateDoc.errors ?? []) {

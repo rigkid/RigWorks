@@ -17,7 +17,7 @@ Being Rig does not require implementing this catalog. If two hosts both speak a 
 - Runtime caches and queues (last sample, pending MIDI, hover) stay in the host.
 - Ids are `rig.<domain>.<name>` (snake_case multi-word segments). Enum literals are kebab-case (`top-left`, `color-dodge`) — they are user-facing choice labels, not field names.
 - Display names live on [`rig.meta.named`](meta/named.md) — compose it; do not re-declare `name` on every schema.
-- File identity lives on [`rig.media.asset_ref`](media/asset-ref.md) — other schemas reference it by `entity` id when they need a path.
+- File identity lives on [`rig.media.asset_ref`](media/asset-ref.md) — other schemas reference it by `entity` id when they need a path. Sidecars that travel with the document live in the package `data/` folder — [interchange](../docs/interchange.md#package).
 - `rgba` / `rgb` / `clearRgba` are floats 0–1. Colour space is the envelope's `document.colorSpace` key (default: srgb) — see [document.md](document.md).
 - Domain meaning lives in field names — not extra property datatype ids. See [properties.md](../docs/properties.md).
 
@@ -74,6 +74,12 @@ A scene is a root (unparented) [`rig.spatial.vertex`](spatial/vertex.md). [`rig.
 | `rig.spatial.camera` | [spatial/camera.md](spatial/camera.md) |
 | `rig.spatial.layer` | [spatial/layer.md](spatial/layer.md) |
 | `rig.layout.page` | [layout/page.md](layout/page.md) |
+| `rig.layout.master` | [layout/master.md](layout/master.md) |
+| `rig.layout.applied_master` | [layout/applied-master.md](layout/applied-master.md) |
+| `rig.layout.facing` | [layout/facing.md](layout/facing.md) |
+| `rig.layout.paragraph_style` | [layout/paragraph-style.md](layout/paragraph-style.md) |
+| `rig.layout.character_style` | [layout/character-style.md](layout/character-style.md) |
+| `rig.layout.frame_chain` | [layout/frame-chain.md](layout/frame-chain.md) |
 
 ### Place (civic / postal)
 
@@ -188,7 +194,7 @@ Deals between parties — not the Rig Contract, and not copyright of a work ([`r
 
 ### CAD / solids
 
-CSG tree as split primitives. When `rig.cad.*` is present it is the solid source of truth; mesh on the same entity is an optional bake. Edges for fillet/chamfer are `{a,b}` pairs into mesh `positions` — see [geometry/mesh.md](geometry/mesh.md#edges).
+CSG tree as split primitives. When a solid `rig.cad.*` is present it is the source of truth; mesh on the same entity is an optional bake. Edges for fillet/chamfer are `{a,b}` pairs into mesh `positions` — see [geometry/mesh.md](geometry/mesh.md#edges). [`rig.cad.dimension`](cad/dimension.md) is a datum, not a solid.
 
 | Id | Doc |
 |----|-----|
@@ -200,6 +206,7 @@ CSG tree as split primitives. When `rig.cad.*` is present it is the solid source
 | `rig.cad.boolean` | [cad/boolean.md](cad/boolean.md) |
 | `rig.cad.fillet` | [cad/fillet.md](cad/fillet.md) |
 | `rig.cad.chamfer` | [cad/chamfer.md](cad/chamfer.md) |
+| `rig.cad.dimension` | [cad/dimension.md](cad/dimension.md) |
 
 ### BIM / OpenBIM
 

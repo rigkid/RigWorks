@@ -200,6 +200,9 @@
               "rig.cad.cylinder": {
                 "$ref": "./rig.cad.cylinder.schema.json"
               },
+              "rig.cad.dimension": {
+                "$ref": "./rig.cad.dimension.schema.json"
+              },
               "rig.cad.extrude": {
                 "$ref": "./rig.cad.extrude.schema.json"
               },
@@ -338,8 +341,26 @@
               "rig.io.serial": {
                 "$ref": "./rig.io.serial.schema.json"
               },
+              "rig.layout.applied_master": {
+                "$ref": "./rig.layout.applied_master.schema.json"
+              },
+              "rig.layout.character_style": {
+                "$ref": "./rig.layout.character_style.schema.json"
+              },
+              "rig.layout.facing": {
+                "$ref": "./rig.layout.facing.schema.json"
+              },
+              "rig.layout.frame_chain": {
+                "$ref": "./rig.layout.frame_chain.schema.json"
+              },
+              "rig.layout.master": {
+                "$ref": "./rig.layout.master.schema.json"
+              },
               "rig.layout.page": {
                 "$ref": "./rig.layout.page.schema.json"
+              },
+              "rig.layout.paragraph_style": {
+                "$ref": "./rig.layout.paragraph_style.schema.json"
               },
               "rig.led.uv_map": {
                 "$ref": "./rig.led.uv_map.schema.json"

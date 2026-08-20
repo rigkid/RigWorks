@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.frame_chain.schema.json",
+  "title": "rig.layout.frame_chain",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "story": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "frames": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    },
+    "master": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "story"
+  ]
+}

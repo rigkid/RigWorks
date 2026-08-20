@@ -2,7 +2,7 @@
 
 JSON document envelope for Rig interchange. Format when present as a file or payload.
 
-This is the **Contract wire format** (JSON). Field meaning remains POD; vectors and quats are JSON number arrays. Hosts may use other encodings internally — portable emission targets this envelope.
+This is the **Contract wire format** (JSON). Field meaning remains POD; vectors and quats are JSON number arrays. On disk the envelope is a `.rig` file, or a `.rigz` ZIP when a `data/` folder of sidecar files travels with it — [interchange](../docs/interchange.md#package). Hosts may use other encodings internally — portable emission targets this envelope.
 
 ## Root
 
@@ -75,4 +75,4 @@ So the namespace is a place to put what is genuinely yours, not a way to avoid t
 
 Machine grammar: [`schemas/json/rig.document.schema.json`](json/rig.document.schema.json).
 
-See [docs/interchange.md](../docs/interchange.md) for RigKit `.rig` key mapping.
+See [docs/interchange.md](../docs/interchange.md) for on-disk `.rig` / `.rigz`.

@@ -11,6 +11,7 @@
   },
   "files": [
     "cli.js",
+    "rigz.mjs",
     "starter.rig",
     "VERSION",
     "schemas"

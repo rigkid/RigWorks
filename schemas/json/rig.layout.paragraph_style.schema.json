@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.paragraph_style.schema.json",
+  "title": "rig.layout.paragraph_style",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "storyStyle": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "basedOn": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "font": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "fontSize": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "leading": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "alignment": {
+      "type": "string",
+      "enum": [
+        "left",
+        "center",
+        "right",
+        "justify"
+      ]
+    },
+    "spaceBefore": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "spaceAfter": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "firstLineIndent": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "paint": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

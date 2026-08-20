@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.master.schema.json",
+  "title": "rig.layout.master",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "side": {
+      "type": "string",
+      "enum": [
+        "left",
+        "right",
+        "single"
+      ]
+    }
+  }
+}

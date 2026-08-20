@@ -143,6 +143,50 @@ add("rig.layout.page", {
   slug: edges,
 }, { required: ["width", "height"] });
 
+// Master / facing / visual styles — emit-time map over semantic rig.story.*
+// styles. Font / size / colour stay here, never on story schemas.
+add("rig.layout.master", {
+  side: enumOf(["left", "right", "single"]),
+}, { required: [] });
+
+add("rig.layout.applied_master", {
+  master: ref("entity"),
+}, { required: ["master"] });
+
+add("rig.layout.facing", {
+  enabled: ref("bool"),
+  binding: enumOf(["left", "right"]),
+}, { required: [] });
+
+add("rig.layout.paragraph_style", {
+  storyStyle: ref("entity"),
+  basedOn: ref("entity"),
+  font: ref("entity"),
+  fontSize: ref("float"),
+  leading: ref("float"),
+  alignment: enumOf(["left", "center", "right", "justify"]),
+  spaceBefore: ref("float"),
+  spaceAfter: ref("float"),
+  firstLineIndent: ref("float"),
+  paint: ref("entity"),
+}, { required: [] });
+
+add("rig.layout.character_style", {
+  storyStyle: ref("entity"),
+  basedOn: ref("entity"),
+  font: ref("entity"),
+  fontSize: ref("float"),
+  paint: ref("entity"),
+  italic: ref("bool"),
+  bold: ref("bool"),
+}, { required: [] });
+
+add("rig.layout.frame_chain", {
+  story: ref("entity"),
+  frames: { type: "array", items: ref("entity") },
+  master: ref("entity"),
+}, { required: ["story"] });
+
 // --- place (civic / postal + geodetic; not scene pose) ---
 // Structured UPU S42 / ISO 20022 PostalAddress elements. All optional;
 // emit what the source measured. Unstructured AdrLine is import residue.
@@ -1155,6 +1199,17 @@ add("rig.cad.chamfer", {
   edges: { type: "array", items: meshEdge },
   allEdges: ref("bool"),
 }, { required: ["distance"] });
+
+// Datum dimension. measurement true = label only; false = drives a solver.
+// value is a scene length except kind angle (degrees).
+add("rig.cad.dimension", {
+  kind: enumOf(["linear", "aligned", "horizontal", "vertical", "diameter", "angle"]),
+  a: ref("entity"),
+  b: ref("entity"),
+  value: ref("float"),
+  measurement: ref("bool"),
+  offset: ref("vec3"),
+}, { required: ["kind", "a", "value"] });
 
 // --- paint ---
 // Defaults: hasFill = fillRgba present, hasStroke = strokeRgba present,

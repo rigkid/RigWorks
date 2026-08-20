@@ -34,7 +34,7 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`schemas/json/`](schemas/json/) | JSON Schema grammar |
 | [`schemas/`](schemas/) | Prose field meaning |
 | [`examples/`](examples/) | Reference documents |
-| [`docs/interchange.md`](docs/interchange.md) | Wire format + RigKit key aliases |
+| [`docs/interchange.md`](docs/interchange.md) | Wire format + `.rig` / `.rigz` package |
 | [`docs/openbim.md`](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) → `rig.bim.*` |
 | [`docs/ufo.md`](docs/ufo.md) | UFO / GLIF → `rig.font.*`; encodings are fulfillment |
 | [`docs/ros.md`](docs/ros.md) | ROS 2 → existing schemas; no `rig.ros2.*` |

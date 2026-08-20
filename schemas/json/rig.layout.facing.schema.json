@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.facing.schema.json",
+  "title": "rig.layout.facing",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "binding": {
+      "type": "string",
+      "enum": [
+        "left",
+        "right"
+      ]
+    }
+  }
+}

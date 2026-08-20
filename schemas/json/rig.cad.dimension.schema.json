@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.cad.dimension.schema.json",
+  "title": "rig.cad.dimension",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "linear",
+        "aligned",
+        "horizontal",
+        "vertical",
+        "diameter",
+        "angle"
+      ]
+    },
+    "a": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "b": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "value": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "measurement": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "offset": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    }
+  },
+  "required": [
+    "kind",
+    "a",
+    "value"
+  ]
+}

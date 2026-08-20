@@ -28,7 +28,7 @@ A host that implements six schemas and ignores the rest is still Rig. Grow the c
 
 ## Encoding
 
-The portable wire is **JSON** ([`rig.document`](../schemas/document.md), [interchange](interchange.md)). Other on-disk encodings are host mappings at the boundary.
+The portable wire is **JSON** ([`rig.document`](../schemas/document.md), [interchange](interchange.md)). On disk that JSON is a `.rig` file, or a `.rigz` ZIP when sidecar files travel in `data/`. Other on-disk encodings (OpenBIM, UFO, SVG) are host mappings at the boundary.
 
 ## Next
 

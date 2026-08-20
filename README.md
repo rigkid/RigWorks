@@ -107,7 +107,7 @@ One entity in Contract JSON ([`examples/minimal-scene.json`](examples/minimal-sc
 ```
 <!-- rig:end -->
 
-More patterns: [`examples/`](examples/). Interchange notes (including RigKit `.rig` key aliases): [`docs/interchange.md`](docs/interchange.md).
+More patterns: [`examples/`](examples/). Interchange notes (`.rig` / `.rigz`): [`docs/interchange.md`](docs/interchange.md).
 
 ## For AI agents
 
@@ -149,7 +149,7 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | [schemas/json/](schemas/json/) | Machine grammar |
 | [schemas/document.md](schemas/document.md) | Document envelope |
 | [docs/properties.md](docs/properties.md) | Portable datatypes |
-| [docs/interchange.md](docs/interchange.md) | Wire format and host aliases |
+| [docs/interchange.md](docs/interchange.md) | Wire format and `.rig` / `.rigz` package |
 | [docs/openbim.md](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) → `rig.bim.*` |
 | [docs/ufo.md](docs/ufo.md) | UFO / GLIF → `rig.font.*`; encodings are fulfillment |
 | [docs/ros.md](docs/ros.md) | ROS 2 → existing schemas; no `rig.ros2.*` |

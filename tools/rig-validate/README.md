@@ -1,6 +1,6 @@
 # rigkit
 
-Scaffold and validate Rig documents. The conventional extension is `.rig`; JSON is the wire format.
+Scaffold and validate Rig documents. JSON is the wire format. On disk that is `.rig`, or `.rigz` (a ZIP of one `.rig` plus a `data/` folder) — [interchange](../../docs/interchange.md#package).
 
 ```bash
 npx rigkit init my-scene
@@ -28,6 +28,8 @@ node tools/rig-validate/cli.js --strict path/to/doc.json
 | `entity`-typed fields pointing at ids that do not exist (`null` means none) | error |
 | Unknown schema ids | warn, or error with `--strict` |
 | Document targets a version newer than [`VERSION`](../../VERSION) | warn |
+| `.rigz` missing a root `.rig` (or wrapping the package in a folder) | error |
+| `.rigz` missing a `data/` folder | warn |
 
 Failures report a JSON Pointer path. Exit `1` if any error; warnings alone exit `0`.
 

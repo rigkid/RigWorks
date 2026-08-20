@@ -4,8 +4,8 @@ description: >-
   Generate and edit Rig JSON documents, SUDE-loop hosts, and ECS component
   data against the Rig shared vocabulary (Semantic Versioning). Use when
   generating or editing Rig entity data, SUDE hooks, or ECS component schemas;
-  when creating or modifying rig.* components, rig.document JSON, or .rig
-  interchange; when bumping Contract VERSION; before committing or pushing
+  when creating or modifying rig.* components, rig.document JSON, or .rig /
+  .rigz interchange; when bumping Contract VERSION; before committing or pushing
   Contract changes (run npm run check); or when the user mentions Rig, SUDE,
   or RigKit.
 ---
@@ -70,7 +70,7 @@ When generating a document, set root `"rig"` to the current `VERSION` (or an old
 
 ## Document shape
 
-Wire format is JSON — [`rig.document`](../../schemas/document.md).
+Wire format is JSON — [`rig.document`](../../schemas/document.md). On disk that is a `.rig` file, or a `.rigz` ZIP (one `.rig` at the archive root plus a `data/` folder) when sidecar files travel with the document — [interchange](../../docs/interchange.md#package).
 
 | Root field | Meaning |
 |------------|---------|
@@ -240,11 +240,13 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 ## Common mistakes / non-requirements
 
 - **Do not** invent a tagged-union CSG blob — split `rig.cad.*` primitives; mesh on a CAD entity is an optional bake
+- **Do not** invent `rig.cad.constraint` as a tagged union — a numeric datum is [`rig.cad.dimension`](../../schemas/cad/dimension.md); coincident / parallel stay later split ids if they earn a catalog entry
 - **Do not** store a parallel edge table on `rig.geometry.mesh` — name fillet/chamfer edges as `{a,b}` vertex pairs
 - **Do not** invent `rig.bim.wall` / `rig.bim.door` — use `rig.bim.classify` with `ifcClass`; geometry on cad / mesh; typed params on `rig.bim.pset`
 - **Do not** invent `rig.ros2.*` — ROS 2 maps onto existing spatial / I/O / sensor / SUDE; TF is `transform` + `relationship`; do not put ROS nodes on `rig.node.*`; see [docs/ros.md](../../docs/ros.md)
 - **Do not** invent `rig.font.ttf` or grow `rig.media.text` with outlines — UFO source is `rig.font.*`; contours compose `rig.geometry.path`; features compose `rig.media.code` (`language` `fea`); `.ufo` is fulfillment — [docs/ufo.md](../../docs/ufo.md)
 - **Do not** invent schema ids or use PascalCase keys (`Transform`, `Shape`) — component keys are full `rig.*` ids; see [docs/interchange.md](../../docs/interchange.md)
+- **Do not** inline binary blobs or data URIs for files that travel with the document — put them in `data/` and save as `.rigz`; `asset_ref.path` is relative to `data/`
 - **Do not** use `x.<vendor>.<name>` to stand in for a catalog id you could not find — report the gap instead
 - **Do not** nest SUDE hooks or skip calling `Draw` (when authoring a live host)
 - **Do not** re-declare `name` on domain schemas — compose `rig.meta.named`
@@ -298,7 +300,7 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 |--------|------------|
 | Document | `rig.document` |
 | Spatial | `transform`, `anchor`, `relationship`, `vertex`, `group`, `camera`, `layer` |
-| Layout | `page` |
+| Layout | `page`, `master`, `applied_master`, `facing`, `paragraph_style`, `character_style`, `frame_chain` |
 | Place | `address`, `geo` |
 | Person | `name`, `vital`, `contact`, `employment`, `portrait` |
 | Organisation | `identity` |

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.character_style.schema.json",
+  "title": "rig.layout.character_style",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "storyStyle": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "basedOn": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "font": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "fontSize": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "paint": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "italic": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "bold": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  }
+}

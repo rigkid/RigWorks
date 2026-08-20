@@ -1,0 +1,39 @@
+{
+  "rig": "0.25.0",
+  "document": {
+    "title": "CAD driving dimension",
+    "defaultUnit": "cm"
+  },
+  "entities": [
+    {
+      "id": "post-a",
+      "components": {
+        "rig.meta.named": { "name": "post-a", "stableId": "post-a" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.cad.cuboid": { "sizeX": 6, "sizeY": 70, "sizeZ": 6, "center": false }
+      }
+    },
+    {
+      "id": "post-b",
+      "components": {
+        "rig.meta.named": { "name": "post-b", "stableId": "post-b" },
+        "rig.spatial.transform": { "position": [98, 0, 0] },
+        "rig.cad.cuboid": { "sizeX": 6, "sizeY": 70, "sizeZ": 6, "center": false }
+      }
+    },
+    {
+      "id": "span",
+      "components": {
+        "rig.meta.named": { "name": "span", "stableId": "span" },
+        "rig.cad.dimension": {
+          "kind": "horizontal",
+          "a": "post-a",
+          "b": "post-b",
+          "value": 92,
+          "measurement": false,
+          "offset": [0, 12, 0]
+        }
+      }
+    }
+  ]
+}

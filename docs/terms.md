@@ -25,7 +25,7 @@ When a document says a detail is "fulfillment, not Contract", it means: implemen
 | **Live host** | A host that runs creative work over time. Honors SUDE + runtime ECS conventions in addition to the grammar floor. |
 | **Pack** | An optional module a host loads to add capability — a UI pack, a device pack, a render backend. Packs are fulfillment; they interoperate through shared schema ids, not through a shared API. |
 | **App** | The piece being authored. Owns its entities. Runs inside a host. |
-| **Document** | A [`rig.document`](../schemas/document.md) JSON payload — entities and their components, on the wire. |
+| **Document** | A [`rig.document`](../schemas/document.md) JSON payload — entities and their components, on the wire. On disk: `.rig`, or `.rigz` when a `data/` folder of sidecar files travels with it. |
 
 ## Data words
 

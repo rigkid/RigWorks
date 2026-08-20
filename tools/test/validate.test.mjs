@@ -118,4 +118,103 @@ describe("rig-validate", () => {
       fs.rmSync(dir, { recursive: true, force: true });
     }
   });
+
+  it("validates a .rigz package", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "rigz-"));
+    try {
+      const dest = path.join(dir, "scene.rigz");
+      fs.writeFileSync(
+        dest,
+        writeStoreZip([
+          { name: "document.rig", data: fs.readFileSync(fix("ok.json")) },
+          { name: "data/", data: Buffer.alloc(0) },
+          { name: "data/note.txt", data: Buffer.from("sidecar") },
+        ])
+      );
+      const r = run(["--strict", dest]);
+      assert.equal(r.status, 0, r.stderr + r.stdout);
+      assert.match(r.stdout, /^ok /m);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("warns when .rigz has no data/ folder", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "rigz-"));
+    try {
+      const dest = path.join(dir, "scene.rigz");
+      fs.writeFileSync(
+        dest,
+        writeStoreZip([{ name: "document.rig", data: fs.readFileSync(fix("ok.json")) }])
+      );
+      const r = run([dest]);
+      assert.equal(r.status, 0, r.stderr + r.stdout);
+      assert.match(r.stdout, /\[warn\].*data\/ folder/);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects a .rigz with no root .rig", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "rigz-"));
+    try {
+      const dest = path.join(dir, "scene.rigz");
+      fs.writeFileSync(
+        dest,
+        writeStoreZip([{ name: "data/note.txt", data: Buffer.from("x") }])
+      );
+      const r = run([dest]);
+      assert.equal(r.status, 1);
+      assert.match(r.stderr, /cannot open \.rigz/);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
 });
+
+function crc32(u8) {
+  let c = 0xffffffff;
+  for (let i = 0; i < u8.length; i++) {
+    c ^= u8[i];
+    for (let j = 0; j < 8; j++) c = (c >>> 1) ^ (0xedb88320 & -(c & 1));
+  }
+  return (c ^ 0xffffffff) >>> 0;
+}
+
+function writeStoreZip(files) {
+  const localParts = [];
+  const cdParts = [];
+  let offset = 0;
+  for (const f of files) {
+    const name = Buffer.from(f.name, "utf8");
+    const data = Buffer.from(f.data);
+    const crc = crc32(data);
+    const local = Buffer.alloc(30);
+    local.writeUInt32LE(0x04034b50, 0);
+    local.writeUInt16LE(20, 4);
+    local.writeUInt32LE(crc, 14);
+    local.writeUInt32LE(data.length, 18);
+    local.writeUInt32LE(data.length, 22);
+    local.writeUInt16LE(name.length, 26);
+    const cd = Buffer.alloc(46);
+    cd.writeUInt32LE(0x02014b50, 0);
+    cd.writeUInt16LE(20, 4);
+    cd.writeUInt16LE(20, 6);
+    cd.writeUInt32LE(crc, 16);
+    cd.writeUInt32LE(data.length, 20);
+    cd.writeUInt32LE(data.length, 24);
+    cd.writeUInt16LE(name.length, 28);
+    cd.writeUInt32LE(offset, 42);
+    localParts.push(local, name, data);
+    cdParts.push(cd, name);
+    offset += 30 + name.length + data.length;
+  }
+  const cdBuf = Buffer.concat(cdParts);
+  const eocd = Buffer.alloc(22);
+  eocd.writeUInt32LE(0x06054b50, 0);
+  eocd.writeUInt16LE(files.length, 8);
+  eocd.writeUInt16LE(files.length, 10);
+  eocd.writeUInt32LE(cdBuf.length, 12);
+  eocd.writeUInt32LE(offset, 16);
+  return Buffer.concat([...localParts, cdBuf, eocd]);
+}
