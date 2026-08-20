@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.font.axis.schema.json",
+  "title": "rig.font.axis",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tag": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "name": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "min": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "default": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "max": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "tag",
+    "min",
+    "default",
+    "max"
+  ]
+}

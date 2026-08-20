@@ -173,6 +173,10 @@ IDS specification: applicability facet (`IfcWall`) and requirement facet (`Pset_
 
 Three lamps: directional (local −Z), point with `range`, spot with inner/outer cones. Pose stays on transform.
 
+## `font-var.json`
+
+Variable face: one `wght` axis (+ identity `avar`), a stem glyph `I` with default `rig.geometry.path` and a positive-weight [`rig.font.cell`](../schemas/font/cell.md) delta. Design space is first-class — [docs/ufo.md](../docs/ufo.md).
+
 ## `font-ufo.json`
 
 UFO source as Rig: face metrics, a foreground layer, glyphs `A` / `V` / `space` / `acute` / `Aacute` (composite), a `top` anchor, pair `A`/`V`, a left kerning group, and AFDKO features as `rig.media.code`. Outlines are `rig.geometry.path` on the glyph. `.ufo` stays a host encoding — [docs/ufo.md](../docs/ufo.md).

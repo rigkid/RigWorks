@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.font.cell.schema.json",
+  "title": "rig.font.cell",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "baseAdv": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "axisTag",
+          "sign",
+          "adv",
+          "segs"
+        ],
+        "properties": {
+          "axisTag": {
+            "$ref": "./_defs.schema.json#/$defs/string"
+          },
+          "sign": {
+            "type": "integer",
+            "enum": [
+              -1,
+              1
+            ]
+          },
+          "axisTag2": {
+            "$ref": "./_defs.schema.json#/$defs/string"
+          },
+          "sign2": {
+            "type": "integer",
+            "enum": [
+              -1,
+              1
+            ]
+          },
+          "axisTag3": {
+            "$ref": "./_defs.schema.json#/$defs/string"
+          },
+          "sign3": {
+            "type": "integer",
+            "enum": [
+              -1,
+              1
+            ]
+          },
+          "center": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "wl": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "wr": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "adv": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "segs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "points"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "line",
+                    "quad"
+                  ]
+                },
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "./_defs.schema.json#/$defs/vec2"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "baseAdv"
+  ]
+}

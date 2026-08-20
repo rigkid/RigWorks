@@ -251,6 +251,15 @@
               "rig.font.anchor": {
                 "$ref": "./rig.font.anchor.schema.json"
               },
+              "rig.font.avar": {
+                "$ref": "./rig.font.avar.schema.json"
+              },
+              "rig.font.axis": {
+                "$ref": "./rig.font.axis.schema.json"
+              },
+              "rig.font.cell": {
+                "$ref": "./rig.font.cell.schema.json"
+              },
               "rig.font.component": {
                 "$ref": "./rig.font.component.schema.json"
               },

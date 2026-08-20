@@ -18,6 +18,6 @@ Compose [`rig.meta.named`](../meta/named.md) for the face label. `.ufo` / `.ufoz
 | `version` | string | Optional. Face version string (`1.000`) |
 | `features` | entity | Optional. [`rig.media.code`](../media/code.md) buffer; `language` `fea` (AFDKO) |
 
-Layers, glyphs, kern pairs, and groups are other entities. Containment is [`rig.spatial.relationship`](../spatial/relationship.md) `parent` under this face (layers) or under a layer (glyphs).
+Layers, glyphs, kern pairs, groups, and design axes are other entities. Containment is [`rig.spatial.relationship`](../spatial/relationship.md) `parent` under this face (layers, axes) or under a layer (glyphs).
 
-Hinting, variable design space, and colour-font tables are fulfillment / later schemas.
+Variable design space: child entities with [`rig.font.axis`](axis.md) (+ optional [`rig.font.avar`](avar.md)). Live lattice deltas on a glyph: [`rig.font.cell`](cell.md). Hinting and colour-font tables are fulfillment / later schemas.

@@ -233,21 +233,39 @@ section p:last-child { margin-bottom: 0; }
   border-radius: 10px;
   background: #090b0e;
 }
-.scene iframe {
-  display: block;
-  width: 100%;
-  height: 420px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #090b0e;
-  /* Let the viewer claim touch drags for orbit; do not scroll the host page. */
-  touch-action: none;
-}
 .scene figcaption {
   margin-top: 0.7rem;
   font-size: 0.88rem;
   color: var(--muted);
   max-width: var(--measure);
+}
+
+/* ---------- domain chips ---------- */
+
+.domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 1.8rem 0 0;
+  padding: 0;
+}
+
+.domains a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.92rem;
+}
+.domains a:hover {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+  text-decoration: none;
 }
 
 /* ---------- cards ---------- */
@@ -352,6 +370,11 @@ footer .wordmark { margin-bottom: 0.8rem; }
 footer a { color: var(--muted); }
 footer a:hover { color: var(--accent); }
 .muted { color: #5f6878; }
+.muted-inline {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: -0.6rem 0 1.1rem !important;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   a, .btn { transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease; }

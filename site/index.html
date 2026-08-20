@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RigWorks — One scene. Any renderer.</title>
-<meta name="description" content="A portable document format for real-time creative-coding scenes — entities, transforms, shapes, materials, timing that any compliant tool can read, without a converter.">
+<title>RigWorks — a no-code creative application framework</title>
+<meta name="description" content="A shared data vocabulary for creative applications. Scene, typeface, building, show, catalog — one document shape. Nothing to link.">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://rig.works/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="RigWorks — One scene. Any renderer.">
-<meta property="og:description" content="A portable .rig document for real-time creative-coding scenes that any compliant tool can read, without a converter.">
+<meta property="og:title" content="RigWorks — a no-code creative application framework">
+<meta property="og:description" content="Future-proof, host-independent, human-readable creative data. Because no code is the best code.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d10'/%3E%3Cpath d='M7 21 L13 11 L19 21 L25 11' stroke='%2340a6ff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -27,24 +27,24 @@
     </span>
   </nav>
 
-  <p class="kicker">Rig</p>
-  <h1>One scene. Any renderer.</h1>
+  <h1>A no-code creative <br class="desk-break">application framework.</h1>
+  <p class="tagline">Because no code is the best code.</p>
   <p class="expansion">Rig — Readable Independent Grammar</p>
 
   <p class="lede">
-    A portable <code>.rig</code> document for real-time creative-coding scenes —
-    entities, transforms, shapes, materials, timing that any compliant tool
-    can read, without a converter.
+    A shared vocabulary for creative work. Open the JSON, change a field,
+    load it in another host. No library to link, no runtime to embed, no API
+    to version — it ships as agreement.
   </p>
 
   <p class="cta">
-    <a class="btn primary" href="https://viewer.rig.works/?src=examples/demo-3d.json">Try it live</a>
-    <a class="btn" href="https://github.com/rigkid/RigWorks">View on GitHub</a>
+    <a class="btn primary" href="schemas/index.html">Browse the schemas</a>
+    <a class="btn" href="examples/index.html">See examples</a>
   </p>
 
   <p class="badges">
-    <span class="badge">v0.23.0 · draft</span>
-    <span class="badge">166 schemas</span>
+    <span class="badge">v0.24.0 · draft</span>
+    <span class="badge">169 schemas</span>
     <span class="badge">MIT</span>
     <span class="badge">nothing to link</span>
   </p>
@@ -53,83 +53,150 @@
 <main>
 
 <section>
-  <h2>Every creative-coding tool speaks only to itself</h2>
+  <h2>Every tool speaks only to itself</h2>
   <p>
-    Move a scene from Processing to TouchDesigner, or a shader rig into a game
-    engine, and you are rewriting it by hand or duct-taping a one-off exporter.
-    Rig is the shared vocabulary that makes that translation unnecessary in
-    the first place.
+    A scene, a typeface, a building, a show, a catalog — each lives in a
+    private file. Moving work means writing a converter, and converters rot.
+    Shared runtimes solve interop by locking the language and the platform.
+  </p>
+  <p>
+    Rig is the vocabulary those tools could share. Not another editor.
+    Not a library. The document is the artifact.
   </p>
 </section>
 
-<section id="proof">
-  <h2>The same vocabulary, three tools</h2>
+<section>
+  <h2>One grammar. Many domains.</h2>
   <p>
-    Three unrelated fulfillments that have never heard of each other, each
-    reading a <code>.rig</code> document:
+    The same composition model — entities with named POD components —
+    wherever two hosts need the same meaning. A host that implements six
+    schemas and ignores the rest is fully Rig. Ship what you support.
   </p>
-  <div class="grid three">
-    <div class="card">
-      <h3>Static SVG</h3>
-      <p>Zero JavaScript. Renders anywhere.</p>
-    </div>
-    <div class="card accent">
-      <h3><a href="https://github.com/rigkid/RigViewer">RigViewer</a></h3>
-      <p>Live, drag-orbit, in your browser right now.</p>
-    </div>
-    <div class="card">
-      <h3><a href="https://github.com/GitBruno/PicoForge">PicoForge</a></h3>
-      <p>A <code>.rig</code> compiled to a running PICO-8 cartridge.</p>
-    </div>
-  </div>
+  <ul class="domains">
+    <li><a href="examples/minimal-scene/index.html">Scene</a></li>
+    <li><a href="examples/font-ufo/index.html">Type</a></li>
+    <li><a href="examples/bim-model/index.html">BIM</a></li>
+    <li><a href="examples/cad-boolean/index.html">CAD</a></li>
+    <li><a href="examples/lights/index.html">Show</a></li>
+    <li><a href="examples/story-flow/index.html">Story</a></li>
+    <li><a href="examples/book-isbn/index.html">Book</a></li>
+    <li><a href="examples/art-object/index.html">Art</a></li>
+    <li><a href="examples/calendar-event/index.html">Calendar</a></li>
+    <li><a href="examples/dev-machine/index.html">Machine</a></li>
+    <li><a href="examples/portable-tool/index.html">Tool</a></li>
+  </ul>
+  <p class="aside">
+    <a href="schemas/index.html">The whole catalog</a> ·
+    <a href="docs/openbim/index.html">OpenBIM</a> ·
+    <a href="docs/ufo/index.html">UFO</a> ·
+    <a href="docs/dev/index.html">Dev machines</a>
+  </p>
+</section>
+
+<section>
+  <h2>Sharing tools should be fun</h2>
+  <p>
+    Take a tool from one app and drop it in another — controls, groups,
+    actions, the working interface. Author the panel in App A. Load the
+    same document in App B. If both speak the same schema ids, the knobs
+    still turn the same fields.
+  </p>
+  <p>
+    The chrome can change. The tool stays the document. That is the point
+    of a shared vocabulary: borrowing a working tool from someone else's
+    app should feel like a gift, not a rewrite.
+  </p>
+  <p class="aside">
+    <a href="examples/portable-tool/index.html">A tool that travels</a> ·
+    <a href="examples/ui-panel/index.html">LED panel</a> ·
+    <a href="docs/ui/index.html">Rig + UI</a>
+  </p>
+</section>
+
+<section id="example">
+  <h2>The document is the artifact</h2>
+  <p>
+    Content is plain data on entities, keyed by schema id. Live hosts also
+    run a four-hook loop:
+  </p>
+
+<pre class="code sude"><code>Setup  → spawn / load entities
+Update → simulate (modulators, transport, …)
+Draw   → present
+Exit   → tear down</code></pre>
+
+  <p>
+    One entity. The picture is that document drawn by a second fulfillment
+    — static SVG, no client JavaScript.
+  </p>
 
   <figure class="scene">
     <img src="scene.svg" alt="Minimal Rig scene — shapes from examples/minimal-scene.json" width="900" height="356" />
     <figcaption>
-      Static SVG from <code>examples/minimal-scene.json</code> — drawn by the
-      in-repo renderer, no client JavaScript.
+      <code>examples/minimal-scene.json</code> drawn by the in-repo renderer.
+      Same vocabulary, unrelated to any product host.
     </figcaption>
   </figure>
 
-  <figure class="scene">
-    <iframe
-      src="https://viewer.rig.works/?embed=1&amp;src=examples/demo-3d.json"
-      title="RigViewer presenting a Rig document live"
-      loading="lazy"
-      allow="fullscreen"
-    ></iframe>
-    <figcaption>
-      <a href="https://github.com/rigkid/RigViewer">RigViewer</a> presenting
-      <code>examples/demo-3d.json</code>. Same vocabulary, unrelated renderer.
-      PicoForge carts are a third shape — pixel and Lua, still a
-      <code>.rig</code>.
-    </figcaption>
-  </figure>
+<pre class="code"><code>{
+  "id": "demo-rect",
+  "components": {
+    "rig.spatial.transform": { "position": [20, 65, 0] },
+    "rig.geometry.rectangle": { "width": 140, "height": 90, "cornerRadius": 10 },
+    "rig.paint.fill_stroke": { "fillRgba": [0.25, 0.65, 1, 1] }
+  }
+}</code></pre>
+  <p class="muted-inline">Excerpt — the full entity is in <a href="examples/minimal-scene/index.html"><code>minimal-scene.json</code></a>.</p>
 
-  <p class="cta">
-    <a class="btn primary" href="https://viewer.rig.works/?src=examples/demo-3d.json">Open the live viewer</a>
-  </p>
-</section>
-
-<section>
-  <h2>How it works</h2>
   <p>
-    Rig documents are entities made of typed components — a transform here,
-    a shape there, a light, a timing binding. No engine required to describe
-    a scene; only required to run one.
+    Any program that recognises <code>rig.geometry.rectangle</code> can draw
+    that rectangle, in any language, without knowing what wrote it.
   </p>
   <p class="aside">
-    <a href="schemas/index.html">Read the schema reference</a>
+    <a href="examples/index.html">Reference documents</a> ·
+    <a href="docs/ecs/index.html">Entity / component</a> ·
+    <a href="docs/sude/index.html">SUDE</a> ·
+    <a href="schemas/rig.document/index.html">Document envelope</a>
   </p>
 </section>
 
 <section>
-  <h2>Built for AI</h2>
+  <h2>It runs</h2>
   <p>
-    Rig ships a JSON Schema for every component, reference examples, a
-    validator that returns exact JSON Pointer errors, and a Claude Skill —
-    so an agent can generate a document, get precise feedback, and self-correct
-    without you in the loop.
+    A Rig document is not a diagram of a format. The same JSON plays or
+    presents in more than one fulfillment, none of which know the others.
+  </p>
+  <div class="grid two">
+    <div class="card accent">
+      <h3><a href="https://github.com/rigkid/RigPlayer">RigPlayer</a></h3>
+      <p>Plays a document over time — SUDE, Update, Draw. The host for work that runs.</p>
+    </div>
+    <div class="card">
+      <h3><a href="https://github.com/rigkid/RigKit">RigKit</a></h3>
+      <p>Desktop / Pi reference host. GLFW, packs, the floor for a live fulfillment.</p>
+    </div>
+  </div>
+  <p class="aside">
+    Also <a href="https://github.com/GitBruno/PicoForge">PicoForge</a> —
+    a <code>.rig</code> compiled to a running PICO-8 cartridge. This page's
+    SVG is another fulfillment of the same document.
+  </p>
+</section>
+
+<section>
+  <h2>Built for people and models</h2>
+  <p>
+    When execution gets cheap, agreement is the scarce asset. A generated
+    renderer is disposable. A generated vocabulary is a liability — the next
+    session invents a different one. Rig publishes the concept in a form
+    people and models read the same way.
+  </p>
+
+<pre class="code"><code>node tools/rig-validate/cli.js path/to/doc.json</code></pre>
+
+  <p>
+    Every failure names a JSON Pointer, so an agent can correct itself
+    without a human in the loop.
   </p>
   <p class="aside">
     <a href="docs/ai-collaboration/index.html">AI co-coding</a> ·
@@ -139,32 +206,26 @@
 </section>
 
 <section>
-  <h2>Honest limitations</h2>
+  <h2>Start</h2>
   <p>
-    Rig is at 0.x. Schema fields may still shift before 1.0.
-    <a href="docs/why-no-code/index.html#the-honest-price">The honest price</a>
-    of a shared vocabulary: some flexibility any single tool would have is
-    traded for portability across all of them.
+    Clone it, check it, read it. There is nothing to install but the
+    validator. 0.x is a draft — core rules hold; schemas may still shift
+    before 1.0.
   </p>
-</section>
 
-<section>
-  <h2>Get started</h2>
-  <p>
-    Open the live viewer and drag in a <code>.json</code> or <code>.rig</code>
-    right now — no install required.
-  </p>
-  <p class="cta">
-    <a class="btn primary" href="https://viewer.rig.works/">Open the live viewer</a>
-  </p>
-  <p>
-    Or scaffold a starter document:
-  </p>
-<pre class="code"><code>npx rigkit init my-scene</code></pre>
+<pre class="code"><code>git clone https://github.com/rigkid/RigWorks
+cd RigWorks
+npm run setup    # installs the validator
+npm run check    # schemas, parity, links, reference documents</code></pre>
+
   <p class="aside">
-    <a href="examples/index.html">Reference documents</a> ·
-    <a href="schemas/index.html">The whole catalog</a> ·
-    <a href="https://github.com/rigkid/RigKit">RigKit</a> — desktop / Pi host
+    Being Rig takes the grammar:
+    <a href="docs/ecs/index.html">plain-data components</a>
+    on entities, against
+    <a href="docs/honors/index.html">schemas you support</a>.
+    Live hosts also honor
+    <a href="docs/sude/index.html">the four-hook loop</a>.
+    Everything else is opt-in.
   </p>
 </section>
 

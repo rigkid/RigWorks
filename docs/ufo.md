@@ -20,7 +20,10 @@ We do **not** invent `rig.font.ttf` or treat a compiled OT/TTF as the source fac
 | `kerning.plist` pair | [`rig.font.kern`](../schemas/font/kern.md) (`left` / `right` are names) |
 | `groups.plist` | [`rig.font.group`](../schemas/font/group.md) |
 | `features.fea` | [`rig.media.code`](../schemas/media/code.md) `language` `fea`, pointed at by `face.features` |
-| Containment | [`rig.spatial.relationship`](../schemas/spatial/relationship.md) `parent` (face → layer → glyph) |
+| `fvar` axis | [`rig.font.axis`](../schemas/font/axis.md) (child of face) |
+| `avar` map | [`rig.font.avar`](../schemas/font/avar.md) on the axis entity |
+| Live lattice / morph cell | [`rig.font.cell`](../schemas/font/cell.md) on the glyph (default path stays on `geometry.path`) |
+| Containment | [`rig.spatial.relationship`](../schemas/spatial/relationship.md) `parent` (face → layer → glyph; face → axis) |
 
 ## Encodings (fulfillment)
 
@@ -34,6 +37,6 @@ Do not put glyph caches, atlas slots, dirty epochs, or FreeType handles in porta
 
 ## Host trips!
 
-Two hosts that speak `rig.font.face` + `glyph` + `kern` can exchange a UFO-as-Rig document. Round-tripping every lib.plist key or UFO3 guideline is **not required**.
+Two hosts that speak `rig.font.face` + `glyph` + `kern` can exchange a UFO-as-Rig document. Round-tripping every lib.plist key or UFO3 guideline is **not required**. Hosts that morph add `axis` / `avar` / `cell`.
 
-Example: [`examples/font-ufo.json`](../examples/font-ufo.json).
+Examples: [`examples/font-ufo.json`](../examples/font-ufo.json), [`examples/font-var.json`](../examples/font-var.json).

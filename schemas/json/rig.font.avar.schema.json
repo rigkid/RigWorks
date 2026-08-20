@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.font.avar.schema.json",
+  "title": "rig.font.avar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "segments": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fromCoord",
+          "toCoord"
+        ],
+        "properties": {
+          "fromCoord": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "toCoord": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "segments"
+  ]
+}

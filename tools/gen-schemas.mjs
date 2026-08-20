@@ -1567,6 +1567,70 @@ add("rig.font.group", {
   side: enumOf(["left", "right"]),
 }, { required: ["members"] });
 
+// Variable design space + live lattice (VarFont / vFont).
+// Axes are child entities of the face. Default outline stays on
+// rig.geometry.path; cell holds reconstruction terms only.
+add("rig.font.axis", {
+  tag: ref("string"),
+  name: ref("string"),
+  min: ref("float"),
+  default: ref("float"),
+  max: ref("float"),
+}, { required: ["tag", "min", "default", "max"] });
+
+add("rig.font.avar", {
+  segments: {
+    type: "array",
+    minItems: 2,
+    items: {
+      type: "object",
+      additionalProperties: false,
+      required: ["fromCoord", "toCoord"],
+      properties: {
+        fromCoord: ref("float"),
+        toCoord: ref("float"),
+      },
+    },
+  },
+}, { required: ["segments"] });
+
+const fontDeltaSeg = {
+  type: "object",
+  additionalProperties: false,
+  required: ["type", "points"],
+  properties: {
+    type: enumOf(["line", "quad"]),
+    points: {
+      type: "array",
+      items: ref("vec2"),
+    },
+  },
+};
+
+const fontTerm = {
+  type: "object",
+  additionalProperties: false,
+  required: ["axisTag", "sign", "adv", "segs"],
+  properties: {
+    axisTag: ref("string"),
+    sign: { type: "integer", enum: [-1, 1] },
+    axisTag2: ref("string"),
+    sign2: { type: "integer", enum: [-1, 1] },
+    axisTag3: ref("string"),
+    sign3: { type: "integer", enum: [-1, 1] },
+    center: ref("float"),
+    wl: ref("float"),
+    wr: ref("float"),
+    adv: ref("float"),
+    segs: { type: "array", items: fontDeltaSeg },
+  },
+};
+
+add("rig.font.cell", {
+  baseAdv: ref("float"),
+  terms: { type: "array", items: fontTerm },
+}, { required: ["baseAdv"] });
+
 // --- story (semantic copy) ---
 // Editorial flow: named styles, paragraphs, runs, tables. No font, size, or
 // colour — those stay on rig.media.text + paint. Style labels compose

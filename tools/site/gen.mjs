@@ -320,7 +320,7 @@ const GROUPS = [
   { title: "Music", domains: ["music"] },
   { title: "Audio", domains: ["audio"] },
   { title: "Media", domains: ["media"] },
-  { title: "Font (UFO source)", domains: ["font"] },
+  { title: "Font (UFO / variable)", domains: ["font"] },
   { title: "Story (semantic copy)", domains: ["story"] },
   { title: "Pixel / raster", domains: ["pixel"] },
   {

@@ -272,9 +272,9 @@ Thin OpenBIM layer — IFC class is a string on `classify`, not one schema per `
 | `rig.media.text` | [media/text.md](media/text.md) |
 | `rig.media.code` | [media/code.md](media/code.md) |
 
-### Font (UFO source)
+### Font (UFO / variable)
 
-Editable face — outlines on [`rig.geometry.path`](geometry/path.md), features on [`rig.media.code`](media/code.md). `.ufo` / `.ufoz` are host encodings — [ufo.md](../docs/ufo.md). Not a compiled TTF; not [`rig.media.text`](media/text.md).
+Editable face — outlines on [`rig.geometry.path`](geometry/path.md), features on [`rig.media.code`](media/code.md). Design axes and live lattice cells for variable hosts. `.ufo` / `.ufoz` are host encodings — [ufo.md](../docs/ufo.md). Not a compiled TTF; not [`rig.media.text`](media/text.md).
 
 | Id | Doc |
 |----|-----|
@@ -285,6 +285,9 @@ Editable face — outlines on [`rig.geometry.path`](geometry/path.md), features 
 | `rig.font.layer` | [font/layer.md](font/layer.md) |
 | `rig.font.kern` | [font/kern.md](font/kern.md) |
 | `rig.font.group` | [font/group.md](font/group.md) |
+| `rig.font.axis` | [font/axis.md](font/axis.md) |
+| `rig.font.avar` | [font/avar.md](font/avar.md) |
+| `rig.font.cell` | [font/cell.md](font/cell.md) |
 
 ### Story (semantic copy)
 
