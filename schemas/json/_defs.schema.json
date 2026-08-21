@@ -129,6 +129,22 @@
         "points"
       ]
     },
+    "faceInsets": {
+      "description": "Page/zone face insets: number or array length 1–6 (CSS XY + optional Z pair). Channels: top,right,bottom,left,floor,ceiling.",
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "number"
+          }
+        }
+      ]
+    },
     "propertyType": {
       "type": "string",
       "description": "Property datatype id from docs/properties.md (or host-prefixed)."

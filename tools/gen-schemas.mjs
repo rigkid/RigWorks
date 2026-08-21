@@ -125,22 +125,17 @@ add("rig.spatial.layer", {
 }, { required: [] });
 
 // --- layout ---
-// Edge arrays run top, right, bottom, left (CSS order).
-const edges = {
-  type: "array",
-  items: { type: "number" },
-  minItems: 4,
-  maxItems: 4,
-};
+// Face insets: number or array length 1–6 (CSS XY + optional Z floor/ceiling).
+const faceInsets = { $ref: "./_defs.schema.json#/$defs/faceInsets" };
 
 add("rig.layout.page", {
   index: ref("int"),
   width: ref("float"),
   height: ref("float"),
   unit: ref("string"),
-  margins: edges,
-  bleed: edges,
-  slug: edges,
+  margins: faceInsets,
+  bleed: faceInsets,
+  slug: faceInsets,
 }, { required: ["width", "height"] });
 
 // Master / facing / visual styles — emit-time map over semantic rig.story.*
@@ -2565,6 +2560,19 @@ catalog["_defs"] = {
         ]),
       },
       required: ["points"],
+    },
+    faceInsets: {
+      description:
+        "Page/zone face insets: number or array length 1–6 (CSS XY + optional Z pair). Channels: top,right,bottom,left,floor,ceiling.",
+      oneOf: [
+        { type: "number" },
+        {
+          type: "array",
+          minItems: 1,
+          maxItems: 6,
+          items: { type: "number" },
+        },
+      ],
     },
     propertyType: {
       type: "string",

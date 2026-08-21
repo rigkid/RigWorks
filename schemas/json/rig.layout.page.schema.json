@@ -18,28 +18,13 @@
       "$ref": "./_defs.schema.json#/$defs/string"
     },
     "margins": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
-      "minItems": 4,
-      "maxItems": 4
+      "$ref": "./_defs.schema.json#/$defs/faceInsets"
     },
     "bleed": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
-      "minItems": 4,
-      "maxItems": 4
+      "$ref": "./_defs.schema.json#/$defs/faceInsets"
     },
     "slug": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
-      "minItems": 4,
-      "maxItems": 4
+      "$ref": "./_defs.schema.json#/$defs/faceInsets"
     }
   },
   "required": [
