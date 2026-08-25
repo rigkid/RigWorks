@@ -194,7 +194,7 @@ Deals between parties — not the Rig Contract, and not copyright of a work ([`r
 
 ### CAD / solids
 
-CSG tree as split primitives. When a solid `rig.cad.*` is present it is the source of truth; mesh on the same entity is an optional bake. Edges for fillet/chamfer are `{a,b}` pairs into mesh `positions` — see [geometry/mesh.md](geometry/mesh.md#edges). [`rig.cad.dimension`](cad/dimension.md) is a datum, not a solid.
+CSG tree as split primitives. When a solid `rig.cad.*` is present it is the source of truth; mesh on the same entity is an optional bake. Edges for fillet/chamfer are `{a,b}` pairs into mesh `positions` — see [geometry/mesh.md](geometry/mesh.md#edges). [`rig.cad.dimension`](cad/dimension.md), [`reference_line`](cad/reference-line.md), and [`reference_plane`](cad/reference-plane.md) are datums, not solids — keep them off solid entities and out of `boolean.operands`.
 
 | Id | Doc |
 |----|-----|
@@ -207,6 +207,8 @@ CSG tree as split primitives. When a solid `rig.cad.*` is present it is the sour
 | `rig.cad.fillet` | [cad/fillet.md](cad/fillet.md) |
 | `rig.cad.chamfer` | [cad/chamfer.md](cad/chamfer.md) |
 | `rig.cad.dimension` | [cad/dimension.md](cad/dimension.md) |
+| `rig.cad.reference_line` | [cad/reference-line.md](cad/reference-line.md) |
+| `rig.cad.reference_plane` | [cad/reference-plane.md](cad/reference-plane.md) |
 
 ### BIM / OpenBIM
 

@@ -1206,6 +1206,22 @@ add("rig.cad.dimension", {
   offset: ref("vec3"),
 }, { required: ["kind", "a", "value"] });
 
+// Reference geometry: unbounded datums to build against, never solids and never
+// CSG operands. Coordinates are the placement; a / b anchor to entities instead
+// so the datum follows its parts when the model rebuilds.
+add("rig.cad.reference_line", {
+  origin: ref("vec3"),
+  direction: ref("vec3"),
+  a: ref("entity"),
+  b: ref("entity"),
+}, { required: [] });
+
+add("rig.cad.reference_plane", {
+  origin: ref("vec3"),
+  normal: ref("vec3"),
+  a: ref("entity"),
+}, { required: [] });
+
 // --- paint ---
 // Defaults: hasFill = fillRgba present, hasStroke = strokeRgba present,
 // strokeWidth 1.

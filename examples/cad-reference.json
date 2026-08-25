@@ -1,0 +1,46 @@
+{
+  "rig": "0.27.0",
+  "document": {
+    "title": "CAD reference geometry",
+    "defaultUnit": "cm"
+  },
+  "entities": [
+    {
+      "id": "post-a",
+      "components": {
+        "rig.meta.named": { "name": "post-a", "stableId": "post-a" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.cad.cuboid": { "sizeX": 6, "sizeY": 70, "sizeZ": 6, "center": false }
+      }
+    },
+    {
+      "id": "post-b",
+      "components": {
+        "rig.meta.named": { "name": "post-b", "stableId": "post-b" },
+        "rig.spatial.transform": { "position": [98, 0, 0] },
+        "rig.cad.cuboid": { "sizeX": 6, "sizeY": 70, "sizeZ": 6, "center": false }
+      }
+    },
+    {
+      "id": "post-line",
+      "components": {
+        "rig.meta.named": { "name": "post-line", "stableId": "post-line" },
+        "rig.cad.reference_line": { "a": "post-a", "b": "post-b" }
+      }
+    },
+    {
+      "id": "centre-axis",
+      "components": {
+        "rig.meta.named": { "name": "centre-axis", "stableId": "centre-axis" },
+        "rig.cad.reference_line": { "origin": [49, 0, 0], "direction": [0, 1, 0] }
+      }
+    },
+    {
+      "id": "deck-plane",
+      "components": {
+        "rig.meta.named": { "name": "deck-plane", "stableId": "deck-plane" },
+        "rig.cad.reference_plane": { "origin": [0, 110, 0], "normal": [0, 1, 0] }
+      }
+    }
+  ]
+}

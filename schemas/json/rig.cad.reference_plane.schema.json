@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.cad.reference_plane.schema.json",
+  "title": "rig.cad.reference_plane",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "origin": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "normal": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "a": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

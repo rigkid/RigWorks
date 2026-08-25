@@ -10,6 +10,8 @@ node tools/rig-validate/cli.js examples/portable-tool.json
 node tools/rig-validate/cli.js examples/path3d-spline3d.json
 node tools/rig-validate/cli.js examples/page-anchor.json
 node tools/rig-validate/cli.js examples/cad-boolean.json
+node tools/rig-validate/cli.js examples/cad-dimension.json
+node tools/rig-validate/cli.js examples/cad-reference.json
 node tools/rig-validate/cli.js examples/story-flow.json
 node tools/rig-validate/cli.js examples/bim-model.json
 node tools/rig-validate/cli.js examples/bim-bcf.json
@@ -127,6 +129,10 @@ A page with `rig.spatial.anchor` `center` (page-local origin mid-trim) and a chi
 ## `cad-boolean.json`
 
 CSG difference of a cuboid minus a cylinder, fillet intent on every edge, a cube mesh with n-gon `loops` and a named-edge chamfer, plus a bilinear `rig.geometry.nurbs_surface`. The CAD tree is the solid source of truth; mesh on a CAD entity is an optional bake.
+
+## `cad-reference.json`
+
+Two posts plus three datums: a [`rig.cad.reference_line`](../schemas/cad/reference-line.md) anchored to both posts by `a` / `b` so it tracks them on rebuild, a second one placed by `origin` + `direction`, and a [`rig.cad.reference_plane`](../schemas/cad/reference-plane.md) at deck height. None of them are solids and none appear in a `boolean.operands` list. An axis is a named reference line, not its own schema id.
 
 ## `story-flow.json`
 

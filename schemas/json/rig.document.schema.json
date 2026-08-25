@@ -209,6 +209,12 @@
               "rig.cad.fillet": {
                 "$ref": "./rig.cad.fillet.schema.json"
               },
+              "rig.cad.reference_line": {
+                "$ref": "./rig.cad.reference_line.schema.json"
+              },
+              "rig.cad.reference_plane": {
+                "$ref": "./rig.cad.reference_plane.schema.json"
+              },
               "rig.cad.revolve": {
                 "$ref": "./rig.cad.revolve.schema.json"
               },
