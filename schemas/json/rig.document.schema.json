@@ -356,6 +356,9 @@
               "rig.layout.facing": {
                 "$ref": "./rig.layout.facing.schema.json"
               },
+              "rig.layout.frame": {
+                "$ref": "./rig.layout.frame.schema.json"
+              },
               "rig.layout.frame_chain": {
                 "$ref": "./rig.layout.frame_chain.schema.json"
               },

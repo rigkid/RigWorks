@@ -1,0 +1,216 @@
+{
+  "rig": "0.28.0",
+  "document": {
+    "title": "Threaded text frames",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "prefs",
+      "components": {
+        "rig.layout.facing": {
+          "enabled": true,
+          "binding": "left"
+        }
+      }
+    },
+    {
+      "id": "ink-body",
+      "components": {
+        "rig.meta.named": { "name": "Body ink", "stableId": "ink-body" },
+        "rig.paint.solid": { "rgba": [0.12, 0.12, 0.12, 1] }
+      }
+    },
+    {
+      "id": "style-paragraph",
+      "components": {
+        "rig.meta.named": { "name": "Paragraph", "stableId": "style-paragraph" },
+        "rig.story.paragraph_style": {},
+        "rig.layout.paragraph_style": {
+          "storyStyle": "style-paragraph",
+          "fontSize": 11,
+          "leading": 14,
+          "alignment": "justify",
+          "spaceAfter": 3,
+          "paint": "ink-body"
+        }
+      }
+    },
+    {
+      "id": "style-header-1",
+      "components": {
+        "rig.meta.named": { "name": "Header 1", "stableId": "style-header-1" },
+        "rig.story.paragraph_style": { "basedOn": "style-paragraph" },
+        "rig.layout.paragraph_style": {
+          "storyStyle": "style-header-1",
+          "basedOn": "style-paragraph",
+          "fontSize": 18,
+          "leading": 22,
+          "alignment": "left",
+          "spaceAfter": 8,
+          "paint": "ink-body"
+        }
+      }
+    },
+    {
+      "id": "style-italic",
+      "components": {
+        "rig.meta.named": { "name": "Italic", "stableId": "style-italic" },
+        "rig.story.character_style": {},
+        "rig.layout.character_style": {
+          "storyStyle": "style-italic",
+          "italic": true
+        }
+      }
+    },
+    {
+      "id": "style-small-caps",
+      "components": {
+        "rig.meta.named": { "name": "Small Caps", "stableId": "style-small-caps" },
+        "rig.story.character_style": {},
+        "rig.layout.character_style": {
+          "storyStyle": "style-small-caps",
+          "fontSize": 9,
+          "bold": true
+        }
+      }
+    },
+    {
+      "id": "p-title",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-header-1",
+          "runs": [{ "text": "A threaded story" }]
+        }
+      }
+    },
+    {
+      "id": "p-body",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "runs": [
+            { "text": "Chapter ", "style": "style-small-caps" },
+            { "text": "one" },
+            { "text": " opens in the first frame and continues in the second — ", "style": "style-italic" },
+            { "text": "not a new page clone." }
+          ]
+        }
+      }
+    },
+    {
+      "id": "story",
+      "components": {
+        "rig.meta.named": { "name": "Main story", "stableId": "story" },
+        "rig.story.flow": {
+          "blocks": ["p-title", "p-body"]
+        }
+      }
+    },
+    {
+      "id": "master-right",
+      "components": {
+        "rig.meta.named": { "name": "Right master", "stableId": "master-right" },
+        "rig.layout.page": {
+          "index": 0,
+          "width": 148,
+          "height": 210,
+          "unit": "mm",
+          "margins": [18, 16, 20, 16],
+          "bleed": 3,
+          "slug": 6
+        },
+        "rig.layout.master": { "side": "right" }
+      }
+    },
+    {
+      "id": "frame-master",
+      "components": {
+        "rig.meta.named": { "name": "Master type area", "stableId": "frame-master" },
+        "rig.layout.frame": {
+          "width": 116,
+          "height": 172,
+          "insets": 2,
+          "columnCount": 1,
+          "firstBaseline": "ascent"
+        },
+        "rig.spatial.relationship": { "parent": "master-right", "order": 0 },
+        "rig.spatial.transform": { "position": [16, 18, 0] }
+      }
+    },
+    {
+      "id": "page-1",
+      "components": {
+        "rig.meta.named": { "name": "Page 1", "stableId": "page-1" },
+        "rig.layout.page": {
+          "index": 1,
+          "width": 148,
+          "height": 210,
+          "unit": "mm",
+          "margins": [18, 16, 20, 16],
+          "bleed": 3,
+          "slug": 6
+        },
+        "rig.layout.applied_master": { "master": "master-right" }
+      }
+    },
+    {
+      "id": "page-2",
+      "components": {
+        "rig.meta.named": { "name": "Page 2", "stableId": "page-2" },
+        "rig.layout.page": {
+          "index": 2,
+          "width": 148,
+          "height": 210,
+          "unit": "mm",
+          "margins": [18, 16, 20, 16],
+          "bleed": 3,
+          "slug": 6
+        },
+        "rig.layout.applied_master": { "master": "master-right" }
+      }
+    },
+    {
+      "id": "frame-1",
+      "components": {
+        "rig.meta.named": { "name": "Frame 1", "stableId": "frame-1" },
+        "rig.layout.frame": {
+          "width": 116,
+          "height": 172,
+          "insets": 2,
+          "columnCount": 2,
+          "columnGutter": 4,
+          "firstBaseline": "ascent"
+        },
+        "rig.spatial.relationship": { "parent": "page-1", "order": 0 },
+        "rig.spatial.transform": { "position": [16, 18, 0] }
+      }
+    },
+    {
+      "id": "frame-2",
+      "components": {
+        "rig.meta.named": { "name": "Frame 2", "stableId": "frame-2" },
+        "rig.layout.frame": {
+          "width": 116,
+          "height": 172,
+          "insets": 2,
+          "columnCount": 1,
+          "firstBaseline": "leading",
+          "firstBaselineMin": 14
+        },
+        "rig.spatial.relationship": { "parent": "page-2", "order": 0 },
+        "rig.spatial.transform": { "position": [16, 18, 0] }
+      }
+    },
+    {
+      "id": "chain",
+      "components": {
+        "rig.layout.frame_chain": {
+          "story": "story",
+          "frames": ["frame-1", "frame-2"],
+          "master": "master-right"
+        }
+      }
+    }
+  ]
+}

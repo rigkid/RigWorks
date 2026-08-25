@@ -2,7 +2,7 @@
 
 Rig portable documents are **JSON** using the [`rig.document`](../schemas/document.md) envelope. Component object keys are full schema ids (`rig.spatial.transform`).
 
-On disk that JSON is a **`.rig`** file, or a **`.rigz`** ZIP when sidecar files travel with it. Other on-disk encodings are host mappings at the boundary — including OpenBIM (`.ifc`, `.bcfzip`, `.ids`) and UFO (`.ufo`, `.ufoz`); see [openbim.md](openbim.md), [ufo.md](ufo.md), and [design philosophy](design-philosophy.md#encoding).
+On disk that JSON is a **`.rig`** file, or a **`.rigz`** ZIP when sidecar files travel with it. Other on-disk encodings are host mappings at the boundary — including OpenBIM (`.ifc`, `.bcfzip`, `.ids`), UFO (`.ufo`, `.ufoz`), and IDML (`.idml`); see [openbim.md](openbim.md), [ufo.md](ufo.md), [idml.md](idml.md), and [design philosophy](design-philosophy.md#encoding).
 
 ## Package
 

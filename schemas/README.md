@@ -73,12 +73,20 @@ A scene is a root (unparented) [`rig.spatial.vertex`](spatial/vertex.md). [`rig.
 | `rig.spatial.group` | [spatial/group.md](spatial/group.md) |
 | `rig.spatial.camera` | [spatial/camera.md](spatial/camera.md) |
 | `rig.spatial.layer` | [spatial/layer.md](spatial/layer.md) |
+
+### Layout
+
+Print spread — pages, masters, facing, visual style maps, text frames and threads. `.idml` is a host encoding — [idml.md](../docs/idml.md).
+
+| Id | Doc |
+|----|-----|
 | `rig.layout.page` | [layout/page.md](layout/page.md) |
 | `rig.layout.master` | [layout/master.md](layout/master.md) |
 | `rig.layout.applied_master` | [layout/applied-master.md](layout/applied-master.md) |
 | `rig.layout.facing` | [layout/facing.md](layout/facing.md) |
 | `rig.layout.paragraph_style` | [layout/paragraph-style.md](layout/paragraph-style.md) |
 | `rig.layout.character_style` | [layout/character-style.md](layout/character-style.md) |
+| `rig.layout.frame` | [layout/frame.md](layout/frame.md) |
 | `rig.layout.frame_chain` | [layout/frame-chain.md](layout/frame-chain.md) |
 
 ### Place (civic / postal)
@@ -400,6 +408,7 @@ Portable development-machine recipes — not a media-show AV bus or gated trigge
 | Control surface | `panel` / optional `group` | [`ui.panel`](ui/panel.md) + [`ui.group`](ui/group.md) + [`ui.control`](ui/control.md) / [`ui.action`](ui/action.md) |
 | CSG tree | `operands` | [`cad.boolean`](cad/boolean.md) → cad primitives / mesh solids (not `spatial.relationship`) |
 | Story flow | `blocks` | [`story.flow`](story/flow.md) → [`story.paragraph`](story/paragraph.md) / [`story.table`](story/table.md) |
+| Story thread | `frames` | [`layout.frame_chain`](layout/frame-chain.md) → [`layout.frame`](layout/frame.md) |
 | Table cell | `blocks` | [`story.table`](story/table.md) cell → nested paragraphs / tables (not listed on the parent flow) |
 | BIM containment | `parent` | [`spatial.relationship`](spatial/relationship.md) under site / building / storey groups ([`bim.site`](bim/site.md) / [`building`](bim/building.md) / [`storey`](bim/storey.md)) |
 | BIM relation | `a` / `b` | [`bim.relation`](bim/relation.md) (`voids` / `fills` / `connects` / `aggregates` / `services`) |

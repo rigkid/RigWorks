@@ -1,6 +1,8 @@
 # `rig.layout.page`
 
-A page, artboard, or frame — a bounded region content is composed against. Format when present.
+A page or artboard — a bounded region content is composed against. Format when present.
+
+A text frame on the page is [`rig.layout.frame`](frame.md), not this schema.
 
 | Field | Type | Meaning |
 |-------|------|---------|

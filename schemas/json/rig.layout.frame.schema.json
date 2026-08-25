@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.frame.schema.json",
+  "title": "rig.layout.frame",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "width": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "height": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "insets": {
+      "$ref": "./_defs.schema.json#/$defs/faceInsets"
+    },
+    "columnCount": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "columnGutter": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "firstBaseline": {
+      "type": "string",
+      "enum": [
+        "ascent",
+        "cap-height",
+        "leading",
+        "x-height",
+        "em-box",
+        "fixed"
+      ]
+    },
+    "firstBaselineMin": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "width",
+    "height"
+  ]
+}

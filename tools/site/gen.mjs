@@ -300,8 +300,13 @@ const GROUPS = [
   { title: "Document", domains: ["document"] },
   {
     title: "Spatial / scene",
-    domains: ["spatial", "layout"],
+    domains: ["spatial"],
     note: "A scene is a root (unparented) vertex. Anchor is a bounds cell — not font.anchor (a glyph point).",
+  },
+  {
+    title: "Layout",
+    domains: ["layout"],
+    note: "Print spread — pages, masters, facing, visual style maps, text frames and threads. .idml is a host encoding.",
   },
   { title: "Place (civic / postal)", domains: ["place"] },
   { title: "Person / organisation / party", domains: ["person", "organisation", "party"] },

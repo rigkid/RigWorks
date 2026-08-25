@@ -152,6 +152,7 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | [docs/interchange.md](docs/interchange.md) | Wire format and `.rig` / `.rigz` package |
 | [docs/openbim.md](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) → `rig.bim.*` |
 | [docs/ufo.md](docs/ufo.md) | UFO / GLIF → `rig.font.*`; encodings are fulfillment |
+| [docs/idml.md](docs/idml.md) | IDML → `rig.layout.frame` + layout / story; encodings are fulfillment |
 | [docs/ros.md](docs/ros.md) | ROS 2 → existing schemas; no `rig.ros2.*` |
 | [examples/](examples/) | Reference documents |
 

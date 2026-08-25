@@ -13,6 +13,7 @@ node tools/rig-validate/cli.js examples/cad-boolean.json
 node tools/rig-validate/cli.js examples/cad-dimension.json
 node tools/rig-validate/cli.js examples/cad-reference.json
 node tools/rig-validate/cli.js examples/story-flow.json
+node tools/rig-validate/cli.js examples/story-frames.json
 node tools/rig-validate/cli.js examples/bim-model.json
 node tools/rig-validate/cli.js examples/bim-bcf.json
 node tools/rig-validate/cli.js examples/bim-ids.json
@@ -156,6 +157,45 @@ One entity (the flow):
         "p-li-1",
         "p-li-2",
         "table-people"
+      ]
+    }
+  }
+}
+```
+<!-- rig:end -->
+
+## `story-frames.json`
+
+Threaded text layout: facing pages, a right master with slug, two document pages, two [`rig.layout.frame`](../schemas/layout/frame.md) boxes (columns / insets / first baseline), and a [`rig.layout.frame_chain`](../schemas/layout/frame-chain.md) that walks them. Visual typography lives on `rig.layout.paragraph_style` / `character_style` (including a character style that is not italic). `.idml` stays a host encoding — [docs/idml.md](../docs/idml.md).
+
+One entity (the first frame):
+
+<!-- rig:begin entity=frame-1 from=examples/story-frames.json -->
+```json
+{
+  "id": "frame-1",
+  "components": {
+    "rig.meta.named": {
+      "name": "Frame 1",
+      "stableId": "frame-1"
+    },
+    "rig.layout.frame": {
+      "width": 116,
+      "height": 172,
+      "insets": 2,
+      "columnCount": 2,
+      "columnGutter": 4,
+      "firstBaseline": "ascent"
+    },
+    "rig.spatial.relationship": {
+      "parent": "page-1",
+      "order": 0
+    },
+    "rig.spatial.transform": {
+      "position": [
+        16,
+        18,
+        0
       ]
     }
   }

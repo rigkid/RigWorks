@@ -182,6 +182,25 @@ add("rig.layout.frame_chain", {
   master: ref("entity"),
 }, { required: ["story"] });
 
+// Text frame — box a story flows through. Pose on transform; parent is a page.
+// Graphic frames / wrap / object styles stay out.
+add("rig.layout.frame", {
+  width: ref("float"),
+  height: ref("float"),
+  insets: faceInsets,
+  columnCount: ref("int"),
+  columnGutter: ref("float"),
+  firstBaseline: enumOf([
+    "ascent",
+    "cap-height",
+    "leading",
+    "x-height",
+    "em-box",
+    "fixed",
+  ]),
+  firstBaselineMin: ref("float"),
+}, { required: ["width", "height"] });
+
 // --- place (civic / postal + geodetic; not scene pose) ---
 // Structured UPU S42 / ISO 20022 PostalAddress elements. All optional;
 // emit what the source measured. Unstructured AdrLine is import residue.
