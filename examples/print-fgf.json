@@ -1,0 +1,79 @@
+{
+  "rig": "0.29.0",
+  "document": {
+    "title": "FGF pellet job",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "printer",
+      "components": {
+        "rig.meta.named": { "name": "Bed 600", "stableId": "printer" },
+        "rig.print.machine": {
+          "bedX": 600,
+          "bedY": 600,
+          "bedZ": 800,
+          "pelletMode": true,
+          "rotationVolumeMm3": 180,
+          "maxVolumetricMm3s": 40
+        }
+      }
+    },
+    {
+      "id": "grade",
+      "components": {
+        "rig.meta.named": { "name": "rPET pellet", "stableId": "grade" },
+        "rig.print.material": {
+          "densityKgM3": 1270,
+          "feedZoneC": 180,
+          "meltZoneC": 230,
+          "nozzleZoneC": 240,
+          "maxVolumetricMm3s": 28
+        }
+      }
+    },
+    {
+      "id": "process",
+      "components": {
+        "rig.print.process": {
+          "layerHeightMm": 1.2,
+          "lineWidthMm": 2.4,
+          "printSpeedMms": 40,
+          "travelSpeedMms": 80
+        },
+        "rig.print.compression": {
+          "enabled": true,
+          "sagMmPerKg": 0.08,
+          "alsoScaleE": true
+        }
+      }
+    },
+    {
+      "id": "part-mesh",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "model",
+          "path": "parts/column.3mf"
+        }
+      }
+    },
+    {
+      "id": "part-gcode",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "other",
+          "path": "parts/column.gcode"
+        }
+      }
+    },
+    {
+      "id": "job",
+      "components": {
+        "rig.print.job": {
+          "input": "part-mesh",
+          "output": "part-gcode"
+        }
+      }
+    }
+  ]
+}

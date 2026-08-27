@@ -27,6 +27,8 @@ One convention for the file. A host with another convention converts at the edge
 
 `ifcSchema` is the IFC release this document was derived from (`ifc2x3` / `ifc4` / `ifc4x3`). Absent = not an IFC-derived document. Portable BIM meaning lives on [`rig.bim.*`](bim/classify.md); `.ifc` files are a host mapping — [openbim.md](../docs/openbim.md).
 
+FGF / pellet jobs are [`rig.print.*`](print/machine.md), not these keys — [print.md](../docs/print.md).
+
 Print-job keys (optional):
 
 | Field | Meaning |

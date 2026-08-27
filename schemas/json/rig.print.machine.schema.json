@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.print.machine.schema.json",
+  "title": "rig.print.machine",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "bedX": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "bedY": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "bedZ": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "pelletMode": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "rotationVolumeMm3": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "maxVolumetricMm3s": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "bedX",
+    "bedY",
+    "bedZ"
+  ]
+}

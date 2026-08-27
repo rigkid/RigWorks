@@ -31,6 +31,7 @@ node tools/rig-validate/cli.js examples/lights.json
 node tools/rig-validate/cli.js examples/dev-machine.json
 node tools/rig-validate/cli.js examples/dev-hyperv.json
 node tools/rig-validate/cli.js examples/dev-kvm.json
+node tools/rig-validate/cli.js examples/print-fgf.json
 ```
 
 ## SUDE sketch
@@ -289,3 +290,7 @@ Employment instrument beside job facts: `rig.legal.agreement` + two `rig.legal.p
 ## `calendar-event.json`
 
 Exhibition hours (`weekly` + `span`), Christmas dark day, Christmas Eve special hours on `exception`, opening-night `event`, weekly curator talk as `recurrence` fields (not an `RRULE` string), and one `attendee`. Venue is `rig.place.address`. Not iCalendar XML.
+
+## `print-fgf.json`
+
+Pellet printer envelope, a grade with density and zone temps, slice knobs plus stack sag, and a job whose `input` / `output` are `rig.media.asset_ref` entities. Not envelope `pdfX`, not a layout page, not [`rig.dev.machine`](../schemas/dev/machine.md), not host paths — [docs/print.md](../docs/print.md).

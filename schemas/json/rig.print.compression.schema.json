@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.print.compression.schema.json",
+  "title": "rig.print.compression",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "sagMmPerKg": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "alsoScaleE": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "sagMmPerKg"
+  ]
+}

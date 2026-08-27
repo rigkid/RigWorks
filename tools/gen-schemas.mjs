@@ -1854,6 +1854,45 @@ add("rig.pixel.effect_chain", {
   nextId: ref("uint"),
 }, { required: ["steps"] });
 
+// --- print (FGF / pellet) ---
+// Not envelope pdfX, not layout page, not rig.dev.machine, not G-code paths.
+// Mesh / G-code files compose rig.media.asset_ref. Last-slice status stays host.
+add("rig.print.machine", {
+  bedX: ref("float"),
+  bedY: ref("float"),
+  bedZ: ref("float"),
+  pelletMode: ref("bool"),
+  rotationVolumeMm3: ref("float"),
+  maxVolumetricMm3s: ref("float"),
+}, { required: ["bedX", "bedY", "bedZ"] });
+
+add("rig.print.material", {
+  densityKgM3: ref("float"),
+  feedZoneC: ref("float"),
+  meltZoneC: ref("float"),
+  nozzleZoneC: ref("float"),
+  maxVolumetricMm3s: ref("float"),
+}, { required: ["densityKgM3"] });
+
+add("rig.print.process", {
+  layerHeightMm: ref("float"),
+  lineWidthMm: ref("float"),
+  printSpeedMms: ref("float"),
+  travelSpeedMms: ref("float"),
+  adaptiveLayers: ref("bool"),
+}, { required: ["layerHeightMm", "lineWidthMm"] });
+
+add("rig.print.compression", {
+  enabled: ref("bool"),
+  sagMmPerKg: ref("float"),
+  alsoScaleE: ref("bool"),
+}, { required: ["sagMmPerKg"] });
+
+add("rig.print.job", {
+  input: ref("entity"),
+  output: ref("entity"),
+}, { required: ["input"] });
+
 // --- io / led / sensor / interact / input ---
 // Defaults: player 0, all buttons false.
 add("rig.input.buttons", {

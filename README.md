@@ -154,6 +154,7 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | [docs/ufo.md](docs/ufo.md) | UFO / GLIF → `rig.font.*`; encodings are fulfillment |
 | [docs/idml.md](docs/idml.md) | IDML → `rig.layout.frame` + layout / story; encodings are fulfillment |
 | [docs/ros.md](docs/ros.md) | ROS 2 → existing schemas; no `rig.ros2.*` |
+| [docs/print.md](docs/print.md) | FGF / pellet → `rig.print.*`; not envelope `pdfX` |
 | [examples/](examples/) | Reference documents |
 
 | Working with models | |

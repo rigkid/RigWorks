@@ -331,6 +331,18 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 | `rig.pixel.tile_map` | [pixel/tile-map.md](pixel/tile-map.md) |
 | `rig.pixel.effect_chain` | [pixel/effect-chain.md](pixel/effect-chain.md) |
 
+### Print / FGF
+
+Pellet / FGF machine, grade, process, sag, and a job that points at asset entities. Not envelope `pdfX`, not a layout page, not [`rig.dev.machine`](dev/machine.md), not plotter G-code ([`rigGCode`](https://github.com/rigkid/rigGCode) is `CPaths`). Not authored CSG (`rig.cad.*`). Paths compose [`rig.media.asset_ref`](media/asset-ref.md) — [print.md](../docs/print.md).
+
+| Id | Doc |
+|----|-----|
+| `rig.print.machine` | [print/machine.md](print/machine.md) |
+| `rig.print.material` | [print/material.md](print/material.md) |
+| `rig.print.process` | [print/process.md](print/process.md) |
+| `rig.print.compression` | [print/compression.md](print/compression.md) |
+| `rig.print.job` | [print/job.md](print/job.md) |
+
 ### I/O
 
 | Id | Doc |
@@ -409,6 +421,7 @@ Portable development-machine recipes — not a media-show AV bus or gated trigge
 | CSG tree | `operands` | [`cad.boolean`](cad/boolean.md) → cad primitives / mesh solids (not `spatial.relationship`) |
 | Story flow | `blocks` | [`story.flow`](story/flow.md) → [`story.paragraph`](story/paragraph.md) / [`story.table`](story/table.md) |
 | Story thread | `frames` | [`layout.frame_chain`](layout/frame-chain.md) → [`layout.frame`](layout/frame.md) |
+| FGF job | `input` / `output` | [`print.job`](print/job.md) → [`media.asset_ref`](media/asset-ref.md) |
 | Table cell | `blocks` | [`story.table`](story/table.md) cell → nested paragraphs / tables (not listed on the parent flow) |
 | BIM containment | `parent` | [`spatial.relationship`](spatial/relationship.md) under site / building / storey groups ([`bim.site`](bim/site.md) / [`building`](bim/building.md) / [`storey`](bim/storey.md)) |
 | BIM relation | `a` / `b` | [`bim.relation`](bim/relation.md) (`voids` / `fills` / `connects` / `aggregates` / `services`) |

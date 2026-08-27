@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.print.process.schema.json",
+  "title": "rig.print.process",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "layerHeightMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "lineWidthMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "printSpeedMms": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "travelSpeedMms": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "adaptiveLayers": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "layerHeightMm",
+    "lineWidthMm"
+  ]
+}

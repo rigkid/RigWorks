@@ -551,6 +551,21 @@
               "rig.plant.taxon": {
                 "$ref": "./rig.plant.taxon.schema.json"
               },
+              "rig.print.compression": {
+                "$ref": "./rig.print.compression.schema.json"
+              },
+              "rig.print.job": {
+                "$ref": "./rig.print.job.schema.json"
+              },
+              "rig.print.machine": {
+                "$ref": "./rig.print.machine.schema.json"
+              },
+              "rig.print.material": {
+                "$ref": "./rig.print.material.schema.json"
+              },
+              "rig.print.process": {
+                "$ref": "./rig.print.process.schema.json"
+              },
               "rig.render.blend": {
                 "$ref": "./rig.render.blend.schema.json"
               },
