@@ -1,7 +1,7 @@
 {
   "rig": "0.23.0",
   "document": {
-    "title": "Dev machine — KVM / virt-manager agent box",
+    "title": "Dev machine - KVM / virt-manager agent box",
     "defaultUnit": "px"
   },
   "entities": [

@@ -1,6 +1,6 @@
 # `rig.paint.stroke`
 
-Stroke by reference — this drawable's outline is painted by a shared paint entity. Format when present.
+Stroke by reference - this drawable's outline is painted by a shared paint entity. Format when present.
 
 | Field | Type | Meaning |
 |-------|------|---------|

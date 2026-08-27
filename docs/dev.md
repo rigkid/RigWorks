@@ -1,6 +1,6 @@
 # Dev environments
 
-A development-environment host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). Provider SDKs, interactive login UX, cache stores, and CLI chrome are fulfillment — the Contract still **names** the portable fields those fulfillments read.
+A development-environment host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). Provider SDKs, interactive login UX, cache stores, and CLI chrome are fulfillment - the Contract still **names** the portable fields those fulfillments read.
 
 Portable meaning lives on [`rig.dev.machine`](../schemas/dev/machine.md) and [`rig.dev.op`](../schemas/dev/op.md). TypeScript workflow graphs, Dockerfiles, and install scripts stay in the host (or as `x.<vendor>.*` until a second speaker needs the same meaning in the catalog).
 
@@ -8,31 +8,31 @@ Portable meaning lives on [`rig.dev.machine`](../schemas/dev/machine.md) and [`r
 
 | Nearby id | Why it is different |
 |-----------|---------------------|
-| [`rig.audio.bus`](../schemas/audio/bus.md) / [`rig.mod.trigger`](../schemas/mod/trigger.md) | House mute and gated show fires — not a developer machine |
-| UI docks / tabs / “workspaces” | Layout chrome — [ui.md](ui.md); fulfillment, not POD |
-| Rig **host** | Live program that loads documents ([terms](terms.md)) — not a cloud VM |
+| [`rig.audio.bus`](../schemas/audio/bus.md) / [`rig.mod.trigger`](../schemas/mod/trigger.md) | House mute and gated show fires - not a developer machine |
+| UI docks / tabs / “workspaces” | Layout chrome - [ui.md](ui.md); fulfillment, not POD |
+| Rig **host** | Live program that loads documents ([terms](terms.md)) - not a cloud VM |
 
 ## Map
 
 | Idea | Rig field / schema |
 |------|--------------------|
 | Environment recipe | Entity + [`rig.meta.named`](../schemas/meta/named.md) + [`rig.dev.machine`](../schemas/dev/machine.md) |
-| Target class | `kind` — `local` / `vm` / `ci` / `container` |
-| Which fulfillment | `provider` — `hyper-v`, `kvm`, `freestyle`, `docker`, `local`, … |
-| Stack / guest label | `base` — string hint, not an image digest |
-| Auth required | `requiresAuth` — kebab ids; **never** tokens |
-| Prepared state pointer | `snapshotRef` — opaque id / URI; blob stays host-side |
+| Target class | `kind` - `local` / `vm` / `ci` / `container` |
+| Which fulfillment | `provider` - `hyper-v`, `kvm`, `freestyle`, `docker`, `local`, ... |
+| Stack / guest label | `base` - string hint, not an image digest |
+| Auth required | `requiresAuth` - kebab ids; **never** tokens |
+| Prepared state pointer | `snapshotRef` - opaque id / URI; blob stays host-side |
 | Size hints | `memoryBytes`, `diskBytes`, `cpus` |
-| Named ops | [`rig.dev.op`](../schemas/dev/op.md) (`ssh`, `open-editor`, `start`, …) |
-| Cache fingerprints | Host only — do not invent `rig.dev.cache` |
-| Credentials / login UI | Host only — fulfill `requiresAuth` |
+| Named ops | [`rig.dev.op`](../schemas/dev/op.md) (`ssh`, `open-editor`, `start`, ...) |
+| Cache fingerprints | Host only - do not invent `rig.dev.cache` |
+| Credentials / login UI | Host only - fulfill `requiresAuth` |
 
 ## Fulfillments
 
 | Fulfillment | Role |
 |-------------|------|
-| **[RigDev](https://github.com/rigkid/RigDev)** | Applies `rig.dev.*` recipes — `hyper-v` and `kvm` (libvirt / **virt-manager**) via `rigdev plan` / `rigdev apply` |
-| Freestyle [Rigkit](https://github.com/freestyle-sh/rigkit) | TypeScript workflow / VM providers — another speaker of the same domain when mapped |
+| **[RigDev](https://github.com/rigkid/RigDev)** | Applies `rig.dev.*` recipes - `hyper-v` and `kvm` (libvirt / **virt-manager**) via `rigdev plan` / `rigdev apply` |
+| Freestyle [Rigkit](https://github.com/freestyle-sh/rigkit) | TypeScript workflow / VM providers - another speaker of the same domain when mapped |
 
 Contract examples: [`examples/dev-machine.json`](../examples/dev-machine.json), [`examples/dev-hyperv.json`](../examples/dev-hyperv.json), [`examples/dev-kvm.json`](../examples/dev-kvm.json). Run with RigDev (do not add provider tools to this Contract repo):
 
@@ -74,4 +74,4 @@ node cli.js apply path/to/dev-kvm.json --iso /path/to/ubuntu.iso
 }
 ```
 
-A host that speaks these schemas and ignores the rest of the catalog is fully Rig for this domain — ship what you support.
+A host that speaks these schemas and ignores the rest of the catalog is fully Rig for this domain - ship what you support.

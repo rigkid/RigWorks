@@ -10,8 +10,8 @@ A command button on a panel. Edges toward behavior; this schema is the piece mos
 | `actionId` | string | Command catalog id (e.g. `lfo.resetPhase`, `transport.play`) |
 | `enabled` | bool | Whether the action can be invoked |
 
-Labels compose [`rig.meta.named`](../meta/named.md). What the action *does* is fulfillment — the Contract only names which command the surface exposes.
+Labels compose [`rig.meta.named`](../meta/named.md). What the action *does* is fulfillment - the Contract only names which command the surface exposes.
 
-**Portability:** prefer shared `actionId` names that both hosts implement. Unknown ids may be hidden or disabled (ship what you support). Host-private ids are valid but non-portable. Cross-app tools should prefer [`rig.ui.control`](control.md) (mutate shared POD) over actions when possible — see [ui.md](../../docs/ui.md).
+**Portability:** prefer shared `actionId` names that both hosts implement. Unknown ids may be hidden or disabled (ship what you support). Host-private ids are valid but non-portable. Cross-app tools should prefer [`rig.ui.control`](control.md) (mutate shared POD) over actions when possible - see [ui.md](../../docs/ui.md).
 
 Required: `panel`, `order`, `actionId`.

@@ -4,7 +4,7 @@ Machine-readable Rig POD and document grammar (JSON Schema draft 2020-12).
 
 | File | Role |
 |------|------|
-| `_defs.schema.json` | Shared datatypes (`vec3`, `quat`, `entity`, …) |
+| `_defs.schema.json` | Shared datatypes (`vec3`, `quat`, `entity`, ...) |
 | `rig.document.schema.json` | Document envelope |
 | `rig.*.schema.json` | One file per catalog schema id |
 

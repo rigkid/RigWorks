@@ -2,7 +2,7 @@
 
 Product identifiers of a book (or other ONIX product). Format when present.
 
-ISBN meaning follows [ISO 2108](https://www.iso.org/standard/65483.html). Other slots follow ONIX for Books `ProductIdentifier`. This schema is those identifiers — not an ONIX message and not a title.
+ISBN meaning follows [ISO 2108](https://www.iso.org/standard/65483.html). Other slots follow ONIX for Books `ProductIdentifier`. This schema is those identifiers - not an ONIX message and not a title.
 
 | Field | Type | Meaning | Standard |
 |-------|------|---------|----------|
@@ -11,7 +11,7 @@ ISBN meaning follows [ISO 2108](https://www.iso.org/standard/65483.html). Other 
 | `doi` | string | Digital Object Identifier | ONIX `ProductIDType` `06` |
 | `issn` | string | `NNNN-NNNC` | ISO 3297 ISSN |
 
-All fields optional. Emit what the source has. An empty component is invalid — attach at least one field.
+All fields optional. Emit what the source has. An empty component is invalid - attach at least one field.
 
 Prefer `isbn13` when the source has one. The importer strips hyphens. Do not invent `isbn10` by converting `isbn13`, and do not store a GTIN-13 that is the same ISBN under a second key.
 

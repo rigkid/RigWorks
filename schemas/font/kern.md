@@ -2,7 +2,7 @@
 
 One kerning pair. Format when present.
 
-UFO `kerning.plist` entry. `left` / `right` are **names** (glyph `stableId` or [`rig.font.group`](group.md) `stableId`), not entity ids — that matches the plist keys.
+UFO `kerning.plist` entry. `left` / `right` are **names** (glyph `stableId` or [`rig.font.group`](group.md) `stableId`), not entity ids - that matches the plist keys.
 
 | Field | Type | Meaning |
 |-------|------|---------|

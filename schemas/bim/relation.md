@@ -1,6 +1,6 @@
 # `rig.bim.relation`
 
-OpenBIM relationship between two entities. Format when present — this component lives on **its own entity** (same pattern as [`rig.mod.binding`](../mod/binding.md)).
+OpenBIM relationship between two entities. Format when present - this component lives on **its own entity** (same pattern as [`rig.mod.binding`](../mod/binding.md)).
 
 | Field | Type | Meaning |
 |-------|------|---------|
@@ -14,6 +14,6 @@ OpenBIM relationship between two entities. Format when present — this componen
 | `fills` | door / window | opening | Filler fills the opening (`IfcRelFillsElement`) |
 | `connects` | element | element | Connection / join (`IfcRelConnects*`) |
 | `aggregates` | whole | part | Aggregation (`IfcRelAggregates`) |
-| `services` | system / element | element | Services / assignment (`IfcRelServicesBuildings`, …) |
+| `services` | system / element | element | Services / assignment (`IfcRelServicesBuildings`, ...) |
 
-Many relations per element — do not hang a single `host` field on the wall. Scene containment (element on a storey) stays on [`rig.spatial.relationship`](../spatial/relationship.md). Hosted openings are **not** [`rig.cad.boolean`](../cad/boolean.md).
+Many relations per element - do not hang a single `host` field on the wall. Scene containment (element on a storey) stays on [`rig.spatial.relationship`](../spatial/relationship.md). Hosted openings are **not** [`rig.cad.boolean`](../cad/boolean.md).

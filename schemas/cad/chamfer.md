@@ -2,7 +2,7 @@
 
 Bevel selected edges of a solid. Format when present.
 
-Compose on the solid entity ([`rig.cad.cuboid`](cuboid.md), [`rig.cad.boolean`](boolean.md), a mesh solid, …).
+Compose on the solid entity ([`rig.cad.cuboid`](cuboid.md), [`rig.cad.boolean`](boolean.md), a mesh solid, ...).
 
 | Field | Type | Meaning |
 |-------|------|---------|

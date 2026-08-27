@@ -7,7 +7,7 @@ Same datatype vocabulary as [properties](../../docs/properties.md). One active s
 | Field | Type | Meaning |
 |-------|------|---------|
 | `key` | string | Param name / path key |
-| `type` | string | Property datatype id (`float`, `vec2`, `vec4`, `enum`, …) |
+| `type` | string | Property datatype id (`float`, `vec2`, `vec4`, `enum`, ...) |
 | `f` | float | When `type` is `float` or `double` |
 | `i` | int | When `type` is `bool`, `int`, `uint`, `enum`, or `entity` |
 | `s` | string | When `type` is `string` |
@@ -17,6 +17,6 @@ Serialize `key`, `type`, and **only** the storage field that `type` selects. Omi
 
 `enum` literals are catalog / host-documented for that node `typeId` + param `key` (same idea as schema enum fields).
 
-`f` / `i` / `s` / `v` are the intentional exception to spelled-out field names — compact tagged-union storage slots selected by `type`. Do not invent more single-letter fields outside this pattern.
+`f` / `i` / `s` / `v` are the intentional exception to spelled-out field names - compact tagged-union storage slots selected by `type`. Do not invent more single-letter fields outside this pattern.
 
 Default `type` when omitted on read: `float`.

@@ -14,10 +14,10 @@ Unlike [`rig.mod.binding`](binding.md) (continuous property drive), a trigger fi
 | `fadeInMs` | int | Optional. Colour-flash fade in; absent = host default |
 | `holdMs` | int | Optional. Colour-flash hold; absent = host default |
 | `fadeOutMs` | int | Optional. Colour-flash fade out; absent = host default |
-| `palette` | rgba[] | Optional. Colour-flash palette (0–1 floats); absent = host default |
+| `palette` | rgba[] | Optional. Colour-flash palette (0-1 floats); absent = host default |
 | `mode` | enum | Optional. `forward`, `backward`, `pendulum`, `random`; absent = `forward` |
-| `volume` | float | Optional. Play-sample gain 0–1; absent = host default |
+| `volume` | float | Optional. Play-sample gain 0-1; absent = host default |
 | `loop` | bool | Optional. Play-sample loop; absent = false |
 | `samples` | entity[] | Optional. Play-sample assets ([`rig.media.asset_ref`](../media/asset-ref.md)); absent = none |
 
-Edge / cooldown clocks and LED status flashes are host runtime — do not serialize them.
+Edge / cooldown clocks and LED status flashes are host runtime - do not serialize them.

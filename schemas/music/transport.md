@@ -13,7 +13,7 @@
 | `loopStartBeats` | float | Loop in; required when `loop` |
 | `loopEndBeats` | float | Loop out; required when `loop` |
 
-`barIndex` / `beatInBar` are derived from `positionBeats` — do not serialize; recompute.
+`barIndex` / `beatInBar` are derived from `positionBeats` - do not serialize; recompute.
 Pause = `playing=false` while keeping `positionBeats`.
 
 Advance during `Update`. Clock / pattern / sequencer do **not** own bpm or the global playhead.

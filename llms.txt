@@ -1,6 +1,6 @@
 # RigWorks (Rig)
 
-> A no-code creative application framework — a shared data vocabulary for creative applications. Apps and packs that speak the same schema ids interoperate. Not another editor: the vocabulary editors and agents could share.
+> A no-code creative application framework - a shared data vocabulary for creative applications. Apps and packs that speak the same schema ids interoperate. Not another editor: the vocabulary editors and agents could share.
 
 Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component documents. Live hosts also honor SUDE + runtime ECS. Emit JSON documents; validate with rig-validate. Nothing to link into an app.
 

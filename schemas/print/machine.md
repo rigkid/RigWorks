@@ -13,4 +13,4 @@ This is not a slicer GUI, not [`rig.dev.machine`](../dev/machine.md) (a VM recip
 | `rotationVolumeMm3` | float | Optional. mm3 per screw turn (pellet). Absent = unset |
 | `maxVolumetricMm3s` | float | Optional. Hardware melt / extrude ceiling (mm3/s). Absent = unset |
 
-Required: `bedX`, `bedY`, `bedZ`. A grade MVS is [`rig.print.material`](material.md) `maxVolumetricMm3s` — do not copy the hardware ceiling onto the material unless the grade is tighter.
+Required: `bedX`, `bedY`, `bedZ`. A grade MVS is [`rig.print.material`](material.md) `maxVolumetricMm3s` - do not copy the hardware ceiling onto the material unless the grade is tighter.

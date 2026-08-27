@@ -1,25 +1,25 @@
 # Schemas
 
-Agreed POD field layouts. **Formats when present** — ship what you support.
+Agreed POD field layouts. **Formats when present** - ship what you support.
 
 Being Rig does not require implementing this catalog. If two hosts both speak a schema id, they share fields and units.
 
-- **Prose** (this tree) — field meaning and units for humans.
-- **JSON Schema** — [`json/`](json/) machine grammar for tools and AI emission.
-- **Documents** — [`document.md`](document.md) envelope; examples under [`../examples/`](../examples/); validate with [`../tools/rig-validate/`](../tools/rig-validate/).
+- **Prose** (this tree) - field meaning and units for humans.
+- **JSON Schema** - [`json/`](json/) machine grammar for tools and AI emission.
+- **Documents** - [`document.md`](document.md) envelope; examples under [`../examples/`](../examples/); validate with [`../tools/rig-validate/`](../tools/rig-validate/).
 
 ## Rules
 
 - Field **meaning and units** are the contract; C++ type names are host-specific.
 - One type per field. No dual representations. No dual-field legacy aliases until 1.0.
-- Authored fields only. Anything a host can recompute from those fields stays in the host — [Host cache](../docs/terms.md). Do not add it to a schema for convenience (polygon winding from `points`, world matrix from local pose + parent, bar/beat from `positionBeats`).
+- Authored fields only. Anything a host can recompute from those fields stays in the host - [Host cache](../docs/terms.md). Do not add it to a schema for convenience (polygon winding from `points`, world matrix from local pose + parent, bar/beat from `positionBeats`).
 - No device handles, GPU objects, UI toolkit types, callbacks, dirty flags, or ephemeral edge state in portable fields.
 - Runtime caches and queues (last sample, pending MIDI, hover) stay in the host.
-- Ids are `rig.<domain>.<name>` (snake_case multi-word segments). Enum literals are kebab-case (`top-left`, `color-dodge`) — they are user-facing choice labels, not field names.
-- Display names live on [`rig.meta.named`](meta/named.md) — compose it; do not re-declare `name` on every schema.
-- File identity lives on [`rig.media.asset_ref`](media/asset-ref.md) — other schemas reference it by `entity` id when they need a path. Sidecars that travel with the document live in the package `data/` folder — [interchange](../docs/interchange.md#package).
-- `rgba` / `rgb` / `clearRgba` are floats 0–1. Colour space is the envelope's `document.colorSpace` key (default: srgb) — see [document.md](document.md).
-- Domain meaning lives in field names — not extra property datatype ids. See [properties.md](../docs/properties.md).
+- Ids are `rig.<domain>.<name>` (snake_case multi-word segments). Enum literals are kebab-case (`top-left`, `color-dodge`) - they are user-facing choice labels, not field names.
+- Display names live on [`rig.meta.named`](meta/named.md) - compose it; do not re-declare `name` on every schema.
+- File identity lives on [`rig.media.asset_ref`](media/asset-ref.md) - other schemas reference it by `entity` id when they need a path. Sidecars that travel with the document live in the package `data/` folder - [interchange](../docs/interchange.md#package).
+- `rgba` / `rgb` / `clearRgba` are floats 0-1. Colour space is the envelope's `document.colorSpace` key (default: srgb) - see [document.md](document.md).
+- Domain meaning lives in field names - not extra property datatype ids. See [properties.md](../docs/properties.md).
 
 ### Measurements
 
@@ -27,11 +27,11 @@ One home per quantity class. Convert once at the host edge (cm / in / display un
 
 | Kind | Store |
 |------|--------|
-| Ratio | 0–1. Colour, gain, opacity, UV, phase, metallic, gate, occupancy — and a length authored as a fraction of a **named** extent (page, parent, em). |
+| Ratio | 0-1. Colour, gain, opacity, UV, phase, metallic, gate, occupancy - and a length authored as a fraction of a **named** extent (page, parent, em). |
 | Scene length | `document.defaultUnit`. A page may override with [`rig.layout.page`](layout/page.md) `unit`. Transform `position`, geometry, stroke width, page size. |
 | Catalog fact | SI in the field name: [`rig.art.dimensions`](art/dimensions.md) millimetres, [`rig.plant.habit`](plant/habit.md) metres, [`rig.place.geo`](place/geo.md) `altitudeMetres`. |
-| Protocol / clock | Native scale. MIDI 0–127, wall-clock `startMinutes` 0–1439, WGS84 degrees. |
-| Commerce percent | 0–100 on [`rig.commerce.discount`](commerce/discount.md) (`10` is 10%). |
+| Protocol / clock | Native scale. MIDI 0-127, wall-clock `startMinutes` 0-1439, WGS84 degrees. |
+| Commerce percent | 0-100 on [`rig.commerce.discount`](commerce/discount.md) (`10` is 10%). |
 
 ### Field naming
 
@@ -40,11 +40,11 @@ Fields are **lowerCamelCase** and spelled out. Prefer `radiusX` over `rx`, `cent
 | Pattern | Use |
 |---------|-----|
 | Spelled words | `innerRadius`, `rotationDegrees`, `startAngleDegrees` |
-| Axis suffix | Split scalars get `X` / `Y` / `Z` — `centerX`, `radiusY`, `originX`, `fovYDegrees` |
+| Axis suffix | Split scalars get `X` / `Y` / `Z` - `centerX`, `radiusY`, `originX`, `fovYDegrees` |
 | Angles | `*Degrees` (not radians) |
 | Domain acronyms | Keep the common short form when it *is* the name: `bpm`, `rgb`, `rgba`, `uv` |
 | Indexed edges | Bare `x` / `y` / `x1` / `y1` for rectangle corners and line endpoints |
-| Tagged-union slots | Only [`rig.node.param`](node/param.md) uses `f` / `i` / `s` / `v` — do not invent more single-letter fields |
+| Tagged-union slots | Only [`rig.node.param`](node/param.md) uses `f` / `i` / `s` / `v` - do not invent more single-letter fields |
 
 Do not copy SVG attribute abbreviations into schema fields. SVG (or any other wire format) is a host fulfillment mapping, not the Contract vocabulary.
 
@@ -76,7 +76,7 @@ A scene is a root (unparented) [`rig.spatial.vertex`](spatial/vertex.md). [`rig.
 
 ### Layout
 
-Print spread — pages, masters, facing, visual style maps, text frames and threads. `.idml` is a host encoding — [idml.md](../docs/idml.md).
+Print spread - pages, masters, facing, visual style maps, text frames and threads. `.idml` is a host encoding - [idml.md](../docs/idml.md).
 
 | Id | Doc |
 |----|-----|
@@ -154,7 +154,7 @@ Print spread — pages, masters, facing, visual style maps, text frames and thre
 
 ### Legal (agreements)
 
-Deals between parties — not the Rig Contract, and not copyright of a work ([`rig.rights.statement`](rights/statement.md)).
+Deals between parties - not the Rig Contract, and not copyright of a work ([`rig.rights.statement`](rights/statement.md)).
 
 | Id | Doc |
 |----|-----|
@@ -202,7 +202,7 @@ Deals between parties — not the Rig Contract, and not copyright of a work ([`r
 
 ### CAD / solids
 
-CSG tree as split primitives. When a solid `rig.cad.*` is present it is the source of truth; mesh on the same entity is an optional bake. Edges for fillet/chamfer are `{a,b}` pairs into mesh `positions` — see [geometry/mesh.md](geometry/mesh.md#edges). [`rig.cad.dimension`](cad/dimension.md), [`reference_line`](cad/reference-line.md), and [`reference_plane`](cad/reference-plane.md) are datums, not solids — keep them off solid entities and out of `boolean.operands`.
+CSG tree as split primitives. When a solid `rig.cad.*` is present it is the source of truth; mesh on the same entity is an optional bake. Edges for fillet/chamfer are `{a,b}` pairs into mesh `positions` - see [geometry/mesh.md](geometry/mesh.md#edges). [`rig.cad.dimension`](cad/dimension.md), [`reference_line`](cad/reference-line.md), and [`reference_plane`](cad/reference-plane.md) are datums, not solids - keep them off solid entities and out of `boolean.operands`.
 
 | Id | Doc |
 |----|-----|
@@ -220,7 +220,7 @@ CSG tree as split primitives. When a solid `rig.cad.*` is present it is the sour
 
 ### BIM / OpenBIM
 
-Thin OpenBIM layer — IFC class is a string on `classify`, not one schema per `IfcWall`. `.ifc` / `.bcfzip` / `.ids` are host encodings — [openbim.md](../docs/openbim.md).
+Thin OpenBIM layer - IFC class is a string on `classify`, not one schema per `IfcWall`. `.ifc` / `.bcfzip` / `.ids` are host encodings - [openbim.md](../docs/openbim.md).
 
 | Id | Doc |
 |----|-----|
@@ -291,7 +291,7 @@ Thin OpenBIM layer — IFC class is a string on `classify`, not one schema per `
 
 ### Font (UFO / variable)
 
-Editable face — outlines on [`rig.geometry.path`](geometry/path.md), features on [`rig.media.code`](media/code.md). Design axes and live lattice cells for variable hosts. `.ufo` / `.ufoz` are host encodings — [ufo.md](../docs/ufo.md). Not a compiled TTF; not [`rig.media.text`](media/text.md).
+Editable face - outlines on [`rig.geometry.path`](geometry/path.md), features on [`rig.media.code`](media/code.md). Design axes and live lattice cells for variable hosts. `.ufo` / `.ufoz` are host encodings - [ufo.md](../docs/ufo.md). Not a compiled TTF; not [`rig.media.text`](media/text.md).
 
 | Id | Doc |
 |----|-----|
@@ -308,7 +308,7 @@ Editable face — outlines on [`rig.geometry.path`](geometry/path.md), features 
 
 ### Story (semantic copy)
 
-Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style identity, not face/size/colour or local bold flags). Canvas type stays on [`rig.media.text`](media/text.md).
+Editorial flow - named styles, paragraphs, runs, tables. Semantics only (style identity, not face/size/colour or local bold flags). Canvas type stays on [`rig.media.text`](media/text.md).
 
 | Id | Doc |
 |----|-----|
@@ -333,7 +333,7 @@ Editorial flow — named styles, paragraphs, runs, tables. Semantics only (style
 
 ### Print / FGF
 
-Pellet / FGF machine, grade, process, sag, and a job that points at asset entities. Not envelope `pdfX`, not a layout page, not [`rig.dev.machine`](dev/machine.md), not plotter G-code ([`rigGCode`](https://github.com/rigkid/rigGCode) is `CPaths`). Not authored CSG (`rig.cad.*`). Paths compose [`rig.media.asset_ref`](media/asset-ref.md) — [print.md](../docs/print.md).
+Pellet / FGF machine, grade, process, sag, and a job that points at asset entities. Not envelope `pdfX`, not a layout page, not [`rig.dev.machine`](dev/machine.md), not plotter G-code ([`rigGCode`](https://github.com/rigkid/rigGCode) is `CPaths`). Not authored CSG (`rig.cad.*`). Paths compose [`rig.media.asset_ref`](media/asset-ref.md) - [print.md](../docs/print.md).
 
 | Id | Doc |
 |----|-----|
@@ -366,7 +366,7 @@ Pellet / FGF machine, grade, process, sag, and a job that points at asset entiti
 
 ### Dev environments
 
-Portable development-machine recipes — not a media-show AV bus or gated trigger, not UI docks. Cache fingerprints and credentials stay host-only — [dev.md](../docs/dev.md).
+Portable development-machine recipes - not a media-show AV bus or gated trigger, not UI docks. Cache fingerprints and credentials stay host-only - [dev.md](../docs/dev.md).
 
 | Id | Doc |
 |----|-----|
@@ -411,7 +411,7 @@ Portable development-machine recipes — not a media-show AV bus or gated trigge
 | Graph | Parent / nest | Schema |
 |-------|---------------|--------|
 | Scene pose | `parent` | [`spatial.relationship`](spatial/relationship.md) + optional [`spatial.vertex`](spatial/vertex.md) / [`spatial.group`](spatial/group.md) markers |
-| TF / URDF frame | `parent` | [`spatial.relationship`](spatial/relationship.md) — same graph as scene pose; not a new graph ([ros.md](../docs/ros.md)) |
+| TF / URDF frame | `parent` | [`spatial.relationship`](spatial/relationship.md) - same graph as scene pose; not a new graph ([ros.md](../docs/ros.md)) |
 | Compositor stack | `groupParent` | [`pixel.layer`](pixel/layer.md) (`kind=group`) |
 | Effect chain | `parentStep` | [`pixel.effect_chain`](pixel/effect-chain.md) (step `id`) |
 | Tile map | `tileSet` | [`pixel.tile_map`](pixel/tile-map.md) via [`pixel.tile_set`](pixel/tile-set.md) via [`pixel.palette`](pixel/palette.md) |
@@ -430,10 +430,10 @@ Portable development-machine recipes — not a media-show AV bus or gated trigge
 | IDS spec | `applicability` / `requirements` | [`bim.spec`](bim/spec.md) via [`bim.facet`](bim/facet.md) |
 | Font face | `parent` | [`spatial.relationship`](spatial/relationship.md) under [`font.face`](font/face.md) / [`font.layer`](font/layer.md) |
 | Font composite | `parent` | [`font.component`](font/component.md) child of [`font.glyph`](font/glyph.md); `glyph` is the source |
-| Font kern | `left` / `right` | [`font.kern`](font/kern.md) — names (`stableId`), not entity ids |
+| Font kern | `left` / `right` | [`font.kern`](font/kern.md) - names (`stableId`), not entity ids |
 | Commerce offer | `item` / `seller` | [`commerce.offer`](commerce/offer.md) via item + seller; price / discount compose on the offer |
 | Legal party | `agreement` / `party` | [`legal.party`](legal/party.md) via [`legal.agreement`](legal/agreement.md) |
 | Calendar attendee | `event` | [`calendar.attendee`](calendar/attendee.md) via [`calendar.event`](calendar/event.md) |
 | Calendar recurrence | same entity | [`calendar.recurrence`](calendar/recurrence.md) on the event; not an `RRULE` string |
 
-Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).
+Hosts and packs fulfill subsets - see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).

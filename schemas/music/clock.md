@@ -2,7 +2,7 @@
 
 Tick derivation from transport (or external sync). Format when present.
 
-Does **not** own bpm — read [`rig.music.transport`](transport.md).
+Does **not** own bpm - read [`rig.music.transport`](transport.md).
 
 | Field | Type | Meaning |
 |-------|------|---------|
@@ -12,9 +12,9 @@ Does **not** own bpm — read [`rig.music.transport`](transport.md).
 | `swingSubdiv` | int | Optional. Swing subdivision; absent = 2 |
 | `externalSync` | bool | Optional. External writer owns phase; absent = false |
 | `syncBeat` | float | External beat; required when `externalSync` |
-| `syncPhase` | float | External phase 0–1; required when `externalSync` |
+| `syncPhase` | float | External phase 0-1; required when `externalSync` |
 | `syncPeriodBars` | float | Optional. External sync period in bars |
 
 Product protocol names stay out of the schema id.
 
-Fulfillments that own the beat/phase timeline (for example Ableton Link via a host pack) set `externalSync` and write `syncBeat` / `syncPhase` each Update. They do **not** invent a parallel tempo field — bpm stays on [`rig.music.transport`](transport.md).
+Fulfillments that own the beat/phase timeline (for example Ableton Link via a host pack) set `externalSync` and write `syncBeat` / `syncPhase` each Update. They do **not** invent a parallel tempo field - bpm stays on [`rig.music.transport`](transport.md).

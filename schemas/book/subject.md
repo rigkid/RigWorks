@@ -2,11 +2,11 @@
 
 One classification heading of a book. Format when present.
 
-Field meanings follow ONIX for Books `Subject`. This schema is one heading — not a keyword cloud and not [`rig.meta.tags`](../meta/tags.md).
+Field meanings follow ONIX for Books `Subject`. This schema is one heading - not a keyword cloud and not [`rig.meta.tags`](../meta/tags.md).
 
 | Field | Type | Meaning | ONIX |
 |-------|------|---------|------|
-| `work` | entity | The book entity | — |
+| `work` | entity | The book entity | - |
 | `scheme` | enum | `thema` / `bisac` / `bic` / `dewey` / `keyword` | `SubjectSchemeIdentifier` |
 | `code` | string | Notation in that scheme | `SubjectCode` |
 | `heading` | string | Human heading | `SubjectHeadingText` |

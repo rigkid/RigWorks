@@ -25,7 +25,7 @@ Default outline stays on [`rig.geometry.path`](../geometry/path.md) (the default
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `type` | enum | `line` or `quad` — same topology as the default path |
+| `type` | enum | `line` or `quad` - same topology as the default path |
 | `points` | vec2[] | Deltas (not absolute positions): line = 2, quad = 3 |
 
 Weighting is host fulfillment (e.g. `|blend|` for linear terms, tent for hats, product for crosses). Do not store GPU buffers, dirty flags, or sampled FreeType outlines here.

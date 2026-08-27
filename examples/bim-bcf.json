@@ -1,7 +1,7 @@
 {
   "rig": "0.15.0",
   "document": {
-    "title": "OpenBIM BCF topic — clash on door",
+    "title": "OpenBIM BCF topic - clash on door",
     "defaultUnit": "mm",
     "ifcSchema": "ifc4"
   },

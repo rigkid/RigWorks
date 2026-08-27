@@ -14,7 +14,7 @@ Drive one float property over time. Format when present.
 | `loop` | bool | Optional. Repeat; absent = false |
 | `playing` | bool | Optional. Active; absent = true |
 
-No onComplete callbacks — host flags / events only.
+No onComplete callbacks - host flags / events only.
 
 ## Fulfillment
 

@@ -92,7 +92,7 @@
           "runs": [
             { "text": "Chapter ", "style": "style-small-caps" },
             { "text": "one" },
-            { "text": " opens in the first frame and continues in the second — ", "style": "style-italic" },
+            { "text": " opens in the first frame and continues in the second - ", "style": "style-italic" },
             { "text": "not a new page clone." }
           ]
         }

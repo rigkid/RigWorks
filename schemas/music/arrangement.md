@@ -1,6 +1,6 @@
 # `rig.music.arrangement`
 
-Ordered playback frames — a tracker's order list / a sequencer song chain. Format when present.
+Ordered playback frames - a tracker's order list / a sequencer song chain. Format when present.
 
 An arrangement **has** frames. A frame **has** patterns. A pattern **has** steps.
 
@@ -10,7 +10,7 @@ An arrangement **has** frames. A frame **has** patterns. A pattern **has** steps
 |-------|------|---------|
 | `patterns` | entity[] | [`rig.music.pattern`](pattern.md) entities active this frame; each pattern's own `lane` says which channel it plays on |
 
-Omit a lane from `patterns` to leave that channel silent for the frame — no placeholder pattern needed.
+Omit a lane from `patterns` to leave that channel silent for the frame - no placeholder pattern needed.
 
 ## Arrangement
 
@@ -24,4 +24,4 @@ Omit a lane from `patterns` to leave that channel silent for the frame — no pl
 
 Running state comes from transport (`playing`). No onFrame callbacks.
 
-Each pattern advances at its own `stepsPerBeat`; the arrangement only orders which patterns play in which frame, not their internal timing. A frame's duration is however long its longest active pattern takes to loop once — the Contract does not add a separate frame-length field.
+Each pattern advances at its own `stepsPerBeat`; the arrangement only orders which patterns play in which frame, not their internal timing. A frame's duration is however long its longest active pattern takes to loop once - the Contract does not add a separate frame-length field.

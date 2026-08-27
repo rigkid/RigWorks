@@ -2,9 +2,9 @@
 
 Editable typeface metrics. Format when present.
 
-This is the **source** face — UFO / GLIF meaning. A compiled file on disk is [`rig.media.asset_ref`](../media/asset-ref.md) kind font. A positioned canvas run is [`rig.media.text`](../media/text.md). Do not grow text or asset_ref with outline fields.
+This is the **source** face - UFO / GLIF meaning. A compiled file on disk is [`rig.media.asset_ref`](../media/asset-ref.md) kind font. A positioned canvas run is [`rig.media.text`](../media/text.md). Do not grow text or asset_ref with outline fields.
 
-Compose [`rig.meta.named`](../meta/named.md) for the face label. `.ufo` / `.ufoz` stay host encodings — [ufo.md](../../docs/ufo.md).
+Compose [`rig.meta.named`](../meta/named.md) for the face label. `.ufo` / `.ufoz` stay host encodings - [ufo.md](../../docs/ufo.md).
 
 | Field | Type | Meaning |
 |-------|------|---------|

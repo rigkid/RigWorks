@@ -1,17 +1,17 @@
 # `rig.node.node`
 
-One node inside a [`rig.node.graph`](graph.md). Nested POD — not a separate ECS entity unless a host chooses that layout.
+One node inside a [`rig.node.graph`](graph.md). Nested POD - not a separate ECS entity unless a host chooses that layout.
 
 | Field | Type | Meaning |
 |-------|------|---------|
 | `id` | uint | Stable id within the graph |
-| `typeId` | string | Catalog **behavior** key (host vocabulary, e.g. `float.add`) — not a property datatype |
+| `typeId` | string | Catalog **behavior** key (host vocabulary, e.g. `float.add`) - not a property datatype |
 | `title` | string | Display label |
 | `position` | vec2 | Editor canvas position (not world transform) |
-| `pins` | pin[] | See [`rig.node.pin`](pin.md) — pin `type` uses [property datatypes](../../docs/properties.md) |
-| `params` | param[] | See [`rig.node.param`](param.md) — same datatype table |
+| `pins` | pin[] | See [`rig.node.pin`](pin.md) - pin `type` uses [property datatypes](../../docs/properties.md) |
+| `params` | param[] | See [`rig.node.param`](param.md) - same datatype table |
 | `nested` | graph? | When present, this node **is a group**; interior is a full [`rig.node.graph`](graph.md) |
-| `publishes` | publish[] | Outer pin to interior pin — see [`rig.node.publish`](publish.md) |
+| `publishes` | publish[] | Outer pin to interior pin - see [`rig.node.publish`](publish.md) |
 
 ## Leaf vs group
 

@@ -1,14 +1,14 @@
 # Print (FGF)
 
-Rig names pellet / FGF machine meaning as [`rig.print.*`](../schemas/print/machine.md). G-code **files** and slicer processes stay host mappings at the boundary — same rule as IDML in [idml.md](idml.md).
+Rig names pellet / FGF machine meaning as [`rig.print.*`](../schemas/print/machine.md). G-code **files** and slicer processes stay host mappings at the boundary - same rule as IDML in [idml.md](idml.md).
 
 ## Not these
 
 | Nearby id | Why it is different |
 |-----------|---------------------|
-| Envelope `pdfX` / `outputCondition` / `trapped` | Press / PDF/X job — [document.md](../schemas/document.md) |
+| Envelope `pdfX` / `outputCondition` / `trapped` | Press / PDF/X job - [document.md](../schemas/document.md) |
 | [`rig.layout.page`](../schemas/layout/page.md) / [`frame`](../schemas/layout/frame.md) | Print *spread* (pages, type). Not a bed |
-| [`rig.dev.machine`](../schemas/dev/machine.md) | VM / CI recipe — [dev.md](dev.md) |
+| [`rig.dev.machine`](../schemas/dev/machine.md) | VM / CI recipe - [dev.md](dev.md) |
 | [`rig.art.material`](../schemas/art/material.md) | CDWA medium / technique |
 | [`rig.render.material`](../schemas/render/material.md) | Shader |
 | [`rigGCode`](https://github.com/rigkid/rigGCode) `CPaths` | Plotter toolpaths. FGF G-code is `asset_ref` / [`rig.media.code`](../schemas/media/code.md) `language` `gcode` |

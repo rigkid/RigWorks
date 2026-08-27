@@ -1,7 +1,7 @@
 {
   "rig": "0.23.0",
   "document": {
-    "title": "Dev machine — agent smoke on a VM",
+    "title": "Dev machine - agent smoke on a VM",
     "defaultUnit": "px"
   },
   "entities": [

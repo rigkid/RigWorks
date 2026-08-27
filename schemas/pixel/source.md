@@ -16,6 +16,6 @@ File identity is [`rig.media.asset_ref`](../media/asset-ref.md) via `asset`. Com
 | `webcamHeight` | int | Optional. Capture height hint |
 | `videoTime` | float | Optional. Seconds into clip when `kind=video-file`; absent = 0 |
 
-Only `kind` is required — emit the fields the chosen kind needs and leave the rest absent.
+Only `kind` is required - emit the fields the chosen kind needs and leave the rest absent.
 
 Loop comes from the asset_ref when applicable. Decode / grab / bake = fulfillment.

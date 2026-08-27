@@ -1,6 +1,6 @@
 # rigkit
 
-Scaffold and validate Rig documents. JSON is the wire format. On disk that is `.rig`, or `.rigz` (a ZIP of one `.rig` plus a `data/` folder) — [interchange](../../docs/interchange.md#package).
+Scaffold and validate Rig documents. JSON is the wire format. On disk that is `.rig`, or `.rigz` (a ZIP of one `.rig` plus a `data/` folder) - [interchange](../../docs/interchange.md#package).
 
 ```bash
 npx rigkit init my-scene

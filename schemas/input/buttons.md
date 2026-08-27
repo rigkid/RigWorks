@@ -2,7 +2,7 @@
 
 Logical button state for one player. Format when present.
 
-Compose [`rig.meta.named`](../meta/named.md) for a label. Portable state only — device handles, keybinds, and edge/pulse caches stay in the host.
+Compose [`rig.meta.named`](../meta/named.md) for a label. Portable state only - device handles, keybinds, and edge/pulse caches stay in the host.
 
 | Field | Type | Meaning |
 |-------|------|---------|

@@ -27,4 +27,4 @@ Effect-specific parameters are **host / pack extension** (side table or JSON tex
 
 With `parentStep` unset every step reads the one before it, so a plain ordered list needs no routing fields at all. Editors that draw the chain as a tree indent a step under its `parentStep`.
 
-`parentStep` is **not** `groupParent` on [`rig.pixel.layer`](layer.md) — the compositor stack is a different graph.
+`parentStep` is **not** `groupParent` on [`rig.pixel.layer`](layer.md) - the compositor stack is a different graph.

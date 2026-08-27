@@ -1,7 +1,7 @@
 {
   "name": "rigworks",
   "private": true,
-  "description": "A no-code creative application framework — a shared data vocabulary for creative applications.",
+  "description": "A no-code creative application framework - a shared data vocabulary for creative applications.",
   "license": "MIT",
   "type": "module",
   "scripts": {

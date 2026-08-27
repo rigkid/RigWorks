@@ -1,6 +1,6 @@
 # OpenBIM
 
-Rig names OpenBIM meaning as [`rig.bim.*`](../schemas/bim/classify.md). IFC, BCF, and IDS **files** stay host mappings at the boundary — same rule as SVG ([design philosophy](design-philosophy.md#encoding)).
+Rig names OpenBIM meaning as [`rig.bim.*`](../schemas/bim/classify.md). IFC, BCF, and IDS **files** stay host mappings at the boundary - same rule as SVG ([design philosophy](design-philosophy.md#encoding)).
 
 OpenBIM (buildingSMART) is IFC + BCF + IDS + bSDD. The Contract job is entities, POD components, and schema ids. A converter or Revit/IFC pack is fulfillment ([RigKit](https://github.com/rigkid/RigKit) or a sibling tool), not this catalog.
 
@@ -29,12 +29,12 @@ Do **not** invent `rig.bim.wall` / `rig.bim.door`. One wall and one door use the
 | `.ifc` / `.ifczip` / ifcXML / ifcJSON | Map into / out of `rig.bim.*` + spatial / cad |
 | `.bcfzip` / BCF-XML | Map topics, comments, viewpoints |
 | `.ids` | Map specifications and facets |
-| `.rvt` | Autodesk private database — read via API or export IFC first |
+| `.rvt` | Autodesk private database - read via API or export IFC first |
 
-Do not put OwnerHistory, Representation item trees, or ObjectPlacement graphs in portable components — those are encoding / host cache.
+Do not put OwnerHistory, Representation item trees, or ObjectPlacement graphs in portable components - those are encoding / host cache.
 
 ## Honest limit
 
-Two hosts that speak `rig.bim.classify` + `pset` + `relation` can exchange a building and a BCF thread as `.rig`. Round-tripping every IFC representation item is not required — CAD + optional mesh bake covers the portable subset. A host that needs the rest keeps it in the IFC file and maps what it understands.
+Two hosts that speak `rig.bim.classify` + `pset` + `relation` can exchange a building and a BCF thread as `.rig`. Round-tripping every IFC representation item is not required - CAD + optional mesh bake covers the portable subset. A host that needs the rest keeps it in the IFC file and maps what it understands.
 
 Examples: [`examples/bim-model.json`](../examples/bim-model.json), [`bim-bcf.json`](../examples/bim-bcf.json), [`bim-ids.json`](../examples/bim-ids.json).

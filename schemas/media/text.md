@@ -4,7 +4,7 @@ Scene / canvas text run. Format when present.
 
 Editorial copy (named styles, paragraphs, runs, tables) is [`rig.story.flow`](../story/flow.md), not this schema. Do not flatten a story into canvas runs.
 
-An editable UFO source face is [`rig.font.face`](../font/face.md) — do not put outlines, kern pairs, or glyph names on this schema. `font` here is a compiled [`rig.media.asset_ref`](asset-ref.md).
+An editable UFO source face is [`rig.font.face`](../font/face.md) - do not put outlines, kern pairs, or glyph names on this schema. `font` here is a compiled [`rig.media.asset_ref`](asset-ref.md).
 
 | Field | Type | Meaning |
 |-------|------|---------|
@@ -15,7 +15,7 @@ An editable UFO source face is [`rig.font.face`](../font/face.md) — do not put
 | `features` | string | Optional. Comma-separated OpenType feature tags (e.g. `liga,ss01`); absent = host default |
 | `useKerning` | bool | Optional. Apply kerning; absent = true |
 
-Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md) or [`rig.paint.fill`](../paint/fill.md) on the same entity — do not re-declare colour here. Absent paint means host default (typically black).
+Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md) or [`rig.paint.fill`](../paint/fill.md) on the same entity - do not re-declare colour here. Absent paint means host default (typically black).
 
 ## Axis
 

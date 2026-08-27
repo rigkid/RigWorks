@@ -1,10 +1,10 @@
 # `rig.layout.frame`
 
-Text frame — a box a [`rig.story.flow`](../story/flow.md) flows through. Format when present.
+Text frame - a box a [`rig.story.flow`](../story/flow.md) flows through. Format when present.
 
-Bounds, columns, insets, and first baseline. Thread several frames with [`rig.layout.frame_chain`](frame-chain.md). Parent the frame to a [`rig.layout.page`](page.md) (or master) with [`rig.spatial.relationship`](../spatial/relationship.md). Pose is [`rig.spatial.transform`](../spatial/transform.md) — do not put `x` / `y` here.
+Bounds, columns, insets, and first baseline. Thread several frames with [`rig.layout.frame_chain`](frame-chain.md). Parent the frame to a [`rig.layout.page`](page.md) (or master) with [`rig.spatial.relationship`](../spatial/relationship.md). Pose is [`rig.spatial.transform`](../spatial/transform.md) - do not put `x` / `y` here.
 
-This is not [`rig.geometry.rectangle`](../geometry/rectangle.md) (a drawable). Graphic frames, object styles, text wrap, and anchored objects stay out — [idml.md](../../docs/idml.md).
+This is not [`rig.geometry.rectangle`](../geometry/rectangle.md) (a drawable). Graphic frames, object styles, text wrap, and anchored objects stay out - [idml.md](../../docs/idml.md).
 
 | Field | Type | Meaning |
 |-------|------|---------|
@@ -20,4 +20,4 @@ Equal columns from `columnCount` + `columnGutter`. Per-column widths stay out.
 
 Which point of the box is local (0,0) is [`rig.spatial.anchor`](../spatial/anchor.md). Absent anchor means top-left of the box.
 
-Name the frame by composing [`rig.meta.named`](../meta/named.md). Overflow text is fulfillment state — do not store it here.
+Name the frame by composing [`rig.meta.named`](../meta/named.md). Overflow text is fulfillment state - do not store it here.

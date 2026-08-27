@@ -2,7 +2,7 @@
 
 Portable development-environment recipe. Format when present.
 
-This is not [`rig.audio.bus`](../audio/bus.md) or [`rig.mod.trigger`](../mod/trigger.md), and not a UI workspace dock ([ui.md](../../docs/ui.md)); docks stay fulfillment. Secrets, provider API clients, and cache fingerprints stay in the host — see [dev.md](../../docs/dev.md).
+This is not [`rig.audio.bus`](../audio/bus.md) or [`rig.mod.trigger`](../mod/trigger.md), and not a UI workspace dock ([ui.md](../../docs/ui.md)); docks stay fulfillment. Secrets, provider API clients, and cache fingerprints stay in the host - see [dev.md](../../docs/dev.md).
 
 | Field | Type | Meaning |
 |-------|------|---------|

@@ -1,6 +1,6 @@
 # `rig.layout.page`
 
-A page or artboard — a bounded region content is composed against. Format when present.
+A page or artboard - a bounded region content is composed against. Format when present.
 
 A text frame on the page is [`rig.layout.frame`](frame.md), not this schema.
 
@@ -27,7 +27,7 @@ A text frame on the page is [`rig.layout.frame`](frame.md), not this schema.
 | 4 | floor | min Z | +Z | −Z |
 | 5 | ceiling | max Z | −Z | +Z |
 
-Each channel is an inset/extent **from that face**, not a span between faces. Z always has **both** sides when present: length 5 sets `floor` = `ceiling`; length 6 sets them independently. Lengths 1–4 leave Z unset (planar hosts).
+Each channel is an inset/extent **from that face**, not a span between faces. Z always has **both** sides when present: length 5 sets `floor` = `ceiling`; length 6 sets them independently. Lengths 1-4 leave Z unset (planar hosts).
 
 ### Shorthand (CSS-like, then Z)
 
@@ -42,6 +42,6 @@ Each channel is an inset/extent **from that face**, not a span between faces. Z 
 
 Catalog channel names for Z are `floor` / `ceiling` (face labels on the volume; not a civic address field). Emit the shortest equivalent form.
 
-Name the page by composing [`rig.meta.named`](../meta/named.md). Content belongs to a page via [`rig.spatial.relationship`](../spatial/relationship.md), the same as any other parent. Which point of the page is local (0,0) — and where a page transform attaches — is [`rig.spatial.anchor`](../spatial/anchor.md), not a field here. Absent anchor means top-left of the trim (pages have no authored origin of their own).
+Name the page by composing [`rig.meta.named`](../meta/named.md). Content belongs to a page via [`rig.spatial.relationship`](../spatial/relationship.md), the same as any other parent. Which point of the page is local (0,0) - and where a page transform attaches - is [`rig.spatial.anchor`](../spatial/anchor.md), not a field here. Absent anchor means top-left of the trim (pages have no authored origin of their own).
 
 Which page is currently open in an editor is host state, not a field here.

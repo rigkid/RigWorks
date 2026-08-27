@@ -1,25 +1,25 @@
 # ECS conventions
 
-Entity–component composition is how Rig portable meaning is shaped. No particular registry library. No GPU or UI toolkit types inside Contract-facing components.
+Entity-component composition is how Rig portable meaning is shaped. No particular registry library. No GPU or UI toolkit types inside Contract-facing components.
 
 Two layers share the name “ECS”:
 
 | Layer | Where | Floor? |
 |-------|--------|--------|
-| **Document composition** | Entities with POD components keyed by schema ids ([`rig.document`](../schemas/document.md)) | Yes — [honors.md](honors.md) |
-| **Runtime systems** | Registry, Update/Draw phases, host systems over those components | Live hosts only — with [SUDE](sude.md) |
+| **Document composition** | Entities with POD components keyed by schema ids ([`rig.document`](../schemas/document.md)) | Yes - [honors.md](honors.md) |
+| **Runtime systems** | Registry, Update/Draw phases, host systems over those components | Live hosts only - with [SUDE](sude.md) |
 
 ## Why ECS
 
-We use entity–component composition because we build for change. Composition over inheritance. Portable fields stay reusable across hosts and packs. That wire shape is what makes the vocabulary powerful — not a requirement to link an ECS library.
+We use entity-component composition because we build for change. Composition over inheritance. Portable fields stay reusable across hosts and packs. That wire shape is what makes the vocabulary powerful - not a requirement to link an ECS library.
 
 ## Document composition (Contract floor)
 
 - Portable meaning is **POD / plain data** (numbers, small structs, strings, entity ids).
 - No window pointers, GPU handles, UI toolkit types, or behavior callbacks in Contract-facing components.
-- No dirty flags, pending queues, or ephemeral edge state (hover/press) in portable components — those stay in the host and are not serialized.
+- No dirty flags, pending queues, or ephemeral edge state (hover/press) in portable components - those stay in the host and are not serialized.
 - One type per field. Host-only resources may exist keyed by opaque ids; they are not Rig portable meaning.
-- Creative layouts live under [`../schemas/`](../schemas/) — formats when present. Compose [`meta.named`](../schemas/meta/named.md) for labels; [`media.asset_ref`](../schemas/media/asset-ref.md) for paths.
+- Creative layouts live under [`../schemas/`](../schemas/) - formats when present. Compose [`meta.named`](../schemas/meta/named.md) for labels; [`media.asset_ref`](../schemas/media/asset-ref.md) for paths.
 - Editor-visible fields use portable [property datatypes](properties.md).
 - On the wire, do not invent a second scene graph beside entities and components.
 
@@ -44,7 +44,7 @@ Light hosts may run only simulation.
 
 Cross-entity wires (`rig.mod.binding`, `rig.anim.tween` onto a property, orbit onto a camera)
 belong in **Update systems**, not free ticks after import. UI controls are views over
-the same property addressing — never a second store.
+the same property addressing - never a second store.
 
 ## Hierarchy (optional shape)
 
@@ -62,4 +62,4 @@ Exact type names are host-specific. See [schemas/spatial/transform.md](../schema
 
 Document tools are Rig when they speak entity/component POD against schemas they support. Live hosts add SUDE + these runtime rules.
 
-See [honors.md](honors.md). UI is separate — [ui.md](ui.md).
+See [honors.md](honors.md). UI is separate - [ui.md](ui.md).

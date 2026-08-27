@@ -2,11 +2,11 @@
 
 Ordered indexed colour table. Format when present.
 
-Compose [`rig.meta.named`](../meta/named.md) for a label. Canvas clear and paint rgba stay as floats 0–1; this schema documents the discrete palette a host uses when interpreting indexed pixels ([`rig.pixel.tile_set`](tile-set.md)).
+Compose [`rig.meta.named`](../meta/named.md) for a label. Canvas clear and paint rgba stay as floats 0-1; this schema documents the discrete palette a host uses when interpreting indexed pixels ([`rig.pixel.tile_set`](tile-set.md)).
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `colors` | rgba[] | Ordered entries; index `i` selects `colors[i]` (floats 0–1) |
+| `colors` | rgba[] | Ordered entries; index `i` selects `colors[i]` (floats 0-1) |
 
 Hosts that ship a fixed console palette still serialize it here when a document needs portable colour identity. Runtime remaps (`pal()` swaps) stay in the host.
 

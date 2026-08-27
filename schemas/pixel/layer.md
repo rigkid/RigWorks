@@ -16,6 +16,6 @@ Compositor stack entry. Format when present.
 | `invertMask` | bool | Optional. Invert mask; absent = false |
 | `groupParent` | entity | Optional. Compositor group parent; absent or none = root |
 
-`groupParent` is **not** `parent` on [`rig.spatial.relationship`](../spatial/relationship.md) — different graph.
+`groupParent` is **not** `parent` on [`rig.spatial.relationship`](../spatial/relationship.md) - different graph.
 
 Rasters: [raster.md](raster.md).

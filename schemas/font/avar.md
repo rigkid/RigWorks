@@ -2,7 +2,7 @@
 
 Axis variation map for one [`rig.font.axis`](axis.md). Format when present.
 
-OpenType `avar` segment list for that axis: normalized design (−1…1) to normalized blend (−1…1). Compose on the **same** entity as the axis. Absent component = identity map.
+OpenType `avar` segment list for that axis: normalized design (−1...1) to normalized blend (−1...1). Compose on the **same** entity as the axis. Absent component = identity map.
 
 | Field | Type | Meaning |
 |-------|------|---------|

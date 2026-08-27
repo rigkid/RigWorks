@@ -6,11 +6,11 @@ Times are wall-clock minutes since local midnight in the document's `timeZone` (
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `days` | bool[7] | Active weekdays; index 0 = Sunday … 6 = Saturday |
-| `startMinutes` | int | Window start, 0–1439 |
-| `endMinutes` | int | Window end, 0–1439. When `endMinutes` ≤ `startMinutes`, the window crosses midnight. |
+| `days` | bool[7] | Active weekdays; index 0 = Sunday ... 6 = Saturday |
+| `startMinutes` | int | Window start, 0-1439 |
+| `endMinutes` | int | Window end, 0-1439. When `endMinutes` ≤ `startMinutes`, the window crosses midnight. |
 
-What the window enables is not this schema — compose or mute a [`rig.audio.bus`](../audio/bus.md), or point a [`rig.mod.trigger`](../mod/trigger.md) gate at this entity.
+What the window enables is not this schema - compose or mute a [`rig.audio.bus`](../audio/bus.md), or point a [`rig.mod.trigger`](../mod/trigger.md) gate at this entity.
 
 A second daily window (lunch close, then evening) is another entity with its own `weekly`. Do not invent a windows array here.
 

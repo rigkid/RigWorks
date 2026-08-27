@@ -2,7 +2,7 @@
 
 Kerning class. Format when present.
 
-UFO `groups.plist`. Compose [`rig.meta.named`](../meta/named.md) — `stableId` is the group name (`public.kern1.A`). Not [`rig.spatial.group`](../spatial/group.md) (scene folder).
+UFO `groups.plist`. Compose [`rig.meta.named`](../meta/named.md) - `stableId` is the group name (`public.kern1.A`). Not [`rig.spatial.group`](../spatial/group.md) (scene folder).
 
 | Field | Type | Meaning |
 |-------|------|---------|

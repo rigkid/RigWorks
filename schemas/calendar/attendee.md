@@ -2,7 +2,7 @@
 
 A person invited to an event. Format when present.
 
-Field meanings follow RFC 5545 `ATTENDEE` / `ROLE` / `PARTSTAT` — as fields, not a `mailto:` line.
+Field meanings follow RFC 5545 `ATTENDEE` / `ROLE` / `PARTSTAT` - as fields, not a `mailto:` line.
 
 | Field | Type | Meaning |
 |-------|------|---------|
@@ -13,4 +13,4 @@ Field meanings follow RFC 5545 `ATTENDEE` / `ROLE` / `PARTSTAT` — as fields, n
 
 `event` and `person` are required. Name the person on that entity. A second guest is another entity.
 
-Do not put an email on this schema — compose [`rig.person.contact`](../person/contact.md) on the person. Organizer stays on the event.
+Do not put an email on this schema - compose [`rig.person.contact`](../person/contact.md) on the person. Organizer stays on the event.

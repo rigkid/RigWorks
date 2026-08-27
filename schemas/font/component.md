@@ -1,8 +1,8 @@
 # `rig.font.component`
 
-Composite reference — draw another glyph into this one. Format when present.
+Composite reference - draw another glyph into this one. Format when present.
 
-UFO `component` in a GLIF. Live on a **child** of the composite [`rig.font.glyph`](glyph.md) (one component type per entity). Do not reuse [`rig.spatial.transform`](../spatial/transform.md) — that is 3D TRS.
+UFO `component` in a GLIF. Live on a **child** of the composite [`rig.font.glyph`](glyph.md) (one component type per entity). Do not reuse [`rig.spatial.transform`](../spatial/transform.md) - that is 3D TRS.
 
 | Field | Type | Meaning |
 |-------|------|---------|

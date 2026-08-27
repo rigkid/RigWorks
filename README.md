@@ -1,42 +1,42 @@
 # RigWorks
 
-![The geometry vocabulary — examples/minimal-scene.json drawn by the repo's own SVG fulfillment](site/scene.svg)
+![The geometry vocabulary - examples/minimal-scene.json drawn by the repo's own SVG fulfillment](site/scene.svg)
 
 **A no-code creative application framework.**  
 *Because no code is the best code.*  
-**Rig** — Readable Independent Grammar.
+**Rig** - Readable Independent Grammar.
 
-[RigWorks](https://rig.works) — **Rig** for short, and Rig in all running text — is a shared data vocabulary for creative applications. It is future-proof, host-independent, and human-readable: open the JSON, change a field, load it in another app. It is a framework you never install — no library to link, no runtime to embed, no API to version. It ships as agreement: a grammar of schema ids and entity/component POD documents. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
+[RigWorks](https://rig.works) - **Rig** for short, and Rig in all running text - is a shared data vocabulary for creative applications. It is future-proof, host-independent, and human-readable: open the JSON, change a field, load it in another app. It is a framework you never install - no library to link, no runtime to embed, no API to version. It ships as agreement: a grammar of schema ids and entity/component POD documents. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
 
 ## It runs
 
 A Rig document is not a diagram of a format. The same JSON presents in more than one fulfillment without either knowing the other:
 
-- **SVG** — [`examples/minimal-scene.json`](examples/minimal-scene.json) drawn by [`tools/render-svg.mjs`](tools/render-svg.mjs) (the picture at the top of this page)
-- **[RigKit](https://github.com/rigkid/RigKit)** — desktop / Pi reference host (GLFW, packs)
+- **SVG** - [`examples/minimal-scene.json`](examples/minimal-scene.json) drawn by [`tools/render-svg.mjs`](tools/render-svg.mjs) (the picture at the top of this page)
+- **[RigKit](https://github.com/rigkid/RigKit)** - desktop / Pi reference host (GLFW, packs)
 
 Any app that already has Setup / Update / Draw / Exit can honor the same schemas. Host-only fields stay in `x.<vendor>.*` extensions so they do not pollute the portable ones. Emitted documents pass `rig-validate --strict`.
 
-**Concept is more important than execution.** What a transform *is* outlives every renderer that ever drew one. Rig keeps the concept and leaves the execution to you — [design philosophy](docs/design-philosophy.md), [why no code](docs/why-no-code.md).
+**Concept is more important than execution.** What a transform *is* outlives every renderer that ever drew one. Rig keeps the concept and leaves the execution to you - [design philosophy](docs/design-philosophy.md), [why no code](docs/why-no-code.md).
 
-**AI co-coding is here to stay.** When execution gets cheap, the shared concept becomes the scarce asset. Rig publishes it in a form people and models read the same way — [AI collaboration](docs/ai-collaboration.md).
+**AI co-coding is here to stay.** When execution gets cheap, the shared concept becomes the scarce asset. Rig publishes it in a form people and models read the same way - [AI collaboration](docs/ai-collaboration.md).
 
-**What it costs.** A data framework moves work rather than deleting it. Live hosts write the loop; nothing fails to build when you drift; a schema only pays off once a second host speaks it — [the honest price](docs/why-no-code.md#the-honest-price).
+**What it costs.** A data framework moves work rather than deleting it. Live hosts write the loop; nothing fails to build when you drift; a schema only pays off once a second host speaks it - [the honest price](docs/why-no-code.md#the-honest-price).
 
 ## The framework
 
-1. **Grammar** — schema ids, field names, units, and entity/component [POD composition](docs/ecs.md). Enough to **be Rig** ([honors](docs/honors.md)).
-2. **Schemas** — agreed POD field layouts ([prose](schemas/) + [JSON Schema](schemas/json/)). Ship what you support.
-3. **Properties** — portable [datatype](docs/properties.md) rows.
-4. **Live hosts** — [SUDE](docs/sude.md) (Setup / Update / Draw / Exit) plus runtime ECS systems.
-5. **Optional UI** — [Rig + UI](docs/ui.md) editing the same data.
+1. **Grammar** - schema ids, field names, units, and entity/component [POD composition](docs/ecs.md). Enough to **be Rig** ([honors](docs/honors.md)).
+2. **Schemas** - agreed POD field layouts ([prose](schemas/) + [JSON Schema](schemas/json/)). Ship what you support.
+3. **Properties** - portable [datatype](docs/properties.md) rows.
+4. **Live hosts** - [SUDE](docs/sude.md) (Setup / Update / Draw / Exit) plus runtime ECS systems.
+5. **Optional UI** - [Rig + UI](docs/ui.md) editing the same data.
 
-Words used precisely — Contract, fulfillment, host, pack: [docs/terms.md](docs/terms.md).
+Words used precisely - Contract, fulfillment, host, pack: [docs/terms.md](docs/terms.md).
 
 Wire format is **JSON** ([`rig.document`](schemas/document.md)). Validate generated output:
 
 ```bash
-npm run setup                                          # once — installs the validator
+npm run setup                                          # once - installs the validator
 node tools/rig-validate/cli.js examples/minimal-scene.json
 npm run check                                          # schemas, parity, links, reference documents
 ```
@@ -47,7 +47,7 @@ Live hosts run a SUDE loop; portable content is ECS components on entities:
 
 ```text
 Setup: spawn / load entities
-Update: simulate (modulators, transport, …)
+Update: simulate (modulators, transport, ...)
 Draw: present
 Exit: tear down
 ```
@@ -121,7 +121,7 @@ node tools/rig-validate/cli.js path/to/doc.json
 
 ## Reference host
 
-[RigKit](https://github.com/rigkid/RigKit) fulfills Rig on desktop (GLFW / OpenGL / packs). The family lives under the [rigkid](https://github.com/rigkid) org: **RigWorks** is the spec, **RigKit** is the reference host. RigKit's `minimal` demo presents the same scene shape family as `examples/minimal-scene.json` — the picture at the top of this page is that document drawn by the in-repo SVG fulfillment, [`tools/render-svg.mjs`](tools/render-svg.mjs).
+[RigKit](https://github.com/rigkid/RigKit) fulfills Rig on desktop (GLFW / OpenGL / packs). The family lives under the [rigkid](https://github.com/rigkid) org: **RigWorks** is the spec, **RigKit** is the reference host. RigKit's `minimal` demo presents the same scene shape family as `examples/minimal-scene.json` - the picture at the top of this page is that document drawn by the in-repo SVG fulfillment, [`tools/render-svg.mjs`](tools/render-svg.mjs).
 
 ## Version
 
@@ -131,16 +131,16 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 
 | Start here | |
 |------------|--|
-| [docs/design-philosophy.md](docs/design-philosophy.md) | Future-proof, host-independent, human-readable — the tablet |
+| [docs/design-philosophy.md](docs/design-philosophy.md) | Future-proof, host-independent, human-readable - the tablet |
 | [docs/why-no-code.md](docs/why-no-code.md) | Why a framework with no code, and what it costs |
 | [docs/terms.md](docs/terms.md) | Contract, fulfillment, host, pack, POD |
-| [docs/honors.md](docs/honors.md) | The minimum bar — is it Rig? |
+| [docs/honors.md](docs/honors.md) | The minimum bar - is it Rig? |
 | [docs/gaps.md](docs/gaps.md) | Where the Contract is silent, ambiguous, or wrong |
 
 | The rules | |
 |-----------|--|
 | [docs/sude.md](docs/sude.md) | Setup / Update / Draw / Exit |
-| [docs/ecs.md](docs/ecs.md) | Entity–component conventions |
+| [docs/ecs.md](docs/ecs.md) | Entity-component conventions |
 | [docs/ui.md](docs/ui.md) | Optional UI layer over the same data |
 
 | The data | |
@@ -165,4 +165,4 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 
 ## License
 
-MIT — [LICENSE](LICENSE).
+MIT - [LICENSE](LICENSE).

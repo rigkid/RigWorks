@@ -2,7 +2,7 @@
 
 **A no-code creative application framework. Because no code is the best code.**
 
-The short tablet — future-proof, host-independent, human-readable — is [design philosophy](design-philosophy.md). This page is the deeper anti-library argument and what it costs.
+The short tablet - future-proof, host-independent, human-readable - is [design philosophy](design-philosophy.md). This page is the deeper anti-library argument and what it costs.
 
 ## What "no code" means here
 
@@ -10,11 +10,11 @@ The phrase is usually sold as "you will never program again". Rig does not claim
 
 | Reading | True of Rig? |
 |---------|-----------------|
-| The framework ships zero code — nothing to link, embed, compile, or upgrade. | **Yes.** This is the entire design. |
+| The framework ships zero code - nothing to link, embed, compile, or upgrade. | **Yes.** This is the entire design. |
 | Content is authored as data, not source. A document is the artifact. | **Yes.** [`rig.document`](../schemas/document.md) travels; behavior stays in the host. |
 | Nobody writes code anywhere. | **No.** Someone writes the host. Rig is not that someone. |
 
-Rig is a framework you never install. It frames portable meaning — [composed data](ecs.md), [named field layouts](../schemas/) — and, for live hosts, [a loop](sude.md) — then gets out of the way. Adopting it is a decision, not a dependency.
+Rig is a framework you never install. It frames portable meaning - [composed data](ecs.md), [named field layouts](../schemas/) - and, for live hosts, [a loop](sude.md) - then gets out of the way. Adopting it is a decision, not a dependency.
 
 ## Because no code is the best code
 
@@ -36,13 +36,13 @@ A library asks you to trust a team's release cadence forever. A contract asks yo
 
 Commercial node hosts and patchers are often called "no-code," but they **are code**:
 scripting, shaders, expressions, and node ABIs under a GUI. Their project formats are
-private. Rig's "no code" means the *framework* ships none — not that authoring never
+private. Rig's "no code" means the *framework* ships none - not that authoring never
 involves programming. Those apps are excellent fulfillments; Rig is what two of them
 would need to speak to exchange work.
 
 ## Railway gauge
 
-Independent rail companies once picked different track widths. Their trains physically could not run on each other's lines until they agreed on a number. Creative tools have the same problem with scenes, sequences, and graphs. Converters rot; agreement lasts. Rig is the gauge — field names and units — not another locomotive.
+Independent rail companies once picked different track widths. Their trains physically could not run on each other's lines until they agreed on a number. Creative tools have the same problem with scenes, sequences, and graphs. Converters rot; agreement lasts. Rig is the gauge - field names and units - not another locomotive.
 
 ## What a library would have cost
 
@@ -51,7 +51,7 @@ Had Rig shipped as `librig`, the cost would land on exactly the people it is mea
 - **Language lock.** A C++ library excludes the Python sketch, the browser toy, the Arduino sign.
 - **Version lock.** Your app's floor becomes the library's floor. Two packs on two versions cannot load together.
 - **Platform reach.** A microcontroller cannot take the dependency, so embedded work forks or opts out.
-- **Fork pressure.** The moment someone needs a behavior the library forbids, they vendor it — and the shared meaning quietly diverges.
+- **Fork pressure.** The moment someone needs a behavior the library forbids, they vendor it - and the shared meaning quietly diverges.
 - **Coupling of unrelated things.** A renderer bug fix and a schema addition arrive in the same release.
 
 Data has none of these. A `rig.spatial.transform` payload written by a Rust CLI loads in a C++ host and an LED controller, none of which know the others exist.
@@ -68,7 +68,7 @@ Executions have a half-life. Renderers get rewritten, GPUs are replaced, framewo
 
 Whether that drives a C++ audio thread, a web worker, or a strip of LEDs is execution, and it will be rewritten several times. `"bpm": 128` will still mean 128. Every document ever written against the concept survives every rewrite of every execution.
 
-This is why Rig invests its effort where it does. The repository contains schemas, units, and rules — the parts that are expensive to agree on and cheap to keep. It contains no renderer, no runtime and nothing to install — it just works.
+This is why Rig invests its effort where it does. The repository contains schemas, units, and rules - the parts that are expensive to agree on and cheap to keep. It contains no renderer, no runtime and nothing to install - it just works.
 
 It is also why "ship what you support" is not a compromise. A host that implements six schemas and ignores sixty-three is fully Rig. Partial execution of a shared concept still interoperates; a partial library does not link.
 
@@ -81,16 +81,16 @@ A data framework moves work rather than deleting it. Be clear about what you tak
 | You implement the loop (live hosts) | No `rig.h` to include. [SUDE](sude.md) is four hooks; you write them. Document tools need no loop. |
 | No compiler enforcement | Nothing fails to build when you drift. [`rig-validate`](../tools/rig-validate/) is the enforcement, so run it. |
 | Agreement is social | A schema only pays off once a second host speaks it. Ids are cheap; consensus is not. |
-| Underspecification bites | "Colour" without a range, "angle" without units — the Contract is only as good as its prose. |
+| Underspecification bites | "Colour" without a range, "angle" without units - the Contract is only as good as its prose. |
 
 ## When a library is the better answer
 
 Take a library when you want one implementation, in one language, on one platform, shipping this week. Rig pays off under different conditions:
 
-- You expect **more than one host** — a desktop tool and an embedded show, an editor and a renderer.
-- You expect the work to **outlive its implementation** — installations, archives, long-running instruments.
+- You expect **more than one host** - a desktop tool and an embedded show, an editor and a renderer.
+- You expect the work to **outlive its implementation** - installations, archives, long-running instruments.
 - You want **tools and models to author content** without linking anything ([AI co-coding](ai-collaboration.md)).
-- You need to **subset** — an LED controller taking transforms and colours, and nothing else.
+- You need to **subset** - an LED controller taking transforms and colours, and nothing else.
 
 ## Next
 

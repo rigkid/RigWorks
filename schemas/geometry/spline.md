@@ -11,7 +11,7 @@ NURBS / control-point spline in the plane. Format when present. Space curves use
 | `weights` | float[] | Optional. Empty or absent = all weights 1 (non-rational). Same length as `controlPoints` when present |
 | `fitPoints` | vec2[] | Optional. Authoring / DXF fit points; not required for evaluation when control points + knots are present |
 
-Tessellation to polylines or path commands is host fulfillment — this schema is the parametric source of truth. Do not also attach [`rig.geometry.path`](path.md) for the same contour.
+Tessellation to polylines or path commands is host fulfillment - this schema is the parametric source of truth. Do not also attach [`rig.geometry.path`](path.md) for the same contour.
 
 Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md).
 

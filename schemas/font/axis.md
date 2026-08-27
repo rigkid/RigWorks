@@ -14,4 +14,4 @@ OpenType `fvar` axis. Parent to the [`rig.font.face`](face.md) with [`rig.spatia
 
 Piecewise normalized maps compose optional [`rig.font.avar`](avar.md) on the **same** entity. Absent avar = identity (−1/−1, 0/0, 1/1).
 
-Do not put axis values on [`rig.media.text`](../media/text.md) — live coordinates are host / document state. Named instances are fulfillment.
+Do not put axis values on [`rig.media.text`](../media/text.md) - live coordinates are host / document state. Named instances are fulfillment.

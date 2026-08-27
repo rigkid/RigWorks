@@ -4,8 +4,8 @@ BCF issue / topic. Format when present.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `topicType` | string | Optional. Topic type (`Clash`, `Issue`, …); absent = unset |
-| `topicStatus` | string | Optional. Status (`Open`, `Closed`, …); absent = unset |
+| `topicType` | string | Optional. Topic type (`Clash`, `Issue`, ...); absent = unset |
+| `topicStatus` | string | Optional. Status (`Open`, `Closed`, ...); absent = unset |
 | `priority` | string | Optional. Priority label; absent = unset |
 | `assignedTo` | string | Optional. Assignee; absent = unset |
 | `labels` | string[] | Optional. Labels; order carries no meaning |

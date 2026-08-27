@@ -6,7 +6,7 @@ Compose onto the same entity as [`rig.render.light`](../render/light.md). Pose a
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `startChannel` | int | First DMX slot used (1–512) |
+| `startChannel` | int | First DMX slot used (1-512) |
 | `channelCount` | int | Channels occupied (≥ 1) |
 | `port` | entity | Optional. [`rig.io.dmx`](../io/dmx.md) port; absent = host default |
 

@@ -1,7 +1,7 @@
 {
   "rig": "0.15.0",
   "document": {
-    "title": "OpenBIM model — site, storey, wall, opening, door",
+    "title": "OpenBIM model - site, storey, wall, opening, door",
     "defaultUnit": "mm",
     "ifcSchema": "ifc4"
   },

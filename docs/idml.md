@@ -1,6 +1,6 @@
 # IDML
 
-Rig names InDesign layout meaning as [`rig.layout.*`](../schemas/layout/page.md) plus [`rig.story.*`](../schemas/story/flow.md). InDesign Markup Language **files** stay host mappings at the boundary — same rule as IFC in [openbim.md](openbim.md) and SVG ([design philosophy](design-philosophy.md#encoding)).
+Rig names InDesign layout meaning as [`rig.layout.*`](../schemas/layout/page.md) plus [`rig.story.*`](../schemas/story/flow.md). InDesign Markup Language **files** stay host mappings at the boundary - same rule as IFC in [openbim.md](openbim.md) and SVG ([design philosophy](design-philosophy.md#encoding)).
 
 The Contract job is entities, POD components, and schema ids. An `.idml` reader / writer (SimpleIDML, a Pandoc wire, or a sibling pack) is fulfillment, not this catalog.
 
@@ -34,11 +34,11 @@ GeometricBounds `(y1, x1, y2, x2)` become position `(x1, y1)` and size `(x2 − 
 
 | File | Role |
 |------|------|
-| `.idml` | ZIP of `designmap.xml` + Spreads / Stories / MasterSpreads / Resources — map into / out of layout + story |
-| `.indt` / `.indd` | InDesign private database — export IDML first |
+| `.idml` | ZIP of `designmap.xml` + Spreads / Stories / MasterSpreads / Resources - map into / out of layout + story |
+| `.indt` / `.indd` | InDesign private database - export IDML first |
 | Word / `.docx` | Story-only import (mammoth or similar) to `rig.story.*`. Not a layout |
 
-Do not put InDesign Self strings, story overflow, or composed line breaks in portable components — those are encoding / host cache.
+Do not put InDesign Self strings, story overflow, or composed line breaks in portable components - those are encoding / host cache.
 
 ## Honest limit
 
@@ -59,7 +59,7 @@ Stay out of v1 (do not invent schemas for these):
 - XML tags
 - Books (`.indb`)
 
-A compose host that parents a flow to a page and clones pages on overflow is not an IDML layout — InDesign threads frames. Masters, facing, slug, and character styles beyond italic are already in this catalog; honor them at emit time.
+A compose host that parents a flow to a page and clones pages on overflow is not an IDML layout - InDesign threads frames. Masters, facing, slug, and character styles beyond italic are already in this catalog; honor them at emit time.
 
 A Word converter that emits only paragraphs is fine for a novel's `rig.story.*`. It is not a pictured book or a register until tables, lists, images, footnotes, and hyperlinks land in that fulfillment. Tables and list membership are already named here.
 

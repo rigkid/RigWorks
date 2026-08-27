@@ -14,4 +14,4 @@ Hiding is not inherited by this component alone. Whether a hidden parent hides i
 
 Draw order is **not** here. Sibling sequence lives in `order` on [`rig.spatial.relationship`](../spatial/relationship.md); layer-list stacking in `order` on [`rig.spatial.layer`](../spatial/layer.md).
 
-Hiding an entity says nothing about whether it still runs — a hidden emitter keeps emitting. Use the host's own enable flag for that.
+Hiding an entity says nothing about whether it still runs - a hidden emitter keeps emitting. Use the host's own enable flag for that.

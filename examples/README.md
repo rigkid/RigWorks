@@ -36,13 +36,13 @@ node tools/rig-validate/cli.js examples/print-fgf.json
 
 ## SUDE sketch
 
-Hosts honor Setup / Update / Draw / Exit. Data is ECS POD composed onto entities — the JSON below is what travels; the loop is how a host runs it.
+Hosts honor Setup / Update / Draw / Exit. Data is ECS POD composed onto entities - the JSON below is what travels; the loop is how a host runs it.
 
 ```text
 Setup:
   load or spawn entities from a Rig document
 Update(dt):
-  advance modulators, tweens, transport, bindings…
+  advance modulators, tweens, transport, bindings...
 Draw:
   present transforms / shapes / meshes / whatever this host draws
 Exit:
@@ -51,7 +51,7 @@ Exit:
 
 ## `minimal-scene.json`
 
-A specimen sheet of the geometry vocabulary: rounded rectangle, circle, regular polygons (triangle, hexagon), star, parent/child hierarchy under a root [`rig.spatial.vertex`](../schemas/spatial/vertex.md) (`world`), closed and open polygons, line, and a quad mesh. Rendered to [`site/scene.svg`](../site/scene.svg) by [`tools/render-svg.mjs`](../tools/render-svg.mjs). Note what is *absent*: fill-only shapes carry just `fillRgba` and stroke-only shapes just `strokeRgba` — 0.8.0 defaults cover the rest.
+A specimen sheet of the geometry vocabulary: rounded rectangle, circle, regular polygons (triangle, hexagon), star, parent/child hierarchy under a root [`rig.spatial.vertex`](../schemas/spatial/vertex.md) (`world`), closed and open polygons, line, and a quad mesh. Rendered to [`site/scene.svg`](../site/scene.svg) by [`tools/render-svg.mjs`](../tools/render-svg.mjs). Note what is *absent*: fill-only shapes carry just `fillRgba` and stroke-only shapes just `strokeRgba` - 0.8.0 defaults cover the rest.
 
 One entity (excerpt):
 
@@ -110,7 +110,7 @@ One entity (excerpt):
 
 ## `lfo-binding.json`
 
-`rig.mod.lfo` on one entity, `rig.mod.binding` driving another entity’s `position.y` — Update-system data (advance LFO + apply binding each `dt`); no UI required.
+`rig.mod.lfo` on one entity, `rig.mod.binding` driving another entity’s `position.y` - Update-system data (advance LFO + apply binding each `dt`); no UI required.
 
 ## `ui-panel.json`
 
@@ -122,11 +122,11 @@ A tool document meant to travel: panel + nested `rig.ui.group` sections, control
 
 ## `path3d-spline3d.json`
 
-A cubic space curve as `rig.geometry.path3d` (`cubic-to`) and a separate degree-3 NURBS as `rig.geometry.spline3d`. Authored forms stay distinct — do not dual-attach both on one contour.
+A cubic space curve as `rig.geometry.path3d` (`cubic-to`) and a separate degree-3 NURBS as `rig.geometry.spline3d`. Authored forms stay distinct - do not dual-attach both on one contour.
 
 ## `page-anchor.json`
 
-A page with `rig.spatial.anchor` `center` (page-local origin mid-trim) and a child rectangle with `bottom-right` registration plus a local `offset` — transform stays TRS; the 3×3 lives on the sibling component.
+A page with `rig.spatial.anchor` `center` (page-local origin mid-trim) and a child rectangle with `bottom-right` registration plus a local `offset` - transform stays TRS; the 3×3 lives on the sibling component.
 
 ## `cad-boolean.json`
 
@@ -167,7 +167,7 @@ One entity (the flow):
 
 ## `story-frames.json`
 
-Threaded text layout: facing pages, a right master with slug, two document pages, two [`rig.layout.frame`](../schemas/layout/frame.md) boxes (columns / insets / first baseline), and a [`rig.layout.frame_chain`](../schemas/layout/frame-chain.md) that walks them. Visual typography lives on `rig.layout.paragraph_style` / `character_style` (including a character style that is not italic). `.idml` stays a host encoding — [docs/idml.md](../docs/idml.md).
+Threaded text layout: facing pages, a right master with slug, two document pages, two [`rig.layout.frame`](../schemas/layout/frame.md) boxes (columns / insets / first baseline), and a [`rig.layout.frame_chain`](../schemas/layout/frame-chain.md) that walks them. Visual typography lives on `rig.layout.paragraph_style` / `character_style` (including a character style that is not italic). `.idml` stays a host encoding - [docs/idml.md](../docs/idml.md).
 
 One entity (the first frame):
 
@@ -206,7 +206,7 @@ One entity (the first frame):
 
 ## `bim-model.json`
 
-OpenBIM model cut: site, building, storey, space, a shared wall type, an extruded wall occurrence, an opening that voids the wall, and a door that fills the opening. IFC class is a string on `rig.bim.classify` — not a per-class schema. See [docs/openbim.md](../docs/openbim.md).
+OpenBIM model cut: site, building, storey, space, a shared wall type, an extruded wall occurrence, an opening that voids the wall, and a door that fills the opening. IFC class is a string on `rig.bim.classify` - not a per-class schema. See [docs/openbim.md](../docs/openbim.md).
 
 ## `bim-bcf.json`
 
@@ -214,7 +214,7 @@ BCF thread: topic + comment + viewpoint (camera, selected elements, clip plane, 
 
 ## `bim-ids.json`
 
-IDS specification: applicability facet (`IfcWall`) and requirement facet (`Pset_WallCommon.FireRating`). Specs-only document — no building model required.
+IDS specification: applicability facet (`IfcWall`) and requirement facet (`Pset_WallCommon.FireRating`). Specs-only document - no building model required.
 
 ## `lights.json`
 
@@ -222,11 +222,11 @@ Three lamps: directional (local −Z), point with `range`, spot with inner/outer
 
 ## `font-var.json`
 
-Variable face: one `wght` axis (+ identity `avar`), a stem glyph `I` with default `rig.geometry.path` and a positive-weight [`rig.font.cell`](../schemas/font/cell.md) delta. Design space is first-class — [docs/ufo.md](../docs/ufo.md).
+Variable face: one `wght` axis (+ identity `avar`), a stem glyph `I` with default `rig.geometry.path` and a positive-weight [`rig.font.cell`](../schemas/font/cell.md) delta. Design space is first-class - [docs/ufo.md](../docs/ufo.md).
 
 ## `font-ufo.json`
 
-UFO source as Rig: face metrics, a foreground layer, glyphs `A` / `V` / `space` / `acute` / `Aacute` (composite), a `top` anchor, pair `A`/`V`, a left kerning group, and AFDKO features as `rig.media.code`. Outlines are `rig.geometry.path` on the glyph. `.ufo` stays a host encoding — [docs/ufo.md](../docs/ufo.md).
+UFO source as Rig: face metrics, a foreground layer, glyphs `A` / `V` / `space` / `acute` / `Aacute` (composite), a `top` anchor, pair `A`/`V`, a left kerning group, and AFDKO features as `rig.media.code`. Outlines are `rig.geometry.path` on the glyph. `.ufo` stays a host encoding - [docs/ufo.md](../docs/ufo.md).
 
 One entity (the face):
 
@@ -269,7 +269,7 @@ A site oak and a named rose. Taxon parts follow Darwin Core / ICNafp; the rose a
 
 ## `book-isbn.json`
 
-A Penguin Classics edition: `rig.book.identifier` (ISO 2108 ISBN-13 digits only), `title` (subtitle / series — distinctive title stays on `rig.meta.named`), `publication` (publisher is an organisation entity), `contribution` (author is a person entity), `cover` (image `asset_ref`), and `subject` (Dewey). Not an ONIX XML message.
+A Penguin Classics edition: `rig.book.identifier` (ISO 2108 ISBN-13 digits only), `title` (subtitle / series - distinctive title stays on `rig.meta.named`), `publication` (publisher is an organisation entity), `contribution` (author is a person entity), `cover` (image `asset_ref`), and `subject` (Dewey). Not an ONIX XML message.
 
 ## `paper-citation.json`
 
@@ -293,4 +293,4 @@ Exhibition hours (`weekly` + `span`), Christmas dark day, Christmas Eve special 
 
 ## `print-fgf.json`
 
-Pellet printer envelope, a grade with density and zone temps, slice knobs plus stack sag, and a job whose `input` / `output` are `rig.media.asset_ref` entities. Not envelope `pdfX`, not a layout page, not [`rig.dev.machine`](../schemas/dev/machine.md), not host paths — [docs/print.md](../docs/print.md).
+Pellet printer envelope, a grade with density and zone temps, slice knobs plus stack sag, and a job whose `input` / `output` are `rig.media.asset_ref` entities. Not envelope `pdfX`, not a layout page, not [`rig.dev.machine`](../schemas/dev/machine.md), not host paths - [docs/print.md](../docs/print.md).

@@ -8,4 +8,4 @@ Site / plot marker (`IfcSite`). Format when present.
 | `longitudeDegrees` | float | Optional. Decimal degrees east; absent = unset |
 | `elevation` | float | Optional. Site elevation in document units; absent = unset |
 
-Compose [`rig.spatial.group`](../spatial/group.md) when children nest under this site. Do not emit IFC’s DMS latitude/longitude triples — convert to decimal degrees at the host boundary.
+Compose [`rig.spatial.group`](../spatial/group.md) when children nest under this site. Do not emit IFC’s DMS latitude/longitude triples - convert to decimal degrees at the host boundary.

@@ -1,6 +1,6 @@
 # `rig.print.process`
 
-Slice process knobs. Line width is commanded and stays commanded — stack sag is [`rig.print.compression`](compression.md), not a width change. This is not a layout style and not envelope `pdfX`.
+Slice process knobs. Line width is commanded and stays commanded - stack sag is [`rig.print.compression`](compression.md), not a width change. This is not a layout style and not envelope `pdfX`.
 
 | Field | Type | Meaning |
 |-------|------|---------|

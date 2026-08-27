@@ -1,6 +1,6 @@
 # `rig.ui.control`
 
-A view over one POD field on a target entity — never a second store. Addressing reuses the [`rig.mod.binding`](../mod/binding.md) convention (`target` + `propertyKey`, including dotted paths like `position.y`).
+A view over one POD field on a target entity - never a second store. Addressing reuses the [`rig.mod.binding`](../mod/binding.md) convention (`target` + `propertyKey`, including dotted paths like `position.y`).
 
 | Field | Type | Meaning |
 |-------|------|---------|
@@ -18,6 +18,6 @@ A view over one POD field on a target entity — never a second store. Addressin
 | `options` | string[] | Optional enum choices when the target schema does not constrain them |
 | `widget` | enum | Advisory hint: `auto`, `slider`, `knob`, `toggle`, `field`, `dropdown`, `color`, `xy` |
 
-`widget` is a **hint a host may ignore**. Colour pickers and knobs vs sliders remain fulfillment — see [properties.md](../../docs/properties.md). Domain meaning stays in schema field names, not extra datatype ids.
+`widget` is a **hint a host may ignore**. Colour pickers and knobs vs sliders remain fulfillment - see [properties.md](../../docs/properties.md). Domain meaning stays in schema field names, not extra datatype ids.
 
 Required: `panel`, `order`, `target`, `propertyKey`, `type`.

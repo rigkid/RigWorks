@@ -15,6 +15,6 @@ This is not a solid. Do not put it on the same entity as `rig.cad.cuboid` / `boo
 
 `linear` is the 3D distance. `aligned` is the distance along the line between the two entities. `horizontal` / `vertical` are the X and Y components (Y-up). `diameter` reads one circular solid (`a`). `angle` is the angle between `a` and `b`.
 
-A host without a solver still stores the fields and may draw the witness. Driving (`measurement` false) is fulfillment — **rigSolveSpace** is one kernel. Do not invent a parallel `rig.cad.constraint` tagged union; geometric constraints (coincident, parallel) stay later split schemas if they earn a catalog id.
+A host without a solver still stores the fields and may draw the witness. Driving (`measurement` false) is fulfillment - **rigSolveSpace** is one kernel. Do not invent a parallel `rig.cad.constraint` tagged union; geometric constraints (coincident, parallel) stay later split schemas if they earn a catalog id.
 
-A dimension measures. Geometry to build *against* — an unbounded line or plane carrying no number — is [`rig.cad.reference_line`](reference-line.md) / [`reference_plane`](reference-plane.md).
+A dimension measures. Geometry to build *against* - an unbounded line or plane carrying no number - is [`rig.cad.reference_line`](reference-line.md) / [`reference_plane`](reference-plane.md).

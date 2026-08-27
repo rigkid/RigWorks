@@ -59,7 +59,7 @@
           "runs": [
             { "text": "Hello " },
             { "text": "world", "style": "style-bold" },
-            { "text": " — italic", "style": "style-italic" }
+            { "text": " - italic", "style": "style-italic" }
           ]
         }
       }

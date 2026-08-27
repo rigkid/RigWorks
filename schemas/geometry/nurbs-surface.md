@@ -19,6 +19,6 @@ Curves stay on [`rig.geometry.spline`](spline.md) / [`rig.geometry.spline3d`](sp
 
 A bilinear patch is `degreeU`/`degreeV` 1 with a 2×2 net. Open uniform cubic knots for four points in one direction are `[0,0,0,0,1,1,1,1]`.
 
-Tessellation to [`rig.geometry.mesh`](mesh.md) is host fulfillment — this schema is the parametric source of truth. Do not also attach a mesh for the same surface unless the mesh is a bake the host may rebuild.
+Tessellation to [`rig.geometry.mesh`](mesh.md) is host fulfillment - this schema is the parametric source of truth. Do not also attach a mesh for the same surface unless the mesh is a bake the host may rebuild.
 
 Appearance: compose [`rig.render.material`](../render/material.md) or [`rig.paint.fill_stroke`](../paint/fill-stroke.md).

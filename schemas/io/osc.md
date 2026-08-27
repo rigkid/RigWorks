@@ -11,6 +11,6 @@ OSC UDP listen / send endpoints. Format when present.
 | `sendPort` | int | Send port; required when `sendEnabled` |
 | `addressPrefix` | string | Optional. Address prefix |
 
-Listen and send sides are independent — enable one, both, or neither, and emit only the fields the enabled side needs.
+Listen and send sides are independent - enable one, both, or neither, and emit only the fields the enabled side needs.
 
 Message queues and sockets are host runtime.

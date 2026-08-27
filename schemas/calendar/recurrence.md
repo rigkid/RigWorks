@@ -2,7 +2,7 @@
 
 How an event repeats. Format when present.
 
-Field meanings follow the *elements* of RFC 5545 `RRULE` (`FREQ`, `INTERVAL`, `COUNT`, `UNTIL`, `BYDAY`) — not an `RRULE` string. Do not encode `FREQ=WEEKLY;BYDAY=TU`.
+Field meanings follow the *elements* of RFC 5545 `RRULE` (`FREQ`, `INTERVAL`, `COUNT`, `UNTIL`, `BYDAY`) - not an `RRULE` string. Do not encode `FREQ=WEEKLY;BYDAY=TU`.
 
 | Field | Type | Meaning |
 |-------|------|---------|
@@ -10,7 +10,7 @@ Field meanings follow the *elements* of RFC 5545 `RRULE` (`FREQ`, `INTERVAL`, `C
 | `interval` | int | Optional. Every N periods; absent = 1 |
 | `count` | int | Optional. How many occurrences; omit if the series uses `untilDate` |
 | `untilDate` | string | Optional. Last day an occurrence may fall (`YYYY-MM-DD`) |
-| `byWeekday` | bool[7] | Optional. Which weekdays fire; index 0 = Sunday … 6 = Saturday |
+| `byWeekday` | bool[7] | Optional. Which weekdays fire; index 0 = Sunday ... 6 = Saturday |
 
 `frequency` is required. Prefer `count` *or* `untilDate`, not both.
 

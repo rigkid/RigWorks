@@ -1,6 +1,6 @@
 # AI co-coding
 
-**AI co-coding is here to stay.** Not as a prediction to argue about — as a design constraint we address.
+**AI co-coding is here to stay.** Not as a prediction to argue about - as a design constraint we address.
 
 ## What changes?
 
@@ -18,12 +18,12 @@ That inverts the usual priority. A generated renderer is fine and disposable. A 
 | Across two different apps | Incompatible | Interoperable |
 | Verifiable | By reading it | By running a validator |
 
-Two agents working in two unrelated applications converge on compatible data — not because they coordinated, but because they read the same catalog. That convergence is the product. And makes coding together more fun.
+Two agents working in two unrelated applications converge on compatible data - not because they coordinated, but because they read the same catalog. That convergence is the product. And makes coding together more fun.
 
 ## Not another editor
 
 Rig is **not** a node editor, a patcher, or an agentic design canvas. Those are
-fulfillments — including excellent ones that still bottom out in code. Rig is the
+fulfillments - including excellent ones that still bottom out in code. Rig is the
 vocabulary editors and agents could share so their content interoperates without
 anyone linking a library.
 
@@ -33,11 +33,11 @@ A no-code framework is, conveniently, the exact shape a model works best with: n
 
 | Asset | Role |
 |-------|------|
-| [`llms.txt`](../llms.txt) | Discovery — the entry point for generic tooling |
+| [`llms.txt`](../llms.txt) | Discovery - the entry point for generic tooling |
 | [`skills/generating-rig-documents/SKILL.md`](../skills/generating-rig-documents/SKILL.md) | The condensed rules, sized to load before generating |
 | [`AGENTS.md`](../AGENTS.md) | Cross-agent onboarding, pointing at the skill and the validator |
-| [`schemas/`](../schemas/) | Prose — meaning and units, for the reasoning step |
-| [`schemas/json/`](../schemas/json/) | Machine grammar — the checkable truth |
+| [`schemas/`](../schemas/) | Prose - meaning and units, for the reasoning step |
+| [`schemas/json/`](../schemas/json/) | Machine grammar - the checkable truth |
 | [`examples/`](../examples/) | Reference documents to copy instead of invent |
 | [`tools/rig-validate/`](../tools/rig-validate/) | The verdict: JSON Pointer paths and an exit code |
 
@@ -66,7 +66,7 @@ Never deliver an unvalidated document. Eyeballing JSON is exactly the review tha
 | Point the agent at the skill, not the whole repo | A short skill beats the whole tree; the skill exists for this |
 | Run `--strict` on unfamiliar output | Invented ids are the most common confident error |
 | Prefer additive schema changes | Documents, prompts, and model habits in the wild all age better |
-| Keep prose and JSON Schema in parity | Models read prose, tools read grammar — drift teaches the model something false |
+| Keep prose and JSON Schema in parity | Models read prose, tools read grammar - drift teaches the model something false |
 | Spend review time on concepts | New ids, units, and portable-vs-[host-cache](terms.md) calls are yours; field-by-field diffs are not |
 
 Parity is enforced, not trusted:
@@ -77,4 +77,4 @@ node tools/check-schema-parity/check.mjs
 
 ## Why "co-"
 
-The division of labour is the same one the Contract already draws. **You own the concept** — which ids exist, what they mean, what units they carry, what stays portable. **The model is very good at execution** — emitting documents, filling catalogs, writing the host that consumes them, porting a fulfillment to a new language.
+The division of labour is the same one the Contract already draws. **You own the concept** - which ids exist, what they mean, what units they carry, what stays portable. **The model is very good at execution** - emitting documents, filling catalogs, writing the host that consumes them, porting a fulfillment to a new language.
