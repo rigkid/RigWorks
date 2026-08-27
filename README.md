@@ -46,10 +46,10 @@ npm run check                                          # schemas, parity, links,
 Live hosts run a SUDE loop; portable content is ECS components on entities:
 
 ```text
-Setup  → spawn / load entities
-Update → simulate (modulators, transport, …)
-Draw   → present
-Exit   → tear down
+Setup: spawn / load entities
+Update: simulate (modulators, transport, …)
+Draw: present
+Exit: tear down
 ```
 
 One entity in Contract JSON ([`examples/minimal-scene.json`](examples/minimal-scene.json)):
@@ -150,11 +150,11 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | [schemas/document.md](schemas/document.md) | Document envelope |
 | [docs/properties.md](docs/properties.md) | Portable datatypes |
 | [docs/interchange.md](docs/interchange.md) | Wire format and `.rig` / `.rigz` package |
-| [docs/openbim.md](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) → `rig.bim.*` |
-| [docs/ufo.md](docs/ufo.md) | UFO / GLIF → `rig.font.*`; encodings are fulfillment |
-| [docs/idml.md](docs/idml.md) | IDML → `rig.layout.frame` + layout / story; encodings are fulfillment |
-| [docs/ros.md](docs/ros.md) | ROS 2 → existing schemas; no `rig.ros2.*` |
-| [docs/print.md](docs/print.md) | FGF / pellet → `rig.print.*`; not envelope `pdfX` |
+| [docs/openbim.md](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
+| [docs/ufo.md](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
+| [docs/idml.md](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
+| [docs/ros.md](docs/ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |
+| [docs/print.md](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX` |
 | [examples/](examples/) | Reference documents |
 
 | Working with models | |

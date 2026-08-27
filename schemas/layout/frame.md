@@ -18,6 +18,6 @@ This is not [`rig.geometry.rectangle`](../geometry/rectangle.md) (a drawable). G
 
 Equal columns from `columnCount` + `columnGutter`. Per-column widths stay out.
 
-Which point of the box is local (0,0) is [`rig.spatial.anchor`](../spatial/anchor.md). Absent anchor ⇒ top-left of the box.
+Which point of the box is local (0,0) is [`rig.spatial.anchor`](../spatial/anchor.md). Absent anchor means top-left of the box.
 
 Name the frame by composing [`rig.meta.named`](../meta/named.md). Overflow text is fulfillment state — do not store it here.

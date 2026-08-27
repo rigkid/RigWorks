@@ -20,12 +20,12 @@ Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component 
 - [docs/ecs.md](docs/ecs.md): entity/component POD (floor) + runtime systems (live hosts)
 - [docs/ui.md](docs/ui.md): optional Rig + UI (same Contract; litmus + `rig-validate` on `rig.ui.*`)
 - [docs/interchange.md](docs/interchange.md): JSON wire format + `.rig` / `.rigz` package
-- [docs/openbim.md](docs/openbim.md): OpenBIM (IFC / BCF / IDS) → `rig.bim.*`; encodings are fulfillment
-- [docs/ufo.md](docs/ufo.md): UFO / GLIF → `rig.font.*`; encodings are fulfillment
-- [docs/idml.md](docs/idml.md): IDML → `rig.layout.frame` + layout / story; encodings are fulfillment
-- [docs/ros.md](docs/ros.md): ROS 2 → existing spatial / I/O / sensor / SUDE; no `rig.ros2.*`
-- [docs/dev.md](docs/dev.md): portable dev machines → `rig.dev.machine` / `rig.dev.op`; [RigDev](https://github.com/rigkid/RigDev) fulfills
-- [docs/print.md](docs/print.md): FGF / pellet → `rig.print.*`; not envelope `pdfX`, not a layout page
+- [docs/openbim.md](docs/openbim.md): OpenBIM (IFC / BCF / IDS) to `rig.bim.*`; encodings are fulfillment
+- [docs/ufo.md](docs/ufo.md): UFO / GLIF to `rig.font.*`; encodings are fulfillment
+- [docs/idml.md](docs/idml.md): IDML to `rig.layout.frame` + layout / story; encodings are fulfillment
+- [docs/ros.md](docs/ros.md): ROS 2 to existing spatial / I/O / sensor / SUDE; no `rig.ros2.*`
+- [docs/dev.md](docs/dev.md): portable dev machines to `rig.dev.machine` / `rig.dev.op`; [RigDev](https://github.com/rigkid/RigDev) fulfills
+- [docs/print.md](docs/print.md): FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page
 - [docs/properties.md](docs/properties.md): portable datatype ids
 - [docs/honors.md](docs/honors.md): what counts as Rig (grammar floor; live hosts; optional Rig + UI)
 - [docs/gaps.md](docs/gaps.md): where the Contract is silent, ambiguous, or wrong
@@ -47,6 +47,6 @@ Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component 
 
 - [tools/rig-validate/README.md](tools/rig-validate/README.md): validate CLI (`node tools/rig-validate/cli.js <file.json>`)
 - [tools/check-version.mjs](tools/check-version.mjs): SemVer format of [`VERSION`](VERSION) + site badges; hooks via `npm run hooks:install` (pre-commit SemVer, pre-push full `npm run check`)
-- [tools/check-schema-parity/check.mjs](tools/check-schema-parity/check.mjs): prose ↔ JSON Schema parity
+- [tools/check-schema-parity/check.mjs](tools/check-schema-parity/check.mjs): prose / JSON Schema parity
 - [tools/gen-schemas.mjs](tools/gen-schemas.mjs): regenerate `schemas/json/` (`--check` to detect drift); run `npm run check` before push
 - [tools/site/gen.mjs](tools/site/gen.mjs): render this repo as the static site at https://rig.works (`npm run site`; `--check` gates page coverage and links)

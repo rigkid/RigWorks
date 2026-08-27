@@ -414,26 +414,26 @@ Portable development-machine recipes — not a media-show AV bus or gated trigge
 | TF / URDF frame | `parent` | [`spatial.relationship`](spatial/relationship.md) — same graph as scene pose; not a new graph ([ros.md](../docs/ros.md)) |
 | Compositor stack | `groupParent` | [`pixel.layer`](pixel/layer.md) (`kind=group`) |
 | Effect chain | `parentStep` | [`pixel.effect_chain`](pixel/effect-chain.md) (step `id`) |
-| Tile map | `tileSet` | [`pixel.tile_map`](pixel/tile-map.md) → [`pixel.tile_set`](pixel/tile-set.md) → [`pixel.palette`](pixel/palette.md) |
+| Tile map | `tileSet` | [`pixel.tile_map`](pixel/tile-map.md) via [`pixel.tile_set`](pixel/tile-set.md) via [`pixel.palette`](pixel/palette.md) |
 | Node editor | `nested` on a node | [`node.node`](node/node.md) + [`node.publish`](node/publish.md) |
-| Song arrangement | frame `patterns` | [`music.arrangement`](music/arrangement.md) → [`music.pattern`](music/pattern.md) (by `lane`) |
+| Song arrangement | frame `patterns` | [`music.arrangement`](music/arrangement.md) via [`music.pattern`](music/pattern.md) (by `lane`) |
 | Control surface | `panel` / optional `group` | [`ui.panel`](ui/panel.md) + [`ui.group`](ui/group.md) + [`ui.control`](ui/control.md) / [`ui.action`](ui/action.md) |
-| CSG tree | `operands` | [`cad.boolean`](cad/boolean.md) → cad primitives / mesh solids (not `spatial.relationship`) |
-| Story flow | `blocks` | [`story.flow`](story/flow.md) → [`story.paragraph`](story/paragraph.md) / [`story.table`](story/table.md) |
-| Story thread | `frames` | [`layout.frame_chain`](layout/frame-chain.md) → [`layout.frame`](layout/frame.md) |
-| FGF job | `input` / `output` | [`print.job`](print/job.md) → [`media.asset_ref`](media/asset-ref.md) |
-| Table cell | `blocks` | [`story.table`](story/table.md) cell → nested paragraphs / tables (not listed on the parent flow) |
+| CSG tree | `operands` | [`cad.boolean`](cad/boolean.md) via cad primitives / mesh solids (not `spatial.relationship`) |
+| Story flow | `blocks` | [`story.flow`](story/flow.md) via [`story.paragraph`](story/paragraph.md) / [`story.table`](story/table.md) |
+| Story thread | `frames` | [`layout.frame_chain`](layout/frame-chain.md) via [`layout.frame`](layout/frame.md) |
+| FGF job | `input` / `output` | [`print.job`](print/job.md) via [`media.asset_ref`](media/asset-ref.md) |
+| Table cell | `blocks` | [`story.table`](story/table.md) cell via nested paragraphs / tables (not listed on the parent flow) |
 | BIM containment | `parent` | [`spatial.relationship`](spatial/relationship.md) under site / building / storey groups ([`bim.site`](bim/site.md) / [`building`](bim/building.md) / [`storey`](bim/storey.md)) |
 | BIM relation | `a` / `b` | [`bim.relation`](bim/relation.md) (`voids` / `fills` / `connects` / `aggregates` / `services`) |
-| BIM type | `type` | [`bim.occurrence`](bim/occurrence.md) → [`bim.type`](bim/type.md) |
-| BCF thread | `topic` | [`bim.comment`](bim/comment.md) / [`bim.viewpoint`](bim/viewpoint.md) → [`bim.topic`](bim/topic.md) |
-| IDS spec | `applicability` / `requirements` | [`bim.spec`](bim/spec.md) → [`bim.facet`](bim/facet.md) |
+| BIM type | `type` | [`bim.occurrence`](bim/occurrence.md) via [`bim.type`](bim/type.md) |
+| BCF thread | `topic` | [`bim.comment`](bim/comment.md) / [`bim.viewpoint`](bim/viewpoint.md) via [`bim.topic`](bim/topic.md) |
+| IDS spec | `applicability` / `requirements` | [`bim.spec`](bim/spec.md) via [`bim.facet`](bim/facet.md) |
 | Font face | `parent` | [`spatial.relationship`](spatial/relationship.md) under [`font.face`](font/face.md) / [`font.layer`](font/layer.md) |
 | Font composite | `parent` | [`font.component`](font/component.md) child of [`font.glyph`](font/glyph.md); `glyph` is the source |
 | Font kern | `left` / `right` | [`font.kern`](font/kern.md) — names (`stableId`), not entity ids |
-| Commerce offer | `item` / `seller` | [`commerce.offer`](commerce/offer.md) → item + seller; price / discount compose on the offer |
-| Legal party | `agreement` / `party` | [`legal.party`](legal/party.md) → [`legal.agreement`](legal/agreement.md) |
-| Calendar attendee | `event` | [`calendar.attendee`](calendar/attendee.md) → [`calendar.event`](calendar/event.md) |
+| Commerce offer | `item` / `seller` | [`commerce.offer`](commerce/offer.md) via item + seller; price / discount compose on the offer |
+| Legal party | `agreement` / `party` | [`legal.party`](legal/party.md) via [`legal.agreement`](legal/agreement.md) |
+| Calendar attendee | `event` | [`calendar.attendee`](calendar/attendee.md) via [`calendar.event`](calendar/event.md) |
 | Calendar recurrence | same entity | [`calendar.recurrence`](calendar/recurrence.md) on the event; not an `RRULE` string |
 
 Hosts and packs fulfill subsets — see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).

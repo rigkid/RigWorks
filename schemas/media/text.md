@@ -15,7 +15,7 @@ An editable UFO source face is [`rig.font.face`](../font/face.md) — do not put
 | `features` | string | Optional. Comma-separated OpenType feature tags (e.g. `liga,ss01`); absent = host default |
 | `useKerning` | bool | Optional. Apply kerning; absent = true |
 
-Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md) or [`rig.paint.fill`](../paint/fill.md) on the same entity — do not re-declare colour here. Absent paint ⇒ host default (typically black).
+Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md) or [`rig.paint.fill`](../paint/fill.md) on the same entity — do not re-declare colour here. Absent paint means host default (typically black).
 
 ## Axis
 

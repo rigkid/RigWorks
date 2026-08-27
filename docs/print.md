@@ -22,7 +22,7 @@ Rig names pellet / FGF machine meaning as [`rig.print.*`](../schemas/print/machi
 | Pellet / filament grade | [`rig.print.material`](../schemas/print/material.md) |
 | Slice knobs | [`rig.print.process`](../schemas/print/process.md) |
 | Hot-stack sag | [`rig.print.compression`](../schemas/print/compression.md) |
-| One job | [`rig.print.job`](../schemas/print/job.md) `input` / `output` → asset entities |
+| One job | [`rig.print.job`](../schemas/print/job.md) `input` / `output` names asset entities |
 | Part pose | [`rig.spatial.transform`](../schemas/spatial/transform.md) |
 | Mesh / STEP / 3MF / G-code file | [`rig.media.asset_ref`](../schemas/media/asset-ref.md) |
 

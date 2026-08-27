@@ -17,4 +17,4 @@ Only `active` is required — an inactive step can be `{"active": false}` with n
 
 One hit per step in the current draft. Chords / locks can come later as extra fields or child data.
 
-A tracker-style step row uses `pitch` + `waveform` + `velocity`→volume + `effect` per cell — no parallel sample schema. Waveform values 8 and up are host instrument slots; the Contract does not assign them portable shapes.
+A tracker-style step row uses `pitch` + `waveform` + `velocity` as volume + `effect` per cell — no parallel sample schema. Waveform values 8 and up are host instrument slots; the Contract does not assign them portable shapes.

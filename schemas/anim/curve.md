@@ -15,4 +15,4 @@ Used for easing, distribution, bulge/squeeze, and any host that needs an editabl
 - Evaluating at `t` interpolates in `x` and returns `y` (clamped to `[0,1]`).
 - Changing `preset` to a named seed regenerates `points`. Editing points sets `preset` to `custom`.
 - Runtime LUTs / caches are host-only — do not serialize.
-- Unknown `interpolation` / `preset` → treat as `smooth` / `custom` (keep points).
+- Treat unknown `interpolation` / `preset` as `smooth` / `custom` (keep points).

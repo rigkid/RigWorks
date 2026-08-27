@@ -23,7 +23,7 @@ Field meanings follow [UPU S42](https://www.upu.int/) international postal addre
 
 All fields optional. Emit what the source has; omit empty strings. An empty component is invalid — attach at least one field.
 
-Name the place by composing [`rig.meta.named`](../meta/named.md). Nest site → building → floor → room with [`rig.spatial.relationship`](../spatial/relationship.md). Drawing pose is [`rig.spatial.transform`](../spatial/transform.md). A map pin is [`rig.place.geo`](geo.md). A person's postal address is this same schema composed onto the person entity — see [`rig.person.name`](../person/name.md). Do not re-declare those here.
+Name the place by composing [`rig.meta.named`](../meta/named.md). Nest site, building, floor, room with [`rig.spatial.relationship`](../spatial/relationship.md). Drawing pose is [`rig.spatial.transform`](../spatial/transform.md). A map pin is [`rig.place.geo`](geo.md). A person's postal address is this same schema composed onto the person entity — see [`rig.person.name`](../person/name.md). Do not re-declare those here.
 
 Unstructured ISO 20022 `AdrLine` / free-text blobs stay in the database. The importer maps them into these fields. Do not dual-author structured fields and address lines.
 

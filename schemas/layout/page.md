@@ -42,6 +42,6 @@ Each channel is an inset/extent **from that face**, not a span between faces. Z 
 
 Catalog channel names for Z are `floor` / `ceiling` (face labels on the volume; not a civic address field). Emit the shortest equivalent form.
 
-Name the page by composing [`rig.meta.named`](../meta/named.md). Content belongs to a page via [`rig.spatial.relationship`](../spatial/relationship.md), the same as any other parent. Which point of the page is local (0,0) — and where a page transform attaches — is [`rig.spatial.anchor`](../spatial/anchor.md), not a field here. Absent anchor ⇒ top-left of the trim (pages have no authored origin of their own).
+Name the page by composing [`rig.meta.named`](../meta/named.md). Content belongs to a page via [`rig.spatial.relationship`](../spatial/relationship.md), the same as any other parent. Which point of the page is local (0,0) — and where a page transform attaches — is [`rig.spatial.anchor`](../spatial/anchor.md), not a field here. Absent anchor means top-left of the trim (pages have no authored origin of their own).
 
 Which page is currently open in an editor is host state, not a field here.

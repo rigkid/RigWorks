@@ -10,7 +10,7 @@
 | `max` | float | Optional. Clamp; absent = unclamped |
 | `additive` | bool | Optional. Add vs replace; absent = false (replace) |
 
-A discrete fire (sensor → flash / sample) is [`rig.mod.trigger`](trigger.md), not a binding.
+A discrete fire (sensor to flash / sample) is [`rig.mod.trigger`](trigger.md), not a binding.
 
 ## Fulfillment
 

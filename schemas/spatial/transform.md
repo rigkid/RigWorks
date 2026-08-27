@@ -16,8 +16,8 @@ Which point of local bounds `position` attaches to is [`rig.spatial.anchor`](anc
 
 - **`rotation` (quat)** is the portable / composition source of truth — avoids gimbal lock for accumulated pose.
 - Hosts **may** keep an editor **Euler** cache (radians) for property panels. That cache is not portable Rig data — do not serialize it.
-- When the editor writes Euler → update `rotation` from it.
-- When code / gizmos write `rotation` → refresh the Euler cache for display (`eulerAngles`).
+- When the editor writes Euler, update `rotation` from it.
+- When code / gizmos write `rotation`, refresh the Euler cache for display (`eulerAngles`).
 - Present / hierarchy must build the local matrix from **`rotation`**, not from Euler.
 
 2D hosts may use z = 0 and identity quat.

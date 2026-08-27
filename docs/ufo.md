@@ -23,7 +23,7 @@ We do **not** invent `rig.font.ttf` or treat a compiled OT/TTF as the source fac
 | `fvar` axis | [`rig.font.axis`](../schemas/font/axis.md) (child of face) |
 | `avar` map | [`rig.font.avar`](../schemas/font/avar.md) on the axis entity |
 | Live lattice / morph cell | [`rig.font.cell`](../schemas/font/cell.md) on the glyph (default path stays on `geometry.path`) |
-| Containment | [`rig.spatial.relationship`](../schemas/spatial/relationship.md) `parent` (face → layer → glyph; face → axis) |
+| Containment | [`rig.spatial.relationship`](../schemas/spatial/relationship.md) `parent` (face, layer, glyph; face, axis) |
 
 ## Encodings (fulfillment)
 

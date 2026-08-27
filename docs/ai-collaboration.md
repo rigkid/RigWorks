@@ -48,7 +48,7 @@ Two documents deliberately say the same things at different densities. Prose is 
 Generation without verification is a guess. The loop is what makes AI-authored Rig trustworthy:
 
 ```text
-read the skill → copy a reference example → emit JSON → validate → fix at the reported path → repeat until ok
+read the skill, copy a reference example, emit JSON, validate, fix at the reported path, repeat until ok
 ```
 
 ```bash

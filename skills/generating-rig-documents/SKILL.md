@@ -35,7 +35,7 @@ Load this skill when generating or editing Rig entity data, SUDE hooks, or ECS c
 ### SUDE (live hosts)
 
 ```
-Setup → Update → Draw → Exit
+Setup, Update, Draw, Exit
 ```
 
 | Hook | When | Semantics |
@@ -60,7 +60,7 @@ The Contract uses [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH
 
 | When | Bump |
 |------|------|
-| Additive schema / optional fields (0.x draft) | `MINOR` (e.g. `0.9.0` → `0.10.0`) |
+| Additive schema / optional fields (0.x draft) | `MINOR` (e.g. `0.9.0` to `0.10.0`) |
 | Breaking schema or core-rule change after `1.0.0` | `MAJOR` |
 | Docs-only / tooling / no schema meaning change | leave `VERSION` alone |
 
@@ -151,7 +151,7 @@ Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scen
 ```
 <!-- rig:end -->
 
-### LFO → binding (Update-side)
+### LFO and binding (Update-side)
 
 ```json
 {
@@ -260,16 +260,16 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** put sex, birthday, or email on `rig.person.name` — compose `rig.person.vital` and `rig.person.contact`
 - **Do not** copy `sex` into `gender` — recorded sex is ISO/IEC 5218; gender identity is a separate string
 - **Do not** put job title, department, or organisation name on `rig.person.contact` — compose `rig.person.employment` (employer is an entity)
-- **Do not** put a photo path on a person schema — compose `rig.person.portrait` → `rig.media.asset_ref`
+- **Do not** put a photo path on a person schema — compose `rig.person.portrait` with `rig.media.asset_ref`
 - **Do not** put IBAN / BIC on a person name schema — compose `rig.party.account`
 - **Do not** put postal fields on a person schema — compose `rig.place.address`
 - **Do not** put a `scientificName` blob on `rig.plant.taxon` — compose `rig.meta.named`; parts stay on taxon
 - **Do not** put cultivar / Group / grex / trade name on `rig.plant.taxon` — compose `rig.plant.cultivar`
 - **Do not** put Darwin Core `habitat` on `rig.plant.habit` — habit is growth form; the site is `rig.place.geo` / `rig.place.address`
-- **Do not** put a photo path on a plant schema — compose `rig.plant.portrait` → `rig.media.asset_ref`
+- **Do not** put a photo path on a plant schema — compose `rig.plant.portrait` with `rig.media.asset_ref`
 - **Do not** put a hyphenated ISBN or a title string on `rig.book.identifier` — digits-only `isbn13`; distinctive title is `rig.meta.named`
 - **Do not** put author or publisher name strings on a book schema — compose `rig.book.contribution` (person entity) and `rig.book.publication.publisher` (organisation entity)
-- **Do not** put a cover path on a book schema — compose `rig.book.cover` → `rig.media.asset_ref`
+- **Do not** put a cover path on a book schema — compose `rig.book.cover` with `rig.media.asset_ref`
 - **Do not** put ISBN on a paper — compose `rig.paper.identifier` (DOI / PMID / arXiv); journal ISSN stays on the journal entity
 - **Do not** store a formatted bibliography string — compose `rig.paper.citation` (`citing` / `cited` entities)
 - **Do not** put copyright holder or licence on `rig.art.object` or `rig.book.publication` — compose `rig.rights.statement`

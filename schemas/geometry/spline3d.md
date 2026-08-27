@@ -15,6 +15,6 @@ The 3D sibling of [`rig.geometry.spline`](spline.md) — same fields, `vec3` poi
 
 A NURBS *surface* is [`rig.geometry.nurbs_surface`](nurbs-surface.md), not a grid of spline3d curves.
 
-Tessellation to polylines, path commands, or [`rig.geometry.mesh`](mesh.md) is host fulfillment — this schema is the parametric source of truth. Do not also attach [`rig.geometry.path3d`](path3d.md) for the same contour. Cubic path → NURBS is exact; arbitrary NURBS → cubic Bézier is not. Keep the authored form.
+Tessellation to polylines, path commands, or [`rig.geometry.mesh`](mesh.md) is host fulfillment — this schema is the parametric source of truth. Do not also attach [`rig.geometry.path3d`](path3d.md) for the same contour. Cubic path to NURBS is exact; arbitrary NURBS to cubic Bézier is not. Keep the authored form.
 
 Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md).

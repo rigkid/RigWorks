@@ -41,11 +41,11 @@ Omitting UI remains valid **Rig**. See also the short gate in [honors.md](honors
 
 | Rule | Meaning |
 |------|---------|
-| Panel ↔ schema | Edits named POD / Rig schemas |
+| Panel / schema | Edits named POD / Rig schemas |
 | Cross-host reuse | Same panel *role* works wherever those components exist |
 | Compose by data | Particles + audio + … compose because entities share fields |
 | Layout ≠ meaning | Docks/tabs/workspaces are fulfillment; groups are portable structure |
-| Properties ↔ datatypes | A generic property manager draws any field with a known datatype |
+| Properties / datatypes | A generic property manager draws any field with a known datatype |
 
 Portable tool graphs use [`rig.ui.panel`](../schemas/ui/panel.md), [`rig.ui.group`](../schemas/ui/group.md), [`rig.ui.control`](../schemas/ui/control.md), and [`rig.ui.action`](../schemas/ui/action.md). A control is a view over `target` + `propertyKey` — the same addressing as [`rig.mod.binding`](../schemas/mod/binding.md) — never a second store.
 

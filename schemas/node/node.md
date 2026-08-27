@@ -11,7 +11,7 @@ One node inside a [`rig.node.graph`](graph.md). Nested POD — not a separate EC
 | `pins` | pin[] | See [`rig.node.pin`](pin.md) — pin `type` uses [property datatypes](../../docs/properties.md) |
 | `params` | param[] | See [`rig.node.param`](param.md) — same datatype table |
 | `nested` | graph? | When present, this node **is a group**; interior is a full [`rig.node.graph`](graph.md) |
-| `publishes` | publish[] | Outer pin → interior pin — see [`rig.node.publish`](publish.md) |
+| `publishes` | publish[] | Outer pin to interior pin — see [`rig.node.publish`](publish.md) |
 
 ## Leaf vs group
 

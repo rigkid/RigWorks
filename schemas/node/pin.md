@@ -23,4 +23,4 @@ Hosts may add **prefixed** ids (`host.foo`). Do not invent unprefixed extras (`c
 
 ## Linking
 
-Exact `type` match always links. Hosts may allow documented coercions at eval (e.g. `float` → `vec2` / `vec4`) — that is fulfillment, not Contract.
+Exact `type` match always links. Hosts may allow documented coercions at eval (e.g. `float` to `vec2` / `vec4`) — that is fulfillment, not Contract.

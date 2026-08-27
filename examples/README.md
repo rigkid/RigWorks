@@ -206,7 +206,7 @@ One entity (the first frame):
 
 ## `bim-model.json`
 
-OpenBIM model cut: site → building → storey → space, a shared wall type, an extruded wall occurrence, an opening that voids the wall, and a door that fills the opening. IFC class is a string on `rig.bim.classify` — not a per-class schema. See [docs/openbim.md](../docs/openbim.md).
+OpenBIM model cut: site, building, storey, space, a shared wall type, an extruded wall occurrence, an opening that voids the wall, and a door that fills the opening. IFC class is a string on `rig.bim.classify` — not a per-class schema. See [docs/openbim.md](../docs/openbim.md).
 
 ## `bim-bcf.json`
 

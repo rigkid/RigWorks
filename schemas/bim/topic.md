@@ -16,4 +16,4 @@ BCF issue / topic. Format when present.
 | `createdAt` | string | Optional. Creation time (ISO-8601); absent = unset |
 | `modifiedAt` | string | Optional. Last modification (ISO-8601); absent = unset |
 
-Compose [`rig.meta.named`](../meta/named.md) for the topic title; BCF guid → `stableId`. Comments and viewpoints reference this entity.
+Compose [`rig.meta.named`](../meta/named.md) for the topic title; BCF guid becomes `stableId`. Comments and viewpoints reference this entity.

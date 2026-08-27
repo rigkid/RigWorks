@@ -20,7 +20,7 @@ No window, renderer, UI pack, or language is required.
 ## Ordering
 
 ```
-Setup → ( Update → Draw )* → Exit
+Setup, then (Update, Draw)*, then Exit
 ```
 
 - Do not nest hooks.
