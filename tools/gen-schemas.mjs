@@ -148,9 +148,12 @@ add("rig.layout.master", {
   side: enumOf(["left", "right", "single"]),
 }, { required: [] });
 
+// Component present with no master = explicit opt-out: the page stays
+// chrome-free (true blanks, section pads). Absent component = host picks
+// the facing master from the page side.
 add("rig.layout.applied_master", {
   master: ref("entity"),
-}, { required: ["master"] });
+}, { required: [] });
 
 add("rig.layout.facing", {
   enabled: ref("bool"),

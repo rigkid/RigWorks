@@ -10,6 +10,6 @@ Compose on a [`rig.layout.page`](page.md) that is not a master. The section runs
 | `numberingStyle` | enum | Optional. `arabic`, `roman`, `roman-upper`, `alpha`, `alpha-upper` (enum literals stay kebab-case). Absent = `arabic` |
 | `startAt` | int | Optional. First page number of the section. Absent = `1` |
 | `prefix` | string | Optional. Emitted before the number (`A-` → `A-1`, `A-2`) |
-| `startSide` | enum | Optional. `any`, `recto`, `verso` - declared side the section opens on; a host may insert a blank page to honour it. Absent = `any` |
+| `startSide` | enum | Optional. `any`, `recto`, `verso` - declared side the section opens on; a host may insert a blank page to honour it. Such a pad carries [`rig.layout.applied_master`](applied-master.md) with no `master` - deliberately chrome-free. Absent = `any` |
 
 Front matter in roman then a body restarting at 1 is two sections: `{numberingStyle: "roman"}` on the first page, `{startAt: 1}` on the first body page.

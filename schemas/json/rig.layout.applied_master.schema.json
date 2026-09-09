@@ -8,8 +8,5 @@
     "master": {
       "$ref": "./_defs.schema.json#/$defs/entity"
     }
-  },
-  "required": [
-    "master"
-  ]
+  }
 }
