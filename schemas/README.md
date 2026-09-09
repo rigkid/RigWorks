@@ -84,8 +84,10 @@ Print spread - pages, masters, facing, visual style maps, text frames and thread
 | `rig.layout.master` | [layout/master.md](layout/master.md) |
 | `rig.layout.applied_master` | [layout/applied-master.md](layout/applied-master.md) |
 | `rig.layout.facing` | [layout/facing.md](layout/facing.md) |
+| `rig.layout.section` | [layout/section.md](layout/section.md) |
 | `rig.layout.paragraph_style` | [layout/paragraph-style.md](layout/paragraph-style.md) |
 | `rig.layout.character_style` | [layout/character-style.md](layout/character-style.md) |
+| `rig.layout.table_style` | [layout/table-style.md](layout/table-style.md) |
 | `rig.layout.frame` | [layout/frame.md](layout/frame.md) |
 | `rig.layout.frame_chain` | [layout/frame-chain.md](layout/frame-chain.md) |
 
@@ -199,6 +201,7 @@ Deals between parties - not the Rig Contract, and not copyright of a work ([`rig
 | `rig.paint.stroke` | [paint/stroke.md](paint/stroke.md) |
 | `rig.paint.stroke_style` | [paint/stroke-style.md](paint/stroke-style.md) |
 | `rig.paint.library` | [paint/library.md](paint/library.md) |
+| `rig.paint.brush` | [paint/brush.md](paint/brush.md) |
 
 ### CAD / solids
 
@@ -330,6 +333,9 @@ Editorial flow - named styles, paragraphs, runs, tables. Semantics only (style i
 | `rig.pixel.tile_set` | [pixel/tile-set.md](pixel/tile-set.md) |
 | `rig.pixel.tile_map` | [pixel/tile-map.md](pixel/tile-map.md) |
 | `rig.pixel.effect_chain` | [pixel/effect-chain.md](pixel/effect-chain.md) |
+| `rig.pixel.region` | [pixel/region.md](pixel/region.md) |
+| `rig.pixel.mask_path` | [pixel/mask-path.md](pixel/mask-path.md) |
+| `rig.pixel.composite` | [pixel/composite.md](pixel/composite.md) |
 
 ### Print / FGF
 

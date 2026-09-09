@@ -32,6 +32,7 @@ node tools/rig-validate/cli.js examples/dev-machine.json
 node tools/rig-validate/cli.js examples/dev-hyperv.json
 node tools/rig-validate/cli.js examples/dev-kvm.json
 node tools/rig-validate/cli.js examples/print-fgf.json
+node tools/rig-validate/cli.js examples/paint-brush.json
 ```
 
 ## SUDE sketch
@@ -294,3 +295,7 @@ Exhibition hours (`weekly` + `span`), Christmas dark day, Christmas Eve special 
 ## `print-fgf.json`
 
 Pellet printer envelope, a grade with density and zone temps, slice knobs plus stack sag, and a job whose `input` / `output` are `rig.media.asset_ref` entities. Not envelope `pdfX`, not a layout page, not [`rig.dev.machine`](../schemas/dev/machine.md), not host paths - [docs/print.md](../docs/print.md).
+
+## `paint-brush.json`
+
+One named brush entity: a size-12 flat with measured ferrule, bristle length, tip-to-max taper, and load capacity. Machine Z / feeds / dip stations are not on this component - [schemas/paint/brush.md](../schemas/paint/brush.md).

@@ -13,6 +13,9 @@
     },
     "scale": {
       "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "shear": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
     }
   }
 }

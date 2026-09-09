@@ -1,0 +1,26 @@
+{
+  "rig": "0.30.0",
+  "document": {
+    "title": "Flat brush for a CNC paint hold",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "sable-flat-12",
+      "components": {
+        "rig.meta.named": { "name": "Sable flat 12", "stableId": "sable-flat-12" },
+        "rig.paint.brush": {
+          "shape": "flat",
+          "ferruleWidthMm": 12,
+          "bristleLengthMm": 18,
+          "tipWidthMm": 0.8,
+          "maxWidthMm": 10,
+          "taperHeightMm": 6,
+          "taperP1": [0.333, 0.333],
+          "taperP2": [0.667, 0.667],
+          "loadCapacityMm": 300
+        }
+      }
+    }
+  ]
+}

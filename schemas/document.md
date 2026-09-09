@@ -9,12 +9,14 @@ This is the **Contract wire format** (JSON). Field meaning remains POD; vectors 
 | Field | Type | Meaning |
 |-------|------|---------|
 | `rig` | string | Contract version this document targets (`MAJOR.MINOR.PATCH`) |
-| `document` | object | Optional metadata (`title`, `author`, `createdAt`, `modifiedAt`, `defaultUnit`, `colorSpace`, `timeZone`, `ifcSchema`, `pdfX`, `outputCondition`, `trapped`, ...) |
+| `document` | object | Optional metadata (`title`, `author`, `createdAt`, `modifiedAt`, `defaultUnit`, `colorSpace`, `language`, `timeZone`, `ifcSchema`, `pdfX`, `outputCondition`, `trapped`, ...) |
 | `entities` | entity[] | Scene / graph contents. An unparented [`rig.spatial.vertex`](spatial/vertex.md) is a scene; without one, unparented entities are the roots. |
 
 `colorSpace` names the colour space every `rgba` / `rgb` value in the file is expressed in; absent = `srgb`. One key for the whole document - per-component colour spaces do not exist.
 
 `defaultUnit` is the scene length unit (`"mm"`, `"px"`, `"in"`, ...) for transform, geometry, and stroke. A [`rig.layout.page`](layout/page.md) may override with `unit`. Ratios stay 0-1 - [Measurements](README.md#measurements).
+
+`language` is a BCP 47 tag (`en`, `en-GB`, `fr`) for the document's text. Hosts pick hyphenation and spelling resources from it - the region subtag matters (`en-GB` and `en-US` hyphenate differently), so a document that knows its region says so. Absent = host default. One key for the whole document - per-run language is a style concern, not envelope metadata.
 
 ## Axes
 

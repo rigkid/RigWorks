@@ -14,6 +14,12 @@
         "bullet",
         "numbered"
       ]
+    },
+    "keepWithNext": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "keepWithPrevious": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
     }
   }
 }

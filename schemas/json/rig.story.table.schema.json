@@ -14,6 +14,15 @@
     "footerRowCount": {
       "$ref": "./_defs.schema.json#/$defs/int"
     },
+    "columnWidths": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/float"
+      }
+    },
+    "style": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
     "cells": {
       "type": "array",
       "items": {

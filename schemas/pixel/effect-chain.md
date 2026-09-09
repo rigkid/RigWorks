@@ -27,4 +27,6 @@ Effect-specific parameters are **host / pack extension** (side table or JSON tex
 
 With `parentStep` unset every step reads the one before it, so a plain ordered list needs no routing fields at all. Editors that draw the chain as a tree indent a step under its `parentStep`.
 
+A branch has to land somewhere: hosts that honor `parentStep` composite the branch step's result back over the running canvas with per-pixel alpha (how is a host blend policy). A branch is a layer return, never a straight replace - otherwise sharing a parent would be pointless. Ids that don't resolve (forward or stale) degrade to the preceding step.
+
 `parentStep` is **not** `groupParent` on [`rig.pixel.layer`](layer.md) - the compositor stack is a different graph.

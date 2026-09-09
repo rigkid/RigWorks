@@ -26,12 +26,17 @@
       "items": {
         "$ref": "./_defs.schema.json#/$defs/uint8"
       }
+    },
+    "derived": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "rebake": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
     }
   },
   "required": [
     "role",
     "width",
-    "height",
-    "rgba"
+    "height"
   ]
 }

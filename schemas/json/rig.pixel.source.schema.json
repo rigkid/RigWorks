@@ -12,8 +12,9 @@
         "image-file",
         "generator",
         "image-sequence",
-        "webcam",
-        "video-file"
+        "video-device",
+        "video-file",
+        "cast-receive"
       ]
     },
     "asset": {
@@ -28,14 +29,17 @@
     "sequenceFrame": {
       "$ref": "./_defs.schema.json#/$defs/int"
     },
-    "webcamDevice": {
-      "$ref": "./_defs.schema.json#/$defs/int"
+    "videoDeviceRef": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
     },
-    "webcamWidth": {
-      "$ref": "./_defs.schema.json#/$defs/int"
+    "videoDeviceName": {
+      "$ref": "./_defs.schema.json#/$defs/string"
     },
-    "webcamHeight": {
-      "$ref": "./_defs.schema.json#/$defs/int"
+    "videoWidth": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
+    },
+    "videoHeight": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
     },
     "videoTime": {
       "$ref": "./_defs.schema.json#/$defs/float"

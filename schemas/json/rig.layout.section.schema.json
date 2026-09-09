@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.section.schema.json",
+  "title": "rig.layout.section",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "numberingStyle": {
+      "type": "string",
+      "enum": [
+        "arabic",
+        "roman",
+        "roman-upper",
+        "alpha",
+        "alpha-upper"
+      ]
+    },
+    "startAt": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "prefix": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "startSide": {
+      "type": "string",
+      "enum": [
+        "any",
+        "recto",
+        "verso"
+      ]
+    }
+  }
+}

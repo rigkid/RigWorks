@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.paint.brush.schema.json",
+  "title": "rig.paint.brush",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "shape": {
+      "type": "string",
+      "enum": [
+        "round",
+        "flat",
+        "filbert",
+        "fan",
+        "rigger",
+        "mop"
+      ]
+    },
+    "ferruleWidthMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "bristleLengthMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "tipWidthMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "maxWidthMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "taperHeightMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "taperP1": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
+    },
+    "taperP2": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
+    },
+    "loadCapacityMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "shape",
+    "maxWidthMm"
+  ]
+}

@@ -38,6 +38,11 @@
           "type": "string",
           "description": "Colour space for all rgba/rgb values (default: srgb)."
         },
+        "language": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+          "description": "BCP 47 language tag for document text (e.g. en, en-GB). Hosts pick hyphenation and spelling resources from it - the region subtag matters (en-GB vs en-US patterns). Absent = host default."
+        },
         "timeZone": {
           "type": "string",
           "description": "IANA time zone for wall-clock calendar fields (e.g. Australia/Sydney). Absent = host local."
@@ -371,6 +376,12 @@
               "rig.layout.paragraph_style": {
                 "$ref": "./rig.layout.paragraph_style.schema.json"
               },
+              "rig.layout.section": {
+                "$ref": "./rig.layout.section.schema.json"
+              },
+              "rig.layout.table_style": {
+                "$ref": "./rig.layout.table_style.schema.json"
+              },
               "rig.led.uv_map": {
                 "$ref": "./rig.led.uv_map.schema.json"
               },
@@ -455,6 +466,9 @@
               "rig.organisation.identity": {
                 "$ref": "./rig.organisation.identity.schema.json"
               },
+              "rig.paint.brush": {
+                "$ref": "./rig.paint.brush.schema.json"
+              },
               "rig.paint.fill": {
                 "$ref": "./rig.paint.fill.schema.json"
               },
@@ -509,17 +523,26 @@
               "rig.pixel.canvas": {
                 "$ref": "./rig.pixel.canvas.schema.json"
               },
+              "rig.pixel.composite": {
+                "$ref": "./rig.pixel.composite.schema.json"
+              },
               "rig.pixel.effect_chain": {
                 "$ref": "./rig.pixel.effect_chain.schema.json"
               },
               "rig.pixel.layer": {
                 "$ref": "./rig.pixel.layer.schema.json"
               },
+              "rig.pixel.mask_path": {
+                "$ref": "./rig.pixel.mask_path.schema.json"
+              },
               "rig.pixel.palette": {
                 "$ref": "./rig.pixel.palette.schema.json"
               },
               "rig.pixel.raster": {
                 "$ref": "./rig.pixel.raster.schema.json"
+              },
+              "rig.pixel.region": {
+                "$ref": "./rig.pixel.region.schema.json"
               },
               "rig.pixel.source": {
                 "$ref": "./rig.pixel.source.schema.json"

@@ -38,6 +38,15 @@
     "firstLineIndent": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
+    "keepFirstLines": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "keepLastLines": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "keepLastWords": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
     "paint": {
       "$ref": "./_defs.schema.json#/$defs/entity"
     }

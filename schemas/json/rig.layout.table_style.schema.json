@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.table_style.schema.json",
+  "title": "rig.layout.table_style",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "borderStroke": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "borderColor": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "headerFill": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "rowStripeFill": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "cellInset": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "cellSize": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "cellLeading": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "cellInk": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "headerInk": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

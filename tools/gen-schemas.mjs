@@ -22,6 +22,7 @@ function objectSchema(id, properties, opts = {}) {
     properties,
   };
   if (required.length) schema.required = required;
+  if (opts.comment) schema.$comment = opts.comment;
   if (opts.description) schema.description = opts.description;
   if (opts.allOf) schema.allOf = opts.allOf;
   if (opts.oneOf) schema.oneOf = opts.oneOf;
@@ -49,11 +50,14 @@ function add(id, properties, opts) {
 
 // --- spatial ---
 // All fields optional; absent means identity (position 0,0,0 / rotation
-// 0,0,0,1 / scale 1,1,1). Emit only what differs from identity if you like.
+// 0,0,0,1 / scale 1,1,1 / shear 0,0,0). Emit only what differs from identity
+// if you like. Compose translate * rotate * shear * scale (shear = unit
+// upper-triangular xy/xz/yz factors).
 add("rig.spatial.transform", {
   position: ref("vec3"),
   rotation: ref("quat"),
   scale: ref("vec3"),
+  shear: ref("vec3"),
 }, { required: [] });
 
 // 3×3×3 registration on local bounds. Absent component = no remap / page trim top-left.
@@ -153,6 +157,16 @@ add("rig.layout.facing", {
   binding: enumOf(["left", "right"]),
 }, { required: [] });
 
+// Numbering section start: compose on a non-master page; runs until the
+// next page carrying its own section.
+add("rig.layout.section", {
+  name: ref("string"),
+  numberingStyle: enumOf(["arabic", "roman", "roman-upper", "alpha", "alpha-upper"]),
+  startAt: ref("int"),
+  prefix: ref("string"),
+  startSide: enumOf(["any", "recto", "verso"]),
+}, { required: [] });
+
 add("rig.layout.paragraph_style", {
   storyStyle: ref("entity"),
   basedOn: ref("entity"),
@@ -163,6 +177,9 @@ add("rig.layout.paragraph_style", {
   spaceBefore: ref("float"),
   spaceAfter: ref("float"),
   firstLineIndent: ref("float"),
+  keepFirstLines: ref("int"),
+  keepLastLines: ref("int"),
+  keepLastWords: ref("int"),
   paint: ref("entity"),
 }, { required: [] });
 
@@ -174,6 +191,23 @@ add("rig.layout.character_style", {
   paint: ref("entity"),
   italic: ref("bool"),
   bold: ref("bool"),
+}, { required: [] });
+
+// Table dress: one style normally covers every table in a document.
+// Story tables stay content-only. Colours are paint entities
+// (rig.paint.solid) like rig.layout.paragraph_style.paint - exact
+// cmyk / ink separation survives; raw rgba here would round it away.
+add("rig.layout.table_style", {
+  name: ref("string"),
+  borderStroke: ref("float"),
+  borderColor: ref("entity"),
+  headerFill: ref("entity"),
+  rowStripeFill: ref("entity"),
+  cellInset: ref("float"),
+  cellSize: ref("float"),
+  cellLeading: ref("float"),
+  cellInk: ref("entity"),
+  headerInk: ref("entity"),
 }, { required: [] });
 
 add("rig.layout.frame_chain", {
@@ -1290,6 +1324,19 @@ add("rig.paint.stroke", {
   width: ref("float"),
 }, { required: ["paint"] });
 
+// Physical brush in a holder. Digital stamp presets stay host / x.rigkit.*.
+add("rig.paint.brush", {
+  shape: enumOf(["round", "flat", "filbert", "fan", "rigger", "mop"]),
+  ferruleWidthMm: ref("float"),
+  bristleLengthMm: ref("float"),
+  tipWidthMm: ref("float"),
+  maxWidthMm: ref("float"),
+  taperHeightMm: ref("float"),
+  taperP1: ref("vec2"),
+  taperP2: ref("vec2"),
+  loadCapacityMm: ref("float"),
+}, { required: ["shape", "maxWidthMm"] });
+
 add("rig.paint.library", {
   paints: { type: "array", items: ref("entity") },
 }, { required: ["paints"] });
@@ -1723,6 +1770,8 @@ add("rig.font.cell", {
 add("rig.story.paragraph_style", {
   basedOn: ref("entity"),
   listKind: enumOf(["bullet", "numbered"]),
+  keepWithNext: ref("bool"),
+  keepWithPrevious: ref("bool"),
 }, { required: [] });
 
 add("rig.story.character_style", {
@@ -1762,6 +1811,8 @@ add("rig.story.table", {
   columnCount: ref("int"),
   headerRowCount: ref("int"),
   footerRowCount: ref("int"),
+  columnWidths: { type: "array", items: ref("float") },
+  style: ref("entity"),
   cells: { type: "array", items: storyCell },
 }, { required: ["columnCount", "cells"] });
 
@@ -1779,14 +1830,15 @@ add("rig.pixel.canvas", {
 
 // Only the fields the chosen kind needs; the rest stay absent.
 add("rig.pixel.source", {
-  kind: enumOf(["none", "image-file", "generator", "image-sequence", "webcam", "video-file"]),
+  kind: enumOf(["none", "image-file", "generator", "image-sequence", "video-device", "video-file", "cast-receive"]),
   asset: ref("entity"),
   generatorName: ref("string"),
   sequenceFps: ref("float"),
   sequenceFrame: ref("int"),
-  webcamDevice: ref("int"),
-  webcamWidth: ref("int"),
-  webcamHeight: ref("int"),
+  videoDeviceRef: ref("uint"),
+  videoDeviceName: ref("string"),
+  videoWidth: ref("uint"),
+  videoHeight: ref("uint"),
   videoTime: ref("float"),
 }, { required: ["kind"] });
 
@@ -1808,7 +1860,9 @@ add("rig.pixel.raster", {
   width: ref("int"),
   height: ref("int"),
   rgba: { type: "array", items: ref("uint8") },
-});
+  derived: ref("bool"),
+  rebake: ref("bool"),
+}, { required: ["role", "width", "height"] });
 
 add("rig.pixel.palette", {
   colors: { type: "array", items: ref("rgba"), minItems: 1 },
@@ -1853,6 +1907,24 @@ add("rig.pixel.effect_chain", {
   steps: { type: "array", items: effectStep },
   nextId: ref("uint"),
 }, { required: ["steps"] });
+
+add("rig.pixel.region", {
+  fit: enumOf(["loose", "polyline", "curves"]),
+  fill: enumOf(["none", "hatch", "cross-hatch", "stipple", "flow", "outline", "paint"]),
+  paintBrushWidth: ref("float"),
+  color: ref("rgb"),
+}, { required: [] });
+
+add("rig.pixel.mask_path", {
+  strokeWidth: ref("float"),
+  closed: ref("bool"),
+  filled: ref("bool"),
+  xy: { type: "array", items: ref("float") },
+}, { required: [] });
+
+add("rig.pixel.composite", {
+  enabled: ref("bool"),
+}, { required: [] });
 
 // --- print (FGF / pellet) ---
 // Not envelope pdfX, not layout page, not rig.dev.machine, not G-code paths.
@@ -2510,6 +2582,12 @@ catalog["rig.document"] = {
         colorSpace: {
           type: "string",
           description: "Colour space for all rgba/rgb values (default: srgb).",
+        },
+        language: {
+          type: "string",
+          pattern: "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+          description:
+            "BCP 47 language tag for document text (e.g. en, en-GB). Hosts pick hyphenation and spelling resources from it - the region subtag matters (en-GB vs en-US patterns). Absent = host default.",
         },
         timeZone: {
           type: "string",

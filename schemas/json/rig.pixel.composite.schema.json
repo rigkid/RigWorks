@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pixel.composite.schema.json",
+  "title": "rig.pixel.composite",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  }
+}

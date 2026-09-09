@@ -15,6 +15,9 @@ Story styles stay identity-only (name + basedOn + listKind). Font, size, leading
 | `spaceBefore` | float | Optional. Space before the paragraph |
 | `spaceAfter` | float | Optional. Space after the paragraph |
 | `firstLineIndent` | float | Optional. First-line indent |
+| `keepFirstLines` | int | Optional. Min lines left before a frame / page break (orphans). `0` = off; absent = host default |
+| `keepLastLines` | int | Optional. Min lines carried past a frame / page break (widows). `0` = off; absent = host default |
+| `keepLastWords` | int | Optional. Min words on the paragraph's last line (runts). `0` / `1` = off; absent = host default |
 | `paint` | entity | Optional. Paint entity (`rig.paint.fill` / `solid`) for the run colour |
 
 Based-on chains stay acyclic. A cycle is a document error. Do not put these fields on `rig.story.*`.

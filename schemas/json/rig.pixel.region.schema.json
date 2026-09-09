@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pixel.region.schema.json",
+  "title": "rig.pixel.region",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "fit": {
+      "type": "string",
+      "enum": [
+        "loose",
+        "polyline",
+        "curves"
+      ]
+    },
+    "fill": {
+      "type": "string",
+      "enum": [
+        "none",
+        "hatch",
+        "cross-hatch",
+        "stipple",
+        "flow",
+        "outline",
+        "paint"
+      ]
+    },
+    "paintBrushWidth": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "color": {
+      "$ref": "./_defs.schema.json#/$defs/rgb"
+    }
+  }
+}

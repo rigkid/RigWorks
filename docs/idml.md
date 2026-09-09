@@ -36,7 +36,7 @@ GeometricBounds `(y1, x1, y2, x2)` become position `(x1, y1)` and size `(x2 − 
 |------|------|
 | `.idml` | ZIP of `designmap.xml` + Spreads / Stories / MasterSpreads / Resources - map into / out of layout + story |
 | `.indt` / `.indd` | InDesign private database - export IDML first |
-| Word / `.docx` | Story-only import (mammoth or similar) to `rig.story.*`. Not a layout |
+| Word / `.docx` | Story-only import to `rig.story.*`. Tables land as [`rig.story.table`](../schemas/story/table.md) content; the document's [`rig.layout.table_style`](../schemas/layout/table-style.md) dresses them - Word table formatting does not travel. Not a layout |
 
 Do not put InDesign Self strings, story overflow, or composed line breaks in portable components - those are encoding / host cache.
 
