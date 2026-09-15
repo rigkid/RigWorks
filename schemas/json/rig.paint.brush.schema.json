@@ -39,6 +39,21 @@
     },
     "loadCapacityMm": {
       "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "lagTipMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "lagMaxMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "lagP1": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
+    },
+    "lagP2": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
+    },
+    "gapMaxMm": {
+      "$ref": "./_defs.schema.json#/$defs/float"
     }
   },
   "required": [

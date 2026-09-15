@@ -183,6 +183,9 @@ add("rig.layout.paragraph_style", {
   keepFirstLines: ref("int"),
   keepLastLines: ref("int"),
   keepLastWords: ref("int"),
+  hyphenate: ref("bool"),
+  alignToBaselineGrid: ref("bool"),
+  baselineGridFirstLineOnly: ref("bool"),
   paint: ref("entity"),
 }, { required: [] });
 
@@ -194,6 +197,19 @@ add("rig.layout.character_style", {
   paint: ref("entity"),
   italic: ref("bool"),
   bold: ref("bool"),
+}, { required: [] });
+
+// Document baseline grid and column defaults - one entity per document.
+// Anchored to each page's top margin. Text opts in per paragraph style
+// (alignToBaselineGrid / baselineGridFirstLineOnly); the grid alone moves
+// nothing. baselineViewThreshold is an advisory on-screen hint.
+add("rig.layout.grid", {
+  baselineEnabled: ref("bool"),
+  baselineStart: ref("float"),
+  baselineIncrement: ref("float"),
+  baselineViewThreshold: ref("float"),
+  columns: ref("int"),
+  gutter: ref("float"),
 }, { required: [] });
 
 // Table dress: one style normally covers every table in a document.
@@ -1338,6 +1354,11 @@ add("rig.paint.brush", {
   taperP1: ref("vec2"),
   taperP2: ref("vec2"),
   loadCapacityMm: ref("float"),
+  lagTipMm: ref("float"),
+  lagMaxMm: ref("float"),
+  lagP1: ref("vec2"),
+  lagP2: ref("vec2"),
+  gapMaxMm: ref("float"),
 }, { required: ["shape", "maxWidthMm"] });
 
 add("rig.paint.library", {

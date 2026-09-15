@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.grid.schema.json",
+  "title": "rig.layout.grid",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "baselineEnabled": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "baselineStart": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "baselineIncrement": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "baselineViewThreshold": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "columns": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "gutter": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  }
+}

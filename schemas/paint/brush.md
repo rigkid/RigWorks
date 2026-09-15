@@ -19,9 +19,14 @@ Compose [`rig.meta.named`](../meta/named.md) for the label / `stableId`. Consume
 | `taperP1` | vec2 | Optional. First cubic Bezier handle of the width-vs-depth profile. Endpoints are fixed at (0,0) and (1,1). X is depth fraction (clamped 0-1); Y is width fraction (free, so the sides may bow past max or pinch inside the tip). Absent = (1/3, 1/3) |
 | `taperP2` | vec2 | Optional. Second handle; absent = (2/3, 2/3). Together with `taperP1` the default is a straight ramp |
 | `loadCapacityMm` | float | Optional. Plotted travel (mm) one dip sustains before the mark fails; absent = 400 |
+| `lagTipMm` | float | Optional. Contact-patch lag (mm) at zero penetration: the patch trails the handle axis by this much when the tip just touches. Absent = 0 (rigid pen) |
+| `lagMaxMm` | float | Optional. Contact-patch lag (mm) at full taper depth. Absent = `lagTipMm` |
+| `lagP1` | vec2 | Optional. First cubic Bezier handle of the lag-vs-depth profile. Endpoints are fixed at (0,0) and (1,1). X is depth fraction (clamped 0-1); Y is lag fraction. Absent = (1/3, 1/3) |
+| `lagP2` | vec2 | Optional. Second handle; absent = (2/3, 2/3). Together with `lagP1` the default is a straight ramp from `lagTipMm` to `lagMaxMm` |
+| `gapMaxMm` | float | Optional. Tip-to-patch-center gap (mm) at full taper depth. Zero at touch, linear in depth. Absent = 0 |
 
 Required: `shape`, `maxWidthMm`.
 
-A host that plunges the brush answers "how wide is the mark at this Z" from `tipWidthMm`, `maxWidthMm`, `taperHeightMm`, and the two handles. Live paint level, dip counters, and stamp textures stay in the host.
+A host that plunges the brush answers "how wide is the mark at this Z" from `tipWidthMm`, `maxWidthMm`, `taperHeightMm`, and the two taper handles. A host that compensates the toolpath answers "where is the contact patch relative to the handle" from `lagTipMm`, `lagMaxMm`, the two lag handles, and `gapMaxMm`. Live paint level, dip counters, and stamp textures stay in the host.
 
 Do not put stiffness or dry-fade here until a fulfillment reads them.

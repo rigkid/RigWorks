@@ -47,6 +47,15 @@
     "keepLastWords": {
       "$ref": "./_defs.schema.json#/$defs/int"
     },
+    "hyphenate": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "alignToBaselineGrid": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "baselineGridFirstLineOnly": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
     "paint": {
       "$ref": "./_defs.schema.json#/$defs/entity"
     }

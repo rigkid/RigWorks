@@ -367,6 +367,9 @@
               "rig.layout.frame_chain": {
                 "$ref": "./rig.layout.frame_chain.schema.json"
               },
+              "rig.layout.grid": {
+                "$ref": "./rig.layout.grid.schema.json"
+              },
               "rig.layout.master": {
                 "$ref": "./rig.layout.master.schema.json"
               },

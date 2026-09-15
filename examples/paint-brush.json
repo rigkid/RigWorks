@@ -1,5 +1,5 @@
 {
-  "rig": "0.30.0",
+  "rig": "0.31.0",
   "document": {
     "title": "Flat brush for a CNC paint hold",
     "defaultUnit": "mm"
@@ -18,7 +18,12 @@
           "taperHeightMm": 6,
           "taperP1": [0.333, 0.333],
           "taperP2": [0.667, 0.667],
-          "loadCapacityMm": 300
+          "loadCapacityMm": 300,
+          "lagTipMm": 0.4,
+          "lagMaxMm": 3.2,
+          "lagP1": [0.333, 0.333],
+          "lagP2": [0.667, 0.667],
+          "gapMaxMm": 1.5
         }
       }
     }

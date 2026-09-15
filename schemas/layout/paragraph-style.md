@@ -18,6 +18,9 @@ Story styles stay identity-only (name + basedOn + listKind). Font, size, leading
 | `keepFirstLines` | int | Optional. Min lines left before a frame / page break (orphans). `0` = off; absent = host default |
 | `keepLastLines` | int | Optional. Min lines carried past a frame / page break (widows). `0` = off; absent = host default |
 | `keepLastWords` | int | Optional. Min words on the paragraph's last line (runts). `0` / `1` = off; absent = host default |
+| `hyphenate` | bool | Optional. Dictionary hyphenation at line breaks. Absent = `true`; authored soft hyphens (U+00AD) always stay break opportunities |
+| `alignToBaselineGrid` | bool | Optional. Snap lines to the document [`rig.layout.grid`](grid.md) baseline increment. Absent = `false` |
+| `baselineGridFirstLineOnly` | bool | Optional. With `alignToBaselineGrid`, snap only the paragraph's first line; the rest follow `leading`. Absent = `false` |
 | `paint` | entity | Optional. Paint entity (`rig.paint.fill` / `solid`) for the run colour |
 
 Based-on chains stay acyclic. A cycle is a document error. Do not put these fields on `rig.story.*`.
