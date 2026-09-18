@@ -13,5 +13,9 @@ Story character styles are identity only. Face override, size, paint, and emphas
 | `paint` | entity | Optional. Paint entity for the run colour |
 | `italic` | bool | Optional. Oblique / italic emphasis; absent = false |
 | `bold` | bool | Optional. Weight emphasis; absent = false |
+| `tracking` | float | Optional. Uniform letterspace in thousandths of an em; absent = `0` |
+| `kerningMode` | enum | Optional. `off` / `metrics` (font kern / GPOS pairs). Absent = `metrics` |
+| `baselineShift` | float | Optional. Vertical shift off the baseline, positive raises; absent = `0` |
+| `case` | enum | Optional. `none` / `upper` / `lower` / `small-caps`. Absent = `none` |
 
 Based-on chains stay acyclic. A cycle is a document error. Do not put these fields on `rig.story.*`.

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.font.master.schema.json",
+  "title": "rig.font.master",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "location": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "tag",
+          "value"
+        ],
+        "properties": {
+          "tag": {
+            "$ref": "./_defs.schema.json#/$defs/string"
+          },
+          "value": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "location"
+  ]
+}

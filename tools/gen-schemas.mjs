@@ -170,6 +170,18 @@ add("rig.layout.section", {
   startSide: enumOf(["any", "recto", "verso"]),
 }, { required: [] });
 
+// GREP style rule: text matching an ECMAScript regex takes a character style.
+// Rules apply in order to text no authored character style already claims.
+const grepRule = {
+  type: "object",
+  additionalProperties: false,
+  required: ["pattern"],
+  properties: {
+    pattern: { type: "string" },
+    characterStyle: ref("entity"),
+  },
+};
+
 add("rig.layout.paragraph_style", {
   storyStyle: ref("entity"),
   basedOn: ref("entity"),
@@ -177,9 +189,18 @@ add("rig.layout.paragraph_style", {
   fontSize: ref("float"),
   leading: ref("float"),
   alignment: enumOf(["left", "center", "right", "justify"]),
+  lastLineAlignment: enumOf(["left", "center", "right", "justify"]),
   spaceBefore: ref("float"),
   spaceAfter: ref("float"),
   firstLineIndent: ref("float"),
+  leftIndent: ref("float"),
+  rightIndent: ref("float"),
+  tracking: ref("float"),
+  wordSpacingMin: ref("float"),
+  wordSpacingDesired: ref("float"),
+  wordSpacingMax: ref("float"),
+  letterSpacingMin: ref("float"),
+  letterSpacingMax: ref("float"),
   keepFirstLines: ref("int"),
   keepLastLines: ref("int"),
   keepLastWords: ref("int"),
@@ -187,6 +208,7 @@ add("rig.layout.paragraph_style", {
   alignToBaselineGrid: ref("bool"),
   baselineGridFirstLineOnly: ref("bool"),
   paint: ref("entity"),
+  grepStyles: { type: "array", items: grepRule },
 }, { required: [] });
 
 add("rig.layout.character_style", {
@@ -197,6 +219,10 @@ add("rig.layout.character_style", {
   paint: ref("entity"),
   italic: ref("bool"),
   bold: ref("bool"),
+  tracking: ref("float"),
+  kerningMode: enumOf(["off", "metrics"]),
+  baselineShift: ref("float"),
+  case: enumOf(["none", "upper", "lower", "small-caps"]),
 }, { required: [] });
 
 // Document baseline grid and column defaults - one entity per document.
@@ -1685,7 +1711,17 @@ add("rig.font.face", {
   descender: ref("float"),
   capHeight: ref("float"),
   xHeight: ref("float"),
+  italicAngle: ref("float"),
   version: ref("string"),
+  copyright: ref("string"),
+  trademark: ref("string"),
+  designer: ref("string"),
+  designerUrl: ref("string"),
+  manufacturer: ref("string"),
+  manufacturerUrl: ref("string"),
+  licence: ref("string"),
+  licenceUrl: ref("string"),
+  note: ref("string"),
   features: ref("entity"),
 }, { required: [] });
 
@@ -1786,6 +1822,25 @@ add("rig.font.cell", {
   baseAdv: ref("float"),
   terms: { type: "array", items: fontTerm },
 }, { required: ["baseAdv"] });
+
+// One interpolation master. Compose on the rig.font.layer entity that holds
+// the master's outlines; location values are design coordinates on the face's
+// axes (designspace <source>). Deltas for playback stay rig.font.cell.
+add("rig.font.master", {
+  location: {
+    type: "array",
+    minItems: 1,
+    items: {
+      type: "object",
+      additionalProperties: false,
+      required: ["tag", "value"],
+      properties: {
+        tag: ref("string"),
+        value: ref("float"),
+      },
+    },
+  },
+}, { required: ["location"] });
 
 // --- story (semantic copy) ---
 // Editorial flow: named styles, paragraphs, runs, tables. No font, size, or

@@ -292,6 +292,9 @@
               "rig.font.layer": {
                 "$ref": "./rig.font.layer.schema.json"
               },
+              "rig.font.master": {
+                "$ref": "./rig.font.master.schema.json"
+              },
               "rig.geometry.arc": {
                 "$ref": "./rig.geometry.arc.schema.json"
               },

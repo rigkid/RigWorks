@@ -26,7 +26,37 @@
     "xHeight": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
+    "italicAngle": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
     "version": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "copyright": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "trademark": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "designer": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "designerUrl": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "manufacturer": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "manufacturerUrl": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "licence": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "licenceUrl": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "note": {
       "$ref": "./_defs.schema.json#/$defs/string"
     },
     "features": {

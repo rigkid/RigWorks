@@ -25,6 +25,28 @@
     },
     "bold": {
       "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "tracking": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "kerningMode": {
+      "type": "string",
+      "enum": [
+        "off",
+        "metrics"
+      ]
+    },
+    "baselineShift": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "case": {
+      "type": "string",
+      "enum": [
+        "none",
+        "upper",
+        "lower",
+        "small-caps"
+      ]
     }
   }
 }

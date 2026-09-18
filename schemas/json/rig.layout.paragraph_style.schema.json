@@ -29,6 +29,15 @@
         "justify"
       ]
     },
+    "lastLineAlignment": {
+      "type": "string",
+      "enum": [
+        "left",
+        "center",
+        "right",
+        "justify"
+      ]
+    },
     "spaceBefore": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
@@ -36,6 +45,30 @@
       "$ref": "./_defs.schema.json#/$defs/float"
     },
     "firstLineIndent": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "leftIndent": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "rightIndent": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "tracking": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "wordSpacingMin": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "wordSpacingDesired": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "wordSpacingMax": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "letterSpacingMin": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "letterSpacingMax": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
     "keepFirstLines": {
@@ -58,6 +91,24 @@
     },
     "paint": {
       "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "grepStyles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pattern"
+        ],
+        "properties": {
+          "pattern": {
+            "type": "string"
+          },
+          "characterStyle": {
+            "$ref": "./_defs.schema.json#/$defs/entity"
+          }
+        }
+      }
     }
   }
 }

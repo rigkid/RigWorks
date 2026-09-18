@@ -9,3 +9,5 @@ Not [`rig.spatial.layer`](../spatial/layer.md) (scene draw stack).
 | Field | Type | Meaning |
 |-------|------|---------|
 | `role` | enum | Optional. `foreground` / `background` / `spare`; absent = `foreground` |
+
+A layer that holds one interpolation master's outlines composes [`rig.font.master`](master.md) with its design-space location.
