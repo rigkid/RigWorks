@@ -22,6 +22,12 @@
         "$ref": "./rig.node.link.schema.json"
       }
     },
+    "buses": {
+      "type": "array",
+      "items": {
+        "$ref": "./rig.node.bus.schema.json"
+      }
+    },
     "nextId": {
       "$ref": "./_defs.schema.json#/$defs/uint"
     }

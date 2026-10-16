@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pcb.track.schema.json",
+  "title": "rig.pcb.track",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "width": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "net": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "width"
+  ]
+}

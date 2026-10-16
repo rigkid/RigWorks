@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pcb.via.schema.json",
+  "title": "rig.pcb.via",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "diameter": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "drill": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "through",
+        "blind-buried",
+        "micro"
+      ]
+    },
+    "net": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "diameter",
+    "drill"
+  ]
+}

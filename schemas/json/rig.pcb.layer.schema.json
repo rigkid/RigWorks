@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pcb.layer.schema.json",
+  "title": "rig.pcb.layer",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "copper",
+        "silkscreen",
+        "solder-mask",
+        "solder-paste",
+        "adhesive",
+        "courtyard",
+        "fabrication",
+        "outline",
+        "margin",
+        "drawing",
+        "comment",
+        "eco",
+        "user"
+      ]
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "front",
+        "back",
+        "inner"
+      ]
+    }
+  },
+  "required": [
+    "role"
+  ]
+}

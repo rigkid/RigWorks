@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.circuit.pin.schema.json",
+  "title": "rig.circuit.pin",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "number": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "function": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "electricalType": {
+      "type": "string",
+      "enum": [
+        "input",
+        "output",
+        "bidirectional",
+        "tri-state",
+        "passive",
+        "free",
+        "unspecified",
+        "power-in",
+        "power-out",
+        "open-collector",
+        "open-emitter",
+        "no-connect"
+      ]
+    },
+    "net": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "number"
+  ]
+}

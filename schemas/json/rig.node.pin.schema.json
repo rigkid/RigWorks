@@ -20,6 +20,9 @@
     },
     "type": {
       "$ref": "./_defs.schema.json#/$defs/propertyType"
+    },
+    "bus": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
     }
   },
   "required": [

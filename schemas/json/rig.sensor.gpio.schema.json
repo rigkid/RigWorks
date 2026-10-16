@@ -22,6 +22,9 @@
     },
     "device": {
       "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "terminal": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
     }
   },
   "required": [

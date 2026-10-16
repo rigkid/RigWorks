@@ -349,6 +349,25 @@ Pellet / FGF machine, grade, process, sag, and a job that points at asset entiti
 | `rig.print.compression` | [print/compression.md](print/compression.md) |
 | `rig.print.job` | [print/job.md](print/job.md) |
 
+### Circuit / PCB
+
+Electrical meaning - parts, physical terminals, nets - is `rig.circuit.*`, shared by schematic, board, and live hardware. Board fabrication is `rig.pcb.*`. A pad is a drawing of a terminal, so `rig.pcb.pad` composes on the `rig.circuit.pin` entity. Drawing primitives stay on geometry and paint; layers are joined through `rig.pcb.layer_set`, not `parent`. Zone fills and ratsnest are host caches. `.kicad_pcb` is a host encoding - [kicad.md](../docs/kicad.md).
+
+| Id | Doc |
+|----|-----|
+| `rig.circuit.part` | [circuit/part.md](circuit/part.md) |
+| `rig.circuit.pin` | [circuit/pin.md](circuit/pin.md) |
+| `rig.circuit.net` | [circuit/net.md](circuit/net.md) |
+| `rig.pcb.board` | [pcb/board.md](pcb/board.md) |
+| `rig.pcb.layer` | [pcb/layer.md](pcb/layer.md) |
+| `rig.pcb.layer_set` | [pcb/layer-set.md](pcb/layer-set.md) |
+| `rig.pcb.footprint` | [pcb/footprint.md](pcb/footprint.md) |
+| `rig.pcb.pad` | [pcb/pad.md](pcb/pad.md) |
+| `rig.pcb.track` | [pcb/track.md](pcb/track.md) |
+| `rig.pcb.via` | [pcb/via.md](pcb/via.md) |
+| `rig.pcb.zone` | [pcb/zone.md](pcb/zone.md) |
+| `rig.pcb.keepout` | [pcb/keepout.md](pcb/keepout.md) |
+
 ### I/O
 
 | Id | Doc |
@@ -409,6 +428,7 @@ Portable development-machine recipes - not a media-show AV bus or gated trigger,
 | `rig.node.node` | [node/node.md](node/node.md) |
 | `rig.node.pin` | [node/pin.md](node/pin.md) |
 | `rig.node.link` | [node/link.md](node/link.md) |
+| `rig.node.bus` | [node/bus.md](node/bus.md) |
 | `rig.node.param` | [node/param.md](node/param.md) |
 | `rig.node.publish` | [node/publish.md](node/publish.md) |
 
@@ -428,6 +448,10 @@ Portable development-machine recipes - not a media-show AV bus or gated trigger,
 | Story flow | `blocks` | [`story.flow`](story/flow.md) via [`story.paragraph`](story/paragraph.md) / [`story.table`](story/table.md) |
 | Story thread | `frames` | [`layout.frame_chain`](layout/frame-chain.md) via [`layout.frame`](layout/frame.md) |
 | FGF job | `input` / `output` | [`print.job`](print/job.md) via [`media.asset_ref`](media/asset-ref.md) |
+| Circuit part | `parent` | [`spatial.relationship`](spatial/relationship.md): terminals ([`circuit.pin`](circuit/pin.md)) and footprint drawings under a [`circuit.part`](circuit/part.md) |
+| Net membership | `net` | [`circuit.pin`](circuit/pin.md) / [`pcb.track`](pcb/track.md) / [`pcb.via`](pcb/via.md) / [`pcb.zone`](pcb/zone.md) via [`circuit.net`](circuit/net.md) - the net holds no member list |
+| Board layers | `layers` | [`pcb.layer_set`](pcb/layer-set.md) via [`pcb.layer`](pcb/layer.md) (not `spatial.relationship`) |
+| GPIO terminal | `terminal` | [`sensor.gpio`](sensor/gpio.md) via [`circuit.pin`](circuit/pin.md) |
 | Table cell | `blocks` | [`story.table`](story/table.md) cell via nested paragraphs / tables (not listed on the parent flow) |
 | BIM containment | `parent` | [`spatial.relationship`](spatial/relationship.md) under site / building / storey groups ([`bim.site`](bim/site.md) / [`building`](bim/building.md) / [`storey`](bim/storey.md)) |
 | BIM relation | `a` / `b` | [`bim.relation`](bim/relation.md) (`voids` / `fills` / `connects` / `aggregates` / `services`) |

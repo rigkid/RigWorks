@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pcb.footprint.schema.json",
+  "title": "rig.pcb.footprint",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "library": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "front",
+        "back"
+      ]
+    },
+    "mount": {
+      "type": "string",
+      "enum": [
+        "smd",
+        "through-hole",
+        "other"
+      ]
+    },
+    "locked": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  }
+}

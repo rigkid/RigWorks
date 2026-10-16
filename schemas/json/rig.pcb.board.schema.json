@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pcb.board.schema.json",
+  "title": "rig.pcb.board",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "thickness": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "source": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

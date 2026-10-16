@@ -16,8 +16,24 @@
       "type": "string",
       "enum": [
         "linear",
-        "smooth"
+        "smooth",
+        "bezier"
       ]
+    },
+    "handles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "in": {
+            "$ref": "./_defs.schema.json#/$defs/vec2"
+          },
+          "out": {
+            "$ref": "./_defs.schema.json#/$defs/vec2"
+          }
+        }
+      }
     },
     "preset": {
       "type": "string",

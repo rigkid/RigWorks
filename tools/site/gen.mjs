@@ -334,6 +334,11 @@ const GROUPS = [
     note: "Pellet / FGF machine, grade, process, sag. Not envelope pdfX, not a layout page, not a VM recipe.",
   },
   {
+    title: "Circuit / PCB",
+    domains: ["circuit", "pcb"],
+    note: "Parts, physical terminals, nets; board layers, pads, tracks, vias, zones. A pad composes on its terminal. .kicad_pcb is a host encoding.",
+  },
+  {
     title: "I/O",
     domains: ["io", "dmx", "led", "sensor", "input", "light", "calendar"],
   },

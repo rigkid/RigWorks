@@ -8,13 +8,14 @@ Also used **inline** as `nested` on a [`rig.node.node`](node.md) for nestable gr
 |-------|------|---------|
 | `nodes` | node[] | Graph nodes - see [`rig.node.node`](node.md) |
 | `links` | link[] | Directed pin links - see [`rig.node.link`](link.md) |
-| `nextId` | uint | Next id allocator for nodes / links / pins |
+| `buses` | bus[] | Optional. Named rails pins tap without a drawn link - see [`rig.node.bus`](bus.md) |
+| `nextId` | uint | Next id allocator for nodes / links / pins / buses |
 
 ## Contract vs host
 
 | Layer | Owned by | Examples |
 |-------|----------|----------|
-| Portable PODs | Rig | graph / node / pin / link / param / publish fields |
+| Portable PODs | Rig | graph / node / pin / link / bus / param / publish fields |
 | Value `type` ids | Rig [properties](../../docs/properties.md) | `float`, `vec2`, `vec4`, ... |
 | Catalog `typeId`s | Host / pack | `float.add`, `mod.lfo`, `color.value`, `group` |
 | Evaluation | Host / pack | Graph walk, group recursion, coercion, outputs |

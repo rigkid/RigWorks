@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.circuit.part.schema.json",
+  "title": "rig.circuit.part",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "reference": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "value": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "datasheet": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "inBom": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "reference"
+  ]
+}

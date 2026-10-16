@@ -244,6 +244,15 @@
               "rig.calendar.weekly": {
                 "$ref": "./rig.calendar.weekly.schema.json"
               },
+              "rig.circuit.net": {
+                "$ref": "./rig.circuit.net.schema.json"
+              },
+              "rig.circuit.part": {
+                "$ref": "./rig.circuit.part.schema.json"
+              },
+              "rig.circuit.pin": {
+                "$ref": "./rig.circuit.pin.schema.json"
+              },
               "rig.commerce.discount": {
                 "$ref": "./rig.commerce.discount.schema.json"
               },
@@ -451,6 +460,9 @@
               "rig.music.transport": {
                 "$ref": "./rig.music.transport.schema.json"
               },
+              "rig.node.bus": {
+                "$ref": "./rig.node.bus.schema.json"
+              },
               "rig.node.graph": {
                 "$ref": "./rig.node.graph.schema.json"
               },
@@ -510,6 +522,33 @@
               },
               "rig.party.account": {
                 "$ref": "./rig.party.account.schema.json"
+              },
+              "rig.pcb.board": {
+                "$ref": "./rig.pcb.board.schema.json"
+              },
+              "rig.pcb.footprint": {
+                "$ref": "./rig.pcb.footprint.schema.json"
+              },
+              "rig.pcb.keepout": {
+                "$ref": "./rig.pcb.keepout.schema.json"
+              },
+              "rig.pcb.layer": {
+                "$ref": "./rig.pcb.layer.schema.json"
+              },
+              "rig.pcb.layer_set": {
+                "$ref": "./rig.pcb.layer_set.schema.json"
+              },
+              "rig.pcb.pad": {
+                "$ref": "./rig.pcb.pad.schema.json"
+              },
+              "rig.pcb.track": {
+                "$ref": "./rig.pcb.track.schema.json"
+              },
+              "rig.pcb.via": {
+                "$ref": "./rig.pcb.via.schema.json"
+              },
+              "rig.pcb.zone": {
+                "$ref": "./rig.pcb.zone.schema.json"
               },
               "rig.person.contact": {
                 "$ref": "./rig.person.contact.schema.json"

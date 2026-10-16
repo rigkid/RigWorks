@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pcb.keepout.schema.json",
+  "title": "rig.pcb.keepout",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "tracks": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "vias": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "pads": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "pours": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "footprints": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  }
+}

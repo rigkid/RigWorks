@@ -33,6 +33,7 @@ node tools/rig-validate/cli.js examples/dev-hyperv.json
 node tools/rig-validate/cli.js examples/dev-kvm.json
 node tools/rig-validate/cli.js examples/print-fgf.json
 node tools/rig-validate/cli.js examples/paint-brush.json
+node tools/rig-validate/cli.js examples/kicad-pcb.json
 ```
 
 ## SUDE sketch
@@ -299,3 +300,7 @@ Pellet printer envelope, a grade with density and zone temps, slice knobs plus s
 ## `paint-brush.json`
 
 One named brush entity: a size-12 flat with measured ferrule, bristle length, tip-to-max taper, and load capacity. Machine Z / feeds / dip stations are not on this component - [schemas/paint/brush.md](../schemas/paint/brush.md).
+
+## `kicad-pcb.json`
+
+A 30 x 20 mm LED board as it lands from a `.kicad_pcb`: board root with `source` pointing at the original file (the `.rigz` sidecar a writer merges onto), seven layers, three nets, and three parts - a pin header, a resistor, and an LED rotated 90 degrees in KiCad (`-90` about +Z here). Each pad is a terminal entity carrying both [`rig.circuit.pin`](../schemas/circuit/pin.md) and [`rig.pcb.pad`](../schemas/pcb/pad.md). Tracks, a via, a ground pour, an outline, and a silkscreen label that reads `{{reference}}`. A [`rig.sensor.gpio`](../schemas/sensor/gpio.md) entity drives BCM 17 and names header terminal 1 as its `terminal`. KiCad uuids are `stableId` - [docs/kicad.md](../docs/kicad.md).

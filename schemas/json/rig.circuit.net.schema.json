@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.circuit.net.schema.json",
+  "title": "rig.circuit.net",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {},
+  "description": "Marker: presence means an electrical net. Name on rig.meta.named. Members point at it via net fields. No fields.",
+  "minProperties": 0
+}

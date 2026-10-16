@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pcb.zone.schema.json",
+  "title": "rig.pcb.zone",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "net": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "priority": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "clearance": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "minThickness": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "connection": {
+      "type": "string",
+      "enum": [
+        "thermal",
+        "solid",
+        "none",
+        "through-hole-only"
+      ]
+    },
+    "thermalGap": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "thermalSpokeWidth": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  }
+}

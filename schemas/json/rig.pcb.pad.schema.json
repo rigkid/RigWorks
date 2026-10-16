@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.pcb.pad.schema.json",
+  "title": "rig.pcb.pad",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "through-hole",
+        "smd",
+        "connector",
+        "non-plated"
+      ]
+    },
+    "shape": {
+      "type": "string",
+      "enum": [
+        "circle",
+        "rectangle",
+        "oval",
+        "trapezoid",
+        "rounded-rectangle",
+        "custom"
+      ]
+    },
+    "width": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "height": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "cornerRatio": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.5
+    },
+    "drillWidth": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "drillHeight": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "drillOffset": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
+    }
+  },
+  "required": [
+    "kind",
+    "shape",
+    "width",
+    "height"
+  ]
+}

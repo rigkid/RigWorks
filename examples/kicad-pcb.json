@@ -1,0 +1,340 @@
+{
+  "rig": "0.33.0",
+  "document": {
+    "title": "LED blink board",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "source",
+      "components": {
+        "rig.media.asset_ref": { "kind": "document", "path": "led-blink.kicad_pcb" }
+      }
+    },
+    {
+      "id": "board",
+      "components": {
+        "rig.meta.named": { "name": "LED blink" },
+        "rig.pcb.board": { "thickness": 1.6, "source": "source" }
+      }
+    },
+    {
+      "id": "f-cu",
+      "components": {
+        "rig.meta.named": { "name": "F.Cu", "stableId": "F.Cu" },
+        "rig.pcb.layer": { "role": "copper", "side": "front" },
+        "rig.spatial.layer": { "order": 0 },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "b-cu",
+      "components": {
+        "rig.meta.named": { "name": "B.Cu", "stableId": "B.Cu" },
+        "rig.pcb.layer": { "role": "copper", "side": "back" },
+        "rig.spatial.layer": { "order": 1 },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "f-paste",
+      "components": {
+        "rig.meta.named": { "name": "F.Paste", "stableId": "F.Paste" },
+        "rig.pcb.layer": { "role": "solder-paste", "side": "front" },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "f-mask",
+      "components": {
+        "rig.meta.named": { "name": "F.Mask", "stableId": "F.Mask" },
+        "rig.pcb.layer": { "role": "solder-mask", "side": "front" },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "b-mask",
+      "components": {
+        "rig.meta.named": { "name": "B.Mask", "stableId": "B.Mask" },
+        "rig.pcb.layer": { "role": "solder-mask", "side": "back" },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "f-silks",
+      "components": {
+        "rig.meta.named": { "name": "F.Silkscreen", "stableId": "F.SilkS" },
+        "rig.pcb.layer": { "role": "silkscreen", "side": "front" },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "edge-cuts",
+      "components": {
+        "rig.meta.named": { "name": "Edge.Cuts", "stableId": "Edge.Cuts" },
+        "rig.pcb.layer": { "role": "outline" },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "net-gnd",
+      "components": {
+        "rig.meta.named": { "name": "GND", "stableId": "GND" },
+        "rig.circuit.net": {},
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "net-gpio17",
+      "components": {
+        "rig.meta.named": { "name": "GPIO17", "stableId": "GPIO17" },
+        "rig.circuit.net": {},
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "net-led-a",
+      "components": {
+        "rig.meta.named": { "name": "LED_A", "stableId": "LED_A" },
+        "rig.circuit.net": {},
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "outline",
+      "components": {
+        "rig.meta.named": { "name": "outline", "stableId": "7f1c2a40-0b1e-4a7a-9d55-0c3e5a1b2c01" },
+        "rig.geometry.rectangle": { "x": 0, "y": 0, "width": 30, "height": 20 },
+        "rig.paint.fill_stroke": { "strokeWidth": 0.05, "hasStroke": true, "hasFill": false },
+        "rig.pcb.layer_set": { "layers": ["edge-cuts"] },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "j1",
+      "components": {
+        "rig.meta.named": { "name": "J1", "stableId": "2b6d1e0a-5c3f-4e8b-a1d2-3f4e5a6b7c01" },
+        "rig.circuit.part": { "reference": "J1", "value": "Pi GPIO" },
+        "rig.pcb.footprint": {
+          "library": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+          "side": "front",
+          "mount": "through-hole"
+        },
+        "rig.spatial.transform": { "position": [5, 10, 0] },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "j1-1",
+      "components": {
+        "rig.meta.named": { "name": "J1-1", "stableId": "2b6d1e0a-5c3f-4e8b-a1d2-3f4e5a6b7c02" },
+        "rig.circuit.pin": { "number": "1", "function": "GPIO17", "electricalType": "passive", "net": "net-gpio17" },
+        "rig.pcb.pad": {
+          "kind": "through-hole",
+          "shape": "rectangle",
+          "width": 1.7,
+          "height": 1.7,
+          "drillWidth": 1
+        },
+        "rig.pcb.layer_set": { "layers": ["f-cu", "b-cu", "f-mask", "b-mask"] },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.spatial.relationship": { "parent": "j1", "order": 0 }
+      }
+    },
+    {
+      "id": "j1-2",
+      "components": {
+        "rig.meta.named": { "name": "J1-2", "stableId": "2b6d1e0a-5c3f-4e8b-a1d2-3f4e5a6b7c03" },
+        "rig.circuit.pin": { "number": "2", "function": "GND", "electricalType": "passive", "net": "net-gnd" },
+        "rig.pcb.pad": {
+          "kind": "through-hole",
+          "shape": "oval",
+          "width": 1.7,
+          "height": 1.7,
+          "drillWidth": 1
+        },
+        "rig.pcb.layer_set": { "layers": ["f-cu", "b-cu", "f-mask", "b-mask"] },
+        "rig.spatial.transform": { "position": [0, 2.54, 0] },
+        "rig.spatial.relationship": { "parent": "j1", "order": 1 }
+      }
+    },
+    {
+      "id": "j1-ref",
+      "components": {
+        "rig.meta.named": { "name": "J1 reference", "stableId": "2b6d1e0a-5c3f-4e8b-a1d2-3f4e5a6b7c04" },
+        "rig.media.text": { "text": "{{reference}}", "fontSize": 1 },
+        "rig.paint.fill_stroke": { "strokeWidth": 0.15, "hasStroke": true, "hasFill": false },
+        "rig.spatial.anchor": { "point": "center" },
+        "rig.pcb.layer_set": { "layers": ["f-silks"] },
+        "rig.spatial.transform": { "position": [0, -2.33, 0] },
+        "rig.spatial.relationship": { "parent": "j1" }
+      }
+    },
+    {
+      "id": "r1",
+      "components": {
+        "rig.meta.named": { "name": "R1", "stableId": "4c8e2f1b-6d4a-4f9c-b2e3-4a5b6c7d8e01" },
+        "rig.circuit.part": { "reference": "R1", "value": "330" },
+        "rig.pcb.footprint": {
+          "library": "Resistor_SMD:R_0603_1608Metric",
+          "side": "front",
+          "mount": "smd"
+        },
+        "rig.spatial.transform": { "position": [15, 10, 0] },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "r1-1",
+      "components": {
+        "rig.meta.named": { "name": "R1-1", "stableId": "4c8e2f1b-6d4a-4f9c-b2e3-4a5b6c7d8e02" },
+        "rig.circuit.pin": { "number": "1", "electricalType": "passive", "net": "net-gpio17" },
+        "rig.pcb.pad": {
+          "kind": "smd",
+          "shape": "rounded-rectangle",
+          "width": 0.8,
+          "height": 0.95,
+          "cornerRatio": 0.25
+        },
+        "rig.pcb.layer_set": { "layers": ["f-cu", "f-paste", "f-mask"] },
+        "rig.spatial.transform": { "position": [-0.825, 0, 0] },
+        "rig.spatial.relationship": { "parent": "r1", "order": 0 }
+      }
+    },
+    {
+      "id": "r1-2",
+      "components": {
+        "rig.meta.named": { "name": "R1-2", "stableId": "4c8e2f1b-6d4a-4f9c-b2e3-4a5b6c7d8e03" },
+        "rig.circuit.pin": { "number": "2", "electricalType": "passive", "net": "net-led-a" },
+        "rig.pcb.pad": {
+          "kind": "smd",
+          "shape": "rounded-rectangle",
+          "width": 0.8,
+          "height": 0.95,
+          "cornerRatio": 0.25
+        },
+        "rig.pcb.layer_set": { "layers": ["f-cu", "f-paste", "f-mask"] },
+        "rig.spatial.transform": { "position": [0.825, 0, 0] },
+        "rig.spatial.relationship": { "parent": "r1", "order": 1 }
+      }
+    },
+    {
+      "id": "d1",
+      "components": {
+        "rig.meta.named": { "name": "D1", "stableId": "5d9f3a2c-7e5b-4a0d-c3f4-5b6c7d8e9f01" },
+        "rig.circuit.part": { "reference": "D1", "value": "red" },
+        "rig.pcb.footprint": {
+          "library": "LED_SMD:LED_0603_1608Metric",
+          "side": "front",
+          "mount": "smd"
+        },
+        "rig.spatial.transform": {
+          "position": [22, 10, 0],
+          "rotation": [0, 0, -0.7071068, 0.7071068]
+        },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "d1-1",
+      "components": {
+        "rig.meta.named": { "name": "D1-1", "stableId": "5d9f3a2c-7e5b-4a0d-c3f4-5b6c7d8e9f02" },
+        "rig.circuit.pin": { "number": "1", "function": "K", "electricalType": "passive", "net": "net-gnd" },
+        "rig.pcb.pad": {
+          "kind": "smd",
+          "shape": "rounded-rectangle",
+          "width": 0.8,
+          "height": 0.95,
+          "cornerRatio": 0.25
+        },
+        "rig.pcb.layer_set": { "layers": ["f-cu", "f-paste", "f-mask"] },
+        "rig.spatial.transform": { "position": [-0.7875, 0, 0] },
+        "rig.spatial.relationship": { "parent": "d1", "order": 0 }
+      }
+    },
+    {
+      "id": "d1-2",
+      "components": {
+        "rig.meta.named": { "name": "D1-2", "stableId": "5d9f3a2c-7e5b-4a0d-c3f4-5b6c7d8e9f03" },
+        "rig.circuit.pin": { "number": "2", "function": "A", "electricalType": "passive", "net": "net-led-a" },
+        "rig.pcb.pad": {
+          "kind": "smd",
+          "shape": "rounded-rectangle",
+          "width": 0.8,
+          "height": 0.95,
+          "cornerRatio": 0.25
+        },
+        "rig.pcb.layer_set": { "layers": ["f-cu", "f-paste", "f-mask"] },
+        "rig.spatial.transform": { "position": [0.7875, 0, 0] },
+        "rig.spatial.relationship": { "parent": "d1", "order": 1 }
+      }
+    },
+    {
+      "id": "track-gpio17",
+      "components": {
+        "rig.meta.named": { "name": "GPIO17 track", "stableId": "8a1b2c3d-0e4f-4a5b-8c6d-7e8f9a0b1c01" },
+        "rig.pcb.track": { "width": 0.25, "net": "net-gpio17" },
+        "rig.geometry.line": { "x1": 5, "y1": 10, "x2": 14.175, "y2": 10 },
+        "rig.pcb.layer_set": { "layers": ["f-cu"] },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "track-led-a",
+      "components": {
+        "rig.meta.named": { "name": "LED_A track", "stableId": "8a1b2c3d-0e4f-4a5b-8c6d-7e8f9a0b1c02" },
+        "rig.pcb.track": { "width": 0.25, "net": "net-led-a" },
+        "rig.geometry.line": { "x1": 15.825, "y1": 10, "x2": 22, "y2": 9.2125 },
+        "rig.pcb.layer_set": { "layers": ["f-cu"] },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "track-gnd",
+      "components": {
+        "rig.meta.named": { "name": "GND stub", "stableId": "8a1b2c3d-0e4f-4a5b-8c6d-7e8f9a0b1c03" },
+        "rig.pcb.track": { "width": 0.4, "net": "net-gnd" },
+        "rig.geometry.line": { "x1": 22, "y1": 10.7875, "x2": 22, "y2": 14 },
+        "rig.pcb.layer_set": { "layers": ["f-cu"] },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "via-gnd",
+      "components": {
+        "rig.meta.named": { "name": "GND via", "stableId": "9b2c3d4e-1f5a-4b6c-9d7e-8f9a0b1c2d01" },
+        "rig.pcb.via": { "diameter": 0.6, "drill": 0.3, "net": "net-gnd" },
+        "rig.pcb.layer_set": { "layers": ["f-cu", "b-cu"] },
+        "rig.spatial.transform": { "position": [22, 14, 0] },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "pour-gnd",
+      "components": {
+        "rig.meta.named": { "name": "GND pour", "stableId": "0c3d4e5f-2a6b-4c7d-ae8f-9a0b1c2d3e01" },
+        "rig.pcb.zone": {
+          "net": "net-gnd",
+          "clearance": 0.3,
+          "minThickness": 0.25,
+          "connection": "thermal",
+          "thermalGap": 0.5,
+          "thermalSpokeWidth": 0.5
+        },
+        "rig.geometry.polygon": {
+          "points": [[0.5, 0.5], [29.5, 0.5], [29.5, 19.5], [0.5, 19.5]],
+          "closed": true
+        },
+        "rig.pcb.layer_set": { "layers": ["b-cu"] },
+        "rig.spatial.relationship": { "parent": "board" }
+      }
+    },
+    {
+      "id": "blink-out",
+      "components": {
+        "rig.meta.named": { "name": "LED drive" },
+        "rig.sensor.gpio": { "pin": 17, "mode": "out", "terminal": "j1-1" }
+      }
+    }
+  ]
+}

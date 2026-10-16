@@ -1489,7 +1489,18 @@ add(
       minItems: 2,
       items: ref("vec2"),
     },
-    interpolation: enumOf(["linear", "smooth"]),
+    interpolation: enumOf(["linear", "smooth", "bezier"]),
+    handles: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          in: ref("vec2"),
+          out: ref("vec2"),
+        },
+      },
+    },
     preset: enumOf([
       "linear",
       "ease-in",
@@ -2044,6 +2055,135 @@ add("rig.print.job", {
   output: ref("entity"),
 }, { required: ["input"] });
 
+// --- circuit (electrical meaning shared by schematic, board, and live hardware) ---
+// A part is a placed device; its terminals are child entities. Names compose
+// rig.meta.named. Net codes are encoding, not meaning.
+add("rig.circuit.part", {
+  reference: ref("string"),
+  value: ref("string"),
+  datasheet: ref("entity"),
+  inBom: ref("bool"),
+}, { required: ["reference"] });
+
+// One physical terminal. number is a string ("A1", "14", "EP").
+// Symbol pin and footprint pad are drawings of it on the same entity.
+add("rig.circuit.pin", {
+  number: ref("string"),
+  function: ref("string"),
+  electricalType: enumOf([
+    "input",
+    "output",
+    "bidirectional",
+    "tri-state",
+    "passive",
+    "free",
+    "unspecified",
+    "power-in",
+    "power-out",
+    "open-collector",
+    "open-emitter",
+    "no-connect",
+  ]),
+  net: ref("entity"),
+}, { required: ["number"] });
+
+add(
+  "rig.circuit.net",
+  {},
+  {
+    required: [],
+    description:
+      "Marker: presence means an electrical net. Name on rig.meta.named. Members point at it via net fields. No fields.",
+    minProperties: 0,
+  }
+);
+
+// --- pcb (board fabrication) ---
+// Lengths are scene lengths (document.defaultUnit, normally mm). Zone fill
+// polygons, ratsnest, and DRC results are host caches. .kicad_pcb is a host
+// encoding - docs/kicad.md.
+add("rig.pcb.board", {
+  thickness: ref("float"),
+  source: ref("entity"),
+}, { required: [] });
+
+add("rig.pcb.layer", {
+  role: enumOf([
+    "copper",
+    "silkscreen",
+    "solder-mask",
+    "solder-paste",
+    "adhesive",
+    "courtyard",
+    "fabrication",
+    "outline",
+    "margin",
+    "drawing",
+    "comment",
+    "eco",
+    "user",
+  ]),
+  side: enumOf(["front", "back", "inner"]),
+}, { required: ["role"] });
+
+// Which board layers an item sits on. A pad or via lists every layer it spans.
+add("rig.pcb.layer_set", {
+  layers: { type: "array", items: ref("entity"), minItems: 1 },
+}, { required: ["layers"] });
+
+// Board placement of a part. Compose on the rig.circuit.part entity.
+add("rig.pcb.footprint", {
+  library: ref("string"),
+  side: enumOf(["front", "back"]),
+  mount: enumOf(["smd", "through-hole", "other"]),
+  locked: ref("bool"),
+}, { required: [] });
+
+// Copper land on a terminal entity. Rotation is on transform, local to the part.
+add("rig.pcb.pad", {
+  kind: enumOf(["through-hole", "smd", "connector", "non-plated"]),
+  shape: enumOf(["circle", "rectangle", "oval", "trapezoid", "rounded-rectangle", "custom"]),
+  width: ref("float"),
+  height: ref("float"),
+  cornerRatio: { type: "number", minimum: 0, maximum: 0.5 },
+  drillWidth: ref("float"),
+  drillHeight: ref("float"),
+  drillOffset: ref("vec2"),
+}, { required: ["kind", "shape", "width", "height"] });
+
+// Copper conductor. Path is rig.geometry.line or rig.geometry.arc on the same entity.
+add("rig.pcb.track", {
+  width: ref("float"),
+  net: ref("entity"),
+}, { required: ["width"] });
+
+add("rig.pcb.via", {
+  diameter: ref("float"),
+  drill: ref("float"),
+  kind: enumOf(["through", "blind-buried", "micro"]),
+  net: ref("entity"),
+}, { required: ["diameter", "drill"] });
+
+// Copper pour. Outline is rig.geometry.polygon on the same entity.
+add("rig.pcb.zone", {
+  net: ref("entity"),
+  priority: ref("int"),
+  clearance: ref("float"),
+  minThickness: ref("float"),
+  connection: enumOf(["thermal", "solid", "none", "through-hole-only"]),
+  thermalGap: ref("float"),
+  thermalSpokeWidth: ref("float"),
+}, { required: [] });
+
+// Rule area. true = that item kind is not allowed inside the outline.
+add("rig.pcb.keepout", {
+  tracks: ref("bool"),
+  vias: ref("bool"),
+  pads: ref("bool"),
+  pours: ref("bool"),
+  footprints: ref("bool"),
+}, { required: [] });
+
 // --- io / led / sensor / interact / input ---
 // Defaults: player 0, all buttons false.
 add("rig.input.buttons", {
@@ -2115,11 +2255,13 @@ add("rig.led.uv_map", {
 }, { required: ["pixels"] });
 
 // Defaults: level 0; device absent = the host's default GPIO device.
+// terminal is the rig.circuit.pin entity this line drives or reads.
 add("rig.sensor.gpio", {
   pin: ref("int"),
   mode: enumOf(["in", "out"]),
   level: { type: "number", minimum: 0, maximum: 1 },
   device: ref("entity"),
+  terminal: ref("entity"),
 }, { required: ["pin", "mode"] });
 
 // Defaults: level 0; device absent = local.
@@ -2511,6 +2653,16 @@ add("rig.node.pin", {
   name: ref("string"),
   kind: enumOf(["in", "out"]),
   type: ref("propertyType"),
+  bus: ref("uint"),
+}, { required: ["id", "name", "kind", "type"] });
+
+// A named rail every node in the graph can tap without a drawn link
+// (ground, master clock). At most one out pin drives it; in pins read it.
+// Not rig.circuit.net - that is electrical potential on circuit entities.
+add("rig.node.bus", {
+  id: ref("uint"),
+  name: ref("string"),
+  type: ref("propertyType"),
 });
 
 // rig.node.param is defined below as a oneOf-only tagged union.
@@ -2562,6 +2714,7 @@ catalog["rig.node.graph"] = {
   properties: {
     nodes: { type: "array", items: { $ref: "./rig.node.node.schema.json" } },
     links: { type: "array", items: { $ref: "./rig.node.link.schema.json" } },
+    buses: { type: "array", items: { $ref: "./rig.node.bus.schema.json" } },
     nextId: ref("uint"),
   },
 };
@@ -2777,7 +2930,18 @@ catalog["_defs"] = {
         },
         interpolation: {
           type: "string",
-          enum: ["linear", "smooth"],
+          enum: ["linear", "smooth", "bezier"],
+        },
+        handles: {
+          type: "array",
+          items: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              in: { $ref: "#/$defs/vec2" },
+              out: { $ref: "#/$defs/vec2" },
+            },
+          },
         },
         preset: enumOf([
           "linear",
