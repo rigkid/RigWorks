@@ -37,7 +37,7 @@ Do **not** invent `rig.kicad.*` - product names stay out of schema ids. KiCad uu
 
 ## Coordinates
 
-- **Units:** millimetres. Set `document.defaultUnit` to `"mm"`. KiCad's 1 nm grid is 6 decimals; write that many on export.
+- **Units:** millimetres. Set `document.defaultUnit` to `"mm"`. Lengths are floats in that unit.
 - **Axes:** Rig 2D is +X right, +Y down - the same as KiCad. No flip.
 - **Angles:** KiCad angles turn counter-clockwise on screen. Rig turns +X toward +Y ([`rig.geometry.arc`](../schemas/geometry/arc.md), a rotation about +Z), which is clockwise on screen. A KiCad angle `a` becomes a rotation of `-a` about +Z, and back.
 - **Footprint children:** KiCad stores footprint drawings in footprint-local coordinates, and Rig does too. KiCad stores pad and footprint-text angles as **board** angles (they include the footprint's rotation). Subtract the footprint angle on import and add it back on export.
@@ -53,7 +53,6 @@ A KiCad board makes a full trip through Rig without losing what Rig does not nam
    - An item whose uuid matches an entity `stableId` takes the mapped fields from the entity. Its other tokens (margins, stroke type, hatch settings, 3D model, property visibility) stay as they were.
    - An item with no matching entity was deleted in Rig - drop it.
    - An entity with no matching item is new - write it with KiCad defaults for whatever Rig did not say, and generate a uuid.
-   - A field that differs from the source by less than 1 nm (or 0.001 degree) keeps the source tokens, so float conversion does not churn the diff.
    - Write `filled_polygon` back only for zones whose outline, layers, and net are unchanged. Otherwise drop the fill and let KiCad refill.
    - Header, `setup`, `title_block`, and `generator` come from the source.
 
