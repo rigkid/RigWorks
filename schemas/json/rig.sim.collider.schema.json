@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sim.collider.schema.json",
+  "title": "rig.sim.collider",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "sphere",
+        "box",
+        "capsule",
+        "mesh"
+      ]
+    },
+    "radius": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "height": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "halfExtents": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "mesh": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "offset": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "sensor": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "friction": {
+      "type": "number",
+      "minimum": 0
+    },
+    "restitution": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "restitutionThreshold": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "density": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "layer": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "mask": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
+    }
+  },
+  "required": [
+    "kind"
+  ]
+}

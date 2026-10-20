@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sim.actuator.schema.json",
+  "title": "rig.sim.actuator",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "joint": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "position",
+        "velocity",
+        "effort"
+      ]
+    },
+    "effort": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "maxSpeed": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "stiffness": {
+      "type": "number",
+      "minimum": 0
+    },
+    "damping": {
+      "type": "number",
+      "minimum": 0
+    },
+    "target": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  },
+  "required": [
+    "joint"
+  ]
+}

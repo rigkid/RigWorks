@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sim.episode.schema.json",
+  "title": "rig.sim.episode",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "clip": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "task": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "success": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    }
+  },
+  "minProperties": 1
+}

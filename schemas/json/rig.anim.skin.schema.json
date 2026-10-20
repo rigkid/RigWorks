@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.anim.skin.schema.json",
+  "title": "rig.anim.skin",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "skeleton": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "joints": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      },
+      "minItems": 1
+    },
+    "inverseBind": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "jointIndices": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/uint32"
+      }
+    },
+    "jointWeights": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    }
+  },
+  "required": [
+    "skeleton",
+    "joints",
+    "inverseBind",
+    "jointIndices",
+    "jointWeights"
+  ]
+}

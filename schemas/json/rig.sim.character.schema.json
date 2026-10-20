@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sim.character.schema.json",
+  "title": "rig.sim.character",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "radius": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "height": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "stepHeight": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "slopeLimitDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "jumpSpeed": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "grounded": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "velocity": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "up": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "floorSnap": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "motion": {
+      "type": "string",
+      "enum": [
+        "grounded",
+        "floating"
+      ]
+    }
+  },
+  "required": [
+    "radius",
+    "height"
+  ]
+}

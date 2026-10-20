@@ -29,6 +29,9 @@
     },
     "aspect": {
       "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "fixedAspect": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
     }
   }
 }

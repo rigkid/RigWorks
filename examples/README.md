@@ -34,6 +34,10 @@ node tools/rig-validate/cli.js examples/dev-kvm.json
 node tools/rig-validate/cli.js examples/print-fgf.json
 node tools/rig-validate/cli.js examples/paint-brush.json
 node tools/rig-validate/cli.js examples/kicad-pcb.json
+node tools/rig-validate/cli.js examples/visualizer.json
+node tools/rig-validate/cli.js examples/music-chord.json
+node tools/rig-validate/cli.js examples/play-scene.json
+node tools/rig-validate/cli.js examples/robot-lesson.json
 ```
 
 ## SUDE sketch
@@ -271,7 +275,7 @@ A site oak and a named rose. Taxon parts follow Darwin Core / ICNafp; the rose a
 
 ## `book-isbn.json`
 
-A Penguin Classics edition: `rig.book.identifier` (ISO 2108 ISBN-13 digits only), `title` (subtitle / series - distinctive title stays on `rig.meta.named`), `publication` (publisher is an organisation entity), `contribution` (author is a person entity), `cover` (image `asset_ref`), and `subject` (Dewey). Not an ONIX XML message.
+A paperback edition: `rig.book.identifier` (ISO 2108 ISBN-13 digits only), `title` (subtitle / series - distinctive title stays on `rig.meta.named`), `publication` (publisher is an organisation entity), `contribution` (author is a person entity), `cover` (image `asset_ref`), and `subject` (Dewey). Not an ONIX XML message.
 
 ## `paper-citation.json`
 
@@ -283,7 +287,7 @@ Van Gogh *Irises*: CDWA core composed as `rig.art.object` / `creation` / `attrib
 
 ## `commerce-offer.json`
 
-Penguin Classics paperback: `rig.commerce.offer` (item + seller), `rig.commerce.price` (GBP amount, not a formatted string), `rig.commerce.discount` (`percent` 20), validity as `rig.calendar.span`. Not a cart or tax engine.
+A paperback offer: `rig.commerce.offer` (item + seller), `rig.commerce.price` (GBP amount, not a formatted string), `rig.commerce.discount` (`percent` 20), validity as `rig.calendar.span`. Not a cart or tax engine.
 
 ## `legal-agreement.json`
 
@@ -300,6 +304,22 @@ Pellet printer envelope, a grade with density and zone temps, slice knobs plus s
 ## `paint-brush.json`
 
 One named brush entity: a size-12 flat with measured ferrule, bristle length, tip-to-max taper, and load capacity. Machine Z / feeds / dip stations are not on this component - [schemas/paint/brush.md](../schemas/paint/brush.md).
+
+## `music-chord.json`
+
+A pattern step and a free-time note that each sound C major: `pitch` 60 plus `intervals` `[4, 7]`. The next step is G minor (`[3, 7]` from 67). The last step is C alone. [`rig.audio.analysis`](../schemas/audio/analysis.md) asks for live `chroma`, `key`, and `chord`. Those values are not in the file.
+
+## `visualizer.json`
+
+A preset deck: two `kind` `preset` assets, a [`rig.pixel.canvas`](../schemas/pixel/canvas.md) `output`, [`rig.audio.analysis`](../schemas/audio/analysis.md) (live input, publish onset / note / color / temperature), and [`rig.picture.analysis`](../schemas/picture/analysis.md) pointed at the canvas. [`rig.visualizer.deck`](../schemas/visualizer.md) `switchOn` is `onset`. Live color values are not in the file.
+
+## `robot-lesson.json`
+
+A base link, a driven shoulder, and a hinge that mimics it. The lidar is a scan pattern, the eye is a camera plus a depth image, and the IMU is one sample at load. [`rig.sim.episode`](../schemas/sim/episode.md) points at the clip: the action track commands the drive, the observation track records acceleration. The cloud, the depth buffer, and any policy weights are not in the file - [docs/ros.md](../docs/ros.md).
+
+## `play-scene.json`
+
+A small play scene: a dynamic ball on a hinge, a kinematic hero with health and a walk clip, a navmesh, a particle burst, sticks and a key binding, a spatial voice, a behavior action, an inventory, a spawner, a save slot, a network id, and a HUD bound to health. Contact manifolds, live particles, and the solved path are not in the file.
 
 ## `kicad-pcb.json`
 

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.anim.clip.schema.json",
+  "title": "rig.anim.clip",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "duration": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "wrap": {
+      "type": "string",
+      "enum": [
+        "once",
+        "loop",
+        "ping-pong"
+      ]
+    }
+  },
+  "required": [
+    "duration"
+  ]
+}

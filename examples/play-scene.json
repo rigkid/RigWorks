@@ -1,0 +1,326 @@
+{
+  "rig": "0.34.0",
+  "document": {
+    "title": "Play scene",
+    "defaultUnit": "m"
+  },
+  "entities": [
+    {
+      "id": "world",
+      "components": {
+        "rig.meta.named": { "name": "World", "stableId": "world" },
+        "rig.spatial.vertex": {}
+      }
+    },
+    {
+      "id": "ground",
+      "components": {
+        "rig.meta.named": { "name": "Ground", "stableId": "ground" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.sim.collider": {
+          "kind": "box",
+          "halfExtents": [8, 0.1, 8],
+          "friction": 0.6
+        }
+      }
+    },
+    {
+      "id": "ball",
+      "components": {
+        "rig.meta.named": { "name": "Ball", "stableId": "ball" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [0, 2, 0] },
+        "rig.sim.rigidbody": {
+          "bodyType": "dynamic",
+          "velocity": [1, 0, 0],
+          "angularVelocityDegrees": [0, 90, 0],
+          "mass": 2,
+          "lockRotation": false
+        },
+        "rig.sim.collider": {
+          "kind": "sphere",
+          "radius": 0.25,
+          "restitution": 0.4
+        }
+      }
+    },
+    {
+      "id": "hinge",
+      "components": {
+        "rig.meta.named": { "name": "Hinge", "stableId": "hinge" },
+        "rig.sim.joint": {
+          "kind": "hinge",
+          "a": "ball",
+          "b": "ground",
+          "axis": [0, 1, 0],
+          "min": -45,
+          "max": 45
+        }
+      }
+    },
+    {
+      "id": "floor",
+      "components": {
+        "rig.meta.named": { "name": "Floor", "stableId": "floor" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.geometry.mesh": {
+          "positions": [-4, 0, -4, 4, 0, -4, 4, 0, 4, -4, 0, 4],
+          "indices": [0, 1, 2, 0, 2, 3],
+          "mode": "triangles"
+        },
+        "rig.sim.navmesh": {}
+      }
+    },
+    {
+      "id": "flag",
+      "components": {
+        "rig.meta.named": { "name": "Flag", "stableId": "flag" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [3, 0, 2] }
+      }
+    },
+    {
+      "id": "hero",
+      "components": {
+        "rig.meta.named": { "name": "Hero", "stableId": "hero" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [0, 1, 0] },
+        "rig.sim.character": {
+          "radius": 0.3,
+          "height": 1.6,
+          "stepHeight": 0.3,
+          "jumpSpeed": 5,
+          "grounded": true,
+          "up": [0, 1, 0],
+          "motion": "grounded"
+        },
+        "rig.play.script": { "className": "Hero" },
+        "rig.sim.collider": {
+          "kind": "capsule",
+          "radius": 0.3,
+          "height": 1.6
+        },
+        "rig.sim.agent": {
+          "navmesh": "floor",
+          "speed": 3,
+          "goal": "flag"
+        },
+        "rig.play.health": { "current": 80, "maximum": 100 },
+        "rig.interact.selectable": { "enabled": true },
+        "rig.interact.selected": { "order": 0 },
+        "rig.net.replica": { "netId": "hero", "owner": 0, "authority": "owner" }
+      }
+    },
+    {
+      "id": "pad",
+      "components": {
+        "rig.meta.named": { "name": "Pad", "stableId": "pad" },
+        "rig.input.buttons": { "player": 0, "o": true },
+        "rig.input.axes": { "player": 0, "moveY": 1 },
+        "rig.input.pointer": { "player": 0, "x": 0.5, "y": 0.4, "primary": false }
+      }
+    },
+    {
+      "id": "bind-left",
+      "components": {
+        "rig.input.binding": {
+          "player": 0,
+          "control": "left",
+          "device": "key",
+          "code": "a"
+        }
+      }
+    },
+    {
+      "id": "sheet",
+      "components": {
+        "rig.meta.named": { "name": "Sheet", "stableId": "sheet" },
+        "rig.media.asset_ref": { "kind": "image", "path": "hero.png" }
+      }
+    },
+    {
+      "id": "billboard",
+      "components": {
+        "rig.meta.named": { "name": "Billboard", "stableId": "billboard" },
+        "rig.spatial.relationship": { "parent": "hero" },
+        "rig.render.sprite": { "texture": "sheet", "tiling": [1, 1], "columns": 4, "rows": 1, "frame": 0 }
+      }
+    },
+    {
+      "id": "tone",
+      "components": {
+        "rig.meta.named": { "name": "Tone", "stableId": "tone" },
+        "rig.media.asset_ref": { "kind": "audio", "path": "tone.wav", "loop": true }
+      }
+    },
+    {
+      "id": "master",
+      "components": {
+        "rig.meta.named": { "name": "Master", "stableId": "master" },
+        "rig.audio.bus": { "gain": 1, "mute": false }
+      }
+    },
+    {
+      "id": "speaker",
+      "components": {
+        "rig.meta.named": { "name": "Speaker", "stableId": "speaker" },
+        "rig.spatial.relationship": { "parent": "hero" },
+        "rig.audio.voice": {
+          "asset": "tone",
+          "bus": "master",
+          "gain": 0.8,
+          "loop": true,
+          "spatial": true,
+          "time": 1.2
+        }
+      }
+    },
+    {
+      "id": "skel",
+      "components": {
+        "rig.meta.named": { "name": "Skel", "stableId": "skel" },
+        "rig.spatial.relationship": { "parent": "hero" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.anim.skeleton": { "root": "skel", "bones": ["skel", "bone"] }
+      }
+    },
+    {
+      "id": "bone",
+      "components": {
+        "rig.meta.named": { "name": "Bone", "stableId": "bone" },
+        "rig.spatial.relationship": { "parent": "skel" },
+        "rig.spatial.transform": { "position": [0, 0.5, 0] },
+        "rig.anim.bind": { "position": [0, 0.5, 0] }
+      }
+    },
+    {
+      "id": "body",
+      "components": {
+        "rig.meta.named": { "name": "Body", "stableId": "body" },
+        "rig.spatial.relationship": { "parent": "hero" },
+        "rig.geometry.mesh": {
+          "positions": [0, 1, 0, -0.4, 0, 0, 0.4, 0, 0],
+          "mode": "triangles"
+        },
+        "rig.anim.skin": {
+          "skeleton": "skel",
+          "joints": ["bone"],
+          "inverseBind": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+          "jointIndices": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          "jointWeights": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
+        }
+      }
+    },
+    {
+      "id": "walk",
+      "components": {
+        "rig.meta.named": { "name": "Walk", "stableId": "walk" },
+        "rig.anim.clip": { "duration": 1, "wrap": "loop" }
+      }
+    },
+    {
+      "id": "walk-track",
+      "components": {
+        "rig.anim.track": {
+          "clip": "walk",
+          "target": "bone",
+          "propertyKey": "position",
+          "times": [0, 1],
+          "values": [0, 0.5, 0, 0, 0.6, 0],
+          "stride": 3
+        }
+      }
+    },
+    {
+      "id": "walk-blend",
+      "components": {
+        "rig.anim.blend": {
+          "root": 1,
+          "nodes": [{ "id": 1, "kind": "clip", "clip": "walk", "weight": 1 }]
+        }
+      }
+    },
+    {
+      "id": "mind",
+      "components": {
+        "rig.meta.named": { "name": "Mind", "stableId": "mind" },
+        "rig.spatial.relationship": { "parent": "hero" },
+        "rig.ai.behavior": {
+          "nodes": [
+            { "id": 1, "kind": "sequence" },
+            { "id": 2, "parent": 1, "kind": "action", "action": "go-to-flag" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "coin",
+      "components": {
+        "rig.meta.named": { "name": "Coin", "stableId": "coin" },
+        "rig.play.item": { "maxStack": 99 }
+      }
+    },
+    {
+      "id": "bag",
+      "components": {
+        "rig.meta.named": { "name": "Bag", "stableId": "bag" },
+        "rig.spatial.relationship": { "parent": "hero" },
+        "rig.play.inventory": {
+          "slots": [{ "item": "coin", "count": 3 }, { "count": 0 }]
+        }
+      }
+    },
+    {
+      "id": "spout",
+      "components": {
+        "rig.meta.named": { "name": "Spout", "stableId": "spout" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [-2, 1, 0] },
+        "rig.play.spawner": { "prototype": "ball", "period": 2, "maxAlive": 4 }
+      }
+    },
+    {
+      "id": "dust",
+      "components": {
+        "rig.meta.named": { "name": "Dust", "stableId": "dust" },
+        "rig.spatial.relationship": { "parent": "hero" },
+        "rig.sim.particle_emitter": {
+          "rate": 8,
+          "lifetime": 1,
+          "maxParticles": 32,
+          "shape": "sphere",
+          "shapeSize": [0.4, 0, 0],
+          "seed": 7
+        }
+      }
+    },
+    {
+      "id": "slot",
+      "components": {
+        "rig.meta.named": { "name": "Slot 1", "stableId": "slot" },
+        "rig.play.save": { "slot": 0 }
+      }
+    },
+    {
+      "id": "hud",
+      "components": {
+        "rig.meta.named": { "name": "HUD", "stableId": "hud" },
+        "rig.ui.panel": { "role": "play.hud", "surface": "hud" }
+      }
+    },
+    {
+      "id": "health-readout",
+      "components": {
+        "rig.ui.control": {
+          "panel": "hud",
+          "order": 0,
+          "target": "hero",
+          "propertyKey": "current",
+          "type": "float",
+          "readOnly": true
+        }
+      }
+    }
+  ]
+}

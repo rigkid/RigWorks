@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.visualizer.deck.schema.json",
+  "title": "rig.visualizer.deck",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "presets": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    },
+    "index": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "playing": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "shuffle": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "lockPreset": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "presetDuration": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "transitionDuration": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "switchOn": {
+      "type": "string",
+      "enum": [
+        "time",
+        "onset",
+        "beat",
+        "note"
+      ]
+    },
+    "analysis": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "output": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

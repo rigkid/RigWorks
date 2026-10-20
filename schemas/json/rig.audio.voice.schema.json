@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.audio.voice.schema.json",
+  "title": "rig.audio.voice",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "asset": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "bus": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "gain": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "pitch": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "loop": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "playing": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "time": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "spatial": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "maxDistance": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "unitSize": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "rolloff": {
+      "type": "string",
+      "enum": [
+        "none",
+        "linear",
+        "inverse",
+        "inverse-square",
+        "logarithmic"
+      ]
+    }
+  },
+  "required": [
+    "asset"
+  ]
+}

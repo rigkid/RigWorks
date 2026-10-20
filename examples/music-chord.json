@@ -1,0 +1,46 @@
+{
+  "rig": "0.34.0",
+  "document": {
+    "title": "Chord on a step and a note"
+  },
+  "entities": [
+    {
+      "id": "pattern",
+      "components": {
+        "rig.meta.named": { "name": "Triads", "stableId": "pattern" },
+        "rig.music.pattern": {
+          "rootNote": 60,
+          "scale": "major",
+          "steps": [
+            { "active": true, "pitch": 60, "intervals": [4, 7] },
+            { "active": true, "pitch": 67, "intervals": [3, 7] },
+            { "active": false },
+            { "active": true, "pitch": 60 }
+          ]
+        }
+      }
+    },
+    {
+      "id": "roll",
+      "components": {
+        "rig.meta.named": { "name": "C major", "stableId": "roll" },
+        "rig.music.note": {
+          "pitch": 60,
+          "start": 0,
+          "duration": 1,
+          "intervals": [4, 7]
+        }
+      }
+    },
+    {
+      "id": "listen",
+      "components": {
+        "rig.audio.analysis": {
+          "source": "input",
+          "bandCount": 16,
+          "features": ["chroma", "key", "chord"]
+        }
+      }
+    }
+  ]
+}

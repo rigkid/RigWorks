@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.render.sprite.schema.json",
+  "title": "rig.render.sprite",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "texture": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "tiling": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
+    },
+    "flipX": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "flipY": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "frame": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
+    },
+    "columns": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
+    },
+    "rows": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
+    }
+  },
+  "required": [
+    "texture"
+  ]
+}

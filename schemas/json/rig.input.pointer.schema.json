@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.input.pointer.schema.json",
+  "title": "rig.input.pointer",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "player": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "x": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "y": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "primary": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "secondary": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "x",
+    "y"
+  ]
+}

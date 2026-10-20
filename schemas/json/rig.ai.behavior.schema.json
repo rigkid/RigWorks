@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.ai.behavior.schema.json",
+  "title": "rig.ai.behavior",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "./_defs.schema.json#/$defs/uint"
+          },
+          "parent": {
+            "$ref": "./_defs.schema.json#/$defs/uint"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "sequence",
+              "selector",
+              "parallel",
+              "condition",
+              "action"
+            ]
+          },
+          "action": {
+            "$ref": "./_defs.schema.json#/$defs/string"
+          }
+        }
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "nodes"
+  ]
+}

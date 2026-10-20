@@ -1,0 +1,75 @@
+{
+  "rig": "0.34.0",
+  "document": {
+    "title": "Visualizer deck",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "preset-a",
+      "components": {
+        "rig.meta.named": { "name": "preset-a", "stableId": "preset-a" },
+        "rig.media.asset_ref": {
+          "kind": "preset",
+          "path": "presets/warm.vis"
+        }
+      }
+    },
+    {
+      "id": "preset-b",
+      "components": {
+        "rig.meta.named": { "name": "preset-b", "stableId": "preset-b" },
+        "rig.media.asset_ref": {
+          "kind": "preset",
+          "path": "presets/cold.vis"
+        }
+      }
+    },
+    {
+      "id": "bed",
+      "components": {
+        "rig.meta.named": { "name": "bed", "stableId": "bed" },
+        "rig.pixel.canvas": {
+          "width": 1280,
+          "height": 720
+        }
+      }
+    },
+    {
+      "id": "listen",
+      "components": {
+        "rig.meta.named": { "name": "listen", "stableId": "listen" },
+        "rig.audio.analysis": {
+          "source": "input",
+          "bandCount": 32,
+          "features": ["onset", "note", "color", "temperature"]
+        }
+      }
+    },
+    {
+      "id": "look",
+      "components": {
+        "rig.meta.named": { "name": "look", "stableId": "look" },
+        "rig.picture.analysis": {
+          "source": "bed",
+          "features": ["color", "temperature"]
+        }
+      }
+    },
+    {
+      "id": "deck",
+      "components": {
+        "rig.meta.named": { "name": "deck", "stableId": "deck" },
+        "rig.visualizer.deck": {
+          "presets": ["preset-a", "preset-b"],
+          "index": 0,
+          "playing": true,
+          "shuffle": false,
+          "switchOn": "onset",
+          "analysis": "listen",
+          "output": "bed"
+        }
+      }
+    }
+  ]
+}

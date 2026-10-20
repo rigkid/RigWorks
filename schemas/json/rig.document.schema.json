@@ -97,8 +97,29 @@
             },
             "additionalProperties": true,
             "properties": {
+              "rig.ai.behavior": {
+                "$ref": "./rig.ai.behavior.schema.json"
+              },
+              "rig.anim.bind": {
+                "$ref": "./rig.anim.bind.schema.json"
+              },
+              "rig.anim.blend": {
+                "$ref": "./rig.anim.blend.schema.json"
+              },
+              "rig.anim.clip": {
+                "$ref": "./rig.anim.clip.schema.json"
+              },
               "rig.anim.curve": {
                 "$ref": "./rig.anim.curve.schema.json"
+              },
+              "rig.anim.skeleton": {
+                "$ref": "./rig.anim.skeleton.schema.json"
+              },
+              "rig.anim.skin": {
+                "$ref": "./rig.anim.skin.schema.json"
+              },
+              "rig.anim.track": {
+                "$ref": "./rig.anim.track.schema.json"
               },
               "rig.anim.tween": {
                 "$ref": "./rig.anim.tween.schema.json"
@@ -132,6 +153,9 @@
               },
               "rig.audio.bus": {
                 "$ref": "./rig.audio.bus.schema.json"
+              },
+              "rig.audio.voice": {
+                "$ref": "./rig.audio.voice.schema.json"
               },
               "rig.bim.building": {
                 "$ref": "./rig.bim.building.schema.json"
@@ -346,11 +370,23 @@
               "rig.geometry.star": {
                 "$ref": "./rig.geometry.star.schema.json"
               },
+              "rig.input.axes": {
+                "$ref": "./rig.input.axes.schema.json"
+              },
+              "rig.input.binding": {
+                "$ref": "./rig.input.binding.schema.json"
+              },
               "rig.input.buttons": {
                 "$ref": "./rig.input.buttons.schema.json"
               },
+              "rig.input.pointer": {
+                "$ref": "./rig.input.pointer.schema.json"
+              },
               "rig.interact.selectable": {
                 "$ref": "./rig.interact.selectable.schema.json"
+              },
+              "rig.interact.selected": {
+                "$ref": "./rig.interact.selected.schema.json"
               },
               "rig.io.dmx": {
                 "$ref": "./rig.io.dmx.schema.json"
@@ -460,6 +496,9 @@
               "rig.music.transport": {
                 "$ref": "./rig.music.transport.schema.json"
               },
+              "rig.net.replica": {
+                "$ref": "./rig.net.replica.schema.json"
+              },
               "rig.node.bus": {
                 "$ref": "./rig.node.bus.schema.json"
               },
@@ -565,6 +604,9 @@
               "rig.person.vital": {
                 "$ref": "./rig.person.vital.schema.json"
               },
+              "rig.picture.analysis": {
+                "$ref": "./rig.picture.analysis.schema.json"
+              },
               "rig.pixel.canvas": {
                 "$ref": "./rig.pixel.canvas.schema.json"
               },
@@ -619,6 +661,24 @@
               "rig.plant.taxon": {
                 "$ref": "./rig.plant.taxon.schema.json"
               },
+              "rig.play.health": {
+                "$ref": "./rig.play.health.schema.json"
+              },
+              "rig.play.inventory": {
+                "$ref": "./rig.play.inventory.schema.json"
+              },
+              "rig.play.item": {
+                "$ref": "./rig.play.item.schema.json"
+              },
+              "rig.play.save": {
+                "$ref": "./rig.play.save.schema.json"
+              },
+              "rig.play.script": {
+                "$ref": "./rig.play.script.schema.json"
+              },
+              "rig.play.spawner": {
+                "$ref": "./rig.play.spawner.schema.json"
+              },
               "rig.print.compression": {
                 "$ref": "./rig.print.compression.schema.json"
               },
@@ -643,17 +703,50 @@
               "rig.render.material": {
                 "$ref": "./rig.render.material.schema.json"
               },
+              "rig.render.sprite": {
+                "$ref": "./rig.render.sprite.schema.json"
+              },
               "rig.render.visibility": {
                 "$ref": "./rig.render.visibility.schema.json"
               },
               "rig.rights.statement": {
                 "$ref": "./rig.rights.statement.schema.json"
               },
+              "rig.sensor.depth": {
+                "$ref": "./rig.sensor.depth.schema.json"
+              },
               "rig.sensor.gpio": {
                 "$ref": "./rig.sensor.gpio.schema.json"
               },
+              "rig.sensor.imu": {
+                "$ref": "./rig.sensor.imu.schema.json"
+              },
+              "rig.sensor.lidar": {
+                "$ref": "./rig.sensor.lidar.schema.json"
+              },
               "rig.sensor.presence": {
                 "$ref": "./rig.sensor.presence.schema.json"
+              },
+              "rig.sim.actuator": {
+                "$ref": "./rig.sim.actuator.schema.json"
+              },
+              "rig.sim.agent": {
+                "$ref": "./rig.sim.agent.schema.json"
+              },
+              "rig.sim.character": {
+                "$ref": "./rig.sim.character.schema.json"
+              },
+              "rig.sim.collider": {
+                "$ref": "./rig.sim.collider.schema.json"
+              },
+              "rig.sim.episode": {
+                "$ref": "./rig.sim.episode.schema.json"
+              },
+              "rig.sim.joint": {
+                "$ref": "./rig.sim.joint.schema.json"
+              },
+              "rig.sim.navmesh": {
+                "$ref": "./rig.sim.navmesh.schema.json"
               },
               "rig.sim.particle_emitter": {
                 "$ref": "./rig.sim.particle_emitter.schema.json"
@@ -708,6 +801,9 @@
               },
               "rig.ui.panel": {
                 "$ref": "./rig.ui.panel.schema.json"
+              },
+              "rig.visualizer.deck": {
+                "$ref": "./rig.visualizer.deck.schema.json"
               }
             }
           }

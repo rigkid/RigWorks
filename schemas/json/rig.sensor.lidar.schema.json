@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sensor.lidar.schema.json",
+  "title": "rig.sensor.lidar",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "pattern": {
+      "type": "string",
+      "enum": [
+        "spin",
+        "solid-state",
+        "flash"
+      ]
+    },
+    "channels": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "fovXDegrees": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 360
+    },
+    "fovYDegrees": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 180
+    },
+    "fovYCenterDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "rangeMin": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rangeMax": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "rateHz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "returns": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "device": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

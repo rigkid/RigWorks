@@ -8,6 +8,13 @@
     "role": {
       "$ref": "./_defs.schema.json#/$defs/string"
     },
+    "surface": {
+      "type": "string",
+      "enum": [
+        "tool",
+        "hud"
+      ]
+    },
     "order": {
       "$ref": "./_defs.schema.json#/$defs/int"
     },
@@ -21,5 +28,5 @@
       "$ref": "./_defs.schema.json#/$defs/float"
     }
   },
-  "description": "Portable tool surface. role is a stable tool id; preferred sizes are advisory. Dock/chrome is fulfillment."
+  "description": "Portable tool or HUD surface. role is a stable id; surface absent = tool. Dock/chrome is fulfillment."
 }

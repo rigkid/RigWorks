@@ -1,5 +1,6 @@
 /**
  * Read a .rigz package: ZIP with one root .rig and a data/ folder.
+ * data/ may contain further .rig files; only the archive root is counted.
  * Layout: docs/interchange.md#package
  */
 import zlib from "node:zlib";

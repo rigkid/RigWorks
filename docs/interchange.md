@@ -14,13 +14,14 @@ example.rigz
   data/
     covers/moby-dick.jpg
     fonts/face.ttf
+    parts/header.rig
 ```
 
 | Rule | Detail |
 |------|--------|
 | Format | ZIP (local headers + central directory). Paths use `/`. |
 | Document | Exactly one `.rig` at the archive root. The name is free. The bytes are a [`rig.document`](../schemas/document.md) envelope - same JSON as a loose `.rig`. |
-| Sidecars | `data/` at the archive root. Files that travel with the document live here. |
+| Sidecars | `data/` at the archive root. Files that travel with the document live here, including further `.rig` files. |
 | No wrapper | Do not nest those two inside an extra folder. Zip the contents, not the parent directory. |
 | Loose pair | `document.rig` next to a sibling `data/` is the same layout unzipped. Zip that pair to make `.rigz`. |
 

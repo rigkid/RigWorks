@@ -4,12 +4,13 @@ Portable **tool surface** - a window/panel of controls that any UI pack can redr
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `role` | string | Optional. Stable tool id (e.g. `led.install`, `mod.lfo`) so another host can find or merge the tool |
+| `role` | string | Optional. Stable id (e.g. `led.install`, `mod.lfo`, `play.hud`) so another host can find or merge the surface |
+| `surface` | enum | Optional. `tool` or `hud`; absent = `tool` |
 | `order` | int | Optional. Sort key among sibling panels; absent = 0 |
 | `visible` | bool | Optional. Whether the panel is shown; absent = true |
 | `preferredWidth` | float | Optional. Advisory width hint in the document's `defaultUnit`; hosts may ignore |
 | `preferredHeight` | float | Optional. Advisory height hint; hosts may ignore |
 
-Controls, actions, and [`rig.ui.group`](group.md) reference this entity via their `panel` field. Layout chrome (docks, tabs, ESP page shells, toolkit window flags) is fulfillment - not this schema.
+Controls, actions, and [`rig.ui.group`](group.md) reference this entity via their `panel` field. `surface` `hud` is the same controls drawn as a play overlay. Layout chrome (docks, tabs, ESP page shells, toolkit window flags) is fulfillment - not this schema.
 
 A host that implements six schemas and ignores the rest may still ship a panel over the fields it understands. Ship what you support.

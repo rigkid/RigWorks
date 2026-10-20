@@ -12,6 +12,9 @@ Grid cells are [`rig.music.step`](step.md) inside a pattern - not this schema.
 | `start` | float | Beats |
 | `duration` | float | Beats; 0 = instantaneous |
 | `clip` | entity | Optional. Parent clip entity; none = unbound |
+| `intervals` | int[] | Optional. Semitone offsets from `pitch`. Absent = `pitch` alone. Omit 0. A major triad is `[4, 7]`; a minor triad is `[3, 7]` |
+
+The note sounds `pitch` and each `pitch + interval`. Same chord shape as [`rig.music.step`](step.md).
 
 Raw MIDI bytes stay in the host behind [`rig.music.midi_output`](midi-output.md).
 

@@ -16,6 +16,8 @@ File identity is [`rig.media.asset_ref`](../media/asset-ref.md) via `asset`. Com
 | `videoWidth` | uint | Optional. Selected capture width; absent/0 = host default |
 | `videoHeight` | uint | Optional. Selected capture height; absent/0 = host default |
 | `videoTime` | float | Optional. Seconds into clip when `kind=video-file`; absent = 0 |
+| `videoRate` | float | Optional. Playback speed when `kind=video-file`. 1 is normal, 0 holds the frame. Absent = 1. Hosts clamp to a forward range |
+| `videoPlaying` | bool | Optional. When false the playhead holds. Absent = playing |
 
 Only `kind` is required - emit the fields the chosen kind needs and leave the rest absent.
 

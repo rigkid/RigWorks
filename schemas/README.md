@@ -252,6 +252,7 @@ Thin OpenBIM layer - IFC class is a string on `classify`, not one schema per `If
 | `rig.render.material` | [render/material.md](render/material.md) |
 | `rig.render.visibility` | [render/visibility.md](render/visibility.md) |
 | `rig.render.blend` | [render/blend.md](render/blend.md) |
+| `rig.render.sprite` | [render/sprite.md](render/sprite.md) |
 
 ### Animation / modulators
 
@@ -259,6 +260,12 @@ Thin OpenBIM layer - IFC class is a string on `classify`, not one schema per `If
 |----|-----|
 | `rig.anim.tween` | [anim/tween.md](anim/tween.md) |
 | `rig.anim.curve` | [anim/curve.md](anim/curve.md) |
+| `rig.anim.skeleton` | [anim/skeleton.md](anim/skeleton.md) |
+| `rig.anim.skin` | [anim/skin.md](anim/skin.md) |
+| `rig.anim.clip` | [anim/clip.md](anim/clip.md) |
+| `rig.anim.bind` | [anim/bind.md](anim/bind.md) |
+| `rig.anim.track` | [anim/track.md](anim/track.md) |
+| `rig.anim.blend` | [anim/blend.md](anim/blend.md) |
 | `rig.mod.lfo` | [mod/lfo.md](mod/lfo.md) |
 | `rig.mod.binding` | [mod/binding.md](mod/binding.md) |
 | `rig.mod.trigger` | [mod/trigger.md](mod/trigger.md) |
@@ -283,6 +290,9 @@ Thin OpenBIM layer - IFC class is a string on `classify`, not one schema per `If
 |----|-----|
 | `rig.audio.analysis` | [audio/analysis.md](audio/analysis.md) |
 | `rig.audio.bus` | [audio/bus.md](audio/bus.md) |
+| `rig.audio.voice` | [audio/voice.md](audio/voice.md) |
+| `rig.picture.analysis` | [picture/analysis.md](picture/analysis.md) |
+| `rig.visualizer.deck` | [visualizer.md](visualizer.md) |
 
 ### Media
 
@@ -380,7 +390,13 @@ Electrical meaning - parts, physical terminals, nets - is `rig.circuit.*`, share
 | `rig.led.uv_map` | [led/uv-map.md](led/uv-map.md) |
 | `rig.sensor.gpio` | [sensor/gpio.md](sensor/gpio.md) |
 | `rig.sensor.presence` | [sensor/presence.md](sensor/presence.md) |
+| `rig.sensor.depth` | [sensor/depth.md](sensor/depth.md) |
+| `rig.sensor.lidar` | [sensor/lidar.md](sensor/lidar.md) |
+| `rig.sensor.imu` | [sensor/imu.md](sensor/imu.md) |
 | `rig.input.buttons` | [input/buttons.md](input/buttons.md) |
+| `rig.input.axes` | [input/axes.md](input/axes.md) |
+| `rig.input.pointer` | [input/pointer.md](input/pointer.md) |
+| `rig.input.binding` | [input/binding.md](input/binding.md) |
 | `rig.light.look` | [light/look.md](light/look.md) |
 | `rig.calendar.weekly` | [calendar/weekly.md](calendar/weekly.md) |
 | `rig.calendar.span` | [calendar/span.md](calendar/span.md) |
@@ -400,16 +416,51 @@ Portable development-machine recipes - not a media-show AV bus or gated trigger,
 
 ### Simulation
 
+Bodies, contact, drives, and walkable surfaces. A recorded take is [`rig.sim.episode`](sim/episode.md). Live contact manifolds, particle buffers, point clouds, and solved paths stay in the host. Robot sensors and takes: [ros.md](../docs/ros.md).
+
 | Id | Doc |
 |----|-----|
 | `rig.sim.rigidbody` | [sim/rigidbody.md](sim/rigidbody.md) |
 | `rig.sim.particle_emitter` | [sim/particle-emitter.md](sim/particle-emitter.md) |
+| `rig.sim.collider` | [sim/collider.md](sim/collider.md) |
+| `rig.sim.joint` | [sim/joint.md](sim/joint.md) |
+| `rig.sim.actuator` | [sim/actuator.md](sim/actuator.md) |
+| `rig.sim.episode` | [sim/episode.md](sim/episode.md) |
+| `rig.sim.character` | [sim/character.md](sim/character.md) |
+| `rig.sim.navmesh` | [sim/navmesh.md](sim/navmesh.md) |
+| `rig.sim.agent` | [sim/agent.md](sim/agent.md) |
+
+### Play
+
+Hit points, items, spawn, and a save slot. Rules that change them stay in the host.
+
+| Id | Doc |
+|----|-----|
+| `rig.play.health` | [play/health.md](play/health.md) |
+| `rig.play.script` | [play/script.md](play/script.md) |
+| `rig.play.item` | [play/item.md](play/item.md) |
+| `rig.play.inventory` | [play/inventory.md](play/inventory.md) |
+| `rig.play.spawner` | [play/spawner.md](play/spawner.md) |
+| `rig.play.save` | [play/save.md](play/save.md) |
+
+### AI
+
+| Id | Doc |
+|----|-----|
+| `rig.ai.behavior` | [ai/behavior.md](ai/behavior.md) |
+
+### Net
+
+| Id | Doc |
+|----|-----|
+| `rig.net.replica` | [net/replica.md](net/replica.md) |
 
 ### Interaction
 
 | Id | Doc |
 |----|-----|
 | `rig.interact.selectable` | [interact/selectable.md](interact/selectable.md) |
+| `rig.interact.selected` | [interact/selected.md](interact/selected.md) |
 
 ### UI (control surfaces)
 
@@ -465,5 +516,20 @@ Portable development-machine recipes - not a media-show AV bus or gated trigger,
 | Legal party | `agreement` / `party` | [`legal.party`](legal/party.md) via [`legal.agreement`](legal/agreement.md) |
 | Calendar attendee | `event` | [`calendar.attendee`](calendar/attendee.md) via [`calendar.event`](calendar/event.md) |
 | Calendar recurrence | same entity | [`calendar.recurrence`](calendar/recurrence.md) on the event; not an `RRULE` string |
+| Contact | same entity | [`sim.collider`](sim/collider.md) on the body. A compound is child entities |
+| Joint | `a` / `b` | [`sim.joint`](sim/joint.md). `mimic` follows another joint |
+| Actuator | `joint` | [`sim.actuator`](sim/actuator.md) via [`sim.joint`](sim/joint.md) |
+| Episode | `clip` | [`sim.episode`](sim/episode.md) via [`anim.clip`](anim/clip.md); `actions` / `observations` are [`anim.track`](anim/track.md) |
+| Depth / lidar / imu | same entity | [`sensor.depth`](sensor/depth.md) composes [`spatial.camera`](spatial/camera.md). [`sensor.lidar`](sensor/lidar.md) and [`sensor.imu`](sensor/imu.md) compose transform. Clouds and covariance stay host |
+| Skeleton | `parent` | [`spatial.relationship`](spatial/relationship.md) under [`anim.skeleton`](anim/skeleton.md) bones |
+| Skin | `joints` | [`anim.skin`](anim/skin.md) via [`anim.skeleton`](anim/skeleton.md) |
+| Clip samples | `clip` | [`anim.track`](anim/track.md) via [`anim.clip`](anim/clip.md) |
+| Blend tree | `a` / `b` | [`anim.blend`](anim/blend.md) node ids |
+| Behavior tree | `parent` | [`ai.behavior`](ai/behavior.md) node ids. `action` is a host name |
+| Walker | `navmesh` | [`sim.agent`](sim/agent.md) via [`sim.navmesh`](sim/navmesh.md) on a mesh |
+| Voice | `asset` / `bus` | [`audio.voice`](audio/voice.md) via [`media.asset_ref`](media/asset-ref.md) and [`audio.bus`](audio/bus.md) |
+| Inventory | `item` | [`play.inventory`](play/inventory.md) slot via [`play.item`](play/item.md) |
+| Spawner | `prototype` | [`play.spawner`](play/spawner.md) |
+| HUD | `surface` | [`ui.panel`](ui/panel.md) `hud` - same controls as a tool |
 
 Hosts and packs fulfill subsets - see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).

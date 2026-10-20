@@ -118,6 +118,7 @@ add("rig.spatial.camera", {
   nearClip: ref("float"),
   farClip: ref("float"),
   aspect: ref("float"),
+  fixedAspect: ref("bool"),
 }, { required: [] });
 
 // Defaults: order 0, locked false, rgba = no label colour.
@@ -1515,6 +1516,61 @@ add(
   { required: ["points"] }
 );
 
+// Bone list. Pose is each bone's transform; parent is spatial.relationship.
+add("rig.anim.skeleton", {
+  root: ref("entity"),
+  bones: { type: "array", items: ref("entity"), minItems: 1 },
+}, { required: ["root", "bones"] });
+
+// Skin on a mesh entity. inverseBind is column-major 4x4, 16 floats per joint.
+add("rig.anim.skin", {
+  skeleton: ref("entity"),
+  joints: { type: "array", items: ref("entity"), minItems: 1 },
+  inverseBind: { type: "array", items: { type: "number" } },
+  jointIndices: { type: "array", items: ref("uint32") },
+  jointWeights: { type: "array", items: { type: "number" } },
+}, { required: ["skeleton", "joints", "inverseBind", "jointIndices", "jointWeights"] });
+
+// wrap absent = once. Rest pose of a bone is rig.anim.bind; transform is the pose at save.
+add("rig.anim.clip", {
+  duration: ref("float"),
+  wrap: enumOf(["once", "loop", "ping-pong"]),
+}, { required: ["duration"] });
+
+add("rig.anim.bind", {
+  position: ref("vec3"),
+  rotation: ref("quat"),
+  scale: ref("vec3"),
+}, { required: [] });
+
+// Sampled property. stride 1 / 3 / 4 packs float / vec3 / quat (xyzw) per time.
+add("rig.anim.track", {
+  clip: ref("entity"),
+  target: ref("entity"),
+  propertyKey: ref("string"),
+  times: { type: "array", items: { type: "number" }, minItems: 1 },
+  values: { type: "array", items: { type: "number" } },
+  stride: { type: "integer", enum: [1, 3, 4] },
+}, { required: ["clip", "target", "propertyKey", "times", "values", "stride"] });
+
+const blendNode = {
+  type: "object",
+  additionalProperties: false,
+  required: ["id", "kind"],
+  properties: {
+    id: ref("uint"),
+    kind: enumOf(["clip", "lerp", "additive"]),
+    clip: ref("entity"),
+    weight: { type: "number", minimum: 0, maximum: 1 },
+    a: ref("uint"),
+    b: ref("uint"),
+  },
+};
+add("rig.anim.blend", {
+  root: ref("uint"),
+  nodes: { type: "array", items: blendNode, minItems: 1 },
+}, { required: ["root", "nodes"] });
+
 // Defaults: amplitude 1, offset 0, phase 0.
 add("rig.mod.lfo", {
   waveform: enumOf(["sine", "tri", "saw", "square"]),
@@ -1580,6 +1636,7 @@ add("rig.music.clock", {
 
 // Defaults: pitch 60, velocity 100, gate 1, waveform 0, effect 0.
 // waveform 0-7 are the portable synth shapes; 8+ are host instrument slots.
+// intervals absent = pitch alone. Semitone offsets from pitch; omit 0.
 add("rig.music.step", {
   active: ref("bool"),
   pitch: { type: "integer", minimum: 0, maximum: 127 },
@@ -1587,6 +1644,11 @@ add("rig.music.step", {
   gate: { type: "number", minimum: 0, maximum: 1 },
   waveform: { type: "integer", minimum: 0, maximum: 255 },
   effect: { type: "integer", minimum: 0, maximum: 7 },
+  intervals: {
+    type: "array",
+    items: { type: "integer", minimum: -127, maximum: 127 },
+    uniqueItems: true,
+  },
 }, { required: ["active"] });
 
 // Defaults: rootNote 60, scale chromatic, stepsPerBeat 4 (16th notes),
@@ -1640,6 +1702,11 @@ add("rig.music.note", {
   start: ref("float"),
   duration: ref("float"),
   clip: ref("entity"),
+  intervals: {
+    type: "array",
+    items: { type: "integer", minimum: -127, maximum: 127 },
+    uniqueItems: true,
+  },
 }, { required: ["pitch", "start", "duration"] });
 
 // Ports carry whichever identifier the host API exposes: portName when it
@@ -1662,12 +1729,29 @@ add("rig.music.midi_input", {
 
 // --- audio ---
 // The analysis request, not its results. Band magnitudes are host state.
+// features = which live signals to publish (not the values).
+const analysisFeature = enumOf([
+  "onset",
+  "note",
+  "beat",
+  "color",
+  "temperature",
+  "centroid",
+  "spread",
+  "rolloff",
+  "flatness",
+  "flux",
+  "chroma",
+  "key",
+  "chord",
+]);
 add("rig.audio.analysis", {
   source: enumOf(["input", "asset"]),
   asset: ref("entity"),
   bandCount: ref("int"),
   smoothing: { type: "number", minimum: 0, maximum: 1 },
   onsetThreshold: ref("float"),
+  features: { type: "array", items: analysisFeature },
 }, { required: ["source", "bandCount"] });
 
 // Defaults: gain 1, mute false.
@@ -1676,9 +1760,45 @@ add("rig.audio.bus", {
   mute: ref("bool"),
 }, { required: [] });
 
+// One playing asset. Defaults: gain 1, pitch 1, loop false, playing true,
+// time 0, spatial false. Decoders and mix buffers stay fulfillment.
+add("rig.audio.voice", {
+  asset: ref("entity"),
+  bus: ref("entity"),
+  gain: { type: "number", minimum: 0, maximum: 1 },
+  pitch: ref("float"),
+  loop: ref("bool"),
+  playing: ref("bool"),
+  time: ref("float"),
+  spatial: ref("bool"),
+  maxDistance: ref("float"),
+  unitSize: ref("float"),
+  rolloff: enumOf(["none", "linear", "inverse", "inverse-square", "logarithmic"]),
+}, { required: ["asset"] });
+
+// Frame / still analysis request. Live color + temperature stay host cache.
+add("rig.picture.analysis", {
+  source: ref("entity"),
+  features: { type: "array", items: enumOf(["color", "temperature"]) },
+}, { required: ["source"] });
+
+// Preset deck. Present pack draws into output. Milk warp/hardcut stay fulfillment.
+add("rig.visualizer.deck", {
+  presets: { type: "array", items: ref("entity") },
+  index: ref("int"),
+  playing: ref("bool"),
+  shuffle: ref("bool"),
+  lockPreset: ref("bool"),
+  presetDuration: ref("float"),
+  transitionDuration: ref("float"),
+  switchOn: enumOf(["time", "onset", "beat", "note"]),
+  analysis: ref("entity"),
+  output: ref("entity"),
+}, { required: [] });
+
 // --- media ---
 add("rig.media.asset_ref", {
-  kind: enumOf(["image", "audio", "video", "model", "font", "document", "other"]),
+  kind: enumOf(["image", "audio", "video", "model", "font", "document", "preset", "other"]),
   path: ref("string"),
   loop: ref("bool"),
 }, { required: ["kind", "path"] });
@@ -1930,6 +2050,8 @@ add("rig.pixel.source", {
   videoWidth: ref("uint"),
   videoHeight: ref("uint"),
   videoTime: ref("float"),
+  videoRate: ref("float"),
+  videoPlaying: ref("bool"),
 }, { required: ["kind"] });
 
 // Defaults: maskSource none, invertMask false. Blend/opacity live on rig.render.blend.
@@ -2196,6 +2318,36 @@ add("rig.input.buttons", {
   x: ref("bool"),
 }, { required: [] });
 
+// One player's sticks and triggers. Absent axis = 0. Edges stay in the host.
+add("rig.input.axes", {
+  player: ref("int"),
+  moveX: { type: "number", minimum: -1, maximum: 1 },
+  moveY: { type: "number", minimum: -1, maximum: 1 },
+  lookX: { type: "number", minimum: -1, maximum: 1 },
+  lookY: { type: "number", minimum: -1, maximum: 1 },
+  leftTrigger: { type: "number", minimum: 0, maximum: 1 },
+  rightTrigger: { type: "number", minimum: 0, maximum: 1 },
+}, { required: [] });
+
+// Pointer in viewport ratios. x and y required so a present component is a measured point.
+add("rig.input.pointer", {
+  player: ref("int"),
+  x: { type: "number", minimum: 0, maximum: 1 },
+  y: { type: "number", minimum: 0, maximum: 1 },
+  primary: ref("bool"),
+  secondary: ref("bool"),
+}, { required: ["x", "y"] });
+
+// Device token to a logical control. code is the host's name on that device.
+add("rig.input.binding", {
+  player: ref("int"),
+  control: ref("string"),
+  device: enumOf(["key", "mouse", "pad", "touch"]),
+  index: ref("int"),
+  code: ref("string"),
+  deadzone: { type: "number", minimum: 0, maximum: 1 },
+}, { required: ["control", "device", "code"] });
+
 // Listen and send sides are independent; enable one, both, or neither.
 // listenPort is required when listenEnabled; sendHost + sendPort when
 // sendEnabled. Defaults: both sides disabled.
@@ -2267,6 +2419,44 @@ add("rig.sensor.gpio", {
 // Defaults: level 0; device absent = local.
 add("rig.sensor.presence", {
   level: { type: "number", minimum: 0, maximum: 1 },
+  device: ref("entity"),
+}, { required: [] });
+
+// Depth image on a camera. Projection is spatial.camera. Buffer stays host.
+// range absent = the composed camera clip, else the host default.
+// measure absent = plane. device absent = local.
+add("rig.sensor.depth", {
+  rangeMin: { type: "number", minimum: 0 },
+  rangeMax: { type: "number", exclusiveMinimum: 0 },
+  measure: enumOf(["plane", "ray"]),
+  width: { type: "integer", minimum: 1 },
+  height: { type: "integer", minimum: 1 },
+  device: ref("entity"),
+}, { required: [] });
+
+// Lidar scan pattern. Cloud, beam tables, and echoes stay host.
+// pattern absent = spin. fovX absent = 360 when spin, else host default.
+// fovYCenterDegrees absent = 0. rangeMin absent = 0. returns absent = 1.
+add("rig.sensor.lidar", {
+  pattern: enumOf(["spin", "solid-state", "flash"]),
+  channels: { type: "integer", minimum: 1 },
+  columns: { type: "integer", minimum: 1 },
+  fovXDegrees: { type: "number", minimum: 0, maximum: 360 },
+  fovYDegrees: { type: "number", minimum: 0, maximum: 180 },
+  fovYCenterDegrees: ref("float"),
+  rangeMin: { type: "number", minimum: 0 },
+  rangeMax: { type: "number", exclusiveMinimum: 0 },
+  rateHz: { type: "number", exclusiveMinimum: 0 },
+  returns: { type: "integer", minimum: 1 },
+  device: ref("entity"),
+}, { required: [] });
+
+// IMU sample at load. Orientation is spatial.transform.
+// acceleration includes gravity. Absent samples were not measured.
+add("rig.sensor.imu", {
+  rateHz: { type: "number", exclusiveMinimum: 0 },
+  acceleration: ref("vec3"),
+  angularVelocityDegrees: ref("vec3"),
   device: ref("entity"),
 }, { required: [] });
 
@@ -2537,17 +2727,26 @@ add("rig.bim.facet", {
 }, { required: ["role", "kind"] });
 
 // --- sim ---
-// Authored initial conditions and constants. Positions integrated at runtime
-// belong to rig.spatial.transform; per-particle state is never serialized.
-// Defaults: velocity (0,0,0), mass 1, drag 0; gravity absent = the host's
-// ambient gravity (a per-body override, not a required constant).
+// velocity / angularVelocityDegrees are the body at load: an author writes
+// the launch, a save writes the current value. Position is spatial.transform.
+// Defaults: velocity (0,0,0), angularVelocityDegrees (0,0,0), mass 1, drag 0;
+// gravity absent = the host's ambient gravity.
 add("rig.sim.rigidbody", {
+  bodyType: enumOf(["static", "dynamic", "kinematic"]),
   velocity: ref("vec3"),
+  angularVelocityDegrees: ref("vec3"),
   mass: ref("float"),
   drag: { type: "number", minimum: 0, maximum: 1 },
+  angularDrag: { type: "number", minimum: 0, maximum: 1 },
   gravity: ref("vec3"),
+  gravityScale: ref("float"),
+  lockRotation: ref("bool"),
+  canSleep: ref("bool"),
+  continuous: ref("bool"),
+  centerOfMass: ref("vec3"),
 }, { required: [] });
 
+// shape absent = point. seed absent = any sequence. Live particles are not stored.
 add("rig.sim.particle_emitter", {
   rate: ref("float"),
   lifetime: ref("float"),
@@ -2556,12 +2755,190 @@ add("rig.sim.particle_emitter", {
   damping: { type: "number", minimum: 0, maximum: 1 },
   startRgba: ref("rgba"),
   endRgba: ref("rgba"),
+  shape: enumOf(["point", "sphere", "box", "cone"]),
+  shapeSize: ref("vec3"),
+  seed: ref("int"),
 }, { required: ["rate", "lifetime", "maxParticles"] });
+
+// Contact shape. friction absent = host default; restitution absent = 0;
+// sensor absent = false; mask absent = every layer.
+add("rig.sim.collider", {
+  kind: enumOf(["sphere", "box", "capsule", "mesh"]),
+  radius: ref("float"),
+  height: ref("float"),
+  halfExtents: ref("vec3"),
+  mesh: ref("entity"),
+  offset: ref("vec3"),
+  sensor: ref("bool"),
+  friction: { type: "number", minimum: 0 },
+  restitution: { type: "number", minimum: 0, maximum: 1 },
+  restitutionThreshold: ref("float"),
+  density: { type: "number", exclusiveMinimum: 0 },
+  layer: ref("int"),
+  mask: ref("uint"),
+}, { required: ["kind"] });
+
+add("rig.sim.joint", {
+  kind: enumOf(["fixed", "hinge", "distance", "spring", "slider"]),
+  a: ref("entity"),
+  b: ref("entity"),
+  anchorA: ref("vec3"),
+  anchorB: ref("vec3"),
+  axis: ref("vec3"),
+  min: ref("float"),
+  max: ref("float"),
+  stiffness: ref("float"),
+  damping: ref("float"),
+  breakForce: ref("float"),
+  collideConnected: ref("bool"),
+  mimic: ref("entity"),
+  mimicMultiplier: ref("float"),
+  mimicOffset: ref("float"),
+}, { required: ["kind", "a", "b"] });
+
+// Drive on one joint. mode absent = position. effort / maxSpeed absent = unlimited.
+// target absent = hold the joint's current position.
+add("rig.sim.actuator", {
+  joint: ref("entity"),
+  mode: enumOf(["position", "velocity", "effort"]),
+  effort: { type: "number", exclusiveMinimum: 0 },
+  maxSpeed: { type: "number", exclusiveMinimum: 0 },
+  stiffness: { type: "number", minimum: 0 },
+  damping: { type: "number", minimum: 0 },
+  target: ref("float"),
+}, { required: ["joint"] });
+
+// Kinematic capsule. Defaults: stepHeight 0, slopeLimitDegrees 45, jumpSpeed 0.
+// grounded absent = the host probes. A rigidbody on the same entity is not integrated.
+add("rig.sim.character", {
+  radius: ref("float"),
+  height: ref("float"),
+  stepHeight: ref("float"),
+  slopeLimitDegrees: ref("float"),
+  jumpSpeed: ref("float"),
+  grounded: ref("bool"),
+  velocity: ref("vec3"),
+  up: ref("vec3"),
+  floorSnap: ref("float"),
+  motion: enumOf(["grounded", "floating"]),
+}, { required: ["radius", "height"] });
+
+add(
+  "rig.sim.navmesh",
+  {},
+  {
+    required: [],
+    description:
+      "Marker: this entity's rig.geometry.mesh is a walkable surface. Solved paths stay in the host.",
+    minProperties: 0,
+  }
+);
+
+// goal present wins over destination. Path is a host cache.
+add("rig.sim.agent", {
+  navmesh: ref("entity"),
+  speed: ref("float"),
+  radius: ref("float"),
+  goal: ref("entity"),
+  destination: ref("vec3"),
+  height: ref("float"),
+  stoppingDistance: ref("float"),
+  avoidance: ref("bool"),
+}, { required: ["navmesh", "speed"] });
+
+// One recorded attempt. Samples stay on anim.track. At least one field.
+// success absent = not judged. task is a host name.
+add("rig.sim.episode", {
+  clip: ref("entity"),
+  task: ref("string"),
+  success: ref("bool"),
+  actions: { type: "array", items: ref("entity") },
+  observations: { type: "array", items: ref("entity") },
+}, { required: [], minProperties: 1 });
 
 // Presence means selectable; enabled defaults true.
 add("rig.interact.selectable", {
   enabled: ref("bool"),
 }, { required: [], minProperties: 0 });
+
+// Presence means selected at save. order absent = 0.
+add("rig.interact.selected", {
+  order: ref("int"),
+}, { required: [], minProperties: 0 });
+
+const behaviorNode = {
+  type: "object",
+  additionalProperties: false,
+  required: ["id", "kind"],
+  properties: {
+    id: ref("uint"),
+    parent: ref("uint"),
+    kind: enumOf(["sequence", "selector", "parallel", "condition", "action"]),
+    action: ref("string"),
+  },
+};
+add("rig.ai.behavior", {
+  nodes: { type: "array", items: behaviorNode, minItems: 1 },
+}, { required: ["nodes"] });
+
+// current absent = maximum; maximum absent = 1.
+add("rig.play.script", {
+  className: ref("string"),
+  asset: ref("entity"),
+}, { required: ["className"] });
+
+add("rig.render.sprite", {
+  texture: ref("entity"),
+  tiling: ref("vec2"),
+  flipX: ref("bool"),
+  flipY: ref("bool"),
+  frame: ref("uint"),
+  columns: ref("uint"),
+  rows: ref("uint"),
+}, { required: ["texture"] });
+
+add("rig.play.health", {
+  current: ref("float"),
+  maximum: ref("float"),
+}, { required: [] });
+
+// maxStack absent = 1.
+add("rig.play.item", {
+  maxStack: ref("uint"),
+}, { required: [] });
+
+const inventorySlot = {
+  type: "object",
+  additionalProperties: false,
+  properties: {
+    item: ref("entity"),
+    count: ref("uint"),
+  },
+};
+add("rig.play.inventory", {
+  slots: { type: "array", items: inventorySlot },
+}, { required: ["slots"] });
+
+// active absent = true; maxAlive absent = 1.
+add("rig.play.spawner", {
+  prototype: ref("entity"),
+  period: ref("float"),
+  maxAlive: ref("uint"),
+  active: ref("bool"),
+}, { required: ["prototype", "period"] });
+
+// asset absent = this document is the saved scene.
+add("rig.play.save", {
+  slot: ref("uint"),
+  asset: ref("entity"),
+}, { required: ["slot"] });
+
+// authority absent = server. Prediction and transport stay fulfillment.
+add("rig.net.replica", {
+  netId: ref("string"),
+  owner: ref("int"),
+  authority: enumOf(["server", "owner"]),
+}, { required: ["netId"] });
 
 // --- ui (control surfaces: desktop, web, ESP) ---
 // Defaults: order 0, visible true. role / preferred* are optional.
@@ -2569,6 +2946,7 @@ add(
   "rig.ui.panel",
   {
     role: ref("string"),
+    surface: enumOf(["tool", "hud"]),
     order: ref("int"),
     visible: ref("bool"),
     preferredWidth: ref("float"),
@@ -2577,7 +2955,7 @@ add(
   {
     required: [],
     description:
-      "Portable tool surface. role is a stable tool id; preferred sizes are advisory. Dock/chrome is fulfillment.",
+      "Portable tool or HUD surface. role is a stable id; surface absent = tool. Dock/chrome is fulfillment.",
   }
 );
 

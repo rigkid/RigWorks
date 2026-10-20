@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.anim.skeleton.schema.json",
+  "title": "rig.anim.skeleton",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "root": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "bones": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "root",
+    "bones"
+  ]
+}

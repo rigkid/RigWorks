@@ -27,6 +27,21 @@
     },
     "endRgba": {
       "$ref": "./_defs.schema.json#/$defs/rgba"
+    },
+    "shape": {
+      "type": "string",
+      "enum": [
+        "point",
+        "sphere",
+        "box",
+        "cone"
+      ]
+    },
+    "shapeSize": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "seed": {
+      "$ref": "./_defs.schema.json#/$defs/int"
     }
   },
   "required": [

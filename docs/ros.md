@@ -11,7 +11,12 @@ Unlike [OpenBIM](openbim.md), there is no `rig.ros2.*` layer. Portable meaning i
 | TF frame | Entity with [`rig.meta.named`](../schemas/meta/named.md) + [`rig.spatial.transform`](../schemas/spatial/transform.md) |
 | Parent frame | [`rig.spatial.relationship`](../schemas/spatial/relationship.md) `parent` |
 | URDF link | Same as TF; mesh / material compose as usual |
-| Joint / constraint | Stay out - [`rig.sim.rigidbody`](../schemas/sim/rigidbody.md) already refuses shared constraint numbers |
+| Joint | [`rig.sim.joint`](../schemas/sim/joint.md). Mimic is `mimic` / `mimicMultiplier` / `mimicOffset` on that joint |
+| Joint command | [`rig.sim.actuator`](../schemas/sim/actuator.md) `target` at save. A series is [`rig.anim.track`](../schemas/anim/track.md) on `target` |
+| Depth image | [`rig.sensor.depth`](../schemas/sensor/depth.md) plus [`rig.spatial.camera`](../schemas/spatial/camera.md). The buffer stays in the host |
+| Laser scan | [`rig.sensor.lidar`](../schemas/sensor/lidar.md). The cloud stays in the host |
+| Imu | [`rig.sensor.imu`](../schemas/sensor/imu.md). Orientation is the entity transform |
+| Recorded take | [`rig.sim.episode`](../schemas/sim/episode.md) names the clip, the action tracks, the observation tracks, and whether the task finished |
 | Graph member (ROS node) | Entity + [`rig.meta.named`](../schemas/meta/named.md). Namespace, `domainId`, FQN stay `x.ros2.*`. Do not call this a "host" (Rig **host** = live program) |
 | Topic / service / action | Named bus, like [`rig.io.osc`](../schemas/io/osc.md). Message type strings and QoS stay `x.ros2.*` |
 | Message payload | Land on existing fields in Update (`transform`, `rig.sim.rigidbody.velocity`, `rig.sensor.*`, `rig.pixel.source`) - do not catalog Twist / Image as schemas |
@@ -66,6 +71,8 @@ Two frames, existing schemas only:
 | DDS discovery / `ros2 node list` | Who is alive is a host cache - same class as a LAN scan table |
 | QoS, last message, in-flight goals | Runtime state - do not serialize |
 | Launch, bags, rmw vendor | Process graph and middleware are fulfillment |
+| Point clouds, depth buffers, IMU covariance | Samples and matrices are host cache |
+| Policy weights | Fulfillment. The take is `rig.sim.episode`; the solver is not |
 | `rig.ros2.*` | Product protocol names stay out of schema ids |
 
 A scan of who is up is not Contract meaning. RigKit's `x.rigkit.net_scan` / `x.rigkit.net_host` stay host extensions.
@@ -74,11 +81,11 @@ A scan of who is up is not Contract meaning. RigKit's `x.rigkit.net_scan` / `x.r
 
 | Surface | Role |
 |---------|------|
-| TF2 / URDF | Map frames and links into spatial transform + relationship |
+| TF2 / URDF | Map frames and links into spatial transform + relationship; joints into [`rig.sim.joint`](../schemas/sim/joint.md); a drive into [`rig.sim.actuator`](../schemas/sim/actuator.md) |
 | Topics / services / actions | Pub/sub and RPC in Update; write portable fields from payloads |
 | `x.ros2.*` | Namespace, domain, message type, QoS - travel; do not port |
 | Bags / launch | Replay and process graph stay in the host |
 
 ## Honest limit
 
-Two hosts that speak transform + relationship + the sensors they share can exchange a robot pose tree as `.rig`. Round-tripping every ROS message type, QoS profile, and discovery snapshot is not required. A host that needs the rest keeps it in ROS and maps what it understands.
+Two hosts that speak transform + relationship + the joints, drives, and sensors they share can exchange a robot pose tree and a recorded take as `.rig`. Round-tripping every ROS message type, QoS profile, discovery snapshot, and bag is not required. A host that needs the rest keeps it in ROS and maps what it understands.

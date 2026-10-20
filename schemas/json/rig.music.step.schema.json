@@ -32,6 +32,15 @@
       "type": "integer",
       "minimum": 0,
       "maximum": 7
+    },
+    "intervals": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": -127,
+        "maximum": 127
+      },
+      "uniqueItems": true
     }
   },
   "required": [

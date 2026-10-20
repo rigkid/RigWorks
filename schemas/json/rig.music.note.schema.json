@@ -28,6 +28,15 @@
     },
     "clip": {
       "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "intervals": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": -127,
+        "maximum": 127
+      },
+      "uniqueItems": true
     }
   },
   "required": [

@@ -43,6 +43,12 @@
     },
     "videoTime": {
       "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "videoRate": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "videoPlaying": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
     }
   },
   "required": [

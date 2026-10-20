@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sim.navmesh.schema.json",
+  "title": "rig.sim.navmesh",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {},
+  "description": "Marker: this entity's rig.geometry.mesh is a walkable surface. Solved paths stay in the host.",
+  "minProperties": 0
+}

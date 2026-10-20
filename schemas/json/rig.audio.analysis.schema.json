@@ -25,6 +25,27 @@
     },
     "onsetThreshold": {
       "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "onset",
+          "note",
+          "beat",
+          "color",
+          "temperature",
+          "centroid",
+          "spread",
+          "rolloff",
+          "flatness",
+          "flux",
+          "chroma",
+          "key",
+          "chord"
+        ]
+      }
     }
   },
   "required": [

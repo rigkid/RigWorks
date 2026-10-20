@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.net.replica.schema.json",
+  "title": "rig.net.replica",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "netId": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "owner": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "authority": {
+      "type": "string",
+      "enum": [
+        "server",
+        "owner"
+      ]
+    }
+  },
+  "required": [
+    "netId"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.anim.blend.schema.json",
+  "title": "rig.anim.blend",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "root": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "./_defs.schema.json#/$defs/uint"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "clip",
+              "lerp",
+              "additive"
+            ]
+          },
+          "clip": {
+            "$ref": "./_defs.schema.json#/$defs/entity"
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "a": {
+            "$ref": "./_defs.schema.json#/$defs/uint"
+          },
+          "b": {
+            "$ref": "./_defs.schema.json#/$defs/uint"
+          }
+        }
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "root",
+    "nodes"
+  ]
+}

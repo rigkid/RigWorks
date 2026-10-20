@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.play.health.schema.json",
+  "title": "rig.play.health",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "current": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "maximum": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    }
+  }
+}

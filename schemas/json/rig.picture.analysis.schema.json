@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.picture.analysis.schema.json",
+  "title": "rig.picture.analysis",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "source": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "color",
+          "temperature"
+        ]
+      }
+    }
+  },
+  "required": [
+    "source"
+  ]
+}

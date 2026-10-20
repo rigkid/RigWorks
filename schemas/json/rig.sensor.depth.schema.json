@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sensor.depth.schema.json",
+  "title": "rig.sensor.depth",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rangeMin": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rangeMax": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "measure": {
+      "type": "string",
+      "enum": [
+        "plane",
+        "ray"
+      ]
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "device": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

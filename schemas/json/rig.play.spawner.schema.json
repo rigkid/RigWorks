@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.play.spawner.schema.json",
+  "title": "rig.play.spawner",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "prototype": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "period": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "maxAlive": {
+      "$ref": "./_defs.schema.json#/$defs/uint"
+    },
+    "active": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "required": [
+    "prototype",
+    "period"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.input.binding.schema.json",
+  "title": "rig.input.binding",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "player": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "control": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "device": {
+      "type": "string",
+      "enum": [
+        "key",
+        "mouse",
+        "pad",
+        "touch"
+      ]
+    },
+    "index": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "code": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "deadzone": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+  "required": [
+    "control",
+    "device",
+    "code"
+  ]
+}

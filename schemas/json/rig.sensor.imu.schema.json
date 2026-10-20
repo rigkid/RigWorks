@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sensor.imu.schema.json",
+  "title": "rig.sensor.imu",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rateHz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "acceleration": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "angularVelocityDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "device": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

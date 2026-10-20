@@ -1,0 +1,192 @@
+{
+  "rig": "0.34.0",
+  "document": {
+    "title": "Robot lesson",
+    "defaultUnit": "m"
+  },
+  "entities": [
+    {
+      "id": "world",
+      "components": {
+        "rig.meta.named": { "name": "World", "stableId": "world" },
+        "rig.spatial.vertex": {}
+      }
+    },
+    {
+      "id": "base",
+      "components": {
+        "rig.meta.named": { "name": "base_link", "stableId": "base_link" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.sim.rigidbody": { "bodyType": "static" },
+        "rig.sim.collider": { "kind": "box", "halfExtents": [0.2, 0.05, 0.2] }
+      }
+    },
+    {
+      "id": "link",
+      "components": {
+        "rig.meta.named": { "name": "arm_link", "stableId": "arm_link" },
+        "rig.spatial.relationship": { "parent": "base" },
+        "rig.spatial.transform": { "position": [0, 0.3, 0] },
+        "rig.sim.rigidbody": { "bodyType": "dynamic", "mass": 0.8 },
+        "rig.sim.collider": { "kind": "box", "halfExtents": [0.04, 0.15, 0.04] }
+      }
+    },
+    {
+      "id": "shadow",
+      "components": {
+        "rig.meta.named": { "name": "shadow_link", "stableId": "shadow_link" },
+        "rig.spatial.relationship": { "parent": "base" },
+        "rig.spatial.transform": { "position": [0, 0.3, 0.15] },
+        "rig.sim.rigidbody": { "bodyType": "dynamic", "mass": 0.8 },
+        "rig.sim.collider": { "kind": "box", "halfExtents": [0.04, 0.15, 0.04] }
+      }
+    },
+    {
+      "id": "shoulder",
+      "components": {
+        "rig.meta.named": { "name": "shoulder", "stableId": "shoulder" },
+        "rig.sim.joint": {
+          "kind": "hinge",
+          "a": "link",
+          "b": "base",
+          "axis": [0, 1, 0],
+          "min": -90,
+          "max": 90
+        }
+      }
+    },
+    {
+      "id": "shadow-hinge",
+      "components": {
+        "rig.meta.named": { "name": "shadow_hinge", "stableId": "shadow_hinge" },
+        "rig.sim.joint": {
+          "kind": "hinge",
+          "a": "shadow",
+          "b": "base",
+          "axis": [0, 1, 0],
+          "min": -90,
+          "max": 90,
+          "mimic": "shoulder",
+          "mimicMultiplier": 1,
+          "mimicOffset": 0
+        }
+      }
+    },
+    {
+      "id": "drive",
+      "components": {
+        "rig.meta.named": { "name": "shoulder_drive", "stableId": "shoulder_drive" },
+        "rig.sim.actuator": {
+          "joint": "shoulder",
+          "mode": "position",
+          "effort": 12,
+          "maxSpeed": 90,
+          "stiffness": 20,
+          "damping": 1,
+          "target": 0
+        }
+      }
+    },
+    {
+      "id": "lidar",
+      "components": {
+        "rig.meta.named": { "name": "lidar", "stableId": "lidar" },
+        "rig.spatial.relationship": { "parent": "base" },
+        "rig.spatial.transform": { "position": [0, 0.2, 0] },
+        "rig.sensor.lidar": {
+          "pattern": "spin",
+          "channels": 16,
+          "columns": 1024,
+          "fovXDegrees": 360,
+          "fovYDegrees": 30,
+          "fovYCenterDegrees": 0,
+          "rangeMin": 0.1,
+          "rangeMax": 20,
+          "rateHz": 10,
+          "returns": 1
+        }
+      }
+    },
+    {
+      "id": "eye",
+      "components": {
+        "rig.meta.named": { "name": "depth_camera", "stableId": "depth_camera" },
+        "rig.spatial.relationship": { "parent": "base" },
+        "rig.spatial.transform": { "position": [0.05, 0.15, 0.08] },
+        "rig.spatial.camera": {
+          "projection": "perspective",
+          "fovYDegrees": 70,
+          "nearClip": 0.1,
+          "farClip": 10
+        },
+        "rig.sensor.depth": {
+          "rangeMin": 0.2,
+          "rangeMax": 4,
+          "measure": "ray",
+          "width": 640,
+          "height": 480
+        }
+      }
+    },
+    {
+      "id": "imu",
+      "components": {
+        "rig.meta.named": { "name": "imu", "stableId": "imu" },
+        "rig.spatial.relationship": { "parent": "base" },
+        "rig.spatial.transform": { "position": [0, 0.05, 0] },
+        "rig.sensor.imu": {
+          "rateHz": 200,
+          "acceleration": [0, 9.81, 0],
+          "angularVelocityDegrees": [0, 2, 0]
+        }
+      }
+    },
+    {
+      "id": "reach",
+      "components": {
+        "rig.meta.named": { "name": "reach", "stableId": "reach" },
+        "rig.anim.clip": { "duration": 1, "wrap": "once" }
+      }
+    },
+    {
+      "id": "reach-action",
+      "components": {
+        "rig.anim.track": {
+          "clip": "reach",
+          "target": "drive",
+          "propertyKey": "target",
+          "times": [0, 1],
+          "values": [0, 40],
+          "stride": 1
+        }
+      }
+    },
+    {
+      "id": "reach-sense",
+      "components": {
+        "rig.anim.track": {
+          "clip": "reach",
+          "target": "imu",
+          "propertyKey": "acceleration",
+          "times": [0, 1],
+          "values": [0, 9.81, 0, 0, 9.7, 0.2],
+          "stride": 3
+        }
+      }
+    },
+    {
+      "id": "reach-take",
+      "components": {
+        "rig.meta.named": { "name": "reach take", "stableId": "reach-take" },
+        "rig.sim.episode": {
+          "clip": "reach",
+          "task": "reach",
+          "success": true,
+          "actions": ["reach-action"],
+          "observations": ["reach-sense"]
+        }
+      }
+    }
+  ]
+}

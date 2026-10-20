@@ -70,7 +70,7 @@ When generating a document, set root `"rig"` to the current `VERSION` (or an old
 
 ## Document shape
 
-Wire format is JSON - [`rig.document`](../../schemas/document.md). On disk that is a `.rig` file, or a `.rigz` ZIP (one `.rig` at the archive root plus a `data/` folder) when sidecar files travel with the document - [interchange](../../docs/interchange.md#package).
+Wire format is JSON - [`rig.document`](../../schemas/document.md). On disk that is a `.rig` file, or a `.rigz` ZIP (one `.rig` at the archive root plus a `data/` folder) when sidecar files travel with the document. `data/` may contain further `.rig` files. [interchange](../../docs/interchange.md#package).
 
 | Root field | Meaning |
 |------------|---------|
@@ -94,7 +94,7 @@ A component key may also be `x.<vendor>.<name>` - a host component the Contract 
 
 ## Worked examples
 
-Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/story-frames.json`](../../examples/story-frames.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json), [`examples/font-var.json`](../../examples/font-var.json), [`examples/place-address.json`](../../examples/place-address.json), [`examples/person-contact.json`](../../examples/person-contact.json), [`examples/plant-taxon.json`](../../examples/plant-taxon.json), [`examples/book-isbn.json`](../../examples/book-isbn.json), [`examples/paper-citation.json`](../../examples/paper-citation.json), [`examples/art-object.json`](../../examples/art-object.json), [`examples/commerce-offer.json`](../../examples/commerce-offer.json), [`examples/legal-agreement.json`](../../examples/legal-agreement.json), [`examples/calendar-event.json`](../../examples/calendar-event.json), [`examples/lights.json`](../../examples/lights.json), [`examples/dev-machine.json`](../../examples/dev-machine.json), [`examples/dev-hyperv.json`](../../examples/dev-hyperv.json), [`examples/dev-kvm.json`](../../examples/dev-kvm.json), [`examples/print-fgf.json`](../../examples/print-fgf.json), [`examples/kicad-pcb.json`](../../examples/kicad-pcb.json). Validate before you trust the output.
+Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/story-frames.json`](../../examples/story-frames.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json), [`examples/font-var.json`](../../examples/font-var.json), [`examples/place-address.json`](../../examples/place-address.json), [`examples/person-contact.json`](../../examples/person-contact.json), [`examples/plant-taxon.json`](../../examples/plant-taxon.json), [`examples/book-isbn.json`](../../examples/book-isbn.json), [`examples/paper-citation.json`](../../examples/paper-citation.json), [`examples/art-object.json`](../../examples/art-object.json), [`examples/commerce-offer.json`](../../examples/commerce-offer.json), [`examples/legal-agreement.json`](../../examples/legal-agreement.json), [`examples/calendar-event.json`](../../examples/calendar-event.json), [`examples/lights.json`](../../examples/lights.json), [`examples/dev-machine.json`](../../examples/dev-machine.json), [`examples/dev-hyperv.json`](../../examples/dev-hyperv.json), [`examples/dev-kvm.json`](../../examples/dev-kvm.json), [`examples/print-fgf.json`](../../examples/print-fgf.json), [`examples/kicad-pcb.json`](../../examples/kicad-pcb.json), [`examples/robot-lesson.json`](../../examples/robot-lesson.json). Validate before you trust the output.
 
 ### Entity with shape + paint
 
@@ -244,6 +244,7 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** store a parallel edge table on `rig.geometry.mesh` - name fillet/chamfer edges as `{a,b}` vertex pairs
 - **Do not** invent `rig.bim.wall` / `rig.bim.door` - use `rig.bim.classify` with `ifcClass`; geometry on cad / mesh; typed params on `rig.bim.pset`
 - **Do not** invent `rig.ros2.*` - ROS 2 maps onto existing spatial / I/O / sensor / SUDE; TF is `transform` + `relationship`; do not put ROS nodes on `rig.node.*`; see [docs/ros.md](../../docs/ros.md)
+- **Do not** invent `rig.isaac.*`, `rig.lucky.*`, or `rig.lerobot.*` - a depth image is `rig.sensor.depth` plus `rig.spatial.camera`, a scan pattern is `rig.sensor.lidar`, an inertial sample is `rig.sensor.imu`, a joint drive is `rig.sim.actuator`, a recorded take is `rig.sim.episode`; point clouds, solvers, bags, and policy weights stay fulfillment
 - **Do not** invent `rig.font.ttf` or grow `rig.media.text` with outlines - UFO source is `rig.font.*`; contours compose `rig.geometry.path`; features compose `rig.media.code` (`language` `fea`); `.ufo` is fulfillment - [docs/ufo.md](../../docs/ufo.md)
 - **Do not** invent `rig.idml.*` or graphic frames / object styles / text wrap / GREP / footnotes / variables - IDML maps onto `rig.layout.frame` + existing layout / story; `.idml` is fulfillment - [docs/idml.md](../../docs/idml.md)
 - **Do not** invent `rig.print.gcode` or put host paths / last-slice status on `rig.print.job` - FGF is `rig.print.machine` / `material` / `process` / `compression`; files compose `rig.media.asset_ref`; not envelope `pdfX`, not `rig.dev.machine`, not a layout page - [docs/print.md](../../docs/print.md)
@@ -294,6 +295,18 @@ Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the
 - **Do not** put text colour on `rig.media.text` - compose paint (`fill_stroke` / `fill`)
 - **Do not** flatten editorial copy into `rig.media.text` - that is a canvas run; stories are `rig.story.*` (named styles, no font or colour)
 - **Do not** put bold, italic, underline, strike, super/sub, font, size, or colour on `rig.story.*` - a run is `text` + style identity; unstyled local emphasis becomes a named character style
+- **Do not** put friction, restitution, or a collision shape on `rig.sim.rigidbody` - compose `rig.sim.collider`. Constraints are `rig.sim.joint`
+- **Do not** integrate `rig.sim.rigidbody` on an entity that has `rig.sim.character` - the character is the motor
+- **Do not** serialize contact manifolds, live particles, solved nav paths, button edges, or audio mix buffers
+- **Do not** put a callback or expression on `rig.ai.behavior` - `action` is a host name; source text is `rig.media.code`
+- **Do not** put hit points on `rig.sim.rigidbody` - compose `rig.play.health`
+- **Do not** put a price on `rig.play.item` - compose `rig.commerce.offer`
+- **Do not** put device codes on `rig.input.buttons` - compose `rig.input.binding`
+- **Do not** invent a second HUD schema - `rig.ui.panel` `surface` `hud` uses the same controls
+- **Do not** treat `rig.io.osc` as entity replication - that is `rig.net.replica`
+- **Do not** put a function pointer or callable on `rig.play.script` - `className` plus an optional `rig.media.code` asset
+- **Do not** put sprite colour on `rig.render.sprite` - compose paint. Box sizes on `rig.sim.collider` are half extents
+- **Do not** store a decibel volume beside `rig.audio.voice` `gain` - gain is linear amplitude
 - SUDE does **not** require a window, GPU, UI pack, filesystem, or audio
 - Being Rig does **not** require SUDE - only live hosts do - or implementing every schema
 - Being Rig **does** require entity/component POD composition against schemas you support
@@ -322,10 +335,12 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Cad | `cuboid`, `cylinder`, `sphere`, `extrude`, `revolve`, `boolean`, `fillet`, `chamfer` |
 | Bim | `classify`, `type`, `occurrence`, `pset`, `site`, `building`, `storey`, `space`, `relation`, `topic`, `comment`, `viewpoint`, `spec`, `facet` |
 | Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `stroke_style`, `library` |
-| Meta / render | `named`, `tags`, `light`, `material`, `visibility`, `blend` |
-| Anim / mod | `tween`, `curve`, `lfo`, `binding`, `trigger` |
+| Meta / render | `named`, `tags`, `light`, `material`, `visibility`, `blend`, `sprite` |
+| Anim / mod | `tween`, `curve`, `skeleton`, `skin`, `clip`, `track`, `blend`, `bind`, `lfo`, `binding`, `trigger` |
 | Music | `transport`, `clock`, `sequencer`, `pattern`, `arrangement`, `step`, `note`, `midi_output`, `midi_input` |
-| Audio | `analysis`, `bus` |
+| Audio | `analysis`, `bus`, `voice` |
+| Picture | `analysis` |
+| Visualizer | `deck` |
 | Media | `asset_ref`, `text`, `code` |
 | Font | `face`, `glyph`, `component`, `anchor`, `layer`, `kern`, `group` |
 | Story | `flow`, `paragraph`, `paragraph_style`, `character_style`, `table` |
@@ -333,13 +348,16 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Print | `machine`, `material`, `process`, `compression`, `job` |
 | Circuit | `part`, `pin`, `net` |
 | Pcb | `board`, `layer`, `layer_set`, `footprint`, `pad`, `track`, `via`, `zone`, `keepout` |
-| I/O | `osc`, `serial`, `sacn`, `dmx`, `led.uv_map`, `sensor.gpio`, `sensor.presence` |
+| I/O | `osc`, `serial`, `sacn`, `dmx`, `led.uv_map`, `sensor.gpio`, `sensor.presence`, `sensor.depth`, `sensor.lidar`, `sensor.imu` |
 | Dmx | `fixture` |
 | Light | `look` |
 | Calendar | `weekly`, `span`, `exception`, `event`, `recurrence`, `attendee` |
-| Sim | `rigidbody`, `particle_emitter` |
-| Input | `buttons` |
-| Interact | `selectable` |
+| Input | `buttons`, `axes`, `pointer`, `binding` |
+| Sim | `rigidbody`, `particle_emitter`, `collider`, `joint`, `actuator`, `episode`, `character`, `navmesh`, `agent` |
+| Play | `health`, `item`, `inventory`, `spawner`, `save`, `script` |
+| AI | `behavior` |
+| Net | `replica` |
+| Interact | `selectable`, `selected` |
 | UI | `panel`, `group`, `control`, `action` |
 | Node | `graph`, `node`, `pin`, `link`, `param`, `publish` |
 

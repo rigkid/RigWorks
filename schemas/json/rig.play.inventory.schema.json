@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.play.inventory.schema.json",
+  "title": "rig.play.inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "item": {
+            "$ref": "./_defs.schema.json#/$defs/entity"
+          },
+          "count": {
+            "$ref": "./_defs.schema.json#/$defs/uint"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "slots"
+  ]
+}

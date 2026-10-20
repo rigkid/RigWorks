@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.play.script.schema.json",
+  "title": "rig.play.script",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "className": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "asset": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "className"
+  ]
+}

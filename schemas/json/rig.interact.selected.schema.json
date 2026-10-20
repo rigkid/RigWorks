@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.interact.selected.schema.json",
+  "title": "rig.interact.selected",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "order": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    }
+  },
+  "minProperties": 0
+}
