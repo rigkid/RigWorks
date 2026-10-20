@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sim.domain.schema.json",
+  "title": "rig.sim.domain",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "target": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "propertyKey": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "min": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "max": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "seed": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    }
+  },
+  "required": [
+    "target",
+    "propertyKey",
+    "min",
+    "max"
+  ]
+}

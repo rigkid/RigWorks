@@ -100,6 +100,9 @@
               "rig.ai.behavior": {
                 "$ref": "./rig.ai.behavior.schema.json"
               },
+              "rig.ai.policy": {
+                "$ref": "./rig.ai.policy.schema.json"
+              },
               "rig.anim.bind": {
                 "$ref": "./rig.anim.bind.schema.json"
               },
@@ -712,8 +715,14 @@
               "rig.rights.statement": {
                 "$ref": "./rig.rights.statement.schema.json"
               },
+              "rig.sensor.class": {
+                "$ref": "./rig.sensor.class.schema.json"
+              },
               "rig.sensor.depth": {
                 "$ref": "./rig.sensor.depth.schema.json"
+              },
+              "rig.sensor.gnss": {
+                "$ref": "./rig.sensor.gnss.schema.json"
               },
               "rig.sensor.gpio": {
                 "$ref": "./rig.sensor.gpio.schema.json"
@@ -721,11 +730,20 @@
               "rig.sensor.imu": {
                 "$ref": "./rig.sensor.imu.schema.json"
               },
+              "rig.sensor.label": {
+                "$ref": "./rig.sensor.label.schema.json"
+              },
               "rig.sensor.lidar": {
                 "$ref": "./rig.sensor.lidar.schema.json"
               },
               "rig.sensor.presence": {
                 "$ref": "./rig.sensor.presence.schema.json"
+              },
+              "rig.sensor.range": {
+                "$ref": "./rig.sensor.range.schema.json"
+              },
+              "rig.sensor.wrench": {
+                "$ref": "./rig.sensor.wrench.schema.json"
               },
               "rig.sim.actuator": {
                 "$ref": "./rig.sim.actuator.schema.json"
@@ -733,11 +751,17 @@
               "rig.sim.agent": {
                 "$ref": "./rig.sim.agent.schema.json"
               },
+              "rig.sim.articulation": {
+                "$ref": "./rig.sim.articulation.schema.json"
+              },
               "rig.sim.character": {
                 "$ref": "./rig.sim.character.schema.json"
               },
               "rig.sim.collider": {
                 "$ref": "./rig.sim.collider.schema.json"
+              },
+              "rig.sim.domain": {
+                "$ref": "./rig.sim.domain.schema.json"
               },
               "rig.sim.episode": {
                 "$ref": "./rig.sim.episode.schema.json"
@@ -753,6 +777,9 @@
               },
               "rig.sim.rigidbody": {
                 "$ref": "./rig.sim.rigidbody.schema.json"
+              },
+              "rig.sim.world": {
+                "$ref": "./rig.sim.world.schema.json"
               },
               "rig.spatial.anchor": {
                 "$ref": "./rig.spatial.anchor.schema.json"
@@ -804,6 +831,36 @@
               },
               "rig.visualizer.deck": {
                 "$ref": "./rig.visualizer.deck.schema.json"
+              },
+              "rig.vr.anchor": {
+                "$ref": "./rig.vr.anchor.schema.json"
+              },
+              "rig.vr.controller": {
+                "$ref": "./rig.vr.controller.schema.json"
+              },
+              "rig.vr.eye": {
+                "$ref": "./rig.vr.eye.schema.json"
+              },
+              "rig.vr.hand": {
+                "$ref": "./rig.vr.hand.schema.json"
+              },
+              "rig.vr.haptic": {
+                "$ref": "./rig.vr.haptic.schema.json"
+              },
+              "rig.vr.headset": {
+                "$ref": "./rig.vr.headset.schema.json"
+              },
+              "rig.vr.joint": {
+                "$ref": "./rig.vr.joint.schema.json"
+              },
+              "rig.vr.pose": {
+                "$ref": "./rig.vr.pose.schema.json"
+              },
+              "rig.vr.space": {
+                "$ref": "./rig.vr.space.schema.json"
+              },
+              "rig.vr.tracker": {
+                "$ref": "./rig.vr.tracker.schema.json"
               }
             }
           }

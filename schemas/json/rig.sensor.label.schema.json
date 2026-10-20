@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sensor.label.schema.json",
+  "title": "rig.sensor.label",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": [
+        "semantic",
+        "instance"
+      ]
+    },
+    "classes": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/string"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "classes"
+  ]
+}

@@ -53,6 +53,24 @@
     },
     "mask": {
       "$ref": "./_defs.schema.json#/$defs/uint"
+    },
+    "frictionCombine": {
+      "type": "string",
+      "enum": [
+        "average",
+        "multiply",
+        "minimum",
+        "maximum"
+      ]
+    },
+    "restitutionCombine": {
+      "type": "string",
+      "enum": [
+        "average",
+        "multiply",
+        "minimum",
+        "maximum"
+      ]
     }
   },
   "required": [

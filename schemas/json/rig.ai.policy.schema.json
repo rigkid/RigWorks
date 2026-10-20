@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.ai.policy.schema.json",
+  "title": "rig.ai.policy",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "actions": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/entity"
+      }
+    },
+    "task": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "weights": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "episode": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "minProperties": 1
+}

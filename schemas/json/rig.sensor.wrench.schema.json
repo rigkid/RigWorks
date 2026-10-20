@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sensor.wrench.schema.json",
+  "title": "rig.sensor.wrench",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rateHz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "force": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "torque": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "device": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

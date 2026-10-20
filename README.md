@@ -19,7 +19,7 @@ Any app that already has Setup / Update / Draw / Exit can honor the same schemas
 
 **Concept is more important than execution.** What a transform *is* outlives every renderer that ever drew one. Rig keeps the concept and leaves the execution to you - [design philosophy](docs/design-philosophy.md), [why no code](docs/why-no-code.md).
 
-**AI co-coding is here to stay.** When execution gets cheap, the shared concept becomes the scarce asset. Rig publishes it in a form people and models read the same way - [AI collaboration](docs/ai-collaboration.md).
+**AI co-coding is here to stay.** When execution gets cheap, the shared concept becomes the scarce asset. The cheapest token is the one the model never generates: it writes the document and leaves the system unwritten, and the next agent already accepts that document. Rig publishes the concept in a form people and models read the same way - [AI collaboration](docs/ai-collaboration.md#the-cheapest-token).
 
 **What it costs.** A data framework moves work rather than deleting it. Live hosts write the loop; nothing fails to build when you drift; a schema only pays off once a second host speaks it - [the honest price](docs/why-no-code.md#the-honest-price).
 
@@ -111,7 +111,9 @@ More patterns: [`examples/`](examples/). Interchange notes (`.rig` / `.rigz`): [
 
 ## For AI agents
 
-Load the condensed skill before generating Rig data: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-documents/SKILL.md). Cross-agent onboarding: [`AGENTS.md`](AGENTS.md). Discovery index: [`llms.txt`](llms.txt). Why the repo is shaped this way: [`docs/ai-collaboration.md`](docs/ai-collaboration.md).
+The cheapest token is the one the model never generates. Load the skill, copy one example, emit the document, and validate. Leave the catalog unloaded. A document one agent emits is data the next agent already accepts, so the handoff spends nothing on a private format. Sizes and the reason: [`docs/ai-collaboration.md`](docs/ai-collaboration.md#the-cheapest-token).
+
+Load the condensed skill before generating Rig data: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-documents/SKILL.md). Cross-agent onboarding: [`AGENTS.md`](AGENTS.md). Discovery index: [`llms.txt`](llms.txt).
 
 Always validate emission:
 
@@ -154,6 +156,8 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | [docs/ufo.md](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
 | [docs/idml.md](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
 | [docs/ros.md](docs/ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |
+| [docs/robot.md](docs/robot.md) | Design, simulate, test, and train robots; solvers and trainers are fulfillment |
+| [docs/vr.md](docs/vr.md) | VR to `rig.vr.*` plus camera, transform, and input; runtimes are fulfillment |
 | [docs/print.md](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX` |
 | [examples/](examples/) | Reference documents |
 

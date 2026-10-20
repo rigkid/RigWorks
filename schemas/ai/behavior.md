@@ -20,3 +20,5 @@ Each node:
 `action` is a name the host implements, the same idea as a shared `actionId` on [`rig.ui.action`](../ui/action.md). It is not a callback. An unknown name fails that node. Source text, when it travels, is [`rig.media.code`](../media/code.md) on its own entity; this tree does not embed it.
 
 Blackboard values are ordinary components on entities. Tick state stays in the host.
+
+A learned map from sensors to drives is [`rig.ai.policy`](policy.md). This tree may name an action the host implements by stepping that policy. The tree does not store weights.

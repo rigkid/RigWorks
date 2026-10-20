@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.vr.joint.schema.json",
+  "title": "rig.vr.joint",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "enum": [
+        "palm",
+        "wrist",
+        "thumb-metacarpal",
+        "thumb-proximal",
+        "thumb-distal",
+        "thumb-tip",
+        "index-metacarpal",
+        "index-proximal",
+        "index-intermediate",
+        "index-distal",
+        "index-tip",
+        "middle-metacarpal",
+        "middle-proximal",
+        "middle-intermediate",
+        "middle-distal",
+        "middle-tip",
+        "ring-metacarpal",
+        "ring-proximal",
+        "ring-intermediate",
+        "ring-distal",
+        "ring-tip",
+        "little-metacarpal",
+        "little-proximal",
+        "little-intermediate",
+        "little-distal",
+        "little-tip"
+      ]
+    },
+    "radius": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

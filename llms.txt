@@ -4,6 +4,8 @@
 
 Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component documents. Live hosts also honor SUDE + runtime ECS. Emit JSON documents; validate with rig-validate. Nothing to link into an app.
 
+The cheapest token is the one the model never generates. Load the skill, copy one example, emit the document, and validate. Leave the catalog unloaded. A document one agent emits is data the next agent already accepts.
+
 ## AI entry
 
 - [skills/generating-rig-documents/SKILL.md](skills/generating-rig-documents/SKILL.md): condensed agent skill (load before generating)
@@ -24,6 +26,8 @@ Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component 
 - [docs/ufo.md](docs/ufo.md): UFO / GLIF to `rig.font.*`; encodings are fulfillment
 - [docs/idml.md](docs/idml.md): IDML to `rig.layout.frame` + layout / story; encodings are fulfillment
 - [docs/ros.md](docs/ros.md): ROS 2 to existing spatial / I/O / sensor / SUDE; no `rig.ros2.*`
+- [docs/robot.md](docs/robot.md): design, simulate, test, and train robots on `rig.sim.*` / `rig.sensor.*` / `rig.ai.policy`; solvers and trainers are fulfillment
+- [docs/vr.md](docs/vr.md): VR to `rig.vr.*` plus camera, transform, and input; OpenXR / WebXR / vendor runtimes are fulfillment
 - [docs/dev.md](docs/dev.md): portable dev machines to `rig.dev.machine` / `rig.dev.op`; [RigDev](https://github.com/rigkid/RigDev) fulfills
 - [docs/kicad.md](docs/kicad.md): KiCad board to `rig.circuit.*` / `rig.pcb.*`; `.rigz` round trip merges onto the source file
 - [docs/print.md](docs/print.md): FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page

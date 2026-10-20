@@ -1,0 +1,175 @@
+{
+  "rig": "0.36.0",
+  "document": {
+    "title": "Robot lab",
+    "defaultUnit": "m"
+  },
+  "entities": [
+    {
+      "id": "world",
+      "components": {
+        "rig.meta.named": { "name": "World", "stableId": "world" },
+        "rig.spatial.vertex": {},
+        "rig.sim.world": {
+          "gravity": [0, -9.81, 0],
+          "stepSeconds": 0.01
+        }
+      }
+    },
+    {
+      "id": "table",
+      "components": {
+        "rig.meta.named": { "name": "Table", "stableId": "table" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [0, 0.04, 0] },
+        "rig.sim.rigidbody": { "bodyType": "static" },
+        "rig.sim.collider": {
+          "kind": "box",
+          "halfExtents": [0.6, 0.04, 0.4],
+          "friction": 0.6,
+          "frictionCombine": "average"
+        },
+        "rig.sensor.class": { "name": "table" }
+      }
+    },
+    {
+      "id": "base",
+      "components": {
+        "rig.meta.named": { "name": "base_link", "stableId": "base_link" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [0, 0.12, 0] },
+        "rig.sim.articulation": { "fixedBase": true },
+        "rig.sim.rigidbody": {
+          "bodyType": "dynamic",
+          "mass": 2,
+          "centerOfMass": [0, 0.02, 0],
+          "inertia": [0.01, 0.012, 0.01, 0, 0, 0]
+        },
+        "rig.sim.collider": { "kind": "box", "halfExtents": [0.08, 0.04, 0.08] },
+        "rig.sensor.class": { "name": "base" },
+        "rig.place.geo": {
+          "latitudeDegrees": -33.86,
+          "longitudeDegrees": 151.21,
+          "altitudeMetres": 18
+        },
+        "rig.sensor.gnss": { "rateHz": 5, "horizontalMetres": 1.2 }
+      }
+    },
+    {
+      "id": "link",
+      "components": {
+        "rig.meta.named": { "name": "arm_link", "stableId": "arm_link" },
+        "rig.spatial.relationship": { "parent": "base" },
+        "rig.spatial.transform": {
+          "position": [0, 0.2, 0],
+          "rotation": [0, 0.1305, 0, 0.9914]
+        },
+        "rig.sim.rigidbody": {
+          "bodyType": "dynamic",
+          "mass": 0.8,
+          "inertia": [0.0064, 0.00085, 0.0064, 0, 0, 0]
+        },
+        "rig.sim.collider": { "kind": "box", "halfExtents": [0.04, 0.15, 0.04] },
+        "rig.sensor.class": { "name": "link" }
+      }
+    },
+    {
+      "id": "shoulder",
+      "components": {
+        "rig.meta.named": { "name": "shoulder", "stableId": "shoulder" },
+        "rig.sim.joint": {
+          "kind": "hinge",
+          "a": "link",
+          "b": "base",
+          "axis": [0, 1, 0],
+          "min": -90,
+          "max": 90,
+          "position": 15,
+          "velocity": 0
+        }
+      }
+    },
+    {
+      "id": "drive",
+      "components": {
+        "rig.meta.named": { "name": "shoulder_drive", "stableId": "shoulder_drive" },
+        "rig.sim.actuator": {
+          "joint": "shoulder",
+          "mode": "position",
+          "effort": 12,
+          "target": 15
+        }
+      }
+    },
+    {
+      "id": "wrist",
+      "components": {
+        "rig.meta.named": { "name": "wrist_wrench", "stableId": "wrist_wrench" },
+        "rig.spatial.relationship": { "parent": "link" },
+        "rig.spatial.transform": { "position": [0, 0.15, 0] },
+        "rig.sensor.wrench": {
+          "rateHz": 100,
+          "force": [0, -7.8, 0.4],
+          "torque": [0.02, 0, 0]
+        }
+      }
+    },
+    {
+      "id": "beam",
+      "components": {
+        "rig.meta.named": { "name": "forward_range", "stableId": "forward_range" },
+        "rig.spatial.relationship": { "parent": "base" },
+        "rig.spatial.transform": { "position": [0.08, 0.04, 0] },
+        "rig.sensor.range": {
+          "rangeMax": 2,
+          "distance": 0.42,
+          "rateHz": 20
+        }
+      }
+    },
+    {
+      "id": "eye",
+      "components": {
+        "rig.meta.named": { "name": "class_camera", "stableId": "class_camera" },
+        "rig.spatial.relationship": { "parent": "base" },
+        "rig.spatial.transform": { "position": [0.05, 0.06, 0.06] },
+        "rig.spatial.camera": { "fovYDegrees": 70, "nearClip": 0.05, "farClip": 4 },
+        "rig.sensor.label": {
+          "mode": "semantic",
+          "classes": ["base", "link", "table"]
+        }
+      }
+    },
+    {
+      "id": "mass-range",
+      "components": {
+        "rig.sim.domain": {
+          "target": "base",
+          "propertyKey": "mass",
+          "min": 1.6,
+          "max": 2.4,
+          "seed": 7
+        }
+      }
+    },
+    {
+      "id": "reach-test",
+      "components": {
+        "rig.meta.named": { "name": "reach test", "stableId": "reach-test" },
+        "rig.sim.episode": { "task": "reach", "success": false }
+      }
+    },
+    {
+      "id": "reach-policy",
+      "components": {
+        "rig.meta.named": { "name": "reach policy", "stableId": "reach-policy" },
+        "rig.ai.policy": {
+          "actions": ["drive"],
+          "observations": ["wrist", "beam"],
+          "task": "reach",
+          "episode": "reach-test"
+        }
+      }
+    }
+  ]
+}

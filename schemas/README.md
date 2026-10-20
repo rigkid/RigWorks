@@ -393,6 +393,11 @@ Electrical meaning - parts, physical terminals, nets - is `rig.circuit.*`, share
 | `rig.sensor.depth` | [sensor/depth.md](sensor/depth.md) |
 | `rig.sensor.lidar` | [sensor/lidar.md](sensor/lidar.md) |
 | `rig.sensor.imu` | [sensor/imu.md](sensor/imu.md) |
+| `rig.sensor.wrench` | [sensor/wrench.md](sensor/wrench.md) |
+| `rig.sensor.range` | [sensor/range.md](sensor/range.md) |
+| `rig.sensor.gnss` | [sensor/gnss.md](sensor/gnss.md) |
+| `rig.sensor.label` | [sensor/label.md](sensor/label.md) |
+| `rig.sensor.class` | [sensor/class.md](sensor/class.md) |
 | `rig.input.buttons` | [input/buttons.md](input/buttons.md) |
 | `rig.input.axes` | [input/axes.md](input/axes.md) |
 | `rig.input.pointer` | [input/pointer.md](input/pointer.md) |
@@ -405,6 +410,23 @@ Electrical meaning - parts, physical terminals, nets - is `rig.circuit.*`, share
 | `rig.calendar.recurrence` | [calendar/recurrence.md](calendar/recurrence.md) |
 | `rig.calendar.attendee` | [calendar/attendee.md](calendar/attendee.md) |
 
+### VR
+
+Stereo views, tracked poses, and room bounds. Pose is [`rig.spatial.transform`](spatial/transform.md). Projection is [`rig.spatial.camera`](spatial/camera.md). Triggers and grips stay [`rig.input.axes`](input/axes.md). OpenXR, WebXR, and other runtimes are fulfillments - [vr.md](../docs/vr.md).
+
+| Id | Doc |
+|----|-----|
+| `rig.vr.space` | [vr/space.md](vr/space.md) |
+| `rig.vr.headset` | [vr/headset.md](vr/headset.md) |
+| `rig.vr.eye` | [vr/eye.md](vr/eye.md) |
+| `rig.vr.tracker` | [vr/tracker.md](vr/tracker.md) |
+| `rig.vr.controller` | [vr/controller.md](vr/controller.md) |
+| `rig.vr.pose` | [vr/pose.md](vr/pose.md) |
+| `rig.vr.hand` | [vr/hand.md](vr/hand.md) |
+| `rig.vr.joint` | [vr/joint.md](vr/joint.md) |
+| `rig.vr.haptic` | [vr/haptic.md](vr/haptic.md) |
+| `rig.vr.anchor` | [vr/anchor.md](vr/anchor.md) |
+
 ### Dev environments
 
 Portable development-machine recipes - not a media-show AV bus or gated trigger, not UI docks. Cache fingerprints and credentials stay host-only - [dev.md](../docs/dev.md).
@@ -416,7 +438,7 @@ Portable development-machine recipes - not a media-show AV bus or gated trigger,
 
 ### Simulation
 
-Bodies, contact, drives, and walkable surfaces. A recorded take is [`rig.sim.episode`](sim/episode.md). Live contact manifolds, particle buffers, point clouds, and solved paths stay in the host. Robot sensors and takes: [ros.md](../docs/ros.md).
+Bodies, contact, drives, and walkable surfaces. A recorded take is [`rig.sim.episode`](sim/episode.md). Live contact manifolds, particle buffers, point clouds, and solved paths stay in the host. Design, simulation, test, and training: [robot.md](../docs/robot.md). ROS 2 middleware: [ros.md](../docs/ros.md).
 
 | Id | Doc |
 |----|-----|
@@ -429,6 +451,9 @@ Bodies, contact, drives, and walkable surfaces. A recorded take is [`rig.sim.epi
 | `rig.sim.character` | [sim/character.md](sim/character.md) |
 | `rig.sim.navmesh` | [sim/navmesh.md](sim/navmesh.md) |
 | `rig.sim.agent` | [sim/agent.md](sim/agent.md) |
+| `rig.sim.world` | [sim/world.md](sim/world.md) |
+| `rig.sim.articulation` | [sim/articulation.md](sim/articulation.md) |
+| `rig.sim.domain` | [sim/domain.md](sim/domain.md) |
 
 ### Play
 
@@ -448,6 +473,7 @@ Hit points, items, spawn, and a save slot. Rules that change them stay in the ho
 | Id | Doc |
 |----|-----|
 | `rig.ai.behavior` | [ai/behavior.md](ai/behavior.md) |
+| `rig.ai.policy` | [ai/policy.md](ai/policy.md) |
 
 ### Net
 
@@ -521,6 +547,12 @@ Hit points, items, spawn, and a save slot. Rules that change them stay in the ho
 | Actuator | `joint` | [`sim.actuator`](sim/actuator.md) via [`sim.joint`](sim/joint.md) |
 | Episode | `clip` | [`sim.episode`](sim/episode.md) via [`anim.clip`](anim/clip.md); `actions` / `observations` are [`anim.track`](anim/track.md) |
 | Depth / lidar / imu | same entity | [`sensor.depth`](sensor/depth.md) composes [`spatial.camera`](spatial/camera.md). [`sensor.lidar`](sensor/lidar.md) and [`sensor.imu`](sensor/imu.md) compose transform. Clouds and covariance stay host |
+| Physics world | same entity | [`sim.world`](sim/world.md) on the scene vertex. A body's `gravity` replaces it |
+| Articulation | `parent` | [`sim.articulation`](sim/articulation.md) on the root link. Links use [`spatial.relationship`](spatial/relationship.md). Joints are [`sim.joint`](sim/joint.md) |
+| Domain draw | `target` | [`sim.domain`](sim/domain.md) varies one property at reset |
+| Policy | `actions` / `observations` | [`ai.policy`](ai/policy.md) via actuators and sensors. `weights` is an [`media.asset_ref`](media/asset-ref.md) |
+| Label image | same entity | [`sensor.label`](sensor/label.md) on a camera. A mesh's class is [`sensor.class`](sensor/class.md) |
+| GNSS fix | same entity | [`sensor.gnss`](sensor/gnss.md) plus [`place.geo`](place/geo.md) |
 | Skeleton | `parent` | [`spatial.relationship`](spatial/relationship.md) under [`anim.skeleton`](anim/skeleton.md) bones |
 | Skin | `joints` | [`anim.skin`](anim/skin.md) via [`anim.skeleton`](anim/skeleton.md) |
 | Clip samples | `clip` | [`anim.track`](anim/track.md) via [`anim.clip`](anim/clip.md) |
@@ -531,5 +563,10 @@ Hit points, items, spawn, and a save slot. Rules that change them stay in the ho
 | Inventory | `item` | [`play.inventory`](play/inventory.md) slot via [`play.item`](play/item.md) |
 | Spawner | `prototype` | [`play.spawner`](play/spawner.md) |
 | HUD | `surface` | [`ui.panel`](ui/panel.md) `hud` - same controls as a tool |
+| VR space | `parent` | [`vr.space`](vr/space.md). `bounds` is the floor polygon (x, z) |
+| VR eye | `headset` | [`vr.eye`](vr/eye.md) composes [`spatial.camera`](spatial/camera.md). Parent is the head [`vr.tracker`](vr/tracker.md) |
+| VR pose | `parent` | [`vr.pose`](vr/pose.md) grip / aim under a [`vr.controller`](vr/controller.md) or tracker |
+| VR hand | `parent` | [`vr.joint`](vr/joint.md) under [`vr.hand`](vr/hand.md). Wrist parents to the hand |
+| VR anchor | `parent` | [`vr.anchor`](vr/anchor.md) pin. `persistentId` when it outlives the session |
 
 Hosts and packs fulfill subsets - see [RigKit port-map](https://github.com/rigkid/RigKit/blob/main/docs/contract/port-map.md).

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.vr.haptic.schema.json",
+  "title": "rig.vr.haptic",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "amplitude": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "durationSeconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "frequencyHz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sim.world.schema.json",
+  "title": "rig.sim.world",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "gravity": {
+      "$ref": "./_defs.schema.json#/$defs/vec3"
+    },
+    "stepSeconds": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    }
+  }
+}

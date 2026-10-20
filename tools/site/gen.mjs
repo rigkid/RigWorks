@@ -902,8 +902,9 @@ function aiPage(ctx) {
   const pageOut = AI_OUT;
   const body = `<h1>For AI</h1>
 <p class="lede">
-  Execution is cheap; agreement is the scarce asset. Load this before generating Rig
-  data, copy the examples rather than inventing a vocabulary, and validate the output.
+  The cheapest token is the one the model never generates. Load the skill, copy one
+  example, emit the document, and validate. Leave the catalog unloaded. A document
+  one agent emits is data the next agent already accepts.
 </p>
 <p class="badges">
   <span class="badge">v${version} · draft</span>

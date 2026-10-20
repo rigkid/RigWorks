@@ -30,7 +30,7 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 
 | Path | Role |
 |------|------|
-| [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-documents/SKILL.md) | Condensed AI-facing rules + examples |
+| [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-documents/SKILL.md) | Condensed AI-facing rules |
 | [`schemas/json/`](schemas/json/) | JSON Schema grammar |
 | [`schemas/`](schemas/) | Prose field meaning |
 | [`examples/`](examples/) | Reference documents |
@@ -39,6 +39,8 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`docs/ufo.md`](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
 | [`docs/idml.md`](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
 | [`docs/ros.md`](docs/ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |
+| [`docs/robot.md`](docs/robot.md) | Design, simulate, test, and train robots; solvers and trainers are fulfillment |
+| [`docs/vr.md`](docs/vr.md) | VR to `rig.vr.*` plus camera, transform, and input; runtimes are fulfillment |
 | [`docs/dev.md`](docs/dev.md) | Dev machines to `rig.dev.machine` / `rig.dev.op`; fulfillments e.g. [RigDev](https://github.com/rigkid/RigDev) |
 | [`docs/kicad.md`](docs/kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*`; round trip merges onto the source file |
 | [`docs/print.md`](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page |

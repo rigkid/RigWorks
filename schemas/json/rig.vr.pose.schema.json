@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.vr.pose.schema.json",
+  "title": "rig.vr.pose",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "grip",
+        "aim"
+      ]
+    }
+  },
+  "required": [
+    "kind"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sensor.gnss.schema.json",
+  "title": "rig.sensor.gnss",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rateHz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "horizontalMetres": {
+      "type": "number",
+      "minimum": 0
+    },
+    "verticalMetres": {
+      "type": "number",
+      "minimum": 0
+    },
+    "device": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

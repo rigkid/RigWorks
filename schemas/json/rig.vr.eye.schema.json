@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.vr.eye.schema.json",
+  "title": "rig.vr.eye",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "side": {
+      "type": "string",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "headset": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "side"
+  ]
+}

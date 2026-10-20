@@ -12,7 +12,8 @@
         "hinge",
         "distance",
         "spring",
-        "slider"
+        "slider",
+        "ball"
       ]
     },
     "a": {
@@ -55,6 +56,16 @@
       "$ref": "./_defs.schema.json#/$defs/float"
     },
     "mimicOffset": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "swingDegrees": {
+      "type": "number",
+      "minimum": 0
+    },
+    "position": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "velocity": {
       "$ref": "./_defs.schema.json#/$defs/float"
     }
   },

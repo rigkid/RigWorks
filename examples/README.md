@@ -38,6 +38,8 @@ node tools/rig-validate/cli.js examples/visualizer.json
 node tools/rig-validate/cli.js examples/music-chord.json
 node tools/rig-validate/cli.js examples/play-scene.json
 node tools/rig-validate/cli.js examples/robot-lesson.json
+node tools/rig-validate/cli.js examples/robot-lab.json
+node tools/rig-validate/cli.js examples/vr-room.json
 ```
 
 ## SUDE sketch
@@ -316,6 +318,14 @@ A preset deck: two `kind` `preset` assets, a [`rig.pixel.canvas`](../schemas/pix
 ## `robot-lesson.json`
 
 A base link, a driven shoulder, and a hinge that mimics it. The lidar is a scan pattern, the eye is a camera plus a depth image, and the IMU is one sample at load. [`rig.sim.episode`](../schemas/sim/episode.md) points at the clip: the action track commands the drive, the observation track records acceleration. The cloud, the depth buffer, and any policy weights are not in the file - [docs/ros.md](../docs/ros.md).
+
+## `robot-lab.json`
+
+A bench in metres: Earth gravity and a 10 ms step on the scene, a static table, and a fixed-base arm with mass and inertia. The shoulder joint stores its angle at save. A wrist wrench, a forward range beam, a class camera, and a GNSS fix sit on the robot. Reset draws the base mass from a range. A policy names the drive and the two sensors. The reach attempt is recorded as failed. The solver, the depth image, and the trainer are not in the file - [docs/robot.md](../docs/robot.md).
+
+## `vr-room.json`
+
+A stage with a floor polygon, a headset (IPD, refresh, per-eye pixels), and two off-axis eyes on the head. The left controller carries grip and aim, a haptic click, and bindings for trigger and squeeze. A partial left hand (wrist through index tip) shows the joint parent chain. A floor pin keeps a `persistentId`. Sessions and swapchains are not in the file - [docs/vr.md](../docs/vr.md).
 
 ## `play-scene.json`
 

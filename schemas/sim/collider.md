@@ -17,6 +17,8 @@ Contact shape. Format when present. One shape on the entity; a compound is child
 | `density` | float | Optional. Mass per volume for hosts that derive mass from shapes. Must be greater than 0. Ignored when the body sets `mass` |
 | `layer` | int | Optional. Collision layer; absent = 0 |
 | `mask` | uint | Optional. Bitmask of layers this shape collides with; absent = every layer |
+| `frictionCombine` | enum | Optional. `average`, `multiply`, `minimum`, `maximum`. How this friction mixes with the other shape. Absent = the host default |
+| `restitutionCombine` | enum | Optional. Same tokens, for bounce |
 
 `halfExtents` is half the box on each axis. A host whose shape size is the full side length halves it on the way in.
 

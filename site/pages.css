@@ -273,9 +273,10 @@ a.card:hover h3 code { color: var(--accent); }
   margin: 2.4rem 0 0.9rem;
   padding-top: 1.2rem;
   border-top: 1px solid var(--line);
+  scroll-margin-top: 4.5rem;
 }
 
-.prose h3 { font-size: 1rem; margin: 1.8rem 0 0.6rem; }
+.prose h3 { font-size: 1rem; margin: 1.8rem 0 0.6rem; scroll-margin-top: 4.5rem; }
 
 .prose p,
 .prose li {

@@ -13,5 +13,7 @@ Compose [`rig.meta.named`](../meta/named.md) for a label. Device handles and edg
 | `lookY` | float | Optional. Look stick Y, -1..1; absent = 0 |
 | `leftTrigger` | float | Optional. 0-1; absent = 0 |
 | `rightTrigger` | float | Optional. 0-1; absent = 0 |
+| `leftGrip` | float | Optional. Left squeeze, 0-1; absent = 0 |
+| `rightGrip` | float | Optional. Right squeeze, 0-1; absent = 0 |
 
-Hosts poll hardware into these fields during `Update`. Face buttons stay on [`rig.input.buttons`](buttons.md).
+Hosts poll hardware into these fields during `Update`. Face buttons stay on [`rig.input.buttons`](buttons.md). A VR controller's squeeze maps here - [docs/vr.md](../../docs/vr.md).

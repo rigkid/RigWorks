@@ -37,6 +37,16 @@
       "type": "number",
       "minimum": 0,
       "maximum": 1
+    },
+    "leftGrip": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "rightGrip": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
     }
   }
 }

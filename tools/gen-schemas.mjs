@@ -110,10 +110,15 @@ add(
 
 // Defaults: active true, projection perspective, fovYDegrees 60,
 // nearClip 0.1, farClip 1000, aspect = host viewport.
+// left/right/up/down degrees, when all four are set, replace fovY + aspect.
 add("rig.spatial.camera", {
   active: ref("bool"),
   projection: enumOf(["perspective", "orthographic"]),
   fovYDegrees: ref("float"),
+  leftDegrees: ref("float"),
+  rightDegrees: ref("float"),
+  upDegrees: ref("float"),
+  downDegrees: ref("float"),
   orthoHeight: ref("float"),
   nearClip: ref("float"),
   farClip: ref("float"),
@@ -2327,6 +2332,8 @@ add("rig.input.axes", {
   lookY: { type: "number", minimum: -1, maximum: 1 },
   leftTrigger: { type: "number", minimum: 0, maximum: 1 },
   rightTrigger: { type: "number", minimum: 0, maximum: 1 },
+  leftGrip: { type: "number", minimum: 0, maximum: 1 },
+  rightGrip: { type: "number", minimum: 0, maximum: 1 },
 }, { required: [] });
 
 // Pointer in viewport ratios. x and y required so a present component is a measured point.
@@ -2342,7 +2349,7 @@ add("rig.input.pointer", {
 add("rig.input.binding", {
   player: ref("int"),
   control: ref("string"),
-  device: enumOf(["key", "mouse", "pad", "touch"]),
+  device: enumOf(["key", "mouse", "pad", "touch", "vr"]),
   index: ref("int"),
   code: ref("string"),
   deadzone: { type: "number", minimum: 0, maximum: 1 },
@@ -2458,6 +2465,153 @@ add("rig.sensor.imu", {
   acceleration: ref("vec3"),
   angularVelocityDegrees: ref("vec3"),
   device: ref("entity"),
+}, { required: [] });
+
+// Force and torque at load, in the entity frame. Absent vectors were not measured.
+add("rig.sensor.wrench", {
+  rateHz: { type: "number", exclusiveMinimum: 0 },
+  force: ref("vec3"),
+  torque: ref("vec3"),
+  device: ref("entity"),
+}, { required: [] });
+
+// One beam along local -Z. fovDegrees absent = a ray. distance absent = not measured.
+add("rig.sensor.range", {
+  rangeMin: { type: "number", minimum: 0 },
+  rangeMax: { type: "number", exclusiveMinimum: 0 },
+  fovDegrees: { type: "number", minimum: 0, maximum: 180 },
+  distance: { type: "number", minimum: 0 },
+  rateHz: { type: "number", exclusiveMinimum: 0 },
+  device: ref("entity"),
+}, { required: [] });
+
+// The fix is place.geo on this entity. Accuracy is metres.
+add("rig.sensor.gnss", {
+  rateHz: { type: "number", exclusiveMinimum: 0 },
+  horizontalMetres: { type: "number", minimum: 0 },
+  verticalMetres: { type: "number", minimum: 0 },
+  device: ref("entity"),
+}, { required: [] });
+
+// Class image on a camera. The buffer stays host. mode absent = semantic.
+add("rig.sensor.label", {
+  mode: enumOf(["semantic", "instance"]),
+  classes: { type: "array", items: ref("string"), minItems: 1 },
+}, { required: ["classes"] });
+
+// One entity's class name for sensor.label. Not rig.meta.tags.
+add("rig.sensor.class", {
+  name: ref("string"),
+}, { required: ["name"] });
+
+// --- vr ---
+// Reference space. bounds are x,z polygons on the floor (Y up). See docs/vr.md.
+add("rig.vr.space", {
+  reference: enumOf(["local", "local-floor", "stage", "unbounded"]),
+  bounds: {
+    type: "array",
+    minItems: 3,
+    items: ref("vec2"),
+    $comment: "Each item is x, z in this space, scene units. Y is the floor.",
+  },
+}, { required: ["reference"] });
+
+// Selected display mode. Swapchains and foveation stay host.
+add("rig.vr.headset", {
+  player: ref("int"),
+  refreshHz: { type: "number", exclusiveMinimum: 0 },
+  ipdMetres: { type: "number", exclusiveMinimum: 0 },
+  eyeWidth: { type: "integer", minimum: 1 },
+  eyeHeight: { type: "integer", minimum: 1 },
+  blend: enumOf(["opaque", "additive", "alpha"]),
+}, { required: [] });
+
+add("rig.vr.eye", {
+  side: enumOf(["left", "right"]),
+  headset: ref("entity"),
+}, { required: ["side"] });
+
+add("rig.vr.tracker", {
+  player: ref("int"),
+  role: enumOf([
+    "head",
+    "gaze",
+    "left-hand",
+    "right-hand",
+    "left-shoulder",
+    "right-shoulder",
+    "left-elbow",
+    "right-elbow",
+    "chest",
+    "waist",
+    "left-knee",
+    "right-knee",
+    "left-foot",
+    "right-foot",
+    "gamepad",
+    "tracker",
+  ]),
+  index: ref("int"),
+  device: ref("entity"),
+}, { required: ["role"] });
+
+add("rig.vr.controller", {
+  player: ref("int"),
+  hand: enumOf(["left", "right", "none"]),
+  profile: ref("string"),
+}, { required: [] });
+
+add("rig.vr.pose", {
+  kind: enumOf(["grip", "aim"]),
+}, { required: ["kind"] });
+
+add("rig.vr.hand", {
+  player: ref("int"),
+  side: enumOf(["left", "right"]),
+}, { required: ["side"] });
+
+add("rig.vr.joint", {
+  name: enumOf([
+    "palm",
+    "wrist",
+    "thumb-metacarpal",
+    "thumb-proximal",
+    "thumb-distal",
+    "thumb-tip",
+    "index-metacarpal",
+    "index-proximal",
+    "index-intermediate",
+    "index-distal",
+    "index-tip",
+    "middle-metacarpal",
+    "middle-proximal",
+    "middle-intermediate",
+    "middle-distal",
+    "middle-tip",
+    "ring-metacarpal",
+    "ring-proximal",
+    "ring-intermediate",
+    "ring-distal",
+    "ring-tip",
+    "little-metacarpal",
+    "little-proximal",
+    "little-intermediate",
+    "little-distal",
+    "little-tip",
+  ]),
+  radius: { type: "number", minimum: 0 },
+}, { required: ["name"] });
+
+// One pulse at load. PCM streams stay host. Absent amplitude = 0.
+add("rig.vr.haptic", {
+  amplitude: { type: "number", minimum: 0, maximum: 1 },
+  durationSeconds: { type: "number", minimum: 0 },
+  frequencyHz: { type: "number", exclusiveMinimum: 0 },
+}, { required: [] });
+
+// World pin. Pose is spatial.transform. Empty persistentId = this session only.
+add("rig.vr.anchor", {
+  persistentId: ref("string"),
 }, { required: [] });
 
 // --- dmx ---
@@ -2730,12 +2884,20 @@ add("rig.bim.facet", {
 // velocity / angularVelocityDegrees are the body at load: an author writes
 // the launch, a save writes the current value. Position is spatial.transform.
 // Defaults: velocity (0,0,0), angularVelocityDegrees (0,0,0), mass 1, drag 0;
-// gravity absent = the host's ambient gravity.
+// gravity absent = sim.world gravity, else the host's ambient gravity.
+// inertia is ixx, iyy, izz, ixy, ixz, iyz about centerOfMass.
 add("rig.sim.rigidbody", {
   bodyType: enumOf(["static", "dynamic", "kinematic"]),
   velocity: ref("vec3"),
   angularVelocityDegrees: ref("vec3"),
   mass: ref("float"),
+  inertia: {
+    type: "array",
+    minItems: 6,
+    maxItems: 6,
+    items: { type: "number" },
+    $comment: "ixx, iyy, izz, ixy, ixz, iyz about centerOfMass, body frame",
+  },
   drag: { type: "number", minimum: 0, maximum: 1 },
   angularDrag: { type: "number", minimum: 0, maximum: 1 },
   gravity: ref("vec3"),
@@ -2776,10 +2938,12 @@ add("rig.sim.collider", {
   density: { type: "number", exclusiveMinimum: 0 },
   layer: ref("int"),
   mask: ref("uint"),
+  frictionCombine: enumOf(["average", "multiply", "minimum", "maximum"]),
+  restitutionCombine: enumOf(["average", "multiply", "minimum", "maximum"]),
 }, { required: ["kind"] });
 
 add("rig.sim.joint", {
-  kind: enumOf(["fixed", "hinge", "distance", "spring", "slider"]),
+  kind: enumOf(["fixed", "hinge", "distance", "spring", "slider", "ball"]),
   a: ref("entity"),
   b: ref("entity"),
   anchorA: ref("vec3"),
@@ -2794,6 +2958,9 @@ add("rig.sim.joint", {
   mimic: ref("entity"),
   mimicMultiplier: ref("float"),
   mimicOffset: ref("float"),
+  swingDegrees: { type: "number", minimum: 0 },
+  position: ref("float"),
+  velocity: ref("float"),
 }, { required: ["kind", "a", "b"] });
 
 // Drive on one joint. mode absent = position. effort / maxSpeed absent = unlimited.
@@ -2856,6 +3023,29 @@ add("rig.sim.episode", {
   observations: { type: "array", items: ref("entity") },
 }, { required: [], minProperties: 1 });
 
+// Scene physics. Compose on the scene vertex. gravity is scene units / s^2.
+// stepSeconds absent = one step per Update, using SUDE dt.
+add("rig.sim.world", {
+  gravity: ref("vec3"),
+  stepSeconds: { type: "number", exclusiveMinimum: 0 },
+}, { required: [] });
+
+// One articulated mechanism. Compose on the root link.
+// selfCollide absent = false. fixedBase absent = false.
+add("rig.sim.articulation", {
+  selfCollide: ref("bool"),
+  fixedBase: ref("bool"),
+}, { required: [] });
+
+// One property drawn uniformly from min..max at each reset. See docs/robot.md.
+add("rig.sim.domain", {
+  target: ref("entity"),
+  propertyKey: ref("string"),
+  min: ref("float"),
+  max: ref("float"),
+  seed: ref("int"),
+}, { required: ["target", "propertyKey", "min", "max"] });
+
 // Presence means selectable; enabled defaults true.
 add("rig.interact.selectable", {
   enabled: ref("bool"),
@@ -2880,6 +3070,15 @@ const behaviorNode = {
 add("rig.ai.behavior", {
   nodes: { type: "array", items: behaviorNode, minItems: 1 },
 }, { required: ["nodes"] });
+
+// Learned map. Weights are an asset file. The network and the trainer stay host.
+add("rig.ai.policy", {
+  actions: { type: "array", items: ref("entity") },
+  observations: { type: "array", items: ref("entity") },
+  task: ref("string"),
+  weights: ref("entity"),
+  episode: ref("entity"),
+}, { required: [], minProperties: 1 });
 
 // current absent = maximum; maximum absent = 1.
 add("rig.play.script", {

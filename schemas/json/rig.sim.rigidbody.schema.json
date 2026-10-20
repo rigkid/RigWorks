@@ -22,6 +22,15 @@
     "mass": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
+    "inertia": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "number"
+      },
+      "$comment": "ixx, iyy, izz, ixy, ixz, iyz about centerOfMass, body frame"
+    },
     "drag": {
       "type": "number",
       "minimum": 0,

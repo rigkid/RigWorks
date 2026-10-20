@@ -8,6 +8,7 @@ Physics body. Format when present.
 | `velocity` | vec3 | Optional. World-space linear velocity, units per second; absent = at rest |
 | `angularVelocityDegrees` | vec3 | Optional. World-space angular velocity, degrees per second about X Y Z; absent = no spin |
 | `mass` | float | Optional. Mass; must be greater than 0; absent = 1 |
+| `inertia` | float[6] | Optional. `ixx`, `iyy`, `izz`, `ixy`, `ixz`, `iyz` about `centerOfMass`, body frame. Mass times scene length squared. Absent = computed from colliders |
 | `drag` | float | Optional. 0-1, fraction of linear velocity lost per second; absent = 0 |
 | `angularDrag` | float | Optional. 0-1, fraction of angular velocity lost per second; absent = 0 |
 | `gravity` | vec3 | Optional. Per-body acceleration, units per second squared. When set, replaces ambient gravity and `gravityScale` is ignored |
@@ -22,5 +23,7 @@ Physics body. Format when present.
 `bodyType` `static` does not integrate. `kinematic` moves from its transform and pushes dynamic bodies. `dynamic` integrates. A [`rig.sim.character`](character.md) on the same entity is the motor either way: do not also integrate this body.
 
 `drag` is a fraction lost per second, not a physics-engine damping coefficient. Hosts convert. Sleeping, contact counts, and applied forces stay in the host.
+
+Ambient gravity is [`rig.sim.world`](world.md) on the scene. This body's `gravity` replaces that vector. `gravityScale` multiplies it when `gravity` is absent. A metres scene that wants Earth sets world gravity to `[0, -9.81, 0]`.
 
 Contact shape, friction, and restitution are [`rig.sim.collider`](collider.md). Constraints are [`rig.sim.joint`](joint.md). Contact manifolds and the solver stay in the host.

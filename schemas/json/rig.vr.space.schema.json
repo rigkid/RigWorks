@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.vr.space.schema.json",
+  "title": "rig.vr.space",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "reference": {
+      "type": "string",
+      "enum": [
+        "local",
+        "local-floor",
+        "stage",
+        "unbounded"
+      ]
+    },
+    "bounds": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/vec2"
+      },
+      "$comment": "Each item is x, z in this space, scene units. Y is the floor."
+    }
+  },
+  "required": [
+    "reference"
+  ]
+}

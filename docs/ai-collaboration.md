@@ -8,6 +8,24 @@ If a model can write a renderer, a parser, or an inspector in an afternoon, then
 
 That inverts the usual priority. A generated renderer is fine and disposable. A generated *vocabulary* is a liability, because the next session invents a different one. [Concept over execution](why-no-code.md) is not a slogan here; it is the only part a model cannot usefully improvise for you.
 
+## The cheapest token
+
+The cheapest token is the one the model never generates.
+
+The Contract is paid once. A later session spells `rig.spatial.transform` the same way, quaternion order included. The model writes the document and stops. The host that draws it is a fulfillment, written when someone needs it. A wrong field comes back as a JSON Pointer, so the next turn patches that field.
+
+| What a session loads | Size |
+|--|--:|
+| The skill | about 4,000 tokens |
+| One example | a few hundred; a full scene about 1,600 |
+| JSON Schema for the components that scene uses | about 2,200 |
+| The whole JSON Schema catalog, left unloaded | about 58,000 |
+| Schema prose, left unloaded | about 70,000 |
+
+Counts are characters divided by four, rounded, on the catalog as it stands. They are the size of the working set, not a timed run against a model. A session that loads the skill and one example is about 6,000 tokens in. Loading the catalog as well is about 130,000, roughly thirty times the skill. The finished document is the output, and it is the artifact.
+
+That table is one session, alone. It leaves out the handoff. Autonomous agents that speak the catalog write data the next agent already accepts. The document passes. Neither side spends a context window explaining its shape, and neither writes a converter. The tokens a private format would have cost, on every exchange after the first, are never generated.
+
 ## Why a vocabulary beats a prompt
 
 | | A prompt | A schema id |

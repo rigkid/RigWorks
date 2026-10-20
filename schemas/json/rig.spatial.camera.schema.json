@@ -18,6 +18,18 @@
     "fovYDegrees": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },
+    "leftDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "rightDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "upDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "downDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
     "orthoHeight": {
       "$ref": "./_defs.schema.json#/$defs/float"
     },

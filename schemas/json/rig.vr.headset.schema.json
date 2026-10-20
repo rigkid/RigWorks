@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.vr.headset.schema.json",
+  "title": "rig.vr.headset",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "player": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "refreshHz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "ipdMetres": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "eyeWidth": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "eyeHeight": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "blend": {
+      "type": "string",
+      "enum": [
+        "opaque",
+        "additive",
+        "alpha"
+      ]
+    }
+  }
+}

@@ -4,14 +4,20 @@ A ROS 2 host **is Rig** when it emits entities with POD components keyed by sche
 
 Unlike [OpenBIM](openbim.md), there is no `rig.ros2.*` layer. Portable meaning is spatial / I/O / sensor / [SUDE](sude.md). Product protocol names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). ROS-only fields travel as `x.ros2.*` until a second speaker needs the same meaning in the catalog.
 
-## Map (existing ids only)
+Design, physical simulation, tests, and training are [robot.md](robot.md). This page stays the middleware map.
+
+## Map
 
 | ROS 2 idea | Rig |
 |------------|-----|
 | TF frame | Entity with [`rig.meta.named`](../schemas/meta/named.md) + [`rig.spatial.transform`](../schemas/spatial/transform.md) |
 | Parent frame | [`rig.spatial.relationship`](../schemas/spatial/relationship.md) `parent` |
-| URDF link | Same as TF; mesh / material compose as usual |
-| Joint | [`rig.sim.joint`](../schemas/sim/joint.md). Mimic is `mimic` / `mimicMultiplier` / `mimicOffset` on that joint |
+| URDF link | Same as TF; mesh / material compose as usual. The robot root is [`rig.sim.articulation`](../schemas/sim/articulation.md) |
+| URDF inertial | [`rig.sim.rigidbody`](../schemas/sim/rigidbody.md) `mass`, `centerOfMass`, `inertia` |
+| Joint | [`rig.sim.joint`](../schemas/sim/joint.md). Mimic is `mimic` / `mimicMultiplier` / `mimicOffset` on that joint. `position` and `velocity` are the joint state at save |
+| Wrench | [`rig.sensor.wrench`](../schemas/sensor/wrench.md) |
+| Range (one beam) | [`rig.sensor.range`](../schemas/sensor/range.md) |
+| NavSat | [`rig.sensor.gnss`](../schemas/sensor/gnss.md) plus [`rig.place.geo`](../schemas/place/geo.md) |
 | Joint command | [`rig.sim.actuator`](../schemas/sim/actuator.md) `target` at save. A series is [`rig.anim.track`](../schemas/anim/track.md) on `target` |
 | Depth image | [`rig.sensor.depth`](../schemas/sensor/depth.md) plus [`rig.spatial.camera`](../schemas/spatial/camera.md). The buffer stays in the host |
 | Laser scan | [`rig.sensor.lidar`](../schemas/sensor/lidar.md). The cloud stays in the host |

@@ -1,228 +1,79 @@
 ---
 name: generating-rig-documents
 description: >-
-  Generate and edit Rig JSON documents, SUDE-loop hosts, and ECS component
-  data against the Rig shared vocabulary (Semantic Versioning). Use when
-  generating or editing Rig entity data, SUDE hooks, or ECS component schemas;
-  when creating or modifying rig.* components, rig.document JSON, or .rig /
-  .rigz interchange; when bumping Contract VERSION; before committing or pushing
-  Contract changes (run npm run check); or when the user mentions Rig, SUDE,
-  or RigKit.
+  Generate and edit Rig entity/component JSON, SUDE hosts, and ECS schemas
+  against the Rig vocabulary (SemVer). Use for rig.* components, rig.document,
+  .rig / .rigz, Contract VERSION bumps, and before committing or pushing
+  Contract changes (npm run check). Triggers: Rig, SUDE, RigKit.
 ---
 
 # Generating Rig documents
 
-## When to use
+**Rig** is portable entity/component POD keyed by schema ids ([`rig.document`](../../schemas/document.md)). Ship what you support. Nothing to link. Floor: [honors.md](../../docs/honors.md). Live hosts also honor [SUDE](../../docs/sude.md) and runtime [ECS](../../docs/ecs.md). Copy the closest file in [`examples/`](../../examples/), then validate. Open one schema when a field is unclear. Leave the rest of the catalog unloaded.
 
-Load this skill when generating or editing Rig entity data, SUDE hooks, or ECS component schemas - or when emitting portable JSON a host should load.
+## Composition
 
-## Core model
+- POD only: numbers, small structs, strings, entity ids. Key components by full schema ids (`rig.spatial.transform`).
+- No GPU/UI types, callbacks, dirty flags, hover/press, or pending queues.
+- No derived fields (winding, world matrices, Euler, bar/beat). Hosts cache those - [Host cache](../../docs/terms.md).
+- Hierarchy is optional: parent entity id, local `position` / `rotation` (quat) / `scale`.
+- Being Rig means this composition for the schemas you support. The loop is for live hosts. You do not implement every schema.
 
-**Rig** - Readable Independent Grammar: the schema catalog and portable entity/component POD documents ([`rig.document`](../../schemas/document.md)). Schemas are optional; ship what you support. Nothing to link into an app. Not another editor. Floor: [honors.md](../../docs/honors.md).
+## SUDE (live hosts)
 
-**Live hosts** also honor [SUDE](../../docs/sude.md) and runtime [ECS](../../docs/ecs.md) conventions (registry, Update/Draw systems). Document composition (entities + POD components) is always required; the loop is not.
+`Setup()` once, may be empty. `Update(dt)` each tick before Draw; `dt` is seconds. `Draw()` each tick after Update; always called; empty body is fine. `Exit()` once before teardown. Do not nest hooks. No window, GPU, UI, filesystem, or audio required.
 
-### Document composition (always)
+## Runtime ECS (live hosts)
 
-| Rule | Detail |
-|------|--------|
-| Entities + components | Portable meaning is POD keyed by schema ids |
-| POD only | Numbers, small structs, strings, entity ids |
-| No portable handles | No GPU/UI toolkit types, callbacks, dirty flags, hover/press, pending queues |
-| No derived fields | Hosts may cache winding, world matrices, Euler, bar/beat; do not serialize them - [Host cache](../../docs/terms.md) |
-| Hierarchy (optional) | Parent as entity id; local `position` / `rotation` (quat) / `scale` |
-
-### SUDE (live hosts)
-
-```
-Setup, Update, Draw, Exit
-```
-
-| Hook | When | Semantics |
-|------|------|-----------|
-| `Setup()` | Once | Allocate app state. May be empty. |
-| `Update(dt)` | Each tick, before Draw | Simulation. `dt` = seconds (host clock). |
-| `Draw()` | Each tick, after Update | Present. Always called; empty body OK. |
-| `Exit()` | Once, before teardown | Release state. May be empty. |
-
-Do not nest hooks. No display/UI required for SUDE compliance.
-
-### Runtime ECS (live hosts)
-
-| Rule | Detail |
-|------|--------|
-| App owns registry | No second hidden registry for app entities |
-| Simulate / Present | Mutate in `Update`; present in `Draw` |
+One registry, owned by the app. Mutate in `Update`. Present in `Draw`.
 
 ## Semantic versioning
 
-The Contract uses [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`). **One source of truth:** [`VERSION`](../../VERSION). Ranges and History: [`docs/versioning.md`](../../docs/versioning.md).
+One source: [`VERSION`](../../VERSION), `MAJOR.MINOR.PATCH`. Ranges and History: [`docs/versioning.md`](../../docs/versioning.md). Do not copy the number into other docs. `npm run check:version` checks that `VERSION` is SemVer. It does not check the History row.
 
 | When | Bump |
 |------|------|
-| Additive schema / optional fields (0.x draft) | `MINOR` (e.g. `0.9.0` to `0.10.0`) |
-| Breaking schema or core-rule change after `1.0.0` | `MAJOR` |
-| Docs-only / tooling / no schema meaning change | leave `VERSION` alone |
+| Additive schema or optional field (0.x) | `MINOR` |
+| Breaking schema or core rule after `1.0.0` | `MAJOR` |
+| Docs, tooling, no schema meaning change | leave `VERSION` |
 
-When you change schemas: bump [`VERSION`](../../VERSION) and add a History row in `docs/versioning.md` (release notes). Do not copy the number into README or other docs. `npm run check:version` (also the pre-commit hook) only requires `VERSION` to be SemVer.
-
-When generating a document, set root `"rig"` to the current `VERSION` (or an older version the document actually targets - older docs stay valid under additive releases).
+A schema change bumps `VERSION` and adds a History row. Root `"rig"` is the current `VERSION`, or an older version the document targets. Older documents stay valid under additive releases.
 
 ## Document shape
 
-Wire format is JSON - [`rig.document`](../../schemas/document.md). On disk that is a `.rig` file, or a `.rigz` ZIP (one `.rig` at the archive root plus a `data/` folder) when sidecar files travel with the document. `data/` may contain further `.rig` files. [interchange](../../docs/interchange.md#package).
+JSON on disk is `.rig`, or `.rigz` (ZIP: one `.rig` at the archive root plus `data/`). `data/` may hold more `.rig` files. [interchange](../../docs/interchange.md#package). Emit the envelope. A bare `entities` array is not a document.
 
-| Root field | Meaning |
-|------------|---------|
-| `rig` | Contract version (`MAJOR.MINOR.PATCH` SemVer - see [`VERSION`](../../VERSION)) |
+| Root | Meaning |
+|------|---------|
+| `rig` | Contract SemVer |
 | `document` | Optional metadata (`title`, `defaultUnit`, ...) |
-| `entities` | Array of `{ id, components }` |
+| `entities` | `{ id, components }[]` |
 
-- `id` - string, unique within the file
-- `components` - map keyed by full schema ids (`rig.spatial.transform`)
-- `entity`-typed fields - string id or `null`
-- `vec*` / `quat` - JSON number arrays; **quat order x, y, z, w**
-- Enums - kebab-case literals from the schema (`top-left`, `color-dodge`)
-- Field names - lowerCamelCase, spelled out ([`schemas/README.md` Field naming](../../schemas/README.md#field-naming)); no SVG abbreviations (`radiusX` not `rx`)
-- Measurements - ratios 0-1; scene lengths in `document.defaultUnit` (page `unit` may override); catalog facts SI in the field name; protocol/clock native - [`schemas/README.md` Measurements](../../schemas/README.md#measurements)
-- Serialize only portable fields; omit host caches
-- Optional fields have documented defaults - omit what you did not measure rather than inventing a value (an absent `gate` means 1; an invented `gate` looks like data)
+- `id` is unique in the file. `components` keys are full schema ids.
+- `entity` fields are a string id or `null`.
+- `vec*` / `quat` are number arrays. **Quat order is x, y, z, w.**
+- Enums are kebab-case schema literals (`top-left`, `color-dodge`).
+- Fields are lowerCamelCase and spelled out ([Field naming](../../schemas/README.md#field-naming)): `radiusX`, not `rx`.
+- Measurements: ratios 0-1; scene lengths in `document.defaultUnit` (a page `unit` may override); catalog facts are SI in the field name; protocol and clock stay native. [Measurements](../../schemas/README.md#measurements).
+- Omit optional fields you did not measure. An absent `gate` means 1. An invented `gate` looks like data.
+- Grammar: [`schemas/json/`](../../schemas/json/). Meaning: [`schemas/`](../../schemas/).
+- `x.<vendor>.<name>` is a host extension the validator carries and reports. Do not emit it. If no `rig.*` id fits, say so. [Extension components](../../schemas/document.md#extension-components).
+- `rig.ui.*` uses this same envelope ([docs/ui.md](../../docs/ui.md)). Reference host: [RigKit](https://github.com/rigkid/RigKit).
 
-Exact grammar: [`schemas/json/`](../../schemas/json/).
+## Validate
 
-A component key may also be `x.<vendor>.<name>` - a host component the Contract has not named. Validators carry it unchecked and report it. Do **not** reach for this when generating documents: if a `rig.*` id fits, use it, and if none fits, say so rather than inventing an extension. It exists so a host can adopt `.rig` natively, not so a generator can route around the catalog - [`rig.document`](../../schemas/document.md#extension-components).
-
-## Worked examples
-
-Reference documents: [`examples/minimal-scene.json`](../../examples/minimal-scene.json), [`examples/lfo-binding.json`](../../examples/lfo-binding.json), [`examples/ui-panel.json`](../../examples/ui-panel.json), [`examples/portable-tool.json`](../../examples/portable-tool.json), [`examples/path3d-spline3d.json`](../../examples/path3d-spline3d.json), [`examples/cad-boolean.json`](../../examples/cad-boolean.json), [`examples/story-flow.json`](../../examples/story-flow.json), [`examples/story-frames.json`](../../examples/story-frames.json), [`examples/bim-model.json`](../../examples/bim-model.json), [`examples/bim-bcf.json`](../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../examples/bim-ids.json), [`examples/font-ufo.json`](../../examples/font-ufo.json), [`examples/font-var.json`](../../examples/font-var.json), [`examples/place-address.json`](../../examples/place-address.json), [`examples/person-contact.json`](../../examples/person-contact.json), [`examples/plant-taxon.json`](../../examples/plant-taxon.json), [`examples/book-isbn.json`](../../examples/book-isbn.json), [`examples/paper-citation.json`](../../examples/paper-citation.json), [`examples/art-object.json`](../../examples/art-object.json), [`examples/commerce-offer.json`](../../examples/commerce-offer.json), [`examples/legal-agreement.json`](../../examples/legal-agreement.json), [`examples/calendar-event.json`](../../examples/calendar-event.json), [`examples/lights.json`](../../examples/lights.json), [`examples/dev-machine.json`](../../examples/dev-machine.json), [`examples/dev-hyperv.json`](../../examples/dev-hyperv.json), [`examples/dev-kvm.json`](../../examples/dev-kvm.json), [`examples/print-fgf.json`](../../examples/print-fgf.json), [`examples/kicad-pcb.json`](../../examples/kicad-pcb.json), [`examples/robot-lesson.json`](../../examples/robot-lesson.json). Validate before you trust the output.
-
-### Entity with shape + paint
-
-<!-- rig:begin entity=demo-rect from=examples/minimal-scene.json -->
-```json
-{
-  "id": "demo-rect",
-  "components": {
-    "rig.meta.named": {
-      "name": "demo-rect",
-      "stableId": "demo-rect"
-    },
-    "rig.spatial.transform": {
-      "position": [
-        20,
-        65,
-        0
-      ],
-      "rotation": [
-        0,
-        0,
-        0,
-        1
-      ],
-      "scale": [
-        1,
-        1,
-        1
-      ]
-    },
-    "rig.spatial.relationship": {
-      "parent": "world"
-    },
-    "rig.geometry.rectangle": {
-      "x": 0,
-      "y": 0,
-      "width": 140,
-      "height": 90,
-      "cornerRadius": 10
-    },
-    "rig.paint.fill_stroke": {
-      "fillRgba": [
-        0.25,
-        0.65,
-        1,
-        1
-      ]
-    },
-    "rig.interact.selectable": {
-      "enabled": true
-    }
-  }
-}
-```
-<!-- rig:end -->
-
-### LFO and binding (Update-side)
-
-```json
-{
-  "entities": [
-    {
-      "id": "pulse",
-      "components": {
-        "rig.meta.named": { "name": "pulse", "stableId": "pulse" },
-        "rig.mod.lfo": {
-          "waveform": "sine",
-          "frequency": 0.5,
-          "amplitude": 40,
-          "offset": 120,
-          "phase": 0
-        }
-      }
-    },
-    {
-      "id": "dot",
-      "components": {
-        "rig.meta.named": { "name": "dot", "stableId": "dot" },
-        "rig.spatial.transform": {
-          "position": [200, 120, 0],
-          "rotation": [0, 0, 0, 1],
-          "scale": [1, 1, 1]
-        }
-      }
-    },
-    {
-      "id": "bind-y",
-      "components": {
-        "rig.mod.binding": {
-          "source": "pulse",
-          "target": "dot",
-          "propertyKey": "position.y",
-          "depth": 1,
-          "min": 40,
-          "max": 280,
-          "additive": false
-        }
-      }
-    }
-  ]
-}
-```
-
-(Wrap entities in a full document with `"rig"` set to the current [`VERSION`](../../VERSION) before validating.)
-
-## Feedback loop
-
-Never deliver unvalidated Rig JSON.
-
-1. Write or edit a `.json` document
-2. Validate:
+Do not deliver unvalidated JSON.
 
 ```bash
 npm run setup
 node tools/rig-validate/cli.js path/to/doc.json
 ```
 
-3. Fix errors at the reported JSON Pointer paths
-4. Re-run until the CLI prints `ok`
-5. Use `--strict` to treat unknown schema ids as errors
-
-`rig.ui.*` panels travel in the same document envelope - validate them like any other schema (`examples/ui-panel.json`, `examples/portable-tool.json`). Rig + UI is optional Contract surface ([docs/ui.md](../../docs/ui.md)), not a separate spec.
-
-When bumping the Contract version: edit [`VERSION`](../../VERSION) and add a History row in `docs/versioning.md`, then `npm run check:version` (pre-commit runs the same check after `npm run hooks:install`).
+Fix the reported JSON Pointers and re-run until the CLI prints `ok`. `--strict` makes unknown schema ids errors.
 
 ## Before commit / push (CI precheck)
 
-Do **not** push Contract changes until the same gate as GitHub Actions passes locally.
+Do not push Contract changes until the GitHub Actions gate passes locally.
 
 ```bash
 npm run setup    # once per clone / when validate deps change
@@ -231,92 +82,42 @@ npm run check    # version, schemas, parity, links, snippets, svg, examples, tes
 
 | When | Required |
 |------|----------|
-| Edit schemas / `tools/gen-schemas.mjs` | `npm run check` (at least `check:schemas` - if stale, `npm run gen` then re-check) |
-| Edit `VERSION` / site badges | `npm run check:version` |
-| Any push to `master` / open a PR | full `npm run check` |
+| Schemas or `tools/gen-schemas.mjs` | `npm run check` (at least `check:schemas`; if stale, `npm run gen` then re-check) |
+| `VERSION` or site badges | `npm run check:version` |
+| Push to `master` or open a PR | full `npm run check` |
 
-Pre-commit (after `npm run hooks:install`) only runs SemVer. **Pre-push runs the same steps as `npm run check` via `node` (so Windows Git hooks work without npm on PATH).** Agents must run `npm run check` themselves before `git push` even if hooks are missing - do not rely on CI to catch schema drift.
+After `npm run hooks:install`, pre-commit checks SemVer. Pre-push runs the same steps as `npm run check` via `node`, so Windows hooks work without npm on PATH. Run `npm run check` before `git push` even when hooks are missing.
 
-## Common mistakes / non-requirements
+## Guards
 
-- **Do not** invent a tagged-union CSG blob - split `rig.cad.*` primitives; mesh on a CAD entity is an optional bake
-- **Do not** invent `rig.cad.constraint` as a tagged union - a numeric datum is [`rig.cad.dimension`](../../schemas/cad/dimension.md); coincident / parallel stay later split ids if they earn a catalog entry
-- **Do not** store a parallel edge table on `rig.geometry.mesh` - name fillet/chamfer edges as `{a,b}` vertex pairs
-- **Do not** invent `rig.bim.wall` / `rig.bim.door` - use `rig.bim.classify` with `ifcClass`; geometry on cad / mesh; typed params on `rig.bim.pset`
-- **Do not** invent `rig.ros2.*` - ROS 2 maps onto existing spatial / I/O / sensor / SUDE; TF is `transform` + `relationship`; do not put ROS nodes on `rig.node.*`; see [docs/ros.md](../../docs/ros.md)
-- **Do not** invent `rig.isaac.*`, `rig.lucky.*`, or `rig.lerobot.*` - a depth image is `rig.sensor.depth` plus `rig.spatial.camera`, a scan pattern is `rig.sensor.lidar`, an inertial sample is `rig.sensor.imu`, a joint drive is `rig.sim.actuator`, a recorded take is `rig.sim.episode`; point clouds, solvers, bags, and policy weights stay fulfillment
-- **Do not** invent `rig.font.ttf` or grow `rig.media.text` with outlines - UFO source is `rig.font.*`; contours compose `rig.geometry.path`; features compose `rig.media.code` (`language` `fea`); `.ufo` is fulfillment - [docs/ufo.md](../../docs/ufo.md)
-- **Do not** invent `rig.idml.*` or graphic frames / object styles / text wrap / GREP / footnotes / variables - IDML maps onto `rig.layout.frame` + existing layout / story; `.idml` is fulfillment - [docs/idml.md](../../docs/idml.md)
-- **Do not** invent `rig.print.gcode` or put host paths / last-slice status on `rig.print.job` - FGF is `rig.print.machine` / `material` / `process` / `compression`; files compose `rig.media.asset_ref`; not envelope `pdfX`, not `rig.dev.machine`, not a layout page - [docs/print.md](../../docs/print.md)
-- **Do not** invent `rig.kicad.*`, a second pin schema for pads, or a member list on a net - a terminal is one entity with `rig.circuit.pin` (+ `rig.pcb.pad` on a board); nets are `rig.circuit.net` markers that members point at; layers join through `rig.pcb.layer_set`, not `parent`; zone fills, net numbers, and ratsnest stay in the host - [docs/kicad.md](../../docs/kicad.md)
-- **Do not** reuse `rig.sensor.gpio` or `rig.node.pin` for a part terminal - GPIO is a live line (link it with `terminal`); node pins are patcher sockets
-- **Do not** put text-frame bounds on `rig.geometry.rectangle` - that is a drawable; the box is `rig.layout.frame` `width` / `height` plus transform
-- **Do not** parent a `rig.story.flow` to a page when frames exist - thread via `rig.layout.frame_chain`
-- **Do not** invent schema ids or use PascalCase keys (`Transform`, `Shape`) - component keys are full `rig.*` ids; see [docs/interchange.md](../../docs/interchange.md)
-- **Do not** inline binary blobs or data URIs for files that travel with the document - put them in `data/` and save as `.rigz`; `asset_ref.path` is relative to `data/`
-- **Do not** use `x.<vendor>.<name>` to stand in for a catalog id you could not find - report the gap instead
-- **Do not** nest SUDE hooks or skip calling `Draw` (when authoring a live host)
-- **Do not** re-declare `name` on domain schemas - compose `rig.meta.named`
-- **Do not** put page/entity origin on `rig.layout.page` or transform - compose `rig.spatial.anchor` (`point` 3×3 face + optional `height` min/center/max for 3×3×3; absent = no remap / page trim top-left). Origin is a cell offset - never axis invert. Not a locator: that is `rig.spatial.vertex`. Not `rig.font.anchor`.
-- **Do not** put postal / civic fields or WGS84 on `rig.spatial.transform` - compose `rig.place.address` and `rig.place.geo`
-- **Do not** put given / family name on `rig.meta.named` - compose `rig.person.name`; `named.name` is the formatted / full name
-- **Do not** put sex, birthday, or email on `rig.person.name` - compose `rig.person.vital` and `rig.person.contact`
-- **Do not** copy `sex` into `gender` - recorded sex is ISO/IEC 5218; gender identity is a separate string
-- **Do not** put job title, department, or organisation name on `rig.person.contact` - compose `rig.person.employment` (employer is an entity)
-- **Do not** put a photo path on a person schema - compose `rig.person.portrait` with `rig.media.asset_ref`
-- **Do not** put IBAN / BIC on a person name schema - compose `rig.party.account`
-- **Do not** put postal fields on a person schema - compose `rig.place.address`
-- **Do not** put a `scientificName` blob on `rig.plant.taxon` - compose `rig.meta.named`; parts stay on taxon
-- **Do not** put cultivar / Group / grex / trade name on `rig.plant.taxon` - compose `rig.plant.cultivar`
-- **Do not** put Darwin Core `habitat` on `rig.plant.habit` - habit is growth form; the site is `rig.place.geo` / `rig.place.address`
-- **Do not** put a photo path on a plant schema - compose `rig.plant.portrait` with `rig.media.asset_ref`
-- **Do not** put a hyphenated ISBN or a title string on `rig.book.identifier` - digits-only `isbn13`; distinctive title is `rig.meta.named`
-- **Do not** put author or publisher name strings on a book schema - compose `rig.book.contribution` (person entity) and `rig.book.publication.publisher` (organisation entity)
-- **Do not** put a cover path on a book schema - compose `rig.book.cover` with `rig.media.asset_ref`
-- **Do not** put ISBN on a paper - compose `rig.paper.identifier` (DOI / PMID / arXiv); journal ISSN stays on the journal entity
-- **Do not** store a formatted bibliography string - compose `rig.paper.citation` (`citing` / `cited` entities)
-- **Do not** put copyright holder or licence on `rig.art.object` or `rig.book.publication` - compose `rig.rights.statement`
-- **Do not** put artist name, medium, or centimetres on `rig.art.object` - compose `attribution`, `material`, `dimensions` (millimetres)
-- **Do not** put a price string or list+sale pair on a book / art schema - compose `rig.commerce.price` on an offer; a discount is `rig.commerce.discount`
-- **Do not** invent a cart, checkout, or tax engine - offer + price + discount + `rig.calendar.span` is the commercial record
-- **Do not** put party name strings on `rig.legal.agreement` - compose `rig.legal.party` (person / organisation entities)
-- **Do not** put copyright of a work on `rig.legal.agreement` - that is `rig.rights.statement`; a licence *deal* is `agreement.kind` `licence`
-- **Do not** copy `jobTitle` onto an employment instrument - job facts stay on `rig.person.employment`
-- **Do not** encode iCalendar `RRULE` / `DTSTART` / `ATTENDEE` strings - compose `rig.calendar.event` / `recurrence` / `attendee`; times are `startMinutes` in `document.timeZone`
-- **Do not** invent `rig.calendar.todo`, `alarm`, `freebusy`, or `timezone` - those stay in the `.ics` source
-- **Do not** put an event title or location string on `rig.calendar.event` - compose `rig.meta.named` and `rig.place.address`
-- **Do not** put show/hide on `rig.spatial.layer` - compose `rig.render.visibility`
-- **Do not** use `rig.spatial.group` as the world root - that is an unparented `rig.spatial.vertex` (a scene)
-- **Do not** invent `rig.spatial.scene` or tag vertex with `kind` - the graph is the tag
-- **Do not** put `x` / `y` / `z` on `rig.spatial.vertex` - pose stays on `rig.spatial.transform`
-- **Do not** invent `rig.geometry.vertex` or index `rig.geometry.mesh` `positions` via a vertex component - mesh corners stay packed arrays
-- **Do not** put blend / opacity on `rig.pixel.layer` - compose `rig.render.blend`
-- **Do not** put stroke caps / joins / dash on `rig.paint.fill_stroke` - compose `rig.paint.stroke_style`
-- **Do not** put text colour on `rig.media.text` - compose paint (`fill_stroke` / `fill`)
-- **Do not** flatten editorial copy into `rig.media.text` - that is a canvas run; stories are `rig.story.*` (named styles, no font or colour)
-- **Do not** put bold, italic, underline, strike, super/sub, font, size, or colour on `rig.story.*` - a run is `text` + style identity; unstyled local emphasis becomes a named character style
-- **Do not** put friction, restitution, or a collision shape on `rig.sim.rigidbody` - compose `rig.sim.collider`. Constraints are `rig.sim.joint`
-- **Do not** integrate `rig.sim.rigidbody` on an entity that has `rig.sim.character` - the character is the motor
-- **Do not** serialize contact manifolds, live particles, solved nav paths, button edges, or audio mix buffers
-- **Do not** put a callback or expression on `rig.ai.behavior` - `action` is a host name; source text is `rig.media.code`
-- **Do not** put hit points on `rig.sim.rigidbody` - compose `rig.play.health`
-- **Do not** put a price on `rig.play.item` - compose `rig.commerce.offer`
-- **Do not** put device codes on `rig.input.buttons` - compose `rig.input.binding`
-- **Do not** invent a second HUD schema - `rig.ui.panel` `surface` `hud` uses the same controls
-- **Do not** treat `rig.io.osc` as entity replication - that is `rig.net.replica`
-- **Do not** put a function pointer or callable on `rig.play.script` - `className` plus an optional `rig.media.code` asset
-- **Do not** put sprite colour on `rig.render.sprite` - compose paint. Box sizes on `rig.sim.collider` are half extents
-- **Do not** store a decibel volume beside `rig.audio.voice` `gain` - gain is linear amplitude
-- SUDE does **not** require a window, GPU, UI pack, filesystem, or audio
-- Being Rig does **not** require SUDE - only live hosts do - or implementing every schema
-- Being Rig **does** require entity/component POD composition against schemas you support
+Component keys are full `rig.*` ids. PascalCase (`Transform`, `Shape`) is not a key. Sidecar bytes go in `data/` inside `.rigz`. `asset_ref.path` is relative to `data/`. No inline blobs or data URIs.
 
-## Vocabulary index
+- **CAD.** Split `rig.cad.*` primitives. No tagged-union CSG. Mesh on a CAD entity is an optional bake. A numeric datum is [`rig.cad.dimension`](../../schemas/cad/dimension.md). No `rig.cad.constraint` tagged union. Coincident / parallel wait for their own ids. Fillet/chamfer edges are `{a,b}` vertex pairs. No edge table on `rig.geometry.mesh`. No `rig.geometry.vertex`. Mesh corners stay packed arrays.
+- **BIM.** No `rig.bim.wall` / `rig.bim.door`. `ifcClass` lives on `rig.bim.classify`. Geometry lives on cad / mesh. Typed params live on `rig.bim.pset`.
+- **ROS.** No `rig.ros2.*`. Map onto spatial / I/O / sensor / SUDE. TF is `transform` + `relationship`. ROS nodes are not `rig.node.*`. [docs/ros.md](../../docs/ros.md)
+- **VR.** No `rig.openxr.*`, `rig.webxr.*`, or `rig.steamvr.*`. Headset, stereo eyes, trackers, controllers, hands, and room bounds are `rig.vr.*`. Pose is `transform`. Projection is `camera`. Triggers and grips are `rig.input.*`. Sessions, swapchains, and prediction stay fulfillment. [docs/vr.md](../../docs/vr.md)
+- **Robots.** No `rig.isaac.*`, `rig.gazebo.*`, `rig.mujoco.*`, `rig.webots.*`, `rig.lucky.*`, or `rig.lerobot.*`. A robot is `rig.sim.articulation` plus bodies, joints, and drives. Gravity is `rig.sim.world`. A depth image is `rig.sensor.depth` plus `camera`. A scan is `rig.sensor.lidar`. One beam is `rig.sensor.range`. A wrench is `rig.sensor.wrench`. A fix is `rig.sensor.gnss` plus `rig.place.geo`. A class image is `rig.sensor.label` plus `rig.sensor.class`. A take is `rig.sim.episode`. A policy names actuators and sensors on `rig.ai.policy`. A checkpoint is `rig.media.asset_ref`. A reset range is `rig.sim.domain`. Solvers, images, and trainers stay fulfillment. [docs/robot.md](../../docs/robot.md)
+- **Font.** No `rig.font.ttf`. No outlines on `rig.media.text`. UFO source is `rig.font.*`. Contours are `rig.geometry.path`. Features are `rig.media.code` (`language` `fea`). [docs/ufo.md](../../docs/ufo.md)
+- **IDML.** No `rig.idml.*`, graphic frames, object styles, text wrap, GREP, footnotes, or variables. Map onto `rig.layout.frame` plus layout / story. [docs/idml.md](../../docs/idml.md)
+- **Print.** No `rig.print.gcode`. No host paths or last-slice status on `rig.print.job`. FGF is `machine` / `material` / `process` / `compression`. Files are `asset_ref`. This is not envelope `pdfX`, not `rig.dev.machine`, and not a layout page. [docs/print.md](../../docs/print.md)
+- **KiCad.** No `rig.kicad.*`, no second pin schema, no member list on a net. A terminal is one entity: `rig.circuit.pin` (+ `rig.pcb.pad` on a board). Nets are `rig.circuit.net` markers that members point at. Layers join through `rig.pcb.layer_set`, not `parent`. Zone fills, net numbers, and ratsnest stay in the host. [docs/kicad.md](../../docs/kicad.md). A part terminal is not `rig.sensor.gpio` (a live line; link it with `terminal`) and not `rig.node.pin` (a patcher socket).
+- **Frames.** Text-frame bounds are `rig.layout.frame` `width` / `height` plus transform. `rig.geometry.rectangle` is a drawable. When frames exist, thread with `rig.layout.frame_chain`. Do not parent `rig.story.flow` to the page.
+- **Names and origin.** Compose `rig.meta.named`. Do not re-declare `name`. Origin is `rig.spatial.anchor`: `point` is a 3x3 face, optional `height` is min/center/max for 3x3x3, absent means no remap (page trim is top-left). Origin is a cell offset, never an axis invert. It is not a page field, not transform, not `rig.spatial.vertex` (a locator), and not `rig.font.anchor`.
+- **Scene graph.** Show/hide is `rig.render.visibility`, not a field on `rig.spatial.layer`. The world root is an unparented `rig.spatial.vertex`. It is not `rig.spatial.group`. There is no `rig.spatial.scene` and no `kind` on vertex. Pose stays on `transform`. Vertex has no `x` / `y` / `z`. Blend / opacity is `rig.render.blend`, not `rig.pixel.layer`.
+- **Paint and copy.** Caps, joins, and dash are `rig.paint.stroke_style`, not fields on `fill_stroke`. Text colour is paint (`fill_stroke` / `fill`), not `rig.media.text`. `rig.media.text` is a canvas run. Stories are `rig.story.*`: named styles, no font or colour. A story run is `text` plus a style identity. Bold, italic, underline, strike, super/sub, font, size, and colour are not story fields. Unstyled local emphasis becomes a named character style.
+- **Place and person.** Postal, civic, and WGS84 are `rig.place.address` and `rig.place.geo`, not transform, and not person fields. Given / family name is `rig.person.name`. `named.name` is the formatted full name. Sex, birthday, and email are `rig.person.vital` and `rig.person.contact`. Recorded sex is ISO/IEC 5218. Do not copy `sex` into `gender`. Job title, department, and organisation are `rig.person.employment` (employer is an entity), not contact, and not an employment instrument. A photo is `rig.person.portrait` plus `asset_ref`. IBAN / BIC is `rig.party.account`.
+- **Plant.** No `scientificName` blob on `rig.plant.taxon`. Compose `rig.meta.named`. Name parts stay on taxon. Cultivar, Group, grex, and trade name are `rig.plant.cultivar`. Habit is growth form. Darwin Core habitat is the site: `rig.place.geo` / `rig.place.address`. A photo is `rig.plant.portrait` plus `asset_ref`.
+- **Book, paper, art.** `isbn13` is digits only on `rig.book.identifier`. The title is `rig.meta.named`. Author and publisher are entities: `rig.book.contribution` and `rig.book.publication.publisher`. A cover is `rig.book.cover` plus `asset_ref`. A paper uses `rig.paper.identifier` (DOI / PMID / arXiv). ISSN stays on the journal entity. A citation is `rig.paper.citation` (`citing` / `cited`), not a formatted bibliography string. Copyright holder and licence are `rig.rights.statement`, not `rig.art.object` or `rig.book.publication`. Artist, medium, and size are `attribution`, `material`, and `dimensions` (millimetres).
+- **Commerce and legal.** A price is `rig.commerce.price` on an offer. A discount is `rig.commerce.discount`. No price string and no list-plus-sale pair on a book or art schema. No price on `rig.play.item`. No cart, checkout, or tax engine. The record is offer + price + discount + `rig.calendar.span`. Parties on `rig.legal.agreement` are `rig.legal.party` entities. Copyright of a work stays `rig.rights.statement`. A licence deal is `agreement.kind` `licence`.
+- **Calendar.** Compose `rig.calendar.event` / `recurrence` / `attendee`. Times are `startMinutes` in `document.timeZone`. No `RRULE`, `DTSTART`, or `ATTENDEE` strings. No `rig.calendar.todo`, `alarm`, `freebusy`, or `timezone`. Those stay in the `.ics` source. Title is `rig.meta.named`. Location is `rig.place.address`.
+- **Sim and play.** Friction, restitution, and collision shape are `rig.sim.collider`. Constraints are `rig.sim.joint`. Do not integrate `rig.sim.rigidbody` on an entity that has `rig.sim.character`. The character is the motor. Do not serialize contact manifolds, live particles, solved nav paths, button edges, or audio mix buffers. Hit points are `rig.play.health`. `rig.ai.behavior` `action` is a host name. Source text is `rig.media.code`. No callback or expression. Sprite colour is paint. Collider box sizes are half extents. `rig.play.script` is `className` plus an optional `rig.media.code` asset. No function pointer. Device codes are `rig.input.binding`, not `rig.input.buttons`. HUD is `rig.ui.panel` with `surface` `hud`. Replication is `rig.net.replica`, not `rig.io.osc`. `rig.audio.voice` `gain` is linear amplitude. Do not store decibels beside it.
 
-Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id>.schema.json`](../../schemas/json/).
+## Vocabulary
 
-| Domain | Schema ids |
-|--------|------------|
+Field meaning is [`schemas/`](../../schemas/). Grammar is [`schemas/json/<id>.schema.json`](../../schemas/json/). Prefix every key with `rig.<domain>.`.
+
+| Domain | Ids |
+|--------|-----|
 | Document | `rig.document` |
 | Spatial | `transform`, `anchor`, `relationship`, `vertex`, `group`, `camera`, `layer` |
 | Layout | `page`, `master`, `applied_master`, `facing`, `paragraph_style`, `character_style`, `frame`, `frame_chain` |
@@ -348,21 +149,16 @@ Field meaning: [`schemas/`](../../schemas/). Machine grammar: [`schemas/json/<id
 | Print | `machine`, `material`, `process`, `compression`, `job` |
 | Circuit | `part`, `pin`, `net` |
 | Pcb | `board`, `layer`, `layer_set`, `footprint`, `pad`, `track`, `via`, `zone`, `keepout` |
-| I/O | `osc`, `serial`, `sacn`, `dmx`, `led.uv_map`, `sensor.gpio`, `sensor.presence`, `sensor.depth`, `sensor.lidar`, `sensor.imu` |
+| I/O | `osc`, `serial`, `sacn`, `dmx`, `led.uv_map`, `sensor.gpio`, `sensor.presence`, `sensor.depth`, `sensor.lidar`, `sensor.imu`, `sensor.wrench`, `sensor.range`, `sensor.gnss`, `sensor.label`, `sensor.class` |
 | Dmx | `fixture` |
 | Light | `look` |
 | Calendar | `weekly`, `span`, `exception`, `event`, `recurrence`, `attendee` |
 | Input | `buttons`, `axes`, `pointer`, `binding` |
-| Sim | `rigidbody`, `particle_emitter`, `collider`, `joint`, `actuator`, `episode`, `character`, `navmesh`, `agent` |
+| VR | `space`, `headset`, `eye`, `tracker`, `controller`, `pose`, `hand`, `joint`, `haptic`, `anchor` |
+| Sim | `rigidbody`, `particle_emitter`, `collider`, `joint`, `actuator`, `episode`, `character`, `navmesh`, `agent`, `world`, `articulation`, `domain` |
 | Play | `health`, `item`, `inventory`, `spawner`, `save`, `script` |
-| AI | `behavior` |
+| AI | `behavior`, `policy` |
 | Net | `replica` |
 | Interact | `selectable`, `selected` |
 | UI | `panel`, `group`, `control`, `action` |
 | Node | `graph`, `node`, `pin`, `link`, `param`, `publish` |
-
-Prefix every component key with `rig.<domain>.` (e.g. `rig.spatial.transform`).
-
-## Where output goes
-
-[RigKit](https://github.com/rigkid/RigKit) is the reference host. Emit Contract JSON (`rig.*` keys).

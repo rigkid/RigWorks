@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.vr.tracker.schema.json",
+  "title": "rig.vr.tracker",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "player": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "head",
+        "gaze",
+        "left-hand",
+        "right-hand",
+        "left-shoulder",
+        "right-shoulder",
+        "left-elbow",
+        "right-elbow",
+        "chest",
+        "waist",
+        "left-knee",
+        "right-knee",
+        "left-foot",
+        "right-foot",
+        "gamepad",
+        "tracker"
+      ]
+    },
+    "index": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "device": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "role"
+  ]
+}

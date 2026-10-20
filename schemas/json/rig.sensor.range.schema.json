@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.sensor.range.schema.json",
+  "title": "rig.sensor.range",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "rangeMin": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rangeMax": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "fovDegrees": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 180
+    },
+    "distance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rateHz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "device": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  }
+}

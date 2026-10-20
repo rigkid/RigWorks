@@ -1,0 +1,238 @@
+{
+  "rig": "0.35.0",
+  "document": {
+    "title": "VR room",
+    "defaultUnit": "m"
+  },
+  "entities": [
+    {
+      "id": "world",
+      "components": {
+        "rig.meta.named": { "name": "World", "stableId": "world" },
+        "rig.spatial.vertex": {}
+      }
+    },
+    {
+      "id": "stage",
+      "components": {
+        "rig.meta.named": { "name": "Stage", "stableId": "stage" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.vr.space": {
+          "reference": "stage",
+          "bounds": [[-1.5, -1.5], [1.5, -1.5], [1.5, 1.5], [-1.5, 1.5]]
+        }
+      }
+    },
+    {
+      "id": "headset",
+      "components": {
+        "rig.meta.named": { "name": "Headset", "stableId": "headset" },
+        "rig.vr.headset": {
+          "refreshHz": 90,
+          "ipdMetres": 0.063,
+          "eyeWidth": 1440,
+          "eyeHeight": 1600,
+          "blend": "opaque"
+        }
+      }
+    },
+    {
+      "id": "head",
+      "components": {
+        "rig.meta.named": { "name": "Head", "stableId": "head" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [0, 1.6, 0] },
+        "rig.vr.tracker": { "role": "head", "device": "headset" }
+      }
+    },
+    {
+      "id": "eye-left",
+      "components": {
+        "rig.meta.named": { "name": "Left eye", "stableId": "eye-left" },
+        "rig.spatial.relationship": { "parent": "head" },
+        "rig.spatial.transform": { "position": [-0.0315, 0, 0] },
+        "rig.vr.eye": { "side": "left", "headset": "headset" },
+        "rig.spatial.camera": {
+          "nearClip": 0.05,
+          "farClip": 100,
+          "leftDegrees": -50,
+          "rightDegrees": 42,
+          "upDegrees": 48,
+          "downDegrees": -50
+        }
+      }
+    },
+    {
+      "id": "eye-right",
+      "components": {
+        "rig.meta.named": { "name": "Right eye", "stableId": "eye-right" },
+        "rig.spatial.relationship": { "parent": "head" },
+        "rig.spatial.transform": { "position": [0.0315, 0, 0] },
+        "rig.vr.eye": { "side": "right", "headset": "headset" },
+        "rig.spatial.camera": {
+          "nearClip": 0.05,
+          "farClip": 100,
+          "leftDegrees": -42,
+          "rightDegrees": 50,
+          "upDegrees": 48,
+          "downDegrees": -50
+        }
+      }
+    },
+    {
+      "id": "gaze",
+      "components": {
+        "rig.meta.named": { "name": "Gaze", "stableId": "gaze" },
+        "rig.spatial.relationship": { "parent": "head" },
+        "rig.vr.tracker": { "role": "gaze", "index": 0 }
+      }
+    },
+    {
+      "id": "waist",
+      "components": {
+        "rig.meta.named": { "name": "Waist", "stableId": "waist" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [0, 1, 0] },
+        "rig.vr.tracker": { "role": "waist" }
+      }
+    },
+    {
+      "id": "left-controller",
+      "components": {
+        "rig.meta.named": { "name": "Left controller", "stableId": "left-controller" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [-0.25, 1.2, -0.35] },
+        "rig.vr.controller": { "hand": "left", "profile": "oculus-touch" },
+        "rig.vr.tracker": { "role": "left-hand" },
+        "rig.vr.haptic": { "amplitude": 0.4, "durationSeconds": 0.02, "frequencyHz": 160 }
+      }
+    },
+    {
+      "id": "left-grip",
+      "components": {
+        "rig.meta.named": { "name": "Left grip", "stableId": "left-grip" },
+        "rig.spatial.relationship": { "parent": "left-controller" },
+        "rig.vr.pose": { "kind": "grip" }
+      }
+    },
+    {
+      "id": "left-aim",
+      "components": {
+        "rig.meta.named": { "name": "Left aim", "stableId": "left-aim" },
+        "rig.spatial.relationship": { "parent": "left-controller" },
+        "rig.spatial.transform": { "position": [0, 0, -0.05] },
+        "rig.vr.pose": { "kind": "aim" }
+      }
+    },
+    {
+      "id": "left-hand",
+      "components": {
+        "rig.meta.named": { "name": "Left hand", "stableId": "left-hand" },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.transform": { "position": [-0.22, 1.18, -0.32] },
+        "rig.vr.hand": { "side": "left" }
+      }
+    },
+    {
+      "id": "wrist",
+      "components": {
+        "rig.meta.named": { "name": "Wrist", "stableId": "wrist" },
+        "rig.spatial.relationship": { "parent": "left-hand" },
+        "rig.vr.joint": { "name": "wrist", "radius": 0.02 }
+      }
+    },
+    {
+      "id": "palm",
+      "components": {
+        "rig.meta.named": { "name": "Palm", "stableId": "palm" },
+        "rig.spatial.relationship": { "parent": "wrist" },
+        "rig.spatial.transform": { "position": [0, 0, -0.02] },
+        "rig.vr.joint": { "name": "palm", "radius": 0.025 }
+      }
+    },
+    {
+      "id": "index-metacarpal",
+      "components": {
+        "rig.meta.named": { "name": "Index metacarpal", "stableId": "index-metacarpal" },
+        "rig.spatial.relationship": { "parent": "wrist" },
+        "rig.spatial.transform": { "position": [0.02, 0, -0.02] },
+        "rig.vr.joint": { "name": "index-metacarpal", "radius": 0.012 }
+      }
+    },
+    {
+      "id": "index-proximal",
+      "components": {
+        "rig.meta.named": { "name": "Index proximal", "stableId": "index-proximal" },
+        "rig.spatial.relationship": { "parent": "index-metacarpal" },
+        "rig.spatial.transform": { "position": [0, 0, -0.04] },
+        "rig.vr.joint": { "name": "index-proximal", "radius": 0.01 }
+      }
+    },
+    {
+      "id": "index-intermediate",
+      "components": {
+        "rig.meta.named": { "name": "Index intermediate", "stableId": "index-intermediate" },
+        "rig.spatial.relationship": { "parent": "index-proximal" },
+        "rig.spatial.transform": { "position": [0, 0, -0.03] },
+        "rig.vr.joint": { "name": "index-intermediate", "radius": 0.009 }
+      }
+    },
+    {
+      "id": "index-distal",
+      "components": {
+        "rig.meta.named": { "name": "Index distal", "stableId": "index-distal" },
+        "rig.spatial.relationship": { "parent": "index-intermediate" },
+        "rig.spatial.transform": { "position": [0, 0, -0.025] },
+        "rig.vr.joint": { "name": "index-distal", "radius": 0.008 }
+      }
+    },
+    {
+      "id": "index-tip",
+      "components": {
+        "rig.meta.named": { "name": "Index tip", "stableId": "index-tip" },
+        "rig.spatial.relationship": { "parent": "index-distal" },
+        "rig.spatial.transform": { "position": [0, 0, -0.02] },
+        "rig.vr.joint": { "name": "index-tip", "radius": 0.006 }
+      }
+    },
+    {
+      "id": "table-corner",
+      "components": {
+        "rig.meta.named": { "name": "Table corner", "stableId": "table-corner" },
+        "rig.spatial.relationship": { "parent": "stage" },
+        "rig.spatial.transform": { "position": [0.4, 0, -0.8] },
+        "rig.spatial.vertex": {},
+        "rig.vr.anchor": { "persistentId": "table-corner" }
+      }
+    },
+    {
+      "id": "hands",
+      "components": {
+        "rig.meta.named": { "name": "Hands", "stableId": "hands" },
+        "rig.input.axes": { "leftTrigger": 0.2, "leftGrip": 0.5 }
+      }
+    },
+    {
+      "id": "bind-trigger",
+      "components": {
+        "rig.input.binding": {
+          "control": "left-trigger",
+          "device": "vr",
+          "index": 0,
+          "code": "trigger"
+        }
+      }
+    },
+    {
+      "id": "bind-squeeze",
+      "components": {
+        "rig.input.binding": {
+          "control": "left-grip",
+          "device": "vr",
+          "index": 0,
+          "code": "squeeze"
+        }
+      }
+    }
+  ]
+}
