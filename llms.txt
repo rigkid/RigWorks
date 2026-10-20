@@ -1,6 +1,6 @@
 # RigWorks (Rig)
 
-> A no-code creative application framework - a shared data vocabulary for creative applications. Apps and packs that speak the same schema ids interoperate. Not another editor: the vocabulary editors and agents could share.
+> A no-code application framework - a shared data vocabulary for applications. Apps and packs that speak the same schema ids interoperate. Not another editor: the vocabulary editors and agents could share.
 
 Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component documents. Live hosts also honor SUDE + runtime ECS. Emit JSON documents; validate with rig-validate. Nothing to link into an app.
 
@@ -31,6 +31,7 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 - [docs/dev.md](docs/dev.md): portable dev machines to `rig.dev.machine` / `rig.dev.op`; [RigDev](https://github.com/rigkid/RigDev) fulfills
 - [docs/kicad.md](docs/kicad.md): KiCad board to `rig.circuit.*` / `rig.pcb.*`; `.rigz` round trip merges onto the source file
 - [docs/print.md](docs/print.md): FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page
+- [docs/records.md](docs/records.md): payments, encounters, catalog rows, and case files to `rig.record.*` / `rig.finance.*` / `rig.clinic.*` / `rig.commerce.product`; encodings are fulfillment
 - [docs/properties.md](docs/properties.md): portable datatype ids
 - [docs/honors.md](docs/honors.md): what counts as Rig (grammar floor; live hosts; optional Rig + UI)
 - [docs/gaps.md](docs/gaps.md): where the Contract is silent, ambiguous, or wrong

@@ -1,0 +1,125 @@
+{
+  "rig": "0.37.0",
+  "document": {
+    "title": "Record civic (case / statute / incident)",
+    "createdAt": "2026-10-20",
+    "timeZone": "America/New_York",
+    "defaultUnit": "m"
+  },
+  "entities": [
+    {
+      "id": "resident",
+      "components": {
+        "rig.meta.named": { "name": "Lee Navarro", "stableId": "lee-navarro" },
+        "rig.person.name": {
+          "givenName": "Lee",
+          "familyName": "Navarro"
+        }
+      }
+    },
+    {
+      "id": "agency",
+      "components": {
+        "rig.meta.named": { "name": "County clerk", "stableId": "county-clerk" },
+        "rig.organisation.identity": {
+          "registrationNumber": "US-COUNTY-CLERK"
+        }
+      }
+    },
+    {
+      "id": "benefits-case",
+      "components": {
+        "rig.meta.named": { "name": "Heating grant", "stableId": "case-heat-19" },
+        "rig.record.case": {
+          "subject": "resident",
+          "kind": "benefits",
+          "status": "pending",
+          "assignee": "agency",
+          "openedDate": "2026-10-12",
+          "identifier": "BEN-19-441"
+        },
+        "rig.record.mark": {
+          "class": "pii",
+          "purpose": "benefits",
+          "disposition": "keep",
+          "retainYears": 7
+        },
+        "rig.record.assertion": {
+          "source": "case-worker",
+          "asserter": "agency",
+          "observedDate": "2026-10-12"
+        }
+      }
+    },
+    {
+      "id": "statute",
+      "components": {
+        "rig.meta.named": { "name": "Emergency powers", "stableId": "statute-50" },
+        "rig.law.statute": {
+          "citation": "50 U.S.C. § 1601",
+          "status": "in-force",
+          "jurisdiction": "United States"
+        }
+      }
+    },
+    {
+      "id": "river-bend",
+      "components": {
+        "rig.meta.named": { "name": "River bend", "stableId": "river-bend" },
+        "rig.place.geo": {
+          "latitudeDegrees": 40.7128,
+          "longitudeDegrees": -74.006,
+          "altitudeMetres": 8
+        },
+        "rig.place.address": {
+          "townName": "Hudson",
+          "countrySubDivision": "NY",
+          "country": "US"
+        }
+      }
+    },
+    {
+      "id": "flood",
+      "components": {
+        "rig.meta.named": { "name": "River flood", "stableId": "inc-flood-1" },
+        "rig.record.incident": {
+          "kind": "flood",
+          "status": "active",
+          "openedDate": "2026-10-20",
+          "place": "river-bend"
+        },
+        "rig.record.mark": {
+          "class": "cui",
+          "marking": "CUI",
+          "purpose": "emergency-response",
+          "disposition": "keep",
+          "retainYears": 10
+        }
+      }
+    },
+    {
+      "id": "boat",
+      "components": {
+        "rig.meta.named": { "name": "Responder boat", "stableId": "boat-1" },
+        "rig.sensor.gnss": {
+          "rateHz": 1,
+          "horizontalMetres": 3
+        },
+        "rig.place.geo": {
+          "latitudeDegrees": 40.7131,
+          "longitudeDegrees": -74.0055,
+          "altitudeMetres": 2
+        },
+        "rig.record.concerns": {
+          "incident": "flood"
+        },
+        "rig.record.assertion": {
+          "source": "fleet-gnss",
+          "observedDate": "2026-10-20",
+          "observedMinute": 720,
+          "observedSecond": 0
+        }
+      }
+    }
+  ]
+}

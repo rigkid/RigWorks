@@ -6,7 +6,7 @@ Field meanings follow [schema.org](https://schema.org/Contract) `Contract` and I
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `kind` | enum | `employment` / `nda` / `licence` / `lease` / `loan` / `service` / `sale` / `other` |
+| `kind` | enum | `employment` / `nda` / `licence` / `lease` / `loan` / `service` / `sale` / `insurance` / `other` |
 | `identifier` | string | Contract / agreement number as issued |
 | `status` | enum | `draft` / `offered` / `signed` / `active` / `suspended` / `terminated` / `expired` |
 | `governingLaw` | string | Jurisdiction as written (e.g. `England and Wales`) |

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.law.statute.schema.json",
+  "title": "rig.law.statute",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "citation": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "in-force",
+        "repealed",
+        "pending"
+      ]
+    },
+    "jurisdiction": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "citation",
+    "status"
+  ],
+  "description": "A statute or regulation. Title is rig.meta.named. Not a paper.article."
+}

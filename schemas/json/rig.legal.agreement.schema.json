@@ -15,6 +15,7 @@
         "loan",
         "service",
         "sale",
+        "insurance",
         "other"
       ]
     },

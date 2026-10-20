@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.stock.schema.json",
+  "title": "rig.commerce.stock",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "product": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "place": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "quantity": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "each",
+        "kilogram",
+        "metre",
+        "litre",
+        "other"
+      ]
+    }
+  },
+  "required": [
+    "product",
+    "place",
+    "quantity"
+  ],
+  "description": "Count of a product at a place. Not offer availability and not a warehouse engine."
+}

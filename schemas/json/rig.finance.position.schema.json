@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.finance.position.schema.json",
+  "title": "rig.finance.position",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "holder": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "isin": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}[A-Z0-9]{9}[0-9]$",
+      "description": "ISO 6166 ISIN, 12 characters, uppercase."
+    },
+    "quantity": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "long",
+        "short"
+      ]
+    }
+  },
+  "required": [
+    "holder",
+    "isin",
+    "quantity",
+    "side"
+  ],
+  "description": "A holding of an instrument. Book value composes rig.commerce.price. A live mark is host cache."
+}

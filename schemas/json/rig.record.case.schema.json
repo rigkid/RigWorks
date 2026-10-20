@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.record.case.schema.json",
+  "title": "rig.record.case",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "subject": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "fraud",
+        "aml",
+        "service",
+        "benefits",
+        "other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "pending",
+        "closed"
+      ]
+    },
+    "assignee": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "openedDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    },
+    "identifier": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "subject",
+    "kind",
+    "status"
+  ],
+  "description": "A file about a subject. Members point at it with rig.record.concerns. Title is rig.meta.named."
+}

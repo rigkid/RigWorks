@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.record.event.schema.json",
+  "title": "rig.record.event",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "subject": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "code": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "codeSystem": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "subject",
+    "code"
+  ],
+  "description": "A happening with no magnitude. Clock composes rig.calendar.event. A measurement is rig.clinic.observation."
+}

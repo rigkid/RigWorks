@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.clinic.observation.schema.json",
+  "title": "rig.clinic.observation",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "subject": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "code": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "value": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "codeSystem": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "unit": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "comparator": {
+      "type": "string",
+      "enum": [
+        "lt",
+        "le",
+        "eq",
+        "ge",
+        "gt"
+      ]
+    }
+  },
+  "required": [
+    "subject",
+    "code",
+    "value"
+  ],
+  "description": "A measurement of a subject. Clock composes rig.calendar.event. Do not also attach rig.record.event."
+}

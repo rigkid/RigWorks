@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.clinic.encounter.schema.json",
+  "title": "rig.clinic.encounter",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "patient": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "arrived",
+        "in-progress",
+        "finished",
+        "cancelled"
+      ]
+    },
+    "class": {
+      "type": "string",
+      "enum": [
+        "inpatient",
+        "outpatient",
+        "emergency",
+        "virtual",
+        "home"
+      ]
+    }
+  },
+  "required": [
+    "patient",
+    "status",
+    "class"
+  ],
+  "description": "One visit or admission. Visit clock is rig.calendar.event; admission days are rig.calendar.span."
+}

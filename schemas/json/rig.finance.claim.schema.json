@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.finance.claim.schema.json",
+  "title": "rig.finance.claim",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "claimant": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "reserved",
+        "settled",
+        "denied",
+        "closed"
+      ]
+    },
+    "agreement": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "identifier": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "incidentDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    }
+  },
+  "required": [
+    "claimant",
+    "status"
+  ],
+  "description": "An insurance claim. The policy is rig.legal.agreement kind insurance."
+}

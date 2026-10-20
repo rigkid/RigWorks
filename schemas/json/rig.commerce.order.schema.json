@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.order.schema.json",
+  "title": "rig.commerce.order",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "buyer": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "seller": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "placed",
+        "paid",
+        "fulfilled",
+        "cancelled"
+      ]
+    },
+    "identifier": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "required": [
+    "buyer",
+    "seller",
+    "status"
+  ],
+  "description": "A sale header. Field meanings follow schema.org Order. Lines are rig.commerce.order_line entities."
+}

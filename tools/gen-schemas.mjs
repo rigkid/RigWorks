@@ -549,6 +549,69 @@ add(
   }
 );
 
+add(
+  "rig.commerce.product",
+  {
+    gtin: {
+      type: "string",
+      pattern: "^[0-9]{8}$|^[0-9]{12,14}$",
+      description: "GS1 GTIN digits only (8, 12, 13, or 14).",
+    },
+    brand: ref("entity"),
+    parent: ref("entity"),
+  },
+  {
+    required: [],
+    description:
+      "A sellable item. Field meanings follow GS1 GTIN and schema.org Product. Name is rig.meta.named. A variant sets parent.",
+  }
+);
+
+add(
+  "rig.commerce.stock",
+  {
+    product: ref("entity"),
+    place: ref("entity"),
+    quantity: ref("float"),
+    unit: enumOf(["each", "kilogram", "metre", "litre", "other"]),
+  },
+  {
+    required: ["product", "place", "quantity"],
+    description:
+      "Count of a product at a place. Not offer availability and not a warehouse engine.",
+  }
+);
+
+add(
+  "rig.commerce.order",
+  {
+    buyer: ref("entity"),
+    seller: ref("entity"),
+    status: enumOf(["draft", "placed", "paid", "fulfilled", "cancelled"]),
+    identifier: ref("string"),
+  },
+  {
+    required: ["buyer", "seller", "status"],
+    description:
+      "A sale header. Field meanings follow schema.org Order. Lines are rig.commerce.order_line entities.",
+  }
+);
+
+add(
+  "rig.commerce.order_line",
+  {
+    order: ref("entity"),
+    product: ref("entity"),
+    quantity: ref("float"),
+    offer: ref("entity"),
+  },
+  {
+    required: ["order", "product", "quantity"],
+    description:
+      "One line of an order. Price composes rig.commerce.price. Do not copy sku off the offer.",
+  }
+);
+
 // --- legal (schema.org Contract / ISO 20022 Agreement; not Rig Contract) ---
 // Rights of a work stay on rig.rights.statement. The signed instrument
 // file is a media.asset_ref entity. Parties are person / organisation
@@ -564,6 +627,7 @@ add(
       "loan",
       "service",
       "sale",
+      "insurance",
       "other",
     ]),
     identifier: ref("string"),
@@ -612,6 +676,285 @@ add(
     required: ["agreement", "party"],
     description:
       "One side of an agreement. party is a person or organisation entity. A second signatory is another entity.",
+  }
+);
+
+// --- record (classification, assertion, files) ---
+// Search, vectors, RBAC, and message formats stay fulfillment.
+// Members point at the file — the file holds no arrays.
+add(
+  "rig.record.mark",
+  {
+    class: enumOf([
+      "public",
+      "internal",
+      "confidential",
+      "pii",
+      "phi",
+      "pci",
+      "cui",
+      "classified",
+    ]),
+    marking: ref("string"),
+    purpose: ref("string"),
+    disposition: enumOf(["keep", "tombstone", "hold"]),
+    retainYears: { type: "integer", minimum: 0 },
+  },
+  {
+    required: ["class"],
+    description:
+      "Classification and retention of a fact. Not copyright (rig.rights.statement) and not an ACL.",
+  }
+);
+
+add(
+  "rig.record.assertion",
+  {
+    source: ref("string"),
+    asserter: ref("entity"),
+    observedDate: isoDate,
+    observedMinute: { type: "integer", minimum: 0, maximum: 1439 },
+    observedSecond: { type: "integer", minimum: 0, maximum: 59 },
+    confidence: { type: "number", minimum: 0, maximum: 1 },
+  },
+  {
+    required: ["source"],
+    description:
+      "Who stated a fact and when they observed it. Not document.author and not a query explain-plan.",
+  }
+);
+
+add(
+  "rig.record.event",
+  {
+    subject: ref("entity"),
+    code: ref("string"),
+    codeSystem: ref("string"),
+  },
+  {
+    required: ["subject", "code"],
+    description:
+      "A happening with no magnitude. Clock composes rig.calendar.event. A measurement is rig.clinic.observation.",
+  }
+);
+
+add(
+  "rig.record.consent",
+  {
+    subject: ref("entity"),
+    purpose: ref("string"),
+    status: enumOf(["granted", "refused", "withdrawn"]),
+    instrument: ref("entity"),
+  },
+  {
+    required: ["subject", "purpose", "status"],
+    description:
+      "Permission a subject gave for a purpose. Window composes rig.calendar.span.",
+  }
+);
+
+add(
+  "rig.record.case",
+  {
+    subject: ref("entity"),
+    kind: enumOf(["fraud", "aml", "service", "benefits", "other"]),
+    status: enumOf(["open", "pending", "closed"]),
+    assignee: ref("entity"),
+    openedDate: isoDate,
+    identifier: ref("string"),
+  },
+  {
+    required: ["subject", "kind", "status"],
+    description:
+      "A file about a subject. Members point at it with rig.record.concerns. Title is rig.meta.named.",
+  }
+);
+
+add(
+  "rig.record.incident",
+  {
+    kind: ref("string"),
+    status: enumOf(["reported", "active", "contained", "closed"]),
+    openedDate: isoDate,
+    place: ref("entity"),
+  },
+  {
+    required: ["kind", "status"],
+    description:
+      "A reported happening in the world. Address and geo stay on place. Members point here with rig.record.concerns.",
+  }
+);
+
+add(
+  "rig.record.concerns",
+  {
+    case: ref("entity"),
+    incident: ref("entity"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "This fact belongs to a case and/or an incident. The file holds no member array.",
+  }
+);
+
+// --- finance (ISO 20022 payment / position; not MX) ---
+// Amounts compose rig.commerce.price. Accounts are party.account entities.
+add(
+  "rig.finance.payment",
+  {
+    debtor: ref("entity"),
+    creditor: ref("entity"),
+    status: enumOf(["pending", "booked", "rejected", "cancelled"]),
+    debtorAccount: ref("entity"),
+    creditorAccount: ref("entity"),
+    endToEndId: ref("string"),
+    bookedDate: isoDate,
+  },
+  {
+    required: ["debtor", "creditor", "status"],
+    description:
+      "A movement of money. Field meanings follow ISO 20022 payment identification. Not a pacs message.",
+  }
+);
+
+add(
+  "rig.finance.position",
+  {
+    holder: ref("entity"),
+    isin: {
+      type: "string",
+      pattern: "^[A-Z]{2}[A-Z0-9]{9}[0-9]$",
+      description: "ISO 6166 ISIN, 12 characters, uppercase.",
+    },
+    quantity: ref("float"),
+    side: enumOf(["long", "short"]),
+  },
+  {
+    required: ["holder", "isin", "quantity", "side"],
+    description:
+      "A holding of an instrument. Book value composes rig.commerce.price. A live mark is host cache.",
+  }
+);
+
+add(
+  "rig.finance.claim",
+  {
+    claimant: ref("entity"),
+    status: enumOf(["open", "reserved", "settled", "denied", "closed"]),
+    agreement: ref("entity"),
+    identifier: ref("string"),
+    incidentDate: isoDate,
+  },
+  {
+    required: ["claimant", "status"],
+    description:
+      "An insurance claim. The policy is rig.legal.agreement kind insurance.",
+  }
+);
+
+// --- clinic (FHIR / DICOM identifiers; files stay fulfillment) ---
+add(
+  "rig.clinic.encounter",
+  {
+    patient: ref("entity"),
+    status: enumOf([
+      "planned",
+      "arrived",
+      "in-progress",
+      "finished",
+      "cancelled",
+    ]),
+    class: enumOf(["inpatient", "outpatient", "emergency", "virtual", "home"]),
+  },
+  {
+    required: ["patient", "status", "class"],
+    description:
+      "One visit or admission. Visit clock is rig.calendar.event; admission days are rig.calendar.span.",
+  }
+);
+
+add(
+  "rig.clinic.observation",
+  {
+    subject: ref("entity"),
+    code: ref("string"),
+    value: ref("float"),
+    codeSystem: ref("string"),
+    unit: ref("string"),
+    comparator: enumOf(["lt", "le", "eq", "ge", "gt"]),
+  },
+  {
+    required: ["subject", "code", "value"],
+    description:
+      "A measurement of a subject. Clock composes rig.calendar.event. Do not also attach rig.record.event.",
+  }
+);
+
+add(
+  "rig.clinic.study",
+  {
+    subject: ref("entity"),
+    studyUid: ref("string"),
+    seriesUid: ref("string"),
+    modality: ref("string"),
+    asset: ref("entity"),
+  },
+  {
+    required: ["subject", "studyUid"],
+    description:
+      "One imaging study or series. DICOM UIDs. Pixels stay on the asset file.",
+  }
+);
+
+add(
+  "rig.clinic.trial",
+  {
+    identifier: ref("string"),
+    status: enumOf([
+      "recruiting",
+      "active",
+      "completed",
+      "withdrawn",
+      "suspended",
+    ]),
+    phase: enumOf(["phase-1", "phase-2", "phase-3", "phase-4", "na"]),
+  },
+  {
+    required: ["identifier", "status"],
+    description:
+      "A clinical trial. Eligibility rows are rig.clinic.criterion entities.",
+  }
+);
+
+add(
+  "rig.clinic.criterion",
+  {
+    trial: ref("entity"),
+    text: ref("string"),
+    code: ref("string"),
+    polarity: enumOf(["include", "exclude"]),
+  },
+  {
+    required: ["trial", "text"],
+    description:
+      "One eligibility rule of a trial. polarity absent = include.",
+  }
+);
+
+// --- law ---
+add(
+  "rig.law.statute",
+  {
+    citation: ref("string"),
+    status: enumOf(["in-force", "repealed", "pending"]),
+    jurisdiction: ref("string"),
+  },
+  {
+    required: ["citation", "status"],
+    description:
+      "A statute or regulation. Title is rig.meta.named. Not a paper.article.",
   }
 );
 
@@ -2662,6 +3005,7 @@ add("rig.calendar.event", {
   startDate: isoDate,
   endDate: isoDate,
   startMinutes: { type: "integer", minimum: 0, maximum: 1439 },
+  startSecond: { type: "integer", minimum: 0, maximum: 59 },
   endMinutes: { type: "integer", minimum: 0, maximum: 1439 },
   status: enumOf(["confirmed", "tentative", "cancelled"]),
   organizer: ref("entity"),

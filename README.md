@@ -2,11 +2,11 @@
 
 ![The geometry vocabulary - examples/minimal-scene.json drawn by the repo's own SVG fulfillment](site/scene.svg)
 
-**A no-code creative application framework.**  
+**A no-code application framework.**  
 *Because no code is the best code.*  
 **Rig** - Readable Independent Grammar.
 
-[RigWorks](https://rig.works) - **Rig** for short, and Rig in all running text - is a shared data vocabulary for creative applications. It is future-proof, host-independent, and human-readable: open the JSON, change a field, load it in another app. It is a framework you never install - no library to link, no runtime to embed, no API to version. It ships as agreement: a grammar of schema ids and entity/component POD documents. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
+[RigWorks](https://rig.works) - **Rig** for short, and Rig in all running text - is a shared data vocabulary for applications. It is future-proof, host-independent, and human-readable: open the JSON, change a field, load it in another app. It is a framework you never install - no library to link, no runtime to embed, no API to version. It ships as agreement: a grammar of schema ids and entity/component POD documents. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
 
 ## It runs
 
@@ -159,6 +159,7 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | [docs/robot.md](docs/robot.md) | Design, simulate, test, and train robots; solvers and trainers are fulfillment |
 | [docs/vr.md](docs/vr.md) | VR to `rig.vr.*` plus camera, transform, and input; runtimes are fulfillment |
 | [docs/print.md](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX` |
+| [docs/records.md](docs/records.md) | Payments, encounters, catalog rows, and case files; encodings are fulfillment |
 | [examples/](examples/) | Reference documents |
 
 | Working with models | |

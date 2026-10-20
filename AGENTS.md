@@ -1,6 +1,6 @@
 # AGENTS
 
-RigWorks (Rig for short) is a no-code creative application framework - a shared data vocabulary for creative applications. Apps and packs that speak the same schema ids interoperate. It is not a library to link and not another editor; speakers emit/consume entity/component POD JSON. Live hosts also honor SUDE and runtime ECS.
+RigWorks (Rig for short) is a no-code application framework - a shared data vocabulary for applications. Apps and packs that speak the same schema ids interoperate. It is not a library to link and not another editor; speakers emit/consume entity/component POD JSON. Live hosts also honor SUDE and runtime ECS.
 
 ## Before generating Rig data
 
@@ -44,6 +44,7 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`docs/dev.md`](docs/dev.md) | Dev machines to `rig.dev.machine` / `rig.dev.op`; fulfillments e.g. [RigDev](https://github.com/rigkid/RigDev) |
 | [`docs/kicad.md`](docs/kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*`; round trip merges onto the source file |
 | [`docs/print.md`](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page |
+| [`docs/records.md`](docs/records.md) | Payments, encounters, catalog rows, and case files; encodings are fulfillment |
 | [`docs/terms.md`](docs/terms.md) | Contract vs fulfillment, host, pack, POD |
 | [`docs/versioning.md`](docs/versioning.md) | SemVer ranges + history (`VERSION`) |
 | [`tools/rig-validate/`](tools/rig-validate/) | Validator CLI |

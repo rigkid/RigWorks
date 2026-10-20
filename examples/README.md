@@ -40,6 +40,10 @@ node tools/rig-validate/cli.js examples/play-scene.json
 node tools/rig-validate/cli.js examples/robot-lesson.json
 node tools/rig-validate/cli.js examples/robot-lab.json
 node tools/rig-validate/cli.js examples/vr-room.json
+node tools/rig-validate/cli.js examples/record-bank.json
+node tools/rig-validate/cli.js examples/record-care.json
+node tools/rig-validate/cli.js examples/record-shop.json
+node tools/rig-validate/cli.js examples/record-civic.json
 ```
 
 ## SUDE sketch
@@ -322,6 +326,22 @@ A base link, a driven shoulder, and a hinge that mimics it. The lidar is a scan 
 ## `robot-lab.json`
 
 A bench in metres: Earth gravity and a 10 ms step on the scene, a static table, and a fixed-base arm with mass and inertia. The shoulder joint stores its angle at save. A wrist wrench, a forward range beam, a class camera, and a GNSS fix sit on the robot. Reset draws the base mass from a range. A policy names the drive and the two sensors. The reach attempt is recorded as failed. The solver, the depth image, and the trainer are not in the file - [docs/robot.md](../docs/robot.md).
+
+## `record-bank.json`
+
+A booked card payment, a long ISIN holding, an insurance policy (`kind` `insurance`), a claim, and a fraud case. The payment and the auth event point at the case with [`rig.record.concerns`](../schemas/record/concerns.md). PCI class and the card-auth assertion sit on the payment. Not a pacs message - [docs/records.md](../docs/records.md).
+
+## `record-care.json`
+
+An outpatient visit, a LOINC blood-pressure observation with `startSecond`, a CT series (`studyUid` / `seriesUid`), a phase-3 trial with one include criterion, and a research consent span. PHI marks sit on the visit, the observation, the study, and the consent. Not a FHIR Bundle - [docs/records.md](../docs/records.md).
+
+## `record-shop.json`
+
+A branded sweater, a red-M variant (`parent`), warehouse stock, an offer whose `item` is the variant, and a two-unit order line. GTIN is digits only. Not a cart engine - [docs/records.md](../docs/records.md).
+
+## `record-civic.json`
+
+A benefits case, an in-force statute, a flood incident at a geo pin, and a responder boat whose GNSS fix [`rig.record.concerns`](../schemas/record/concerns.md) the incident. Not a case-management workflow - [docs/records.md](../docs/records.md).
 
 ## `vr-room.json`
 

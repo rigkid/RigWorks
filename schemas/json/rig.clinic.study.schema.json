@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.clinic.study.schema.json",
+  "title": "rig.clinic.study",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "subject": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "studyUid": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "seriesUid": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "modality": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "asset": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "subject",
+    "studyUid"
+  ],
+  "description": "One imaging study or series. DICOM UIDs. Pixels stay on the asset file."
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.product.schema.json",
+  "title": "rig.commerce.product",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "gtin": {
+      "type": "string",
+      "pattern": "^[0-9]{8}$|^[0-9]{12,14}$",
+      "description": "GS1 GTIN digits only (8, 12, 13, or 14)."
+    },
+    "brand": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "parent": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "description": "A sellable item. Field meanings follow GS1 GTIN and schema.org Product. Name is rig.meta.named. A variant sets parent."
+}

@@ -9,11 +9,12 @@ Times are wall-clock minutes since local midnight in the document's `timeZone` (
 | `startDate` | string | First day (`YYYY-MM-DD`) |
 | `endDate` | string | Optional. Last day; absent = `startDate` |
 | `startMinutes` | int | Optional. Start, 0-1439; absent with no `endMinutes` = all-day |
+| `startSecond` | int | Optional. Second within `startMinutes`, 0-59; absent = unknown within the minute |
 | `endMinutes` | int | Optional. End, 0-1439. When `endMinutes` ≤ `startMinutes` on the same day, the event crosses midnight |
 | `status` | enum | Optional. `confirmed` / `tentative` / `cancelled`; absent = `confirmed` |
 | `organizer` | entity | Optional. Person or organisation |
 
-`startDate` is required.
+`startDate` is required. `startSecond` orders happenings that share a minute; omit it when the source has no second.
 
 The title is [`rig.meta.named`](../meta/named.md). A venue is [`rig.place.address`](../place/address.md) / [`rig.place.geo`](../place/geo.md) on this entity or on a place entity - do not put a location string here. A repeating series is [`rig.calendar.recurrence`](recurrence.md) on the same entity. People coming are [`rig.calendar.attendee`](attendee.md) entities.
 

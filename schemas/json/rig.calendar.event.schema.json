@@ -20,6 +20,11 @@
       "minimum": 0,
       "maximum": 1439
     },
+    "startSecond": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 59
+    },
     "endMinutes": {
       "type": "integer",
       "minimum": 0,

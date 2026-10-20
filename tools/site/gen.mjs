@@ -316,6 +316,14 @@ const GROUPS = [
   { title: "Paper (articles / citations)", domains: ["paper"] },
   { title: "Rights", domains: ["rights"] },
   { title: "Legal (agreements)", domains: ["legal"] },
+  {
+    title: "Record",
+    domains: ["record"],
+    note: "Classification, assertion, consent, and the file a fact belongs to. Message formats stay fulfillment.",
+  },
+  { title: "Finance", domains: ["finance"] },
+  { title: "Clinic", domains: ["clinic"] },
+  { title: "Law", domains: ["law"] },
   { title: "Art (CDWA core)", domains: ["art"] },
   { title: "Geometry / paint", domains: ["geometry", "paint"] },
   { title: "CAD / solids", domains: ["cad"] },
@@ -548,7 +556,7 @@ ${body}
     <a href="${GITHUB}">Repository</a> ·
     <a href="${BLOB}/LICENSE">MIT</a>
   </p>
-  <p class="muted">Contract v${version} · draft. A shared data vocabulary for creative applications.</p>
+  <p class="muted">Contract v${version} · draft. A shared data vocabulary for applications.</p>
 </footer>
 
 </body>

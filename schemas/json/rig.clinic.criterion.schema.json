@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.clinic.criterion.schema.json",
+  "title": "rig.clinic.criterion",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "trial": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "text": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "code": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "polarity": {
+      "type": "string",
+      "enum": [
+        "include",
+        "exclude"
+      ]
+    }
+  },
+  "required": [
+    "trial",
+    "text"
+  ],
+  "description": "One eligibility rule of a trial. polarity absent = include."
+}

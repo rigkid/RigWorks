@@ -117,6 +117,10 @@ Print spread - pages, masters, facing, visual style maps, text frames and thread
 | `rig.commerce.price` | [commerce/price.md](commerce/price.md) |
 | `rig.commerce.offer` | [commerce/offer.md](commerce/offer.md) |
 | `rig.commerce.discount` | [commerce/discount.md](commerce/discount.md) |
+| `rig.commerce.product` | [commerce/product.md](commerce/product.md) |
+| `rig.commerce.stock` | [commerce/stock.md](commerce/stock.md) |
+| `rig.commerce.order` | [commerce/order.md](commerce/order.md) |
+| `rig.commerce.order_line` | [commerce/order-line.md](commerce/order-line.md) |
 
 ### Plant (botanica)
 
@@ -162,6 +166,48 @@ Deals between parties - not the Rig Contract, and not copyright of a work ([`rig
 |----|-----|
 | `rig.legal.agreement` | [legal/agreement.md](legal/agreement.md) |
 | `rig.legal.party` | [legal/party.md](legal/party.md) |
+
+### Record
+
+Classification, assertion, consent, and the file a fact belongs to. FHIR, pacs/camt, DICOM, and GS1 files stay host mappings - [records.md](../docs/records.md).
+
+| Id | Doc |
+|----|-----|
+| `rig.record.mark` | [record/mark.md](record/mark.md) |
+| `rig.record.assertion` | [record/assertion.md](record/assertion.md) |
+| `rig.record.event` | [record/event.md](record/event.md) |
+| `rig.record.consent` | [record/consent.md](record/consent.md) |
+| `rig.record.case` | [record/case.md](record/case.md) |
+| `rig.record.incident` | [record/incident.md](record/incident.md) |
+| `rig.record.concerns` | [record/concerns.md](record/concerns.md) |
+
+### Finance
+
+Payments, positions, and claims. Amounts compose [`rig.commerce.price`](commerce/price.md). MX messages stay fulfillment.
+
+| Id | Doc |
+|----|-----|
+| `rig.finance.payment` | [finance/payment.md](finance/payment.md) |
+| `rig.finance.position` | [finance/position.md](finance/position.md) |
+| `rig.finance.claim` | [finance/claim.md](finance/claim.md) |
+
+### Clinic
+
+Encounters, observations, imaging studies, and trials. FHIR and DICOM files stay fulfillment.
+
+| Id | Doc |
+|----|-----|
+| `rig.clinic.encounter` | [clinic/encounter.md](clinic/encounter.md) |
+| `rig.clinic.observation` | [clinic/observation.md](clinic/observation.md) |
+| `rig.clinic.study` | [clinic/study.md](clinic/study.md) |
+| `rig.clinic.trial` | [clinic/trial.md](clinic/trial.md) |
+| `rig.clinic.criterion` | [clinic/criterion.md](clinic/criterion.md) |
+
+### Law
+
+| Id | Doc |
+|----|-----|
+| `rig.law.statute` | [law/statute.md](law/statute.md) |
 
 ### Art (CDWA core)
 

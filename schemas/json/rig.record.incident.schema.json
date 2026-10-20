@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.record.incident.schema.json",
+  "title": "rig.record.incident",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "reported",
+        "active",
+        "contained",
+        "closed"
+      ]
+    },
+    "openedDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    },
+    "place": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "kind",
+    "status"
+  ],
+  "description": "A reported happening in the world. Address and geo stay on place. Members point here with rig.record.concerns."
+}

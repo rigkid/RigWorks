@@ -280,14 +280,41 @@
               "rig.circuit.pin": {
                 "$ref": "./rig.circuit.pin.schema.json"
               },
+              "rig.clinic.criterion": {
+                "$ref": "./rig.clinic.criterion.schema.json"
+              },
+              "rig.clinic.encounter": {
+                "$ref": "./rig.clinic.encounter.schema.json"
+              },
+              "rig.clinic.observation": {
+                "$ref": "./rig.clinic.observation.schema.json"
+              },
+              "rig.clinic.study": {
+                "$ref": "./rig.clinic.study.schema.json"
+              },
+              "rig.clinic.trial": {
+                "$ref": "./rig.clinic.trial.schema.json"
+              },
               "rig.commerce.discount": {
                 "$ref": "./rig.commerce.discount.schema.json"
               },
               "rig.commerce.offer": {
                 "$ref": "./rig.commerce.offer.schema.json"
               },
+              "rig.commerce.order": {
+                "$ref": "./rig.commerce.order.schema.json"
+              },
+              "rig.commerce.order_line": {
+                "$ref": "./rig.commerce.order_line.schema.json"
+              },
               "rig.commerce.price": {
                 "$ref": "./rig.commerce.price.schema.json"
+              },
+              "rig.commerce.product": {
+                "$ref": "./rig.commerce.product.schema.json"
+              },
+              "rig.commerce.stock": {
+                "$ref": "./rig.commerce.stock.schema.json"
               },
               "rig.dev.machine": {
                 "$ref": "./rig.dev.machine.schema.json"
@@ -297,6 +324,15 @@
               },
               "rig.dmx.fixture": {
                 "$ref": "./rig.dmx.fixture.schema.json"
+              },
+              "rig.finance.claim": {
+                "$ref": "./rig.finance.claim.schema.json"
+              },
+              "rig.finance.payment": {
+                "$ref": "./rig.finance.payment.schema.json"
+              },
+              "rig.finance.position": {
+                "$ref": "./rig.finance.position.schema.json"
               },
               "rig.font.anchor": {
                 "$ref": "./rig.font.anchor.schema.json"
@@ -402,6 +438,9 @@
               },
               "rig.io.serial": {
                 "$ref": "./rig.io.serial.schema.json"
+              },
+              "rig.law.statute": {
+                "$ref": "./rig.law.statute.schema.json"
               },
               "rig.layout.applied_master": {
                 "$ref": "./rig.layout.applied_master.schema.json"
@@ -696,6 +735,27 @@
               },
               "rig.print.process": {
                 "$ref": "./rig.print.process.schema.json"
+              },
+              "rig.record.assertion": {
+                "$ref": "./rig.record.assertion.schema.json"
+              },
+              "rig.record.case": {
+                "$ref": "./rig.record.case.schema.json"
+              },
+              "rig.record.concerns": {
+                "$ref": "./rig.record.concerns.schema.json"
+              },
+              "rig.record.consent": {
+                "$ref": "./rig.record.consent.schema.json"
+              },
+              "rig.record.event": {
+                "$ref": "./rig.record.event.schema.json"
+              },
+              "rig.record.incident": {
+                "$ref": "./rig.record.incident.schema.json"
+              },
+              "rig.record.mark": {
+                "$ref": "./rig.record.mark.schema.json"
               },
               "rig.render.blend": {
                 "$ref": "./rig.render.blend.schema.json"

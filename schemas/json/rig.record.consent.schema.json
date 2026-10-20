@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.record.consent.schema.json",
+  "title": "rig.record.consent",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "subject": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "purpose": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "granted",
+        "refused",
+        "withdrawn"
+      ]
+    },
+    "instrument": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "subject",
+    "purpose",
+    "status"
+  ],
+  "description": "Permission a subject gave for a purpose. Window composes rig.calendar.span."
+}

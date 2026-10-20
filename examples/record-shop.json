@@ -1,0 +1,123 @@
+{
+  "rig": "0.37.0",
+  "document": {
+    "title": "Record shop (product / stock / order)",
+    "createdAt": "2026-10-20",
+    "timeZone": "America/Los_Angeles"
+  },
+  "entities": [
+    {
+      "id": "mill",
+      "components": {
+        "rig.meta.named": { "name": "Mill Goods", "stableId": "mill-goods" },
+        "rig.organisation.identity": {
+          "registrationNumber": "US-MILL"
+        }
+      }
+    },
+    {
+      "id": "buyer",
+      "components": {
+        "rig.meta.named": { "name": "Sam Ortiz", "stableId": "sam-ortiz" },
+        "rig.person.name": {
+          "givenName": "Sam",
+          "familyName": "Ortiz"
+        }
+      }
+    },
+    {
+      "id": "warehouse",
+      "components": {
+        "rig.meta.named": { "name": "Oakland shed", "stableId": "oakland-shed" },
+        "rig.place.address": {
+          "streetName": "Mandela Parkway",
+          "buildingNumber": "1400",
+          "townName": "Oakland",
+          "postCode": "94607",
+          "country": "US"
+        }
+      }
+    },
+    {
+      "id": "sweater",
+      "components": {
+        "rig.meta.named": { "name": "Crew sweater", "stableId": "sweater" },
+        "rig.commerce.product": {
+          "gtin": "012345678905",
+          "brand": "mill"
+        }
+      }
+    },
+    {
+      "id": "sweater-red",
+      "components": {
+        "rig.meta.named": { "name": "Crew sweater red M", "stableId": "sweater-red-m" },
+        "rig.commerce.product": {
+          "gtin": "0123456789123",
+          "brand": "mill",
+          "parent": "sweater"
+        }
+      }
+    },
+    {
+      "id": "on-hand",
+      "components": {
+        "rig.commerce.stock": {
+          "product": "sweater-red",
+          "place": "warehouse",
+          "quantity": 42,
+          "unit": "each"
+        }
+      }
+    },
+    {
+      "id": "autumn-offer",
+      "components": {
+        "rig.meta.named": { "name": "Autumn crew", "stableId": "autumn-crew" },
+        "rig.commerce.offer": {
+          "item": "sweater-red",
+          "seller": "mill",
+          "availability": "in-stock",
+          "sku": "MG-CREW-RED-M"
+        },
+        "rig.commerce.price": {
+          "amount": 68,
+          "currency": "USD",
+          "vatIncluded": true
+        },
+        "rig.calendar.span": {
+          "startDate": "2026-09-01",
+          "endDate": "2026-11-30"
+        }
+      }
+    },
+    {
+      "id": "order-1",
+      "components": {
+        "rig.meta.named": { "name": "Order 8801", "stableId": "order-8801" },
+        "rig.commerce.order": {
+          "buyer": "buyer",
+          "seller": "mill",
+          "status": "placed",
+          "identifier": "8801"
+        }
+      }
+    },
+    {
+      "id": "line-1",
+      "components": {
+        "rig.commerce.order_line": {
+          "order": "order-1",
+          "product": "sweater-red",
+          "quantity": 2,
+          "offer": "autumn-offer"
+        },
+        "rig.commerce.price": {
+          "amount": 136,
+          "currency": "USD",
+          "vatIncluded": true
+        }
+      }
+    }
+  ]
+}

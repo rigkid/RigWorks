@@ -1,0 +1,163 @@
+{
+  "rig": "0.37.0",
+  "document": {
+    "title": "Record care (encounter / observation / trial)",
+    "createdAt": "2026-10-20",
+    "timeZone": "America/New_York"
+  },
+  "entities": [
+    {
+      "id": "patient",
+      "components": {
+        "rig.meta.named": { "name": "Jordan Hale", "stableId": "jordan-hale" },
+        "rig.person.name": {
+          "givenName": "Jordan",
+          "familyName": "Hale"
+        },
+        "rig.person.vital": {
+          "birthDate": "1984-03-12",
+          "birthCountry": "US"
+        }
+      }
+    },
+    {
+      "id": "clinician",
+      "components": {
+        "rig.meta.named": { "name": "Dr. Ren Park", "stableId": "ren-park" },
+        "rig.person.name": {
+          "givenName": "Ren",
+          "familyName": "Park"
+        }
+      }
+    },
+    {
+      "id": "visit",
+      "components": {
+        "rig.meta.named": { "name": "Clinic visit", "stableId": "enc-1" },
+        "rig.clinic.encounter": {
+          "patient": "patient",
+          "status": "finished",
+          "class": "outpatient"
+        },
+        "rig.calendar.event": {
+          "startDate": "2026-10-20",
+          "startMinutes": 540,
+          "endMinutes": 600
+        },
+        "rig.record.mark": {
+          "class": "phi",
+          "purpose": "treatment",
+          "disposition": "keep",
+          "retainYears": 7
+        }
+      }
+    },
+    {
+      "id": "bp",
+      "components": {
+        "rig.meta.named": { "name": "Systolic BP", "stableId": "obs-bp" },
+        "rig.clinic.observation": {
+          "subject": "patient",
+          "code": "8480-6",
+          "value": 128,
+          "codeSystem": "loinc",
+          "unit": "mm[Hg]"
+        },
+        "rig.calendar.event": {
+          "startDate": "2026-10-20",
+          "startMinutes": 548,
+          "startSecond": 22
+        },
+        "rig.record.mark": {
+          "class": "phi",
+          "purpose": "treatment"
+        },
+        "rig.record.assertion": {
+          "source": "epic",
+          "asserter": "clinician",
+          "observedDate": "2026-10-20",
+          "observedMinute": 548,
+          "observedSecond": 22
+        }
+      }
+    },
+    {
+      "id": "ct-file",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "image",
+          "path": "imaging/ct-1.dcm"
+        }
+      }
+    },
+    {
+      "id": "ct-series",
+      "components": {
+        "rig.meta.named": { "name": "Chest CT", "stableId": "study-1" },
+        "rig.clinic.study": {
+          "subject": "patient",
+          "studyUid": "1.2.840.113619.2.55.3.123456",
+          "seriesUid": "1.2.840.113619.2.55.3.123456.1",
+          "modality": "CT",
+          "asset": "ct-file"
+        },
+        "rig.record.mark": {
+          "class": "phi",
+          "purpose": "treatment"
+        }
+      }
+    },
+    {
+      "id": "trial",
+      "components": {
+        "rig.meta.named": { "name": "Hypertension cohort", "stableId": "nct-example" },
+        "rig.clinic.trial": {
+          "identifier": "NCT01234567",
+          "status": "recruiting",
+          "phase": "phase-3"
+        }
+      }
+    },
+    {
+      "id": "include-age",
+      "components": {
+        "rig.clinic.criterion": {
+          "trial": "trial",
+          "text": "Age 18 years or older",
+          "code": "age-ge-18",
+          "polarity": "include"
+        }
+      }
+    },
+    {
+      "id": "consent-pdf",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "document",
+          "path": "consent/jordan-hale.pdf"
+        }
+      }
+    },
+    {
+      "id": "research-consent",
+      "components": {
+        "rig.record.consent": {
+          "subject": "patient",
+          "purpose": "research",
+          "status": "granted",
+          "instrument": "consent-pdf"
+        },
+        "rig.calendar.span": {
+          "startDate": "2026-09-01",
+          "endDate": "2027-08-31"
+        },
+        "rig.record.mark": {
+          "class": "phi",
+          "purpose": "research",
+          "disposition": "keep",
+          "retainYears": 10
+        }
+      }
+    }
+  ]
+}

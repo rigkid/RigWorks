@@ -1,0 +1,228 @@
+{
+  "rig": "0.37.0",
+  "document": {
+    "title": "Record bank (payment / position / claim)",
+    "createdAt": "2026-10-20",
+    "timeZone": "Europe/London"
+  },
+  "entities": [
+    {
+      "id": "alice",
+      "components": {
+        "rig.meta.named": { "name": "Alice Trent", "stableId": "alice" },
+        "rig.person.name": {
+          "givenName": "Alice",
+          "familyName": "Trent"
+        },
+        "rig.party.account": {
+          "iban": "GB82WEST12345698765432",
+          "accountName": "ALICE TRENT",
+          "currency": "GBP",
+          "bic": "WESTGB2L",
+          "bankName": "North Bank"
+        }
+      }
+    },
+    {
+      "id": "merchant",
+      "components": {
+        "rig.meta.named": { "name": "Harbour Books", "stableId": "harbour-books" },
+        "rig.organisation.identity": {
+          "registrationNumber": "GB-HARBOUR"
+        },
+        "rig.party.account": {
+          "iban": "GB29NWBK60161331926819",
+          "accountName": "HARBOUR BOOKS",
+          "currency": "GBP",
+          "bic": "NWBKGB2L",
+          "bankName": "North Bank"
+        }
+      }
+    },
+    {
+      "id": "north-bank",
+      "components": {
+        "rig.meta.named": { "name": "North Bank", "stableId": "north-bank" },
+        "rig.organisation.identity": {
+          "registrationNumber": "GB-NORTHBANK"
+        }
+      }
+    },
+    {
+      "id": "card-auth",
+      "components": {
+        "rig.meta.named": { "name": "Card auth", "stableId": "card-auth" },
+        "rig.record.event": {
+          "subject": "alice",
+          "code": "auth-approved",
+          "codeSystem": "iso20022"
+        },
+        "rig.calendar.event": {
+          "startDate": "2026-10-20",
+          "startMinutes": 862,
+          "startSecond": 14
+        },
+        "rig.record.mark": {
+          "class": "pci",
+          "purpose": "payment-auth",
+          "disposition": "keep",
+          "retainYears": 7
+        },
+        "rig.record.assertion": {
+          "source": "card-auth",
+          "observedDate": "2026-10-20",
+          "observedMinute": 862,
+          "observedSecond": 14,
+          "confidence": 1
+        },
+        "rig.record.concerns": {
+          "case": "fraud-case"
+        }
+      }
+    },
+    {
+      "id": "tx-1",
+      "components": {
+        "rig.meta.named": { "name": "Harbour Books 12.50", "stableId": "tx-1" },
+        "rig.finance.payment": {
+          "debtor": "alice",
+          "creditor": "merchant",
+          "status": "booked",
+          "debtorAccount": "alice",
+          "creditorAccount": "merchant",
+          "endToEndId": "E2E-2026-10-20-001",
+          "bookedDate": "2026-10-20"
+        },
+        "rig.commerce.price": {
+          "amount": 12.5,
+          "currency": "GBP"
+        },
+        "rig.calendar.event": {
+          "startDate": "2026-10-20",
+          "startMinutes": 862,
+          "startSecond": 14
+        },
+        "rig.record.mark": {
+          "class": "pci",
+          "purpose": "payment-auth",
+          "disposition": "keep",
+          "retainYears": 7
+        },
+        "rig.record.assertion": {
+          "source": "card-auth",
+          "observedDate": "2026-10-20",
+          "observedMinute": 862,
+          "observedSecond": 14
+        },
+        "rig.record.concerns": {
+          "case": "fraud-case"
+        }
+      }
+    },
+    {
+      "id": "holding",
+      "components": {
+        "rig.meta.named": { "name": "Apple holding", "stableId": "holding-aapl" },
+        "rig.finance.position": {
+          "holder": "alice",
+          "isin": "US0378331005",
+          "quantity": 40,
+          "side": "long"
+        },
+        "rig.commerce.price": {
+          "amount": 7200,
+          "currency": "GBP"
+        }
+      }
+    },
+    {
+      "id": "policy-pdf",
+      "components": {
+        "rig.media.asset_ref": {
+          "kind": "document",
+          "path": "policies/nb-home-001.pdf"
+        }
+      }
+    },
+    {
+      "id": "home-policy",
+      "components": {
+        "rig.meta.named": { "name": "Home buildings", "stableId": "nb-home-001" },
+        "rig.legal.agreement": {
+          "kind": "insurance",
+          "identifier": "NB-HOME-001",
+          "status": "active",
+          "governingLaw": "England and Wales",
+          "signedDate": "2025-01-15",
+          "instrument": "policy-pdf"
+        },
+        "rig.calendar.span": {
+          "startDate": "2025-01-15",
+          "endDate": "2026-01-14"
+        }
+      }
+    },
+    {
+      "id": "policy-insurer",
+      "components": {
+        "rig.legal.party": {
+          "agreement": "home-policy",
+          "party": "north-bank",
+          "role": "party",
+          "signedDate": "2025-01-15"
+        }
+      }
+    },
+    {
+      "id": "policy-insured",
+      "components": {
+        "rig.legal.party": {
+          "agreement": "home-policy",
+          "party": "alice",
+          "role": "party",
+          "signedDate": "2025-01-15"
+        }
+      }
+    },
+    {
+      "id": "claim-1",
+      "components": {
+        "rig.meta.named": { "name": "Storm claim", "stableId": "claim-1" },
+        "rig.finance.claim": {
+          "claimant": "alice",
+          "status": "open",
+          "agreement": "home-policy",
+          "identifier": "CLM-2026-441",
+          "incidentDate": "2026-10-18"
+        },
+        "rig.commerce.price": {
+          "amount": 2400,
+          "currency": "GBP"
+        },
+        "rig.record.concerns": {
+          "case": "fraud-case"
+        }
+      }
+    },
+    {
+      "id": "fraud-case",
+      "components": {
+        "rig.meta.named": { "name": "Auth review 441", "stableId": "case-441" },
+        "rig.record.case": {
+          "subject": "alice",
+          "kind": "fraud",
+          "status": "open",
+          "assignee": "north-bank",
+          "openedDate": "2026-10-20",
+          "identifier": "FR-2026-441"
+        },
+        "rig.record.mark": {
+          "class": "confidential",
+          "purpose": "fraud-review",
+          "disposition": "hold",
+          "retainYears": 7
+        }
+      }
+    }
+  ]
+}

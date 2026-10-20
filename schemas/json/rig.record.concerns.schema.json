@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.record.concerns.schema.json",
+  "title": "rig.record.concerns",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "case": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "incident": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "description": "This fact belongs to a case and/or an incident. The file holds no member array.",
+  "minProperties": 1
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.order_line.schema.json",
+  "title": "rig.commerce.order_line",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "order": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "product": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "quantity": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "offer": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "order",
+    "product",
+    "quantity"
+  ],
+  "description": "One line of an order. Price composes rig.commerce.price. Do not copy sku off the offer."
+}
