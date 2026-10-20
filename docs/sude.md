@@ -2,7 +2,7 @@
 
 **SUDE** = Setup / Update / Draw / Exit.
 
-SUDE is the portable **live-host** convention: how a program that runs creative work over time orders simulation and present. It is not the floor for “being Rig” - that is the grammar and entity/component POD documents ([honors.md](honors.md)). Validators, converters, and static presenters can be Rig without SUDE.
+SUDE is the portable **live-host** convention: how a program that runs work over time orders simulation and present. It is not the floor for “being Rig” - that is the grammar and entity/component POD documents ([honors.md](honors.md)). Validators, converters, and static presenters can be Rig without SUDE.
 
 No window, renderer, UI pack, or language is required.
 

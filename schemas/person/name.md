@@ -16,4 +16,4 @@ All fields optional. Emit what the source has; omit empty strings. An empty comp
 
 The formatted / full name is [`rig.meta.named`](../meta/named.md) `name`. Unstructured ISO 20022 `Nm` stays in the database. The importer maps it into `named` and these parts. Do not dual-author a `fullName` here.
 
-Postal address is [`rig.place.address`](../place/address.md). Reach channels are [`rig.person.contact`](contact.md). Sex, gender identity, and birth are [`rig.person.vital`](vital.md). Employment is [`rig.person.employment`](employment.md). A photo is [`rig.person.portrait`](portrait.md). A payment account is [`rig.party.account`](../party/account.md). Do not re-declare those here.
+Postal address is [`rig.place.address`](../place/address.md). Reach channels are [`rig.person.contact`](contact.md). Sex, gender identity, and birth are [`rig.person.vital`](vital.md). Employment is [`rig.person.employment`](employment.md). Issued identifiers are [`rig.person.identifier`](identifier.md). A photo is [`rig.person.portrait`](portrait.md). A payment account is [`rig.party.account`](../party/account.md). Do not re-declare those here.

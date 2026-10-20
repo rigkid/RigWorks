@@ -13,4 +13,4 @@ Field meanings follow [schema.org](https://schema.org/Order) `Order`. This schem
 
 `buyer`, `seller`, and `status` are required.
 
-Lines are [`rig.commerce.order_line`](order-line.md) entities that point at this order. Do not put a lines array here. The payment that settled it is a [`rig.finance.payment`](../finance/payment.md).
+Lines are [`rig.commerce.order_line`](order-line.md) entities that point at this order. Do not put a lines array here. The bill is a [`rig.commerce.invoice`](invoice.md). The box is a [`rig.commerce.shipment`](shipment.md). The payment that settled the bill sets [`rig.finance.payment`](../finance/payment.md) `invoice`.

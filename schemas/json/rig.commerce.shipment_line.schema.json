@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.shipment_line.schema.json",
+  "title": "rig.commerce.shipment_line",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "shipment": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "product": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "quantity": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "orderLine": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "shipment",
+    "product",
+    "quantity"
+  ],
+  "description": "One line of a shipment. Members point at the box."
+}

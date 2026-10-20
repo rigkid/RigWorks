@@ -440,6 +440,22 @@ add(
 );
 
 add(
+  "rig.person.identifier",
+  {
+    nationalId: ref("string"),
+    taxId: ref("string"),
+    mrn: ref("string"),
+    passport: ref("string"),
+  },
+  {
+    required: [],
+    minProperties: 1,
+    description:
+      "Issued identifiers of a person. nationalId, taxId, mrn, passport as the source wrote them. Not a system+value bag.",
+  }
+);
+
+add(
   "rig.organisation.identity",
   {
     lei: {
@@ -609,6 +625,78 @@ add(
     required: ["order", "product", "quantity"],
     description:
       "One line of an order. Price composes rig.commerce.price. Do not copy sku off the offer.",
+  }
+);
+
+add(
+  "rig.commerce.invoice",
+  {
+    buyer: ref("entity"),
+    seller: ref("entity"),
+    status: enumOf(["draft", "issued", "paid", "void", "credited"]),
+    identifier: ref("string"),
+    issuedDate: isoDate,
+    dueDate: isoDate,
+    order: ref("entity"),
+  },
+  {
+    required: ["buyer", "seller", "status"],
+    description:
+      "A bill for a sale. Field meanings follow schema.org Invoice. Total composes rig.commerce.price. Lines are rig.commerce.invoice_line.",
+  }
+);
+
+add(
+  "rig.commerce.invoice_line",
+  {
+    invoice: ref("entity"),
+    product: ref("entity"),
+    quantity: ref("float"),
+    orderLine: ref("entity"),
+  },
+  {
+    required: ["invoice", "quantity"],
+    description:
+      "One line of an invoice. Price composes rig.commerce.price.",
+  }
+);
+
+add(
+  "rig.commerce.shipment",
+  {
+    status: enumOf([
+      "pending",
+      "in-transit",
+      "delivered",
+      "returned",
+      "cancelled",
+    ]),
+    order: ref("entity"),
+    carrier: ref("entity"),
+    tracking: ref("string"),
+    origin: ref("entity"),
+    destination: ref("entity"),
+    shippedDate: isoDate,
+  },
+  {
+    required: ["status"],
+    description:
+      "A box on its way. Field meanings follow schema.org ParcelDelivery. Address stays on origin / destination places.",
+  }
+);
+
+add(
+  "rig.commerce.shipment_line",
+  {
+    shipment: ref("entity"),
+    product: ref("entity"),
+    quantity: ref("float"),
+    orderLine: ref("entity"),
+  },
+  {
+    required: ["shipment", "product", "quantity"],
+    description:
+      "One line of a shipment. Members point at the box.",
   }
 );
 
@@ -799,6 +887,20 @@ add(
   }
 );
 
+add(
+  "rig.record.note",
+  {
+    subject: ref("entity"),
+    body: ref("string"),
+    author: ref("entity"),
+  },
+  {
+    required: ["subject", "body"],
+    description:
+      "A note about a fact. Clock composes rig.calendar.event. Not a BCF comment and not story copy.",
+  }
+);
+
 // --- finance (ISO 20022 payment / position; not MX) ---
 // Amounts compose rig.commerce.price. Accounts are party.account entities.
 add(
@@ -811,6 +913,7 @@ add(
     creditorAccount: ref("entity"),
     endToEndId: ref("string"),
     bookedDate: isoDate,
+    invoice: ref("entity"),
   },
   {
     required: ["debtor", "creditor", "status"],

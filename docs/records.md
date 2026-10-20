@@ -15,6 +15,7 @@ Portable meaning is [`rig.record.*`](../schemas/record/mark.md) plus the finance
 | File about a subject | [`rig.record.case`](../schemas/record/case.md) |
 | Reported happening in the world | [`rig.record.incident`](../schemas/record/incident.md) |
 | This fact belongs to a file | [`rig.record.concerns`](../schemas/record/concerns.md) |
+| A note about a fact | [`rig.record.note`](../schemas/record/note.md) |
 
 Members point at the file. The case and the incident hold no arrays. The file's `document.author` stays the file. Join keys live on the noun.
 
@@ -38,6 +39,7 @@ Example: [`examples/record-bank.json`](../examples/record-bank.json).
 
 | Fact | Rig |
 |------|-----|
+| Person ids | [`rig.person.identifier`](../schemas/person/identifier.md) (`mrn`, `taxId`, `nationalId`, `passport`) |
 | Visit or admission | [`rig.clinic.encounter`](../schemas/clinic/encounter.md) |
 | Measurement | [`rig.clinic.observation`](../schemas/clinic/observation.md) |
 | Imaging study | [`rig.clinic.study`](../schemas/clinic/study.md) (`studyUid` / `seriesUid`) |
@@ -57,6 +59,9 @@ Example: [`examples/record-care.json`](../examples/record-care.json).
 | Offer | [`rig.commerce.offer`](../schemas/commerce/offer.md) `item` |
 | Count at a place | [`rig.commerce.stock`](../schemas/commerce/stock.md) |
 | Sale | [`rig.commerce.order`](../schemas/commerce/order.md) plus [`rig.commerce.order_line`](../schemas/commerce/order-line.md) |
+| Bill | [`rig.commerce.invoice`](../schemas/commerce/invoice.md) plus [`rig.commerce.invoice_line`](../schemas/commerce/invoice-line.md) |
+| Box | [`rig.commerce.shipment`](../schemas/commerce/shipment.md) plus [`rig.commerce.shipment_line`](../schemas/commerce/shipment-line.md) |
+| Note | [`rig.record.note`](../schemas/record/note.md) |
 
 Session memory and the embedding index stay in the host.
 
@@ -66,6 +71,7 @@ Example: [`examples/record-shop.json`](../examples/record-shop.json).
 
 | Fact | Rig |
 |------|-----|
+| Person ids | [`rig.person.identifier`](../schemas/person/identifier.md) |
 | Citizen case | [`rig.record.case`](../schemas/record/case.md) `kind` `service` / `benefits` |
 | Statute | [`rig.law.statute`](../schemas/law/statute.md) |
 | Incident | [`rig.record.incident`](../schemas/record/incident.md) |

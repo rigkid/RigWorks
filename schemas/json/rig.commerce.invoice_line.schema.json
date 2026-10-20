@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.invoice_line.schema.json",
+  "title": "rig.commerce.invoice_line",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "invoice": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "product": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "quantity": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "orderLine": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "invoice",
+    "quantity"
+  ],
+  "description": "One line of an invoice. Price composes rig.commerce.price."
+}

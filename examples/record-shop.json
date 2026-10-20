@@ -1,7 +1,7 @@
 {
-  "rig": "0.37.0",
+  "rig": "0.38.0",
   "document": {
-    "title": "Record shop (product / stock / order)",
+    "title": "Record shop (product / stock / order / invoice)",
     "createdAt": "2026-10-20",
     "timeZone": "America/Los_Angeles"
   },
@@ -22,6 +22,31 @@
         "rig.person.name": {
           "givenName": "Sam",
           "familyName": "Ortiz"
+        },
+        "rig.person.identifier": {
+          "taxId": "123-45-6789"
+        }
+      }
+    },
+    {
+      "id": "porch",
+      "components": {
+        "rig.meta.named": { "name": "Sam porch", "stableId": "sam-porch" },
+        "rig.place.address": {
+          "streetName": "Adeline Street",
+          "buildingNumber": "210",
+          "townName": "Oakland",
+          "postCode": "94607",
+          "country": "US"
+        }
+      }
+    },
+    {
+      "id": "westbound",
+      "components": {
+        "rig.meta.named": { "name": "Westbound Parcel", "stableId": "westbound" },
+        "rig.organisation.identity": {
+          "registrationNumber": "US-WESTBOUND"
         }
       }
     },
@@ -116,6 +141,97 @@
           "amount": 136,
           "currency": "USD",
           "vatIncluded": true
+        }
+      }
+    },
+    {
+      "id": "inv-8801",
+      "components": {
+        "rig.meta.named": { "name": "Invoice 8801", "stableId": "inv-8801" },
+        "rig.commerce.invoice": {
+          "buyer": "buyer",
+          "seller": "mill",
+          "status": "issued",
+          "identifier": "INV-8801",
+          "issuedDate": "2026-10-20",
+          "dueDate": "2026-11-03",
+          "order": "order-1"
+        },
+        "rig.commerce.price": {
+          "amount": 136,
+          "currency": "USD",
+          "vatIncluded": true
+        }
+      }
+    },
+    {
+      "id": "inv-line-1",
+      "components": {
+        "rig.commerce.invoice_line": {
+          "invoice": "inv-8801",
+          "product": "sweater-red",
+          "quantity": 2,
+          "orderLine": "line-1"
+        },
+        "rig.commerce.price": {
+          "amount": 136,
+          "currency": "USD",
+          "vatIncluded": true
+        }
+      }
+    },
+    {
+      "id": "pay-8801",
+      "components": {
+        "rig.finance.payment": {
+          "debtor": "buyer",
+          "creditor": "mill",
+          "status": "pending",
+          "invoice": "inv-8801"
+        },
+        "rig.commerce.price": {
+          "amount": 136,
+          "currency": "USD"
+        }
+      }
+    },
+    {
+      "id": "box-1",
+      "components": {
+        "rig.meta.named": { "name": "Parcel 8801", "stableId": "box-1" },
+        "rig.commerce.shipment": {
+          "status": "in-transit",
+          "order": "order-1",
+          "carrier": "westbound",
+          "tracking": "WB-8801-441",
+          "origin": "warehouse",
+          "destination": "porch",
+          "shippedDate": "2026-10-21"
+        }
+      }
+    },
+    {
+      "id": "box-line-1",
+      "components": {
+        "rig.commerce.shipment_line": {
+          "shipment": "box-1",
+          "product": "sweater-red",
+          "quantity": 2,
+          "orderLine": "line-1"
+        }
+      }
+    },
+    {
+      "id": "pick-note",
+      "components": {
+        "rig.record.note": {
+          "subject": "order-1",
+          "body": "Leave at the porch if no one answers.",
+          "author": "buyer"
+        },
+        "rig.calendar.event": {
+          "startDate": "2026-10-20",
+          "startMinutes": 600
         }
       }
     }

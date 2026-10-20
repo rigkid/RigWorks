@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.shipment.schema.json",
+  "title": "rig.commerce.shipment",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in-transit",
+        "delivered",
+        "returned",
+        "cancelled"
+      ]
+    },
+    "order": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "carrier": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "tracking": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "origin": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "destination": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "shippedDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "description": "A box on its way. Field meanings follow schema.org ParcelDelivery. Address stays on origin / destination places."
+}

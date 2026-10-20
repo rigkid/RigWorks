@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.record.note.schema.json",
+  "title": "rig.record.note",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "subject": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "body": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "author": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "subject",
+    "body"
+  ],
+  "description": "A note about a fact. Clock composes rig.calendar.event. Not a BCF comment and not story copy."
+}

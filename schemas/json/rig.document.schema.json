@@ -298,6 +298,12 @@
               "rig.commerce.discount": {
                 "$ref": "./rig.commerce.discount.schema.json"
               },
+              "rig.commerce.invoice": {
+                "$ref": "./rig.commerce.invoice.schema.json"
+              },
+              "rig.commerce.invoice_line": {
+                "$ref": "./rig.commerce.invoice_line.schema.json"
+              },
               "rig.commerce.offer": {
                 "$ref": "./rig.commerce.offer.schema.json"
               },
@@ -312,6 +318,12 @@
               },
               "rig.commerce.product": {
                 "$ref": "./rig.commerce.product.schema.json"
+              },
+              "rig.commerce.shipment": {
+                "$ref": "./rig.commerce.shipment.schema.json"
+              },
+              "rig.commerce.shipment_line": {
+                "$ref": "./rig.commerce.shipment_line.schema.json"
               },
               "rig.commerce.stock": {
                 "$ref": "./rig.commerce.stock.schema.json"
@@ -637,6 +649,9 @@
               "rig.person.employment": {
                 "$ref": "./rig.person.employment.schema.json"
               },
+              "rig.person.identifier": {
+                "$ref": "./rig.person.identifier.schema.json"
+              },
               "rig.person.name": {
                 "$ref": "./rig.person.name.schema.json"
               },
@@ -756,6 +771,9 @@
               },
               "rig.record.mark": {
                 "$ref": "./rig.record.mark.schema.json"
+              },
+              "rig.record.note": {
+                "$ref": "./rig.record.note.schema.json"
               },
               "rig.render.blend": {
                 "$ref": "./rig.render.blend.schema.json"

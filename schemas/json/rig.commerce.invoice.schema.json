@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.commerce.invoice.schema.json",
+  "title": "rig.commerce.invoice",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "buyer": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "seller": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "issued",
+        "paid",
+        "void",
+        "credited"
+      ]
+    },
+    "identifier": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "issuedDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    },
+    "dueDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601 calendar date."
+    },
+    "order": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "buyer",
+    "seller",
+    "status"
+  ],
+  "description": "A bill for a sale. Field meanings follow schema.org Invoice. Total composes rig.commerce.price. Lines are rig.commerce.invoice_line."
+}

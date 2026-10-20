@@ -1,5 +1,5 @@
 {
-  "rig": "0.37.0",
+  "rig": "0.38.0",
   "document": {
     "title": "Record care (encounter / observation / trial)",
     "createdAt": "2026-10-20",
@@ -17,6 +17,9 @@
         "rig.person.vital": {
           "birthDate": "1984-03-12",
           "birthCountry": "US"
+        },
+        "rig.person.identifier": {
+          "mrn": "MRN-884412"
         }
       }
     },
@@ -156,6 +159,24 @@
           "purpose": "research",
           "disposition": "keep",
           "retainYears": 10
+        }
+      }
+    },
+    {
+      "id": "visit-note",
+      "components": {
+        "rig.record.note": {
+          "subject": "visit",
+          "body": "Patient reports morning headaches. Recheck blood pressure in two weeks.",
+          "author": "clinician"
+        },
+        "rig.calendar.event": {
+          "startDate": "2026-10-20",
+          "startMinutes": 555
+        },
+        "rig.record.mark": {
+          "class": "phi",
+          "purpose": "treatment"
         }
       }
     }

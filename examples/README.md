@@ -333,11 +333,11 @@ A booked card payment, a long ISIN holding, an insurance policy (`kind` `insuran
 
 ## `record-care.json`
 
-An outpatient visit, a LOINC blood-pressure observation with `startSecond`, a CT series (`studyUid` / `seriesUid`), a phase-3 trial with one include criterion, and a research consent span. PHI marks sit on the visit, the observation, the study, and the consent. Not a FHIR Bundle - [docs/records.md](../docs/records.md).
+An outpatient visit, a LOINC blood-pressure observation with `startSecond`, a CT series (`studyUid` / `seriesUid`), a phase-3 trial with one include criterion, and a research consent span. The patient carries `rig.person.identifier` `mrn`. A clinic note hangs on the visit. PHI marks sit on the visit, the observation, the study, the consent, and the note. Not a FHIR Bundle - [docs/records.md](../docs/records.md).
 
 ## `record-shop.json`
 
-A branded sweater, a red-M variant (`parent`), warehouse stock, an offer whose `item` is the variant, and a two-unit order line. GTIN is digits only. Not a cart engine - [docs/records.md](../docs/records.md).
+A branded sweater, a red-M variant (`parent`), warehouse stock, an offer whose `item` is the variant, and a two-unit order line. The bill is an invoice the pending payment points at. The box is in transit from the shed to the porch. A porch note hangs on the order. The buyer carries `taxId`. GTIN is digits only. Not a cart engine - [docs/records.md](../docs/records.md).
 
 ## `record-civic.json`
 

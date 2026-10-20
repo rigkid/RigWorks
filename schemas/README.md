@@ -107,6 +107,7 @@ Print spread - pages, masters, facing, visual style maps, text frames and thread
 | `rig.person.contact` | [person/contact.md](person/contact.md) |
 | `rig.person.employment` | [person/employment.md](person/employment.md) |
 | `rig.person.portrait` | [person/portrait.md](person/portrait.md) |
+| `rig.person.identifier` | [person/identifier.md](person/identifier.md) |
 | `rig.organisation.identity` | [organisation/identity.md](organisation/identity.md) |
 | `rig.party.account` | [party/account.md](party/account.md) |
 
@@ -121,6 +122,10 @@ Print spread - pages, masters, facing, visual style maps, text frames and thread
 | `rig.commerce.stock` | [commerce/stock.md](commerce/stock.md) |
 | `rig.commerce.order` | [commerce/order.md](commerce/order.md) |
 | `rig.commerce.order_line` | [commerce/order-line.md](commerce/order-line.md) |
+| `rig.commerce.invoice` | [commerce/invoice.md](commerce/invoice.md) |
+| `rig.commerce.invoice_line` | [commerce/invoice-line.md](commerce/invoice-line.md) |
+| `rig.commerce.shipment` | [commerce/shipment.md](commerce/shipment.md) |
+| `rig.commerce.shipment_line` | [commerce/shipment-line.md](commerce/shipment-line.md) |
 
 ### Plant (botanica)
 
@@ -180,6 +185,7 @@ Classification, assertion, consent, and the file a fact belongs to. FHIR, pacs/c
 | `rig.record.case` | [record/case.md](record/case.md) |
 | `rig.record.incident` | [record/incident.md](record/incident.md) |
 | `rig.record.concerns` | [record/concerns.md](record/concerns.md) |
+| `rig.record.note` | [record/note.md](record/note.md) |
 
 ### Finance
 

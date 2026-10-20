@@ -13,6 +13,7 @@ Field meanings follow ISO 20022 `CreditTransferTransaction` / `PaymentIdentifica
 | `creditorAccount` | entity | Optional. Creditor account | `CdtrAcct` |
 | `endToEndId` | string | Optional. End-to-end identification | `EndToEndId` |
 | `bookedDate` | string | Optional. Booking day, `YYYY-MM-DD` | `BookgDt` |
+| `invoice` | entity | Optional. The [`rig.commerce.invoice`](../commerce/invoice.md) this settles | - |
 
 `debtor`, `creditor`, and `status` are required.
 

@@ -13,7 +13,7 @@ Schemas and UI are optional beyond what you implement. [`rig-validate`](../tools
 
 ### Live hosts
 
-A **live host** (a program that runs creative work over time) typically honors the [SUDE loop](sude.md) and runtime [ECS](ecs.md) conventions (registry, Update/Draw systems). **[RigKit](https://github.com/rigkid/RigKit)** takes SUDE + ECS as **its** floor - required to be RigKit, not required to be Rig. Validators, converters, and static presenters can be Rig without SUDE. See [ecs.md](ecs.md) for the split between document composition (Contract floor) and runtime systems (live hosts).
+A **live host** (a program that runs work over time) typically honors the [SUDE loop](sude.md) and runtime [ECS](ecs.md) conventions (registry, Update/Draw systems). **[RigKit](https://github.com/rigkid/RigKit)** takes SUDE + ECS as **its** floor - required to be RigKit, not required to be Rig. Validators, converters, and static presenters can be Rig without SUDE. See [ecs.md](ecs.md) for the split between document composition (Contract floor) and runtime systems (live hosts).
 
 ### Rig + UI (optional)
 

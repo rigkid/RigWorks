@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.person.identifier.schema.json",
+  "title": "rig.person.identifier",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "nationalId": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "taxId": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "mrn": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "passport": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    }
+  },
+  "description": "Issued identifiers of a person. nationalId, taxId, mrn, passport as the source wrote them. Not a system+value bag.",
+  "minProperties": 1
+}
