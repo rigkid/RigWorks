@@ -111,7 +111,7 @@ More patterns: [`examples/`](examples/). Interchange notes (`.rig` / `.rigz`): [
 
 ## For AI agents
 
-The cheapest token is the one the model never generates. Load the skill, copy one example, emit the document, and validate. Leave the catalog unloaded. A document one agent emits is data the next agent already accepts, so the handoff spends nothing on a private format. Sizes and the reason: [`docs/ai-collaboration.md`](docs/ai-collaboration.md#the-cheapest-token).
+The cheapest token is the one the model never generates. Load the skill, copy one example, emit the document, and validate. Leave the catalog unloaded. A document one agent emits is data the next agent already accepts, so the handoff spends nothing on a private format. The reason: [`docs/ai-collaboration.md`](docs/ai-collaboration.md#the-cheapest-token).
 
 Load the condensed skill before generating Rig data: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-documents/SKILL.md). Cross-agent onboarding: [`AGENTS.md`](AGENTS.md). Discovery index: [`llms.txt`](llms.txt).
 
