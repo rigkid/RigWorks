@@ -1886,6 +1886,13 @@ add("rig.render.material", {
   emissive: ref("rgb"),
 }, { required: [] });
 
+// One entity is enough. hdri is an asset_ref (lat-long image). intensity absent = 1.
+// Decode and spherical-harmonic coefficients stay host cache.
+add("rig.render.environment", {
+  hdri: ref("entity"),
+  intensity: ref("float"),
+}, { required: ["hdri"] });
+
 // Per-entity show/hide. Draw order is sibling order — see rig.spatial.relationship.
 add("rig.render.visibility", {
   visible: ref("bool"),

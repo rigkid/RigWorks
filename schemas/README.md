@@ -301,6 +301,7 @@ Thin OpenBIM layer - IFC class is a string on `classify`, not one schema per `If
 | `rig.meta.named` | [meta/named.md](meta/named.md) |
 | `rig.meta.tags` | [meta/tags.md](meta/tags.md) |
 | `rig.render.light` | [render/light.md](render/light.md) |
+| `rig.render.environment` | [render/environment.md](render/environment.md) |
 | `rig.render.material` | [render/material.md](render/material.md) |
 | `rig.render.visibility` | [render/visibility.md](render/visibility.md) |
 | `rig.render.blend` | [render/blend.md](render/blend.md) |

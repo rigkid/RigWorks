@@ -1,0 +1,28 @@
+{
+  "rig": "0.39.0",
+  "document": {
+    "title": "Environment",
+    "defaultUnit": "m"
+  },
+  "entities": [
+    {
+      "id": "sky",
+      "components": {
+        "rig.meta.named": { "name": "sky", "stableId": "sky" },
+        "rig.render.environment": {
+          "hdri": "sky-hdr"
+        }
+      }
+    },
+    {
+      "id": "sky-hdr",
+      "components": {
+        "rig.meta.named": { "name": "sky-hdr", "stableId": "sky-hdr" },
+        "rig.media.asset_ref": {
+          "kind": "image",
+          "path": "env/sky.hdr"
+        }
+      }
+    }
+  ]
+}

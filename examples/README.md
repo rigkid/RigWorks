@@ -28,6 +28,7 @@ node tools/rig-validate/cli.js examples/commerce-offer.json
 node tools/rig-validate/cli.js examples/legal-agreement.json
 node tools/rig-validate/cli.js examples/calendar-event.json
 node tools/rig-validate/cli.js examples/lights.json
+node tools/rig-validate/cli.js examples/environment.json
 node tools/rig-validate/cli.js examples/dev-machine.json
 node tools/rig-validate/cli.js examples/dev-hyperv.json
 node tools/rig-validate/cli.js examples/dev-kvm.json
@@ -231,6 +232,10 @@ IDS specification: applicability facet (`IfcWall`) and requirement facet (`Pset_
 ## `lights.json`
 
 Three lamps: directional (local −Z), point with `range`, spot with inner/outer cones. Pose stays on transform.
+
+## `environment.json`
+
+One image-based light. `hdri` is a [`rig.media.asset_ref`](../schemas/media/asset-ref.md) (`kind` `image`, lat-long Radiance file). Absent `intensity` is 1. Decode and spherical-harmonic coefficients stay in the host.
 
 ## `font-var.json`
 

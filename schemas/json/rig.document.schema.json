@@ -778,6 +778,9 @@
               "rig.render.blend": {
                 "$ref": "./rig.render.blend.schema.json"
               },
+              "rig.render.environment": {
+                "$ref": "./rig.render.environment.schema.json"
+              },
               "rig.render.light": {
                 "$ref": "./rig.render.light.schema.json"
               },
