@@ -1,6 +1,6 @@
 ---
 id: "rig.led.uv_map"
-maturity: "experimental"
+maturity: "draft"
 summary: "LED UV sampling map. Format when present."
 fields:
   - name: "width"

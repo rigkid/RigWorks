@@ -1,6 +1,6 @@
 ---
 id: "rig.dmx.fixture"
-maturity: "experimental"
+maturity: "draft"
 summary: "DMX patch for a scene light. Format when present."
 fields:
   - name: "startChannel"

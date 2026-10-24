@@ -1,6 +1,6 @@
 ---
 id: "rig.io.dmx"
-maturity: "experimental"
+maturity: "draft"
 summary: "DMX512 port. Format when present."
 fields:
   - name: "universe"

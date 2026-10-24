@@ -1,6 +1,6 @@
 ---
 id: "rig.music.arrangement"
-maturity: "experimental"
+maturity: "draft"
 summary: "Ordered playback frames - a tracker's order list / a sequencer song chain. Format when present."
 fields:
   - name: "frames"

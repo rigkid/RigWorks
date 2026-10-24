@@ -1,6 +1,6 @@
 ---
 id: "rig.node.bus"
-maturity: "experimental"
+maturity: "draft"
 summary: "Named rail inside a rig.node.graph - a signal every node in the graph can tap without a drawn link (ground, master clock). Nested POD like pin and link, not a separate ECS entity."
 fields:
   - name: "id"

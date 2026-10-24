@@ -43,5 +43,5 @@
   "required": [
     "universe"
   ],
-  "x-rig-maturity": "experimental"
+  "x-rig-maturity": "draft"
 }

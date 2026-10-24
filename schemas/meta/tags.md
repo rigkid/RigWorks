@@ -1,6 +1,6 @@
 ---
 id: "rig.meta.tags"
-maturity: "experimental"
+maturity: "draft"
 summary: "Free-form labels for selection and filtering. Format when present."
 fields:
   - name: "tags"

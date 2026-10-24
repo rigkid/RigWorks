@@ -4,7 +4,7 @@
   "schemas": [
     {
       "id": "rig.ai.behavior",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "Behavior tree. Format when present. Compose rig.meta.named for a label.",
       "prose": "schemas/ai/behavior.md",
       "schema": "schemas/json/rig.ai.behavior.schema.json",
@@ -2943,7 +2943,7 @@
     },
     {
       "id": "rig.dmx.fixture",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "DMX patch for a scene light. Format when present.",
       "prose": "schemas/dmx/fixture.md",
       "schema": "schemas/json/rig.dmx.fixture.schema.json",
@@ -4352,7 +4352,7 @@
     },
     {
       "id": "rig.io.dmx",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "DMX512 port. Format when present.",
       "prose": "schemas/io/dmx.md",
       "schema": "schemas/json/rig.io.dmx.schema.json",
@@ -4478,7 +4478,7 @@
     },
     {
       "id": "rig.io.sacn",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "E1.31 (sACN) over the network. Format when present.",
       "prose": "schemas/io/sacn.md",
       "schema": "schemas/json/rig.io.sacn.schema.json",
@@ -5271,7 +5271,7 @@
     },
     {
       "id": "rig.led.uv_map",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "LED UV sampling map. Format when present.",
       "prose": "schemas/led/uv-map.md",
       "schema": "schemas/json/rig.led.uv_map.schema.json",
@@ -5411,7 +5411,7 @@
     },
     {
       "id": "rig.light.look",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "Show look applied to a scene light. Format when present.",
       "prose": "schemas/light/look.md",
       "schema": "schemas/json/rig.light.look.schema.json",
@@ -5745,7 +5745,7 @@
     },
     {
       "id": "rig.meta.tags",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "Free-form labels for selection and filtering. Format when present.",
       "prose": "schemas/meta/tags.md",
       "schema": "schemas/json/rig.meta.tags.schema.json",
@@ -5863,7 +5863,7 @@
     },
     {
       "id": "rig.mod.trigger",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "Discrete gated event. Format when present.",
       "prose": "schemas/mod/trigger.md",
       "schema": "schemas/json/rig.mod.trigger.schema.json",
@@ -5971,7 +5971,7 @@
     },
     {
       "id": "rig.music.arrangement",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "Ordered playback frames - a tracker's order list / a sequencer song chain. Format when present.",
       "prose": "schemas/music/arrangement.md",
       "schema": "schemas/json/rig.music.arrangement.schema.json",
@@ -6066,7 +6066,7 @@
     },
     {
       "id": "rig.music.midi_input",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "MIDI input port binding. Format when present.",
       "prose": "schemas/music/midi-input.md",
       "schema": "schemas/json/rig.music.midi_input.schema.json",
@@ -6101,7 +6101,7 @@
     },
     {
       "id": "rig.music.midi_output",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "MIDI sink identity. Format when present.",
       "prose": "schemas/music/midi-output.md",
       "schema": "schemas/json/rig.music.midi_output.schema.json",
@@ -6427,7 +6427,7 @@
     },
     {
       "id": "rig.node.bus",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "Named rail inside a rig.node.graph - a signal every node in the graph can tap without a drawn link (ground, master clock). Nested POD like pin and link, not a separate ECS entity.",
       "prose": "schemas/node/bus.md",
       "schema": "schemas/json/rig.node.bus.schema.json",
@@ -9151,7 +9151,7 @@
     },
     {
       "id": "rig.play.script",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "Named behavior attached to an entity. Format when present.",
       "prose": "schemas/play/script.md",
       "schema": "schemas/json/rig.play.script.schema.json",
@@ -10322,7 +10322,7 @@
     },
     {
       "id": "rig.sensor.presence",
-      "maturity": "experimental",
+      "maturity": "draft",
       "summary": "Occupancy / presence reading. Format when present.",
       "prose": "schemas/sensor/presence.md",
       "schema": "schemas/json/rig.sensor.presence.schema.json",

@@ -1,6 +1,6 @@
 ---
 id: "rig.sensor.presence"
-maturity: "experimental"
+maturity: "draft"
 summary: "Occupancy / presence reading. Format when present."
 fields:
   - name: "level"

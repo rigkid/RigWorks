@@ -201,7 +201,7 @@ describe("rig-validate", () => {
   it("notes experimental schema ids without failing", () => {
     const r = run(["--strict", fix("experimental-id.json")]);
     assert.equal(r.status, 0, r.stderr + r.stdout);
-    assert.match(r.stdout, /\[note\].*experimental schema id "rig\.io\.dmx"/);
+    assert.match(r.stdout, /\[note\].*experimental schema id "rig\.pcb\.keepout"/);
   });
 
   it("validates a .rigz package", () => {

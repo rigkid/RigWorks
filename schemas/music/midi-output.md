@@ -1,6 +1,6 @@
 ---
 id: "rig.music.midi_output"
-maturity: "experimental"
+maturity: "draft"
 summary: "MIDI sink identity. Format when present."
 topJson: "{\"allOf\":[{\"anyOf\":[{\"required\":[\"portName\"]},{\"required\":[\"portIndex\"]}]}]}"
 fields:

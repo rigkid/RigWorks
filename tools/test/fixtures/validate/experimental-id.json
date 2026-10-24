@@ -2,9 +2,9 @@
   "rig": "0.41.0",
   "entities": [
     {
-      "id": "port",
+      "id": "keepout-zone",
       "components": {
-        "rig.io.dmx": { "direction": "out" }
+        "rig.pcb.keepout": { "tracks": true }
       }
     }
   ]

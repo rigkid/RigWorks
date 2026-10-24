@@ -1,6 +1,6 @@
 ---
 id: "rig.music.midi_input"
-maturity: "experimental"
+maturity: "draft"
 summary: "MIDI input port binding. Format when present."
 topJson: "{\"allOf\":[{\"anyOf\":[{\"required\":[\"portName\"]},{\"required\":[\"portIndex\"]}]}]}"
 fields:

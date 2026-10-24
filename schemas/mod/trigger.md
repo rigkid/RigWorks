@@ -1,6 +1,6 @@
 ---
 id: "rig.mod.trigger"
-maturity: "experimental"
+maturity: "draft"
 summary: "Discrete gated event. Format when present."
 fields:
   - name: "source"

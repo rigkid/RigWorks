@@ -65,6 +65,22 @@ for (const name of onDisk) {
 }
 
 const index = JSON.parse(fs.readFileSync(path.join(root, "schemas", "index.json"), "utf8"));
+
+// A Compose table is a recommendation. Recommending an experimental id
+// from the skill means it has outgrown experimental: promote it to draft
+// (schemas/<domain>/<name>.md frontmatter, then npm run gen) instead of
+// teaching authors to emit a tier the router tells them to avoid.
+const maturityOf = new Map(index.schemas.map((s) => [s.id, s.maturity]));
+for (const name of onDisk) {
+  const text = fs.readFileSync(path.join(domainsDir, name), "utf8");
+  const compose = text.split(/^## Compose/m)[1]?.split(/^## /m)[0] ?? "";
+  for (const m of compose.matchAll(/rig\.[a-z][a-z0-9_]*(?:\.[a-z][a-z0-9_]*)+/g)) {
+    if (maturityOf.get(m[0]) === "experimental") {
+      fail(`domain slice domains/${name} recommends experimental id ${m[0]} in its Compose table - promote ${m[0]} to draft or stop recommending it`);
+    }
+  }
+}
+
 const missing = index.schemas.map((s) => s.id).filter((id) => !skillText.includes(id));
 for (const id of missing) fail(`schema id ${id} is not named in the skill (router or any domain slice)`);
 

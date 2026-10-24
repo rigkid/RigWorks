@@ -14,5 +14,5 @@
       "$ref": "./_defs.schema.json#/$defs/entity"
     }
   },
-  "x-rig-maturity": "experimental"
+  "x-rig-maturity": "draft"
 }

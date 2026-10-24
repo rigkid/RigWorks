@@ -1,6 +1,6 @@
 ---
 id: "rig.ai.behavior"
-maturity: "experimental"
+maturity: "draft"
 summary: "Behavior tree. Format when present. Compose rig.meta.named for a label."
 fields:
   - name: "nodes"

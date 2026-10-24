@@ -1,6 +1,6 @@
 ---
 id: "rig.play.script"
-maturity: "experimental"
+maturity: "draft"
 summary: "Named behavior attached to an entity. Format when present."
 fields:
   - name: "className"

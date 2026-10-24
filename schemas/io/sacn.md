@@ -1,6 +1,6 @@
 ---
 id: "rig.io.sacn"
-maturity: "experimental"
+maturity: "draft"
 summary: "E1.31 (sACN) over the network. Format when present."
 fields:
   - name: "universe"

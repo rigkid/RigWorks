@@ -1,6 +1,6 @@
 ---
 id: "rig.light.look"
-maturity: "experimental"
+maturity: "draft"
 summary: "Show look applied to a scene light. Format when present."
 fields:
   - name: "effectId"
