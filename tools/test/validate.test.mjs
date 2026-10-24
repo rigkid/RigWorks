@@ -198,6 +198,30 @@ describe("rig-validate", () => {
     assert.match(r.stdout, /gradient stop offsets must be non-decreasing/);
   });
 
+  it("errors on curve points not sorted by x", () => {
+    const r = run([fix("semantic-curve-points.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /curve points must be sorted by ascending x/);
+  });
+
+  it("errors on a mesh index past the last vertex", () => {
+    const r = run([fix("semantic-mesh-index.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /mesh index 7 is out of range - 4 vertices/);
+  });
+
+  it("errors when a CAD reference shares an entity with a solid", () => {
+    const r = run([fix("semantic-reference-solid.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /a CAD reference \(line\/plane\) is not a solid/);
+  });
+
+  it("errors on a tile index past the palette", () => {
+    const r = run([fix("semantic-tile-index.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /tile index out of range - palette "pal" has 2 colors/);
+  });
+
   it("notes experimental schema ids without failing", () => {
     const r = run(["--strict", fix("experimental-id.json")]);
     assert.equal(r.status, 0, r.stderr + r.stdout);

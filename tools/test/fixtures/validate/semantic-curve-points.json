@@ -1,0 +1,11 @@
+{
+  "rig": "0.42.0",
+  "entities": [
+    {
+      "id": "ease",
+      "components": {
+        "rig.anim.curve": { "points": [[0.5, 0.2], [0.25, 0.8], [1, 1]] }
+      }
+    }
+  ]
+}

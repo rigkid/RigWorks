@@ -1,8 +1,8 @@
 ---
 id: "rig.ui.action"
 maturity: "stable"
-summary: "A command button on a panel. Edges toward behavior; this schema is the piece most likely to change before 1.0.0."
-topJson: "{\"description\":\"Command button. Prefer shared actionId names for portable tools; unknown ids may be hidden. Most likely to change before 1.0.0.\"}"
+summary: "A command button on a panel. Edges toward behavior."
+topJson: "{\"description\":\"Command button. Prefer shared actionId names for portable tools; unknown ids may be hidden.\"}"
 fields:
   - name: "panel"
     ref: "entity"
@@ -26,7 +26,7 @@ fields:
 ---
 # `rig.ui.action`
 
-A command button on a panel. Edges toward behavior; this schema is the piece most likely to change before 1.0.0.
+A command button on a panel. Edges toward behavior.
 
 | Field | Type | Meaning |
 |-------|------|---------|

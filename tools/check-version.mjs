@@ -45,14 +45,19 @@ if (!fs.existsSync(sitePath)) {
   fail(`missing ${path.relative(root, sitePath)}`);
 } else {
   const site = fs.readFileSync(sitePath, "utf8");
-  // Allow middle-dot or plain hyphen between version and "draft".
+  // Allow middle-dot or plain hyphen between version and the tier word.
+  // The word follows the release: 0.x is "draft", 1.0.0+ is "stable".
   const badgeVer = site.match(
-    /class="badge">v([0-9]+\.[0-9]+\.[0-9]+)\s*[·.•∙⋅\-–—]\s*draft/
+    /class="badge">v([0-9]+\.[0-9]+\.[0-9]+)\s*[·.•∙⋅\-–—]\s*(draft|stable)/
   );
   const badgeCount = site.match(/class="badge">([0-9]+)\s+schemas</);
   if (!badgeVer) {
     fail(
-      'site/index.html needs a version badge like: <span class="badge">v0.10.0 · draft</span>'
+      'site/index.html needs a version badge like: <span class="badge">v1.0.0 · stable</span>'
+    );
+  } else if ((Number(badgeVer[1].split(".")[0]) >= 1) !== (badgeVer[2] === "stable")) {
+    fail(
+      `site badge says "${badgeVer[2]}" for v${badgeVer[1]} - 0.x badges read "draft", 1.0.0+ reads "stable"`
     );
   } else if (badgeVer[1] !== versionRaw) {
     fail(

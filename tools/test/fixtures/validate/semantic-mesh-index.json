@@ -1,0 +1,15 @@
+{
+  "rig": "0.42.0",
+  "entities": [
+    {
+      "id": "quad",
+      "components": {
+        "rig.geometry.mesh": {
+          "positions": [0, 0, 0, 10, 0, 0, 10, 10, 0, 0, 10, 0],
+          "indices": [0, 1, 7],
+          "mode": "triangles"
+        }
+      }
+    }
+  ]
+}

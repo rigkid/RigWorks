@@ -18,6 +18,7 @@ fields:
     absent: "no spin"
   - name: "mass"
     ref: "float"
+    exclusiveMinimum: 0
     meaning: "Optional. Mass; must be greater than 0; absent = 1"
     absent: "1"
   - name: "inertia"

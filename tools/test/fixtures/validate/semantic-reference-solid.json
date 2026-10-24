@@ -1,0 +1,12 @@
+{
+  "rig": "0.42.0",
+  "entities": [
+    {
+      "id": "datum",
+      "components": {
+        "rig.cad.reference_line": { "origin": [0, 0, 0], "direction": [1, 0, 0] },
+        "rig.cad.cuboid": { "sizeX": 10, "sizeY": 10, "sizeZ": 10 }
+      }
+    }
+  ]
+}

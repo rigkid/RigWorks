@@ -1,0 +1,21 @@
+{
+  "rig": "0.42.0",
+  "entities": [
+    {
+      "id": "pal",
+      "components": {
+        "rig.pixel.palette": { "colors": [[0, 0, 0, 1], [1, 1, 1, 1]] }
+      }
+    },
+    {
+      "id": "tiles",
+      "components": {
+        "rig.pixel.tile_set": {
+          "palette": "pal",
+          "tileWidth": 8, "tileHeight": 8, "tilesAcross": 2, "tileRows": 2,
+          "indices": [0, 1, 2, 0]
+        }
+      }
+    }
+  ]
+}

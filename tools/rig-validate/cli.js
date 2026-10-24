@@ -195,6 +195,31 @@ function suggestSchemaIds(id) {
  * components on one entity, graph cycles, duplicate durable ids, unit
  * quaternions, and required compositions. */
 
+// Named registry of the semantic rules below. tools/semantic-coverage.json
+// claims these by name per schema; tools/audit-semantic.mjs fails when a
+// rule is unclaimed or a claim names a rule that does not exist here.
+const SEMANTIC_RULES = [
+  "duplicate-stable-id",
+  "unit-quaternion",
+  "paint-fill-conflict",
+  "paint-stroke-conflict",
+  "required-composition",
+  "parent-cycle",
+  "ring-radii",
+  "axis-range",
+  "span-order",
+  "event-order",
+  "pattern-loop",
+  "spline-knots",
+  "gradient-stops",
+  "mesh-indices",
+  "star-radii",
+  "curve-points",
+  "surface-knots",
+  "reference-not-solid",
+  "tile-indices",
+];
+
 // Component that only means something composed with another on the same entity.
 const REQUIRED_COMPOSITION = {
   "rig.sensor.depth": "rig.spatial.camera",
@@ -289,6 +314,52 @@ function semanticChecks(data, errors) {
     const spline = comps["rig.geometry.spline"];
     if (Array.isArray(spline?.knots) && spline.knots.some((k, i) => i > 0 && k < spline.knots[i - 1])) {
       errors.push({ level: "error", path: `${base}/rig.geometry.spline/knots`, message: "spline knots must be non-decreasing" });
+    }
+    const mesh = comps["rig.geometry.mesh"];
+    if (Array.isArray(mesh?.indices) && Array.isArray(mesh?.positions)) {
+      const vertexCount = Math.floor(mesh.positions.length / 3);
+      const bad = mesh.indices.find((i) => !Number.isInteger(i) || i < 0 || i >= vertexCount);
+      if (bad !== undefined) {
+        errors.push({ level: "error", path: `${base}/rig.geometry.mesh/indices`, message: `mesh index ${bad} is out of range - ${vertexCount} vertices (positions / 3)` });
+      }
+    }
+    const star = comps["rig.geometry.star"];
+    if (star && typeof star.innerRadius === "number" && typeof star.radius === "number" && star.innerRadius >= star.radius) {
+      errors.push({ level: "error", path: `${base}/rig.geometry.star/innerRadius`, message: `innerRadius (${star.innerRadius}) must be smaller than radius (${star.radius})` });
+    }
+    const curvePoints = comps["rig.anim.curve"]?.points;
+    if (Array.isArray(curvePoints)) {
+      const outOfRange = curvePoints.some((p) => Array.isArray(p) && p.some((v) => typeof v === "number" && (v < 0 || v > 1)));
+      const unsorted = curvePoints.some((p, i) => i > 0 && Array.isArray(p) && typeof p[0] === "number" && typeof curvePoints[i - 1]?.[0] === "number" && p[0] < curvePoints[i - 1][0]);
+      if (outOfRange) errors.push({ level: "error", path: `${base}/rig.anim.curve/points`, message: "curve point coordinates must lie between 0 and 1" });
+      else if (unsorted) errors.push({ level: "error", path: `${base}/rig.anim.curve/points`, message: "curve points must be sorted by ascending x" });
+    }
+    for (const [comp, key] of [["rig.geometry.spline3d", "knots"], ["rig.geometry.nurbs_surface", "knotsU"], ["rig.geometry.nurbs_surface", "knotsV"]]) {
+      const knots = comps[comp]?.[key];
+      if (Array.isArray(knots) && knots.some((k, i) => i > 0 && k < knots[i - 1])) {
+        errors.push({ level: "error", path: `${base}/${comp}/${key}`, message: `${key} must be non-decreasing` });
+      }
+    }
+    const isReference = comps["rig.cad.reference_line"] ?? comps["rig.cad.reference_plane"];
+    if (isReference && (comps["rig.cad.cuboid"] || comps["rig.cad.boolean"])) {
+      errors.push({ level: "error", path: `${base}/rig.cad.reference_line`, message: "a CAD reference (line/plane) is not a solid - it must not share an entity with rig.cad.cuboid or rig.cad.boolean" });
+    }
+    const booleanOps = comps["rig.cad.boolean"]?.operands;
+    if (Array.isArray(booleanOps)) {
+      for (const op of booleanOps) {
+        const target = typeof op === "string" ? entities[byId.get(op)] : undefined;
+        const tc = target?.components ?? {};
+        if (tc["rig.cad.reference_line"] || tc["rig.cad.reference_plane"]) {
+          errors.push({ level: "error", path: `${base}/rig.cad.boolean/operands`, message: `boolean operand "${op}" is a CAD reference (line/plane), not a solid` });
+        }
+      }
+    }
+    const tileSet = comps["rig.pixel.tile_set"];
+    if (tileSet && Array.isArray(tileSet.indices) && typeof tileSet.palette === "string") {
+      const palette = entities[byId.get(tileSet.palette)]?.components?.["rig.pixel.palette"];
+      if (Array.isArray(palette?.colors) && tileSet.indices.some((i) => i >= palette.colors.length)) {
+        errors.push({ level: "error", path: `${base}/rig.pixel.tile_set/indices`, message: `tile index out of range - palette "${tileSet.palette}" has ${palette.colors.length} colors` });
+      }
     }
     const stops = comps["rig.paint.gradient"]?.stops;
     if (Array.isArray(stops)) {

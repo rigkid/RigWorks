@@ -1,5 +1,5 @@
 {
-  "version": "0.42.0",
+  "version": "1.0.0",
   "generatedBy": "tools/gen-schemas.mjs - do not hand-edit; edit frontmatter in schemas/<domain>/<name>.md",
   "schemas": [
     {
@@ -11629,7 +11629,7 @@
     {
       "id": "rig.ui.action",
       "maturity": "stable",
-      "summary": "A command button on a panel. Edges toward behavior; this schema is the piece most likely to change before 1.0.0.",
+      "summary": "A command button on a panel. Edges toward behavior.",
       "prose": "schemas/ui/action.md",
       "schema": "schemas/json/rig.ui.action.schema.json",
       "fields": [

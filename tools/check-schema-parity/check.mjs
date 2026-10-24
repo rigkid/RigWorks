@@ -39,10 +39,21 @@ for (const file of walkFiles(path.join(root, "schemas"), (n) => n.endsWith(".md"
 // component) are exercised when an example uses the parent and the
 // parent's grammar $refs them - derived from the generated schemas, so
 // no hand-kept allowlist can drift.
-const exampleText = fs.readdirSync(path.join(root, "examples"))
-  .filter((n) => n.endsWith(".json"))
-  .map((n) => fs.readFileSync(path.join(root, "examples", n), "utf8"))
-  .join("\n");
+// Teaching examples and coverage specimens both exercise schema ids;
+// specimens live in examples/coverage/ and are validator fodder, not
+// copy patterns (the skill never links them - see check-skill).
+const exampleText = (() => {
+  const texts = [];
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(p);
+      else if (entry.name.endsWith(".json")) texts.push(fs.readFileSync(p, "utf8"));
+    }
+  };
+  walk(path.join(root, "examples"));
+  return texts.join("\n");
+})();
 const nestedExercised = new Set();
 {
   // Transitive: graph -> node -> pin/param counts as exercised.

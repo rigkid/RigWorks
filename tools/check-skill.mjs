@@ -62,6 +62,11 @@ for (const name of onDisk) {
   if (!/Copy:.*examples\/[a-z0-9-]+\.json/.test(text)) {
     fail(`domain slice domains/${name} points at no copyable example - link one in its Copy line`);
   }
+  // Teaching examples only: examples/coverage/ holds validator specimens
+  // that exist to exercise schema ids, not documents worth imitating.
+  if (/examples\/coverage\//.test(text)) {
+    fail(`domain slice domains/${name} links a coverage specimen (examples/coverage/) as a copy pattern - specimens are validator fodder, not teaching examples`);
+  }
 }
 
 const index = JSON.parse(fs.readFileSync(path.join(root, "schemas", "index.json"), "utf8"));

@@ -2,6 +2,8 @@
 
 Canonical Rig JSON documents. Copy the pattern; validate before you trust the output. Agent distillation of these rules: [`../skills/generating-rig-documents/SKILL.md`](../skills/generating-rig-documents/SKILL.md).
 
+Two kinds live here. **Teaching examples** (this folder) model one believable document each - copy these. **Coverage specimens** ([`coverage/`](coverage/)) exist to exercise schema ids for the validator and the maturity gate; they are deliberately dense, are not shown in the site gallery, and the skill never links them.
+
 ```bash
 node tools/rig-validate/cli.js examples/minimal-scene.json
 node tools/rig-validate/cli.js examples/lfo-binding.json
@@ -49,8 +51,8 @@ node tools/rig-validate/cli.js examples/record-civic.json
 node tools/rig-validate/cli.js examples/node-graph.json
 node tools/rig-validate/cli.js examples/music-sequencer.json
 node tools/rig-validate/cli.js examples/anim-tween.json
-node tools/rig-validate/cli.js examples/paint-effects.json
-node tools/rig-validate/cli.js examples/pixel-layers.json
+node tools/rig-validate/cli.js examples/coverage/paint-effects.json
+node tools/rig-validate/cli.js examples/coverage/pixel-layers.json
 node tools/rig-validate/cli.js examples/layout-grid.json
 node tools/rig-validate/cli.js examples/cad-solids.json
 node tools/rig-validate/cli.js examples/show-control.json
@@ -381,11 +383,15 @@ A transport (120 bpm) with a 96-tick clock, a four-step minor bass pattern (step
 
 A panel filled by reference (`rig.paint.fill` to a gradient entity listed in a `rig.paint.library`), shown with `rig.render.visibility` and `rig.render.blend`, faded in by a `rig.anim.tween` shaped by a `rig.anim.curve`.
 
-## `paint-effects.json`
+## Coverage specimens
+
+Documents under [`coverage/`](coverage/) exist to exercise schema ids for the validator and the maturity gate - they are deliberately dense and are **not** copy patterns. The skill never links them; imitate the teaching examples above instead.
+
+### `coverage/paint-effects.json`
 
 Referenced paint on real drawables: an arc dial stroked by a shared `rig.paint.solid`, with paint order, markers, and an alpha mask; a spline under a blur filter graph; a hatched ring badge and a scaled `rig.spatial.instance` of it.
 
-## `pixel-layers.json`
+### `coverage/pixel-layers.json`
 
 A 64px canvas, a four-colour palette, one solid layer with generator source, raster role, hatch region, mask path, effect chain, and composite flag, plus a tile layer over the palette.
 
