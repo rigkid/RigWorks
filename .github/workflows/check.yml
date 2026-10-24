@@ -25,3 +25,13 @@ jobs:
         env:
           RIG_REQUIRE_TAG: "1"
         run: node tools/check-tag.mjs
+
+  # The published Action (action.yml at the repo root), exercised the way
+  # a consumer's workflow would run it.
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          files: "examples/minimal-scene.json examples/play-scene.json"

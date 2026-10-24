@@ -30,9 +30,9 @@ const help = args.length === 0 || args.includes("--help") || args.includes("-h")
 
 function usage() {
   console.log(`Usage:
-  rigkit init <name>                  write <name>/scene.rig
-  rigkit validate [--strict] <file>...
-  rigkit [--strict] <file>...         same as validate
+  rig-validate init <name>                  write <name>/scene.rig
+  rig-validate validate [--strict] <file>...
+  rig-validate [--strict] <file>...         same as validate
 
 A Rig document is JSON. On disk: .rig, or .rigz (ZIP of one .rig plus data/).`);
 }
@@ -45,7 +45,7 @@ if (help) {
 if (args[0] === "init") {
   const name = args[1];
   if (!name || name.startsWith("-")) {
-    console.error("Usage: rigkit init <name>");
+    console.error("Usage: rig-validate init <name>");
     process.exit(2);
   }
   if (!fs.existsSync(starterPath)) {

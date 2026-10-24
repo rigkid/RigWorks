@@ -1,11 +1,25 @@
-# rigkit
+# rig-validate
 
 Scaffold and validate Rig documents. JSON is the wire format. On disk that is `.rig`, or `.rigz` (a ZIP of one root `.rig` plus a `data/` folder; `data/` may contain further `.rig` files) - [interchange](../../docs/interchange.md#package).
 
 ```bash
-npx rigkit init my-scene
-npx rigkit validate my-scene/scene.rig
+npx rig-validate init my-scene
+npx rig-validate validate my-scene/scene.rig
+npx rig-validate --strict path/to/doc.json
 ```
+
+## In CI (GitHub Action)
+
+This repository is also the Action - validate documents in any workflow:
+
+```yaml
+- uses: rigkid/RigWorks@v1.0.0
+  with:
+    files: "docs/**/*.rig examples/*.json"
+    strict: "true" # default; unknown schema ids become errors
+```
+
+The repo's own CI runs the Action against reference documents on every push, so the published form is the tested form.
 
 From a RigWorks checkout:
 

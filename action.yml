@@ -1,0 +1,32 @@
+name: rig-validate
+description: Validate Rig (.rig / Rig JSON) documents against the RigWorks Contract - envelope, fields, and semantic rules.
+author: RigWorks
+
+inputs:
+  files:
+    description: "Space-separated document paths or globs, e.g. \"docs/**/*.rig examples/*.json\""
+    required: true
+  strict:
+    description: "Treat unknown schema ids as errors (with closest-id suggestions)"
+    required: false
+    default: "true"
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - name: Install validator dependencies
+      shell: bash
+      run: npm install --prefix "${{ github.action_path }}/tools/rig-validate" --no-audit --no-fund --loglevel=error
+    - name: Validate Rig documents
+      shell: bash
+      run: |
+        args=()
+        if [ "${{ inputs.strict }}" = "true" ]; then args+=(--strict); fi
+        node "${{ github.action_path }}/tools/rig-validate/cli.js" "${args[@]}" ${{ inputs.files }}
+
+branding:
+  icon: check-square
+  color: blue
