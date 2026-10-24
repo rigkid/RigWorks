@@ -3,6 +3,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/rigkid/RigWorks?style=social)](https://github.com/rigkid/RigWorks/stargazers)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue)](docs/history.md)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/GitBruno)
 
 ![The geometry vocabulary - examples/minimal-scene.json drawn by the repo's own SVG fulfillment](site/scene.svg)
 

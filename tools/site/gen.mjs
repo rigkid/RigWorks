@@ -528,6 +528,7 @@ function nav(pageOut, current) {
     ${item("Docs", DOCS_OUT, "docs")}
     ${item("Examples", EXAMPLES_OUT, "examples")}
     ${item("For AI", AI_OUT, "for-ai")}
+    <a href="https://github.com/sponsors/GitBruno">Sponsor</a>
     <a class="ghost" href="${GITHUB}">GitHub</a>
   </span>
 </nav>`;
