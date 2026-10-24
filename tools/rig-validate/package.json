@@ -4,11 +4,18 @@
   "private": false,
   "description": "Scaffold and validate Rig documents.",
   "license": "MIT",
-  "keywords": ["rig", "rigworks", "json-schema", "validator", "entity-component", "pod"],
+  "keywords": [
+    "rig",
+    "rigworks",
+    "json-schema",
+    "validator",
+    "entity-component",
+    "pod"
+  ],
   "type": "module",
   "bin": {
-    "rigkit": "./cli.js",
-    "rig-validate": "./cli.js"
+    "rigkit": "cli.js",
+    "rig-validate": "cli.js"
   },
   "files": [
     "cli.js",
