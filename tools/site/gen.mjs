@@ -528,7 +528,7 @@ function nav(pageOut, current) {
     ${item("Docs", DOCS_OUT, "docs")}
     ${item("Examples", EXAMPLES_OUT, "examples")}
     ${item("For AI", AI_OUT, "for-ai")}
-    <a href="https://github.com/sponsors/GitBruno">Sponsor</a>
+    <a class="sponsor" href="https://github.com/sponsors/GitBruno"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 14.5S1 10.2 1 6.1C1 3.6 3 1.5 5.5 1.5c1 0 1.9.5 2.5 1.2.6-.7 1.5-1.2 2.5-1.2C13 1.5 15 3.6 15 6.1c0 4.1-7 8.4-7 8.4z"/></svg>Sponsor</a>
     <a class="ghost" href="${GITHUB}">GitHub</a>
   </span>
 </nav>`;

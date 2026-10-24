@@ -113,6 +113,22 @@ nav {
 }
 .nav-links .ghost:hover { border-color: var(--accent-dim); background: var(--surface); }
 
+.nav-links .sponsor {
+  border: 1px solid rgba(240, 107, 168, 0.5);
+  border-radius: 6px;
+  padding: 0.45rem 0.9rem;
+  color: #f06ba8;
+  gap: 0.42rem;
+  font-weight: 600;
+}
+.nav-links .sponsor:hover {
+  color: #ff8fbe;
+  border-color: #f06ba8;
+  background: rgba(240, 107, 168, 0.09);
+  text-decoration: none;
+}
+.nav-links .sponsor svg { flex: none; }
+
 .kicker {
   font-family: var(--mono);
   font-size: 0.98rem;
@@ -173,6 +189,17 @@ h1 {
   font-weight: 600;
 }
 .btn.primary:hover { background: #5cb4ff; border-color: #5cb4ff; }
+
+.btn.sponsor-btn {
+  border-color: rgba(240, 107, 168, 0.55);
+  color: #f06ba8;
+  font-weight: 600;
+}
+.btn.sponsor-btn:hover {
+  border-color: #f06ba8;
+  background: rgba(240, 107, 168, 0.09);
+  color: #ff8fbe;
+}
 
 .badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0; }
 
