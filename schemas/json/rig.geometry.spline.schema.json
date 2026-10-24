@@ -42,5 +42,5 @@
     "controlPoints",
     "knots"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

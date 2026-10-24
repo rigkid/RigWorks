@@ -1,6 +1,6 @@
 ---
 id: "rig.geometry.ring"
-maturity: "draft"
+maturity: "stable"
 summary: "Annulus - a disc with a concentric hole. Format when present."
 fields:
   - name: "centerX"

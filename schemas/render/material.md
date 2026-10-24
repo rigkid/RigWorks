@@ -1,6 +1,6 @@
 ---
 id: "rig.render.material"
-maturity: "draft"
+maturity: "stable"
 summary: "Shading parameters. Format when present."
 fields:
   - name: "albedoRgb"

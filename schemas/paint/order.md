@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.order"
-maturity: "draft"
+maturity: "stable"
 summary: "Draw order of fill, stroke, and markers on one drawable. Format when present."
 fields:
   - name: "layers"

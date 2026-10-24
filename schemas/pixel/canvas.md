@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.canvas"
-maturity: "draft"
+maturity: "stable"
 summary: "Artboard size and clear colour. Format when present."
 fields:
   - name: "width"

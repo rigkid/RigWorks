@@ -5,6 +5,15 @@
   },
   "entities": [
     {
+      "id": "master-bold",
+      "components": {
+        "rig.meta.named": { "name": "Bold master", "stableId": "master-bold" },
+        "rig.font.master": {
+          "location": [{ "tag": "wght", "value": 700 }]
+        }
+      }
+    },
+    {
       "id": "face",
       "components": {
         "rig.meta.named": { "name": "LiveFace Variable", "stableId": "LiveFace-Variable" },

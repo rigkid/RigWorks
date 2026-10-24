@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.brush"
-maturity: "draft"
+maturity: "stable"
 summary: "Measured facts about a physical paint brush in a holder."
 fields:
   - name: "shape"

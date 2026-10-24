@@ -1,0 +1,50 @@
+{
+  "rig": "0.42.0",
+  "document": {
+    "title": "Pixel layers - canvas, palette, raster layer, tiles",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "canvas",
+      "components": {
+        "rig.meta.named": { "name": "canvas", "stableId": "canvas" },
+        "rig.pixel.canvas": { "width": 64, "height": 64, "clearRgba": [0, 0, 0, 0] }
+      }
+    },
+    {
+      "id": "palette",
+      "components": {
+        "rig.meta.named": { "name": "palette", "stableId": "palette" },
+        "rig.pixel.palette": {
+          "colors": [[0, 0, 0, 0], [0.1, 0.1, 0.12, 1], [0.9, 0.85, 0.7, 1], [0.8, 0.3, 0.2, 1]]
+        }
+      }
+    },
+    {
+      "id": "base-layer",
+      "components": {
+        "rig.meta.named": { "name": "base layer", "stableId": "base-layer" },
+        "rig.pixel.layer": { "kind": "solid", "rgba": [0.1, 0.1, 0.12, 1] },
+        "rig.pixel.source": { "kind": "generator", "generatorName": "checker" },
+        "rig.pixel.raster": { "role": "layer-pixels", "width": 64, "height": 64 },
+        "rig.pixel.region": { "fill": "hatch", "paintBrushWidth": 2, "color": [0.9, 0.85, 0.7] },
+        "rig.pixel.mask_path": { "xy": [4, 4, 60, 4, 60, 60, 4, 60], "closed": true, "filled": true },
+        "rig.pixel.effect_chain": { "steps": [{ "id": 1, "stage": "image", "effectId": "blur" }], "nextId": 2 },
+        "rig.pixel.composite": { "enabled": true }
+      }
+    },
+    {
+      "id": "tile-layer",
+      "components": {
+        "rig.meta.named": { "name": "tile layer", "stableId": "tile-layer" },
+        "rig.pixel.layer": { "kind": "vector" },
+        "rig.pixel.tile_set": {
+          "palette": "palette",
+          "tileWidth": 8, "tileHeight": 8, "tilesAcross": 8, "tileRows": 8,
+          "indices": [1, 2, 2, 1, 2, 3, 3, 2]
+        }
+      }
+    }
+  ]
+}

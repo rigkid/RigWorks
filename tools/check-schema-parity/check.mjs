@@ -35,16 +35,31 @@ for (const file of walkFiles(path.join(root, "schemas"), (n) => n.endsWith(".md"
 }
 
 // Stable is a freeze promise: a stable schema must be exercised by at
-// least one reference example. Nested-only schemas are exercised inside
-// another component's example rather than as a component key.
-const NESTED_ONLY = new Set(["rig.node.node", "rig.node.pin", "rig.node.param"]);
+// least one reference example. Nested schemas (array items of another
+// component) are exercised when an example uses the parent and the
+// parent's grammar $refs them - derived from the generated schemas, so
+// no hand-kept allowlist can drift.
 const exampleText = fs.readdirSync(path.join(root, "examples"))
   .filter((n) => n.endsWith(".json"))
   .map((n) => fs.readFileSync(path.join(root, "examples", n), "utf8"))
   .join("\n");
+const nestedExercised = new Set();
+{
+  // Transitive: graph -> node -> pin/param counts as exercised.
+  const queue = sources.filter((s) => exampleText.includes(`"${s.data.id}"`)).map((s) => s.data.id);
+  while (queue.length) {
+    const parentId = queue.shift();
+    const file = path.join(jsonDir, `${parentId}.schema.json`);
+    if (!fs.existsSync(file)) continue;
+    const text = fs.readFileSync(file, "utf8");
+    for (const m of text.matchAll(/\.\/(rig\.[a-z0-9_.]+)\.schema\.json/g)) {
+      if (!nestedExercised.has(m[1])) { nestedExercised.add(m[1]); queue.push(m[1]); }
+    }
+  }
+}
 for (const s of sources) {
   if (s.data.maturity !== "stable" || s.data.special === "document") continue;
-  if (!exampleText.includes(`"${s.data.id}"`) && !NESTED_ONLY.has(s.data.id)) {
+  if (!exampleText.includes(`"${s.data.id}"`) && !nestedExercised.has(s.data.id)) {
     fail(`stable schema ${s.data.id} appears in no example - exemplify it or demote it (${s.rel})`);
   }
 }

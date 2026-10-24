@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.composite"
-maturity: "draft"
+maturity: "stable"
 summary: "Stack policy for the pixel compositor."
 fields:
   - name: "enabled"

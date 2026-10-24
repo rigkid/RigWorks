@@ -1,6 +1,6 @@
 ---
 id: "rig.font.cell"
-maturity: "draft"
+maturity: "stable"
 summary: "Live variable-glyph reconstruction on a glyph entity. Format when present."
 fields:
   - name: "baseAdv"

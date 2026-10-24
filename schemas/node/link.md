@@ -1,6 +1,6 @@
 ---
 id: "rig.node.link"
-maturity: "draft"
+maturity: "stable"
 summary: "Directed connection from an output pin to an input pin inside a rig.node.graph."
 fields:
   - name: "id"

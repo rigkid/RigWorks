@@ -49,6 +49,11 @@ node tools/rig-validate/cli.js examples/record-civic.json
 node tools/rig-validate/cli.js examples/node-graph.json
 node tools/rig-validate/cli.js examples/music-sequencer.json
 node tools/rig-validate/cli.js examples/anim-tween.json
+node tools/rig-validate/cli.js examples/paint-effects.json
+node tools/rig-validate/cli.js examples/pixel-layers.json
+node tools/rig-validate/cli.js examples/layout-grid.json
+node tools/rig-validate/cli.js examples/cad-solids.json
+node tools/rig-validate/cli.js examples/show-control.json
 ```
 
 ## SUDE sketch
@@ -375,6 +380,26 @@ A transport (120 bpm) with a 96-tick clock, a four-step minor bass pattern (step
 ## `anim-tween.json`
 
 A panel filled by reference (`rig.paint.fill` to a gradient entity listed in a `rig.paint.library`), shown with `rig.render.visibility` and `rig.render.blend`, faded in by a `rig.anim.tween` shaped by a `rig.anim.curve`.
+
+## `paint-effects.json`
+
+Referenced paint on real drawables: an arc dial stroked by a shared `rig.paint.solid`, with paint order, markers, and an alpha mask; a spline under a blur filter graph; a hatched ring badge and a scaled `rig.spatial.instance` of it.
+
+## `pixel-layers.json`
+
+A 64px canvas, a four-colour palette, one solid layer with generator source, raster role, hatch region, mask path, effect chain, and composite flag, plus a tile layer over the palette.
+
+## `layout-grid.json`
+
+One page carrying its baseline/column grid and section numbering, beside a named table style whose colours are paint entities.
+
+## `cad-solids.json`
+
+A revolved vase from a path profile and a sphere knob - the two solid primitives the boolean example does not cover.
+
+## `show-control.json`
+
+An OSC endpoint (UDP listen/send, TCP framing, multicast) beside a 115200-baud serial line. Endpoints are authored config; sockets are host runtime.
 
 ## `kicad-pcb.json`
 

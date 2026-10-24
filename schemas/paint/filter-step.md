@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.filter_step"
-maturity: "draft"
+maturity: "stable"
 summary: "One primitive in a rig.paint.filter graph. Format when present."
 fields:
   - name: "kind"

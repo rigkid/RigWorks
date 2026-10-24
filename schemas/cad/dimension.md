@@ -1,6 +1,6 @@
 ---
 id: "rig.cad.dimension"
-maturity: "draft"
+maturity: "stable"
 summary: "Numeric datum between CAD entities. Format when present."
 fields:
   - name: "kind"

@@ -12,5 +12,5 @@
   "required": [
     "path"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

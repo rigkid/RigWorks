@@ -168,6 +168,36 @@ describe("rig-validate", () => {
     assert.match(r.stdout, /rig\.sensor\.depth composes rig\.spatial\.camera/);
   });
 
+  it("errors on an inverted ring", () => {
+    const r = run([fix("semantic-ring-inverted.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /innerRadius \(40\) must be smaller than outerRadius \(30\)/);
+  });
+
+  it("errors on an axis whose min is not below its max", () => {
+    const r = run([fix("semantic-axis-range.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /axis min \(900\) must be smaller than max \(100\)/);
+  });
+
+  it("errors on a span that ends before it starts", () => {
+    const r = run([fix("semantic-span-reversed.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /endDate \(2026-05-01\) is before startDate \(2026-05-10\)/);
+  });
+
+  it("errors on decreasing spline knots", () => {
+    const r = run([fix("semantic-knots.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /spline knots must be non-decreasing/);
+  });
+
+  it("errors on out-of-order gradient stops", () => {
+    const r = run([fix("semantic-gradient-stops.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /gradient stop offsets must be non-decreasing/);
+  });
+
   it("notes experimental schema ids without failing", () => {
     const r = run(["--strict", fix("experimental-id.json")]);
     assert.equal(r.status, 0, r.stderr + r.stdout);

@@ -52,5 +52,5 @@
     "source",
     "bandCount"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

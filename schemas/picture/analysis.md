@@ -1,6 +1,6 @@
 ---
 id: "rig.picture.analysis"
-maturity: "draft"
+maturity: "stable"
 summary: "Request for live frame analysis of a picture. Format when present."
 fields:
   - name: "source"

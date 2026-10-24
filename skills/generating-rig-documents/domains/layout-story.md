@@ -1,6 +1,6 @@
 # Layout and story - pages, frames, editorial copy
 
-Load for: pages, masters, text frames, stories, styles, tables. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/page-anchor.json`](../../../examples/page-anchor.json), [`examples/story-flow.json`](../../../examples/story-flow.json), [`examples/story-frames.json`](../../../examples/story-frames.json), [`examples/text-path.json`](../../../examples/text-path.json). IDML mapping: [`docs/idml.md`](../../../docs/idml.md).
+Load for: pages, masters, text frames, stories, styles, tables. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/page-anchor.json`](../../../examples/page-anchor.json), [`examples/story-flow.json`](../../../examples/story-flow.json), [`examples/story-frames.json`](../../../examples/story-frames.json), [`examples/text-path.json`](../../../examples/text-path.json), [`examples/layout-grid.json`](../../../examples/layout-grid.json). IDML mapping: [`docs/idml.md`](../../../docs/idml.md).
 
 ## Compose
 

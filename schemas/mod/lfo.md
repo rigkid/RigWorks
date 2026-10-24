@@ -1,6 +1,6 @@
 ---
 id: "rig.mod.lfo"
-maturity: "draft"
+maturity: "stable"
 summary: "Low-frequency oscillator. Format when present."
 fields:
   - name: "waveform"

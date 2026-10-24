@@ -1,0 +1,11 @@
+{
+  "rig": "0.41.0",
+  "entities": [
+    {
+      "id": "span",
+      "components": {
+        "rig.calendar.span": { "startDate": "2026-05-10", "endDate": "2026-05-01" }
+      }
+    }
+  ]
+}

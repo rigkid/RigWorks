@@ -1,6 +1,6 @@
 ---
 id: "rig.io.serial"
-maturity: "draft"
+maturity: "stable"
 summary: "Byte buffers and device handles stay in code packs."
 fields:
   - name: "port"

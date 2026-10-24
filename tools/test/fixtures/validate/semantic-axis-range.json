@@ -1,0 +1,11 @@
+{
+  "rig": "0.41.0",
+  "entities": [
+    {
+      "id": "axis",
+      "components": {
+        "rig.font.axis": { "tag": "wght", "min": 900, "default": 400, "max": 100 }
+      }
+    }
+  ]
+}

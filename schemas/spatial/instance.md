@@ -1,6 +1,6 @@
 ---
 id: "rig.spatial.instance"
-maturity: "draft"
+maturity: "stable"
 summary: "Instance of another entity. Format when present."
 fields:
   - name: "source"

@@ -31,5 +31,5 @@
     "waveform",
     "frequency"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

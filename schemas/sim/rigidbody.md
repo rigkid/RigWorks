@@ -1,6 +1,6 @@
 ---
 id: "rig.sim.rigidbody"
-maturity: "draft"
+maturity: "stable"
 summary: "Physics body. Format when present."
 fields:
   - name: "bodyType"

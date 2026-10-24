@@ -1,6 +1,6 @@
 ---
 id: "rig.print.material"
-maturity: "draft"
+maturity: "stable"
 summary: "Pellet / filament grade used on a rig.print.machine. Format when present."
 fields:
   - name: "densityKgM3"

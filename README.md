@@ -144,7 +144,8 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | [docs/ecs.md](docs/ecs.md) | Entity-component conventions |
 | [docs/sude.md](docs/sude.md) | Setup / Update / Draw / Exit |
 | [docs/ui.md](docs/ui.md) | Optional UI layer over the same data |
-| [docs/versioning.md](docs/versioning.md) | SemVer, maturity tiers, and release history |
+| [docs/versioning.md](docs/versioning.md) | SemVer, maturity tiers, and the 1.0 freeze |
+| [docs/history.md](docs/history.md) | Release notes, one row per version |
 | [docs/gaps.md](docs/gaps.md) | Where the Contract is silent, ambiguous, or wrong |
 
 | Data and exchange | |

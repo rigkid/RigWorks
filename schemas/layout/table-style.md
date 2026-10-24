@@ -1,6 +1,6 @@
 ---
 id: "rig.layout.table_style"
-maturity: "draft"
+maturity: "stable"
 summary: "Visual map for tables (rig.story.table). Format when present."
 fields:
   - name: "name"

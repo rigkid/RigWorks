@@ -1,6 +1,6 @@
 ---
 id: "rig.layout.applied_master"
-maturity: "draft"
+maturity: "stable"
 summary: "Which master a document page uses. Format when present."
 fields:
   - name: "master"

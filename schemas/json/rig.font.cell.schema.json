@@ -95,5 +95,5 @@
   "required": [
     "baseAdv"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

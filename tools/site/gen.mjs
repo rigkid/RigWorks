@@ -202,7 +202,7 @@ const DOC_GROUPS = [
   {
     title: "Contract",
     note: "The portable rules, the vocabulary for talking about them, and the test for whether something is Rig.",
-    slugs: ["terms", "honors", "ecs", "sude", "ui", "versioning", "gaps"],
+    slugs: ["terms", "honors", "ecs", "sude", "ui", "versioning", "history", "gaps"],
   },
   {
     title: "Data and exchange",
@@ -262,7 +262,7 @@ function loadDocs() {
   };
   return fs
     .readdirSync(path.join(root, "docs"))
-    .filter((n) => n.endsWith(".md"))
+    .filter((n) => n.endsWith(".md") && n !== "README.md")
     .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b))
     .map((name) => {
       const md = readText("docs", name);

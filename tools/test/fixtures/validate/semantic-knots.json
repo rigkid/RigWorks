@@ -1,0 +1,15 @@
+{
+  "rig": "0.41.0",
+  "entities": [
+    {
+      "id": "curve",
+      "components": {
+        "rig.geometry.spline": {
+          "degree": 2,
+          "controlPoints": [[0, 0], [40, 30], [80, 0]],
+          "knots": [0, 0, 0.5, 0.25, 1, 1]
+        }
+      }
+    }
+  ]
+}

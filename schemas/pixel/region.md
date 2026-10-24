@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.region"
-maturity: "draft"
+maturity: "stable"
 summary: "Found or drawn feeder region."
 fields:
   - name: "fit"

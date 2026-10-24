@@ -29,7 +29,8 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 - [docs/ecs.md](docs/ecs.md): entity/component POD (floor) + runtime systems (live hosts)
 - [docs/sude.md](docs/sude.md): Setup / Update / Draw / Exit (live hosts)
 - [docs/ui.md](docs/ui.md): optional Rig + UI (same Contract; litmus + `rig-validate` on `rig.ui.*`)
-- [docs/versioning.md](docs/versioning.md): version ranges, maturity tiers, and stability
+- [docs/versioning.md](docs/versioning.md): version ranges, maturity tiers, and the 1.0 freeze
+- [docs/history.md](docs/history.md): release notes, one row per version
 - [docs/gaps.md](docs/gaps.md): where the Contract is silent, ambiguous, or wrong
 
 ### Data and exchange

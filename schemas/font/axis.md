@@ -1,6 +1,6 @@
 ---
 id: "rig.font.axis"
-maturity: "draft"
+maturity: "stable"
 summary: "One design axis on a face. Format when present."
 fields:
   - name: "tag"

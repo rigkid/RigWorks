@@ -1,6 +1,6 @@
 ---
 id: "rig.geometry.arc"
-maturity: "draft"
+maturity: "stable"
 summary: "Circular or elliptical arc (or pie wedge). Format when present."
 fields:
   - name: "centerX"

@@ -1,6 +1,6 @@
 ---
 id: "rig.print.machine"
-maturity: "draft"
+maturity: "stable"
 summary: "FGF / pellet printer envelope. Format when present."
 fields:
   - name: "bedX"

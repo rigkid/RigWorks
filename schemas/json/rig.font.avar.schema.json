@@ -29,5 +29,5 @@
   "required": [
     "segments"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

@@ -259,6 +259,46 @@ function semanticChecks(data, errors) {
         });
       }
     }
+
+    // Cross-field rules: two fields of one component that only make
+    // sense together (ranges, ordered sequences, date spans).
+    const ring = comps["rig.geometry.ring"];
+    if (ring && typeof ring.innerRadius === "number" && typeof ring.outerRadius === "number" && ring.innerRadius >= ring.outerRadius) {
+      errors.push({ level: "error", path: `${base}/rig.geometry.ring/innerRadius`, message: `innerRadius (${ring.innerRadius}) must be smaller than outerRadius (${ring.outerRadius})` });
+    }
+    const axis = comps["rig.font.axis"];
+    if (axis && typeof axis.min === "number" && typeof axis.max === "number") {
+      if (axis.min >= axis.max) {
+        errors.push({ level: "error", path: `${base}/rig.font.axis/min`, message: `axis min (${axis.min}) must be smaller than max (${axis.max})` });
+      } else if (typeof axis.default === "number" && (axis.default < axis.min || axis.default > axis.max)) {
+        errors.push({ level: "error", path: `${base}/rig.font.axis/default`, message: `axis default (${axis.default}) must lie between min (${axis.min}) and max (${axis.max})` });
+      }
+    }
+    const span = comps["rig.calendar.span"];
+    if (span && Date.parse(span.endDate) < Date.parse(span.startDate)) {
+      errors.push({ level: "error", path: `${base}/rig.calendar.span/endDate`, message: `endDate (${span.endDate}) is before startDate (${span.startDate})` });
+    }
+    const event = comps["rig.calendar.event"];
+    if (event?.endDate && Date.parse(event.endDate) < Date.parse(event.startDate)) {
+      errors.push({ level: "error", path: `${base}/rig.calendar.event/endDate`, message: `endDate (${event.endDate}) is before startDate (${event.startDate})` });
+    }
+    const pattern = comps["rig.music.pattern"];
+    if (pattern && typeof pattern.loopStartStep === "number" && typeof pattern.loopEndStep === "number" && pattern.loopEndStep < pattern.loopStartStep) {
+      errors.push({ level: "error", path: `${base}/rig.music.pattern/loopEndStep`, message: `loopEndStep (${pattern.loopEndStep}) is before loopStartStep (${pattern.loopStartStep})` });
+    }
+    const spline = comps["rig.geometry.spline"];
+    if (Array.isArray(spline?.knots) && spline.knots.some((k, i) => i > 0 && k < spline.knots[i - 1])) {
+      errors.push({ level: "error", path: `${base}/rig.geometry.spline/knots`, message: "spline knots must be non-decreasing" });
+    }
+    const stops = comps["rig.paint.gradient"]?.stops;
+    if (Array.isArray(stops)) {
+      const offsets = stops.map((s) => (typeof s?.t === "number" ? s.t : s?.offset)).filter((o) => typeof o === "number");
+      if (offsets.some((o) => o < 0 || o > 1)) {
+        errors.push({ level: "error", path: `${base}/rig.paint.gradient/stops`, message: "gradient stop offsets must lie between 0 and 1" });
+      } else if (offsets.some((o, i) => i > 0 && o < offsets[i - 1])) {
+        errors.push({ level: "error", path: `${base}/rig.paint.gradient/stops`, message: "gradient stop offsets must be non-decreasing" });
+      }
+    }
   });
 
   // Parent cycles in rig.spatial.relationship.

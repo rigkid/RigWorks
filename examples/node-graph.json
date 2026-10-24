@@ -43,6 +43,13 @@
           "nextId": 3
         }
       }
+    },
+    {
+      "id": "graph-out",
+      "components": {
+        "rig.meta.named": { "name": "graph output", "stableId": "graph-out" },
+        "rig.node.publish": { "pin": 1, "innerNode": 2, "innerPin": 1 }
+      }
     }
   ]
 }

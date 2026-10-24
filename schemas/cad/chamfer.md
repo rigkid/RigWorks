@@ -1,6 +1,6 @@
 ---
 id: "rig.cad.chamfer"
-maturity: "draft"
+maturity: "stable"
 summary: "Bevel selected edges of a solid. Format when present."
 fields:
   - name: "distance"

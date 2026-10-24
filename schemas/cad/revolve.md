@@ -1,6 +1,6 @@
 ---
 id: "rig.cad.revolve"
-maturity: "draft"
+maturity: "stable"
 summary: "Solid from a 2D profile spun about local +Y. Format when present."
 fields:
   - name: "profile"

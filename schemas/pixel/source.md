@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.source"
-maturity: "draft"
+maturity: "stable"
 summary: "Playback / capture settings for a raster input. Format when present."
 fields:
   - name: "kind"

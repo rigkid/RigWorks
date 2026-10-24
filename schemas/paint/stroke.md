@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.stroke"
-maturity: "draft"
+maturity: "stable"
 summary: "Stroke by reference - this drawable's outline is painted by a shared paint entity. Format when present."
 fields:
   - name: "paint"

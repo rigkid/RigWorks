@@ -1,6 +1,6 @@
 # UI and node graphs
 
-Load for: control panels, HUDs, actions, node graphs and patchers. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/ui-panel.json`](../../../examples/ui-panel.json), [`examples/portable-tool.json`](../../../examples/portable-tool.json). UI contract: [`docs/ui.md`](../../../docs/ui.md).
+Load for: control panels, HUDs, actions, node graphs and patchers. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/ui-panel.json`](../../../examples/ui-panel.json), [`examples/portable-tool.json`](../../../examples/portable-tool.json), [`examples/node-graph.json`](../../../examples/node-graph.json). UI contract: [`docs/ui.md`](../../../docs/ui.md).
 
 ## Compose
 

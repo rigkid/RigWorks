@@ -1,0 +1,11 @@
+{
+  "rig": "0.41.0",
+  "entities": [
+    {
+      "id": "ring",
+      "components": {
+        "rig.geometry.ring": { "centerX": 0, "centerY": 0, "outerRadius": 30, "innerRadius": 40 }
+      }
+    }
+  ]
+}

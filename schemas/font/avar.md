@@ -1,6 +1,6 @@
 ---
 id: "rig.font.avar"
-maturity: "draft"
+maturity: "stable"
 summary: "Axis variation map for one rig.font.axis. Format when present."
 fields:
   - name: "segments"

@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.mask_path"
-maturity: "draft"
+maturity: "stable"
 summary: "Polygon used as a compositor mask."
 fields:
   - name: "strokeWidth"

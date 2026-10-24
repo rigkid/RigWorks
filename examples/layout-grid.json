@@ -1,0 +1,38 @@
+{
+  "rig": "0.42.0",
+  "document": {
+    "title": "Layout grid - page grid, section, table style",
+    "defaultUnit": "pt"
+  },
+  "entities": [
+    {
+      "id": "header-ink",
+      "components": {
+        "rig.meta.named": { "name": "header ink", "stableId": "header-ink" },
+        "rig.paint.solid": { "rgba": [0.12, 0.15, 0.3, 1] }
+      }
+    },
+    {
+      "id": "page-1",
+      "components": {
+        "rig.meta.named": { "name": "page 1", "stableId": "page-1" },
+        "rig.layout.page": { "index": 0, "width": 612, "height": 792, "unit": "pt" },
+        "rig.layout.grid": {
+          "baselineEnabled": true, "baselineStart": 36, "baselineIncrement": 12,
+          "columns": 3, "gutter": 18
+        },
+        "rig.layout.section": { "name": "Chapter", "numberingStyle": "arabic", "startAt": 1 }
+      }
+    },
+    {
+      "id": "ledger-style",
+      "components": {
+        "rig.meta.named": { "name": "ledger table style", "stableId": "ledger-style" },
+        "rig.layout.table_style": {
+          "name": "Ledger", "borderStroke": 0.5, "borderColor": "header-ink",
+          "headerFill": "header-ink", "cellInset": 4, "headerInk": "header-ink"
+        }
+      }
+    }
+  ]
+}

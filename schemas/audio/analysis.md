@@ -1,6 +1,6 @@
 ---
 id: "rig.audio.analysis"
-maturity: "draft"
+maturity: "stable"
 summary: "Request for spectral analysis of an audio stream. Format when present."
 fields:
   - name: "source"

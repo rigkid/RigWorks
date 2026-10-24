@@ -1,6 +1,6 @@
 ---
 id: "rig.font.master"
-maturity: "draft"
+maturity: "stable"
 summary: "One interpolation master on a face. Format when present."
 fields:
   - name: "location"

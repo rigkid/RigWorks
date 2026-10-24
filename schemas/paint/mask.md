@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.mask"
-maturity: "draft"
+maturity: "stable"
 summary: "Mask a drawable with another graphic. Format when present."
 fields:
   - name: "source"

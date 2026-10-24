@@ -1,6 +1,6 @@
 ---
 id: "rig.io.osc"
-maturity: "draft"
+maturity: "stable"
 summary: "OSC listen / send endpoints. Format when present. UDP is the default transport. TCP and multicast are off unless their fields are set."
 fields:
   - name: "listenEnabled"

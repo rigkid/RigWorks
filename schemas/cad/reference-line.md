@@ -1,6 +1,6 @@
 ---
 id: "rig.cad.reference_line"
-maturity: "draft"
+maturity: "stable"
 summary: "Unbounded straight datum to build against. Format when present."
 fields:
   - name: "origin"

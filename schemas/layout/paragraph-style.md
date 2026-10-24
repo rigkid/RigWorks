@@ -1,6 +1,6 @@
 ---
 id: "rig.layout.paragraph_style"
-maturity: "draft"
+maturity: "stable"
 summary: "Visual map for a rig.story.paragraph_style. Format when present."
 fields:
   - name: "storyStyle"

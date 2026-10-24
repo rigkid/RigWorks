@@ -1,6 +1,6 @@
 ---
 id: "rig.layout.grid"
-maturity: "draft"
+maturity: "stable"
 summary: "Document baseline grid and column defaults. Format when present. One entity per document."
 fields:
   - name: "baselineEnabled"

@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.raster"
-maturity: "draft"
+maturity: "stable"
 summary: "RGBA buffer. Usually runtime-only; may appear in small documents when needed."
 fields:
   - name: "role"

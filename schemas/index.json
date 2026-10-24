@@ -1,5 +1,5 @@
 {
-  "version": "0.41.0",
+  "version": "0.42.0",
   "generatedBy": "tools/gen-schemas.mjs - do not hand-edit; edit frontmatter in schemas/<domain>/<name>.md",
   "schemas": [
     {
@@ -588,7 +588,7 @@
     },
     {
       "id": "rig.audio.analysis",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Request for spectral analysis of an audio stream. Format when present.",
       "prose": "schemas/audio/analysis.md",
       "schema": "schemas/json/rig.audio.analysis.schema.json",
@@ -1510,7 +1510,7 @@
     },
     {
       "id": "rig.cad.chamfer",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Bevel selected edges of a solid. Format when present.",
       "prose": "schemas/cad/chamfer.md",
       "schema": "schemas/json/rig.cad.chamfer.schema.json",
@@ -1607,7 +1607,7 @@
     },
     {
       "id": "rig.cad.dimension",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Numeric datum between CAD entities. Format when present.",
       "prose": "schemas/cad/dimension.md",
       "schema": "schemas/json/rig.cad.dimension.schema.json",
@@ -1704,7 +1704,7 @@
     },
     {
       "id": "rig.cad.fillet",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Round selected edges of a solid. Format when present.",
       "prose": "schemas/cad/fillet.md",
       "schema": "schemas/json/rig.cad.fillet.schema.json",
@@ -1732,7 +1732,7 @@
     },
     {
       "id": "rig.cad.reference_line",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Unbounded straight datum to build against. Format when present.",
       "prose": "schemas/cad/reference-line.md",
       "schema": "schemas/json/rig.cad.reference_line.schema.json",
@@ -1767,7 +1767,7 @@
     },
     {
       "id": "rig.cad.reference_plane",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Unbounded flat datum to build against. Format when present.",
       "prose": "schemas/cad/reference-plane.md",
       "schema": "schemas/json/rig.cad.reference_plane.schema.json",
@@ -1796,7 +1796,7 @@
     },
     {
       "id": "rig.cad.revolve",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Solid from a 2D profile spun about local +Y. Format when present.",
       "prose": "schemas/cad/revolve.md",
       "schema": "schemas/json/rig.cad.revolve.schema.json",
@@ -1825,7 +1825,7 @@
     },
     {
       "id": "rig.cad.sphere",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Solid sphere centred on the local origin. Format when present.",
       "prose": "schemas/cad/sphere.md",
       "schema": "schemas/json/rig.cad.sphere.schema.json",
@@ -3140,7 +3140,7 @@
     },
     {
       "id": "rig.font.avar",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Axis variation map for one rig.font.axis. Format when present.",
       "prose": "schemas/font/avar.md",
       "schema": "schemas/json/rig.font.avar.schema.json",
@@ -3155,7 +3155,7 @@
     },
     {
       "id": "rig.font.axis",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "One design axis on a face. Format when present.",
       "prose": "schemas/font/axis.md",
       "schema": "schemas/json/rig.font.axis.schema.json",
@@ -3195,7 +3195,7 @@
     },
     {
       "id": "rig.font.cell",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Live variable-glyph reconstruction on a glyph entity. Format when present.",
       "prose": "schemas/font/cell.md",
       "schema": "schemas/json/rig.font.cell.schema.json",
@@ -3496,7 +3496,7 @@
     },
     {
       "id": "rig.font.master",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "One interpolation master on a face. Format when present.",
       "prose": "schemas/font/master.md",
       "schema": "schemas/json/rig.font.master.schema.json",
@@ -3511,7 +3511,7 @@
     },
     {
       "id": "rig.geometry.arc",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Circular or elliptical arc (or pie wedge). Format when present.",
       "prose": "schemas/geometry/arc.md",
       "schema": "schemas/json/rig.geometry.arc.schema.json",
@@ -3697,7 +3697,7 @@
     },
     {
       "id": "rig.geometry.nurbs_surface",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "NURBS surface (control net in 3-space). Format when present.",
       "prose": "schemas/geometry/nurbs-surface.md",
       "schema": "schemas/json/rig.geometry.nurbs_surface.schema.json",
@@ -3922,7 +3922,7 @@
     },
     {
       "id": "rig.geometry.ring",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Annulus - a disc with a concentric hole. Format when present.",
       "prose": "schemas/geometry/ring.md",
       "schema": "schemas/json/rig.geometry.ring.schema.json",
@@ -3955,7 +3955,7 @@
     },
     {
       "id": "rig.geometry.spline",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "NURBS / control-point spline in the plane. Format when present. Space curves use rig.geometry.spline3d.",
       "prose": "schemas/geometry/spline.md",
       "schema": "schemas/json/rig.geometry.spline.schema.json",
@@ -4385,7 +4385,7 @@
     },
     {
       "id": "rig.io.osc",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "OSC listen / send endpoints. Format when present. UDP is the default transport. TCP and multicast are off unless their fields are set.",
       "prose": "schemas/io/osc.md",
       "schema": "schemas/json/rig.io.osc.schema.json",
@@ -4545,7 +4545,7 @@
     },
     {
       "id": "rig.io.serial",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Byte buffers and device handles stay in code packs.",
       "prose": "schemas/io/serial.md",
       "schema": "schemas/json/rig.io.serial.schema.json",
@@ -4606,7 +4606,7 @@
     },
     {
       "id": "rig.layout.applied_master",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Which master a document page uses. Format when present.",
       "prose": "schemas/layout/applied-master.md",
       "schema": "schemas/json/rig.layout.applied_master.schema.json",
@@ -4622,7 +4622,7 @@
     },
     {
       "id": "rig.layout.character_style",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Visual map for a rig.story.character_style. Format when present.",
       "prose": "schemas/layout/character-style.md",
       "schema": "schemas/json/rig.layout.character_style.schema.json",
@@ -4715,7 +4715,7 @@
     },
     {
       "id": "rig.layout.facing",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Facing-pages preference for a document. Format when present.",
       "prose": "schemas/layout/facing.md",
       "schema": "schemas/json/rig.layout.facing.schema.json",
@@ -4831,7 +4831,7 @@
     },
     {
       "id": "rig.layout.grid",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Document baseline grid and column defaults. Format when present. One entity per document.",
       "prose": "schemas/layout/grid.md",
       "schema": "schemas/json/rig.layout.grid.schema.json",
@@ -4953,7 +4953,7 @@
     },
     {
       "id": "rig.layout.paragraph_style",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Visual map for a rig.story.paragraph_style. Format when present.",
       "prose": "schemas/layout/paragraph-style.md",
       "schema": "schemas/json/rig.layout.paragraph_style.schema.json",
@@ -5148,7 +5148,7 @@
     },
     {
       "id": "rig.layout.section",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "A numbering section start. Format when present.",
       "prose": "schemas/layout/section.md",
       "schema": "schemas/json/rig.layout.section.schema.json",
@@ -5202,7 +5202,7 @@
     },
     {
       "id": "rig.layout.table_style",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Visual map for tables (rig.story.table). Format when present.",
       "prose": "schemas/layout/table-style.md",
       "schema": "schemas/json/rig.layout.table_style.schema.json",
@@ -5760,7 +5760,7 @@
     },
     {
       "id": "rig.mod.binding",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "A discrete fire (sensor to flash / sample) is rig.mod.trigger, not a binding.",
       "prose": "schemas/mod/binding.md",
       "schema": "schemas/json/rig.mod.binding.schema.json",
@@ -5815,7 +5815,7 @@
     },
     {
       "id": "rig.mod.lfo",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Low-frequency oscillator. Format when present.",
       "prose": "schemas/mod/lfo.md",
       "schema": "schemas/json/rig.mod.lfo.schema.json",
@@ -6487,7 +6487,7 @@
     },
     {
       "id": "rig.node.link",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Directed connection from an output pin to an input pin inside a rig.node.graph.",
       "prose": "schemas/node/link.md",
       "schema": "schemas/json/rig.node.link.schema.json",
@@ -6635,7 +6635,7 @@
     },
     {
       "id": "rig.node.publish",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Maps one outer interface pin on a group node to an interior pin inside that node's nested graph. See rig.node.node.",
       "prose": "schemas/node/publish.md",
       "schema": "schemas/json/rig.node.publish.schema.json",
@@ -6689,7 +6689,7 @@
     },
     {
       "id": "rig.paint.brush",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Measured facts about a physical paint brush in a holder.",
       "prose": "schemas/paint/brush.md",
       "schema": "schemas/json/rig.paint.brush.schema.json",
@@ -6800,7 +6800,7 @@
     },
     {
       "id": "rig.paint.clip",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Clip a drawable to a path. Format when present.",
       "prose": "schemas/paint/clip.md",
       "schema": "schemas/json/rig.paint.clip.schema.json",
@@ -6872,7 +6872,7 @@
     },
     {
       "id": "rig.paint.filter",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Filter graph pointer, or the graph root. Format when present.",
       "prose": "schemas/paint/filter.md",
       "schema": "schemas/json/rig.paint.filter.schema.json",
@@ -6898,7 +6898,7 @@
     },
     {
       "id": "rig.paint.filter_step",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "One primitive in a rig.paint.filter graph. Format when present.",
       "prose": "schemas/paint/filter-step.md",
       "schema": "schemas/json/rig.paint.filter_step.schema.json",
@@ -7062,7 +7062,7 @@
     },
     {
       "id": "rig.paint.marker",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Marker graphic placed on stroke vertices. Format when present.",
       "prose": "schemas/paint/marker.md",
       "schema": "schemas/json/rig.paint.marker.schema.json",
@@ -7119,7 +7119,7 @@
     },
     {
       "id": "rig.paint.markers",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Marker refs on a stroked path. Format when present.",
       "prose": "schemas/paint/markers.md",
       "schema": "schemas/json/rig.paint.markers.schema.json",
@@ -7146,7 +7146,7 @@
     },
     {
       "id": "rig.paint.mask",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Mask a drawable with another graphic. Format when present.",
       "prose": "schemas/paint/mask.md",
       "schema": "schemas/json/rig.paint.mask.schema.json",
@@ -7172,7 +7172,7 @@
     },
     {
       "id": "rig.paint.order",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Draw order of fill, stroke, and markers on one drawable. Format when present.",
       "prose": "schemas/paint/order.md",
       "schema": "schemas/json/rig.paint.order.schema.json",
@@ -7188,7 +7188,7 @@
     },
     {
       "id": "rig.paint.pattern",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Tiled paint. Format when present.",
       "prose": "schemas/paint/pattern.md",
       "schema": "schemas/json/rig.paint.pattern.schema.json",
@@ -7272,7 +7272,7 @@
     },
     {
       "id": "rig.paint.stroke",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Stroke by reference - this drawable's outline is painted by a shared paint entity. Format when present.",
       "prose": "schemas/paint/stroke.md",
       "schema": "schemas/json/rig.paint.stroke.schema.json",
@@ -8172,7 +8172,7 @@
     },
     {
       "id": "rig.picture.analysis",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Request for live frame analysis of a picture. Format when present.",
       "prose": "schemas/picture/analysis.md",
       "schema": "schemas/json/rig.picture.analysis.schema.json",
@@ -8194,7 +8194,7 @@
     },
     {
       "id": "rig.pixel.canvas",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Artboard size and clear colour. Format when present.",
       "prose": "schemas/pixel/canvas.md",
       "schema": "schemas/json/rig.pixel.canvas.schema.json",
@@ -8222,7 +8222,7 @@
     },
     {
       "id": "rig.pixel.composite",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Stack policy for the pixel compositor.",
       "prose": "schemas/pixel/composite.md",
       "schema": "schemas/json/rig.pixel.composite.schema.json",
@@ -8238,7 +8238,7 @@
     },
     {
       "id": "rig.pixel.effect_chain",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Ordered effect steps. Format when present.",
       "prose": "schemas/pixel/effect-chain.md",
       "schema": "schemas/json/rig.pixel.effect_chain.schema.json",
@@ -8257,7 +8257,7 @@
     },
     {
       "id": "rig.pixel.layer",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Compositor stack entry. Format when present.",
       "prose": "schemas/pixel/layer.md",
       "schema": "schemas/json/rig.pixel.layer.schema.json",
@@ -8335,7 +8335,7 @@
     },
     {
       "id": "rig.pixel.mask_path",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Polygon used as a compositor mask.",
       "prose": "schemas/pixel/mask-path.md",
       "schema": "schemas/json/rig.pixel.mask_path.schema.json",
@@ -8371,7 +8371,7 @@
     },
     {
       "id": "rig.pixel.palette",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Ordered indexed colour table. Format when present.",
       "prose": "schemas/pixel/palette.md",
       "schema": "schemas/json/rig.pixel.palette.schema.json",
@@ -8386,7 +8386,7 @@
     },
     {
       "id": "rig.pixel.raster",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "RGBA buffer. Usually runtime-only; may appear in small documents when needed.",
       "prose": "schemas/pixel/raster.md",
       "schema": "schemas/json/rig.pixel.raster.schema.json",
@@ -8440,7 +8440,7 @@
     },
     {
       "id": "rig.pixel.region",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Found or drawn feeder region.",
       "prose": "schemas/pixel/region.md",
       "schema": "schemas/json/rig.pixel.region.schema.json",
@@ -8489,7 +8489,7 @@
     },
     {
       "id": "rig.pixel.source",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Playback / capture settings for a raster input. Format when present.",
       "prose": "schemas/pixel/source.md",
       "schema": "schemas/json/rig.pixel.source.schema.json",
@@ -8634,7 +8634,7 @@
     },
     {
       "id": "rig.pixel.tile_set",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Indexed pixel sheet for tiles / sprites. Format when present.",
       "prose": "schemas/pixel/tile-set.md",
       "schema": "schemas/json/rig.pixel.tile_set.schema.json",
@@ -9207,7 +9207,7 @@
     },
     {
       "id": "rig.print.compression",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Hot-stack weight sag for FGF. Format when present.",
       "prose": "schemas/print/compression.md",
       "schema": "schemas/json/rig.print.compression.schema.json",
@@ -9236,7 +9236,7 @@
     },
     {
       "id": "rig.print.job",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "One slice job. Format when present.",
       "prose": "schemas/print/job.md",
       "schema": "schemas/json/rig.print.job.schema.json",
@@ -9257,7 +9257,7 @@
     },
     {
       "id": "rig.print.machine",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "FGF / pellet printer envelope. Format when present.",
       "prose": "schemas/print/machine.md",
       "schema": "schemas/json/rig.print.machine.schema.json",
@@ -9305,7 +9305,7 @@
     },
     {
       "id": "rig.print.material",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Pellet / filament grade used on a rig.print.machine. Format when present.",
       "prose": "schemas/print/material.md",
       "schema": "schemas/json/rig.print.material.schema.json",
@@ -9345,7 +9345,7 @@
     },
     {
       "id": "rig.print.process",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Slice process knobs. Line width is commanded and stays commanded - stack sag is rig.print.compression, not a width change. This is not a layout style and not envelope pdfX.",
       "prose": "schemas/print/process.md",
       "schema": "schemas/json/rig.print.process.schema.json",
@@ -9845,7 +9845,7 @@
     },
     {
       "id": "rig.render.material",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Shading parameters. Format when present.",
       "prose": "schemas/render/material.md",
       "schema": "schemas/json/rig.render.material.schema.json",
@@ -11091,7 +11091,7 @@
     },
     {
       "id": "rig.sim.rigidbody",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Physics body. Format when present.",
       "prose": "schemas/sim/rigidbody.md",
       "schema": "schemas/json/rig.sim.rigidbody.schema.json",
@@ -11363,7 +11363,7 @@
     },
     {
       "id": "rig.spatial.instance",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Instance of another entity. Format when present.",
       "prose": "schemas/spatial/instance.md",
       "schema": "schemas/json/rig.spatial.instance.schema.json",
@@ -11863,7 +11863,7 @@
     },
     {
       "id": "rig.visualizer.deck",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Preset deck: which assets play, where they draw, and what may advance them. Format when present.",
       "prose": "schemas/visualizer.md",
       "schema": "schemas/json/rig.visualizer.deck.schema.json",

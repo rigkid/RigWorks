@@ -1,0 +1,17 @@
+{
+  "rig": "0.41.0",
+  "entities": [
+    {
+      "id": "wash",
+      "components": {
+        "rig.paint.gradient": {
+          "kind": "linear",
+          "stops": [
+            { "t": 0.8, "rgba": [1, 1, 1, 1] },
+            { "t": 0.2, "rgba": [0, 0, 0, 1] }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 id: "rig.visualizer.deck"
-maturity: "draft"
+maturity: "stable"
 summary: "Preset deck: which assets play, where they draw, and what may advance them. Format when present."
 fields:
   - name: "presets"

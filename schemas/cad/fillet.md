@@ -1,6 +1,6 @@
 ---
 id: "rig.cad.fillet"
-maturity: "draft"
+maturity: "stable"
 summary: "Round selected edges of a solid. Format when present."
 fields:
   - name: "radius"

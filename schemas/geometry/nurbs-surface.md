@@ -1,6 +1,6 @@
 ---
 id: "rig.geometry.nurbs_surface"
-maturity: "draft"
+maturity: "stable"
 summary: "NURBS surface (control net in 3-space). Format when present."
 fields:
   - name: "degreeU"

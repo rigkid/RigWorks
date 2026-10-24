@@ -1,6 +1,6 @@
 # Scene - spatial, geometry, paint, render
 
-Load for: scenes, shapes, drawings, meshes, lights, cameras. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/minimal-scene.json`](../../../examples/minimal-scene.json), [`examples/lights.json`](../../../examples/lights.json), [`examples/environment.json`](../../../examples/environment.json), [`examples/path3d-spline3d.json`](../../../examples/path3d-spline3d.json).
+Load for: scenes, shapes, drawings, meshes, lights, cameras. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/minimal-scene.json`](../../../examples/minimal-scene.json), [`examples/lights.json`](../../../examples/lights.json), [`examples/environment.json`](../../../examples/environment.json), [`examples/path3d-spline3d.json`](../../../examples/path3d-spline3d.json), [`examples/paint-effects.json`](../../../examples/paint-effects.json), [`examples/pixel-layers.json`](../../../examples/pixel-layers.json).
 
 ## Compose
 

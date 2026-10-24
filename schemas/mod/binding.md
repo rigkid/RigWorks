@@ -1,6 +1,6 @@
 ---
 id: "rig.mod.binding"
-maturity: "draft"
+maturity: "stable"
 summary: "A discrete fire (sensor to flash / sample) is rig.mod.trigger, not a binding."
 fields:
   - name: "source"

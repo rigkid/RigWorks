@@ -1,6 +1,6 @@
 ---
 id: "rig.print.process"
-maturity: "draft"
+maturity: "stable"
 summary: "Slice process knobs. Line width is commanded and stays commanded - stack sag is rig.print.compression, not a width change. This is not a layout style and not envelope pdfX."
 fields:
   - name: "layerHeightMm"

@@ -1,6 +1,6 @@
 ---
 id: "rig.print.job"
-maturity: "draft"
+maturity: "stable"
 summary: "One slice job. Format when present."
 fields:
   - name: "input"

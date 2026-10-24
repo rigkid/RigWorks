@@ -46,5 +46,5 @@
   "required": [
     "steps"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

@@ -27,5 +27,5 @@
     "default",
     "max"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

@@ -1,6 +1,6 @@
 ---
 id: "rig.cad.sphere"
-maturity: "draft"
+maturity: "stable"
 summary: "Solid sphere centred on the local origin. Format when present."
 fields:
   - name: "radius"

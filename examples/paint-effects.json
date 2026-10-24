@@ -1,0 +1,112 @@
+{
+  "rig": "0.42.0",
+  "document": {
+    "title": "Paint effects - referenced stroke, pattern, mask, filter, markers",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "world",
+      "components": {
+        "rig.meta.named": { "name": "world", "stableId": "world" },
+        "rig.spatial.vertex": {},
+        "rig.spatial.transform": { "position": [0, 0, 0] }
+      }
+    },
+    {
+      "id": "ink",
+      "components": {
+        "rig.meta.named": { "name": "ink", "stableId": "ink" },
+        "rig.paint.solid": { "rgba": [0.15, 0.2, 0.35, 1] }
+      }
+    },
+    {
+      "id": "hatch",
+      "components": {
+        "rig.meta.named": { "name": "hatch pattern", "stableId": "hatch" },
+        "rig.paint.pattern": { "width": 8, "height": 8, "units": "user-space" },
+        "rig.geometry.rectangle": { "x": 0, "y": 0, "width": 8, "height": 2 },
+        "rig.paint.fill_stroke": { "fillRgba": [0.15, 0.2, 0.35, 1] }
+      }
+    },
+    {
+      "id": "marker-dot",
+      "components": {
+        "rig.meta.named": { "name": "marker dot", "stableId": "marker-dot" },
+        "rig.paint.marker": { "width": 10, "height": 10, "ref": [5, 5], "orient": "auto" },
+        "rig.geometry.ellipse": { "centerX": 5, "centerY": 5, "radiusX": 4, "radiusY": 4 },
+        "rig.paint.fill_stroke": { "fillRgba": [0.85, 0.3, 0.25, 1] }
+      }
+    },
+    {
+      "id": "soften",
+      "components": {
+        "rig.meta.named": { "name": "soften filter", "stableId": "soften" },
+        "rig.paint.filter": {},
+        "rig.paint.filter_step": { "kind": "blur", "stdDeviation": 2 }
+      }
+    },
+    {
+      "id": "mask-source",
+      "components": {
+        "rig.meta.named": { "name": "mask source", "stableId": "mask-source" },
+        "rig.spatial.transform": { "position": [40, 40, 0] },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.geometry.rectangle": { "x": 0, "y": 0, "width": 160, "height": 120 },
+        "rig.paint.fill_stroke": { "fillRgba": [1, 1, 1, 1] }
+      }
+    },
+    {
+      "id": "arc-dial",
+      "components": {
+        "rig.meta.named": { "name": "arc dial", "stableId": "arc-dial" },
+        "rig.spatial.transform": { "position": [120, 120, 0] },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.geometry.arc": {
+          "centerX": 0, "centerY": 0, "radiusX": 70, "radiusY": 70,
+          "startAngleDegrees": -210, "endAngleDegrees": 30
+        },
+        "rig.paint.stroke": { "paint": "ink", "width": 6 },
+        "rig.paint.order": { "layers": ["fill", "stroke", "markers"] },
+        "rig.paint.markers": { "start": "marker-dot", "end": "marker-dot" },
+        "rig.paint.mask": { "source": "mask-source", "channel": "alpha" },
+        "rig.render.material": { "albedoRgb": [0.15, 0.2, 0.35], "roughness": 0.6 }
+      }
+    },
+    {
+      "id": "curve",
+      "components": {
+        "rig.meta.named": { "name": "curve", "stableId": "curve" },
+        "rig.spatial.transform": { "position": [260, 60, 0] },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.geometry.spline": {
+          "degree": 3,
+          "controlPoints": [[0, 80], [60, 0], [140, 160], [200, 40]],
+          "knots": [0, 0, 0, 0, 1, 1, 1, 1]
+        },
+        "rig.paint.stroke": { "paint": "ink", "width": 3 },
+        "rig.paint.filter": { "filter": "soften" }
+      }
+    },
+    {
+      "id": "ring-badge",
+      "components": {
+        "rig.meta.named": { "name": "ring badge", "stableId": "ring-badge" },
+        "rig.spatial.transform": { "position": [520, 120, 0] },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.geometry.ring": { "centerX": 0, "centerY": 0, "outerRadius": 55, "innerRadius": 34 },
+        "rig.paint.fill": { "paint": "hatch" },
+        "rig.paint.fill_stroke": { "strokeRgba": [0.15, 0.2, 0.35, 1], "strokeWidth": 2 }
+      }
+    },
+    {
+      "id": "ring-copy",
+      "components": {
+        "rig.meta.named": { "name": "ring copy", "stableId": "ring-copy" },
+        "rig.spatial.transform": { "position": [660, 120, 0], "scale": [0.6, 0.6, 1] },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.spatial.instance": { "source": "ring-badge" }
+      }
+    }
+  ]
+}

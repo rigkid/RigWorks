@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.tile_set"
-maturity: "draft"
+maturity: "stable"
 summary: "Indexed pixel sheet for tiles / sprites. Format when present."
 fields:
   - name: "palette"

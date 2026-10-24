@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.marker"
-maturity: "draft"
+maturity: "stable"
 summary: "Marker graphic placed on stroke vertices. Format when present."
 fields:
   - name: "width"

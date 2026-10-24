@@ -1,6 +1,6 @@
 ---
 id: "rig.layout.section"
-maturity: "draft"
+maturity: "stable"
 summary: "A numbering section start. Format when present."
 fields:
   - name: "name"

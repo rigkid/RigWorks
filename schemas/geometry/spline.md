@@ -1,6 +1,6 @@
 ---
 id: "rig.geometry.spline"
-maturity: "draft"
+maturity: "stable"
 summary: "NURBS / control-point spline in the plane. Format when present. Space curves use rig.geometry.spline3d."
 fields:
   - name: "degree"

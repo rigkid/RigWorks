@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.palette"
-maturity: "draft"
+maturity: "stable"
 summary: "Ordered indexed colour table. Format when present."
 fields:
   - name: "colors"

@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.markers"
-maturity: "draft"
+maturity: "stable"
 summary: "Marker refs on a stroked path. Format when present."
 fields:
   - name: "start"

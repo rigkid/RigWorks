@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.layer"
-maturity: "draft"
+maturity: "stable"
 summary: "Compositor stack entry. Format when present."
 fields:
   - name: "kind"

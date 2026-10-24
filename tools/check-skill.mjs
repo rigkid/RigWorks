@@ -19,7 +19,7 @@ const skillDir = path.join(root, "skills", "generating-rig-documents");
 const routerPath = path.join(skillDir, "SKILL.md");
 const domainsDir = path.join(skillDir, "domains");
 
-const ROOT_BUDGET_TOKENS = 1800;
+const ROOT_BUDGET_TOKENS = 1650;
 const SLICE_BUDGET_TOKENS = 1200;
 const approxTokens = (text) => Math.round(text.length / 4);
 
@@ -48,6 +48,19 @@ for (const name of onDisk) {
   skillText += "\n" + text;
   if (approxTokens(text) > SLICE_BUDGET_TOKENS) {
     fail(`domain slice domains/${name} is ${approxTokens(text)} tokens (budget ${SLICE_BUDGET_TOKENS}) - split it or cut field detail (fields live in schemas)`);
+  }
+  // Guidance quality, not just id coverage: a slice must teach composition
+  // (a Compose table), name its traps (a Guards section with bullets), and
+  // point at a worked example to copy. An id list alone fails here.
+  if (!/^## Compose/m.test(text) || !/^\|.*\|$/m.test(text.split(/^## Compose/m)[1] ?? "")) {
+    fail(`domain slice domains/${name} has no Compose table - say what to compose, not just which ids exist`);
+  }
+  const guards = text.split(/^## Guards/m)[1] ?? "";
+  if (!guards || !/^- /m.test(guards)) {
+    fail(`domain slice domains/${name} has no Guards bullets - name the traps for this domain`);
+  }
+  if (!/Copy:.*examples\/[a-z0-9-]+\.json/.test(text)) {
+    fail(`domain slice domains/${name} points at no copyable example - link one in its Copy line`);
   }
 }
 

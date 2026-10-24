@@ -60,5 +60,5 @@
       "$ref": "./_defs.schema.json#/$defs/vec3"
     }
   },
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

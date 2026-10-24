@@ -1,6 +1,6 @@
 # BIM and CAD
 
-Load for: buildings, IFC/BCF/IDS, solids, datums. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/bim-model.json`](../../../examples/bim-model.json), [`examples/bim-bcf.json`](../../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../../examples/bim-ids.json), [`examples/cad-boolean.json`](../../../examples/cad-boolean.json), [`examples/cad-dimension.json`](../../../examples/cad-dimension.json), [`examples/cad-reference.json`](../../../examples/cad-reference.json). OpenBIM mapping: [`docs/openbim.md`](../../../docs/openbim.md).
+Load for: buildings, IFC/BCF/IDS, solids, datums. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/bim-model.json`](../../../examples/bim-model.json), [`examples/bim-bcf.json`](../../../examples/bim-bcf.json), [`examples/bim-ids.json`](../../../examples/bim-ids.json), [`examples/cad-boolean.json`](../../../examples/cad-boolean.json), [`examples/cad-dimension.json`](../../../examples/cad-dimension.json), [`examples/cad-reference.json`](../../../examples/cad-reference.json), [`examples/cad-solids.json`](../../../examples/cad-solids.json). OpenBIM mapping: [`docs/openbim.md`](../../../docs/openbim.md).
 
 ## Compose
 

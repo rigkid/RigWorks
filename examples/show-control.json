@@ -1,0 +1,29 @@
+{
+  "rig": "0.42.0",
+  "document": {
+    "title": "Show control - OSC and serial endpoints",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "osc-endpoint",
+      "components": {
+        "rig.meta.named": { "name": "OSC endpoint", "stableId": "osc-endpoint" },
+        "rig.io.osc": {
+          "listenEnabled": true, "listenPort": 9000,
+          "sendEnabled": true, "sendHost": "127.0.0.1", "sendPort": 9001,
+          "addressPrefix": "/rig",
+          "tcpListen": false, "streamFraming": 0,
+          "multicastGroup": "239.0.0.1", "multicastTtl": 1
+        }
+      }
+    },
+    {
+      "id": "serial-line",
+      "components": {
+        "rig.meta.named": { "name": "serial line", "stableId": "serial-line" },
+        "rig.io.serial": { "port": "ttyUSB0", "baud": 115200, "enabled": true }
+      }
+    }
+  ]
+}

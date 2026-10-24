@@ -48,5 +48,5 @@
       "maximum": 255
     }
   },
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

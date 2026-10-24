@@ -10,8 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm run setup
       - run: npm run check
+      # Server-side release gate: a push to the release branch must carry
+      # the release tag (push with --follow-tags). Local pre-push hooks are
+      # opt-in per clone; this is the copy nobody can forget to install.
+      - name: Release tag matches VERSION
+        if: github.event_name == 'push'
+        env:
+          RIG_REQUIRE_TAG: "1"
+        run: node tools/check-tag.mjs

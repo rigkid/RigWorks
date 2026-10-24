@@ -1,6 +1,6 @@
 ---
 id: "rig.node.publish"
-maturity: "draft"
+maturity: "stable"
 summary: "Maps one outer interface pin on a group node to an interior pin inside that node's nested graph. See rig.node.node."
 fields:
   - name: "pin"

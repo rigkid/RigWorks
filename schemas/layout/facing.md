@@ -1,6 +1,6 @@
 ---
 id: "rig.layout.facing"
-maturity: "draft"
+maturity: "stable"
 summary: "Facing-pages preference for a document. Format when present."
 fields:
   - name: "enabled"

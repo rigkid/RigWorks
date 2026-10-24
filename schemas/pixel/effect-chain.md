@@ -1,6 +1,6 @@
 ---
 id: "rig.pixel.effect_chain"
-maturity: "draft"
+maturity: "stable"
 summary: "Ordered effect steps. Format when present."
 fields:
   - name: "steps"

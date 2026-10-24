@@ -1,0 +1,50 @@
+{
+  "rig": "0.42.0",
+  "document": {
+    "title": "CAD solids - revolve and sphere",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "world",
+      "components": {
+        "rig.meta.named": { "name": "world", "stableId": "world" },
+        "rig.spatial.vertex": {},
+        "rig.spatial.transform": { "position": [0, 0, 0] }
+      }
+    },
+    {
+      "id": "vase-profile",
+      "components": {
+        "rig.meta.named": { "name": "vase profile", "stableId": "vase-profile" },
+        "rig.geometry.path": {
+          "commands": [
+            { "type": "move-to", "point": [0, 0] },
+            { "type": "line-to", "point": [24, 0] },
+            { "type": "line-to", "point": [30, 40] },
+            { "type": "line-to", "point": [14, 80] },
+            { "type": "line-to", "point": [18, 110] }
+          ]
+        }
+      }
+    },
+    {
+      "id": "vase",
+      "components": {
+        "rig.meta.named": { "name": "vase", "stableId": "vase" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.cad.revolve": { "profile": "vase-profile", "revolveDegrees": 360, "circularSegments": 48 }
+      }
+    },
+    {
+      "id": "knob",
+      "components": {
+        "rig.meta.named": { "name": "knob", "stableId": "knob" },
+        "rig.spatial.transform": { "position": [90, 0, 0] },
+        "rig.spatial.relationship": { "parent": "world" },
+        "rig.cad.sphere": { "radius": 25, "circularSegments": 32 }
+      }
+    }
+  ]
+}

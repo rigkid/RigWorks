@@ -1,6 +1,6 @@
 ---
 id: "rig.print.compression"
-maturity: "draft"
+maturity: "stable"
 summary: "Hot-stack weight sag for FGF. Format when present."
 fields:
   - name: "enabled"

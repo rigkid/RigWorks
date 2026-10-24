@@ -16,5 +16,5 @@
   "required": [
     "colors"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

@@ -1,6 +1,6 @@
 # Machines - circuits, PCB, print, dev, I/O
 
-Load for: KiCad boards, circuits, FGF/pellet print, dev machines, OSC/serial/DMX/sACN, sensors as hardware endpoints. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/kicad-pcb.json`](../../../examples/kicad-pcb.json), [`examples/print-fgf.json`](../../../examples/print-fgf.json), [`examples/dev-machine.json`](../../../examples/dev-machine.json), [`examples/dev-kvm.json`](../../../examples/dev-kvm.json), [`examples/paint-brush.json`](../../../examples/paint-brush.json). Mappings: [`docs/kicad.md`](../../../docs/kicad.md), [`docs/print.md`](../../../docs/print.md), [`docs/dev.md`](../../../docs/dev.md).
+Load for: KiCad boards, circuits, FGF/pellet print, dev machines, OSC/serial/DMX/sACN, sensors as hardware endpoints. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/kicad-pcb.json`](../../../examples/kicad-pcb.json), [`examples/print-fgf.json`](../../../examples/print-fgf.json), [`examples/dev-machine.json`](../../../examples/dev-machine.json), [`examples/dev-kvm.json`](../../../examples/dev-kvm.json), [`examples/paint-brush.json`](../../../examples/paint-brush.json), [`examples/show-control.json`](../../../examples/show-control.json). Mappings: [`docs/kicad.md`](../../../docs/kicad.md), [`docs/print.md`](../../../docs/print.md), [`docs/dev.md`](../../../docs/dev.md).
 
 ## Compose
 

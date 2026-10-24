@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.clip"
-maturity: "draft"
+maturity: "stable"
 summary: "Clip a drawable to a path. Format when present."
 fields:
   - name: "path"

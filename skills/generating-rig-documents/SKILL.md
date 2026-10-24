@@ -11,7 +11,7 @@ description: >-
 
 **Rig** is portable entity/component POD keyed by schema ids ([`rig.document`](../../schemas/document.md)). Ship what you support. Nothing to link. Floor: [honors.md](../../docs/honors.md). Live hosts also honor [SUDE](../../docs/sude.md) and runtime [ECS](../../docs/ecs.md).
 
-This file is the **router**. Load it, pick **one** domain slice for the task (two only when the task genuinely spans domains), copy the closest example, emit, and validate. Leave the rest unloaded. Field details live in the schema files - each `schemas/<domain>/<name>.md` carries machine-readable frontmatter (fields, required, maturity), and [`schemas/index.json`](../../schemas/index.json) is the generated catalog index. Do not load the whole catalog.
+This file is the **router**. Load it, pick **one** domain slice (two only when the task spans domains), copy the closest example, emit, validate. Field details live in each schema's frontmatter (`schemas/<domain>/<name>.md`); [`schemas/index.json`](../../schemas/index.json) is the generated catalog. Do not load the whole catalog.
 
 ## Router - load one slice
 
@@ -35,16 +35,16 @@ This file is the **router**. Load it, pick **one** domain slice for the task (tw
 - No GPU/UI types, callbacks, dirty flags, hover/press, or pending queues.
 - No derived fields (winding, world matrices, Euler, bar/beat). Hosts cache those - [Host cache](../../docs/terms.md).
 - Hierarchy is optional: parent entity id, local `position` / `rotation` (quat) / `scale`.
-- Compose, do not re-declare: display name is `rig.meta.named`; file identity is `rig.media.asset_ref`. If a concept already has a home, the slice table points at it.
-- Maturity: prefer `stable` ids, then `draft`. Emit an `experimental` id only when the task asks for that domain; say which tier you used. Tiers are in each schema's frontmatter and in `schemas/index.json`.
+- Compose, do not re-declare: display name is `rig.meta.named`; file identity is `rig.media.asset_ref`.
+- Maturity: prefer `stable`, then `draft`; emit `experimental` only when the task asks for it, and say which tier you used.
 
 ## SUDE and runtime ECS (live hosts)
 
-`Setup()` once, may be empty. `Update(dt)` each tick before Draw (`dt` is seconds); mutate the one app-owned registry there. `Draw()` each tick after Update; present there; empty body is fine. `Exit()` once before teardown. Do not nest hooks. No window, GPU, UI, filesystem, or audio required.
+`Setup()` once; `Update(dt)` each tick before Draw (`dt` in seconds), mutating the one app-owned registry; `Draw()` presents after Update; `Exit()` once before teardown. Empty bodies are fine. Do not nest hooks. No window, GPU, UI, filesystem, or audio required.
 
 ## Semantic versioning
 
-One source: [`VERSION`](../../VERSION), `MAJOR.MINOR.PATCH` ([docs/versioning.md](../../docs/versioning.md)); do not copy the number elsewhere. Additive schema/field (0.x) bumps `MINOR`; breaking a `stable` schema after `1.0.0` bumps `MAJOR`; docs/tooling leave it. A schema change also adds a History row. Root `"rig"` is the current `VERSION`, or an older version the document targets.
+One source: [`VERSION`](../../VERSION) ([docs/versioning.md](../../docs/versioning.md)); never copy the number elsewhere. Additive schema/field (0.x) bumps `MINOR`; breaking a `stable` schema after `1.0.0` bumps `MAJOR`. A schema change adds a row in [docs/history.md](../../docs/history.md). Root `"rig"` is the current `VERSION`, or an older version the document targets.
 
 ## Document shape
 
@@ -61,7 +61,7 @@ JSON on disk is `.rig`, or `.rigz` (ZIP: one `.rig` at the archive root plus `da
 - `vec*` / `quat` are number arrays. **Quat order is x, y, z, w**, and rotation quaternions are unit length.
 - Enums are kebab-case schema literals (`top-left`, `color-dodge`).
 - Fields are lowerCamelCase and spelled out ([Field naming](../../schemas/README.md#field-naming)): `radiusX`, not `rx`.
-- Measurements: ratios 0-1; scene lengths in `document.defaultUnit` (a page `unit` may override); catalog facts are SI in the field name; protocol and clock stay native. [Measurements](../../schemas/README.md#measurements).
+- Measurements: ratios 0-1; scene lengths in `document.defaultUnit`; catalog facts are SI in the field name. [Measurements](../../schemas/README.md#measurements).
 - Omit optional fields you did not measure. An absent `gate` means 1. An invented `gate` looks like data.
 - Source of truth per schema: frontmatter in [`schemas/`](../../schemas/). Grammar is generated into [`schemas/json/`](../../schemas/json/) - never hand-edit generated JSON.
 - `x.<vendor>.<name>` is a host extension the validator carries and reports. Do not emit it. If no `rig.*` id fits, say so. [Extension components](../../schemas/document.md#extension-components).
@@ -75,7 +75,7 @@ npm run setup
 node tools/rig-validate/cli.js path/to/doc.json
 ```
 
-Fix the reported JSON Pointers and re-run until the CLI prints `ok`. `--strict` makes unknown schema ids errors and suggests the closest catalog ids. The validator also runs semantic checks JSON Schema cannot express (paint spelling conflicts, parent cycles, duplicate `stableId`, non-unit quaternions, missing required compositions) - a failure there is a real failure, not a warning to wave through.
+Fix the reported JSON Pointers and re-run until the CLI prints `ok`. `--strict` makes unknown ids errors and suggests the closest catalog ids. Semantic checks JSON Schema cannot express also run: paint spelling conflicts, parent cycles, duplicate `stableId`, non-unit quaternions, missing compositions, and cross-field ranges (ring radii, axis min/max, reversed date spans, knot and gradient-stop order). A semantic failure is a real failure.
 
 ## Before commit / push (CI precheck)
 
@@ -83,13 +83,11 @@ Do not push Contract changes until the GitHub Actions gate passes locally.
 
 ```bash
 npm run setup    # once per clone / when validate deps change
-npm run check    # version, schemas, parity, links, snippets, svg, examples, site, skill, tests
+npm run check    # the full local gate
 ```
 
-Schema frontmatter or generator changes need at least `check:schemas` (if stale, `npm run gen` then re-check); skill changes need `check:skill`; push/PR needs the full check. After `npm run hooks:install`, pre-commit checks SemVer and pre-push runs the full check via `node` (works without npm on PATH) - run `npm run check` before `git push` even when hooks are missing.
+Frontmatter/generator changes need `check:schemas` (stale: `npm run gen`, re-check); skill changes need `check:skill`; push/PR needs the full check. Hooks (`npm run hooks:install`) help locally, but CI re-runs everything server-side, including the release-tag match on master pushes and tag pushes - push releases with `git push --follow-tags`.
 
 ## Guards (all domains)
 
-Component keys are full `rig.*` ids. PascalCase (`Transform`, `Shape`) is not a key. Sidecar bytes go in `data/` inside `.rigz`. `asset_ref.path` is relative to `data/`. No inline blobs or data URIs.
-
-Domain-specific guards (what not to invent, and what to compose instead) live in the domain slices - that is where "no `rig.ros2.*`"-style rules belong, next to the positive composition table that replaces them.
+Component keys are full `rig.*` ids; PascalCase (`Transform`, `Shape`) is not a key. Sidecar bytes go in `data/` inside `.rigz`; `asset_ref.path` is relative to `data/`. No inline blobs or data URIs. Domain-specific guards live in the slices, next to the composition table that replaces them.

@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.filter"
-maturity: "draft"
+maturity: "stable"
 summary: "Filter graph pointer, or the graph root. Format when present."
 fields:
   - name: "filter"

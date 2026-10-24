@@ -1,6 +1,6 @@
 ---
 id: "rig.cad.reference_plane"
-maturity: "draft"
+maturity: "stable"
 summary: "Unbounded flat datum to build against. Format when present."
 fields:
   - name: "origin"

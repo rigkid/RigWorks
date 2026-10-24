@@ -1,0 +1,26 @@
+name: release
+
+# Pushing a version tag is the release act. Verify the tag names the same
+# VERSION the tagged commit carries, on the runner - not only in a local
+# pre-push hook a clone may never have installed.
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Tag matches VERSION at the tagged commit
+        env:
+          RIG_REQUIRE_TAG: "1"
+        run: node tools/check-tag.mjs
+      - run: npm run setup
+      - run: npm run check

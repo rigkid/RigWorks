@@ -1,6 +1,6 @@
 ---
 id: "rig.paint.pattern"
-maturity: "draft"
+maturity: "stable"
 summary: "Tiled paint. Format when present."
 fields:
   - name: "width"
