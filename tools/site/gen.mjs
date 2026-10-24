@@ -922,7 +922,9 @@ ${figure}
 <h2>Document</h2>
 <p class="aside">
   Validates under <code>npm run check</code> —
-  <a href="${rel(pageOut, `examples/${ex.name}`)}">raw file</a>.
+  <a href="${rel(pageOut, `examples/${ex.name}`)}">raw file</a> ·
+  <a href="https://player.rig.works/?src=${encodeURIComponent(`https://rig.works/examples/${ex.name}`)}">open in RigPlayer</a> —
+  drop it in, press play, remix it, share the link.
 </p>
 <pre class="code"><code>${esc(ex.json)}</code></pre>`;
 
@@ -1050,6 +1052,9 @@ function build() {
   for (const name of fs.readdirSync(jsonDir)) {
     if (name.endsWith(".schema.json")) copyInto(path.join(jsonDir, name), path.join(outDir, "schemas"));
   }
+  // Editor catalog (VS Code json.schemas / SchemaStore format) so .rig
+  // files get autocomplete and validation with no Rig tooling installed.
+  copyInto(path.join(root, "schemas", "catalog.json"), path.join(outDir, "schemas"));
   for (const ex of examples.list) {
     copyInto(path.join(root, "examples", ex.name), path.join(outDir, "examples"));
   }

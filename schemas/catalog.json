@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/schema-catalog.json",
+  "version": 1,
+  "schemas": [
+    {
+      "name": "Rig document (.rig)",
+      "description": "RigWorks Contract document - entity/component POD keyed by rig.* schema ids (1.0.0).",
+      "fileMatch": ["*.rig"],
+      "url": "https://rig.works/schemas/rig.document.schema.json"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  // Rig documents get autocomplete and inline validation from the
+  // generated grammar - no extension needed. The published form of this
+  // association is schemas/catalog.json (https://rig.works/schemas/catalog.json).
+  "json.schemas": [
+    {
+      "fileMatch": ["/*.rig"],
+      "url": "./schemas/json/rig.document.schema.json"
+    },
+    {
+      "fileMatch": ["/examples/**/*.json"],
+      "url": "./schemas/json/rig.document.schema.json"
+    }
+  ]
+}

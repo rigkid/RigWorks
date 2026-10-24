@@ -69,6 +69,8 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 
 ## Tools
 
+- [tools/rig-mcp/README.md](tools/rig-mcp/README.md): MCP server - `list_schemas`, `get_schema`, `find_examples`, `validate_document`, `get_skill` over stdio (`node tools/rig-mcp/server.mjs`)
+- [schemas/catalog.json](schemas/catalog.json): editor schema catalog - point `json.schemas` at `https://rig.works/schemas/catalog.json` for `.rig` autocomplete and validation
 - [tools/rig-validate/README.md](tools/rig-validate/README.md): validate CLI (`node tools/rig-validate/cli.js <file.json>`)
 - [tools/check-version.mjs](tools/check-version.mjs): SemVer format of [`VERSION`](VERSION) + site badges; hooks via `npm run hooks:install` (pre-commit SemVer, pre-push full `npm run check`)
 - [tools/check-schema-parity/check.mjs](tools/check-schema-parity/check.mjs): field-level parity (frontmatter, JSON Schema, prose)

@@ -1,5 +1,9 @@
 # RigWorks
 
+[![GitHub stars](https://img.shields.io/github/stars/rigkid/RigWorks?style=social)](https://github.com/rigkid/RigWorks/stargazers)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](docs/history.md)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 ![The geometry vocabulary - examples/minimal-scene.json drawn by the repo's own SVG fulfillment](site/scene.svg)
 
 **A no-code application framework.**  
@@ -13,7 +17,9 @@
 A Rig document is not a diagram of a format. The same JSON presents in more than one fulfillment without either knowing the other:
 
 - **SVG** - [`examples/minimal-scene.json`](examples/minimal-scene.json) drawn by [`tools/render-svg.mjs`](tools/render-svg.mjs) (the picture at the top of this page)
-- **[RigKit](https://github.com/rigkid/RigKit)** - desktop / Pi reference host (GLFW, packs)
+- **[RigViewer](https://github.com/rigkid/RigViewer)** - *presents*: the still document, drawn. [Open it](https://rigkid.github.io/RigViewer/) - drop a `.json` and look
+- **[RigPlayer](https://github.com/rigkid/RigPlayer)** - *plays*: the document over time (transport, animation, sound). [Play one now](https://player.rig.works/) - drop a `.rig`, press play, share the link
+- **[RigKit](https://github.com/rigkid/RigKit)** - *builds hosts*: desktop / Pi reference host (GLFW, packs)
 
 Any app that already has Setup / Update / Draw / Exit can honor the same schemas. Host-only fields stay in `x.<vendor>.*` extensions so they do not pollute the portable ones. Emitted documents pass `rig-validate --strict`.
 
@@ -22,6 +28,8 @@ Any app that already has Setup / Update / Draw / Exit can honor the same schemas
 **AI co-coding is here to stay.** When execution gets cheap, the shared concept becomes the scarce asset. The cheapest token is the one the model never generates: it writes the document and leaves the system unwritten, and the next agent already accepts that document. Rig publishes the concept in a form people and models read the same way - [AI collaboration](docs/ai-collaboration.md#the-cheapest-token).
 
 **What it costs.** A data framework moves work rather than deleting it. Live hosts write the loop; nothing fails to build when you drift; a schema only pays off once a second host speaks it - [the honest price](docs/why-no-code.md#the-honest-price).
+
+**For agents and editors.** [`tools/rig-mcp`](tools/rig-mcp/) serves the Contract over MCP (`list_schemas`, `get_schema`, `find_examples`, `validate_document`, `get_skill`) so Claude, Cursor, and peers call Rig directly. Editors get autocomplete and inline validation for `.rig` files from the published schema catalog - point `json.schemas` at `https://rig.works/schemas/catalog.json` ([`schemas/catalog.json`](schemas/catalog.json)); this repo's [`.vscode/settings.json`](.vscode/settings.json) shows the local form.
 
 ## The framework
 
