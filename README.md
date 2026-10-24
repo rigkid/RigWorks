@@ -131,40 +131,49 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 
 ## More reading
 
-| Start here | |
-|------------|--|
+| Why Rig | |
+|---------|--|
 | [docs/design-philosophy.md](docs/design-philosophy.md) | Future-proof, host-independent, human-readable - the tablet |
 | [docs/why-no-code.md](docs/why-no-code.md) | Why a framework with no code, and what it costs |
+| [docs/ai-collaboration.md](docs/ai-collaboration.md) | Why shared concepts beat private prompts when models author work |
+
+| Contract | |
+|----------|--|
 | [docs/terms.md](docs/terms.md) | Contract, fulfillment, host, pack, POD |
 | [docs/honors.md](docs/honors.md) | The minimum bar - is it Rig? |
+| [docs/ecs.md](docs/ecs.md) | Entity-component conventions |
+| [docs/sude.md](docs/sude.md) | Setup / Update / Draw / Exit |
+| [docs/ui.md](docs/ui.md) | Optional UI layer over the same data |
+| [docs/versioning.md](docs/versioning.md) | SemVer, maturity tiers, and release history |
 | [docs/gaps.md](docs/gaps.md) | Where the Contract is silent, ambiguous, or wrong |
 
-| The rules | |
-|-----------|--|
-| [docs/sude.md](docs/sude.md) | Setup / Update / Draw / Exit |
-| [docs/ecs.md](docs/ecs.md) | Entity-component conventions |
-| [docs/ui.md](docs/ui.md) | Optional UI layer over the same data |
-
-| The data | |
-|----------|--|
+| Data and exchange | |
+|-------------------|--|
 | [schemas/README.md](schemas/README.md) | Catalog of schema ids |
 | [schemas/json/](schemas/json/) | Machine grammar |
 | [schemas/document.md](schemas/document.md) | Document envelope |
-| [docs/properties.md](docs/properties.md) | Portable datatypes |
 | [docs/interchange.md](docs/interchange.md) | Wire format and `.rig` / `.rigz` package |
-| [docs/openbim.md](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
-| [docs/ufo.md](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
-| [docs/idml.md](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
-| [docs/ros.md](docs/ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |
-| [docs/robot.md](docs/robot.md) | Design, simulate, test, and train robots; solvers and trainers are fulfillment |
-| [docs/vr.md](docs/vr.md) | VR to `rig.vr.*` plus camera, transform, and input; runtimes are fulfillment |
-| [docs/print.md](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX` |
-| [docs/records.md](docs/records.md) | Payments, encounters, catalog rows, and case files; encodings are fulfillment |
+| [docs/properties.md](docs/properties.md) | Portable datatypes |
 | [examples/](examples/) | Reference documents |
+
+| Format mappings | |
+|-----------------|--|
+| [docs/idml.md](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
+| [docs/kicad.md](docs/kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*`; round trip merges onto the source file |
+| [docs/openbim.md](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
+| [docs/print.md](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page |
+| [docs/ufo.md](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
+
+| Domain mappings | |
+|-----------------|--|
+| [docs/dev.md](docs/dev.md) | Dev machines to `rig.dev.machine` / `rig.dev.op`; fulfillments e.g. RigDev |
+| [docs/records.md](docs/records.md) | Payments, encounters, catalog rows, and case files; encodings are fulfillment |
+| [docs/robot.md](docs/robot.md) | Design, simulate, test, and train robots; solvers and trainers are fulfillment |
+| [docs/ros.md](docs/ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |
+| [docs/vr.md](docs/vr.md) | VR to `rig.vr.*` plus camera, transform, and input; runtimes are fulfillment |
 
 | Working with models | |
 |---------------------|--|
-| [docs/ai-collaboration.md](docs/ai-collaboration.md) | Why concepts beat prompts |
 | [skills/generating-rig-documents/SKILL.md](skills/generating-rig-documents/SKILL.md) | The skill to load before generating |
 | [tools/](tools/) | Validator, parity, and link checks |
 

@@ -2,7 +2,7 @@
 
 **A no-code creative application framework. Because no code is the best code.**
 
-The short tablet - future-proof, host-independent, human-readable - is [design philosophy](design-philosophy.md). This page is the deeper anti-library argument and what it costs.
+The short tablet - future-proof, host-independent, human-readable - is [design philosophy](design-philosophy.md). This page makes the anti-library argument behind that tablet and names what the choice costs.
 
 ## What "no code" means here
 
@@ -58,19 +58,13 @@ Data has none of these. A `rig.spatial.transform` payload written by a Rust CLI 
 
 ## Concept is more important than execution
 
-**Concept** is the [Contract](terms.md): what a transform *is*, which units it uses, that rotation is a quaternion in `x, y, z, w` order. **Execution** is the [fulfillment](terms.md): the code that draws it this year, on this GPU, in this language.
-
-Executions have a half-life. Renderers get rewritten, GPUs are replaced, frameworks are abandoned, languages fall out of fashion. Concepts do not decay:
+[Design philosophy](design-philosophy.md) states the principle; this is its practical consequence. Executions have a half-life. Renderers get rewritten, GPUs are replaced, frameworks are abandoned, and languages fall out of fashion. A shared concept does not decay at the same rate:
 
 ```json
 "rig.music.transport": { "bpm": 128, "timeSigNum": 4, "timeSigDen": 4 }
 ```
 
-Whether that drives a C++ audio thread, a web worker, or a strip of LEDs is execution, and it will be rewritten several times. `"bpm": 128` will still mean 128. Every document ever written against the concept survives every rewrite of every execution.
-
-This is why Rig invests its effort where it does. The repository contains schemas, units, and rules - the parts that are expensive to agree on and cheap to keep. It contains no renderer, no runtime and nothing to install - it just works.
-
-It is also why "ship what you support" is not a compromise. A host that implements six schemas and ignores sixty-three is fully Rig. Partial execution of a shared concept still interoperates; a partial library does not link.
+Whether that drives a C++ audio thread, a web worker, or a strip of LEDs is execution, and it may be rewritten several times. `"bpm": 128` still means 128. Rig therefore invests in schemas, units, and rules - the parts that are expensive to agree on and cheap to keep - and leaves renderers, runtimes, and installers to fulfillments.
 
 ## The honest price
 

@@ -15,27 +15,43 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 ## Docs
 
 - [README.md](README.md): pitch, worked example, reference host
-- [docs/design-philosophy.md](docs/design-philosophy.md): future-proof, host-independent, human-readable
-- [docs/why-no-code.md](docs/why-no-code.md): why a framework that ships no code
+
+### Why Rig
+
+- [docs/design-philosophy.md](docs/design-philosophy.md): future-proof, host-independent, human-readable - the tablet
+- [docs/why-no-code.md](docs/why-no-code.md): why a framework that ships no code, and what it costs
+- [docs/ai-collaboration.md](docs/ai-collaboration.md): why shared concepts beat private prompts when models author work
+
+### Contract
+
 - [docs/terms.md](docs/terms.md): Contract, fulfillment, host, pack, POD
-- [docs/sude.md](docs/sude.md): Setup / Update / Draw / Exit (live hosts)
-- [docs/ecs.md](docs/ecs.md): entity/component POD (floor) + runtime systems (live hosts)
-- [docs/ui.md](docs/ui.md): optional Rig + UI (same Contract; litmus + `rig-validate` on `rig.ui.*`)
-- [docs/interchange.md](docs/interchange.md): JSON wire format + `.rig` / `.rigz` package
-- [docs/openbim.md](docs/openbim.md): OpenBIM (IFC / BCF / IDS) to `rig.bim.*`; encodings are fulfillment
-- [docs/ufo.md](docs/ufo.md): UFO / GLIF to `rig.font.*`; encodings are fulfillment
-- [docs/idml.md](docs/idml.md): IDML to `rig.layout.frame` + layout / story; encodings are fulfillment
-- [docs/ros.md](docs/ros.md): ROS 2 to existing spatial / I/O / sensor / SUDE; no `rig.ros2.*`
-- [docs/robot.md](docs/robot.md): design, simulate, test, and train robots on `rig.sim.*` / `rig.sensor.*` / `rig.ai.policy`; solvers and trainers are fulfillment
-- [docs/vr.md](docs/vr.md): VR to `rig.vr.*` plus camera, transform, and input; OpenXR / WebXR / vendor runtimes are fulfillment
-- [docs/dev.md](docs/dev.md): portable dev machines to `rig.dev.machine` / `rig.dev.op`; [RigDev](https://github.com/rigkid/RigDev) fulfills
-- [docs/kicad.md](docs/kicad.md): KiCad board to `rig.circuit.*` / `rig.pcb.*`; `.rigz` round trip merges onto the source file
-- [docs/print.md](docs/print.md): FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page
-- [docs/records.md](docs/records.md): payments, encounters, catalog rows, and case files to `rig.record.*` / `rig.finance.*` / `rig.clinic.*` / `rig.commerce.product`; encodings are fulfillment
-- [docs/properties.md](docs/properties.md): portable datatype ids
 - [docs/honors.md](docs/honors.md): what counts as Rig (grammar floor; live hosts; optional Rig + UI)
+- [docs/ecs.md](docs/ecs.md): entity/component POD (floor) + runtime systems (live hosts)
+- [docs/sude.md](docs/sude.md): Setup / Update / Draw / Exit (live hosts)
+- [docs/ui.md](docs/ui.md): optional Rig + UI (same Contract; litmus + `rig-validate` on `rig.ui.*`)
+- [docs/versioning.md](docs/versioning.md): version ranges, maturity tiers, and stability
 - [docs/gaps.md](docs/gaps.md): where the Contract is silent, ambiguous, or wrong
-- [docs/versioning.md](docs/versioning.md): version ranges and stability
+
+### Data and exchange
+
+- [docs/interchange.md](docs/interchange.md): JSON wire format + `.rig` / `.rigz` package
+- [docs/properties.md](docs/properties.md): portable datatype ids
+
+### Format mappings
+
+- [docs/idml.md](docs/idml.md): IDML to `rig.layout.frame` + layout / story; encodings are fulfillment
+- [docs/kicad.md](docs/kicad.md): KiCad board to `rig.circuit.*` / `rig.pcb.*`; `.rigz` round trip merges onto the source file
+- [docs/openbim.md](docs/openbim.md): OpenBIM (IFC / BCF / IDS) to `rig.bim.*`; encodings are fulfillment
+- [docs/print.md](docs/print.md): FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page
+- [docs/ufo.md](docs/ufo.md): UFO / GLIF to `rig.font.*`; encodings are fulfillment
+
+### Domain mappings
+
+- [docs/dev.md](docs/dev.md): portable dev machines to `rig.dev.machine` / `rig.dev.op`; [RigDev](https://github.com/rigkid/RigDev) fulfills
+- [docs/records.md](docs/records.md): payments, encounters, catalog rows, and case files to `rig.record.*` / `rig.finance.*` / `rig.clinic.*` / `rig.commerce.product`; encodings are fulfillment
+- [docs/robot.md](docs/robot.md): design, simulate, test, and train robots on `rig.sim.*` / `rig.sensor.*` / `rig.ai.policy`; solvers and trainers are fulfillment
+- [docs/ros.md](docs/ros.md): ROS 2 to existing spatial / I/O / sensor / SUDE; no `rig.ros2.*`
+- [docs/vr.md](docs/vr.md): VR to `rig.vr.*` plus camera, transform, and input; OpenXR / WebXR / vendor runtimes are fulfillment
 
 ## Schemas and examples
 

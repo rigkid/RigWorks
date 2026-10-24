@@ -191,21 +191,62 @@ function summarize(entry) {
 
 /* ---------- docs, examples, skill ---------- */
 
-// Reading order, not directory order — same sequence as llms.txt.
-const DOC_ORDER = [
-  "design-philosophy",
-  "why-no-code",
-  "terms",
-  "honors",
-  "sude",
-  "ecs",
-  "ui",
-  "interchange",
-  "properties",
-  "versioning",
-  "gaps",
-  "ai-collaboration",
+// Reading groups, not directory order — same grouping as README.md and llms.txt.
+// Slugs keep their existing docs/<slug>.md paths; only presentation is grouped.
+const DOC_GROUPS = [
+  {
+    title: "Why Rig",
+    note: "The argument in three altitudes: the tablet, the anti-library case, and the consequence when models author work.",
+    slugs: ["design-philosophy", "why-no-code", "ai-collaboration"],
+  },
+  {
+    title: "Contract",
+    note: "The portable rules, the vocabulary for talking about them, and the test for whether something is Rig.",
+    slugs: ["terms", "honors", "ecs", "sude", "ui", "versioning", "gaps"],
+  },
+  {
+    title: "Data and exchange",
+    note: "The JSON wire shape, .rig / .rigz packages, and portable property datatypes.",
+    slugs: ["interchange", "properties"],
+  },
+  {
+    title: "Format mappings",
+    note: "How established file formats map onto Rig schemas at the boundary. Native files and encodings stay fulfillment.",
+    slugs: ["idml", "kicad", "openbim", "print", "ufo"],
+  },
+  {
+    title: "Domain mappings",
+    note: "How established domains and runtimes are expressed with Rig schemas. Solvers, services, and runtimes stay fulfillment.",
+    slugs: ["dev", "records", "robot", "ros", "vr"],
+  },
 ];
+
+const DOC_ORDER = DOC_GROUPS.flatMap((group) => group.slugs);
+
+function groupDocs(docs) {
+  const bySlug = new Map(docs.map((doc) => [doc.slug, doc]));
+  const grouped = new Set();
+  const groups = DOC_GROUPS.map((group) => ({
+    ...group,
+    docs: group.slugs
+      .map((slug) => bySlug.get(slug))
+      .filter(Boolean)
+      .map((doc) => {
+        grouped.add(doc.slug);
+        return doc;
+      }),
+  })).filter((group) => group.docs.length);
+
+  const rest = docs.filter((doc) => !grouped.has(doc.slug));
+  if (rest.length) {
+    groups.push({
+      title: "More docs",
+      note: "Additional Contract notes.",
+      docs: rest,
+    });
+  }
+  return groups;
+}
 
 const blurbOf = (body) =>
   (body.split(/\n\s*\n/).find((p) => p && !p.startsWith("|") && !p.startsWith(">")) ?? "")
@@ -492,7 +533,7 @@ function nav(pageOut, current) {
 }
 
 function sidebar(pageOut, ctx, currentId) {
-  const { groups, docs, examples } = ctx;
+  const { groups, docGroups, examples } = ctx;
   const link = (to, label, key) =>
     `<li><a${key === currentId ? ' class="here"' : ""} href="${rel(pageOut, to)}">${esc(
       label
@@ -517,7 +558,14 @@ function sidebar(pageOut, ctx, currentId) {
     <summary>Browse the Contract</summary>
     <div class="side-scroll">
       ${schemaBlocks}
-      ${block("Docs", docs.map((d) => link(docOut(d.slug), d.title, d.slug)))}
+      ${docGroups
+        .map((group) =>
+          block(
+            `Docs: ${group.title}`,
+            group.docs.map((d) => link(docOut(d.slug), d.title, d.slug))
+          )
+        )
+        .join("")}
       ${block("Examples", examples.list.map((e) => link(exampleOut(e.slug), e.name, e.slug)))}
     </div>
   </details>
@@ -771,7 +819,15 @@ ${FILTER_JS}`;
 
 function docPage(doc, ctx) {
   const pageOut = docOut(doc.slug);
-  const body = `<p class="crumbs"><a href="${rel(pageOut, DOCS_OUT)}">Docs</a> <span>/</span> ${esc(
+  const group = ctx.docGroups.find((candidate) =>
+    candidate.docs.some((candidateDoc) => candidateDoc.slug === doc.slug)
+  );
+  const groupCrumb = group
+    ? ` <span>/</span> <a href="${rel(pageOut, DOCS_OUT)}#${slugify(group.title)}">${esc(
+        group.title
+      )}</a>`
+    : "";
+  const body = `<p class="crumbs"><a href="${rel(pageOut, DOCS_OUT)}">Docs</a>${groupCrumb} <span>/</span> ${esc(
     doc.slug
   )}</p>
 <div class="prose">
@@ -793,19 +849,24 @@ ${renderMarkdown(doc.md, doc.rel, pageOut, ctx.pathMap)}
 
 function docsIndex(ctx) {
   const pageOut = DOCS_OUT;
-  const cards = ctx.docs
-    .map(
-      (d) => `<a class="card" href="${rel(pageOut, docOut(d.slug))}">
+  const card = (d) => `<a class="card" href="${rel(pageOut, docOut(d.slug))}">
   <h3>${esc(d.title)}</h3>
   <p>${esc(d.blurb.slice(0, 190))}</p>
-</a>`
+</a>`;
+  const sections = ctx.docGroups
+    .map(
+      (group) => `<section>
+<h2 id="${slugify(group.title)}">${esc(group.title)}</h2>
+<p class="lede">${esc(group.note)}</p>
+<div class="grid cards">
+${group.docs.map(card).join("\n")}
+</div>
+</section>`
     )
     .join("\n");
   const body = `<h1>Docs</h1>
-<p class="lede">What the Contract means, and what counts as Rig.</p>
-<div class="grid cards">
-${cards}
-</div>`;
+<p class="lede">What the Contract means, and what counts as Rig. Start with why, then the rules, then the mappings.</p>
+${sections}`;
   return {
     out: pageOut,
     html: page({
@@ -952,7 +1013,7 @@ function build() {
   const examples = loadExamples();
   const skill = loadSkill();
   const groups = groupSchemas(byId);
-  const ctx = { byId, docs, examples, skill, groups };
+  const ctx = { byId, docs, docGroups: groupDocs(docs), examples, skill, groups };
   ctx.pathMap = buildPathMap(ctx);
 
   const pages = [
@@ -1005,6 +1066,12 @@ function checkOutput({ ctx }) {
   for (const id of ctx.byId.keys()) {
     if (!fs.existsSync(path.join(outDir, schemaOut(id)))) {
       problems.push(`no page for schema ${id}`);
+    }
+  }
+
+  for (const doc of ctx.docs) {
+    if (!fs.existsSync(path.join(outDir, docOut(doc.slug)))) {
+      problems.push(`no page for doc ${doc.slug}`);
     }
   }
 

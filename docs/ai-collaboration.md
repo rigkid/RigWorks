@@ -2,19 +2,21 @@
 
 **AI co-coding is here to stay.** Not as a prediction to argue about - as a design constraint we address.
 
+[Design philosophy](design-philosophy.md) states the tablet and [why no code](why-no-code.md) makes the anti-library argument. This page covers the consequence for model-authored work: when execution becomes cheap to generate, agreement becomes the scarce asset.
+
 ## What changes?
 
-If a model can write a renderer, a parser, or an inspector in an afternoon, then implementations stop being the scarce thing. What stays scarce is **agreement**: what a rectangle is, which units a transform uses, whether rotation is a quaternion or three angles.
+If a model can write a renderer, a parser, or an inspector in an afternoon, implementations stop being the scarce thing. What stays scarce is agreement: what a rectangle is, which units a transform uses, and whether rotation is a quaternion or three angles.
 
-That inverts the usual priority. A generated renderer is fine and disposable. A generated *vocabulary* is a liability, because the next session invents a different one. [Concept over execution](why-no-code.md) is not a slogan here; it is the only part a model cannot usefully improvise for you.
+That inverts the usual priority. A generated renderer is useful and disposable. A generated *vocabulary* is a liability, because the next session may invent a different one. Rig publishes the vocabulary once, in a form people and models read the same way.
 
 ## The cheapest token
 
 The cheapest token is the one the model never generates.
 
-The Contract is paid once. A later session spells `rig.spatial.transform` the same way, quaternion order included. Load the skill and one example. Leave the catalog on disk. The model writes the document and stops. The host that draws it is a fulfillment, written when someone needs it. A wrong field comes back as a JSON Pointer, so the next turn patches that field.
+The Contract is paid once. A later session spells `rig.spatial.transform` the same way, quaternion order included. Load the skill and one example. Leave the catalog on disk. The model writes the document and stops. The host that draws it is a fulfillment, written when someone needs it.
 
-The finished document is the output, and it is the artifact. The real save is the next session. Agents that speak the catalog write data the next agent already accepts. Neither side spends a context window explaining a private format, and neither writes a converter. The tokens that format would have cost, on every exchange after the first, are never generated.
+The finished document is both output and artifact. A document one agent emits is data the next agent already accepts, so neither side spends a context window explaining a private format and neither writes a converter. The tokens that format would have cost on every exchange after the first are never generated.
 
 ## Why a vocabulary beats a prompt
 
@@ -26,30 +28,9 @@ The finished document is the output, and it is the artifact. The real save is th
 | Across two different apps | Incompatible | Interoperable |
 | Verifiable | By reading it | By running a validator |
 
-Two agents working in two unrelated applications converge on compatible data - not because they coordinated, but because they read the same catalog. That convergence is the product. And makes coding together more fun.
+Two agents working in two unrelated applications converge on compatible data - not because they coordinated, but because they read the same catalog. That convergence is the product.
 
-## Not another editor
-
-Rig is **not** a node editor, a patcher, or an agentic design canvas. Those are
-fulfillments - including excellent ones that still bottom out in code. Rig is the
-vocabulary editors and agents could share so their content interoperates without
-anyone linking a library.
-
-## What Rig hands a model
-
-A no-code framework is, conveniently, the exact shape a model works best with: no API to guess, no build to fight, only data against a published grammar.
-
-| Asset | Role |
-|-------|------|
-| [`llms.txt`](../llms.txt) | Discovery - the entry point for generic tooling |
-| [`skills/generating-rig-documents/SKILL.md`](../skills/generating-rig-documents/SKILL.md) | The condensed rules, sized to load before generating |
-| [`AGENTS.md`](../AGENTS.md) | Cross-agent onboarding, pointing at the skill and the validator |
-| [`schemas/`](../schemas/) | Prose - meaning and units, for the reasoning step |
-| [`schemas/json/`](../schemas/json/) | Machine grammar - the checkable truth |
-| [`examples/`](../examples/) | Reference documents to copy instead of invent |
-| [`tools/rig-validate/`](../tools/rig-validate/) | The verdict: JSON Pointer paths and an exit code |
-
-Two documents deliberately say the same things at different densities. Prose is for understanding, the skill is for working memory, JSON Schema is for enforcement.
+Rig is not another editor, patcher, or agentic design canvas. Those are fulfillments. Rig is the shared vocabulary their documents could have in common.
 
 ## The closed loop
 
@@ -63,26 +44,18 @@ read the skill, copy a reference example, emit JSON, validate, fix at the report
 node tools/rig-validate/cli.js path/to/doc.json
 ```
 
-Every failure names a JSON Pointer, so a model can correct itself without a human interpreting the error. `--strict` turns invented schema ids into failures, which is the check worth running when you suspect confident guessing.
+Every failure names a JSON Pointer, so a model can correct itself without a human interpreting the error. `--strict` turns invented schema ids into failures, and the validator suggests the closest catalog ids. That is the check worth running when you suspect confident guessing.
 
 Never deliver an unvalidated document. Eyeballing JSON is exactly the review that looks fine and is wrong.
 
-## Working with agents here
-
-| Do | Why |
-|----|-----|
-| Point the agent at the skill, not the whole repo | A short skill beats the whole tree; the skill exists for this |
-| Run `--strict` on unfamiliar output | Invented ids are the most common confident error |
-| Prefer additive schema changes | Documents, prompts, and model habits in the wild all age better |
-| Keep prose and JSON Schema in parity | Models read prose, tools read grammar - drift teaches the model something false |
-| Spend review time on concepts | New ids, units, and portable-vs-[host-cache](terms.md) calls are yours; field-by-field diffs are not |
-
-Parity is enforced, not trusted:
-
-```bash
-node tools/check-schema-parity/check.mjs
-```
+Start from [`llms.txt`](../llms.txt) for discovery and load [`skills/generating-rig-documents/SKILL.md`](../skills/generating-rig-documents/SKILL.md) before generating. Schema prose carries meaning and units; generated JSON Schema carries the machine-checkable grammar. Keeping those in parity matters because models read the prose while tools enforce the grammar.
 
 ## Why "co-"
 
-The division of labour is the same one the Contract already draws. **You own the concept** - which ids exist, what they mean, what units they carry, what stays portable. **The model is very good at execution** - emitting documents, filling catalogs, writing the host that consumes them, porting a fulfillment to a new language.
+The division of labour is the same one the Contract already draws.
+
+**People own the concept:** which ids exist, what they mean, which units they carry, what stays portable, and when a second host justifies a new schema.
+
+**Models are good at the instance:** emitting documents against that concept, copying established patterns, fixing a reported field, and writing or porting a fulfillment when one is needed.
+
+Spend human review on ids, units, and portable-versus-host boundaries. Let the validator catch field-by-field drift.
