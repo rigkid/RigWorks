@@ -1,3 +1,45 @@
+---
+id: "rig.pcb.pad"
+maturity: "draft"
+summary: "Copper land for one terminal. Format when present."
+fields:
+  - name: "kind"
+    type: "string"
+    enum: ["through-hole","smd","connector","non-plated"]
+    required: true
+    meaning: "through-hole, smd, connector (edge finger, no paste), non-plated"
+  - name: "shape"
+    type: "string"
+    enum: ["circle","rectangle","oval","trapezoid","rounded-rectangle","custom"]
+    required: true
+    meaning: "circle, rectangle, oval, trapezoid, rounded-rectangle, custom"
+  - name: "width"
+    ref: "float"
+    required: true
+    meaning: "Pad size along local X"
+  - name: "height"
+    ref: "float"
+    required: true
+    meaning: "Pad size along local Y"
+  - name: "cornerRatio"
+    type: "number"
+    minimum: 0
+    maximum: 0.5
+    meaning: "Optional. Corner radius over the shorter side, 0-0.5, for rounded-rectangle; absent = 0.25"
+    absent: "0"
+  - name: "drillWidth"
+    ref: "float"
+    meaning: "Optional. Hole size along local X; absent = no hole"
+    absent: "no hole"
+  - name: "drillHeight"
+    ref: "float"
+    meaning: "Optional. Hole size along local Y; absent = drillWidth (round hole). Unequal = slot"
+    absent: "drillWidth (round hole)"
+  - name: "drillOffset"
+    ref: "vec2"
+    meaning: "Optional. Hole centre from pad centre; absent = (0, 0)"
+    absent: "(0, 0)"
+---
 # `rig.pcb.pad`
 
 Copper land for one terminal. Format when present.

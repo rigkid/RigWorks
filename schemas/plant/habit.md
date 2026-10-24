@@ -1,3 +1,27 @@
+---
+id: "rig.plant.habit"
+maturity: "draft"
+summary: "Growth form and mature size. Format when present."
+topJson: "{\"description\":\"Growth form and mature size. Not Darwin Core habitat (that is the event site — compose place).\",\"minProperties\":1}"
+fields:
+  - name: "lifeForm"
+    type: "string"
+    enum: ["tree","shrub","herb","vine","grass","fern","moss","succulent","aquatic","palm","other"]
+    meaning: "tree / shrub / herb / vine / grass / fern / moss / succulent / aquatic / palm / other"
+  - name: "leafPersistence"
+    type: "string"
+    enum: ["deciduous","evergreen","semi-evergreen"]
+    meaning: "deciduous / evergreen / semi-evergreen"
+  - name: "heightMetres"
+    ref: "float"
+    meaning: "Typical mature height, metres"
+  - name: "spreadMetres"
+    ref: "float"
+    meaning: "Typical mature spread, metres"
+  - name: "hardiness"
+    ref: "string"
+    meaning: "Zone or rating as the source wrote it (USDA 7, RHS H4)"
+---
 # `rig.plant.habit`
 
 Growth form and mature size. Format when present.

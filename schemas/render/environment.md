@@ -1,3 +1,17 @@
+---
+id: "rig.render.environment"
+maturity: "stable"
+summary: "Image-based light for the scene. One entity is enough. Format when present."
+fields:
+  - name: "hdri"
+    ref: "entity"
+    required: true
+    meaning: "rig.media.asset_ref of the lat-long radiance image"
+  - name: "intensity"
+    ref: "float"
+    meaning: "Optional. Scale; absent = 1"
+    absent: "1"
+---
 # `rig.render.environment`
 
 Image-based light for the scene. One entity is enough. Format when present.

@@ -19,5 +19,6 @@
     "pin",
     "innerNode",
     "innerPin"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

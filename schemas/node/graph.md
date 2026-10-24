@@ -1,3 +1,27 @@
+---
+id: "rig.node.graph"
+maturity: "stable"
+summary: "Portable node graph on one entity. Format when present."
+fields:
+  - name: "nodes"
+    type: "array"
+    itemsSchemaJson: "{\"$ref\":\"./rig.node.node.schema.json\"}"
+    required: true
+    meaning: "Graph nodes - see rig.node.node"
+  - name: "links"
+    type: "array"
+    itemsSchemaJson: "{\"$ref\":\"./rig.node.link.schema.json\"}"
+    required: true
+    meaning: "Directed pin links - see rig.node.link"
+  - name: "buses"
+    type: "array"
+    itemsSchemaJson: "{\"$ref\":\"./rig.node.bus.schema.json\"}"
+    meaning: "Optional. Named rails pins tap without a drawn link - see rig.node.bus"
+  - name: "nextId"
+    ref: "uint"
+    required: true
+    meaning: "Next id allocator for nodes / links / pins / buses"
+---
 # `rig.node.graph`
 
 Portable node graph on one entity. Format when present.

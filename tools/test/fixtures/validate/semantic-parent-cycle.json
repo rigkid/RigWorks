@@ -1,0 +1,17 @@
+{
+  "rig": "0.40.0",
+  "entities": [
+    {
+      "id": "a",
+      "components": {
+        "rig.spatial.relationship": { "parent": "b" }
+      }
+    },
+    {
+      "id": "b",
+      "components": {
+        "rig.spatial.relationship": { "parent": "a" }
+      }
+    }
+  ]
+}

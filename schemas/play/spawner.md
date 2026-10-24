@@ -1,3 +1,25 @@
+---
+id: "rig.play.spawner"
+maturity: "draft"
+summary: "Clones a prototype on a period. Format when present."
+fields:
+  - name: "prototype"
+    ref: "entity"
+    required: true
+    meaning: "Entity to clone"
+  - name: "period"
+    ref: "float"
+    required: true
+    meaning: "Seconds between spawns"
+  - name: "maxAlive"
+    ref: "uint"
+    meaning: "Optional. Cap on living clones; absent = 1"
+    absent: "1"
+  - name: "active"
+    ref: "bool"
+    meaning: "Optional. Spawns while true; absent = true"
+    absent: "true"
+---
 # `rig.play.spawner`
 
 Clones a prototype on a period. Format when present.

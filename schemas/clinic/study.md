@@ -1,3 +1,27 @@
+---
+id: "rig.clinic.study"
+maturity: "draft"
+summary: "One imaging study or series. Format when present."
+topJson: "{\"description\":\"One imaging study or series. DICOM UIDs. Pixels stay on the asset file.\"}"
+fields:
+  - name: "subject"
+    ref: "entity"
+    required: true
+    meaning: "Person (or other) the images are of"
+  - name: "studyUid"
+    ref: "string"
+    required: true
+    meaning: "Study Instance UID"
+  - name: "seriesUid"
+    ref: "string"
+    meaning: "Optional. Series Instance UID"
+  - name: "modality"
+    ref: "string"
+    meaning: "Optional. DICOM modality as written (CT, MR)"
+  - name: "asset"
+    ref: "entity"
+    meaning: "Optional. Image or document rig.media.asset_ref"
+---
 # `rig.clinic.study`
 
 One imaging study or series. Format when present.

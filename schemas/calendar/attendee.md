@@ -1,3 +1,27 @@
+---
+id: "rig.calendar.attendee"
+maturity: "draft"
+summary: "A person invited to an event. Format when present."
+fields:
+  - name: "event"
+    ref: "entity"
+    required: true
+    meaning: "The rig.calendar.event"
+  - name: "person"
+    ref: "entity"
+    required: true
+    meaning: "The invitee"
+  - name: "role"
+    type: "string"
+    enum: ["chair","required","optional","inform"]
+    meaning: "Optional. chair / required / optional / inform; absent = required"
+    absent: "required"
+  - name: "status"
+    type: "string"
+    enum: ["needs-action","accepted","declined","tentative"]
+    meaning: "Optional. needs-action / accepted / declined / tentative; absent = needs-action"
+    absent: "needs-action"
+---
 # `rig.calendar.attendee`
 
 A person invited to an event. Format when present.

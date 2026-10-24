@@ -1,3 +1,25 @@
+---
+id: "rig.paper.issue"
+maturity: "draft"
+summary: "Issue or proceedings container for an article. Format when present."
+topJson: "{\"description\":\"Issue / proceedings container. Journal is an entity (name + ISSN). Not the article.\",\"minProperties\":1}"
+fields:
+  - name: "journal"
+    ref: "entity"
+    meaning: "Journal or proceedings series"
+  - name: "volume"
+    ref: "string"
+    meaning: "Volume"
+  - name: "issue"
+    ref: "string"
+    meaning: "Issue / number"
+  - name: "conferenceName"
+    ref: "string"
+    meaning: "Conference name (proceedings)"
+  - name: "conferencePlace"
+    ref: "string"
+    meaning: "Conference city / venue"
+---
 # `rig.paper.issue`
 
 Issue or proceedings container for an article. Format when present.

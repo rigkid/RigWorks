@@ -1,3 +1,24 @@
+---
+id: "rig.commerce.invoice_line"
+maturity: "draft"
+summary: "One line of an invoice. Format when present."
+topJson: "{\"description\":\"One line of an invoice. Price composes rig.commerce.price.\"}"
+fields:
+  - name: "invoice"
+    ref: "entity"
+    required: true
+    meaning: "The rig.commerce.invoice"
+  - name: "product"
+    ref: "entity"
+    meaning: "Optional. The rig.commerce.product"
+  - name: "quantity"
+    ref: "float"
+    required: true
+    meaning: "Count billed"
+  - name: "orderLine"
+    ref: "entity"
+    meaning: "Optional. The rig.commerce.order_line this bills"
+---
 # `rig.commerce.invoice_line`
 
 One line of an invoice. Format when present.

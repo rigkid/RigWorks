@@ -119,6 +119,61 @@ describe("rig-validate", () => {
     }
   });
 
+  it("suggests corrections for unknown schema ids", () => {
+    const r = run(["--strict", fix("unknown-typo.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /did you mean "rig\.paint\.fill"/);
+  });
+
+  it("reports each fault once (envelope and per-component passes dedupe)", () => {
+    const r = run([fix("semantic-rectangle-negative.json")]);
+    assert.equal(r.status, 1);
+    const widthErrors = r.stdout.split("\n").filter((l) => l.includes("rig.geometry.rectangle/width"));
+    assert.equal(widthErrors.length, 1, r.stdout);
+  });
+
+  it("errors on a negative rectangle width", () => {
+    const r = run([fix("semantic-rectangle-negative.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /must be >= 0/);
+  });
+
+  it("errors when inline and referenced fill are both carried", () => {
+    const r = run([fix("semantic-paint-conflict.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /choose one spelling/);
+  });
+
+  it("errors on a parent cycle", () => {
+    const r = run([fix("semantic-parent-cycle.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /parent cycle detected: a -> b -> a/);
+  });
+
+  it("errors on duplicate stableId values", () => {
+    const r = run([fix("semantic-duplicate-stableid.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /duplicate stableId "same"/);
+  });
+
+  it("errors on a non-unit quaternion", () => {
+    const r = run([fix("semantic-nonunit-quat.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /unit quaternion/);
+  });
+
+  it("errors when a required composition is missing", () => {
+    const r = run([fix("semantic-depth-no-camera.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /rig\.sensor\.depth composes rig\.spatial\.camera/);
+  });
+
+  it("notes experimental schema ids without failing", () => {
+    const r = run(["--strict", fix("experimental-id.json")]);
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+    assert.match(r.stdout, /\[note\].*experimental schema id "rig\.io\.dmx"/);
+  });
+
   it("validates a .rigz package", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "rigz-"));
     try {

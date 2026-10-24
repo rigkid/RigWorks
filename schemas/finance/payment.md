@@ -1,3 +1,40 @@
+---
+id: "rig.finance.payment"
+maturity: "draft"
+summary: "A movement of money between two parties. Format when present."
+topJson: "{\"description\":\"A movement of money. Field meanings follow ISO 20022 payment identification. Not a pacs message.\"}"
+fields:
+  - name: "debtor"
+    ref: "entity"
+    required: true
+    meaning: "Party that pays"
+  - name: "creditor"
+    ref: "entity"
+    required: true
+    meaning: "Party that receives"
+  - name: "status"
+    type: "string"
+    enum: ["pending","booked","rejected","cancelled"]
+    required: true
+    meaning: "pending / booked / rejected / cancelled"
+  - name: "debtorAccount"
+    ref: "entity"
+    meaning: "Optional. Debtor rig.party.account"
+  - name: "creditorAccount"
+    ref: "entity"
+    meaning: "Optional. Creditor account"
+  - name: "endToEndId"
+    ref: "string"
+    meaning: "Optional. End-to-end identification"
+  - name: "bookedDate"
+    type: "string"
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    description: "ISO 8601 calendar date."
+    meaning: "Optional. Booking day, YYYY-MM-DD"
+  - name: "invoice"
+    ref: "entity"
+    meaning: "Optional. The rig.commerce.invoice this settles"
+---
 # `rig.finance.payment`
 
 A movement of money between two parties. Format when present.

@@ -1,3 +1,16 @@
+---
+id: "rig.spatial.relationship"
+maturity: "stable"
+summary: "Scene-graph parent. Format when present."
+fields:
+  - name: "parent"
+    ref: "entity"
+    required: true
+    meaning: "Parent entity; none = root"
+  - name: "order"
+    ref: "int"
+    meaning: "Optional. Sibling position under parent, ascending. Ties and gaps are allowed; a host sorts by it and breaks ties by document order."
+---
 # `rig.spatial.relationship`
 
 Scene-graph parent. Format when present.

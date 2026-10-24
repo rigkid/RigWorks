@@ -18,5 +18,6 @@
       "type": "number",
       "exclusiveMinimum": 0
     }
-  }
+  },
+  "x-rig-maturity": "draft"
 }

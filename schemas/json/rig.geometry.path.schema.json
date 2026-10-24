@@ -62,5 +62,6 @@
   },
   "required": [
     "commands"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

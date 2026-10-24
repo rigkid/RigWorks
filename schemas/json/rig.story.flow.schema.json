@@ -14,5 +14,6 @@
   },
   "required": [
     "blocks"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

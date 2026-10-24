@@ -21,5 +21,6 @@
   },
   "required": [
     "members"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

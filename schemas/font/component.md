@@ -1,3 +1,37 @@
+---
+id: "rig.font.component"
+maturity: "stable"
+summary: "Composite reference - draw another glyph into this one. Format when present."
+fields:
+  - name: "glyph"
+    ref: "entity"
+    required: true
+    meaning: "Source rig.font.glyph"
+  - name: "scaleX"
+    ref: "float"
+    meaning: "Optional. UFO xScale; absent = 1"
+    absent: "1"
+  - name: "xyScale"
+    ref: "float"
+    meaning: "Optional. UFO xyScale; absent = 0"
+    absent: "0"
+  - name: "yxScale"
+    ref: "float"
+    meaning: "Optional. UFO yxScale; absent = 0"
+    absent: "0"
+  - name: "scaleY"
+    ref: "float"
+    meaning: "Optional. UFO yScale; absent = 1"
+    absent: "1"
+  - name: "offsetX"
+    ref: "float"
+    meaning: "Optional. UFO xOffset in font units; absent = 0"
+    absent: "0"
+  - name: "offsetY"
+    ref: "float"
+    meaning: "Optional. UFO yOffset in font units; absent = 0"
+    absent: "0"
+---
 # `rig.font.component`
 
 Composite reference - draw another glyph into this one. Format when present.

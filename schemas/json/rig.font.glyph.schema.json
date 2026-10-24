@@ -17,5 +17,6 @@
   },
   "required": [
     "width"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

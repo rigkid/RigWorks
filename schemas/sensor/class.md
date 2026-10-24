@@ -1,3 +1,13 @@
+---
+id: "rig.sensor.class"
+maturity: "draft"
+summary: "Class of one entity in a label image. Format when present."
+fields:
+  - name: "name"
+    ref: "string"
+    required: true
+    meaning: "Class name. Matches a string in rig.sensor.label classes"
+---
 # `rig.sensor.class`
 
 Class of one entity in a label image. Format when present.

@@ -21,5 +21,6 @@
   "required": [
     "startChannel",
     "channelCount"
-  ]
+  ],
+  "x-rig-maturity": "experimental"
 }

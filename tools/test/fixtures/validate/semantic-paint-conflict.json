@@ -1,0 +1,19 @@
+{
+  "rig": "0.40.0",
+  "entities": [
+    {
+      "id": "paint",
+      "components": {
+        "rig.paint.solid": { "rgba": [1, 0, 0, 1] }
+      }
+    },
+    {
+      "id": "rect",
+      "components": {
+        "rig.geometry.rectangle": { "x": 0, "y": 0, "width": 10, "height": 10 },
+        "rig.paint.fill": { "paint": "paint" },
+        "rig.paint.fill_stroke": { "fillRgba": [0, 1, 0, 1] }
+      }
+    }
+  ]
+}

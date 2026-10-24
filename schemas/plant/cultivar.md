@@ -1,3 +1,22 @@
+---
+id: "rig.plant.cultivar"
+maturity: "draft"
+summary: "Cultivated-plant name. Format when present."
+topJson: "{\"description\":\"Cultivated-plant name. Field meanings follow ICNCP and Darwin Core cultivarEpithet. Epithet without quotes.\",\"minProperties\":1}"
+fields:
+  - name: "cultivarEpithet"
+    ref: "string"
+    meaning: "Cultivar epithet, without quotes"
+  - name: "cultivarGroup"
+    ref: "string"
+    meaning: "Cultivar Group epithet, without the word Group"
+  - name: "grex"
+    ref: "string"
+    meaning: "Grex epithet (orchids)"
+  - name: "tradeDesignation"
+    ref: "string"
+    meaning: "Selling / marketing name"
+---
 # `rig.plant.cultivar`
 
 Cultivated-plant name. Format when present.

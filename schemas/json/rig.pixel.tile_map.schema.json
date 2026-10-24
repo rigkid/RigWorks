@@ -32,5 +32,6 @@
     "width",
     "height",
     "tiles"
-  ]
+  ],
+  "x-rig-maturity": "experimental"
 }

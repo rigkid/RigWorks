@@ -1,3 +1,13 @@
+---
+id: "rig.bim.storey"
+maturity: "draft"
+summary: "Building storey / level datum (IfcBuildingStorey). Format when present."
+fields:
+  - name: "elevation"
+    ref: "float"
+    meaning: "Optional. Storey elevation in document units; absent = 0"
+    absent: "0"
+---
 # `rig.bim.storey`
 
 Building storey / level datum (`IfcBuildingStorey`). Format when present.

@@ -33,5 +33,6 @@
   "required": [
     "navmesh",
     "speed"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,42 @@
+---
+id: "rig.pixel.layer"
+maturity: "draft"
+summary: "Compositor stack entry. Format when present."
+fields:
+  - name: "kind"
+    type: "string"
+    enum: ["vector","overlay-image","solid","group"]
+    required: true
+    meaning: "vector, overlay-image, solid, group"
+  - name: "image"
+    ref: "entity"
+    meaning: "Overlay rig.media.asset_ref when kind needs it"
+  - name: "rgba"
+    ref: "rgba"
+    meaning: "Solid fill; required when kind=solid"
+  - name: "maskSource"
+    type: "string"
+    enum: ["none","luma","alpha","path"]
+    meaning: "Optional. none, luma, alpha, path; absent = none"
+    absent: "none"
+  - name: "maskAsset"
+    ref: "entity"
+    meaning: "Luma image asset when maskSource=luma"
+  - name: "maskLayer"
+    ref: "entity"
+    meaning: "Alpha source layer when maskSource=alpha"
+  - name: "maskPathEntity"
+    ref: "entity"
+    meaning: "Path entity when maskSource=path"
+  - name: "invertMask"
+    ref: "bool"
+    meaning: "Optional. Invert mask; absent = false"
+    absent: "false"
+  - name: "groupParent"
+    ref: "entity"
+    meaning: "Optional. Compositor group parent; absent or none = root"
+    absent: "or none = root"
+---
 # `rig.pixel.layer`
 
 Compositor stack entry. Format when present.

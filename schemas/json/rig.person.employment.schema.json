@@ -38,5 +38,6 @@
     }
   },
   "description": "Employment. Job title / department follow ISO 20022 ContactDetails; organisation is an entity.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

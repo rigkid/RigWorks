@@ -6,5 +6,6 @@
   "additionalProperties": false,
   "properties": {},
   "description": "Marker: presence means scene group root. No fields.",
-  "minProperties": 0
+  "minProperties": 0,
+  "x-rig-maturity": "stable"
 }

@@ -1,3 +1,19 @@
+---
+id: "rig.audio.bus"
+maturity: "draft"
+summary: "Master (or named) audio bus gain and mute. Format when present."
+fields:
+  - name: "gain"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    meaning: "Optional. 0-1 linear gain; absent = 1"
+    absent: "1"
+  - name: "mute"
+    ref: "bool"
+    meaning: "Optional. Silent when true; absent = false"
+    absent: "false"
+---
 # `rig.audio.bus`
 
 Master (or named) audio bus gain and mute. Format when present.

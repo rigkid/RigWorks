@@ -1,3 +1,23 @@
+---
+id: "rig.organisation.identity"
+maturity: "draft"
+summary: "Legal identifiers of an organisation. Format when present."
+topJson: "{\"description\":\"Organisation legal identifiers. Field meanings follow ISO 20022 OrganisationIdentification. Name is rig.meta.named.\",\"minProperties\":1}"
+fields:
+  - name: "lei"
+    type: "string"
+    pattern: "^[A-Z0-9]{20}$"
+    description: "ISO 17442 LEI (ISO 20022 LEI)."
+    meaning: "20-character Legal Entity Identifier"
+  - name: "bic"
+    type: "string"
+    pattern: "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"
+    description: "ISO 9362 BIC (ISO 20022 AnyBIC)."
+    meaning: "8- or 11-character BIC"
+  - name: "registrationNumber"
+    ref: "string"
+    meaning: "National / trade register id"
+---
 # `rig.organisation.identity`
 
 Legal identifiers of an organisation. Format when present.

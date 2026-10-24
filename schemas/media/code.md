@@ -1,3 +1,21 @@
+---
+id: "rig.media.code"
+maturity: "stable"
+summary: "**Editable source buffer.** A text document the app owns; editors edit it in place. Format when present."
+fields:
+  - name: "text"
+    ref: "string"
+    required: true
+    meaning: "Buffer content - the source of truth, not a cache of a file"
+  - name: "language"
+    ref: "string"
+    meaning: "Optional. Lowercase grammar id (gcode, svg, python, fea); absent or empty = plain text"
+    absent: "or empty = plain text"
+  - name: "readOnly"
+    ref: "bool"
+    meaning: "Optional. Edit lock hint; absent = false"
+    absent: "false"
+---
 # `rig.media.code`
 
 **Editable source buffer.** A text document the app owns; editors edit it in place. Format when present.

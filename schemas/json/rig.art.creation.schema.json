@@ -16,5 +16,6 @@
     }
   },
   "description": "Creation date and period. Field meanings follow CDWA Creation. Maker is rig.art.attribution.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

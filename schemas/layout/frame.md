@@ -1,3 +1,36 @@
+---
+id: "rig.layout.frame"
+maturity: "draft"
+summary: "Text frame - a box a rig.story.flow flows through. Format when present."
+fields:
+  - name: "width"
+    ref: "float"
+    required: true
+    meaning: "Box width in the parent page unit (or document.defaultUnit)"
+  - name: "height"
+    ref: "float"
+    required: true
+    meaning: "Box height"
+  - name: "insets"
+    ref: "faceInsets"
+    meaning: "number[1..6]"
+  - name: "columnCount"
+    ref: "int"
+    meaning: "Optional. Text columns; absent = 1"
+    absent: "1"
+  - name: "columnGutter"
+    ref: "float"
+    meaning: "Optional. Space between columns; absent = 0"
+    absent: "0"
+  - name: "firstBaseline"
+    type: "string"
+    enum: ["ascent","cap-height","leading","x-height","em-box","fixed"]
+    meaning: "Optional. How the first line sits: ascent, cap-height, leading, x-height, em-box, fixed. Absent = ascent"
+    absent: "ascent"
+  - name: "firstBaselineMin"
+    ref: "float"
+    meaning: "Optional. Minimum first-baseline offset from the inset top. When firstBaseline is fixed, this is the offset"
+---
 # `rig.layout.frame`
 
 Text frame - a box a [`rig.story.flow`](../story/flow.md) flows through. Format when present.

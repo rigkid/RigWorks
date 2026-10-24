@@ -1,3 +1,29 @@
+---
+id: "rig.font.axis"
+maturity: "draft"
+summary: "One design axis on a face. Format when present."
+fields:
+  - name: "tag"
+    ref: "string"
+    required: true
+    meaning: "Required. Four-character tag (wght, wdth, slnt, GRAD)"
+  - name: "name"
+    ref: "string"
+    meaning: "Optional. Human label (UFO / UI); absent = use tag"
+    absent: "use tag"
+  - name: "min"
+    ref: "float"
+    required: true
+    meaning: "Required. Minimum design value"
+  - name: "default"
+    ref: "float"
+    required: true
+    meaning: "Required. Default design value"
+  - name: "max"
+    ref: "float"
+    required: true
+    meaning: "Required. Maximum design value"
+---
 # `rig.font.axis`
 
 One design axis on a face. Format when present.

@@ -14,5 +14,6 @@
   },
   "required": [
     "hdri"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

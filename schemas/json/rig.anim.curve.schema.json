@@ -51,5 +51,6 @@
   },
   "required": [
     "points"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

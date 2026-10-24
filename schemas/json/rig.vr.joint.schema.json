@@ -43,5 +43,6 @@
   },
   "required": [
     "name"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

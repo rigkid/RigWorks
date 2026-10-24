@@ -29,5 +29,6 @@
     }
   },
   "description": "Reach channels. Field meanings follow ISO 20022 ContactDetails. Not a postal address.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

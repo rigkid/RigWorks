@@ -30,5 +30,6 @@
     "place",
     "quantity"
   ],
-  "description": "Count of a product at a place. Not offer availability and not a warehouse engine."
+  "description": "Count of a product at a place. Not offer availability and not a warehouse engine.",
+  "x-rig-maturity": "draft"
 }

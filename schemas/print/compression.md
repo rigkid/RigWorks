@@ -1,3 +1,21 @@
+---
+id: "rig.print.compression"
+maturity: "draft"
+summary: "Hot-stack weight sag for FGF. Format when present."
+fields:
+  - name: "enabled"
+    ref: "bool"
+    meaning: "Optional. Absent = false"
+    absent: "false"
+  - name: "sagMmPerKg"
+    ref: "float"
+    required: true
+    meaning: "Extra commanded Z (mm) per kilogram already deposited below the current layer"
+  - name: "alsoScaleE"
+    ref: "bool"
+    meaning: "Optional. Absent = false. Scale extrusion by the padded layer height so the bead is not stretched"
+    absent: "false"
+---
 # `rig.print.compression`
 
 Hot-stack weight sag for FGF. Format when present.

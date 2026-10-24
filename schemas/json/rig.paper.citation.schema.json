@@ -19,5 +19,6 @@
     "citing",
     "cited"
   ],
-  "description": "One bibliographic citation. Field meanings follow CSL / ISO 690 (this work cites that work)."
+  "description": "One bibliographic citation. Field meanings follow CSL / ISO 690 (this work cites that work).",
+  "x-rig-maturity": "draft"
 }

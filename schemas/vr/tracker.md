@@ -1,3 +1,25 @@
+---
+id: "rig.vr.tracker"
+maturity: "draft"
+summary: "One tracked pose. Format when present."
+fields:
+  - name: "player"
+    ref: "int"
+    meaning: "Optional. Player index (0-based); absent = 0"
+    absent: "0"
+  - name: "role"
+    type: "string"
+    enum: ["head","gaze","left-hand","right-hand","left-shoulder","right-shoulder","left-elbow","right-elbow","chest","waist","left-knee","right-knee","left-foot","right-foot","gamepad","tracker"]
+    required: true
+    meaning: "Which body or device this pose is"
+  - name: "index"
+    ref: "int"
+    meaning: "Optional. Disambiguates a repeated role; absent = 0"
+    absent: "0"
+  - name: "device"
+    ref: "entity"
+    meaning: "Optional. rig.vr.headset or rig.vr.controller this pose belongs to"
+---
 # `rig.vr.tracker`
 
 One tracked pose. Format when present.

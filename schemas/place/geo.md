@@ -1,3 +1,25 @@
+---
+id: "rig.place.geo"
+maturity: "draft"
+summary: "WGS84 geodetic pin. Format when present."
+topJson: "{\"description\":\"WGS84 geodetic pin. Not a postal address and not scene pose.\"}"
+fields:
+  - name: "latitudeDegrees"
+    type: "number"
+    minimum: -90
+    maximum: 90
+    required: true
+    meaning: "Geodetic latitude, −90...90"
+  - name: "longitudeDegrees"
+    type: "number"
+    minimum: -180
+    maximum: 180
+    required: true
+    meaning: "Geodetic longitude, −180...180"
+  - name: "altitudeMetres"
+    ref: "float"
+    meaning: "Optional. Ellipsoidal height in metres"
+---
 # `rig.place.geo`
 
 WGS84 geodetic pin. Format when present.

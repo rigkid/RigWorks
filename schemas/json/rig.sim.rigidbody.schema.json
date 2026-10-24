@@ -59,5 +59,6 @@
     "centerOfMass": {
       "$ref": "./_defs.schema.json#/$defs/vec3"
     }
-  }
+  },
+  "x-rig-maturity": "draft"
 }

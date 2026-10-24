@@ -66,6 +66,8 @@ fail() {
 	examples/bim-model.json \
 	examples/bim-bcf.json \
 	examples/bim-ids.json || fail "check:examples"
+"$NODE" tools/check-skill.mjs || fail "check:skill"
+"$NODE" tools/check-tag.mjs || fail "check:tag (release branch must carry tag v$(cat VERSION))"
 "$NODE" --test tools/test/*.test.mjs || fail "test"
 
 echo "Pre-push checks passed"

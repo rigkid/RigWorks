@@ -1,3 +1,28 @@
+---
+id: "rig.book.identifier"
+maturity: "draft"
+summary: "Product identifiers of a book (or other ONIX product). Format when present."
+topJson: "{\"description\":\"Product identifiers. Prefer isbn13 (ISO 2108). Do not invent isbn10 from isbn13.\",\"minProperties\":1}"
+fields:
+  - name: "isbn13"
+    type: "string"
+    pattern: "^97[89][0-9]{10}$"
+    description: "ISO 2108 ISBN-13 digits only (ONIX ProductIDType 15)."
+    meaning: "13 digits, no hyphens or spaces"
+  - name: "isbn10"
+    type: "string"
+    pattern: "^[0-9]{9}[0-9X]$"
+    description: "ISO 2108 ISBN-10 (ONIX ProductIDType 02). Legacy."
+    meaning: "9 digits plus check digit or X"
+  - name: "doi"
+    ref: "string"
+    meaning: "Digital Object Identifier"
+  - name: "issn"
+    type: "string"
+    pattern: "^[0-9]{4}-[0-9]{3}[0-9X]$"
+    description: "ISSN (ISO 3297)."
+    meaning: "NNNN-NNNC"
+---
 # `rig.book.identifier`
 
 Product identifiers of a book (or other ONIX product). Format when present.

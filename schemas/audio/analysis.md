@@ -1,3 +1,36 @@
+---
+id: "rig.audio.analysis"
+maturity: "draft"
+summary: "Request for spectral analysis of an audio stream. Format when present."
+fields:
+  - name: "source"
+    type: "string"
+    enum: ["input","asset"]
+    required: true
+    meaning: "input (live capture) or asset"
+  - name: "asset"
+    ref: "entity"
+    meaning: "Required when source is asset; an entity carrying rig.media.asset_ref"
+  - name: "bandCount"
+    ref: "int"
+    required: true
+    meaning: "Number of frequency bands to produce"
+  - name: "smoothing"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    meaning: "Optional. 0-1; 0 = no smoothing between frames"
+  - name: "onsetThreshold"
+    ref: "float"
+    meaning: "Optional. Absent disables onset detection"
+    absent: "disables onset detection"
+  - name: "features"
+    type: "array"
+    itemsType: "string"
+    itemsEnum: ["onset","note","beat","color","temperature","centroid","spread","rolloff","flatness","flux","chroma","key","chord"]
+    meaning: "Optional. Which live signals to publish: onset, note, beat, color, temperature, centroid, spread, rolloff, flatness, flux, chroma, key, chord. Absent = host default set"
+    absent: "host default set"
+---
 # `rig.audio.analysis`
 
 Request for spectral analysis of an audio stream. Format when present.

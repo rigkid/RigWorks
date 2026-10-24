@@ -1,3 +1,25 @@
+---
+id: "rig.circuit.part"
+maturity: "draft"
+summary: "One placed electronic part - a resistor, an IC, a connector, a Raspberry Pi header. Format when present."
+fields:
+  - name: "reference"
+    ref: "string"
+    required: true
+    meaning: "Reference designator (R1, U3, J2). Unique per design"
+  - name: "value"
+    ref: "string"
+    meaning: "Optional. Value or part name (10k, ESP32-S3-WROOM-1); absent = none"
+    absent: "none"
+  - name: "datasheet"
+    ref: "entity"
+    meaning: "Optional. rig.media.asset_ref (kind document) for the datasheet; absent = none"
+    absent: "none"
+  - name: "inBom"
+    ref: "bool"
+    meaning: "Optional. Listed on a bill of materials; absent = true"
+    absent: "true"
+---
 # `rig.circuit.part`
 
 One placed electronic part - a resistor, an IC, a connector, a Raspberry Pi header. Format when present.

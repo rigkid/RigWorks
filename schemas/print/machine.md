@@ -1,3 +1,33 @@
+---
+id: "rig.print.machine"
+maturity: "draft"
+summary: "FGF / pellet printer envelope. Format when present."
+fields:
+  - name: "bedX"
+    ref: "float"
+    required: true
+    meaning: "Bed extent X (mm)"
+  - name: "bedY"
+    ref: "float"
+    required: true
+    meaning: "Bed extent Y (mm)"
+  - name: "bedZ"
+    ref: "float"
+    required: true
+    meaning: "Printable height (mm)"
+  - name: "pelletMode"
+    ref: "bool"
+    meaning: "Optional. Absent = false. When true, G-code E is volume (mm3), not filament length"
+    absent: "false"
+  - name: "rotationVolumeMm3"
+    ref: "float"
+    meaning: "Optional. mm3 per screw turn (pellet). Absent = unset"
+    absent: "unset"
+  - name: "maxVolumetricMm3s"
+    ref: "float"
+    meaning: "Optional. Hardware melt / extrude ceiling (mm3/s). Absent = unset"
+    absent: "unset"
+---
 # `rig.print.machine`
 
 FGF / pellet printer envelope. Format when present.

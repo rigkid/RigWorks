@@ -14,5 +14,6 @@
   },
   "required": [
     "paints"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

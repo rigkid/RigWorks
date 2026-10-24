@@ -1,3 +1,37 @@
+---
+id: "rig.geometry.arc"
+maturity: "draft"
+summary: "Circular or elliptical arc (or pie wedge). Format when present."
+fields:
+  - name: "centerX"
+    ref: "float"
+    required: true
+    meaning: "Centre X, local space"
+  - name: "centerY"
+    ref: "float"
+    required: true
+    meaning: "Centre Y, local space"
+  - name: "radiusX"
+    ref: "float"
+    required: true
+    meaning: "Radius along local X"
+  - name: "radiusY"
+    ref: "float"
+    required: true
+    meaning: "Radius along local Y"
+  - name: "startAngleDegrees"
+    ref: "float"
+    required: true
+    meaning: "Start angle, 0 along +X, increasing toward +Y"
+  - name: "endAngleDegrees"
+    ref: "float"
+    required: true
+    meaning: "End angle, same convention"
+  - name: "pie"
+    ref: "bool"
+    meaning: "Optional. Absent = false; true closes the contour through the centre"
+    absent: "false"
+---
 # `rig.geometry.arc`
 
 Circular or elliptical arc (or pie wedge). Format when present.

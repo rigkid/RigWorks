@@ -981,5 +981,6 @@
         }
       }
     }
-  }
+  },
+  "x-rig-maturity": "stable"
 }

@@ -1,3 +1,18 @@
+---
+id: "rig.font.cell"
+maturity: "draft"
+summary: "Live variable-glyph reconstruction on a glyph entity. Format when present."
+fields:
+  - name: "baseAdv"
+    ref: "float"
+    required: true
+    meaning: "Required. Advance width at the default instance (matches glyph.width when both present)"
+  - name: "terms"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"axisTag\",\"sign\",\"adv\",\"segs\"],\"properties\":{\"axisTag\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"sign\":{\"type\":\"integer\",\"enum\":[-1,1]},\"axisTag2\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"sign2\":{\"type\":\"integer\",\"enum\":[-1,1]},\"axisTag3\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"sign3\":{\"type\":\"integer\",\"enum\":[-1,1]},\"center\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"},\"wl\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"},\"wr\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"},\"adv\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"},\"segs\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\",\"points\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"line\",\"quad\"]},\"points\":{\"type\":\"array\",\"items\":{\"$ref\":\"./_defs.schema.json#/$defs/vec2\"}}}}}}}"
+    meaning: "Optional. Reconstruction terms; absent or empty = static glyph"
+    absent: "or empty = static glyph"
+---
 # `rig.font.cell`
 
 Live variable-glyph reconstruction on a glyph entity. Format when present.

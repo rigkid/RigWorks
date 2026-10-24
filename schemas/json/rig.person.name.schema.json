@@ -22,5 +22,6 @@
     }
   },
   "description": "Structured personal name. Field meanings follow ISO 20022 PersonName. Display name is rig.meta.named.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

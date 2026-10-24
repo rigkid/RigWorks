@@ -39,5 +39,6 @@
   "required": [
     "status"
   ],
-  "description": "A box on its way. Field meanings follow schema.org ParcelDelivery. Address stays on origin / destination places."
+  "description": "A box on its way. Field meanings follow schema.org ParcelDelivery. Address stays on origin / destination places.",
+  "x-rig-maturity": "draft"
 }

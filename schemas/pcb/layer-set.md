@@ -1,3 +1,15 @@
+---
+id: "rig.pcb.layer_set"
+maturity: "draft"
+summary: "Which board layers an item sits on. Format when present."
+fields:
+  - name: "layers"
+    type: "array"
+    minItems: 1
+    itemsRef: "entity"
+    required: true
+    meaning: "rig.pcb.layer entities, at least one"
+---
 # `rig.pcb.layer_set`
 
 Which board layers an item sits on. Format when present.

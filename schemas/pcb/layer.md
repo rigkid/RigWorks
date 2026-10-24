@@ -1,3 +1,19 @@
+---
+id: "rig.pcb.layer"
+maturity: "draft"
+summary: "One board layer - what it is for. Format when present."
+fields:
+  - name: "role"
+    type: "string"
+    enum: ["copper","silkscreen","solder-mask","solder-paste","adhesive","courtyard","fabrication","outline","margin","drawing","comment","eco","user"]
+    required: true
+    meaning: "copper, silkscreen, solder-mask, solder-paste, adhesive, courtyard, fabrication, outline, margin, drawing, comment, eco, user"
+  - name: "side"
+    type: "string"
+    enum: ["front","back","inner"]
+    meaning: "Optional. front, back, inner; absent = not sided (outline, drawing, user)"
+    absent: "not sided (outline, drawing, user)"
+---
 # `rig.pcb.layer`
 
 One board layer - what it is for. Format when present.

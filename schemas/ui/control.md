@@ -1,3 +1,57 @@
+---
+id: "rig.ui.control"
+maturity: "stable"
+summary: "A view over one POD field on a target entity - never a second store. Addressing reuses the rig.mod.binding convention (target + propertyKey, including dotted paths like position.y)."
+topJson: "{\"description\":\"View over one POD field — never a second store. group is optional; widget is an advisory hint a host may ignore.\"}"
+fields:
+  - name: "panel"
+    ref: "entity"
+    required: true
+    meaning: "Owning rig.ui.panel"
+  - name: "group"
+    ref: "entity"
+    meaning: "Optional. Owning rig.ui.group; absent or null = direct child of the panel"
+    absent: "or null = direct child of the panel"
+  - name: "order"
+    ref: "int"
+    required: true
+    meaning: "Sort key within the panel or group"
+  - name: "target"
+    ref: "entity"
+    required: true
+    meaning: "Entity whose field is shown / edited"
+  - name: "propertyKey"
+    ref: "string"
+    required: true
+    meaning: "Field name or dotted path on the target"
+  - name: "type"
+    ref: "propertyType"
+    required: true
+    meaning: "Datatype id from properties.md (or host-prefixed)"
+  - name: "min"
+    ref: "float"
+    meaning: "Optional lower bound for numeric widgets"
+  - name: "max"
+    ref: "float"
+    meaning: "Optional upper bound"
+  - name: "step"
+    ref: "float"
+    meaning: "Optional step for numeric widgets"
+  - name: "enabled"
+    ref: "bool"
+    meaning: "Whether the control accepts input"
+  - name: "readOnly"
+    ref: "bool"
+    meaning: "Show value without editing"
+  - name: "options"
+    type: "array"
+    itemsRef: "string"
+    meaning: "Optional enum choices when the target schema does not constrain them"
+  - name: "widget"
+    type: "string"
+    enum: ["auto","slider","knob","toggle","field","dropdown","color","xy"]
+    meaning: "Advisory hint: auto, slider, knob, toggle, field, dropdown, color, xy"
+---
 # `rig.ui.control`
 
 A view over one POD field on a target entity - never a second store. Addressing reuses the [`rig.mod.binding`](../mod/binding.md) convention (`target` + `propertyKey`, including dotted paths like `position.y`).

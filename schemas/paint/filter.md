@@ -1,3 +1,17 @@
+---
+id: "rig.paint.filter"
+maturity: "draft"
+summary: "Filter graph pointer, or the graph root. Format when present."
+fields:
+  - name: "filter"
+    ref: "entity"
+    meaning: "Optional. Graph root. Used on the drawable"
+  - name: "primitiveUnits"
+    type: "string"
+    enum: ["user-space","object"]
+    meaning: "Optional. user-space or object. Absent = user-space. Used on the graph root"
+    absent: "user-space"
+---
 # `rig.paint.filter`
 
 Filter graph pointer, or the graph root. Format when present.

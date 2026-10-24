@@ -1,0 +1,108 @@
+{
+  "rig": "0.41.0",
+  "document": {
+    "title": "Tween and referenced paint",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "world",
+      "components": {
+        "rig.meta.named": {
+          "name": "world",
+          "stableId": "world"
+        },
+        "rig.spatial.vertex": {},
+        "rig.spatial.transform": {
+          "position": [0, 0, 0]
+        }
+      }
+    },
+    {
+      "id": "sky-paint",
+      "components": {
+        "rig.meta.named": {
+          "name": "Sky",
+          "stableId": "sky-paint"
+        },
+        "rig.paint.gradient": {
+          "kind": "linear",
+          "stops": [
+            { "t": 0, "rgba": [0.2, 0.5, 1, 1] },
+            { "t": 1, "rgba": [0.9, 0.95, 1, 1] }
+          ],
+          "start": [0, 0],
+          "end": [0, 1]
+        }
+      }
+    },
+    {
+      "id": "swatches",
+      "components": {
+        "rig.meta.named": {
+          "name": "Swatches",
+          "stableId": "swatches"
+        },
+        "rig.paint.library": {
+          "paints": ["sky-paint"]
+        }
+      }
+    },
+    {
+      "id": "panel",
+      "components": {
+        "rig.meta.named": {
+          "name": "Panel",
+          "stableId": "panel"
+        },
+        "rig.spatial.transform": {
+          "position": [20, 20, 0]
+        },
+        "rig.spatial.relationship": {
+          "parent": "world"
+        },
+        "rig.geometry.rectangle": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 90,
+          "cornerRadius": 8
+        },
+        "rig.paint.fill": {
+          "paint": "sky-paint"
+        },
+        "rig.render.visibility": {
+          "visible": true
+        },
+        "rig.render.blend": {
+          "opacity": 0.9
+        }
+      }
+    },
+    {
+      "id": "fade",
+      "components": {
+        "rig.meta.named": {
+          "name": "Fade in",
+          "stableId": "fade"
+        },
+        "rig.anim.tween": {
+          "target": "panel",
+          "propertyKey": "opacity",
+          "from": 0,
+          "to": 0.9,
+          "duration": 1.5,
+          "easing": "ease-out"
+        },
+        "rig.anim.curve": {
+          "points": [
+            [0, 0],
+            [0.6, 0.85],
+            [1, 1]
+          ],
+          "interpolation": "smooth"
+        }
+      }
+    }
+  ]
+}

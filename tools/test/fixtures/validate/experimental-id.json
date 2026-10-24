@@ -1,0 +1,11 @@
+{
+  "rig": "0.41.0",
+  "entities": [
+    {
+      "id": "port",
+      "components": {
+        "rig.io.dmx": { "direction": "out" }
+      }
+    }
+  ]
+}

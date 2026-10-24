@@ -1,3 +1,29 @@
+---
+id: "rig.pcb.keepout"
+maturity: "experimental"
+summary: "Rule area - what may not go inside an outline. Format when present."
+fields:
+  - name: "tracks"
+    ref: "bool"
+    meaning: "Optional. Tracks are kept out; absent = false"
+    absent: "false"
+  - name: "vias"
+    ref: "bool"
+    meaning: "Optional. Vias are kept out; absent = false"
+    absent: "false"
+  - name: "pads"
+    ref: "bool"
+    meaning: "Optional. Pads are kept out; absent = false"
+    absent: "false"
+  - name: "pours"
+    ref: "bool"
+    meaning: "Optional. Copper pours are kept out; absent = false"
+    absent: "false"
+  - name: "footprints"
+    ref: "bool"
+    meaning: "Optional. Footprints are kept out; absent = false"
+    absent: "false"
+---
 # `rig.pcb.keepout`
 
 Rule area - what may not go inside an outline. Format when present.

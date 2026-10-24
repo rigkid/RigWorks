@@ -34,5 +34,6 @@
     "claimant",
     "status"
   ],
-  "description": "An insurance claim. The policy is rig.legal.agreement kind insurance."
+  "description": "An insurance claim. The policy is rig.legal.agreement kind insurance.",
+  "x-rig-maturity": "draft"
 }

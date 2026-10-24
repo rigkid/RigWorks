@@ -28,5 +28,6 @@
   },
   "required": [
     "segments"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

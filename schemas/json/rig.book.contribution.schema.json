@@ -33,5 +33,6 @@
     "person",
     "role"
   ],
-  "description": "One contributor on one work. Field meanings follow ONIX Contributor. Name is on the person entity."
+  "description": "One contributor on one work. Field meanings follow ONIX Contributor. Name is on the person entity.",
+  "x-rig-maturity": "draft"
 }

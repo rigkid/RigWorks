@@ -1,3 +1,27 @@
+---
+id: "rig.paint.solid"
+maturity: "stable"
+summary: "Shared solid paint (optional library entity)."
+fields:
+  - name: "rgba"
+    ref: "rgba"
+    required: true
+    meaning: "0-1"
+  - name: "cmyk"
+    ref: "vec4"
+    meaning: "Optional print quad; (0,0,0,0) = unused"
+  - name: "ink"
+    ref: "string"
+    meaning: "Optional Separation colorant name. Empty / absent = process (or RGB-only) paint. Non-empty = named ink for print; rgba / cmyk stay the AlternateSpace preview."
+  - name: "overprintFill"
+    ref: "bool"
+    meaning: "Optional. Non-stroking overprint (op); absent = false"
+    absent: "false"
+  - name: "overprintStroke"
+    ref: "bool"
+    meaning: "Optional. Stroking overprint (OP); absent = false"
+    absent: "false"
+---
 # `rig.paint.solid`
 
 Shared solid paint (optional library entity).

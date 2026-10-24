@@ -1,3 +1,25 @@
+---
+id: "rig.pixel.mask_path"
+maturity: "draft"
+summary: "Polygon used as a compositor mask."
+fields:
+  - name: "strokeWidth"
+    ref: "float"
+    meaning: "Optional. Canvas-px stroke; absent = 16"
+    absent: "16"
+  - name: "closed"
+    ref: "bool"
+    meaning: "Optional. Absent = true"
+    absent: "true"
+  - name: "filled"
+    ref: "bool"
+    meaning: "Optional. Absent = true"
+    absent: "true"
+  - name: "xy"
+    type: "array"
+    itemsRef: "float"
+    meaning: "Packed x,y pairs in canvas pixels"
+---
 # `rig.pixel.mask_path`
 
 Polygon used as a compositor mask.

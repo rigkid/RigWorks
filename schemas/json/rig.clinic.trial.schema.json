@@ -33,5 +33,6 @@
     "identifier",
     "status"
   ],
-  "description": "A clinical trial. Eligibility rows are rig.clinic.criterion entities."
+  "description": "A clinical trial. Eligibility rows are rig.clinic.criterion entities.",
+  "x-rig-maturity": "draft"
 }

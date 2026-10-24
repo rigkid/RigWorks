@@ -1,3 +1,42 @@
+---
+id: "rig.music.note"
+maturity: "draft"
+summary: "Free-time piano-roll / clip note (beats). Format when present."
+fields:
+  - name: "pitch"
+    type: "integer"
+    minimum: 0
+    maximum: 127
+    required: true
+    meaning: "0-127"
+  - name: "velocity"
+    type: "integer"
+    minimum: 0
+    maximum: 127
+    meaning: "Optional. 0-127; absent = 100"
+    absent: "100"
+  - name: "channel"
+    type: "integer"
+    minimum: 0
+    maximum: 15
+    meaning: "Optional. 0-15; absent = 0"
+    absent: "0"
+  - name: "start"
+    ref: "float"
+    required: true
+    meaning: "Beats"
+  - name: "duration"
+    ref: "float"
+    required: true
+    meaning: "Beats; 0 = instantaneous"
+  - name: "clip"
+    ref: "entity"
+    meaning: "Optional. Parent clip entity; none = unbound"
+  - name: "intervals"
+    schemaJson: "{\"type\":\"array\",\"items\":{\"type\":\"integer\",\"minimum\":-127,\"maximum\":127},\"uniqueItems\":true}"
+    meaning: "Optional. Semitone offsets from pitch. Absent = pitch alone. Omit 0. A major triad is [4, 7]; a minor triad is [3, 7]"
+    absent: "pitch alone"
+---
 # `rig.music.note`
 
 Free-time piano-roll / clip note (beats). Format when present.

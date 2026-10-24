@@ -1,3 +1,30 @@
+---
+id: "rig.cad.extrude"
+maturity: "stable"
+summary: "Solid from a 2D profile swept along local +Z. Format when present."
+fields:
+  - name: "profile"
+    ref: "entity"
+    required: true
+    meaning: "Contour entity: rig.geometry.polygon, rig.geometry.path, or rig.geometry.spline"
+  - name: "height"
+    ref: "float"
+    required: true
+    meaning: "Sweep length along local +Z"
+  - name: "nDivisions"
+    type: "integer"
+    minimum: 1
+    meaning: "Optional. Steps along the sweep (≥ 1). Absent = host default (often 1)"
+    absent: "host default (often 1)"
+  - name: "twistDegrees"
+    ref: "float"
+    meaning: "Optional. Rotation about +Z from base to top. Absent = 0"
+    absent: "0"
+  - name: "scaleTop"
+    ref: "float"
+    meaning: "Optional. Uniform scale of the top cap relative to the profile. Absent = 1"
+    absent: "1"
+---
 # `rig.cad.extrude`
 
 Solid from a 2D profile swept along local +Z. Format when present.

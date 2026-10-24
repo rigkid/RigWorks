@@ -1,3 +1,31 @@
+---
+id: "rig.rights.statement"
+maturity: "draft"
+summary: "Copyright and licence of a work. Format when present."
+topJson: "{\"description\":\"Copyright and licence. Meanings follow Dublin Core rights and RightsStatements.org. Compose onto the work.\",\"minProperties\":1}"
+fields:
+  - name: "copyrightHolder"
+    ref: "entity"
+    meaning: "Person or organisation that holds copyright"
+  - name: "copyrightYear"
+    type: "integer"
+    minimum: 1000
+    maximum: 9999
+    meaning: "Copyright year of this object"
+  - name: "licence"
+    type: "string"
+    enum: ["all-rights-reserved","public-domain","cc0","cc-by","cc-by-sa","cc-by-nd","cc-by-nc","cc-by-nc-sa","cc-by-nc-nd","other"]
+    meaning: "all-rights-reserved / public-domain / cc0 / cc-by / cc-by-sa / cc-by-nd / cc-by-nc / cc-by-nc-sa / cc-by-nc-nd / other"
+  - name: "licenceUri"
+    ref: "string"
+    meaning: "Canonical licence URL"
+  - name: "rightsStatementUri"
+    ref: "string"
+    meaning: "RightsStatements.org (or similar) URI"
+  - name: "creditLine"
+    ref: "string"
+    meaning: "Required credit / courtesy line"
+---
 # `rig.rights.statement`
 
 Copyright and licence of a work. Format when present.

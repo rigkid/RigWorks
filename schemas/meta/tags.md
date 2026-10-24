@@ -1,3 +1,14 @@
+---
+id: "rig.meta.tags"
+maturity: "experimental"
+summary: "Free-form labels for selection and filtering. Format when present."
+fields:
+  - name: "tags"
+    type: "array"
+    itemsRef: "string"
+    required: true
+    meaning: "Labels; order carries no meaning, duplicates are ignored"
+---
 # `rig.meta.tags`
 
 Free-form labels for selection and filtering. Format when present.

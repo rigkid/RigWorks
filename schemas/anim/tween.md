@@ -1,3 +1,46 @@
+---
+id: "rig.anim.tween"
+maturity: "stable"
+summary: "Drive one float property over time. Format when present."
+fields:
+  - name: "target"
+    ref: "entity"
+    required: true
+    meaning: "Entity to drive"
+  - name: "propertyKey"
+    ref: "string"
+    required: true
+    meaning: "Field name / path"
+  - name: "from"
+    ref: "float"
+    required: true
+    meaning: "Start"
+  - name: "to"
+    ref: "float"
+    required: true
+    meaning: "End"
+  - name: "duration"
+    ref: "float"
+    required: true
+    meaning: "Seconds"
+  - name: "elapsed"
+    ref: "float"
+    meaning: "Optional. Seconds; absent = 0"
+    absent: "0"
+  - name: "easing"
+    type: "string"
+    enum: ["linear","ease-in","ease-out","ease-in-out"]
+    meaning: "Optional. linear, ease-in, ease-out, ease-in-out; absent = linear"
+    absent: "linear"
+  - name: "loop"
+    ref: "bool"
+    meaning: "Optional. Repeat; absent = false"
+    absent: "false"
+  - name: "playing"
+    ref: "bool"
+    meaning: "Optional. Active; absent = true"
+    absent: "true"
+---
 # `rig.anim.tween`
 
 Drive one float property over time. Format when present.

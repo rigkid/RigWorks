@@ -1,3 +1,36 @@
+---
+id: "rig.vr.headset"
+maturity: "draft"
+summary: "The selected stereo display. Format when present."
+fields:
+  - name: "player"
+    ref: "int"
+    meaning: "Optional. Player index (0-based); absent = 0"
+    absent: "0"
+  - name: "refreshHz"
+    type: "number"
+    exclusiveMinimum: 0
+    meaning: "Optional. Selected refresh. Absent = the host default"
+    absent: "the host default"
+  - name: "ipdMetres"
+    type: "number"
+    exclusiveMinimum: 0
+    meaning: "Optional. Interpupillary distance, metres. Absent = the host default"
+    absent: "the host default"
+  - name: "eyeWidth"
+    type: "integer"
+    minimum: 1
+    meaning: "Optional. Selected render width of one eye, pixels"
+  - name: "eyeHeight"
+    type: "integer"
+    minimum: 1
+    meaning: "Optional. Selected render height of one eye, pixels"
+  - name: "blend"
+    type: "string"
+    enum: ["opaque","additive","alpha"]
+    meaning: "Optional. opaque, additive, alpha. Absent = opaque"
+    absent: "opaque"
+---
 # `rig.vr.headset`
 
 The selected stereo display. Format when present.

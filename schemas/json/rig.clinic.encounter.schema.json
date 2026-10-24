@@ -34,5 +34,6 @@
     "status",
     "class"
   ],
-  "description": "One visit or admission. Visit clock is rig.calendar.event; admission days are rig.calendar.span."
+  "description": "One visit or admission. Visit clock is rig.calendar.event; admission days are rig.calendar.span.",
+  "x-rig-maturity": "draft"
 }

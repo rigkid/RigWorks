@@ -1,3 +1,24 @@
+---
+id: "rig.dmx.fixture"
+maturity: "experimental"
+summary: "DMX patch for a scene light. Format when present."
+fields:
+  - name: "startChannel"
+    type: "integer"
+    minimum: 1
+    maximum: 512
+    required: true
+    meaning: "First DMX slot used (1-512)"
+  - name: "channelCount"
+    type: "integer"
+    minimum: 1
+    required: true
+    meaning: "Channels occupied (≥ 1)"
+  - name: "port"
+    ref: "entity"
+    meaning: "Optional. rig.io.dmx port; absent = host default"
+    absent: "host default"
+---
 # `rig.dmx.fixture`
 
 DMX patch for a scene light. Format when present.

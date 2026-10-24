@@ -14,5 +14,6 @@
   },
   "required": [
     "className"
-  ]
+  ],
+  "x-rig-maturity": "experimental"
 }

@@ -1,3 +1,18 @@
+---
+id: "rig.sim.world"
+maturity: "draft"
+summary: "Shared physical scene. Format when present. Compose on the scene rig.spatial.vertex."
+fields:
+  - name: "gravity"
+    ref: "vec3"
+    meaning: "Optional. Acceleration, scene units per second squared. Absent = the host default"
+    absent: "the host default"
+  - name: "stepSeconds"
+    type: "number"
+    exclusiveMinimum: 0
+    meaning: "Optional. Fixed step. Absent = one step per Update, using SUDE dt"
+    absent: "one step per Update, using SUDE dt"
+---
 # `rig.sim.world`
 
 Shared physical scene. Format when present. Compose on the scene [`rig.spatial.vertex`](../spatial/vertex.md).

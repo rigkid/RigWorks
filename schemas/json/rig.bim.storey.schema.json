@@ -8,5 +8,6 @@
     "elevation": {
       "$ref": "./_defs.schema.json#/$defs/float"
     }
-  }
+  },
+  "x-rig-maturity": "draft"
 }

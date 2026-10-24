@@ -29,5 +29,6 @@
     "panel",
     "order"
   ],
-  "description": "Section/row inside a panel. Nesting via parent (group entity). Flow hints are advisory."
+  "description": "Section/row inside a panel. Nesting via parent (group entity). Flow hints are advisory.",
+  "x-rig-maturity": "stable"
 }

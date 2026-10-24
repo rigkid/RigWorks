@@ -1,3 +1,13 @@
+---
+id: "rig.font.anchor"
+maturity: "stable"
+summary: "Named point on a glyph (UFO anchor). Format when present."
+fields:
+  - name: "point"
+    ref: "vec2"
+    required: true
+    meaning: "Position in font units (y-up, baseline origin)"
+---
 # `rig.font.anchor`
 
 Named point on a glyph (UFO anchor). Format when present.

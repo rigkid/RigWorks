@@ -1,3 +1,24 @@
+---
+id: "rig.book.subject"
+maturity: "draft"
+summary: "One classification heading of a book. Format when present."
+topJson: "{\"description\":\"One classification heading on one work. Field meanings follow ONIX Subject.\",\"minProperties\":2}"
+fields:
+  - name: "work"
+    ref: "entity"
+    required: true
+    meaning: "The book entity"
+  - name: "scheme"
+    type: "string"
+    enum: ["thema","bisac","bic","dewey","keyword"]
+    meaning: "thema / bisac / bic / dewey / keyword"
+  - name: "code"
+    ref: "string"
+    meaning: "Notation in that scheme"
+  - name: "heading"
+    ref: "string"
+    meaning: "Human heading"
+---
 # `rig.book.subject`
 
 One classification heading of a book. Format when present.

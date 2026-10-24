@@ -23,5 +23,6 @@
     "product",
     "quantity"
   ],
-  "description": "One line of an order. Price composes rig.commerce.price. Do not copy sku off the offer."
+  "description": "One line of an order. Price composes rig.commerce.price. Do not copy sku off the offer.",
+  "x-rig-maturity": "draft"
 }

@@ -26,5 +26,6 @@
     "trial",
     "text"
   ],
-  "description": "One eligibility rule of a trial. polarity absent = include."
+  "description": "One eligibility rule of a trial. polarity absent = include.",
+  "x-rig-maturity": "draft"
 }

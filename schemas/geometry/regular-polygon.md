@@ -1,3 +1,30 @@
+---
+id: "rig.geometry.regular_polygon"
+maturity: "stable"
+summary: "Equilateral n-gon about a centre. Format when present."
+fields:
+  - name: "centerX"
+    ref: "float"
+    required: true
+    meaning: "Centre X, local space"
+  - name: "centerY"
+    ref: "float"
+    required: true
+    meaning: "Centre Y, local space"
+  - name: "radius"
+    ref: "float"
+    required: true
+    meaning: "Centre to vertex, not centre to edge"
+  - name: "sides"
+    type: "integer"
+    minimum: 3
+    required: true
+    meaning: "Vertex count; at least 3"
+  - name: "rotationDegrees"
+    ref: "float"
+    meaning: "Optional. Absent = 0; first vertex at angle 0 points along +X"
+    absent: "0"
+---
 # `rig.geometry.regular_polygon`
 
 Equilateral n-gon about a centre. Format when present.

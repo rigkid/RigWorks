@@ -23,5 +23,6 @@
     "centerY",
     "outerRadius",
     "innerRadius"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

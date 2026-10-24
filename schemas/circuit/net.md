@@ -1,3 +1,10 @@
+---
+id: "rig.circuit.net"
+maturity: "draft"
+summary: "Electrical net marker. Format when present - presence means this entity is one net (a set of things at the same potential)."
+topJson: "{\"description\":\"Marker: presence means an electrical net. Name on rig.meta.named. Members point at it via net fields. No fields.\",\"minProperties\":0}"
+fields:
+---
 # `rig.circuit.net`
 
 Electrical net marker. Format when present - presence means this entity is one net (a set of things at the same potential).

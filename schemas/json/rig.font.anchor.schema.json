@@ -11,5 +11,6 @@
   },
   "required": [
     "point"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

@@ -1,3 +1,21 @@
+---
+id: "rig.node.bus"
+maturity: "experimental"
+summary: "Named rail inside a rig.node.graph - a signal every node in the graph can tap without a drawn link (ground, master clock). Nested POD like pin and link, not a separate ECS entity."
+fields:
+  - name: "id"
+    ref: "uint"
+    required: true
+    meaning: "Stable id within the graph"
+  - name: "name"
+    ref: "string"
+    required: true
+    meaning: "Rail label (ground, clock)"
+  - name: "type"
+    ref: "propertyType"
+    required: true
+    meaning: "**Property datatype id** - see properties, same table as pin type"
+---
 # `rig.node.bus`
 
 Named rail inside a [`rig.node.graph`](graph.md) - a signal every node in the graph can tap without a drawn link (`ground`, `master clock`). Nested POD like [`pin`](pin.md) and [`link`](link.md), not a separate ECS entity.

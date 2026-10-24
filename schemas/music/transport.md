@@ -1,3 +1,39 @@
+---
+id: "rig.music.transport"
+maturity: "stable"
+summary: "**Tempo and playhead authority.** One per scene when music schemas are present."
+fields:
+  - name: "playing"
+    ref: "bool"
+    meaning: "Optional. Running; absent = false"
+    absent: "false"
+  - name: "bpm"
+    ref: "float"
+    required: true
+    meaning: "Tempo"
+  - name: "timeSigNum"
+    ref: "int"
+    meaning: "Optional. Beats per bar; absent = 4"
+    absent: "4"
+  - name: "timeSigDen"
+    ref: "int"
+    meaning: "Optional. Note value of beat; absent = 4"
+    absent: "4"
+  - name: "positionBeats"
+    ref: "float"
+    meaning: "Optional. Playhead in beats; absent = 0"
+    absent: "0"
+  - name: "loop"
+    ref: "bool"
+    meaning: "Optional. Loop; absent = false"
+    absent: "false"
+  - name: "loopStartBeats"
+    ref: "float"
+    meaning: "Loop in; required when loop"
+  - name: "loopEndBeats"
+    ref: "float"
+    meaning: "Loop out; required when loop"
+---
 # `rig.music.transport`
 
 **Tempo and playhead authority.** One per scene when music schemas are present.

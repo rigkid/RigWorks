@@ -1,3 +1,28 @@
+---
+id: "rig.sensor.gnss"
+maturity: "draft"
+summary: "Satellite fix. Format when present."
+fields:
+  - name: "rateHz"
+    type: "number"
+    exclusiveMinimum: 0
+    meaning: "Optional. Fixes per second. Absent = the host default"
+    absent: "the host default"
+  - name: "horizontalMetres"
+    type: "number"
+    minimum: 0
+    meaning: "Optional. Horizontal accuracy, metres. Absent = unknown"
+    absent: "unknown"
+  - name: "verticalMetres"
+    type: "number"
+    minimum: 0
+    meaning: "Optional. Vertical accuracy, metres. Absent = unknown"
+    absent: "unknown"
+  - name: "device"
+    ref: "entity"
+    meaning: "Optional. Absent = local"
+    absent: "local"
+---
 # `rig.sensor.gnss`
 
 Satellite fix. Format when present.

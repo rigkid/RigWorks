@@ -1,3 +1,47 @@
+---
+id: "rig.geometry.mesh"
+maturity: "stable"
+summary: "Indexed mesh. Format when present."
+fields:
+  - name: "positions"
+    type: "array"
+    itemsType: "number"
+    required: true
+    meaning: "xyz tightly packed (x0,y0,z0,x1,...)"
+  - name: "normals"
+    type: "array"
+    itemsType: "number"
+    meaning: "Optional per-vertex normals, same packing, parallel to positions"
+  - name: "indices"
+    type: "array"
+    itemsRef: "uint32"
+    meaning: "Triangle (or line) tessellation; empty = sequential. Hosts may rebuild this from loops."
+  - name: "loops"
+    type: "array"
+    itemsRef: "uint32"
+    meaning: "Optional concatenated n-gon vertex indices (authored faces). Empty = faces are implicit triangles from indices."
+  - name: "loopSizes"
+    type: "array"
+    itemsRef: "uint32"
+    meaning: "Optional vertex count per authored face; sum equals loops.length. A cube is six 4-gons, not twelve triangles."
+  - name: "texcoords"
+    type: "array"
+    itemsType: "number"
+    meaning: "Optional per-vertex uv, tightly packed (u0,v0,u1,...); empty = none"
+  - name: "mode"
+    type: "string"
+    enum: ["triangles","lines","line-strip"]
+    required: true
+    meaning: "triangles, lines, line-strip"
+  - name: "faceColors"
+    type: "array"
+    itemsRef: "rgba"
+    meaning: "Optional per-face colour"
+  - name: "facePalette"
+    type: "array"
+    itemsRef: "uint8"
+    meaning: "Optional per-face palette index"
+---
 # `rig.geometry.mesh`
 
 Indexed mesh. Format when present.

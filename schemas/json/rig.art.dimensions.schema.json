@@ -19,5 +19,6 @@
     }
   },
   "description": "Measurements. Field meanings follow CDWA Measurements / Object ID. Values in millimetres and grams.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

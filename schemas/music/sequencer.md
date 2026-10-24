@@ -1,3 +1,21 @@
+---
+id: "rig.music.sequencer"
+maturity: "draft"
+summary: "Playhead over a pattern. Format when present."
+fields:
+  - name: "pattern"
+    ref: "entity"
+    required: true
+    meaning: "Entity with rig.music.pattern"
+  - name: "currentStep"
+    ref: "int"
+    meaning: "Optional. Playhead index into pattern.steps; absent = 0"
+    absent: "0"
+  - name: "clock"
+    ref: "entity"
+    meaning: "Optional. Entity with rig.music.clock; absent = the host's default clock"
+    absent: "the host's default clock"
+---
 # `rig.music.sequencer`
 
 Playhead over a pattern. Format when present.

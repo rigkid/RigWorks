@@ -32,5 +32,6 @@
     "person",
     "role"
   ],
-  "description": "One maker on one work. Field meanings follow CDWA Creation/Creator. Name is on the person entity."
+  "description": "One maker on one work. Field meanings follow CDWA Creation/Creator. Name is on the person entity.",
+  "x-rig-maturity": "draft"
 }

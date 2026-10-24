@@ -1,3 +1,23 @@
+---
+id: "rig.cad.reference_line"
+maturity: "draft"
+summary: "Unbounded straight datum to build against. Format when present."
+fields:
+  - name: "origin"
+    ref: "vec3"
+    meaning: "Optional. Absent = 0,0,0. A point the line passes through"
+    absent: "0,0,0"
+  - name: "direction"
+    ref: "vec3"
+    meaning: "Optional. Absent = 1,0,0. Which way the line runs; need not be unit length"
+    absent: "1,0,0"
+  - name: "a"
+    ref: "entity"
+    meaning: "Optional. Anchor entity. With b, derives the line from the two entities"
+  - name: "b"
+    ref: "entity"
+    meaning: "Optional. Second anchor entity. Only read when a is also present"
+---
 # `rig.cad.reference_line`
 
 Unbounded straight datum to build against. Format when present.

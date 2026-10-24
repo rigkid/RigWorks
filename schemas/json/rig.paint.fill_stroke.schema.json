@@ -20,5 +20,6 @@
     "hasStroke": {
       "$ref": "./_defs.schema.json#/$defs/bool"
     }
-  }
+  },
+  "x-rig-maturity": "stable"
 }

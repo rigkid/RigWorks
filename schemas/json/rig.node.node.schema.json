@@ -4,14 +4,6 @@
   "title": "rig.node.node",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "id",
-    "typeId",
-    "title",
-    "position",
-    "pins",
-    "params"
-  ],
   "properties": {
     "id": {
       "$ref": "./_defs.schema.json#/$defs/uint"
@@ -46,5 +38,14 @@
         "$ref": "./rig.node.publish.schema.json"
       }
     }
-  }
+  },
+  "required": [
+    "id",
+    "typeId",
+    "title",
+    "position",
+    "pins",
+    "params"
+  ],
+  "x-rig-maturity": "stable"
 }

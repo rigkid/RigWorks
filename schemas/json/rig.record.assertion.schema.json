@@ -35,5 +35,6 @@
   "required": [
     "source"
   ],
-  "description": "Who stated a fact and when they observed it. Not document.author and not a query explain-plan."
+  "description": "Who stated a fact and when they observed it. Not document.author and not a query explain-plan.",
+  "x-rig-maturity": "draft"
 }

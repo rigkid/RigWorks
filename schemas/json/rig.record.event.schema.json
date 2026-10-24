@@ -19,5 +19,6 @@
     "subject",
     "code"
   ],
-  "description": "A happening with no magnitude. Clock composes rig.calendar.event. A measurement is rig.clinic.observation."
+  "description": "A happening with no magnitude. Clock composes rig.calendar.event. A measurement is rig.clinic.observation.",
+  "x-rig-maturity": "draft"
 }

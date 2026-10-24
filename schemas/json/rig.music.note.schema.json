@@ -43,5 +43,6 @@
     "pitch",
     "start",
     "duration"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

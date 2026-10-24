@@ -23,5 +23,6 @@
   },
   "required": [
     "slots"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

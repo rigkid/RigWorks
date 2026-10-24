@@ -30,5 +30,6 @@
     "kind",
     "status"
   ],
-  "description": "A reported happening in the world. Address and geo stay on place. Members point here with rig.record.concerns."
+  "description": "A reported happening in the world. Address and geo stay on place. Members point here with rig.record.concerns.",
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,21 @@
+---
+id: "rig.node.publish"
+maturity: "draft"
+summary: "Maps one outer interface pin on a group node to an interior pin inside that node's nested graph. See rig.node.node."
+fields:
+  - name: "pin"
+    ref: "uint"
+    required: true
+    meaning: "Outer pin id on the group node (must exist in pins)"
+  - name: "innerNode"
+    ref: "uint"
+    required: true
+    meaning: "Node id inside nested"
+  - name: "innerPin"
+    ref: "uint"
+    required: true
+    meaning: "Pin id on that inner node"
+---
 # `rig.node.publish`
 
 Maps one outer interface pin on a group node to an interior pin inside that node's nested graph. See [`rig.node.node`](node.md).

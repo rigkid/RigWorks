@@ -16,5 +16,6 @@
     }
   },
   "description": "Object / work type. Field meanings follow CDWA Object/Work and Classification. Title is rig.meta.named.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

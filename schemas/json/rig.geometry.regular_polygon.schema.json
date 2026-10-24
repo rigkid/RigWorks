@@ -27,5 +27,6 @@
     "centerY",
     "radius",
     "sides"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

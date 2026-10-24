@@ -1,3 +1,19 @@
+---
+id: "rig.anim.blend"
+maturity: "draft"
+summary: "Blend tree over clips. Format when present."
+fields:
+  - name: "root"
+    ref: "uint"
+    required: true
+    meaning: "id of the output node"
+  - name: "nodes"
+    type: "array"
+    minItems: 1
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"id\",\"kind\"],\"properties\":{\"id\":{\"$ref\":\"./_defs.schema.json#/$defs/uint\"},\"kind\":{\"type\":\"string\",\"enum\":[\"clip\",\"lerp\",\"additive\"]},\"clip\":{\"$ref\":\"./_defs.schema.json#/$defs/entity\"},\"weight\":{\"type\":\"number\",\"minimum\":0,\"maximum\":1},\"a\":{\"$ref\":\"./_defs.schema.json#/$defs/uint\"},\"b\":{\"$ref\":\"./_defs.schema.json#/$defs/uint\"}}}"
+    required: true
+    meaning: "Tree nodes"
+---
 # `rig.anim.blend`
 
 Blend tree over clips. Format when present.

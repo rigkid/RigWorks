@@ -1,0 +1,48 @@
+{
+  "rig": "0.41.0",
+  "document": {
+    "title": "Node graph",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "graph",
+      "components": {
+        "rig.meta.named": {
+          "name": "Brightness graph",
+          "stableId": "brightness-graph"
+        },
+        "rig.node.graph": {
+          "nodes": [
+            {
+              "id": 1,
+              "typeId": "float.const",
+              "title": "Level",
+              "position": [40, 40],
+              "pins": [
+                { "id": 1, "name": "value", "kind": "out", "type": "float" }
+              ],
+              "params": [
+                { "key": "value", "type": "float", "f": 0.75 }
+              ]
+            },
+            {
+              "id": 2,
+              "typeId": "visual.brightness",
+              "title": "Brightness",
+              "position": [260, 40],
+              "pins": [
+                { "id": 1, "name": "in", "kind": "in", "type": "float" }
+              ],
+              "params": []
+            }
+          ],
+          "links": [
+            { "id": 1, "fromNode": 1, "fromPin": 1, "toNode": 2, "toPin": 1 }
+          ],
+          "nextId": 3
+        }
+      }
+    }
+  ]
+}

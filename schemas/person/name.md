@@ -1,3 +1,25 @@
+---
+id: "rig.person.name"
+maturity: "draft"
+summary: "Structured personal name of a human, character, user, or contact. Format when present."
+topJson: "{\"description\":\"Structured personal name. Field meanings follow ISO 20022 PersonName. Display name is rig.meta.named.\",\"minProperties\":1}"
+fields:
+  - name: "givenName"
+    ref: "string"
+    meaning: "Given / first name"
+  - name: "middleName"
+    ref: "string"
+    meaning: "Middle name(s)"
+  - name: "familyName"
+    ref: "string"
+    meaning: "Family / last name"
+  - name: "namePrefix"
+    ref: "string"
+    meaning: "Honorific / prefix (Dr, Mx)"
+  - name: "nameSuffix"
+    ref: "string"
+    meaning: "Generational / suffix (Jr, III)"
+---
 # `rig.person.name`
 
 Structured personal name of a human, character, user, or contact. Format when present.

@@ -1,3 +1,35 @@
+---
+id: "rig.story.table"
+maturity: "stable"
+summary: "Semantic table in a rig.story.flow. Format when present."
+fields:
+  - name: "columnCount"
+    ref: "int"
+    required: true
+    meaning: "Number of columns"
+  - name: "headerRowCount"
+    ref: "int"
+    meaning: "Optional. Header rows at the top; absent = 0"
+    absent: "0"
+  - name: "footerRowCount"
+    ref: "int"
+    meaning: "Optional. Footer rows at the bottom; absent = 0"
+    absent: "0"
+  - name: "columnWidths"
+    type: "array"
+    itemsRef: "float"
+    meaning: "Optional. Fractional column weights (unitless, normalised by the host); absent / empty = equal columns"
+    absent: "/ empty = equal columns"
+  - name: "style"
+    ref: "entity"
+    meaning: "Optional. rig.layout.table_style dressing this table; absent = the document's default table style"
+    absent: "the document's default table style"
+  - name: "cells"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"column\",\"row\"],\"properties\":{\"column\":{\"$ref\":\"./_defs.schema.json#/$defs/int\"},\"row\":{\"$ref\":\"./_defs.schema.json#/$defs/int\"},\"columnSpan\":{\"$ref\":\"./_defs.schema.json#/$defs/int\"},\"rowSpan\":{\"$ref\":\"./_defs.schema.json#/$defs/int\"},\"blocks\":{\"type\":\"array\",\"items\":{\"$ref\":\"./_defs.schema.json#/$defs/entity\"}}}}"
+    required: true
+    meaning: "Occupied cells"
+---
 # `rig.story.table`
 
 Semantic table in a [`rig.story.flow`](flow.md). Format when present.

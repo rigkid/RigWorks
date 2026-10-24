@@ -43,5 +43,6 @@
     "kind",
     "status"
   ],
-  "description": "A file about a subject. Members point at it with rig.record.concerns. Title is rig.meta.named."
+  "description": "A file about a subject. Members point at it with rig.record.concerns. Title is rig.meta.named.",
+  "x-rig-maturity": "draft"
 }

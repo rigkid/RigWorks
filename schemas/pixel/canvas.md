@@ -1,3 +1,21 @@
+---
+id: "rig.pixel.canvas"
+maturity: "draft"
+summary: "Artboard size and clear colour. Format when present."
+fields:
+  - name: "width"
+    ref: "int"
+    required: true
+    meaning: "Pixels"
+  - name: "height"
+    ref: "int"
+    required: true
+    meaning: "Pixels"
+  - name: "clearRgba"
+    ref: "rgba"
+    meaning: "Optional. Clear colour (0-1); absent = transparent black (0, 0, 0, 0)"
+    absent: "transparent black (0, 0, 0, 0)"
+---
 # `rig.pixel.canvas`
 
 Artboard size and clear colour. Format when present.

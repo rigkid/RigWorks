@@ -7,13 +7,14 @@
   "properties": {
     "layers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "./_defs.schema.json#/$defs/entity"
-      },
-      "minItems": 1
+      }
     }
   },
   "required": [
     "layers"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

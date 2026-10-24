@@ -25,5 +25,6 @@
     "subject",
     "studyUid"
   ],
-  "description": "One imaging study or series. DICOM UIDs. Pixels stay on the asset file."
+  "description": "One imaging study or series. DICOM UIDs. Pixels stay on the asset file.",
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,13 @@
+---
+id: "rig.play.item"
+maturity: "draft"
+summary: "A stackable thing. Format when present. Compose rig.meta.named for the label."
+fields:
+  - name: "maxStack"
+    ref: "uint"
+    meaning: "Optional. Most that fit in one inventory slot; absent = 1"
+    absent: "1"
+---
 # `rig.play.item`
 
 A stackable thing. Format when present. Compose [`rig.meta.named`](../meta/named.md) for the label.

@@ -30,5 +30,6 @@
     "quantity",
     "side"
   ],
-  "description": "A holding of an instrument. Book value composes rig.commerce.price. A live mark is host cache."
+  "description": "A holding of an instrument. Book value composes rig.commerce.price. A live mark is host cache.",
+  "x-rig-maturity": "draft"
 }

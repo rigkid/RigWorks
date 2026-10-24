@@ -1,3 +1,30 @@
+---
+id: "rig.node.pin"
+maturity: "stable"
+summary: "Pin on a rig.node.node."
+fields:
+  - name: "id"
+    ref: "uint"
+    required: true
+    meaning: "Stable id within the node"
+  - name: "name"
+    ref: "string"
+    required: true
+    meaning: "Pin label (may carry domain hint, e.g. rgba)"
+  - name: "kind"
+    type: "string"
+    enum: ["in","out"]
+    required: true
+    meaning: "in, out"
+  - name: "type"
+    ref: "propertyType"
+    required: true
+    meaning: "**Property datatype id** - see properties"
+  - name: "bus"
+    ref: "uint"
+    meaning: "Optional. rig.node.bus this pin taps; absent = none. An out pin drives the bus; an in pin reads it"
+    absent: "none"
+---
 # `rig.node.pin`
 
 Pin on a [`rig.node.node`](node.md).

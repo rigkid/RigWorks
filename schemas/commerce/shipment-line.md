@@ -1,3 +1,25 @@
+---
+id: "rig.commerce.shipment_line"
+maturity: "draft"
+summary: "One line of a shipment. Format when present."
+topJson: "{\"description\":\"One line of a shipment. Members point at the box.\"}"
+fields:
+  - name: "shipment"
+    ref: "entity"
+    required: true
+    meaning: "The rig.commerce.shipment"
+  - name: "product"
+    ref: "entity"
+    required: true
+    meaning: "The rig.commerce.product"
+  - name: "quantity"
+    ref: "float"
+    required: true
+    meaning: "Count in this box"
+  - name: "orderLine"
+    ref: "entity"
+    meaning: "Optional. The rig.commerce.order_line this ships"
+---
 # `rig.commerce.shipment_line`
 
 One line of a shipment. Format when present.

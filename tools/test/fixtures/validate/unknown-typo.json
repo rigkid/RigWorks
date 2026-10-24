@@ -1,0 +1,11 @@
+{
+  "rig": "0.40.0",
+  "entities": [
+    {
+      "id": "a",
+      "components": {
+        "rig.paint.fil": { "paint": "a" }
+      }
+    }
+  ]
+}

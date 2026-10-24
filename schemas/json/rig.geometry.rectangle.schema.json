@@ -12,10 +12,12 @@
       "$ref": "./_defs.schema.json#/$defs/float"
     },
     "width": {
-      "$ref": "./_defs.schema.json#/$defs/float"
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
     },
     "height": {
-      "$ref": "./_defs.schema.json#/$defs/float"
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
     },
     "cornerRadius": {
       "$ref": "./_defs.schema.json#/$defs/float"
@@ -26,5 +28,6 @@
     "y",
     "width",
     "height"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

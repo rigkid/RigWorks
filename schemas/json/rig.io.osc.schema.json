@@ -22,6 +22,31 @@
     },
     "addressPrefix": {
       "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "tcpListen": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "tcpPort": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "tcpConnect": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "streamFraming": {
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "multicastGroup": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "multicastTtl": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
     }
-  }
+  },
+  "x-rig-maturity": "draft"
 }

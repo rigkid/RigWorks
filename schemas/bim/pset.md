@@ -1,3 +1,14 @@
+---
+id: "rig.bim.pset"
+maturity: "draft"
+summary: "Property sets on a BIM element or type. Format when present."
+fields:
+  - name: "sets"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\",\"properties\"],\"properties\":{\"name\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"properties\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"oneOf\":[{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\",\"type\",\"flag\"],\"properties\":{\"name\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"type\":{\"const\":\"bool\"},\"flag\":{\"$ref\":\"./_defs.schema.json#/$defs/bool\"},\"unit\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"}}},{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\",\"type\",\"integer\"],\"properties\":{\"name\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"type\":{\"const\":\"int\"},\"integer\":{\"$ref\":\"./_defs.schema.json#/$defs/int\"},\"unit\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"}}},{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\",\"type\",\"number\"],\"properties\":{\"name\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"type\":{\"const\":\"float\"},\"number\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"},\"unit\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"}}},{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\",\"type\",\"text\"],\"properties\":{\"name\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"type\":{\"const\":\"string\"},\"text\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"unit\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"}}}]}}}}"
+    required: true
+    meaning: "Property sets; each has name and properties"
+---
 # `rig.bim.pset`
 
 Property sets on a BIM element or type. Format when present.

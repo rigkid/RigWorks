@@ -1,3 +1,13 @@
+---
+id: "rig.pixel.composite"
+maturity: "draft"
+summary: "Stack policy for the pixel compositor."
+fields:
+  - name: "enabled"
+    ref: "bool"
+    meaning: "Optional. Run the layer stack; absent = true"
+    absent: "true"
+---
 # `rig.pixel.composite`
 
 Stack policy for the pixel compositor.

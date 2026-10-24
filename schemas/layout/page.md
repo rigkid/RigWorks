@@ -1,3 +1,33 @@
+---
+id: "rig.layout.page"
+maturity: "stable"
+summary: "A page or artboard - a bounded region content is composed against. Format when present."
+fields:
+  - name: "index"
+    ref: "int"
+    meaning: "Optional. Position in the page sequence, ascending; absent = 0. Ties break by document order"
+    absent: "0"
+  - name: "width"
+    ref: "float"
+    required: true
+    meaning: "Page width in unit"
+  - name: "height"
+    ref: "float"
+    required: true
+    meaning: "Page height in unit"
+  - name: "unit"
+    ref: "string"
+    meaning: "Optional. Overrides the document defaultUnit for this page (\"mm\", \"px\", \"in\")"
+  - name: "margins"
+    ref: "faceInsets"
+    meaning: "number[1..6]"
+  - name: "bleed"
+    ref: "faceInsets"
+    meaning: "number[1..6]"
+  - name: "slug"
+    ref: "faceInsets"
+    meaning: "number[1..6]"
+---
 # `rig.layout.page`
 
 A page or artboard - a bounded region content is composed against. Format when present.

@@ -33,5 +33,6 @@
   "required": [
     "event",
     "person"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

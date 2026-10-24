@@ -1,3 +1,36 @@
+---
+id: "rig.input.binding"
+maturity: "draft"
+summary: "One device control mapped onto a logical input. Format when present."
+fields:
+  - name: "player"
+    ref: "int"
+    meaning: "Optional. Player index (0-based); absent = 0"
+    absent: "0"
+  - name: "control"
+    ref: "string"
+    required: true
+    meaning: "Logical control or action name"
+  - name: "device"
+    type: "string"
+    enum: ["key","mouse","pad","touch","vr"]
+    required: true
+    meaning: "key, mouse, pad, touch, vr"
+  - name: "index"
+    ref: "int"
+    meaning: "Optional. Device index; absent = 0"
+    absent: "0"
+  - name: "code"
+    ref: "string"
+    required: true
+    meaning: "Name of the control on that device (a, space, left, button-0, axis-0, primary)"
+  - name: "deadzone"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    meaning: "Optional. 0-1 axis deadzone; absent = the host default"
+    absent: "the host default"
+---
 # `rig.input.binding`
 
 One device control mapped onto a logical input. Format when present.

@@ -20,5 +20,6 @@
   },
   "required": [
     "story"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

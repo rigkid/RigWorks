@@ -1,3 +1,38 @@
+---
+id: "rig.pcb.zone"
+maturity: "draft"
+summary: "Copper pour. Format when present."
+fields:
+  - name: "net"
+    ref: "entity"
+    meaning: "Optional. rig.circuit.net the pour connects to; absent or none = isolated copper"
+    absent: "or none = isolated copper"
+  - name: "priority"
+    ref: "int"
+    meaning: "Optional. Higher fills first where pours overlap; absent = 0"
+    absent: "0"
+  - name: "clearance"
+    ref: "float"
+    meaning: "Optional. Gap to other copper; absent = board rule"
+    absent: "board rule"
+  - name: "minThickness"
+    ref: "float"
+    meaning: "Optional. Narrowest copper the fill may leave; absent = board rule"
+    absent: "board rule"
+  - name: "connection"
+    type: "string"
+    enum: ["thermal","solid","none","through-hole-only"]
+    meaning: "Optional. thermal, solid, none, through-hole-only (thermal on through-hole pads, solid on SMD); absent = thermal"
+    absent: "thermal"
+  - name: "thermalGap"
+    ref: "float"
+    meaning: "Optional. Gap around a thermal-relief pad; absent = board rule"
+    absent: "board rule"
+  - name: "thermalSpokeWidth"
+    ref: "float"
+    meaning: "Optional. Thermal-relief spoke width; absent = board rule"
+    absent: "board rule"
+---
 # `rig.pcb.zone`
 
 Copper pour. Format when present.

@@ -33,5 +33,6 @@
   },
   "required": [
     "radius"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

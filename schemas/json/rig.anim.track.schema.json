@@ -16,10 +16,10 @@
     },
     "times": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "number"
-      },
-      "minItems": 1
+      }
     },
     "values": {
       "type": "array",
@@ -43,5 +43,6 @@
     "times",
     "values",
     "stride"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

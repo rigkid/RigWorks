@@ -30,5 +30,6 @@
     "seller",
     "status"
   ],
-  "description": "A sale header. Field meanings follow schema.org Order. Lines are rig.commerce.order_line entities."
+  "description": "A sale header. Field meanings follow schema.org Order. Lines are rig.commerce.order_line entities.",
+  "x-rig-maturity": "draft"
 }

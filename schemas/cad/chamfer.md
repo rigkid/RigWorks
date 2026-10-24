@@ -1,3 +1,21 @@
+---
+id: "rig.cad.chamfer"
+maturity: "draft"
+summary: "Bevel selected edges of a solid. Format when present."
+fields:
+  - name: "distance"
+    ref: "float"
+    required: true
+    meaning: "Chamfer setback along both faces"
+  - name: "edges"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"a\",\"b\"],\"properties\":{\"a\":{\"$ref\":\"./_defs.schema.json#/$defs/uint32\"},\"b\":{\"$ref\":\"./_defs.schema.json#/$defs/uint32\"}}}"
+    meaning: "Optional. Undirected vertex pairs into that entity's rig.geometry.mesh positions. Store min(a,b), max(a,b). See mesh edges"
+  - name: "allEdges"
+    ref: "bool"
+    meaning: "Optional. Absent = false. True = every authored mesh edge; edges is ignored"
+    absent: "false"
+---
 # `rig.cad.chamfer`
 
 Bevel selected edges of a solid. Format when present.

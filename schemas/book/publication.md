@@ -1,3 +1,38 @@
+---
+id: "rig.book.publication"
+maturity: "draft"
+summary: "Publishing detail of a book product. Format when present."
+topJson: "{\"description\":\"Publishing detail. Field meanings follow ONIX PublishingDetail. Publisher is an organisation entity.\",\"minProperties\":1}"
+fields:
+  - name: "publisher"
+    ref: "entity"
+    meaning: "Publisher organisation"
+  - name: "publishedDate"
+    type: "string"
+    pattern: "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+    description: "ISO 8601 date or year (ONIX PublishingDate)."
+    meaning: "Publication day or year (YYYY / YYYY-MM / YYYY-MM-DD)"
+  - name: "language"
+    type: "string"
+    pattern: "^[a-z]{2,3}$"
+    description: "ISO 639-1 or 639-2/T (ONIX Language)."
+    meaning: "ISO 639-1 or 639-2/T, lowercase"
+  - name: "pageCount"
+    ref: "uint"
+    meaning: "Extent in pages"
+  - name: "productForm"
+    type: "string"
+    enum: ["hardcover","paperback","ebook","audiobook","other"]
+    meaning: "hardcover / paperback / ebook / audiobook / other"
+  - name: "cityOfPublication"
+    ref: "string"
+    meaning: "City as printed"
+  - name: "copyrightYear"
+    type: "integer"
+    minimum: 1000
+    maximum: 9999
+    meaning: "Copyright year of this product"
+---
 # `rig.book.publication`
 
 Publishing detail of a book product. Format when present.

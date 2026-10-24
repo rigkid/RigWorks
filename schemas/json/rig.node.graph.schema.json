@@ -4,11 +4,6 @@
   "title": "rig.node.graph",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "nodes",
-    "links",
-    "nextId"
-  ],
   "properties": {
     "nodes": {
       "type": "array",
@@ -31,5 +26,11 @@
     "nextId": {
       "$ref": "./_defs.schema.json#/$defs/uint"
     }
-  }
+  },
+  "required": [
+    "nodes",
+    "links",
+    "nextId"
+  ],
+  "x-rig-maturity": "stable"
 }

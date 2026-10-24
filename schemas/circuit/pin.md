@@ -1,3 +1,26 @@
+---
+id: "rig.circuit.pin"
+maturity: "draft"
+summary: "One physical terminal of a part - the metal you solder to or probe. Format when present."
+fields:
+  - name: "number"
+    ref: "string"
+    required: true
+    meaning: "Terminal number as printed on the package or connector (1, A1, EP). A string, not an index"
+  - name: "function"
+    ref: "string"
+    meaning: "Optional. Terminal function (GPIO17, VCC, SDA); absent = none"
+    absent: "none"
+  - name: "electricalType"
+    type: "string"
+    enum: ["input","output","bidirectional","tri-state","passive","free","unspecified","power-in","power-out","open-collector","open-emitter","no-connect"]
+    meaning: "Optional. input, output, bidirectional, tri-state, passive, free, unspecified, power-in, power-out, open-collector, open-emitter, no-connect; absent = unspecified"
+    absent: "unspecified"
+  - name: "net"
+    ref: "entity"
+    meaning: "Optional. rig.circuit.net this terminal connects to; absent or none = unconnected"
+    absent: "or none = unconnected"
+---
 # `rig.circuit.pin`
 
 One physical terminal of a part - the metal you solder to or probe. Format when present.

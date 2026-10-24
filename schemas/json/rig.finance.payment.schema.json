@@ -43,5 +43,6 @@
     "creditor",
     "status"
   ],
-  "description": "A movement of money. Field meanings follow ISO 20022 payment identification. Not a pacs message."
+  "description": "A movement of money. Field meanings follow ISO 20022 payment identification. Not a pacs message.",
+  "x-rig-maturity": "draft"
 }

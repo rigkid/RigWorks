@@ -1,3 +1,26 @@
+---
+id: "rig.paper.identifier"
+maturity: "draft"
+summary: "Article identifiers of a science paper or preprint. Format when present."
+topJson: "{\"description\":\"Article identifiers. Field meanings follow JATS article-id and Crossref. Prefer doi when present.\",\"minProperties\":1}"
+fields:
+  - name: "doi"
+    ref: "string"
+    meaning: "Digital Object Identifier"
+  - name: "pmid"
+    type: "string"
+    pattern: "^[0-9]+$"
+    description: "PubMed PMID."
+    meaning: "PubMed identifier, digits only"
+  - name: "pmcid"
+    type: "string"
+    pattern: "^PMC[0-9]+$"
+    description: "PubMed Central PMCID."
+    meaning: "PubMed Central id (PMC + digits)"
+  - name: "arxiv"
+    ref: "string"
+    meaning: "arXiv id (1706.03762 or arXiv:1706.03762v1)"
+---
 # `rig.paper.identifier`
 
 Article identifiers of a science paper or preprint. Format when present.

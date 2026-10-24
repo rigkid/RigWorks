@@ -24,5 +24,6 @@
     "citation",
     "status"
   ],
-  "description": "A statute or regulation. Title is rig.meta.named. Not a paper.article."
+  "description": "A statute or regulation. Title is rig.meta.named. Not a paper.article.",
+  "x-rig-maturity": "draft"
 }

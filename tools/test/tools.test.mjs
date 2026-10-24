@@ -83,6 +83,22 @@ describe("smoke", () => {
     assert.equal(r.status, 0, r.stderr + r.stdout);
   });
 
+  it("check-skill exits 0", () => {
+    const r = run("tools/check-skill.mjs");
+    assert.equal(r.status, 0, r.stderr + r.stdout);
+    assert.match(r.stdout, /skill ok/);
+  });
+
+  it("check-tag reports tag state (ok, skipped, or correctly missing)", () => {
+    // On a release branch mid-preparation the tag may legitimately not
+    // exist yet; the tool must then fail with the tagging instruction,
+    // which is the enforcement working - not a tool error.
+    const r = run("tools/check-tag.mjs");
+    const out = r.stderr + r.stdout;
+    if (r.status === 0) assert.match(out, /^(ok - release tag|tag check skipped)/m);
+    else assert.match(out, /check-tag: tag v[0-9]+\.[0-9]+\.[0-9]+ does not exist/);
+  });
+
   it("sync-snippets --check exits 0", () => {
     const r = run("tools/sync-snippets.mjs", ["--check"]);
     assert.equal(r.status, 0, r.stderr + r.stdout);

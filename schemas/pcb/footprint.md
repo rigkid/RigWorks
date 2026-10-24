@@ -1,3 +1,27 @@
+---
+id: "rig.pcb.footprint"
+maturity: "draft"
+summary: "Board placement of a part. Format when present."
+fields:
+  - name: "library"
+    ref: "string"
+    meaning: "Optional. Library item the footprint came from, as the source tool names it (Package_SO:SOIC-8_3.9x4.9mm_P1.27mm); absent = board-only"
+    absent: "board-only"
+  - name: "side"
+    type: "string"
+    enum: ["front","back"]
+    meaning: "Optional. front, back; absent = front"
+    absent: "front"
+  - name: "mount"
+    type: "string"
+    enum: ["smd","through-hole","other"]
+    meaning: "Optional. smd, through-hole, other; absent = other"
+    absent: "other"
+  - name: "locked"
+    ref: "bool"
+    meaning: "Optional. Placement is fixed; absent = false"
+    absent: "false"
+---
 # `rig.pcb.footprint`
 
 Board placement of a part. Format when present.

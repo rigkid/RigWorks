@@ -1,3 +1,25 @@
+---
+id: "rig.geometry.line"
+maturity: "stable"
+summary: "Single straight segment. Format when present."
+fields:
+  - name: "x1"
+    ref: "float"
+    required: true
+    meaning: "Start X, local space"
+  - name: "y1"
+    ref: "float"
+    required: true
+    meaning: "Start Y, local space"
+  - name: "x2"
+    ref: "float"
+    required: true
+    meaning: "End X, local space"
+  - name: "y2"
+    ref: "float"
+    required: true
+    meaning: "End Y, local space"
+---
 # `rig.geometry.line`
 
 Single straight segment. Format when present.

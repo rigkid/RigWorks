@@ -13,5 +13,6 @@
         "single"
       ]
     }
-  }
+  },
+  "x-rig-maturity": "stable"
 }

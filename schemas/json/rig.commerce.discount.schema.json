@@ -32,5 +32,6 @@
   "required": [
     "kind"
   ],
-  "description": "Adjustment on an offer. percent is 0–100 (10 means 10%). amount is money off, not the resulting price. schema.org Discount / PriceSpecification."
+  "description": "Adjustment on an offer. percent is 0–100 (10 means 10%). amount is money off, not the resulting price. schema.org Discount / PriceSpecification.",
+  "x-rig-maturity": "draft"
 }

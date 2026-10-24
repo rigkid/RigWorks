@@ -1,3 +1,29 @@
+---
+id: "rig.geometry.rectangle"
+maturity: "stable"
+summary: "Axis-aligned rectangle. Format when present."
+fields:
+  - name: "x"
+    ref: "float"
+    required: true
+    meaning: "Left edge, local space"
+  - name: "y"
+    ref: "float"
+    required: true
+    meaning: "Top edge, local space"
+  - name: "width"
+    schemaJson: "{\"$ref\":\"./_defs.schema.json#/$defs/float\",\"minimum\":0}"
+    required: true
+    meaning: "Extent along +X; negative is invalid"
+  - name: "height"
+    schemaJson: "{\"$ref\":\"./_defs.schema.json#/$defs/float\",\"minimum\":0}"
+    required: true
+    meaning: "Extent along +Y; negative is invalid"
+  - name: "cornerRadius"
+    ref: "float"
+    meaning: "Optional. Corner rounding in units; absent or 0 = square corners"
+    absent: "or 0 = square corners"
+---
 # `rig.geometry.rectangle`
 
 Axis-aligned rectangle. Format when present.

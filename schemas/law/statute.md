@@ -1,3 +1,22 @@
+---
+id: "rig.law.statute"
+maturity: "draft"
+summary: "A statute or regulation. Format when present."
+topJson: "{\"description\":\"A statute or regulation. Title is rig.meta.named. Not a paper.article.\"}"
+fields:
+  - name: "citation"
+    ref: "string"
+    required: true
+    meaning: "Citation as written (42 U.S.C. § 1983)"
+  - name: "status"
+    type: "string"
+    enum: ["in-force","repealed","pending"]
+    required: true
+    meaning: "in-force / repealed / pending"
+  - name: "jurisdiction"
+    ref: "string"
+    meaning: "Optional. Jurisdiction as written (same idea as rig.legal.agreement governingLaw)"
+---
 # `rig.law.statute`
 
 A statute or regulation. Format when present.

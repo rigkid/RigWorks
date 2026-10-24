@@ -1,3 +1,21 @@
+---
+id: "rig.record.event"
+maturity: "draft"
+summary: "A happening with no magnitude. Format when present."
+topJson: "{\"description\":\"A happening with no magnitude. Clock composes rig.calendar.event. A measurement is rig.clinic.observation.\"}"
+fields:
+  - name: "subject"
+    ref: "entity"
+    required: true
+    meaning: "Who or what the happening is about"
+  - name: "code"
+    ref: "string"
+    required: true
+    meaning: "Event code as the source wrote it"
+  - name: "codeSystem"
+    ref: "string"
+    meaning: "Optional. Code system name (iso20022, custom)"
+---
 # `rig.record.event`
 
 A happening with no magnitude. Format when present.

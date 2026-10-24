@@ -32,5 +32,6 @@
   },
   "required": [
     "bpm"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

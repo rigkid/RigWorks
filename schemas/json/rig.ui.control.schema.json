@@ -65,5 +65,6 @@
     "propertyKey",
     "type"
   ],
-  "description": "View over one POD field — never a second store. group is optional; widget is an advisory hint a host may ignore."
+  "description": "View over one POD field — never a second store. group is optional; widget is an advisory hint a host may ignore.",
+  "x-rig-maturity": "stable"
 }

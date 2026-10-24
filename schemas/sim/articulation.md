@@ -1,3 +1,17 @@
+---
+id: "rig.sim.articulation"
+maturity: "draft"
+summary: "One robot: a tree of links solved together. Format when present. Compose on the root link."
+fields:
+  - name: "selfCollide"
+    ref: "bool"
+    meaning: "Optional. Links of this robot collide with each other. Absent = false"
+    absent: "false"
+  - name: "fixedBase"
+    ref: "bool"
+    meaning: "Optional. Root welded to the world. Absent = false (a mobile base)"
+    absent: "false (a mobile base)"
+---
 # `rig.sim.articulation`
 
 One robot: a tree of links solved together. Format when present. Compose on the root link.

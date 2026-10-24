@@ -1,3 +1,29 @@
+---
+id: "rig.finance.position"
+maturity: "draft"
+summary: "A holding of an instrument. Format when present."
+topJson: "{\"description\":\"A holding of an instrument. Book value composes rig.commerce.price. A live mark is host cache.\"}"
+fields:
+  - name: "holder"
+    ref: "entity"
+    required: true
+    meaning: "Person or organisation that holds it"
+  - name: "isin"
+    type: "string"
+    pattern: "^[A-Z]{2}[A-Z0-9]{9}[0-9]$"
+    description: "ISO 6166 ISIN, 12 characters, uppercase."
+    required: true
+    meaning: "12-character ISIN, no spaces"
+  - name: "quantity"
+    ref: "float"
+    required: true
+    meaning: "Signed count of the instrument"
+  - name: "side"
+    type: "string"
+    enum: ["long","short"]
+    required: true
+    meaning: "long / short"
+---
 # `rig.finance.position`
 
 A holding of an instrument. Format when present.

@@ -1,3 +1,22 @@
+---
+id: "rig.art.dimensions"
+maturity: "draft"
+summary: "Measurements of a work. Format when present."
+topJson: "{\"description\":\"Measurements. Field meanings follow CDWA Measurements / Object ID. Values in millimetres and grams.\",\"minProperties\":1}"
+fields:
+  - name: "heightMillimetres"
+    ref: "float"
+    meaning: "Height, millimetres"
+  - name: "widthMillimetres"
+    ref: "float"
+    meaning: "Width, millimetres"
+  - name: "depthMillimetres"
+    ref: "float"
+    meaning: "Depth, millimetres"
+  - name: "weightGrams"
+    ref: "float"
+    meaning: "Weight, grams"
+---
 # `rig.art.dimensions`
 
 Measurements of a work. Format when present.

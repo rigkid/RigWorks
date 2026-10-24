@@ -1,3 +1,21 @@
+---
+id: "rig.bim.site"
+maturity: "draft"
+summary: "Site / plot marker (IfcSite). Format when present."
+fields:
+  - name: "latitudeDegrees"
+    ref: "float"
+    meaning: "Optional. Decimal degrees north; absent = unset"
+    absent: "unset"
+  - name: "longitudeDegrees"
+    ref: "float"
+    meaning: "Optional. Decimal degrees east; absent = unset"
+    absent: "unset"
+  - name: "elevation"
+    ref: "float"
+    meaning: "Optional. Site elevation in document units; absent = unset"
+    absent: "unset"
+---
 # `rig.bim.site`
 
 Site / plot marker (`IfcSite`). Format when present.

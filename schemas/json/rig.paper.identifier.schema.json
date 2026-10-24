@@ -23,5 +23,6 @@
     }
   },
   "description": "Article identifiers. Field meanings follow JATS article-id and Crossref. Prefer doi when present.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,20 @@
+---
+id: "rig.sensor.label"
+maturity: "draft"
+summary: "Class image from a camera. Format when present."
+fields:
+  - name: "mode"
+    type: "string"
+    enum: ["semantic","instance"]
+    meaning: "Optional. semantic, instance. Absent = semantic"
+    absent: "semantic"
+  - name: "classes"
+    type: "array"
+    minItems: 1
+    itemsRef: "string"
+    required: true
+    meaning: "Names the image indexes, in order. Index 0 is the first string"
+---
 # `rig.sensor.label`
 
 Class image from a camera. Format when present.

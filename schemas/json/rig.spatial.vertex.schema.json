@@ -6,5 +6,6 @@
   "additionalProperties": false,
   "properties": {},
   "description": "Marker: presence means a locator / point. Pose on transform. An unparented vertex is a scene. No fields.",
-  "minProperties": 0
+  "minProperties": 0,
+  "x-rig-maturity": "stable"
 }

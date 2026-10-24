@@ -19,5 +19,6 @@
     }
   },
   "description": "Cultivated-plant name. Field meanings follow ICNCP and Darwin Core cultivarEpithet. Epithet without quotes.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

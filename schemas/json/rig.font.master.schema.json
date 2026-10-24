@@ -28,5 +28,6 @@
   },
   "required": [
     "location"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

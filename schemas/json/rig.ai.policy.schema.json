@@ -27,5 +27,6 @@
       "$ref": "./_defs.schema.json#/$defs/entity"
     }
   },
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,41 @@
+---
+id: "rig.music.pattern"
+maturity: "draft"
+summary: "Ordered steps. Format when present."
+fields:
+  - name: "steps"
+    type: "array"
+    itemsSchemaJson: "{\"$ref\":\"./rig.music.step.schema.json\"}"
+    required: true
+    meaning: "Ordered rig.music.step cells; length = pattern length"
+  - name: "rootNote"
+    type: "integer"
+    minimum: 0
+    maximum: 127
+    meaning: "Optional. MIDI pitch 0-127 (scale root); absent = 60"
+    absent: "60"
+  - name: "scale"
+    type: "string"
+    enum: ["chromatic","major","minor","dorian","pentatonic"]
+    meaning: "Optional. chromatic, major, minor, dorian, pentatonic; absent = chromatic"
+    absent: "chromatic"
+  - name: "lane"
+    ref: "int"
+    meaning: "Optional. Voice index when several patterns play together"
+  - name: "stepsPerBeat"
+    type: "number"
+    exclusiveMinimum: 0
+    meaning: "Optional. Steps advanced per transport beat; absent = 4 (16th notes)"
+    absent: "4 (16th notes)"
+  - name: "loopStartStep"
+    ref: "int"
+    meaning: "Optional. First step of the loop region; absent = 0"
+    absent: "0"
+  - name: "loopEndStep"
+    ref: "int"
+    meaning: "Optional. Step after the last looped step; absent = steps.length (loop the whole pattern)"
+    absent: "steps"
+---
 # `rig.music.pattern`
 
 Ordered steps. Format when present.

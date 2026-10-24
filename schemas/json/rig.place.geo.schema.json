@@ -23,5 +23,6 @@
     "latitudeDegrees",
     "longitudeDegrees"
   ],
-  "description": "WGS84 geodetic pin. Not a postal address and not scene pose."
+  "description": "WGS84 geodetic pin. Not a postal address and not scene pose.",
+  "x-rig-maturity": "draft"
 }

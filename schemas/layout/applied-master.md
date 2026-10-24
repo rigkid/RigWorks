@@ -1,3 +1,13 @@
+---
+id: "rig.layout.applied_master"
+maturity: "draft"
+summary: "Which master a document page uses. Format when present."
+fields:
+  - name: "master"
+    ref: "entity"
+    meaning: "Optional. rig.layout.master page entity. Absent = no master (deliberate)"
+    absent: "no master (deliberate)"
+---
 # `rig.layout.applied_master`
 
 Which master a document page uses. Format when present.

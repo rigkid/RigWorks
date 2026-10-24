@@ -1,3 +1,18 @@
+---
+id: "rig.font.glyph"
+maturity: "stable"
+summary: "One glyph in a face. Format when present."
+fields:
+  - name: "unicodes"
+    type: "array"
+    itemsRef: "uint32"
+    meaning: "Optional. Unicode code points; absent or empty = unencoded"
+    absent: "or empty = unencoded"
+  - name: "width"
+    ref: "float"
+    required: true
+    meaning: "Advance width in font units"
+---
 # `rig.font.glyph`
 
 One glyph in a face. Format when present.

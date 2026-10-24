@@ -40,5 +40,6 @@
     }
   },
   "description": "Growth form and mature size. Not Darwin Core habitat (that is the event site — compose place).",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

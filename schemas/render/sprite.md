@@ -1,3 +1,35 @@
+---
+id: "rig.render.sprite"
+maturity: "draft"
+summary: "A textured quad in the entity's plane. Format when present. Colour is paint on the same entity (rig.paint.fill or rig.paint.fill_stroke), not a second colour here."
+fields:
+  - name: "texture"
+    ref: "entity"
+    required: true
+    meaning: "rig.media.asset_ref"
+  - name: "tiling"
+    ref: "vec2"
+    meaning: "Optional. Texture repeats across the quad; absent = 1, 1"
+    absent: "1, 1"
+  - name: "flipX"
+    ref: "bool"
+    meaning: "Optional. Mirror in local X; absent = false"
+    absent: "false"
+  - name: "flipY"
+    ref: "bool"
+    meaning: "Optional. Mirror in local Y; absent = false"
+    absent: "false"
+  - name: "frame"
+    ref: "uint"
+    meaning: "Optional. Frame index in a sheet; absent = 0"
+    absent: "0"
+  - name: "columns"
+    ref: "uint"
+    meaning: "Optional. Sheet columns. Required when rows is set"
+  - name: "rows"
+    ref: "uint"
+    meaning: "Optional. Sheet rows. Required when columns is set"
+---
 # `rig.render.sprite`
 
 A textured quad in the entity's plane. Format when present. Colour is paint on the same entity ([`rig.paint.fill`](../paint/fill.md) or [`rig.paint.fill_stroke`](../paint/fill-stroke.md)), not a second colour here.

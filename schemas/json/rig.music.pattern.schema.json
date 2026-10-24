@@ -42,5 +42,6 @@
   },
   "required": [
     "steps"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

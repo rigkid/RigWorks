@@ -12,5 +12,6 @@
   "required": [
     "asset"
   ],
-  "description": "Documentary image of a work. asset is a rig.media.asset_ref entity. Not an inline path."
+  "description": "Documentary image of a work. asset is a rig.media.asset_ref entity. Not an inline path.",
+  "x-rig-maturity": "draft"
 }

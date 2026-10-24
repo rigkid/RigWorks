@@ -26,5 +26,6 @@
     "propertyKey",
     "min",
     "max"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

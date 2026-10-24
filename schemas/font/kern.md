@@ -1,3 +1,21 @@
+---
+id: "rig.font.kern"
+maturity: "stable"
+summary: "One kerning pair. Format when present."
+fields:
+  - name: "left"
+    ref: "string"
+    required: true
+    meaning: "Left glyph or group name"
+  - name: "right"
+    ref: "string"
+    required: true
+    meaning: "Right glyph or group name"
+  - name: "value"
+    ref: "float"
+    required: true
+    meaning: "Pair adjustment in font units (negative = tighter)"
+---
 # `rig.font.kern`
 
 One kerning pair. Format when present.

@@ -1,3 +1,22 @@
+---
+id: "rig.person.identifier"
+maturity: "draft"
+summary: "Issued identifiers of a person. Format when present."
+topJson: "{\"description\":\"Issued identifiers of a person. nationalId, taxId, mrn, passport as the source wrote them. Not a system+value bag.\",\"minProperties\":1}"
+fields:
+  - name: "nationalId"
+    ref: "string"
+    meaning: "National identity number as issued"
+  - name: "taxId"
+    ref: "string"
+    meaning: "Tax identifier as issued (TIN, ABN, NINO, TFN)"
+  - name: "mrn"
+    ref: "string"
+    meaning: "Medical record number as issued"
+  - name: "passport"
+    ref: "string"
+    meaning: "Passport number as issued"
+---
 # `rig.person.identifier`
 
 Issued identifiers of a person. Format when present.

@@ -1,3 +1,10 @@
+---
+id: "rig.bim.type"
+maturity: "draft"
+summary: "Shared BIM type / family marker (IfcWallType, IfcDoorType, ...). Format when present - presence means this entity is a type definition, not an occurrence."
+topJson: "{\"minProperties\":0}"
+fields:
+---
 # `rig.bim.type`
 
 Shared BIM type / family marker (`IfcWallType`, `IfcDoorType`, ...). Format when present - presence means this entity is a type definition, not an occurrence.

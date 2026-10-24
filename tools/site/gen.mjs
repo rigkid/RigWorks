@@ -14,6 +14,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { marked } from "marked";
+import { parseFrontmatter } from "../schema-source.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const outDir = path.join(root, "_site");
@@ -459,8 +460,10 @@ function inlineMarkdown(md, sourceRel, pageOut, pathMap) {
 }
 
 function renderMarkdown(md, sourceRel, pageOut, pathMap) {
+  const parsed = parseFrontmatter(md);
+  const text = parsed ? parsed.body : md;
   return marked
-    .parse(md)
+    .parse(text)
     .replace(/href="([^"]+)"/g, (_, href) =>
       `href="${esc(resolveHref(href, sourceRel, pageOut, pathMap))}"`
     )
@@ -672,6 +675,7 @@ function schemaPage(entry, ctx) {
 <h1><code class="id">${esc(entry.id)}</code></h1>
 <p class="badges">
   <span class="badge">v${version} · draft</span>
+  ${entry.schema["x-rig-maturity"] ? `<span class="badge">maturity: ${esc(entry.schema["x-rig-maturity"])}</span>` : ""}
   <span class="badge">${entry.fields.length} field${entry.fields.length === 1 ? "" : "s"}</span>
   <span class="badge">${entry.fields.filter((f) => f.required).length} required</span>
 </p>

@@ -40,5 +40,6 @@
   "required": [
     "class"
   ],
-  "description": "Classification and retention of a fact. Not copyright (rig.rights.statement) and not an ACL."
+  "description": "Classification and retention of a fact. Not copyright (rig.rights.statement) and not an ACL.",
+  "x-rig-maturity": "draft"
 }

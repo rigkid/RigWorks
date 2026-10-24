@@ -13,5 +13,6 @@
         "spare"
       ]
     }
-  }
+  },
+  "x-rig-maturity": "stable"
 }

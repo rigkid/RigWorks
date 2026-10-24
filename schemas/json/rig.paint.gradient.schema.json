@@ -51,5 +51,6 @@
   "required": [
     "kind",
     "stops"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

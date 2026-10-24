@@ -1,3 +1,26 @@
+---
+id: "rig.art.attribution"
+maturity: "draft"
+summary: "One maker on one work. Format when present."
+topJson: "{\"description\":\"One maker on one work. Field meanings follow CDWA Creation/Creator. Name is on the person entity.\"}"
+fields:
+  - name: "work"
+    ref: "entity"
+    required: true
+    meaning: "The artwork entity"
+  - name: "person"
+    ref: "entity"
+    required: true
+    meaning: "Maker"
+  - name: "role"
+    type: "string"
+    enum: ["artist","attributed-to","workshop-of","school-of","after","photographer","other"]
+    required: true
+    meaning: "artist / attributed-to / workshop-of / school-of / after / photographer / other"
+  - name: "sequence"
+    ref: "int"
+    meaning: "Optional. Credit order, 1-based"
+---
 # `rig.art.attribution`
 
 One maker on one work. Format when present.

@@ -1,3 +1,13 @@
+---
+id: "rig.spatial.instance"
+maturity: "draft"
+summary: "Instance of another entity. Format when present."
+fields:
+  - name: "source"
+    ref: "entity"
+    required: true
+    meaning: "Template. A <symbol> is a rig.spatial.group with rig.render.visibility hidden until instanced"
+---
 # `rig.spatial.instance`
 
 Instance of another entity. Format when present.

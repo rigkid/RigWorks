@@ -14,5 +14,6 @@
   },
   "required": [
     "parent"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

@@ -25,5 +25,6 @@
   "required": [
     "profile",
     "height"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

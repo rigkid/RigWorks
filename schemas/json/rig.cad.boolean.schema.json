@@ -15,14 +15,15 @@
     },
     "operands": {
       "type": "array",
+      "minItems": 2,
       "items": {
         "$ref": "./_defs.schema.json#/$defs/entity"
-      },
-      "minItems": 2
+      }
     }
   },
   "required": [
     "op",
     "operands"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

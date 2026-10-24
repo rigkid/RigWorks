@@ -1,3 +1,13 @@
+---
+id: "rig.vr.anchor"
+maturity: "draft"
+summary: "A pin in the user's space. Format when present."
+fields:
+  - name: "persistentId"
+    ref: "string"
+    meaning: "Optional. Id the runtime uses to find this pin in a later session. Absent = this session only"
+    absent: "this session only"
+---
 # `rig.vr.anchor`
 
 A pin in the user's space. Format when present.

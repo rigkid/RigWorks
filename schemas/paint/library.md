@@ -1,3 +1,14 @@
+---
+id: "rig.paint.library"
+maturity: "stable"
+summary: "Ordered swatch collection. Format when present."
+fields:
+  - name: "paints"
+    type: "array"
+    itemsRef: "entity"
+    required: true
+    meaning: "Paint entities in panel order; each carries rig.paint.solid or rig.paint.gradient"
+---
 # `rig.paint.library`
 
 Ordered swatch collection. Format when present.

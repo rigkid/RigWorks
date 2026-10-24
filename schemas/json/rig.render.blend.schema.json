@@ -34,5 +34,6 @@
       "minimum": 0,
       "maximum": 1
     }
-  }
+  },
+  "x-rig-maturity": "stable"
 }

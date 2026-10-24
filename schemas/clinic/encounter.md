@@ -1,3 +1,24 @@
+---
+id: "rig.clinic.encounter"
+maturity: "draft"
+summary: "One visit or admission. Format when present."
+topJson: "{\"description\":\"One visit or admission. Visit clock is rig.calendar.event; admission days are rig.calendar.span.\"}"
+fields:
+  - name: "patient"
+    ref: "entity"
+    required: true
+    meaning: "Person this visit is about"
+  - name: "status"
+    type: "string"
+    enum: ["planned","arrived","in-progress","finished","cancelled"]
+    required: true
+    meaning: "planned / arrived / in-progress / finished / cancelled"
+  - name: "class"
+    type: "string"
+    enum: ["inpatient","outpatient","emergency","virtual","home"]
+    required: true
+    meaning: "inpatient / outpatient / emergency / virtual / home"
+---
 # `rig.clinic.encounter`
 
 One visit or admission. Format when present.

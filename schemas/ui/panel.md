@@ -1,3 +1,32 @@
+---
+id: "rig.ui.panel"
+maturity: "stable"
+summary: "Portable **tool surface** - a window/panel of controls that any UI pack can redraw. Labels compose rig.meta.named - do not re-declare name here."
+topJson: "{\"description\":\"Portable tool or HUD surface. role is a stable id; surface absent = tool. Dock/chrome is fulfillment.\"}"
+fields:
+  - name: "role"
+    ref: "string"
+    meaning: "Optional. Stable id (e.g. led.install, mod.lfo, play.hud) so another host can find or merge the surface"
+  - name: "surface"
+    type: "string"
+    enum: ["tool","hud"]
+    meaning: "Optional. tool or hud; absent = tool"
+    absent: "tool"
+  - name: "order"
+    ref: "int"
+    meaning: "Optional. Sort key among sibling panels; absent = 0"
+    absent: "0"
+  - name: "visible"
+    ref: "bool"
+    meaning: "Optional. Whether the panel is shown; absent = true"
+    absent: "true"
+  - name: "preferredWidth"
+    ref: "float"
+    meaning: "Optional. Advisory width hint in the document's defaultUnit; hosts may ignore"
+  - name: "preferredHeight"
+    ref: "float"
+    meaning: "Optional. Advisory height hint; hosts may ignore"
+---
 # `rig.ui.panel`
 
 Portable **tool surface** - a window/panel of controls that any UI pack can redraw. Labels compose [`rig.meta.named`](../meta/named.md) - do not re-declare `name` here.

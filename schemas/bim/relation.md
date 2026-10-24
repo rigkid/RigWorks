@@ -1,3 +1,22 @@
+---
+id: "rig.bim.relation"
+maturity: "draft"
+summary: "OpenBIM relationship between two entities. Format when present - this component lives on **its own entity** (same pattern as rig.mod.binding)."
+fields:
+  - name: "kind"
+    type: "string"
+    enum: ["voids","fills","connects","aggregates","services"]
+    required: true
+    meaning: "voids, fills, connects, aggregates, or services"
+  - name: "a"
+    ref: "entity"
+    required: true
+    meaning: "First participant"
+  - name: "b"
+    ref: "entity"
+    required: true
+    meaning: "Second participant"
+---
 # `rig.bim.relation`
 
 OpenBIM relationship between two entities. Format when present - this component lives on **its own entity** (same pattern as [`rig.mod.binding`](../mod/binding.md)).

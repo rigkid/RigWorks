@@ -40,5 +40,6 @@
     "tilesAcross",
     "tileRows",
     "indices"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

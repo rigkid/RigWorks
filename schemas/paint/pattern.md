@@ -1,3 +1,27 @@
+---
+id: "rig.paint.pattern"
+maturity: "draft"
+summary: "Tiled paint. Format when present."
+fields:
+  - name: "width"
+    ref: "float"
+    required: true
+    meaning: "Tile width"
+  - name: "height"
+    ref: "float"
+    required: true
+    meaning: "Tile height"
+  - name: "units"
+    type: "string"
+    enum: ["object","user-space"]
+    meaning: "Optional. object or user-space. Absent = object"
+    absent: "object"
+  - name: "contentUnits"
+    type: "string"
+    enum: ["object","user-space"]
+    meaning: "Optional. object or user-space. Absent = user-space"
+    absent: "user-space"
+---
 # `rig.paint.pattern`
 
 Tiled paint. Format when present.

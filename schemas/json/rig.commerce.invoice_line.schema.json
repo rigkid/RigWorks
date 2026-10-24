@@ -22,5 +22,6 @@
     "invoice",
     "quantity"
   ],
-  "description": "One line of an invoice. Price composes rig.commerce.price."
+  "description": "One line of an invoice. Price composes rig.commerce.price.",
+  "x-rig-maturity": "draft"
 }

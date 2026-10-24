@@ -1,3 +1,10 @@
+---
+id: "rig.spatial.vertex"
+maturity: "stable"
+summary: "Locator / point marker. Format when present - presence means this entity is a point in the scene graph, not a drawable and not a mesh corner."
+topJson: "{\"description\":\"Marker: presence means a locator / point. Pose on transform. An unparented vertex is a scene. No fields.\",\"minProperties\":0}"
+fields:
+---
 # `rig.spatial.vertex`
 
 Locator / point marker. Format when present - presence means this entity is a point in the scene graph, not a drawable and not a mesh corner.

@@ -29,14 +29,15 @@
     },
     "byWeekday": {
       "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
       "items": {
         "type": "boolean"
-      },
-      "minItems": 7,
-      "maxItems": 7
+      }
     }
   },
   "required": [
     "frequency"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

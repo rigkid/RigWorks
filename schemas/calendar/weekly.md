@@ -1,3 +1,28 @@
+---
+id: "rig.calendar.weekly"
+maturity: "draft"
+summary: "Weekly opening hours. Format when present."
+fields:
+  - name: "days"
+    type: "array"
+    minItems: 7
+    maxItems: 7
+    itemsType: "boolean"
+    required: true
+    meaning: "Active weekdays; index 0 = Sunday ... 6 = Saturday"
+  - name: "startMinutes"
+    type: "integer"
+    minimum: 0
+    maximum: 1439
+    required: true
+    meaning: "Window start, 0-1439"
+  - name: "endMinutes"
+    type: "integer"
+    minimum: 0
+    maximum: 1439
+    required: true
+    meaning: "Window end, 0-1439. When endMinutes ≤ startMinutes, the window crosses midnight."
+---
 # `rig.calendar.weekly`
 
 Weekly opening hours. Format when present.

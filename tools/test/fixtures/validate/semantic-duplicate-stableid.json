@@ -1,0 +1,17 @@
+{
+  "rig": "0.40.0",
+  "entities": [
+    {
+      "id": "a",
+      "components": {
+        "rig.meta.named": { "name": "A", "stableId": "same" }
+      }
+    },
+    {
+      "id": "b",
+      "components": {
+        "rig.meta.named": { "name": "B", "stableId": "same" }
+      }
+    }
+  ]
+}

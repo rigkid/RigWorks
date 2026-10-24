@@ -1,3 +1,21 @@
+---
+id: "rig.commerce.product"
+maturity: "draft"
+summary: "A sellable item. Format when present."
+topJson: "{\"description\":\"A sellable item. Field meanings follow GS1 GTIN and schema.org Product. Name is rig.meta.named. A variant sets parent.\"}"
+fields:
+  - name: "gtin"
+    type: "string"
+    pattern: "^[0-9]{8}$|^[0-9]{12,14}$"
+    description: "GS1 GTIN digits only (8, 12, 13, or 14)."
+    meaning: "Optional. GTIN digits only (8, 12, 13, or 14)"
+  - name: "brand"
+    ref: "entity"
+    meaning: "Optional. Organisation that brands it"
+  - name: "parent"
+    ref: "entity"
+    meaning: "Optional. Product this variant belongs to"
+---
 # `rig.commerce.product`
 
 A sellable item. Format when present.

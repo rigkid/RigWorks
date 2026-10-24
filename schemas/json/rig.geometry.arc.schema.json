@@ -34,5 +34,6 @@
     "radiusY",
     "startAngleDegrees",
     "endAngleDegrees"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

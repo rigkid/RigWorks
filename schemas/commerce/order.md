@@ -1,3 +1,26 @@
+---
+id: "rig.commerce.order"
+maturity: "draft"
+summary: "A sale between a buyer and a seller. Format when present."
+topJson: "{\"description\":\"A sale header. Field meanings follow schema.org Order. Lines are rig.commerce.order_line entities.\"}"
+fields:
+  - name: "buyer"
+    ref: "entity"
+    required: true
+    meaning: "Person or organisation that buys"
+  - name: "seller"
+    ref: "entity"
+    required: true
+    meaning: "Person or organisation that sells"
+  - name: "status"
+    type: "string"
+    enum: ["draft","placed","paid","fulfilled","cancelled"]
+    required: true
+    meaning: "draft / placed / paid / fulfilled / cancelled"
+  - name: "identifier"
+    ref: "string"
+    meaning: "Optional. Order number as issued"
+---
 # `rig.commerce.order`
 
 A sale between a buyer and a seller. Format when present.

@@ -24,5 +24,6 @@
   "required": [
     "topic",
     "body"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,32 @@
+---
+id: "rig.legal.agreement"
+maturity: "draft"
+summary: "A deal between parties. Format when present."
+topJson: "{\"description\":\"A deal between parties. Field meanings follow schema.org Contract and ISO 20022 AgreementIdentification. Term dates compose rig.calendar.span.\",\"minProperties\":1}"
+fields:
+  - name: "kind"
+    type: "string"
+    enum: ["employment","nda","licence","lease","loan","service","sale","insurance","other"]
+    meaning: "employment / nda / licence / lease / loan / service / sale / insurance / other"
+  - name: "identifier"
+    ref: "string"
+    meaning: "Contract / agreement number as issued"
+  - name: "status"
+    type: "string"
+    enum: ["draft","offered","signed","active","suspended","terminated","expired"]
+    meaning: "draft / offered / signed / active / suspended / terminated / expired"
+  - name: "governingLaw"
+    ref: "string"
+    meaning: "Jurisdiction as written (e.g. England and Wales)"
+  - name: "signedDate"
+    type: "string"
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    description: "ISO 8601 calendar date."
+    meaning: "Day the instrument was executed, YYYY-MM-DD"
+  - name: "instrument"
+    ref: "entity"
+    meaning: "Optional. Signed file (rig.media.asset_ref kind document)"
+---
 # `rig.legal.agreement`
 
 A deal between parties. Format when present.

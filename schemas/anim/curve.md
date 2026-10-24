@@ -1,3 +1,29 @@
+---
+id: "rig.anim.curve"
+maturity: "stable"
+summary: "1D transfer curve - remap a normalized input t in [0,1] to an output in [0,1]. Format when present."
+fields:
+  - name: "points"
+    type: "array"
+    minItems: 2
+    itemsRef: "vec2"
+    required: true
+    meaning: "Control points. Each x/y in [0,1]. Sorted by ascending x. At least two points; hosts ensure endpoints at x=0 and x=1."
+  - name: "interpolation"
+    type: "string"
+    enum: ["linear","smooth","bezier"]
+    meaning: "Optional. linear, smooth, bezier; absent = smooth."
+    absent: "smooth"
+  - name: "handles"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"in\":{\"$ref\":\"./_defs.schema.json#/$defs/vec2\"},\"out\":{\"$ref\":\"./_defs.schema.json#/$defs/vec2\"}}}"
+    meaning: "Optional. Per-anchor {in, out} relative offsets. Same length as points. Meaningful only when interpolation is bezier; ignored otherwise. Hosts clamp each handle's x so the control point stays inside its segment (evaluation stays a function of t)."
+  - name: "preset"
+    type: "string"
+    enum: ["linear","ease-in","ease-out","ease-in-out","s-curve","bulge","squeeze","custom"]
+    meaning: "Optional. Named seed for points: linear, ease-in, ease-out, ease-in-out, s-curve, bulge, squeeze, custom. Absent = custom when points are authored, else linear."
+    absent: "custom when points are authored, else linear"
+---
 # `rig.anim.curve`
 
 1D transfer curve - remap a normalized input `t` in `[0,1]` to an output in `[0,1]`. Format when present.

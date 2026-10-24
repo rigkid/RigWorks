@@ -41,5 +41,6 @@
     }
   },
   "description": "Publishing detail. Field meanings follow ONIX PublishingDetail. Publisher is an organisation entity.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

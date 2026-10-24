@@ -36,5 +36,6 @@
     "code",
     "value"
   ],
-  "description": "A measurement of a subject. Clock composes rig.calendar.event. Do not also attach rig.record.event."
+  "description": "A measurement of a subject. Clock composes rig.calendar.event. Do not also attach rig.record.event.",
+  "x-rig-maturity": "draft"
 }

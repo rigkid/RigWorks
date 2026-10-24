@@ -37,5 +37,6 @@
     "control",
     "device",
     "code"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

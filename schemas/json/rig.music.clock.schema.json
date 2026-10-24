@@ -32,5 +32,6 @@
   },
   "required": [
     "ticksPerQuarter"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

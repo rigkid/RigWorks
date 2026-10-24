@@ -39,9 +39,10 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 
 ## Schemas and examples
 
-- [schemas/json/](schemas/json/): machine-readable JSON Schema catalog
-- [schemas/](schemas/): prose field layouts
-- [schemas/README.md](schemas/README.md): catalog + field-naming rules
+- [schemas/json/](schemas/json/): machine-readable JSON Schema catalog (generated - do not hand-edit)
+- [schemas/](schemas/): prose field layouts; each file's YAML frontmatter is the schema source of truth
+- [schemas/index.json](schemas/index.json): generated catalog index (id, maturity, fields) for AI retrieval
+- [schemas/README.md](schemas/README.md): catalog + field-naming rules + maturity tiers
 - [schemas/document.md](schemas/document.md): document envelope
 - [examples/](examples/): reference documents (all validate)
 
@@ -53,6 +54,8 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 
 - [tools/rig-validate/README.md](tools/rig-validate/README.md): validate CLI (`node tools/rig-validate/cli.js <file.json>`)
 - [tools/check-version.mjs](tools/check-version.mjs): SemVer format of [`VERSION`](VERSION) + site badges; hooks via `npm run hooks:install` (pre-commit SemVer, pre-push full `npm run check`)
-- [tools/check-schema-parity/check.mjs](tools/check-schema-parity/check.mjs): prose / JSON Schema parity
-- [tools/gen-schemas.mjs](tools/gen-schemas.mjs): regenerate `schemas/json/` (`--check` to detect drift); run `npm run check` before push
+- [tools/check-schema-parity/check.mjs](tools/check-schema-parity/check.mjs): field-level parity (frontmatter, JSON Schema, prose)
+- [tools/gen-schemas.mjs](tools/gen-schemas.mjs): regenerate `schemas/json/`, `schemas/index.json`, and the validator copy from schema frontmatter (`--check` to detect drift); run `npm run check` before push
+- [tools/check-skill.mjs](tools/check-skill.mjs): skill router/slice token budgets + schema-id coverage
+- [skills/generating-rig-documents/SKILL.md](skills/generating-rig-documents/SKILL.md): skill router - loads one `domains/*.md` slice per task
 - [tools/site/gen.mjs](tools/site/gen.mjs): render this repo as the static site at https://rig.works (`npm run site`; `--check` gates page coverage and links)

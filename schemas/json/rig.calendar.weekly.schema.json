@@ -7,11 +7,11 @@
   "properties": {
     "days": {
       "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
       "items": {
         "type": "boolean"
-      },
-      "minItems": 7,
-      "maxItems": 7
+      }
     },
     "startMinutes": {
       "type": "integer",
@@ -28,5 +28,6 @@
     "days",
     "startMinutes",
     "endMinutes"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

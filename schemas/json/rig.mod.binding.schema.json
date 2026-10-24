@@ -31,5 +31,6 @@
     "source",
     "target",
     "propertyKey"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

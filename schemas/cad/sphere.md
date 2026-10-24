@@ -1,3 +1,18 @@
+---
+id: "rig.cad.sphere"
+maturity: "draft"
+summary: "Solid sphere centred on the local origin. Format when present."
+fields:
+  - name: "radius"
+    ref: "float"
+    required: true
+    meaning: "Radius"
+  - name: "circularSegments"
+    type: "integer"
+    minimum: 3
+    meaning: "Optional. Tessellation hint for mesh CSG kernels (≥ 3). Absent = host default"
+    absent: "host default"
+---
 # `rig.cad.sphere`
 
 Solid sphere centred on the local origin. Format when present.

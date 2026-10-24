@@ -1,3 +1,21 @@
+---
+id: "rig.spatial.layer"
+maturity: "stable"
+summary: "Document / render-order layer chrome. Format when present."
+fields:
+  - name: "order"
+    ref: "int"
+    meaning: "Optional. Draw / list order; absent = 0"
+    absent: "0"
+  - name: "locked"
+    ref: "bool"
+    meaning: "Optional. Edit lock hint; absent = false"
+    absent: "false"
+  - name: "rgba"
+    ref: "rgba"
+    meaning: "Optional. Tint / label colour (0-1); absent = no label colour. Hosts may store as four floats"
+    absent: "no label colour"
+---
 # `rig.spatial.layer`
 
 Document / render-order layer chrome. Format when present.

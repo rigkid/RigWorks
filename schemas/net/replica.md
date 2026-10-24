@@ -1,3 +1,22 @@
+---
+id: "rig.net.replica"
+maturity: "draft"
+summary: "Network identity for one entity. Format when present."
+fields:
+  - name: "netId"
+    ref: "string"
+    required: true
+    meaning: "Stable id across peers"
+  - name: "owner"
+    ref: "int"
+    meaning: "Optional. Player index that owns it. Absent = no owning player"
+    absent: "no owning player"
+  - name: "authority"
+    type: "string"
+    enum: ["server","owner"]
+    meaning: "Optional. server or owner; absent = server"
+    absent: "server"
+---
 # `rig.net.replica`
 
 Network identity for one entity. Format when present.

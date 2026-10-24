@@ -6,5 +6,6 @@
   "additionalProperties": false,
   "properties": {},
   "description": "Marker: this entity's rig.geometry.mesh is a walkable surface. Solved paths stay in the host.",
-  "minProperties": 0
+  "minProperties": 0,
+  "x-rig-maturity": "draft"
 }

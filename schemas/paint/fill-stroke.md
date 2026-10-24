@@ -1,3 +1,27 @@
+---
+id: "rig.paint.fill_stroke"
+maturity: "stable"
+summary: "Inline fill / stroke on a drawable entity. Format when present."
+fields:
+  - name: "fillRgba"
+    ref: "rgba"
+    meaning: "Optional. Fill colour (0-1); hosts may store as four floats"
+  - name: "strokeRgba"
+    ref: "rgba"
+    meaning: "Optional. Stroke colour (0-1); hosts may store as four floats"
+  - name: "strokeWidth"
+    ref: "float"
+    meaning: "Optional. Width in content units; absent = 1"
+    absent: "1"
+  - name: "hasFill"
+    ref: "bool"
+    meaning: "Optional. Draw fill; absent = whether fillRgba is present"
+    absent: "whether fillRgba is present"
+  - name: "hasStroke"
+    ref: "bool"
+    meaning: "Optional. Draw stroke; absent = whether strokeRgba is present"
+    absent: "whether strokeRgba is present"
+---
 # `rig.paint.fill_stroke`
 
 Inline fill / stroke on a drawable entity. Format when present.

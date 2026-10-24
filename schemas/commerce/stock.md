@@ -1,3 +1,27 @@
+---
+id: "rig.commerce.stock"
+maturity: "draft"
+summary: "How many of a product sit at a place. Format when present."
+topJson: "{\"description\":\"Count of a product at a place. Not offer availability and not a warehouse engine.\"}"
+fields:
+  - name: "product"
+    ref: "entity"
+    required: true
+    meaning: "The rig.commerce.product"
+  - name: "place"
+    ref: "entity"
+    required: true
+    meaning: "Place that holds it"
+  - name: "quantity"
+    ref: "float"
+    required: true
+    meaning: "Count on hand"
+  - name: "unit"
+    type: "string"
+    enum: ["each","kilogram","metre","litre","other"]
+    meaning: "Optional. each / kilogram / metre / litre / other; absent = each"
+    absent: "each"
+---
 # `rig.commerce.stock`
 
 How many of a product sit at a place. Format when present.

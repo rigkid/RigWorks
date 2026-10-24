@@ -1,3 +1,33 @@
+---
+id: "rig.clinic.observation"
+maturity: "draft"
+summary: "A measurement of a subject. Format when present."
+topJson: "{\"description\":\"A measurement of a subject. Clock composes rig.calendar.event. Do not also attach rig.record.event.\"}"
+fields:
+  - name: "subject"
+    ref: "entity"
+    required: true
+    meaning: "Who or what was measured"
+  - name: "code"
+    ref: "string"
+    required: true
+    meaning: "Observation code as the source wrote it"
+  - name: "value"
+    ref: "float"
+    required: true
+    meaning: "Measured amount"
+  - name: "codeSystem"
+    ref: "string"
+    meaning: "Optional. Code system name (loinc, snomed)"
+  - name: "unit"
+    ref: "string"
+    meaning: "Optional. UCUM unit (mm[Hg], Cel)"
+  - name: "comparator"
+    type: "string"
+    enum: ["lt","le","eq","ge","gt"]
+    meaning: "Optional. lt / le / eq / ge / gt; absent = eq"
+    absent: "eq"
+---
 # `rig.clinic.observation`
 
 A measurement of a subject. Format when present.

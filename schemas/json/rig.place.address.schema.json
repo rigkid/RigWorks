@@ -51,5 +51,6 @@
     }
   },
   "description": "Civic / postal address. Field meanings follow UPU S42 and ISO 20022 PostalAddress. Not scene pose.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

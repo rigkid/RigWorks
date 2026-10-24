@@ -14,5 +14,6 @@
   },
   "required": [
     "width"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

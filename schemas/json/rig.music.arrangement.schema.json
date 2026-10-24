@@ -38,5 +38,6 @@
   },
   "required": [
     "frames"
-  ]
+  ],
+  "x-rig-maturity": "experimental"
 }

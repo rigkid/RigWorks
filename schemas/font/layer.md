@@ -1,3 +1,14 @@
+---
+id: "rig.font.layer"
+maturity: "stable"
+summary: "UFO layer identity. Format when present."
+fields:
+  - name: "role"
+    type: "string"
+    enum: ["foreground","background","spare"]
+    meaning: "Optional. foreground / background / spare; absent = foreground"
+    absent: "foreground"
+---
 # `rig.font.layer`
 
 UFO layer identity. Format when present.

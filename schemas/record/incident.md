@@ -1,3 +1,27 @@
+---
+id: "rig.record.incident"
+maturity: "draft"
+summary: "A reported happening in the world. Format when present."
+topJson: "{\"description\":\"A reported happening in the world. Address and geo stay on place. Members point here with rig.record.concerns.\"}"
+fields:
+  - name: "kind"
+    ref: "string"
+    required: true
+    meaning: "Kind as written (fire, flood)"
+  - name: "status"
+    type: "string"
+    enum: ["reported","active","contained","closed"]
+    required: true
+    meaning: "reported / active / contained / closed"
+  - name: "openedDate"
+    type: "string"
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    description: "ISO 8601 calendar date."
+    meaning: "Optional. Day reported, YYYY-MM-DD"
+  - name: "place"
+    ref: "entity"
+    meaning: "Optional. Place entity. Address and geo stay on that entity"
+---
 # `rig.record.incident`
 
 A reported happening in the world. Format when present.

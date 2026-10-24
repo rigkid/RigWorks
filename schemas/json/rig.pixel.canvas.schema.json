@@ -18,5 +18,6 @@
   "required": [
     "width",
     "height"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

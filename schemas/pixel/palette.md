@@ -1,3 +1,15 @@
+---
+id: "rig.pixel.palette"
+maturity: "draft"
+summary: "Ordered indexed colour table. Format when present."
+fields:
+  - name: "colors"
+    type: "array"
+    minItems: 1
+    itemsRef: "rgba"
+    required: true
+    meaning: "Ordered entries; index i selects colors[i] (floats 0-1)"
+---
 # `rig.pixel.palette`
 
 Ordered indexed colour table. Format when present.

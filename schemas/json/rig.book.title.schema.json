@@ -31,5 +31,6 @@
     }
   },
   "description": "Title detail beyond the distinctive title. Field meanings follow ONIX TitleDetail. Distinctive title is rig.meta.named.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

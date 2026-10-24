@@ -21,5 +21,6 @@
   "required": [
     "prototype",
     "period"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

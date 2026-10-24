@@ -1,3 +1,14 @@
+---
+id: "rig.geometry.path3d"
+maturity: "stable"
+summary: "Freeform 3D path command stream. Format when present."
+fields:
+  - name: "commands"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"move-to\",\"line-to\",\"cubic-to\",\"quad-to\",\"close\"]},\"point\":{\"$ref\":\"./_defs.schema.json#/$defs/vec3\"},\"control1\":{\"$ref\":\"./_defs.schema.json#/$defs/vec3\"},\"control2\":{\"$ref\":\"./_defs.schema.json#/$defs/vec3\"}}}"
+    required: true
+    meaning: "Ordered path commands"
+---
 # `rig.geometry.path3d`
 
 Freeform 3D path command stream. Format when present.

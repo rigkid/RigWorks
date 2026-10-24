@@ -1,3 +1,37 @@
+---
+id: "rig.paint.stroke_style"
+maturity: "stable"
+summary: "Stroke caps, joins, and dash on a drawable. Format when present."
+fields:
+  - name: "cap"
+    type: "string"
+    enum: ["butt","square","round"]
+    meaning: "Optional. butt, square, round; absent = butt"
+    absent: "butt"
+  - name: "join"
+    type: "string"
+    enum: ["miter","bevel","round"]
+    meaning: "Optional. miter, bevel, round; absent = miter"
+    absent: "miter"
+  - name: "miterLimit"
+    ref: "float"
+    meaning: "Optional. Miter cut-off (SVG / canvas); absent = 4. Meaningful when join is miter; hosts that do not ship a limiter still accept and ignore it"
+    absent: "4"
+  - name: "dash"
+    type: "array"
+    itemsRef: "float"
+    meaning: "Optional. On/off lengths in content units; absent or empty = solid"
+    absent: "or empty = solid"
+  - name: "dashOffset"
+    ref: "float"
+    meaning: "Optional. Dash phase in content units; absent = 0"
+    absent: "0"
+  - name: "vectorEffect"
+    type: "string"
+    enum: ["none","non-scaling-stroke"]
+    meaning: "Optional. none / non-scaling-stroke; absent = none"
+    absent: "none"
+---
 # `rig.paint.stroke_style`
 
 Stroke caps, joins, and dash on a drawable. Format when present.

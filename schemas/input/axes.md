@@ -1,3 +1,61 @@
+---
+id: "rig.input.axes"
+maturity: "draft"
+summary: "Logical sticks and triggers for one player. Format when present."
+fields:
+  - name: "player"
+    ref: "int"
+    meaning: "Optional. Player index (0-based); absent = 0"
+    absent: "0"
+  - name: "moveX"
+    type: "number"
+    minimum: -1
+    maximum: 1
+    meaning: "Optional. Move stick X, -1..1; absent = 0"
+    absent: "0"
+  - name: "moveY"
+    type: "number"
+    minimum: -1
+    maximum: 1
+    meaning: "Optional. Move stick Y, -1..1; absent = 0"
+    absent: "0"
+  - name: "lookX"
+    type: "number"
+    minimum: -1
+    maximum: 1
+    meaning: "Optional. Look stick X, -1..1; absent = 0"
+    absent: "0"
+  - name: "lookY"
+    type: "number"
+    minimum: -1
+    maximum: 1
+    meaning: "Optional. Look stick Y, -1..1; absent = 0"
+    absent: "0"
+  - name: "leftTrigger"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    meaning: "Optional. 0-1; absent = 0"
+    absent: "0"
+  - name: "rightTrigger"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    meaning: "Optional. 0-1; absent = 0"
+    absent: "0"
+  - name: "leftGrip"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    meaning: "Optional. Left squeeze, 0-1; absent = 0"
+    absent: "0"
+  - name: "rightGrip"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    meaning: "Optional. Right squeeze, 0-1; absent = 0"
+    absent: "0"
+---
 # `rig.input.axes`
 
 Logical sticks and triggers for one player. Format when present.

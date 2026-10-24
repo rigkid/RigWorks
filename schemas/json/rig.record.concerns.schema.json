@@ -13,5 +13,6 @@
     }
   },
   "description": "This fact belongs to a case and/or an incident. The file holds no member array.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

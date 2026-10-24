@@ -1,3 +1,47 @@
+---
+id: "rig.music.step"
+maturity: "draft"
+summary: "One cell in a pattern grid. Format when present."
+fields:
+  - name: "active"
+    ref: "bool"
+    required: true
+    meaning: "Fire this step"
+  - name: "pitch"
+    type: "integer"
+    minimum: 0
+    maximum: 127
+    meaning: "Optional. 0-127; absent = 60"
+    absent: "60"
+  - name: "velocity"
+    type: "integer"
+    minimum: 0
+    maximum: 127
+    meaning: "Optional. 0-127 (maps to host volume); absent = 100"
+    absent: "100"
+  - name: "gate"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    meaning: "Optional. 0-1 fraction of the step duration; absent = 1"
+    absent: "1"
+  - name: "waveform"
+    type: "integer"
+    minimum: 0
+    maximum: 255
+    meaning: "Optional. 0-255; absent = 0. 0-7 are the portable synth shapes; 8 and up are host instrument slots"
+    absent: "0"
+  - name: "effect"
+    type: "integer"
+    minimum: 0
+    maximum: 7
+    meaning: "Optional. 0-7 note effect id; absent = 0"
+    absent: "0"
+  - name: "intervals"
+    schemaJson: "{\"type\":\"array\",\"items\":{\"type\":\"integer\",\"minimum\":-127,\"maximum\":127},\"uniqueItems\":true}"
+    meaning: "Optional. Semitone offsets from pitch. Absent = pitch alone. Omit 0. A major triad is [4, 7]; a minor triad is [3, 7]"
+    absent: "pitch alone"
+---
 # `rig.music.step`
 
 One cell in a pattern grid. Format when present.

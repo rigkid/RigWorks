@@ -22,5 +22,6 @@
     "sizeX",
     "sizeY",
     "sizeZ"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

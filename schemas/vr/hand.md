@@ -1,3 +1,18 @@
+---
+id: "rig.vr.hand"
+maturity: "draft"
+summary: "A tracked hand. Format when present."
+fields:
+  - name: "player"
+    ref: "int"
+    meaning: "Optional. Player index (0-based); absent = 0"
+    absent: "0"
+  - name: "side"
+    type: "string"
+    enum: ["left","right"]
+    required: true
+    meaning: "left, right"
+---
 # `rig.vr.hand`
 
 A tracked hand. Format when present.

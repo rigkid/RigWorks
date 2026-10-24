@@ -9,5 +9,6 @@
       "$ref": "./_defs.schema.json#/$defs/int"
     }
   },
-  "minProperties": 0
+  "minProperties": 0,
+  "x-rig-maturity": "draft"
 }

@@ -19,5 +19,6 @@
   },
   "required": [
     "effectId"
-  ]
+  ],
+  "x-rig-maturity": "experimental"
 }

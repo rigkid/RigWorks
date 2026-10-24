@@ -13,5 +13,6 @@
     }
   },
   "description": "Current location. Field meanings follow CDWA Current Location. Repository is an organisation entity.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

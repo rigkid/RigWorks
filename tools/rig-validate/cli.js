@@ -160,6 +160,136 @@ if (!validateDoc) {
   process.exit(1);
 }
 
+/* ----- unknown-id suggestions ----- */
+
+function editDistance(a, b) {
+  const dp = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
+      );
+    }
+  }
+  return dp[a.length][b.length];
+}
+
+const knownSchemaIds = [...rawSchemas.keys()].filter((id) => id !== "_defs" && id !== "rig.document");
+
+function suggestSchemaIds(id) {
+  const limit = Math.max(2, Math.floor(id.length / 3));
+  return knownSchemaIds
+    .map((candidate) => ({ candidate, distance: editDistance(id, candidate) }))
+    .filter(({ distance }) => distance <= limit)
+    .sort((a, b) => a.distance - b.distance || a.candidate.localeCompare(b.candidate))
+    .slice(0, 3)
+    .map(({ candidate }) => candidate);
+}
+
+/* ----- semantic checks (rules the prose states but JSON Schema cannot) -----
+ * Field-level constraints (ranges, enums) live in the schema frontmatter and
+ * are enforced by AJV. The checks below are document-level: conflicts between
+ * components on one entity, graph cycles, duplicate durable ids, unit
+ * quaternions, and required compositions. */
+
+// Component that only means something composed with another on the same entity.
+const REQUIRED_COMPOSITION = {
+  "rig.sensor.depth": "rig.spatial.camera",
+  "rig.vr.eye": "rig.spatial.camera",
+  "rig.sensor.gnss": "rig.place.geo",
+};
+
+function semanticChecks(data, errors) {
+  const entities = data.entities;
+  const byId = new Map();
+  entities.forEach((ent, ei) => { if (ent?.id && !byId.has(ent.id)) byId.set(ent.id, ei); });
+
+  const stableIds = new Map();
+  entities.forEach((ent, ei) => {
+    const comps = ent?.components ?? {};
+    const base = `/entities/${ei}/components`;
+
+    const stableId = comps["rig.meta.named"]?.stableId;
+    if (typeof stableId === "string" && stableId !== "") {
+      if (stableIds.has(stableId)) {
+        errors.push({
+          level: "error",
+          path: `${base}/rig.meta.named/stableId`,
+          message: `duplicate stableId "${stableId}" (also on entity ${stableIds.get(stableId)})`,
+        });
+      } else stableIds.set(stableId, ei);
+    }
+
+    const rotation = comps["rig.spatial.transform"]?.rotation;
+    if (Array.isArray(rotation) && rotation.length === 4 && rotation.every((n) => typeof n === "number")) {
+      const length = Math.hypot(...rotation);
+      if (Math.abs(length - 1) > 0.01) {
+        errors.push({
+          level: "error",
+          path: `${base}/rig.spatial.transform/rotation`,
+          message: `rotation must be a unit quaternion (x, y, z, w); length is ${length.toFixed(3)}`,
+        });
+      }
+    }
+
+    if (comps["rig.paint.fill"] && comps["rig.paint.fill_stroke"]?.fillRgba !== undefined) {
+      errors.push({
+        level: "error",
+        path: `${base}/rig.paint.fill`,
+        message: "entity carries both rig.paint.fill (referenced fill) and rig.paint.fill_stroke fillRgba (inline fill); choose one spelling",
+      });
+    }
+    if (comps["rig.paint.stroke"] && comps["rig.paint.fill_stroke"]?.strokeRgba !== undefined) {
+      errors.push({
+        level: "error",
+        path: `${base}/rig.paint.stroke`,
+        message: "entity carries both rig.paint.stroke (referenced stroke) and rig.paint.fill_stroke strokeRgba (inline stroke); choose one spelling",
+      });
+    }
+
+    for (const [needs, requires] of Object.entries(REQUIRED_COMPOSITION)) {
+      if (comps[needs] && !comps[requires]) {
+        errors.push({
+          level: "error",
+          path: `${base}/${needs}`,
+          message: `${needs} composes ${requires} on the same entity; that component is missing`,
+        });
+      }
+    }
+  });
+
+  // Parent cycles in rig.spatial.relationship.
+  const parentOf = new Map();
+  entities.forEach((ent) => {
+    const parent = ent?.components?.["rig.spatial.relationship"]?.parent;
+    if (ent?.id && typeof parent === "string") parentOf.set(ent.id, parent);
+  });
+  const reportedCycles = new Set();
+  for (const start of parentOf.keys()) {
+    const seen = new Map();
+    let current = start;
+    while (current && parentOf.has(current)) {
+      if (seen.has(current)) {
+        const cycle = [...seen.keys()].slice(seen.get(current)).sort().join(",");
+        if (!reportedCycles.has(cycle)) {
+          reportedCycles.add(cycle);
+          errors.push({
+            level: "error",
+            path: `/entities/${byId.get(start)}/components/rig.spatial.relationship/parent`,
+            message: `parent cycle detected: ${[...cycle.split(","), cycle.split(",")[0]].join(" -> ")}`,
+          });
+        }
+        break;
+      }
+      seen.set(current, seen.size);
+      current = parentOf.get(current);
+    }
+  }
+}
+
 let failed = false;
 
 for (const file of files) {
@@ -229,6 +359,7 @@ for (const file of files) {
 
     // Per-component validation (catches unknown ids + deep field errors)
     const refs = [];
+    const reportedExperimental = new Set();
     data.entities.forEach((ent, ei) => {
       const comps = ent?.components;
       if (!comps || typeof comps !== "object") return;
@@ -250,12 +381,23 @@ for (const file of files) {
         const schemaUri = `https://rig.works/schemas/${schemaId}.schema.json`;
         const validateComp = ajv.getSchema(schemaUri);
         if (!validateComp) {
+          const suggestions = suggestSchemaIds(schemaId);
           errors.push({
             level: strict ? "error" : "warn",
             path: base,
-            message: `unknown schema id "${schemaId}"`,
+            message: `unknown schema id "${schemaId}"${suggestions.length ? ` - did you mean ${suggestions.map((s) => `"${s}"`).join(", ")}?` : ""}`,
           });
           continue;
+        }
+        // Maturity is surfaced at emission time: experimental ids may
+        // change in any minor, so say so once per document.
+        if (rawSchemas.get(schemaId)?.["x-rig-maturity"] === "experimental" && !reportedExperimental.has(schemaId)) {
+          reportedExperimental.add(schemaId);
+          errors.push({
+            level: "note",
+            path: base,
+            message: `experimental schema id "${schemaId}" - may change in any minor release`,
+          });
         }
         if (!validateComp(payload)) {
           for (const e of validateComp.errors ?? []) {
@@ -280,7 +422,23 @@ for (const file of files) {
         });
       }
     }
+
+    semanticChecks(data, errors);
   }
+
+  // The envelope schema embeds every component schema and the per-component
+  // pass validates them again; identical reports are one report.
+  const seenErrors = new Set();
+  const uniqueErrors = errors.filter((e) => {
+    // Envelope reports carry AJV params ("... {\"limit\":0}"); per-component
+    // reports of the same fault do not. Normalize before comparing.
+    const key = `${e.level}|${e.path}|${e.message.replace(/ \{.*\}$/, "")}`;
+    if (seenErrors.has(key)) return false;
+    seenErrors.add(key);
+    return true;
+  });
+  errors.length = 0;
+  errors.push(...uniqueErrors);
 
   const hard = errors.filter((e) => e.level === "error");
   const soft = errors.filter((e) => e.level === "warn");

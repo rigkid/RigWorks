@@ -8,5 +8,6 @@
     "enabled": {
       "$ref": "./_defs.schema.json#/$defs/bool"
     }
-  }
+  },
+  "x-rig-maturity": "draft"
 }

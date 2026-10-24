@@ -1,3 +1,13 @@
+---
+id: "rig.render.visibility"
+maturity: "stable"
+summary: "Per-entity show/hide. Format when present."
+fields:
+  - name: "visible"
+    ref: "bool"
+    required: true
+    meaning: "False hides this entity"
+---
 # `rig.render.visibility`
 
 Per-entity show/hide. Format when present.

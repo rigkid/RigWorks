@@ -1,3 +1,20 @@
+---
+id: "rig.music.midi_output"
+maturity: "experimental"
+summary: "MIDI sink identity. Format when present."
+topJson: "{\"allOf\":[{\"anyOf\":[{\"required\":[\"portName\"]},{\"required\":[\"portIndex\"]}]}]}"
+fields:
+  - name: "portName"
+    ref: "string"
+    meaning: "Platform port name as reported by the host"
+  - name: "portIndex"
+    ref: "uint"
+    meaning: "Host API port index"
+  - name: "open"
+    ref: "bool"
+    meaning: "Optional. Port open; absent = true"
+    absent: "true"
+---
 # `rig.music.midi_output`
 
 MIDI sink identity. Format when present.

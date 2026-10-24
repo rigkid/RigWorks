@@ -1,3 +1,20 @@
+---
+id: "rig.cad.reference_plane"
+maturity: "draft"
+summary: "Unbounded flat datum to build against. Format when present."
+fields:
+  - name: "origin"
+    ref: "vec3"
+    meaning: "Optional. Absent = 0,0,0. A point on the plane"
+    absent: "0,0,0"
+  - name: "normal"
+    ref: "vec3"
+    meaning: "Optional. Absent = 0,1,0. Plane normal; need not be unit length"
+    absent: "0,1,0"
+  - name: "a"
+    ref: "entity"
+    meaning: "Optional. Anchor entity. Present = the plane passes through it and origin is ignored"
+---
 # `rig.cad.reference_plane`
 
 Unbounded flat datum to build against. Format when present.

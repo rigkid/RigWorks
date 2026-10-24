@@ -1,3 +1,26 @@
+---
+id: "rig.sensor.imu"
+maturity: "draft"
+summary: "Inertial sample. Format when present. Pose is rig.spatial.transform."
+fields:
+  - name: "rateHz"
+    type: "number"
+    exclusiveMinimum: 0
+    meaning: "Optional. Samples per second. Absent = host default"
+    absent: "host default"
+  - name: "acceleration"
+    ref: "vec3"
+    meaning: "Optional. Specific force at load, scene units per second squared, in the sensor frame. Includes gravity. Absent = not measured"
+    absent: "not measured"
+  - name: "angularVelocityDegrees"
+    ref: "vec3"
+    meaning: "Optional. Angular rate at load, degrees per second, in the sensor frame. Absent = not measured"
+    absent: "not measured"
+  - name: "device"
+    ref: "entity"
+    meaning: "Optional board / network entity; absent = local"
+    absent: "local"
+---
 # `rig.sensor.imu`
 
 Inertial sample. Format when present. Pose is [`rig.spatial.transform`](../spatial/transform.md).

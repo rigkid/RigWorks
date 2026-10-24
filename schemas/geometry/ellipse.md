@@ -1,3 +1,25 @@
+---
+id: "rig.geometry.ellipse"
+maturity: "stable"
+summary: "Axis-aligned ellipse. Format when present."
+fields:
+  - name: "centerX"
+    ref: "float"
+    required: true
+    meaning: "Centre X, local space"
+  - name: "centerY"
+    ref: "float"
+    required: true
+    meaning: "Centre Y, local space"
+  - name: "radiusX"
+    ref: "float"
+    required: true
+    meaning: "Radius along X"
+  - name: "radiusY"
+    ref: "float"
+    required: true
+    meaning: "Radius along Y"
+---
 # `rig.geometry.ellipse`
 
 Axis-aligned ellipse. Format when present.

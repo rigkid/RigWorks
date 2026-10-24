@@ -1,3 +1,26 @@
+---
+id: "rig.book.contribution"
+maturity: "draft"
+summary: "One contributor on one work. Format when present."
+topJson: "{\"description\":\"One contributor on one work. Field meanings follow ONIX Contributor. Name is on the person entity.\"}"
+fields:
+  - name: "work"
+    ref: "entity"
+    required: true
+    meaning: "The bibliographic work (book or paper)"
+  - name: "person"
+    ref: "entity"
+    required: true
+    meaning: "Contributor person"
+  - name: "role"
+    type: "string"
+    enum: ["author","editor","translator","illustrator","photographer","compiler","introduction","other"]
+    required: true
+    meaning: "author / editor / translator / illustrator / photographer / compiler / introduction / other"
+  - name: "sequence"
+    ref: "int"
+    meaning: "Optional. Title-page order, 1-based"
+---
 # `rig.book.contribution`
 
 One contributor on one work. Format when present.

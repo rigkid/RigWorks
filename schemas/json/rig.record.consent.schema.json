@@ -28,5 +28,6 @@
     "purpose",
     "status"
   ],
-  "description": "Permission a subject gave for a purpose. Window composes rig.calendar.span."
+  "description": "Permission a subject gave for a purpose. Window composes rig.calendar.span.",
+  "x-rig-maturity": "draft"
 }

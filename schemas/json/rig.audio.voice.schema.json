@@ -50,5 +50,6 @@
   },
   "required": [
     "asset"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

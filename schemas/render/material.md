@@ -1,3 +1,28 @@
+---
+id: "rig.render.material"
+maturity: "draft"
+summary: "Shading parameters. Format when present."
+fields:
+  - name: "albedoRgb"
+    ref: "rgb"
+    meaning: "Optional. Base colour (0-1); absent = white"
+    absent: "white"
+  - name: "albedoMap"
+    ref: "entity"
+    meaning: "Optional texture / paint entity; none = unused"
+  - name: "metallic"
+    ref: "float"
+    meaning: "Optional. 0-1; absent = 0"
+    absent: "0"
+  - name: "roughness"
+    ref: "float"
+    meaning: "Optional. 0-1; absent = 1"
+    absent: "1"
+  - name: "emissive"
+    ref: "rgb"
+    meaning: "Optional. Emissive RGB (0-1); absent = black"
+    absent: "black"
+---
 # `rig.render.material`
 
 Shading parameters. Format when present.

@@ -1,3 +1,34 @@
+---
+id: "rig.pixel.tile_map"
+maturity: "experimental"
+summary: "Tile-index grid over a tile set. Format when present."
+fields:
+  - name: "tileSet"
+    ref: "entity"
+    required: true
+    meaning: "Entity with rig.pixel.tile_set"
+  - name: "width"
+    ref: "int"
+    required: true
+    meaning: "Width in tiles"
+  - name: "height"
+    ref: "int"
+    required: true
+    meaning: "Height in tiles"
+  - name: "originX"
+    ref: "int"
+    meaning: "Optional. Column where this region sits inside a larger host map; absent = 0"
+    absent: "0"
+  - name: "originY"
+    ref: "int"
+    meaning: "Optional. Row where this region sits inside a larger host map; absent = 0"
+    absent: "0"
+  - name: "tiles"
+    type: "array"
+    itemsRef: "int"
+    required: true
+    meaning: "Row-major tile indices into the tile set; length = width * height"
+---
 # `rig.pixel.tile_map`
 
 Tile-index grid over a tile set. Format when present.

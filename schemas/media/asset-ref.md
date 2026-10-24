@@ -1,3 +1,21 @@
+---
+id: "rig.media.asset_ref"
+maturity: "stable"
+summary: "**File identity.** One schema for paths. Format when present."
+fields:
+  - name: "kind"
+    type: "string"
+    enum: ["image","audio","video","model","font","document","preset","other"]
+    required: true
+    meaning: "image, audio, video, model, font, document, preset, other"
+  - name: "path"
+    ref: "string"
+    required: true
+    meaning: "File or directory path. Sidecars that travel with the document are relative to the package data/ folder (covers/moby-dick.jpg, not data/covers/moby-dick.jpg). Absolute, URL, and other host-root paths stay host-root - interchange"
+  - name: "loop"
+    ref: "bool"
+    meaning: "Optional. Playback loop when the asset kind supports it; meaningless for stills, so absent is not false - it is \"not applicable\""
+---
 # `rig.media.asset_ref`
 
 **File identity.** One schema for paths. Format when present.

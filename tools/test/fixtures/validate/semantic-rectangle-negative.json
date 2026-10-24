@@ -1,0 +1,11 @@
+{
+  "rig": "0.40.0",
+  "entities": [
+    {
+      "id": "rect",
+      "components": {
+        "rig.geometry.rectangle": { "x": 0, "y": 0, "width": -5, "height": 10 }
+      }
+    }
+  ]
+}

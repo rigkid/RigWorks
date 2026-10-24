@@ -1,3 +1,37 @@
+---
+id: "rig.input.buttons"
+maturity: "draft"
+summary: "Logical button state for one player. Format when present."
+fields:
+  - name: "player"
+    ref: "int"
+    meaning: "Optional. Player index (0-based); absent = 0"
+    absent: "0"
+  - name: "left"
+    ref: "bool"
+    meaning: "Optional. Left / west; absent = false"
+    absent: "false"
+  - name: "right"
+    ref: "bool"
+    meaning: "Optional. Right / east; absent = false"
+    absent: "false"
+  - name: "up"
+    ref: "bool"
+    meaning: "Optional. Up / north; absent = false"
+    absent: "false"
+  - name: "down"
+    ref: "bool"
+    meaning: "Optional. Down / south; absent = false"
+    absent: "false"
+  - name: "o"
+    ref: "bool"
+    meaning: "Optional. Primary action (O / A / confirm); absent = false"
+    absent: "false"
+  - name: "x"
+    ref: "bool"
+    meaning: "Optional. Secondary action (X / B / cancel); absent = false"
+    absent: "false"
+---
 # `rig.input.buttons`
 
 Logical button state for one player. Format when present.

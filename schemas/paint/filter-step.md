@@ -1,3 +1,43 @@
+---
+id: "rig.paint.filter_step"
+maturity: "draft"
+summary: "One primitive in a rig.paint.filter graph. Format when present."
+fields:
+  - name: "kind"
+    type: "string"
+    enum: ["blend","color-matrix","component-transfer","composite","convolve","diffuse-light","displacement","drop-shadow","flood","blur","image","merge","morphology","offset","specular-light","tile","turbulence"]
+    required: true
+    meaning: "blend, color-matrix, component-transfer, composite, convolve, diffuse-light, displacement, drop-shadow, flood, blur, image, merge, morphology, offset, specular-light, tile, turbulence"
+  - name: "in"
+    ref: "string"
+    meaning: "Optional. source-graphic, source-alpha, or a step rig.meta.named stableId"
+  - name: "in2"
+    ref: "string"
+    meaning: "Optional. Second input, same tokens"
+  - name: "stdDeviation"
+    ref: "float"
+    meaning: "Optional. Blur / drop-shadow"
+  - name: "offset"
+    ref: "vec2"
+    meaning: "Optional. Offset / drop-shadow"
+  - name: "values"
+    type: "array"
+    itemsRef: "float"
+    meaning: "Optional. Color-matrix / convolve kernel / component curve"
+  - name: "operator"
+    type: "string"
+    enum: ["over","in","out","atop","xor","arithmetic","erode","dilate"]
+    meaning: "Optional. Composite over / in / out / atop / xor / arithmetic; morphology erode / dilate"
+  - name: "radius"
+    ref: "float"
+    meaning: "Optional. Morphology"
+  - name: "rgba"
+    ref: "rgba"
+    meaning: "Optional. Flood"
+  - name: "asset"
+    ref: "entity"
+    meaning: "Optional. Image primitive"
+---
 # `rig.paint.filter_step`
 
 One primitive in a [`rig.paint.filter`](filter.md) graph. Format when present.

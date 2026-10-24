@@ -1,3 +1,14 @@
+---
+id: "rig.interact.selectable"
+maturity: "stable"
+summary: "Opt-in selection eligibility. Format when present."
+topJson: "{\"minProperties\":0}"
+fields:
+  - name: "enabled"
+    ref: "bool"
+    meaning: "Optional. Eligible for selection when true; absent = true"
+    absent: "true"
+---
 # `rig.interact.selectable`
 
 Opt-in selection eligibility. Format when present.

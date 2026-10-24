@@ -1,3 +1,14 @@
+---
+id: "rig.vr.pose"
+maturity: "draft"
+summary: "Grip or aim on a controller or tracker. Format when present."
+fields:
+  - name: "kind"
+    type: "string"
+    enum: ["grip","aim"]
+    required: true
+    meaning: "grip, aim"
+---
 # `rig.vr.pose`
 
 Grip or aim on a controller or tracker. Format when present.

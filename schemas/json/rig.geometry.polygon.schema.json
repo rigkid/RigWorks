@@ -7,10 +7,10 @@
   "properties": {
     "points": {
       "type": "array",
+      "minItems": 3,
       "items": {
         "$ref": "./_defs.schema.json#/$defs/vec2"
-      },
-      "minItems": 3
+      }
     },
     "closed": {
       "$ref": "./_defs.schema.json#/$defs/bool"
@@ -25,5 +25,6 @@
   },
   "required": [
     "points"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

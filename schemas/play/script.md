@@ -1,3 +1,16 @@
+---
+id: "rig.play.script"
+maturity: "experimental"
+summary: "Named behavior attached to an entity. Format when present."
+fields:
+  - name: "className"
+    ref: "string"
+    required: true
+    meaning: "Host class or script name"
+  - name: "asset"
+    ref: "entity"
+    meaning: "Optional. rig.media.code or rig.media.asset_ref for the source"
+---
 # `rig.play.script`
 
 Named behavior attached to an entity. Format when present.

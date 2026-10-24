@@ -1,3 +1,24 @@
+---
+id: "rig.commerce.offer"
+maturity: "draft"
+summary: "Someone offers an item. Format when present."
+topJson: "{\"description\":\"Someone offers an item. Field meanings follow schema.org Offer. Price composes rig.commerce.price; window composes rig.calendar.span.\"}"
+fields:
+  - name: "item"
+    ref: "entity"
+    required: true
+    meaning: "What is offered"
+  - name: "seller"
+    ref: "entity"
+    meaning: "Optional. Person or organisation that offers it"
+  - name: "availability"
+    type: "string"
+    enum: ["in-stock","out-of-stock","pre-order","limited","unknown"]
+    meaning: "Optional. in-stock / out-of-stock / pre-order / limited / unknown"
+  - name: "sku"
+    ref: "string"
+    meaning: "Optional. Seller's stock-keeping unit"
+---
 # `rig.commerce.offer`
 
 Someone offers an item. Format when present.

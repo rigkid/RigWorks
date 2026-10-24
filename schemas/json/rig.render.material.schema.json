@@ -20,5 +20,6 @@
     "emissive": {
       "$ref": "./_defs.schema.json#/$defs/rgb"
     }
-  }
+  },
+  "x-rig-maturity": "draft"
 }

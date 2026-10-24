@@ -1,3 +1,20 @@
+---
+id: "rig.render.blend"
+maturity: "stable"
+summary: "Per-entity opacity and blend mode. Format when present."
+fields:
+  - name: "blendMode"
+    type: "string"
+    enum: ["normal","multiply","screen","overlay","darken","lighten","color-dodge","color-burn","hard-light","soft-light","difference","exclusion","hue","saturation","color","luminosity","add","subtract","disabled"]
+    meaning: "Optional. See table; absent = normal"
+    absent: "normal"
+  - name: "opacity"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    meaning: "Optional. 0-1; absent = 1"
+    absent: "1"
+---
 # `rig.render.blend`
 
 Per-entity opacity and blend mode. Format when present.

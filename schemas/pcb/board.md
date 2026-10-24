@@ -1,3 +1,17 @@
+---
+id: "rig.pcb.board"
+maturity: "draft"
+summary: "Printed circuit board root. Format when present."
+fields:
+  - name: "thickness"
+    ref: "float"
+    meaning: "Optional. Finished board thickness; absent = host default (1.6 mm is common)"
+    absent: "host default (1"
+  - name: "source"
+    ref: "entity"
+    meaning: "Optional. rig.media.asset_ref (kind document) the board was imported from; absent = authored in Rig"
+    absent: "authored in Rig"
+---
 # `rig.pcb.board`
 
 Printed circuit board root. Format when present.

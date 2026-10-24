@@ -59,5 +59,6 @@
   "required": [
     "shape",
     "maxWidthMm"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

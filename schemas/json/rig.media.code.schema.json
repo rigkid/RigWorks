@@ -17,5 +17,6 @@
   },
   "required": [
     "text"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

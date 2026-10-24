@@ -1,3 +1,15 @@
+---
+id: "rig.font.avar"
+maturity: "draft"
+summary: "Axis variation map for one rig.font.axis. Format when present."
+fields:
+  - name: "segments"
+    type: "array"
+    minItems: 2
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"fromCoord\",\"toCoord\"],\"properties\":{\"fromCoord\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"},\"toCoord\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"}}}"
+    required: true
+    meaning: "Required. At least two knots; usually includes (−1,−1), (0,0), (1,1)"
+---
 # `rig.font.avar`
 
 Axis variation map for one [`rig.font.axis`](axis.md). Format when present.

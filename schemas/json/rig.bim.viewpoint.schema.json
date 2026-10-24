@@ -42,5 +42,6 @@
   },
   "required": [
     "topic"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

@@ -46,6 +46,9 @@ node tools/rig-validate/cli.js examples/record-bank.json
 node tools/rig-validate/cli.js examples/record-care.json
 node tools/rig-validate/cli.js examples/record-shop.json
 node tools/rig-validate/cli.js examples/record-civic.json
+node tools/rig-validate/cli.js examples/node-graph.json
+node tools/rig-validate/cli.js examples/music-sequencer.json
+node tools/rig-validate/cli.js examples/anim-tween.json
 ```
 
 ## SUDE sketch
@@ -360,6 +363,18 @@ A stage with a floor polygon, a headset (IPD, refresh, per-eye pixels), and two 
 ## `play-scene.json`
 
 A small play scene: a dynamic ball on a hinge, a kinematic hero with health and a walk clip, a navmesh, a particle burst, sticks and a key binding, a spatial voice, a behavior action, an inventory, a spawner, a save slot, a network id, and a HUD bound to health. Contact manifolds, live particles, and the solved path are not in the file.
+
+## `node-graph.json`
+
+A two-node graph on one entity: a float constant with a `rig.node.param` value wired from its out pin to a brightness node's in pin. Nodes, pins, and links are nested POD inside `rig.node.graph`, not separate entities.
+
+## `music-sequencer.json`
+
+A transport (120 bpm) with a 96-tick clock, a four-step minor bass pattern (steps are nested `rig.music.step` cells), and a sequencer pointing at both.
+
+## `anim-tween.json`
+
+A panel filled by reference (`rig.paint.fill` to a gradient entity listed in a `rig.paint.library`), shown with `rig.render.visibility` and `rig.render.blend`, faded in by a `rig.anim.tween` shaped by a `rig.anim.curve`.
 
 ## `kicad-pcb.json`
 

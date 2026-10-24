@@ -1,3 +1,26 @@
+---
+id: "rig.clinic.criterion"
+maturity: "draft"
+summary: "One eligibility rule of a trial. Format when present."
+topJson: "{\"description\":\"One eligibility rule of a trial. polarity absent = include.\"}"
+fields:
+  - name: "trial"
+    ref: "entity"
+    required: true
+    meaning: "The rig.clinic.trial"
+  - name: "text"
+    ref: "string"
+    required: true
+    meaning: "Rule as written"
+  - name: "code"
+    ref: "string"
+    meaning: "Optional. Criterion code as the source wrote it"
+  - name: "polarity"
+    type: "string"
+    enum: ["include","exclude"]
+    meaning: "Optional. include / exclude; absent = include"
+    absent: "include"
+---
 # `rig.clinic.criterion`
 
 One eligibility rule of a trial. Format when present.

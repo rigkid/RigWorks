@@ -1,3 +1,15 @@
+---
+id: "rig.pixel.effect_chain"
+maturity: "draft"
+summary: "Ordered effect steps. Format when present."
+fields:
+  - name: "steps"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"id\",\"stage\",\"effectId\"],\"properties\":{\"id\":{\"$ref\":\"./_defs.schema.json#/$defs/uint\"},\"stage\":{\"type\":\"string\",\"enum\":[\"image\",\"draw\",\"generate\"]},\"effectId\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"enabled\":{\"$ref\":\"./_defs.schema.json#/$defs/bool\"},\"parentStep\":{\"$ref\":\"./_defs.schema.json#/$defs/uint\"}}}"
+    required: true
+  - name: "nextId"
+    ref: "uint"
+---
 # `rig.pixel.effect_chain`
 
 Ordered effect steps. Format when present.

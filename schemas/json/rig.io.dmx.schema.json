@@ -21,5 +21,6 @@
   },
   "required": [
     "direction"
-  ]
+  ],
+  "x-rig-maturity": "experimental"
 }

@@ -1,3 +1,22 @@
+---
+id: "rig.io.dmx"
+maturity: "experimental"
+summary: "DMX512 port. Format when present."
+fields:
+  - name: "universe"
+    ref: "int"
+    meaning: "Optional. Logical universe index; absent = 1"
+    absent: "1"
+  - name: "direction"
+    type: "string"
+    enum: ["in","out"]
+    required: true
+    meaning: "in or out"
+  - name: "enabled"
+    ref: "bool"
+    meaning: "Optional. Port active; absent = true"
+    absent: "true"
+---
 # `rig.io.dmx`
 
 DMX512 port. Format when present.

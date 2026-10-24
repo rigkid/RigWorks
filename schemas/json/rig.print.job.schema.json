@@ -14,5 +14,6 @@
   },
   "required": [
     "input"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

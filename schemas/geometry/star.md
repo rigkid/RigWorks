@@ -1,3 +1,34 @@
+---
+id: "rig.geometry.star"
+maturity: "stable"
+summary: "Alternating-radius star. Format when present."
+fields:
+  - name: "centerX"
+    ref: "float"
+    required: true
+    meaning: "Centre X, local space"
+  - name: "centerY"
+    ref: "float"
+    required: true
+    meaning: "Centre Y, local space"
+  - name: "radius"
+    ref: "float"
+    required: true
+    meaning: "Centre to outer point"
+  - name: "innerRadius"
+    ref: "float"
+    required: true
+    meaning: "Centre to inner point, in the same units as radius"
+  - name: "points"
+    type: "integer"
+    minimum: 3
+    required: true
+    meaning: "Number of outer points; at least 3"
+  - name: "rotationDegrees"
+    ref: "float"
+    meaning: "Optional. Absent = 0; first outer point along +X"
+    absent: "0"
+---
 # `rig.geometry.star`
 
 Alternating-radius star. Format when present.

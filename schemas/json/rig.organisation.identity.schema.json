@@ -20,5 +20,6 @@
     }
   },
   "description": "Organisation legal identifiers. Field meanings follow ISO 20022 OrganisationIdentification. Name is rig.meta.named.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

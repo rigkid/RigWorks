@@ -19,5 +19,6 @@
     }
   },
   "description": "Issued identifiers of a person. nationalId, taxId, mrn, passport as the source wrote them. Not a system+value bag.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

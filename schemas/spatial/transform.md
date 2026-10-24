@@ -1,3 +1,25 @@
+---
+id: "rig.spatial.transform"
+maturity: "stable"
+summary: "Local pose. Format when present."
+fields:
+  - name: "position"
+    ref: "vec3"
+    meaning: "Optional. Local translation; absent = (0, 0, 0)"
+    absent: "(0, 0, 0)"
+  - name: "rotation"
+    ref: "quat"
+    meaning: "Optional. Local orientation (**authoritative**); absent = identity (0, 0, 0, 1). Field order: x, y, z, w"
+    absent: "identity (0, 0, 0, 1)"
+  - name: "scale"
+    ref: "vec3"
+    meaning: "Optional. Local scale; absent = (1, 1, 1)"
+    absent: "(1, 1, 1)"
+  - name: "shear"
+    ref: "vec3"
+    meaning: "Optional. Local shear factors (xy, xz, yz); absent = (0, 0, 0)"
+    absent: "(0, 0, 0)"
+---
 # `rig.spatial.transform`
 
 Local pose. Format when present.

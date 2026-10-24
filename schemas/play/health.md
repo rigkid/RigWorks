@@ -1,3 +1,17 @@
+---
+id: "rig.play.health"
+maturity: "draft"
+summary: "Hit points. Format when present."
+fields:
+  - name: "current"
+    ref: "float"
+    meaning: "Optional. Remaining. Absent = maximum"
+    absent: "maximum"
+  - name: "maximum"
+    ref: "float"
+    meaning: "Optional. Full. Absent = 1"
+    absent: "1"
+---
 # `rig.play.health`
 
 Hit points. Format when present.

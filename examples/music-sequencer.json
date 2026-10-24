@@ -1,0 +1,57 @@
+{
+  "rig": "0.41.0",
+  "document": {
+    "title": "Music sequencer",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "transport",
+      "components": {
+        "rig.meta.named": {
+          "name": "Transport",
+          "stableId": "transport"
+        },
+        "rig.music.transport": {
+          "bpm": 120
+        },
+        "rig.music.clock": {
+          "ticksPerQuarter": 96
+        }
+      }
+    },
+    {
+      "id": "bass-pattern",
+      "components": {
+        "rig.meta.named": {
+          "name": "Bass pattern",
+          "stableId": "bass-pattern"
+        },
+        "rig.music.pattern": {
+          "steps": [
+            { "active": true, "pitch": 36, "intervals": [12] },
+            { "active": false },
+            { "active": true, "pitch": 36 },
+            { "active": true, "pitch": 39, "velocity": 96 }
+          ],
+          "rootNote": 36,
+          "scale": "minor",
+          "lane": 0
+        }
+      }
+    },
+    {
+      "id": "bass-sequencer",
+      "components": {
+        "rig.meta.named": {
+          "name": "Bass sequencer",
+          "stableId": "bass-sequencer"
+        },
+        "rig.music.sequencer": {
+          "pattern": "bass-pattern",
+          "clock": "transport"
+        }
+      }
+    }
+  ]
+}

@@ -1,3 +1,25 @@
+---
+id: "rig.cad.cuboid"
+maturity: "stable"
+summary: "Axis-aligned rectangular solid. Format when present."
+fields:
+  - name: "sizeX"
+    ref: "float"
+    required: true
+    meaning: "Extent along local X"
+  - name: "sizeY"
+    ref: "float"
+    required: true
+    meaning: "Extent along local Y"
+  - name: "sizeZ"
+    ref: "float"
+    required: true
+    meaning: "Extent along local Z"
+  - name: "center"
+    ref: "bool"
+    meaning: "Optional. Absent = true: the cuboid is centred on the local origin. False: the origin is a corner, extents run +X +Y +Z"
+    absent: "true: the cuboid is centred on the local origin"
+---
 # `rig.cad.cuboid`
 
 Axis-aligned rectangular solid. Format when present.

@@ -19,5 +19,6 @@
     "id",
     "name",
     "type"
-  ]
+  ],
+  "x-rig-maturity": "experimental"
 }

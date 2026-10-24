@@ -1,3 +1,17 @@
+---
+id: "rig.pcb.track"
+maturity: "draft"
+summary: "Copper conductor. Format when present."
+fields:
+  - name: "width"
+    ref: "float"
+    required: true
+    meaning: "Copper width"
+  - name: "net"
+    ref: "entity"
+    meaning: "Optional. rig.circuit.net; absent or none = no net"
+    absent: "or none = no net"
+---
 # `rig.pcb.track`
 
 Copper conductor. Format when present.

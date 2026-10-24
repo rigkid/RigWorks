@@ -48,5 +48,6 @@
     "rate",
     "lifetime",
     "maxParticles"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

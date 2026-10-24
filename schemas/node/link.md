@@ -1,3 +1,29 @@
+---
+id: "rig.node.link"
+maturity: "draft"
+summary: "Directed connection from an output pin to an input pin inside a rig.node.graph."
+fields:
+  - name: "id"
+    ref: "uint"
+    required: true
+    meaning: "Stable id within the graph"
+  - name: "fromNode"
+    ref: "uint"
+    required: true
+    meaning: "Source node id"
+  - name: "fromPin"
+    ref: "uint"
+    required: true
+    meaning: "Source pin id"
+  - name: "toNode"
+    ref: "uint"
+    required: true
+    meaning: "Target node id"
+  - name: "toPin"
+    ref: "uint"
+    required: true
+    meaning: "Target pin id"
+---
 # `rig.node.link`
 
 Directed connection from an output pin to an input pin inside a [`rig.node.graph`](graph.md).

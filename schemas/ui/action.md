@@ -1,3 +1,29 @@
+---
+id: "rig.ui.action"
+maturity: "stable"
+summary: "A command button on a panel. Edges toward behavior; this schema is the piece most likely to change before 1.0.0."
+topJson: "{\"description\":\"Command button. Prefer shared actionId names for portable tools; unknown ids may be hidden. Most likely to change before 1.0.0.\"}"
+fields:
+  - name: "panel"
+    ref: "entity"
+    required: true
+    meaning: "Owning rig.ui.panel"
+  - name: "group"
+    ref: "entity"
+    meaning: "Optional. Owning rig.ui.group; absent or null = direct child of the panel"
+    absent: "or null = direct child of the panel"
+  - name: "order"
+    ref: "int"
+    required: true
+    meaning: "Sort key within the panel or group"
+  - name: "actionId"
+    ref: "string"
+    required: true
+    meaning: "Command catalog id (e.g. lfo.resetPhase, transport.play)"
+  - name: "enabled"
+    ref: "bool"
+    meaning: "Whether the action can be invoked"
+---
 # `rig.ui.action`
 
 A command button on a panel. Edges toward behavior; this schema is the piece most likely to change before 1.0.0.

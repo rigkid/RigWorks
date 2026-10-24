@@ -1,3 +1,23 @@
+---
+id: "rig.story.paragraph"
+maturity: "stable"
+summary: "One paragraph in a rig.story.flow (or a table cell). Format when present."
+fields:
+  - name: "style"
+    ref: "entity"
+    meaning: "Optional. rig.story.paragraph_style; absent = no paragraph style"
+    absent: "no paragraph style"
+  - name: "breakType"
+    type: "string"
+    enum: ["column","page"]
+    meaning: "Optional. column or page - break after this paragraph. Absent = next paragraph"
+    absent: "next paragraph"
+  - name: "runs"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"text\"],\"properties\":{\"text\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"style\":{\"$ref\":\"./_defs.schema.json#/$defs/entity\"}}}"
+    required: true
+    meaning: "Ordered character runs; empty is a blank paragraph"
+---
 # `rig.story.paragraph`
 
 One paragraph in a [`rig.story.flow`](flow.md) (or a table cell). Format when present.

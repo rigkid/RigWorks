@@ -1,3 +1,15 @@
+---
+id: "rig.ai.behavior"
+maturity: "experimental"
+summary: "Behavior tree. Format when present. Compose rig.meta.named for a label."
+fields:
+  - name: "nodes"
+    type: "array"
+    minItems: 1
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"id\",\"kind\"],\"properties\":{\"id\":{\"$ref\":\"./_defs.schema.json#/$defs/uint\"},\"parent\":{\"$ref\":\"./_defs.schema.json#/$defs/uint\"},\"kind\":{\"type\":\"string\",\"enum\":[\"sequence\",\"selector\",\"parallel\",\"condition\",\"action\"]},\"action\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"}}}"
+    required: true
+    meaning: "Tree nodes. Exactly one node omits parent (the root)"
+---
 # `rig.ai.behavior`
 
 Behavior tree. Format when present. Compose [`rig.meta.named`](../meta/named.md) for a label.

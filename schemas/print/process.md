@@ -1,3 +1,27 @@
+---
+id: "rig.print.process"
+maturity: "draft"
+summary: "Slice process knobs. Line width is commanded and stays commanded - stack sag is rig.print.compression, not a width change. This is not a layout style and not envelope pdfX."
+fields:
+  - name: "layerHeightMm"
+    ref: "float"
+    required: true
+    meaning: "Nominal layer height (mm)"
+  - name: "lineWidthMm"
+    ref: "float"
+    required: true
+    meaning: "Commanded bead width (mm)"
+  - name: "printSpeedMms"
+    ref: "float"
+    meaning: "Printing move speed (mm/s)"
+  - name: "travelSpeedMms"
+    ref: "float"
+    meaning: "Travel move speed (mm/s)"
+  - name: "adaptiveLayers"
+    ref: "bool"
+    meaning: "Optional. Absent = false"
+    absent: "false"
+---
 # `rig.print.process`
 
 Slice process knobs. Line width is commanded and stays commanded - stack sag is [`rig.print.compression`](compression.md), not a width change. This is not a layout style and not envelope `pdfX`.

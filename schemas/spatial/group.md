@@ -1,3 +1,10 @@
+---
+id: "rig.spatial.group"
+maturity: "stable"
+summary: "Scene group marker. Format when present - presence means this entity is a group root (folder), not a drawable by itself."
+topJson: "{\"description\":\"Marker: presence means scene group root. No fields.\",\"minProperties\":0}"
+fields:
+---
 # `rig.spatial.group`
 
 Scene group marker. Format when present - presence means this entity is a group root (folder), not a drawable by itself.

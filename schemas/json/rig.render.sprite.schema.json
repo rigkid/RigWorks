@@ -29,5 +29,6 @@
   },
   "required": [
     "texture"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

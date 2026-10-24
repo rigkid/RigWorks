@@ -1,3 +1,21 @@
+---
+id: "rig.paper.citation"
+maturity: "draft"
+summary: "One bibliographic citation: this work cites that work. Format when present."
+topJson: "{\"description\":\"One bibliographic citation. Field meanings follow CSL / ISO 690 (this work cites that work).\"}"
+fields:
+  - name: "citing"
+    ref: "entity"
+    required: true
+    meaning: "The work that contains the reference"
+  - name: "cited"
+    ref: "entity"
+    required: true
+    meaning: "The work referred to (paper, book, or other named work)"
+  - name: "locator"
+    ref: "string"
+    meaning: "Optional. Page or section cited (737, p. 12)"
+---
 # `rig.paper.citation`
 
 One bibliographic citation: this work cites that work. Format when present.

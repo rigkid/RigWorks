@@ -1,3 +1,24 @@
+---
+id: "rig.geometry.polygon"
+maturity: "stable"
+summary: "Freeform polygon with explicit vertices. Format when present."
+fields:
+  - name: "points"
+    type: "array"
+    minItems: 3
+    itemsRef: "vec2"
+    required: true
+    meaning: "Vertices in order; at least 3. Winding is this order - no winding field"
+  - name: "closed"
+    ref: "bool"
+    meaning: "Optional. Absent means closed"
+    absent: "closed"
+  - name: "fillRule"
+    type: "string"
+    enum: ["nonzero","evenodd"]
+    meaning: "Optional. nonzero, evenodd; absent = nonzero. Self-intersecting rings only"
+    absent: "nonzero"
+---
 # `rig.geometry.polygon`
 
 Freeform polygon with explicit vertices. Format when present.

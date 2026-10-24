@@ -1,3 +1,13 @@
+---
+id: "rig.paint.fill"
+maturity: "stable"
+summary: "Fill by reference - this drawable is painted by a shared paint entity. Format when present."
+fields:
+  - name: "paint"
+    ref: "entity"
+    required: true
+    meaning: "Entity carrying rig.paint.solid or rig.paint.gradient"
+---
 # `rig.paint.fill`
 
 Fill by reference - this drawable is painted by a shared paint entity. Format when present.

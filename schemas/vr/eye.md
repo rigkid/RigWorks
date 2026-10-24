@@ -1,3 +1,18 @@
+---
+id: "rig.vr.eye"
+maturity: "draft"
+summary: "One eye of a stereo view. Format when present."
+fields:
+  - name: "side"
+    type: "string"
+    enum: ["left","right"]
+    required: true
+    meaning: "left, right"
+  - name: "headset"
+    ref: "entity"
+    meaning: "Optional. rig.vr.headset. Absent = the player's only headset"
+    absent: "the player's only headset"
+---
 # `rig.vr.eye`
 
 One eye of a stereo view. Format when present.

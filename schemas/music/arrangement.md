@@ -1,3 +1,21 @@
+---
+id: "rig.music.arrangement"
+maturity: "experimental"
+summary: "Ordered playback frames - a tracker's order list / a sequencer song chain. Format when present."
+fields:
+  - name: "frames"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"patterns\"],\"properties\":{\"patterns\":{\"type\":\"array\",\"items\":{\"$ref\":\"./_defs.schema.json#/$defs/entity\"}}}}"
+    required: true
+  - name: "currentFrame"
+    ref: "int"
+  - name: "loop"
+    ref: "bool"
+  - name: "loopStartFrame"
+    ref: "int"
+  - name: "loopEndFrame"
+    ref: "int"
+---
 # `rig.music.arrangement`
 
 Ordered playback frames - a tracker's order list / a sequencer song chain. Format when present.

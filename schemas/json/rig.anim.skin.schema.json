@@ -10,10 +10,10 @@
     },
     "joints": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "./_defs.schema.json#/$defs/entity"
-      },
-      "minItems": 1
+      }
     },
     "inverseBind": {
       "type": "array",
@@ -40,5 +40,6 @@
     "inverseBind",
     "jointIndices",
     "jointWeights"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

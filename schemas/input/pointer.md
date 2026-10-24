@@ -1,3 +1,33 @@
+---
+id: "rig.input.pointer"
+maturity: "draft"
+summary: "Logical pointer for one player. Format when present."
+fields:
+  - name: "player"
+    ref: "int"
+    meaning: "Optional. Player index (0-based); absent = 0"
+    absent: "0"
+  - name: "x"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    required: true
+    meaning: "Horizontal position, 0-1 across the viewport"
+  - name: "y"
+    type: "number"
+    minimum: 0
+    maximum: 1
+    required: true
+    meaning: "Vertical position, 0-1 down the viewport"
+  - name: "primary"
+    ref: "bool"
+    meaning: "Optional. Primary button level; absent = false"
+    absent: "false"
+  - name: "secondary"
+    ref: "bool"
+    meaning: "Optional. Secondary button level; absent = false"
+    absent: "false"
+---
 # `rig.input.pointer`
 
 Logical pointer for one player. Format when present.

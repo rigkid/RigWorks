@@ -45,5 +45,6 @@
     }
   },
   "description": "Sex, gender identity, and birth. Sex follows ISO/IEC 5218; gender is self-described; birth follows ISO 20022 DateAndPlaceOfBirth.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

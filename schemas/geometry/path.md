@@ -1,3 +1,19 @@
+---
+id: "rig.geometry.path"
+maturity: "stable"
+summary: "Freeform 2D path command stream. Format when present. Space curves use rig.geometry.path3d."
+fields:
+  - name: "commands"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"move-to\",\"line-to\",\"cubic-to\",\"quad-to\",\"close\",\"arc-to\"]},\"point\":{\"$ref\":\"./_defs.schema.json#/$defs/vec2\"},\"control1\":{\"$ref\":\"./_defs.schema.json#/$defs/vec2\"},\"control2\":{\"$ref\":\"./_defs.schema.json#/$defs/vec2\"},\"radiusX\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"},\"radiusY\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"},\"xAxisRotationDegrees\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"},\"largeArc\":{\"$ref\":\"./_defs.schema.json#/$defs/bool\"},\"sweep\":{\"$ref\":\"./_defs.schema.json#/$defs/bool\"}}}"
+    required: true
+    meaning: "Ordered path commands"
+  - name: "fillRule"
+    type: "string"
+    enum: ["nonzero","evenodd"]
+    meaning: "Optional. nonzero, evenodd; absent = nonzero"
+    absent: "nonzero"
+---
 # `rig.geometry.path`
 
 Freeform 2D path command stream. Format when present. Space curves use [`rig.geometry.path3d`](path3d.md).

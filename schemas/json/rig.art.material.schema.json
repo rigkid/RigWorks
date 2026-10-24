@@ -16,5 +16,6 @@
     }
   },
   "description": "Materials and techniques. Field meanings follow CDWA Materials/Techniques and VRA Core material / technique.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

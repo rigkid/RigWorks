@@ -1,3 +1,20 @@
+---
+id: "rig.art.subject"
+maturity: "draft"
+summary: "Subject matter of a work. Format when present."
+topJson: "{\"description\":\"Subject matter. Field meanings follow CDWA Subject Matter. A second heading is another entity.\",\"minProperties\":2}"
+fields:
+  - name: "work"
+    ref: "entity"
+    required: true
+    meaning: "The artwork entity"
+  - name: "heading"
+    ref: "string"
+    meaning: "Description (irises, portrait)"
+  - name: "interpretation"
+    ref: "string"
+    meaning: "Optional. Iconographic reading"
+---
 # `rig.art.subject`
 
 Subject matter of a work. Format when present.

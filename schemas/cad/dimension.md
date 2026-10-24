@@ -1,3 +1,33 @@
+---
+id: "rig.cad.dimension"
+maturity: "draft"
+summary: "Numeric datum between CAD entities. Format when present."
+fields:
+  - name: "kind"
+    type: "string"
+    enum: ["linear","aligned","horizontal","vertical","diameter","angle"]
+    required: true
+    meaning: "linear, aligned, horizontal, vertical, diameter, or angle"
+  - name: "a"
+    ref: "entity"
+    required: true
+    meaning: "First solid / point entity"
+  - name: "b"
+    ref: "entity"
+    meaning: "Optional. Second entity. Required for length and angle kinds. Unused for diameter"
+  - name: "value"
+    ref: "float"
+    required: true
+    meaning: "Driving or displayed number. Scene length (document.defaultUnit) except angle, which is degrees"
+  - name: "measurement"
+    ref: "bool"
+    meaning: "Optional. Absent = false: a solver may move a / b to match value. True = label only; do not drive"
+    absent: "false: a solver may move a / b to match value"
+  - name: "offset"
+    ref: "vec3"
+    meaning: "Optional. Absent = 0,0,0. Witness / label placement in the same space as the entities"
+    absent: "0,0,0"
+---
 # `rig.cad.dimension`
 
 Numeric datum between CAD entities. Format when present.

@@ -22,5 +22,6 @@
     }
   },
   "description": "Issue / proceedings container. Journal is an entity (name + ISSN). Not the article.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,25 @@
+---
+id: "rig.bim.classify"
+maturity: "draft"
+summary: "IFC / OpenBIM classification on an element or type. Format when present."
+fields:
+  - name: "ifcClass"
+    ref: "string"
+    required: true
+    meaning: "IFC entity type name (IfcWall, IfcDoor, IfcWallType, ...)"
+  - name: "predefinedType"
+    ref: "string"
+    meaning: "Optional. IFC PredefinedType literal when present on the source"
+  - name: "scheme"
+    ref: "string"
+    meaning: "Optional. Classification system name (Uniclass2015, OmniClass, bSDD dictionary title, ...)"
+  - name: "code"
+    ref: "string"
+    meaning: "Optional. Code within scheme"
+  - name: "uri"
+    ref: "string"
+    meaning: "Optional. Absolute URI for the classification concept (bSDD or other)"
+---
 # `rig.bim.classify`
 
 IFC / OpenBIM classification on an element or type. Format when present.

@@ -1,3 +1,26 @@
+---
+id: "rig.story.paragraph_style"
+maturity: "stable"
+summary: "Named paragraph style. Format when present."
+fields:
+  - name: "basedOn"
+    ref: "entity"
+    meaning: "Optional. Parent paragraph style; absent / null = none"
+    absent: "/ null = none"
+  - name: "listKind"
+    type: "string"
+    enum: ["bullet","numbered"]
+    meaning: "Optional. bullet or numbered. Absent = not a list style"
+    absent: "not a list style"
+  - name: "keepWithNext"
+    ref: "bool"
+    meaning: "Optional. Never leave a paragraph of this style last on a page - break before it so it travels with the block that follows (headings). Absent = false"
+    absent: "false"
+  - name: "keepWithPrevious"
+    ref: "bool"
+    meaning: "Optional. Never start a page with a paragraph of this style - it travels with the block before it (captions). Absent = false"
+    absent: "false"
+---
 # `rig.story.paragraph_style`
 
 Named paragraph style. Format when present.

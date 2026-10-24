@@ -33,5 +33,6 @@
   },
   "required": [
     "distance"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

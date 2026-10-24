@@ -1,3 +1,14 @@
+---
+id: "rig.layout.master"
+maturity: "stable"
+summary: "Marks a rig.layout.page entity as a master page. Format when present."
+fields:
+  - name: "side"
+    type: "string"
+    enum: ["left","right","single"]
+    meaning: "Optional. left, right, or single. Absent = single"
+    absent: "single"
+---
 # `rig.layout.master`
 
 Marks a [`rig.layout.page`](page.md) entity as a master page. Format when present.

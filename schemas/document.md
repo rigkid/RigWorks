@@ -1,3 +1,10 @@
+---
+id: "rig.document"
+maturity: "stable"
+summary: "JSON document envelope for Rig interchange. Format when present as a file or payload."
+special: "document"
+fields:
+---
 # `rig.document`
 
 JSON document envelope for Rig interchange. Format when present as a file or payload.

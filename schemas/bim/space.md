@@ -1,3 +1,10 @@
+---
+id: "rig.bim.space"
+maturity: "draft"
+summary: "Space / room marker (IfcSpace). Format when present - presence means this entity is a space."
+topJson: "{\"minProperties\":0}"
+fields:
+---
 # `rig.bim.space`
 
 Space / room marker (`IfcSpace`). Format when present - presence means this entity is a space.

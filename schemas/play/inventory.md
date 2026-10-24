@@ -1,3 +1,14 @@
+---
+id: "rig.play.inventory"
+maturity: "draft"
+summary: "Slots holding items. Format when present."
+fields:
+  - name: "slots"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"item\":{\"$ref\":\"./_defs.schema.json#/$defs/entity\"},\"count\":{\"$ref\":\"./_defs.schema.json#/$defs/uint\"}}}"
+    required: true
+    meaning: "Slots, in order. Empty array = no slots"
+---
 # `rig.play.inventory`
 
 Slots holding items. Format when present.

@@ -25,5 +25,6 @@
     }
   },
   "description": "Product identifiers. Prefer isbn13 (ISO 2108). Do not invent isbn10 from isbn13.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

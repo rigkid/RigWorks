@@ -14,5 +14,6 @@
   },
   "required": [
     "paint"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,26 @@
+---
+id: "rig.pcb.via"
+maturity: "draft"
+summary: "Plated hole joining copper layers. Format when present."
+fields:
+  - name: "diameter"
+    ref: "float"
+    required: true
+    meaning: "Outer copper ring diameter"
+  - name: "drill"
+    ref: "float"
+    required: true
+    meaning: "Hole diameter"
+  - name: "kind"
+    type: "string"
+    enum: ["through","blind-buried","micro"]
+    meaning: "Optional. through, blind-buried, micro; absent = through"
+    absent: "through"
+  - name: "net"
+    ref: "entity"
+    meaning: "Optional. rig.circuit.net; absent or none = no net"
+    absent: "or none = no net"
+---
 # `rig.pcb.via`
 
 Plated hole joining copper layers. Format when present.

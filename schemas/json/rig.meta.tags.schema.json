@@ -14,5 +14,6 @@
   },
   "required": [
     "tags"
-  ]
+  ],
+  "x-rig-maturity": "experimental"
 }

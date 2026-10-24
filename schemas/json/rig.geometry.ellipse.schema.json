@@ -23,5 +23,6 @@
     "centerY",
     "radiusX",
     "radiusY"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

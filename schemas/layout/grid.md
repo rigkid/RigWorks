@@ -1,3 +1,31 @@
+---
+id: "rig.layout.grid"
+maturity: "draft"
+summary: "Document baseline grid and column defaults. Format when present. One entity per document."
+fields:
+  - name: "baselineEnabled"
+    ref: "bool"
+    meaning: "Optional. Absent = true"
+    absent: "true"
+  - name: "baselineStart"
+    ref: "float"
+    meaning: "Optional. Offset from the top margin to the first baseline, in points. Absent = 0"
+    absent: "0"
+  - name: "baselineIncrement"
+    ref: "float"
+    meaning: "Optional. Baseline spacing in points. Absent = host default (typically the body leading)"
+    absent: "host default (typically the body leading)"
+  - name: "baselineViewThreshold"
+    ref: "float"
+    meaning: "Optional. Advisory: minimum zoom before a host draws the grid on screen. Not print data"
+  - name: "columns"
+    ref: "int"
+    meaning: "Optional. Default column count for page text areas. Absent = 1"
+    absent: "1"
+  - name: "gutter"
+    ref: "float"
+    meaning: "Optional. Column gutter in points"
+---
 # `rig.layout.grid`
 
 Document baseline grid and column defaults. Format when present. One entity per document.

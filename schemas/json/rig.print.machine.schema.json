@@ -28,5 +28,6 @@
     "bedX",
     "bedY",
     "bedZ"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

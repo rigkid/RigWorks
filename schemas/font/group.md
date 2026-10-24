@@ -1,3 +1,19 @@
+---
+id: "rig.font.group"
+maturity: "stable"
+summary: "Kerning class. Format when present."
+fields:
+  - name: "members"
+    type: "array"
+    itemsRef: "string"
+    required: true
+    meaning: "Glyph names (stableId); may be empty"
+  - name: "side"
+    type: "string"
+    enum: ["left","right"]
+    meaning: "Optional. left / right; absent = unclassified"
+    absent: "unclassified"
+---
 # `rig.font.group`
 
 Kerning class. Format when present.

@@ -1,3 +1,14 @@
+---
+id: "rig.plant.portrait"
+maturity: "draft"
+summary: "Photo of a plant. Format when present."
+topJson: "{\"description\":\"Plant photo. asset is a rig.media.asset_ref entity. Not an inline path.\"}"
+fields:
+  - name: "asset"
+    ref: "entity"
+    required: true
+    meaning: "Entity carrying rig.media.asset_ref (kind image)"
+---
 # `rig.plant.portrait`
 
 Photo of a plant. Format when present.

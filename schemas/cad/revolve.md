@@ -1,3 +1,22 @@
+---
+id: "rig.cad.revolve"
+maturity: "draft"
+summary: "Solid from a 2D profile spun about local +Y. Format when present."
+fields:
+  - name: "profile"
+    ref: "entity"
+    required: true
+    meaning: "Contour entity: rig.geometry.polygon, rig.geometry.path, or rig.geometry.spline"
+  - name: "revolveDegrees"
+    ref: "float"
+    meaning: "Optional. Sweep angle. Absent = 360"
+    absent: "360"
+  - name: "circularSegments"
+    type: "integer"
+    minimum: 3
+    meaning: "Optional. Tessellation hint around the axis (≥ 3). Absent = host default"
+    absent: "host default"
+---
 # `rig.cad.revolve`
 
 Solid from a 2D profile spun about local +Y. Format when present.

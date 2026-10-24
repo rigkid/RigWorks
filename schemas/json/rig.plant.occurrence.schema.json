@@ -46,5 +46,6 @@
     }
   },
   "description": "This plant record / individual. Field meanings follow Darwin Core Occurrence. Site is rig.place.geo.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

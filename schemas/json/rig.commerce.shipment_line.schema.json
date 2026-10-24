@@ -23,5 +23,6 @@
     "product",
     "quantity"
   ],
-  "description": "One line of a shipment. Members point at the box."
+  "description": "One line of a shipment. Members point at the box.",
+  "x-rig-maturity": "draft"
 }

@@ -20,5 +20,6 @@
     "footprints": {
       "$ref": "./_defs.schema.json#/$defs/bool"
     }
-  }
+  },
+  "x-rig-maturity": "experimental"
 }

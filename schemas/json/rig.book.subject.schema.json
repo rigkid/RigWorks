@@ -29,5 +29,6 @@
     "work"
   ],
   "description": "One classification heading on one work. Field meanings follow ONIX Subject.",
-  "minProperties": 2
+  "minProperties": 2,
+  "x-rig-maturity": "draft"
 }

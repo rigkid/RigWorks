@@ -23,5 +23,6 @@
   },
   "required": [
     "rgba"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

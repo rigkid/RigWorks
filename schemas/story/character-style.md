@@ -1,3 +1,13 @@
+---
+id: "rig.story.character_style"
+maturity: "stable"
+summary: "Named character style. Format when present."
+fields:
+  - name: "basedOn"
+    ref: "entity"
+    meaning: "Optional. Parent character style; absent / null = none"
+    absent: "/ null = none"
+---
 # `rig.story.character_style`
 
 Named character style. Format when present.

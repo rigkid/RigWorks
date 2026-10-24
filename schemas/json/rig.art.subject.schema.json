@@ -19,5 +19,6 @@
     "work"
   ],
   "description": "Subject matter. Field meanings follow CDWA Subject Matter. A second heading is another entity.",
-  "minProperties": 2
+  "minProperties": 2,
+  "x-rig-maturity": "draft"
 }

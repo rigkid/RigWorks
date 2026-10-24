@@ -28,5 +28,6 @@
       "$ref": "./_defs.schema.json#/$defs/float"
     }
   },
-  "description": "Portable tool or HUD surface. role is a stable id; surface absent = tool. Dock/chrome is fulfillment."
+  "description": "Portable tool or HUD surface. role is a stable id; surface absent = tool. Dock/chrome is fulfillment.",
+  "x-rig-maturity": "stable"
 }

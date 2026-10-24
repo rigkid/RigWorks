@@ -1,3 +1,19 @@
+---
+id: "rig.anim.skeleton"
+maturity: "draft"
+summary: "Ordered bones. Format when present."
+fields:
+  - name: "root"
+    ref: "entity"
+    required: true
+    meaning: "Root bone"
+  - name: "bones"
+    type: "array"
+    minItems: 1
+    itemsRef: "entity"
+    required: true
+    meaning: "Every bone, including root"
+---
 # `rig.anim.skeleton`
 
 Ordered bones. Format when present.

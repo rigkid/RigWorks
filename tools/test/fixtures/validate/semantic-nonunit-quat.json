@@ -1,0 +1,11 @@
+{
+  "rig": "0.40.0",
+  "entities": [
+    {
+      "id": "a",
+      "components": {
+        "rig.spatial.transform": { "rotation": [0, 0, 0, 2] }
+      }
+    }
+  ]
+}

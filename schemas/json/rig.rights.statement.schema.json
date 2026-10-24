@@ -39,5 +39,6 @@
     }
   },
   "description": "Copyright and licence. Meanings follow Dublin Core rights and RightsStatements.org. Compose onto the work.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,34 @@
+---
+id: "rig.pixel.raster"
+maturity: "draft"
+summary: "RGBA buffer. Usually runtime-only; may appear in small documents when needed."
+fields:
+  - name: "role"
+    type: "string"
+    enum: ["working","output","layer-pixels","mask","composite"]
+    required: true
+    meaning: "working, output, layer-pixels, mask, composite"
+  - name: "width"
+    ref: "int"
+    required: true
+    meaning: "Pixels"
+  - name: "height"
+    ref: "int"
+    required: true
+    meaning: "Pixels"
+  - name: "rgba"
+    type: "array"
+    itemsRef: "uint8"
+    meaning: "Optional. Tight RGBA, length ≥ w×h×4; omit when derived"
+  - name: "derived"
+    ref: "bool"
+    meaning: "Optional. Pixels rebuild from source + chain; absent = false"
+    absent: "false"
+  - name: "rebake"
+    ref: "bool"
+    meaning: "Optional. Host should rebuild on load; absent = false"
+    absent: "false"
+---
 # `rig.pixel.raster`
 
 RGBA buffer. Usually runtime-only; may appear in small documents when needed.

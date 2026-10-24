@@ -1,3 +1,32 @@
+---
+id: "rig.party.account"
+maturity: "draft"
+summary: "Payment account of a person or organisation. Format when present."
+topJson: "{\"description\":\"Payment account. Field meanings follow ISO 20022 CashAccount and FinancialInstitutionIdentification. Prefer IBAN when present.\",\"minProperties\":1}"
+fields:
+  - name: "iban"
+    ref: "string"
+    meaning: "International bank account number"
+  - name: "accountNumber"
+    ref: "string"
+    meaning: "Domestic / other account id"
+  - name: "accountName"
+    ref: "string"
+    meaning: "Name as held by the institution"
+  - name: "currency"
+    type: "string"
+    pattern: "^[A-Z]{3}$"
+    description: "ISO 4217 (ISO 20022 Ccy)."
+    meaning: "ISO 4217 alpha-3, uppercase"
+  - name: "bic"
+    type: "string"
+    pattern: "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"
+    description: "ISO 9362 BIC (ISO 20022 BICFI)."
+    meaning: "8- or 11-character BIC"
+  - name: "bankName"
+    ref: "string"
+    meaning: "Institution name"
+---
 # `rig.party.account`
 
 Payment account of a person or organisation. Format when present.

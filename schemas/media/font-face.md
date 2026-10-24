@@ -1,3 +1,26 @@
+---
+id: "rig.media.font_face"
+maturity: "stable"
+summary: "Named compiled face for a canvas run. Format when present."
+fields:
+  - name: "family"
+    ref: "string"
+    required: true
+    meaning: "Family name a run looks up"
+  - name: "asset"
+    ref: "entity"
+    required: true
+    meaning: "rig.media.asset_ref of the compiled file"
+  - name: "weight"
+    ref: "float"
+    meaning: "Optional. 100-900; absent = 400"
+    absent: "400"
+  - name: "style"
+    type: "string"
+    enum: ["normal","italic"]
+    meaning: "Optional. normal / italic. Absent = normal"
+    absent: "normal"
+---
 # `rig.media.font_face`
 
 Named compiled face for a canvas run. Format when present.

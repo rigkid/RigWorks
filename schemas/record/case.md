@@ -1,3 +1,35 @@
+---
+id: "rig.record.case"
+maturity: "draft"
+summary: "A file about a subject. Format when present."
+topJson: "{\"description\":\"A file about a subject. Members point at it with rig.record.concerns. Title is rig.meta.named.\"}"
+fields:
+  - name: "subject"
+    ref: "entity"
+    required: true
+    meaning: "Person or organisation the file is about"
+  - name: "kind"
+    type: "string"
+    enum: ["fraud","aml","service","benefits","other"]
+    required: true
+    meaning: "fraud / aml / service / benefits / other"
+  - name: "status"
+    type: "string"
+    enum: ["open","pending","closed"]
+    required: true
+    meaning: "open / pending / closed"
+  - name: "assignee"
+    ref: "entity"
+    meaning: "Optional. Person or organisation working the file"
+  - name: "openedDate"
+    type: "string"
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    description: "ISO 8601 calendar date."
+    meaning: "Optional. Day opened, YYYY-MM-DD"
+  - name: "identifier"
+    ref: "string"
+    meaning: "Optional. Case number as issued"
+---
 # `rig.record.case`
 
 A file about a subject. Format when present.

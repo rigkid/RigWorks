@@ -23,5 +23,6 @@
   },
   "required": [
     "densityKgM3"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

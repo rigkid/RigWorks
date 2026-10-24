@@ -1,3 +1,10 @@
+---
+id: "rig.bim.building"
+maturity: "draft"
+summary: "Building marker (IfcBuilding). Format when present - presence means this entity is a building root."
+topJson: "{\"minProperties\":0}"
+fields:
+---
 # `rig.bim.building`
 
 Building marker (`IfcBuilding`). Format when present - presence means this entity is a building root.

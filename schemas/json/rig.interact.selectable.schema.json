@@ -9,5 +9,6 @@
       "$ref": "./_defs.schema.json#/$defs/bool"
     }
   },
-  "minProperties": 0
+  "minProperties": 0,
+  "x-rig-maturity": "stable"
 }

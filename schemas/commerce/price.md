@@ -1,3 +1,29 @@
+---
+id: "rig.commerce.price"
+maturity: "draft"
+summary: "Money amount of a thing or an offer. Format when present."
+topJson: "{\"description\":\"Money amount. Field meanings follow ISO 20022 ActiveOrHistoricCurrencyAndAmount and schema.org PriceSpecification. Not a formatted price string.\"}"
+fields:
+  - name: "amount"
+    ref: "float"
+    required: true
+    meaning: "Major-currency value (12.99, not pence)"
+  - name: "currency"
+    type: "string"
+    pattern: "^[A-Z]{3}$"
+    description: "ISO 4217 (ISO 20022 Ccy)."
+    required: true
+    meaning: "ISO 4217 alpha-3, uppercase"
+  - name: "unit"
+    type: "string"
+    enum: ["each","hour","day","week","month","year","metre","kilogram","other"]
+    meaning: "Optional. each / hour / day / week / month / year / metre / kilogram / other; absent = each"
+    absent: "each"
+  - name: "vatIncluded"
+    ref: "bool"
+    meaning: "Optional. Whether amount includes VAT / sales tax; absent = unknown"
+    absent: "unknown"
+---
 # `rig.commerce.price`
 
 Money amount of a thing or an offer. Format when present.

@@ -1,3 +1,19 @@
+---
+id: "rig.art.object"
+maturity: "draft"
+summary: "Object / work type of an artwork or cultural object. Format when present."
+topJson: "{\"description\":\"Object / work type. Field meanings follow CDWA Object/Work and Classification. Title is rig.meta.named.\",\"minProperties\":1}"
+fields:
+  - name: "workType"
+    ref: "string"
+    meaning: "Kind of object (painting, sculpture, photograph)"
+  - name: "classification"
+    ref: "string"
+    meaning: "Collection class (Paintings)"
+  - name: "inscription"
+    ref: "string"
+    meaning: "Inscriptions / marks"
+---
 # `rig.art.object`
 
 Object / work type of an artwork or cultural object. Format when present.

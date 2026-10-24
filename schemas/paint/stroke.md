@@ -1,3 +1,17 @@
+---
+id: "rig.paint.stroke"
+maturity: "draft"
+summary: "Stroke by reference - this drawable's outline is painted by a shared paint entity. Format when present."
+fields:
+  - name: "paint"
+    ref: "entity"
+    required: true
+    meaning: "Entity carrying rig.paint.solid or rig.paint.gradient"
+  - name: "width"
+    ref: "float"
+    meaning: "Optional. Stroke width in content units; absent = 1"
+    absent: "1"
+---
 # `rig.paint.stroke`
 
 Stroke by reference - this drawable's outline is painted by a shared paint entity. Format when present.

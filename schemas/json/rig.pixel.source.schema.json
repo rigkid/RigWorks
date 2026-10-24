@@ -53,5 +53,6 @@
   },
   "required": [
     "kind"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

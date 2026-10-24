@@ -1,3 +1,19 @@
+---
+id: "rig.art.creation"
+maturity: "draft"
+summary: "Creation date and period of a work. Format when present."
+topJson: "{\"description\":\"Creation date and period. Field meanings follow CDWA Creation. Maker is rig.art.attribution.\",\"minProperties\":1}"
+fields:
+  - name: "createdDate"
+    ref: "string"
+    meaning: "Creation date as the source wrote it (1889, ca. 1888-1889)"
+  - name: "period"
+    ref: "string"
+    meaning: "Style / period / movement"
+  - name: "culture"
+    ref: "string"
+    meaning: "Culture or people"
+---
 # `rig.art.creation`
 
 Creation date and period of a work. Format when present.

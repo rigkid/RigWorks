@@ -1,3 +1,21 @@
+---
+id: "rig.cad.fillet"
+maturity: "draft"
+summary: "Round selected edges of a solid. Format when present."
+fields:
+  - name: "radius"
+    ref: "float"
+    required: true
+    meaning: "Fillet radius"
+  - name: "edges"
+    type: "array"
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"a\",\"b\"],\"properties\":{\"a\":{\"$ref\":\"./_defs.schema.json#/$defs/uint32\"},\"b\":{\"$ref\":\"./_defs.schema.json#/$defs/uint32\"}}}"
+    meaning: "Optional. Undirected vertex pairs into that entity's rig.geometry.mesh positions. Store min(a,b), max(a,b). See mesh edges"
+  - name: "allEdges"
+    ref: "bool"
+    meaning: "Optional. Absent = false. True = every authored mesh edge; edges is ignored"
+    absent: "false"
+---
 # `rig.cad.fillet`
 
 Round selected edges of a solid. Format when present.

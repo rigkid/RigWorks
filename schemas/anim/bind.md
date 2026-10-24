@@ -1,3 +1,21 @@
+---
+id: "rig.anim.bind"
+maturity: "draft"
+summary: "Rest pose of one bone. Format when present. Compose on the bone entity."
+fields:
+  - name: "position"
+    ref: "vec3"
+    meaning: "Optional. Local rest translation; absent = the bone's transform position"
+    absent: "the bone's transform position"
+  - name: "rotation"
+    ref: "quat"
+    meaning: "Optional. Local rest rotation, x y z w; absent = the bone's transform rotation"
+    absent: "the bone's transform rotation"
+  - name: "scale"
+    ref: "vec3"
+    meaning: "Optional. Local rest scale; absent = the bone's transform scale"
+    absent: "the bone's transform scale"
+---
 # `rig.anim.bind`
 
 Rest pose of one bone. Format when present. Compose on the bone entity.

@@ -1,3 +1,27 @@
+---
+id: "rig.paper.article"
+maturity: "draft"
+summary: "Article-level metadata. Format when present."
+topJson: "{\"description\":\"Article body metadata. Field meanings follow JATS article-meta. Title is rig.meta.named.\",\"minProperties\":1}"
+fields:
+  - name: "abstract"
+    ref: "string"
+    meaning: "Abstract"
+  - name: "pageStart"
+    ref: "string"
+    meaning: "First page (737, e123)"
+  - name: "pageEnd"
+    ref: "string"
+    meaning: "Last page"
+  - name: "articleNumber"
+    ref: "string"
+    meaning: "Article / elocation id"
+  - name: "publishedDate"
+    type: "string"
+    pattern: "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+    description: "ISO 8601 date or year (ONIX PublishingDate)."
+    meaning: "Publication day or year (YYYY / YYYY-MM / YYYY-MM-DD)"
+---
 # `rig.paper.article`
 
 Article-level metadata. Format when present.

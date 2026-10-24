@@ -13,10 +13,10 @@
     },
     "controlPoints": {
       "type": "array",
+      "minItems": 2,
       "items": {
         "$ref": "./_defs.schema.json#/$defs/vec3"
-      },
-      "minItems": 2
+      }
     },
     "knots": {
       "type": "array",
@@ -41,5 +41,6 @@
     "degree",
     "controlPoints",
     "knots"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

@@ -12,5 +12,6 @@
   "required": [
     "asset"
   ],
-  "description": "Cover image. asset is a rig.media.asset_ref entity. Not an inline path."
+  "description": "Cover image. asset is a rig.media.asset_ref entity. Not an inline path.",
+  "x-rig-maturity": "draft"
 }

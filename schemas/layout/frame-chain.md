@@ -1,3 +1,20 @@
+---
+id: "rig.layout.frame_chain"
+maturity: "stable"
+summary: "Ordered rig.layout.frame entities a rig.story.flow flows through. Format when present."
+fields:
+  - name: "story"
+    ref: "entity"
+    required: true
+    meaning: "rig.story.flow being threaded"
+  - name: "frames"
+    type: "array"
+    itemsRef: "entity"
+    meaning: "Optional. rig.layout.frame entities in flow order"
+  - name: "master"
+    ref: "entity"
+    meaning: "Optional. rig.layout.master used when auto-adding pages"
+---
 # `rig.layout.frame_chain`
 
 Ordered [`rig.layout.frame`](frame.md) entities a [`rig.story.flow`](../story/flow.md) flows through. Format when present.

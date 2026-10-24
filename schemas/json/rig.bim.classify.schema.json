@@ -23,5 +23,6 @@
   },
   "required": [
     "ifcClass"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

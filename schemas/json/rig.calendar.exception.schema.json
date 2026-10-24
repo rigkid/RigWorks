@@ -26,5 +26,6 @@
   },
   "required": [
     "date"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

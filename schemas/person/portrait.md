@@ -1,3 +1,14 @@
+---
+id: "rig.person.portrait"
+maturity: "draft"
+summary: "Portrait photo of a human, character, user, or contact. Format when present."
+topJson: "{\"description\":\"Portrait photo. asset is a rig.media.asset_ref entity. Not an inline path.\"}"
+fields:
+  - name: "asset"
+    ref: "entity"
+    required: true
+    meaning: "Entity carrying rig.media.asset_ref (kind image)"
+---
 # `rig.person.portrait`
 
 Portrait photo of a human, character, user, or contact. Format when present.

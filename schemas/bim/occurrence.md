@@ -1,3 +1,13 @@
+---
+id: "rig.bim.occurrence"
+maturity: "draft"
+summary: "Instance of a shared BIM type. Format when present."
+fields:
+  - name: "type"
+    ref: "entity"
+    required: true
+    meaning: "Entity carrying rig.bim.type; none = untyped occurrence"
+---
 # `rig.bim.occurrence`
 
 Instance of a shared BIM type. Format when present.

@@ -1,3 +1,43 @@
+---
+id: "rig.person.vital"
+maturity: "draft"
+summary: "Sex, gender identity, and birth of a human, character, user, or contact. Format when present."
+topJson: "{\"description\":\"Sex, gender identity, and birth. Sex follows ISO/IEC 5218; gender is self-described; birth follows ISO 20022 DateAndPlaceOfBirth.\",\"minProperties\":1}"
+fields:
+  - name: "sex"
+    type: "string"
+    enum: ["unknown","male","female","not-applicable"]
+    meaning: "Recorded sex: unknown / male / female / not-applicable"
+  - name: "gender"
+    ref: "string"
+    meaning: "Self-described gender identity"
+  - name: "birthDate"
+    type: "string"
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    description: "ISO 8601 calendar date (ISO 20022 BirthDt)."
+    meaning: "Calendar day, YYYY-MM-DD"
+  - name: "birthTown"
+    ref: "string"
+    meaning: "Town / city of birth"
+  - name: "birthCountrySubDivision"
+    ref: "string"
+    meaning: "State / province of birth"
+  - name: "birthCountry"
+    type: "string"
+    pattern: "^[A-Z]{2}$"
+    description: "ISO 3166-1 alpha-2 (ISO 20022 CtryOfBirth)."
+    meaning: "ISO 3166-1 alpha-2, uppercase"
+  - name: "nationality"
+    type: "string"
+    pattern: "^[A-Z]{2}$"
+    description: "ISO 3166-1 alpha-2 (ISO 20022 Ntlty)."
+    meaning: "ISO 3166-1 alpha-2, uppercase"
+  - name: "countryOfResidence"
+    type: "string"
+    pattern: "^[A-Z]{2}$"
+    description: "ISO 3166-1 alpha-2 (ISO 20022 CtryOfRes)."
+    meaning: "ISO 3166-1 alpha-2, uppercase"
+---
 # `rig.person.vital`
 
 Sex, gender identity, and birth of a human, character, user, or contact. Format when present.

@@ -1,3 +1,18 @@
+---
+id: "rig.paint.markers"
+maturity: "draft"
+summary: "Marker refs on a stroked path. Format when present."
+fields:
+  - name: "start"
+    ref: "entity"
+    meaning: "Optional. rig.paint.marker at the first vertex"
+  - name: "mid"
+    ref: "entity"
+    meaning: "Optional. Marker at intermediate vertices"
+  - name: "end"
+    ref: "entity"
+    meaning: "Optional. Marker at the last vertex"
+---
 # `rig.paint.markers`
 
 Marker refs on a stroked path. Format when present.

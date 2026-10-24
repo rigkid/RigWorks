@@ -1,3 +1,21 @@
+---
+id: "rig.vr.controller"
+maturity: "draft"
+summary: "A held input device. Format when present."
+fields:
+  - name: "player"
+    ref: "int"
+    meaning: "Optional. Player index (0-based); absent = 0"
+    absent: "0"
+  - name: "hand"
+    type: "string"
+    enum: ["left","right","none"]
+    meaning: "Optional. left, right, none. Absent = none"
+    absent: "none"
+  - name: "profile"
+    ref: "string"
+    meaning: "Optional. Interaction profile token the host understands"
+---
 # `rig.vr.controller`
 
 A held input device. Format when present.

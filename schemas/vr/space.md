@@ -1,3 +1,18 @@
+---
+id: "rig.vr.space"
+maturity: "draft"
+summary: "Where the user stands in the scene. Format when present."
+fields:
+  - name: "reference"
+    type: "string"
+    enum: ["local","local-floor","stage","unbounded"]
+    required: true
+    meaning: "local, local-floor, stage, unbounded"
+  - name: "bounds"
+    schemaJson: "{\"type\":\"array\",\"minItems\":3,\"items\":{\"$ref\":\"./_defs.schema.json#/$defs/vec2\"},\"$comment\":\"Each item is x, z in this space, scene units. Y is the floor.\"}"
+    meaning: "Optional. Play-area polygon. Each item is **x, z** in this space, scene units. At least 3. Absent = no recorded boundary"
+    absent: "no recorded boundary"
+---
 # `rig.vr.space`
 
 Where the user stands in the scene. Format when present.

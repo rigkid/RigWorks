@@ -19,5 +19,6 @@
     "subject",
     "body"
   ],
-  "description": "A note about a fact. Clock composes rig.calendar.event. Not a BCF comment and not story copy."
+  "description": "A note about a fact. Clock composes rig.calendar.event. Not a BCF comment and not story copy.",
+  "x-rig-maturity": "draft"
 }

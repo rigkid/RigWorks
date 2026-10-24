@@ -1,3 +1,15 @@
+---
+id: "rig.font.master"
+maturity: "draft"
+summary: "One interpolation master on a face. Format when present."
+fields:
+  - name: "location"
+    type: "array"
+    minItems: 1
+    itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"tag\",\"value\"],\"properties\":{\"tag\":{\"$ref\":\"./_defs.schema.json#/$defs/string\"},\"value\":{\"$ref\":\"./_defs.schema.json#/$defs/float\"}}}"
+    required: true
+    meaning: "Required. Design coordinates for this master"
+---
 # `rig.font.master`
 
 One interpolation master on a face. Format when present.

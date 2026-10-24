@@ -1,3 +1,37 @@
+---
+id: "rig.mod.binding"
+maturity: "draft"
+summary: "A discrete fire (sensor to flash / sample) is rig.mod.trigger, not a binding."
+fields:
+  - name: "source"
+    ref: "entity"
+    required: true
+    meaning: "Modulator entity (e.g. LFO)"
+  - name: "target"
+    ref: "entity"
+    required: true
+    meaning: "Driven entity"
+  - name: "propertyKey"
+    ref: "string"
+    required: true
+    meaning: "Field name / path (same style as tween)"
+  - name: "depth"
+    ref: "float"
+    meaning: "Optional. Scale; absent = 1"
+    absent: "1"
+  - name: "min"
+    ref: "float"
+    meaning: "Optional. Clamp; absent = unclamped"
+    absent: "unclamped"
+  - name: "max"
+    ref: "float"
+    meaning: "Optional. Clamp; absent = unclamped"
+    absent: "unclamped"
+  - name: "additive"
+    ref: "bool"
+    meaning: "Optional. Add vs replace; absent = false (replace)"
+    absent: "false (replace)"
+---
 # `rig.mod.binding`
 
 | Field | Type | Meaning |

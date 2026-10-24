@@ -40,5 +40,6 @@
     "outerConeDegrees": {
       "$ref": "./_defs.schema.json#/$defs/float"
     }
-  }
+  },
+  "x-rig-maturity": "stable"
 }

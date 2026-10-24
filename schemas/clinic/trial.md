@@ -1,3 +1,23 @@
+---
+id: "rig.clinic.trial"
+maturity: "draft"
+summary: "A clinical trial. Format when present."
+topJson: "{\"description\":\"A clinical trial. Eligibility rows are rig.clinic.criterion entities.\"}"
+fields:
+  - name: "identifier"
+    ref: "string"
+    required: true
+    meaning: "NCT or sponsor id as issued"
+  - name: "status"
+    type: "string"
+    enum: ["recruiting","active","completed","withdrawn","suspended"]
+    required: true
+    meaning: "recruiting / active / completed / withdrawn / suspended"
+  - name: "phase"
+    type: "string"
+    enum: ["phase-1","phase-2","phase-3","phase-4","na"]
+    meaning: "Optional. phase-1 / phase-2 / phase-3 / phase-4 / na"
+---
 # `rig.clinic.trial`
 
 A clinical trial. Format when present.

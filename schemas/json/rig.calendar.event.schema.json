@@ -44,5 +44,6 @@
   },
   "required": [
     "startDate"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

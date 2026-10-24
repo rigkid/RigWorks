@@ -28,5 +28,6 @@
   "required": [
     "item"
   ],
-  "description": "Someone offers an item. Field meanings follow schema.org Offer. Price composes rig.commerce.price; window composes rig.calendar.span."
+  "description": "Someone offers an item. Field meanings follow schema.org Offer. Price composes rig.commerce.price; window composes rig.calendar.span.",
+  "x-rig-maturity": "draft"
 }

@@ -27,5 +27,6 @@
     "fromPin",
     "toNode",
     "toPin"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

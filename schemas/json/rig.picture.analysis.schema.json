@@ -21,5 +21,6 @@
   },
   "required": [
     "source"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,50 @@
+---
+id: "rig.sim.character"
+maturity: "draft"
+summary: "Kinematic capsule motor. Format when present."
+fields:
+  - name: "radius"
+    ref: "float"
+    required: true
+    meaning: "Capsule radius"
+  - name: "height"
+    ref: "float"
+    required: true
+    meaning: "Capsule height, end to end"
+  - name: "stepHeight"
+    ref: "float"
+    meaning: "Optional. Max step the motor climbs; absent = 0"
+    absent: "0"
+  - name: "slopeLimitDegrees"
+    ref: "float"
+    meaning: "Optional. Steepest walkable slope; absent = 45"
+    absent: "45"
+  - name: "jumpSpeed"
+    ref: "float"
+    meaning: "Optional. Upward speed on jump, units per second; absent = 0"
+    absent: "0"
+  - name: "grounded"
+    ref: "bool"
+    meaning: "Optional. Standing on a surface at save. Absent = the host probes on load"
+    absent: "the host probes on load"
+  - name: "velocity"
+    ref: "vec3"
+    meaning: "Optional. World-space velocity at load, units per second; absent = at rest"
+    absent: "at rest"
+  - name: "up"
+    ref: "vec3"
+    meaning: "Optional. Up axis; absent = +Y"
+    absent: "+Y"
+  - name: "floorSnap"
+    ref: "float"
+    meaning: "Optional. Distance the motor snaps down onto a floor; absent = 0"
+    absent: "0"
+  - name: "motion"
+    type: "string"
+    enum: ["grounded","floating"]
+    meaning: "Optional. grounded or floating; absent = grounded"
+    absent: "grounded"
+---
 # `rig.sim.character`
 
 Kinematic capsule motor. Format when present.

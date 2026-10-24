@@ -19,5 +19,6 @@
     "left",
     "right",
     "value"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

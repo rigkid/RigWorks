@@ -53,5 +53,6 @@
     }
   },
   "description": "Botanical taxon. Field meanings follow Darwin Core Taxon and ICNafp. Display name is rig.meta.named.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,25 @@
+---
+id: "rig.geometry.ring"
+maturity: "draft"
+summary: "Annulus - a disc with a concentric hole. Format when present."
+fields:
+  - name: "centerX"
+    ref: "float"
+    required: true
+    meaning: "Centre X, local space"
+  - name: "centerY"
+    ref: "float"
+    required: true
+    meaning: "Centre Y, local space"
+  - name: "outerRadius"
+    ref: "float"
+    required: true
+    meaning: "Outer edge"
+  - name: "innerRadius"
+    ref: "float"
+    required: true
+    meaning: "Inner edge; must not exceed outerRadius"
+---
 # `rig.geometry.ring`
 
 Annulus - a disc with a concentric hole. Format when present.

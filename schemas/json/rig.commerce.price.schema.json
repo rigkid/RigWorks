@@ -35,5 +35,6 @@
     "amount",
     "currency"
   ],
-  "description": "Money amount. Field meanings follow ISO 20022 ActiveOrHistoricCurrencyAndAmount and schema.org PriceSpecification. Not a formatted price string."
+  "description": "Money amount. Field meanings follow ISO 20022 ActiveOrHistoricCurrencyAndAmount and schema.org PriceSpecification. Not a formatted price string.",
+  "x-rig-maturity": "draft"
 }

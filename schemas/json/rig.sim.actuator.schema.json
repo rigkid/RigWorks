@@ -38,5 +38,6 @@
   },
   "required": [
     "joint"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

@@ -8,5 +8,6 @@
     "maxStack": {
       "$ref": "./_defs.schema.json#/$defs/uint"
     }
-  }
+  },
+  "x-rig-maturity": "draft"
 }

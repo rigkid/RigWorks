@@ -22,5 +22,6 @@
   "required": [
     "radius",
     "height"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

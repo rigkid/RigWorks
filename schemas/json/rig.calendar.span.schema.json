@@ -19,5 +19,6 @@
   "required": [
     "startDate",
     "endDate"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

@@ -1,3 +1,26 @@
+---
+id: "rig.person.contact"
+maturity: "draft"
+summary: "Reach channels for a human, character, user, or contact. Format when present."
+topJson: "{\"description\":\"Reach channels. Field meanings follow ISO 20022 ContactDetails. Not a postal address.\",\"minProperties\":1}"
+fields:
+  - name: "email"
+    ref: "string"
+    meaning: "Mailbox"
+  - name: "phone"
+    ref: "string"
+    meaning: "Voice number"
+  - name: "mobile"
+    ref: "string"
+    meaning: "Mobile number"
+  - name: "fax"
+    ref: "string"
+    meaning: "Fax number"
+  - name: "preferredMethod"
+    type: "string"
+    enum: ["mail","email","phone","mobile","fax"]
+    meaning: "mail / email / phone / mobile / fax"
+---
 # `rig.person.contact`
 
 Reach channels for a human, character, user, or contact. Format when present.

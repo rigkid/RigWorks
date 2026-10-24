@@ -1,3 +1,16 @@
+---
+id: "rig.record.concerns"
+maturity: "draft"
+summary: "This fact belongs to a file. Format when present."
+topJson: "{\"description\":\"This fact belongs to a case and/or an incident. The file holds no member array.\",\"minProperties\":1}"
+fields:
+  - name: "case"
+    ref: "entity"
+    meaning: "Optional. The rig.record.case"
+  - name: "incident"
+    ref: "entity"
+    meaning: "Optional. The rig.record.incident"
+---
 # `rig.record.concerns`
 
 This fact belongs to a file. Format when present.

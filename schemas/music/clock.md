@@ -1,3 +1,38 @@
+---
+id: "rig.music.clock"
+maturity: "stable"
+summary: "Tick derivation from transport (or external sync). Format when present."
+fields:
+  - name: "ticksPerQuarter"
+    ref: "int"
+    required: true
+    meaning: "Pulses per quarter (e.g. 96)"
+  - name: "phaseTicks"
+    ref: "float"
+    meaning: "Optional. Running tick count; absent = 0"
+    absent: "0"
+  - name: "swingAmount"
+    ref: "float"
+    meaning: "Optional. 0 = straight; absent = 0"
+    absent: "0"
+  - name: "swingSubdiv"
+    ref: "int"
+    meaning: "Optional. Swing subdivision; absent = 2"
+    absent: "2"
+  - name: "externalSync"
+    ref: "bool"
+    meaning: "Optional. External writer owns phase; absent = false"
+    absent: "false"
+  - name: "syncBeat"
+    ref: "float"
+    meaning: "External beat; required when externalSync"
+  - name: "syncPhase"
+    ref: "float"
+    meaning: "External phase 0-1; required when externalSync"
+  - name: "syncPeriodBars"
+    ref: "float"
+    meaning: "Optional. External sync period in bars"
+---
 # `rig.music.clock`
 
 Tick derivation from transport (or external sync). Format when present.

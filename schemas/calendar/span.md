@@ -1,3 +1,21 @@
+---
+id: "rig.calendar.span"
+maturity: "draft"
+summary: "Dated run - show, offer window, or agreement term. Format when present."
+fields:
+  - name: "startDate"
+    type: "string"
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    description: "ISO 8601 calendar date."
+    required: true
+    meaning: "Inclusive start day (YYYY-MM-DD)"
+  - name: "endDate"
+    type: "string"
+    pattern: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    description: "ISO 8601 calendar date."
+    required: true
+    meaning: "Inclusive end day (YYYY-MM-DD)"
+---
 # `rig.calendar.span`
 
 Dated run - show, offer window, or agreement term. Format when present.

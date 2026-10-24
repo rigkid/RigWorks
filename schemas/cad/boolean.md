@@ -1,3 +1,20 @@
+---
+id: "rig.cad.boolean"
+maturity: "stable"
+summary: "CSG combination of solids. Format when present."
+fields:
+  - name: "op"
+    type: "string"
+    enum: ["union","difference","intersection"]
+    required: true
+    meaning: "union, difference, or intersection"
+  - name: "operands"
+    type: "array"
+    minItems: 2
+    itemsRef: "entity"
+    required: true
+    meaning: "At least two solid entities (cad primitives, other booleans, or mesh solids). Difference is operands[0] minus the rest, in order"
+---
 # `rig.cad.boolean`
 
 CSG combination of solids. Format when present.

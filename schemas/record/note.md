@@ -1,3 +1,21 @@
+---
+id: "rig.record.note"
+maturity: "draft"
+summary: "A note about a fact. Format when present."
+topJson: "{\"description\":\"A note about a fact. Clock composes rig.calendar.event. Not a BCF comment and not story copy.\"}"
+fields:
+  - name: "subject"
+    ref: "entity"
+    required: true
+    meaning: "What the note is about"
+  - name: "body"
+    ref: "string"
+    required: true
+    meaning: "The note"
+  - name: "author"
+    ref: "entity"
+    meaning: "Optional. Person or organisation that wrote it"
+---
 # `rig.record.note`
 
 A note about a fact. Format when present.

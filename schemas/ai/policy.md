@@ -1,3 +1,27 @@
+---
+id: "rig.ai.policy"
+maturity: "draft"
+summary: "A learned map from observations to drives. Format when present. At least one field."
+topJson: "{\"minProperties\":1}"
+fields:
+  - name: "actions"
+    type: "array"
+    itemsRef: "entity"
+    meaning: "Optional. rig.sim.actuator entities the policy commands"
+  - name: "observations"
+    type: "array"
+    itemsRef: "entity"
+    meaning: "Optional. Sensors, bodies, or rig.anim.track entities it reads"
+  - name: "task"
+    ref: "string"
+    meaning: "Optional. Host task name, the same idea as rig.sim.episode task"
+  - name: "weights"
+    ref: "entity"
+    meaning: "Optional. rig.media.asset_ref of a checkpoint file (kind other)"
+  - name: "episode"
+    ref: "entity"
+    meaning: "Optional. rig.sim.episode this policy is training or being scored on"
+---
 # `rig.ai.policy`
 
 A learned map from observations to drives. Format when present. At least one field.

@@ -17,5 +17,6 @@
   },
   "required": [
     "port"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

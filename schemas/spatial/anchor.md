@@ -1,3 +1,23 @@
+---
+id: "rig.spatial.anchor"
+maturity: "stable"
+summary: "Which cell of an entity's local bounds is the local origin. Format when present."
+fields:
+  - name: "point"
+    type: "string"
+    enum: ["top-left","top-center","top-right","middle-left","center","middle-right","bottom-left","bottom-center","bottom-right"]
+    required: true
+    meaning: "One of the nine 3×3 face cells (see below)"
+  - name: "height"
+    type: "string"
+    enum: ["min","center","max"]
+    meaning: "Optional Z slice of the cuboid: min / center / max. Absent = min."
+    absent: "min"
+  - name: "offset"
+    ref: "vec2"
+    meaning: "Optional. Nudge **after** the named cell, local XY. Absent = (0, 0)."
+    absent: "(0, 0)"
+---
 # `rig.spatial.anchor`
 
 Which cell of an entity's local bounds is the local origin. Format when present.

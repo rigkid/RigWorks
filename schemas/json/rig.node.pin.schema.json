@@ -30,5 +30,6 @@
     "name",
     "kind",
     "type"
-  ]
+  ],
+  "x-rig-maturity": "stable"
 }

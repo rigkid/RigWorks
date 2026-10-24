@@ -14,5 +14,6 @@
     "rgba": {
       "$ref": "./_defs.schema.json#/$defs/rgba"
     }
-  }
+  },
+  "x-rig-maturity": "stable"
 }

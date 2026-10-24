@@ -43,5 +43,6 @@
     "seller",
     "status"
   ],
-  "description": "A bill for a sale. Field meanings follow schema.org Invoice. Total composes rig.commerce.price. Lines are rig.commerce.invoice_line."
+  "description": "A bill for a sale. Field meanings follow schema.org Invoice. Total composes rig.commerce.price. Lines are rig.commerce.invoice_line.",
+  "x-rig-maturity": "draft"
 }

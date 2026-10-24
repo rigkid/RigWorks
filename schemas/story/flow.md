@@ -1,3 +1,14 @@
+---
+id: "rig.story.flow"
+maturity: "stable"
+summary: "Editorial story - an ordered sequence of copy blocks. Format when present."
+fields:
+  - name: "blocks"
+    type: "array"
+    itemsRef: "entity"
+    required: true
+    meaning: "Ordered rig.story.paragraph and/or rig.story.table entities"
+---
 # `rig.story.flow`
 
 Editorial story - an ordered sequence of copy blocks. Format when present.

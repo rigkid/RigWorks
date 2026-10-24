@@ -1,3 +1,18 @@
+---
+id: "rig.layout.facing"
+maturity: "draft"
+summary: "Facing-pages preference for a document. Format when present."
+fields:
+  - name: "enabled"
+    ref: "bool"
+    meaning: "Optional. Facing on; absent = true when this component is present"
+    absent: "true when this component is present"
+  - name: "binding"
+    type: "string"
+    enum: ["left","right"]
+    meaning: "Optional. left or right - which edge is bound. Absent = left"
+    absent: "left"
+---
 # `rig.layout.facing`
 
 Facing-pages preference for a document. Format when present.

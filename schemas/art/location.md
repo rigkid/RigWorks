@@ -1,3 +1,16 @@
+---
+id: "rig.art.location"
+maturity: "draft"
+summary: "Current repository of a work. Format when present."
+topJson: "{\"description\":\"Current location. Field meanings follow CDWA Current Location. Repository is an organisation entity.\",\"minProperties\":1}"
+fields:
+  - name: "repository"
+    ref: "entity"
+    meaning: "Holding organisation"
+  - name: "accessionNumber"
+    ref: "string"
+    meaning: "Accession / object number"
+---
 # `rig.art.location`
 
 Current repository of a work. Format when present.

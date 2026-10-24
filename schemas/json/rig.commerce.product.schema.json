@@ -17,5 +17,6 @@
       "$ref": "./_defs.schema.json#/$defs/entity"
     }
   },
-  "description": "A sellable item. Field meanings follow GS1 GTIN and schema.org Product. Name is rig.meta.named. A variant sets parent."
+  "description": "A sellable item. Field meanings follow GS1 GTIN and schema.org Product. Name is rig.meta.named. A variant sets parent.",
+  "x-rig-maturity": "draft"
 }

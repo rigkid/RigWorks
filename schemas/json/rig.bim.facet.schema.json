@@ -62,5 +62,6 @@
   "required": [
     "role",
     "kind"
-  ]
+  ],
+  "x-rig-maturity": "draft"
 }

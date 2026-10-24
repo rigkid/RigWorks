@@ -1,3 +1,26 @@
+---
+id: "rig.music.midi_input"
+maturity: "experimental"
+summary: "MIDI input port binding. Format when present."
+topJson: "{\"allOf\":[{\"anyOf\":[{\"required\":[\"portName\"]},{\"required\":[\"portIndex\"]}]}]}"
+fields:
+  - name: "portName"
+    ref: "string"
+    meaning: "Platform port name as reported by the host"
+  - name: "portIndex"
+    ref: "uint"
+    meaning: "Host API port index"
+  - name: "open"
+    ref: "bool"
+    meaning: "Optional. Whether the document expects this port open; absent = true"
+    absent: "true"
+  - name: "channel"
+    type: "integer"
+    minimum: 0
+    maximum: 15
+    meaning: "Optional. 0-15; absent means omni"
+    absent: "omni"
+---
 # `rig.music.midi_input`
 
 MIDI input port binding. Format when present.

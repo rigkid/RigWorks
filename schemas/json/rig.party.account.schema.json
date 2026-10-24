@@ -29,5 +29,6 @@
     }
   },
   "description": "Payment account. Field meanings follow ISO 20022 CashAccount and FinancialInstitutionIdentification. Prefer IBAN when present.",
-  "minProperties": 1
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
 }
