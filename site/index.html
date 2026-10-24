@@ -33,12 +33,15 @@
 
   <p class="lede">
     A shared vocabulary. No library to link, no runtime to embed, no API
-    to version — it ships as agreement.
+    to version — it ships as agreement. Write the document once and it can
+    be presented, played, printed, and handed to a model: the meaning
+    travels with the data, not with the app that wrote it.
   </p>
 
   <p class="cta">
     <a class="btn primary" href="schemas/index.html">Browse the schemas</a>
     <a class="btn" href="examples/index.html">See examples</a>
+    <a class="btn" href="https://player.rig.works/">Play one now</a>
   </p>
 
   <p class="badges">
@@ -164,19 +167,56 @@ Exit   → tear down</code></pre>
 </section>
 
 <section>
-  <h2>It runs</h2>
+  <h2>What the agreement buys you</h2>
   <p>
-    A Rig document is not a diagram of a format. The same JSON plays or
-    presents in more than one fulfillment, none of which know the others.
+    A file format saves bytes. A shared vocabulary saves the work around
+    the bytes — every converter never written, every host that can open
+    work it has never seen, every tool borrowed instead of rebuilt.
   </p>
   <div class="grid two">
+    <div class="card">
+      <h3>Work outlives the app</h3>
+      <p>Plain JSON, no runtime to keep alive and no binary to reverse. A document written today opens in a host written next year, in another language, on another machine — because what was agreed is the meaning, not the code.</p>
+    </div>
+    <div class="card">
+      <h3>No converters</h3>
+      <p>Two hosts that speak the same schema ids interoperate the moment they meet. Interop stops being a pairwise translation project and becomes a shared noun both sides already know.</p>
+    </div>
+    <div class="card">
+      <h3>Tools travel</h3>
+      <p>A control panel is a document like any other. Author it in one app, load it in a second, and the knobs still turn the same fields — the interface is data, so it moves like data.</p>
+    </div>
+    <div class="card">
+      <h3>Machines can author it</h3>
+      <p>A model loads one skill and one example, writes the document, and checks it with a validator that answers in JSON Pointers. The next session — human or model — accepts the same data without a briefing.</p>
+    </div>
+  </div>
+  <p class="aside">
+    And it is checked like code: generated schemas, field-level parity,
+    semantic rules, and a stable tier frozen at 1.0 —
+    <a href="docs/versioning/index.html">what that promises</a>.
+  </p>
+</section>
+
+<section>
+  <h2>It runs</h2>
+  <p>
+    A Rig document is not a diagram of a format. The same JSON presents
+    in one host and plays in another, and neither knows the other exists.
+    Looking and running are different jobs, so they are different hosts:
+  </p>
+  <div class="grid three">
+    <div class="card">
+      <h3><a href="https://github.com/rigkid/RigViewer">RigViewer</a></h3>
+      <p><strong>Presents.</strong> The still document, drawn — scenes and sketches as written, nothing executed. Zero-setup in the browser: drop a <code>.json</code> and look. <a href="https://rigkid.github.io/RigViewer/">Open the viewer</a>.</p>
+    </div>
     <div class="card accent">
       <h3><a href="https://github.com/rigkid/RigPlayer">RigPlayer</a></h3>
-      <p>Plays a document over time — SUDE, Update, Draw. The host for work that runs.</p>
+      <p><strong>Plays.</strong> The document over time — transport and clock, animation, simulation, sound. SUDE runs it: Setup, Update, Draw, Exit. Zero-setup in the browser: drop a <code>.rig</code>, press play, or share the whole document inside a link. <a href="https://player.rig.works/">Open the player</a>.</p>
     </div>
     <div class="card">
       <h3><a href="https://github.com/rigkid/RigKit">RigKit</a></h3>
-      <p>Desktop / Pi reference host. GLFW, packs, the floor for a live fulfillment.</p>
+      <p><strong>Builds hosts.</strong> The coded reference host — desktop and Raspberry Pi, packs over a thin core — for writing the next Viewer, Player, or fulfillment of your own.</p>
     </div>
   </div>
   <p class="aside">

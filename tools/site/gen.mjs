@@ -29,6 +29,7 @@ const readText = (...parts) =>
   fs.readFileSync(path.join(root, ...parts), "utf8").replace(/\r\n/g, "\n");
 
 const version = readText("VERSION").trim();
+const tierWord = Number(version.split(".")[0]) >= 1 ? "stable" : "draft";
 
 const esc = (s) =>
   String(s)
@@ -607,7 +608,7 @@ ${body}
     <a href="${GITHUB}">Repository</a> ·
     <a href="${BLOB}/LICENSE">MIT</a>
   </p>
-  <p class="muted">Contract v${version} · draft. A shared data vocabulary for applications.</p>
+  <p class="muted">Contract v${version} · ${tierWord}. A shared data vocabulary for applications.</p>
 </footer>
 
 </body>
@@ -722,7 +723,7 @@ function schemaPage(entry, ctx) {
 </p>
 <h1><code class="id">${esc(entry.id)}</code></h1>
 <p class="badges">
-  <span class="badge">v${version} · draft</span>
+  <span class="badge">v${version} · ${tierWord}</span>
   ${entry.schema["x-rig-maturity"] ? `<span class="badge">maturity: ${esc(entry.schema["x-rig-maturity"])}</span>` : ""}
   <span class="badge">${entry.fields.length} field${entry.fields.length === 1 ? "" : "s"}</span>
   <span class="badge">${entry.fields.filter((f) => f.required).length} required</span>
@@ -796,8 +797,9 @@ ${rows}
   and ignores the other seventy is fully Rig.
 </p>
 <p class="badges">
-  <span class="badge">v${version} · draft</span>
+  <span class="badge">v${version} · ${tierWord}</span>
   <span class="badge">${byId.size} schemas</span>
+  <span class="badge">${[...byId.values()].filter((e) => e.schema["x-rig-maturity"] === "stable").length} stable · ${[...byId.values()].filter((e) => e.schema["x-rig-maturity"] === "draft").length} draft · ${[...byId.values()].filter((e) => e.schema["x-rig-maturity"] === "experimental").length} experimental</span>
   <span class="badge">${groups.length} domains</span>
 </p>
 ${FILTER_UI(byId.size)}
@@ -980,7 +982,7 @@ function aiPage(ctx) {
   one agent emits is data the next agent already accepts.
 </p>
 <p class="badges">
-  <span class="badge">v${version} · draft</span>
+  <span class="badge">v${version} · ${tierWord}</span>
   <span class="badge"><a href="${rel(pageOut, "llms.txt")}">llms.txt</a></span>
   <span class="badge"><a href="${BLOB}/${SKILL_REL}">skill source</a></span>
 </p>
