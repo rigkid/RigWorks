@@ -29,6 +29,7 @@ node tools/rig-validate/cli.js examples/legal-agreement.json
 node tools/rig-validate/cli.js examples/calendar-event.json
 node tools/rig-validate/cli.js examples/lights.json
 node tools/rig-validate/cli.js examples/environment.json
+node tools/rig-validate/cli.js examples/text-path.json
 node tools/rig-validate/cli.js examples/dev-machine.json
 node tools/rig-validate/cli.js examples/dev-hyperv.json
 node tools/rig-validate/cli.js examples/dev-kvm.json
@@ -236,6 +237,10 @@ Three lamps: directional (local −Z), point with `range`, spot with inner/outer
 ## `environment.json`
 
 One image-based light. `hdri` is a [`rig.media.asset_ref`](../schemas/media/asset-ref.md) (`kind` `image`, lat-long Radiance file). Absent `intensity` is 1. Decode and spherical-harmonic coefficients stay in the host.
+
+## `text-path.json`
+
+A canvas run on an `arc-to` baseline, clipped to a rectangle, with `@font-face` as [`rig.media.font_face`](../schemas/media/font-face.md). The path stays its own entity. Colour is paint.
 
 ## `font-var.json`
 

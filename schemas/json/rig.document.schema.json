@@ -505,8 +505,14 @@
               "rig.media.code": {
                 "$ref": "./rig.media.code.schema.json"
               },
+              "rig.media.font_face": {
+                "$ref": "./rig.media.font_face.schema.json"
+              },
               "rig.media.text": {
                 "$ref": "./rig.media.text.schema.json"
+              },
+              "rig.media.text_path": {
+                "$ref": "./rig.media.text_path.schema.json"
               },
               "rig.meta.named": {
                 "$ref": "./rig.meta.named.schema.json"
@@ -580,17 +586,41 @@
               "rig.paint.brush": {
                 "$ref": "./rig.paint.brush.schema.json"
               },
+              "rig.paint.clip": {
+                "$ref": "./rig.paint.clip.schema.json"
+              },
               "rig.paint.fill": {
                 "$ref": "./rig.paint.fill.schema.json"
               },
               "rig.paint.fill_stroke": {
                 "$ref": "./rig.paint.fill_stroke.schema.json"
               },
+              "rig.paint.filter": {
+                "$ref": "./rig.paint.filter.schema.json"
+              },
+              "rig.paint.filter_step": {
+                "$ref": "./rig.paint.filter_step.schema.json"
+              },
               "rig.paint.gradient": {
                 "$ref": "./rig.paint.gradient.schema.json"
               },
               "rig.paint.library": {
                 "$ref": "./rig.paint.library.schema.json"
+              },
+              "rig.paint.marker": {
+                "$ref": "./rig.paint.marker.schema.json"
+              },
+              "rig.paint.markers": {
+                "$ref": "./rig.paint.markers.schema.json"
+              },
+              "rig.paint.mask": {
+                "$ref": "./rig.paint.mask.schema.json"
+              },
+              "rig.paint.order": {
+                "$ref": "./rig.paint.order.schema.json"
+              },
+              "rig.paint.pattern": {
+                "$ref": "./rig.paint.pattern.schema.json"
               },
               "rig.paint.solid": {
                 "$ref": "./rig.paint.solid.schema.json"
@@ -870,6 +900,9 @@
               },
               "rig.spatial.group": {
                 "$ref": "./rig.spatial.group.schema.json"
+              },
+              "rig.spatial.instance": {
+                "$ref": "./rig.spatial.instance.schema.json"
               },
               "rig.spatial.layer": {
                 "$ref": "./rig.spatial.layer.schema.json"

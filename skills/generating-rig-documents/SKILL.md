@@ -104,7 +104,7 @@ Component keys are full `rig.*` ids. PascalCase (`Transform`, `Shape`) is not a 
 - **Frames.** Text-frame bounds are `rig.layout.frame` `width` / `height` plus transform. `rig.geometry.rectangle` is a drawable. When frames exist, thread with `rig.layout.frame_chain`. Do not parent `rig.story.flow` to the page.
 - **Names and origin.** Compose `rig.meta.named`. Do not re-declare `name`. Origin is `rig.spatial.anchor`: `point` is a 3x3 face, optional `height` is min/center/max for 3x3x3, absent means no remap (page trim is top-left). Origin is a cell offset, never an axis invert. It is not a page field, not transform, not `rig.spatial.vertex` (a locator), and not `rig.font.anchor`.
 - **Scene graph.** Show/hide is `rig.render.visibility`, not a field on `rig.spatial.layer`. The world root is an unparented `rig.spatial.vertex`. It is not `rig.spatial.group`. There is no `rig.spatial.scene` and no `kind` on vertex. Pose stays on `transform`. Vertex has no `x` / `y` / `z`. Blend / opacity is `rig.render.blend`, not `rig.pixel.layer`. Image-based light is `rig.render.environment`: `hdri` is a `rig.media.asset_ref`, and spherical-harmonic coefficients stay host cache.
-- **Paint and copy.** Caps, joins, and dash are `rig.paint.stroke_style`, not fields on `fill_stroke`. Text colour is paint (`fill_stroke` / `fill`), not `rig.media.text`. `rig.media.text` is a canvas run. Stories are `rig.story.*`: named styles, no font or colour. A story run is `text` plus a style identity. Bold, italic, underline, strike, super/sub, font, size, and colour are not story fields. Unstyled local emphasis becomes a named character style.
+- **Paint and copy.** Caps, joins, and dash are `rig.paint.stroke_style`, not fields on `fill_stroke`. Text colour is paint (`fill_stroke` / `fill`), not `rig.media.text`. `rig.media.text` is a canvas run. A run on a contour composes `rig.media.text_path`; the path stays its own entity. `@font-face` is `rig.media.font_face`. Clip, mask, marker, pattern, and filter are `rig.paint.*` on the drawable. `<use>` is `rig.spatial.instance`. Stories are `rig.story.*`: named styles, no font or colour. A story run is `text` plus a style identity. Bold, italic, underline, strike, super/sub, font, size, and colour are not story fields. Unstyled local emphasis becomes a named character style.
 - **Place and person.** Postal, civic, and WGS84 are `rig.place.address` and `rig.place.geo`, not transform, and not person fields. Given / family name is `rig.person.name`. `named.name` is the formatted full name. Sex, birthday, and email are `rig.person.vital` and `rig.person.contact`. Recorded sex is ISO/IEC 5218. Do not copy `sex` into `gender`. Job title, department, and organisation are `rig.person.employment` (employer is an entity), not contact, and not an employment instrument. Issued ids are `rig.person.identifier` (`mrn`, `taxId`, `nationalId`, `passport`) - not a `system` + `value` bag, and not copied onto an encounter. A photo is `rig.person.portrait` plus `asset_ref`. IBAN / BIC is `rig.party.account`.
 - **Plant.** No `scientificName` blob on `rig.plant.taxon`. Compose `rig.meta.named`. Name parts stay on taxon. Cultivar, Group, grex, and trade name are `rig.plant.cultivar`. Habit is growth form. Darwin Core habitat is the site: `rig.place.geo` / `rig.place.address`. A photo is `rig.plant.portrait` plus `asset_ref`.
 - **Book, paper, art.** `isbn13` is digits only on `rig.book.identifier`. The title is `rig.meta.named`. Author and publisher are entities: `rig.book.contribution` and `rig.book.publication.publisher`. A cover is `rig.book.cover` plus `asset_ref`. A paper uses `rig.paper.identifier` (DOI / PMID / arXiv). ISSN stays on the journal entity. A citation is `rig.paper.citation` (`citing` / `cited`), not a formatted bibliography string. Copyright holder and licence are `rig.rights.statement`, not `rig.art.object` or `rig.book.publication`. Artist, medium, and size are `attribution`, `material`, and `dimensions` (millimetres).
@@ -120,7 +120,7 @@ Field meaning is [`schemas/`](../../schemas/). Grammar is [`schemas/json/<id>.sc
 | Domain | Ids |
 |--------|-----|
 | Document | `rig.document` |
-| Spatial | `transform`, `anchor`, `relationship`, `vertex`, `group`, `camera`, `layer` |
+| Spatial | `transform`, `anchor`, `relationship`, `vertex`, `group`, `instance`, `camera`, `layer` |
 | Layout | `page`, `master`, `applied_master`, `facing`, `paragraph_style`, `character_style`, `frame`, `frame_chain` |
 | Place | `address`, `geo` |
 | Person | `name`, `vital`, `contact`, `employment`, `portrait`, `identifier` |
@@ -140,14 +140,14 @@ Field meaning is [`schemas/`](../../schemas/). Grammar is [`schemas/json/<id>.sc
 | Geometry | `mesh`, `path`, `path3d`, `rectangle`, `ellipse`, `line`, `polygon`, `regular_polygon`, `star`, `arc`, `spline`, `spline3d`, `nurbs_surface`, `ring` |
 | Cad | `cuboid`, `cylinder`, `sphere`, `extrude`, `revolve`, `boolean`, `fillet`, `chamfer` |
 | Bim | `classify`, `type`, `occurrence`, `pset`, `site`, `building`, `storey`, `space`, `relation`, `topic`, `comment`, `viewpoint`, `spec`, `facet` |
-| Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `stroke_style`, `library` |
+| Paint | `solid`, `gradient`, `fill_stroke`, `fill`, `stroke`, `stroke_style`, `library`, `order`, `clip`, `mask`, `markers`, `marker`, `pattern`, `filter`, `filter_step` |
 | Meta / render | `named`, `tags`, `light`, `environment`, `material`, `visibility`, `blend`, `sprite` |
 | Anim / mod | `tween`, `curve`, `skeleton`, `skin`, `clip`, `track`, `blend`, `bind`, `lfo`, `binding`, `trigger` |
 | Music | `transport`, `clock`, `sequencer`, `pattern`, `arrangement`, `step`, `note`, `midi_output`, `midi_input` |
 | Audio | `analysis`, `bus`, `voice` |
 | Picture | `analysis` |
 | Visualizer | `deck` |
-| Media | `asset_ref`, `text`, `code` |
+| Media | `asset_ref`, `text`, `text_path`, `font_face`, `code` |
 | Font | `face`, `glyph`, `component`, `anchor`, `layer`, `kern`, `group` |
 | Story | `flow`, `paragraph`, `paragraph_style`, `character_style`, `table` |
 | Pixel | `canvas`, `source`, `layer`, `raster`, `palette`, `tile_set`, `tile_map`, `effect_chain` |

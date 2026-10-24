@@ -20,6 +20,6 @@ Angles are degrees, not radians, matching `fovYDegrees` on [`rig.spatial.camera`
 
 Sweep runs from start to end in increasing angle. An end angle below the start wraps past 360; the values are not normalized, so a 720-degree sweep is a legal double loop and a host that cannot draw one clamps rather than takes the modulus.
 
-Full axis-aligned ellipses (no start/end span) use [`rig.geometry.ellipse`](ellipse.md). Freeform resolved strokes use [`rig.geometry.path`](path.md) - do not put circular or elliptical arcs on path.
+Full axis-aligned ellipses (no start/end span) use [`rig.geometry.ellipse`](ellipse.md). A freeform contour that contains an endpoint arc uses [`rig.geometry.path`](path.md) `arc-to`. Do not put both this primitive and a path on the same contour.
 
 Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md).

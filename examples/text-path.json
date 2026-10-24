@@ -1,0 +1,83 @@
+{
+  "rig": "0.40.0",
+  "document": {
+    "title": "Text path",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "face",
+      "components": {
+        "rig.meta.named": { "name": "Roboto", "stableId": "face" },
+        "rig.media.asset_ref": {
+          "kind": "font",
+          "path": "fonts/Roboto-Regular.ttf"
+        },
+        "rig.media.font_face": {
+          "family": "Roboto",
+          "asset": "face"
+        }
+      }
+    },
+    {
+      "id": "baseline",
+      "components": {
+        "rig.meta.named": { "name": "baseline", "stableId": "baseline" },
+        "rig.geometry.path": {
+          "fillRule": "nonzero",
+          "commands": [
+            { "type": "move-to", "point": [20, 80] },
+            {
+              "type": "arc-to",
+              "point": [180, 80],
+              "radiusX": 80,
+              "radiusY": 40,
+              "xAxisRotationDegrees": 0,
+              "largeArc": false,
+              "sweep": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clip-shape",
+      "components": {
+        "rig.meta.named": { "name": "clip", "stableId": "clip-shape" },
+        "rig.geometry.path": {
+          "commands": [
+            { "type": "move-to", "point": [0, 0] },
+            { "type": "line-to", "point": [200, 0] },
+            { "type": "line-to", "point": [200, 120] },
+            { "type": "line-to", "point": [0, 120] },
+            { "type": "close" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "run",
+      "components": {
+        "rig.meta.named": { "name": "Hello", "stableId": "run" },
+        "rig.media.text": {
+          "text": "Hello",
+          "font": "face",
+          "fontSize": 24,
+          "anchor": "start"
+        },
+        "rig.media.text_path": {
+          "path": "baseline",
+          "startOffset": 8
+        },
+        "rig.paint.fill_stroke": {
+          "fillRgba": [0, 0, 0, 1],
+          "hasFill": true,
+          "hasStroke": false
+        },
+        "rig.paint.clip": {
+          "path": "clip-shape"
+        }
+      }
+    }
+  ]
+}

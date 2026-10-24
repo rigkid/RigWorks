@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.paint.pattern.schema.json",
+  "title": "rig.paint.pattern",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "width": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "height": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "units": {
+      "type": "string",
+      "enum": [
+        "object",
+        "user-space"
+      ]
+    },
+    "contentUnits": {
+      "type": "string",
+      "enum": [
+        "object",
+        "user-space"
+      ]
+    }
+  },
+  "required": [
+    "width",
+    "height"
+  ]
+}

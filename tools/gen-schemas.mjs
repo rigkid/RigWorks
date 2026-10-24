@@ -97,6 +97,10 @@ add(
   }
 );
 
+add("rig.spatial.instance", {
+  source: ref("entity"),
+}, { required: ["source"] });
+
 add(
   "rig.spatial.vertex",
   {},
@@ -1626,10 +1630,15 @@ const pathCommand = {
   additionalProperties: false,
   required: ["type"],
   properties: {
-    type: enumOf(["move-to", "line-to", "cubic-to", "quad-to", "close"]),
+    type: enumOf(["move-to", "line-to", "cubic-to", "quad-to", "close", "arc-to"]),
     point: ref("vec2"),
     control1: ref("vec2"),
     control2: ref("vec2"),
+    radiusX: ref("float"),
+    radiusY: ref("float"),
+    xAxisRotationDegrees: ref("float"),
+    largeArc: ref("bool"),
+    sweep: ref("bool"),
   },
 };
 
@@ -1808,6 +1817,7 @@ add("rig.paint.gradient", {
   },
   start: ref("vec2"),
   end: ref("vec2"),
+  spread: enumOf(["pad", "repeat", "mirror"]),
 }, { required: ["kind", "stops"] });
 
 // Paint by reference — several drawables sharing one paint entity. The inline
@@ -1850,7 +1860,82 @@ add("rig.paint.stroke_style", {
   miterLimit: ref("float"),
   dash: { type: "array", items: ref("float") },
   dashOffset: ref("float"),
+  vectorEffect: enumOf(["none", "non-scaling-stroke"]),
 }, { required: [] });
+
+// Paint order on a drawable. Absent = fill, then stroke, then markers.
+add("rig.paint.order", {
+  layers: { type: "array", items: enumOf(["fill", "stroke", "markers"]) },
+}, { required: [] });
+
+add("rig.paint.clip", {
+  path: ref("entity"),
+}, { required: ["path"] });
+
+add("rig.paint.mask", {
+  source: ref("entity"),
+  channel: enumOf(["luminance", "alpha"]),
+}, { required: ["source"] });
+
+add("rig.paint.markers", {
+  start: ref("entity"),
+  mid: ref("entity"),
+  end: ref("entity"),
+}, { required: [] });
+
+add("rig.paint.marker", {
+  width: ref("float"),
+  height: ref("float"),
+  ref: ref("vec2"),
+  orient: enumOf(["auto", "auto-start-reverse", "angle"]),
+  orientDegrees: ref("float"),
+  units: enumOf(["stroke-width", "user-space"]),
+}, { required: [] });
+
+add("rig.paint.pattern", {
+  width: ref("float"),
+  height: ref("float"),
+  units: enumOf(["object", "user-space"]),
+  contentUnits: enumOf(["object", "user-space"]),
+}, { required: ["width", "height"] });
+
+// Drawable points at a filter entity with `filter`. The filter entity
+// itself may carry primitiveUnits (absent = user-space).
+add("rig.paint.filter", {
+  filter: ref("entity"),
+  primitiveUnits: enumOf(["user-space", "object"]),
+}, { required: [] });
+
+add("rig.paint.filter_step", {
+  kind: enumOf([
+    "blend",
+    "color-matrix",
+    "component-transfer",
+    "composite",
+    "convolve",
+    "diffuse-light",
+    "displacement",
+    "drop-shadow",
+    "flood",
+    "blur",
+    "image",
+    "merge",
+    "morphology",
+    "offset",
+    "specular-light",
+    "tile",
+    "turbulence",
+  ]),
+  in: ref("string"),
+  in2: ref("string"),
+  stdDeviation: ref("float"),
+  offset: ref("vec2"),
+  values: { type: "array", items: ref("float") },
+  operator: enumOf(["over", "in", "out", "atop", "xor", "arithmetic", "erode", "dilate"]),
+  radius: ref("float"),
+  rgba: ref("rgba"),
+  asset: ref("entity"),
+}, { required: ["kind"] });
 
 // --- meta / render ---
 add("rig.meta.named", {
@@ -2272,6 +2357,19 @@ const textAxis = {
     value: ref("float"),
   },
 };
+const textPlacement = {
+  type: "object",
+  additionalProperties: false,
+  required: ["index"],
+  properties: {
+    index: ref("int"),
+    x: ref("float"),
+    y: ref("float"),
+    dx: ref("float"),
+    dy: ref("float"),
+    rotateDegrees: ref("float"),
+  },
+};
 add("rig.media.text", {
   text: ref("string"),
   font: ref("entity"),
@@ -2279,7 +2377,29 @@ add("rig.media.text", {
   axes: { type: "array", items: textAxis },
   features: ref("string"),
   useKerning: ref("bool"),
+  tracking: ref("float"),
+  anchor: enumOf(["start", "middle", "end"]),
+  writingMode: enumOf(["horizontal-tb", "vertical-rl", "vertical-lr"]),
+  direction: enumOf(["ltr", "rtl"]),
+  baseline: enumOf(["auto", "alphabetic", "middle", "hanging", "ideographic", "central"]),
+  placements: { type: "array", items: textPlacement },
 }, { required: ["text"] });
+
+add("rig.media.text_path", {
+  path: ref("entity"),
+  startOffset: ref("float"),
+  startOffsetMode: enumOf(["length", "ratio"]),
+  method: enumOf(["align", "stretch"]),
+  spacing: enumOf(["auto", "exact"]),
+  side: enumOf(["left", "right"]),
+}, { required: ["path"] });
+
+add("rig.media.font_face", {
+  family: ref("string"),
+  asset: ref("entity"),
+  weight: ref("float"),
+  style: enumOf(["normal", "italic"]),
+}, { required: ["family", "asset"] });
 
 // Defaults: language absent = plain text, readOnly false.
 add("rig.media.code", {

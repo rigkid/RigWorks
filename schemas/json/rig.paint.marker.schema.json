@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.paint.marker.schema.json",
+  "title": "rig.paint.marker",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "width": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "height": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "ref": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
+    },
+    "orient": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "auto-start-reverse",
+        "angle"
+      ]
+    },
+    "orientDegrees": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "units": {
+      "type": "string",
+      "enum": [
+        "stroke-width",
+        "user-space"
+      ]
+    }
+  }
+}

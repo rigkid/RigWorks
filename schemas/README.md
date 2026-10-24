@@ -73,6 +73,7 @@ A scene is a root (unparented) [`rig.spatial.vertex`](spatial/vertex.md). [`rig.
 | `rig.spatial.group` | [spatial/group.md](spatial/group.md) |
 | `rig.spatial.camera` | [spatial/camera.md](spatial/camera.md) |
 | `rig.spatial.layer` | [spatial/layer.md](spatial/layer.md) |
+| `rig.spatial.instance` | [spatial/instance.md](spatial/instance.md) |
 
 ### Layout
 
@@ -254,6 +255,14 @@ Encounters, observations, imaging studies, and trials. FHIR and DICOM files stay
 | `rig.paint.stroke_style` | [paint/stroke-style.md](paint/stroke-style.md) |
 | `rig.paint.library` | [paint/library.md](paint/library.md) |
 | `rig.paint.brush` | [paint/brush.md](paint/brush.md) |
+| `rig.paint.order` | [paint/order.md](paint/order.md) |
+| `rig.paint.clip` | [paint/clip.md](paint/clip.md) |
+| `rig.paint.mask` | [paint/mask.md](paint/mask.md) |
+| `rig.paint.markers` | [paint/markers.md](paint/markers.md) |
+| `rig.paint.marker` | [paint/marker.md](paint/marker.md) |
+| `rig.paint.pattern` | [paint/pattern.md](paint/pattern.md) |
+| `rig.paint.filter` | [paint/filter.md](paint/filter.md) |
+| `rig.paint.filter_step` | [paint/filter-step.md](paint/filter-step.md) |
 
 ### CAD / solids
 
@@ -353,6 +362,8 @@ Thin OpenBIM layer - IFC class is a string on `classify`, not one schema per `If
 |----|-----|
 | `rig.media.asset_ref` | [media/asset-ref.md](media/asset-ref.md) |
 | `rig.media.text` | [media/text.md](media/text.md) |
+| `rig.media.text_path` | [media/text-path.md](media/text-path.md) |
+| `rig.media.font_face` | [media/font-face.md](media/font-face.md) |
 | `rig.media.code` | [media/code.md](media/code.md) |
 
 ### Font (UFO / variable)

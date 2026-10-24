@@ -8,3 +8,6 @@ Shared gradient paint (optional library entity).
 | `stops` | {t:float, rgba:vec4}[] | Sorted t in 0-1 |
 | `start` | vec2 | Optional. Start / center; absent = (0, 0) in object space |
 | `end` | vec2 | Optional. End / radius hint; absent = (1, 0) in object space |
+| `spread` | enum | Optional. `pad` / `repeat` / `mirror`; absent = `pad` |
+
+A gradient transform is [`rig.spatial.transform`](../spatial/transform.md) on this entity. Do not add a matrix field.

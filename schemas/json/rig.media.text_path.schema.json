@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.media.text_path.schema.json",
+  "title": "rig.media.text_path",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "path": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "startOffset": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "startOffsetMode": {
+      "type": "string",
+      "enum": [
+        "length",
+        "ratio"
+      ]
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "align",
+        "stretch"
+      ]
+    },
+    "spacing": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "exact"
+      ]
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "left",
+        "right"
+      ]
+    }
+  },
+  "required": [
+    "path"
+  ]
+}

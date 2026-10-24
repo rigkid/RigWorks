@@ -32,6 +32,13 @@
     },
     "dashOffset": {
       "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "vectorEffect": {
+      "type": "string",
+      "enum": [
+        "none",
+        "non-scaling-stroke"
+      ]
     }
   }
 }

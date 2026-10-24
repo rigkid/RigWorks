@@ -14,8 +14,14 @@ An editable UFO source face is [`rig.font.face`](../font/face.md) - do not put o
 | `axes` | axis[] | Optional. OpenType variable-font axis values; absent = font defaults |
 | `features` | string | Optional. Comma-separated OpenType feature tags (e.g. `liga,ss01`); absent = host default |
 | `useKerning` | bool | Optional. Apply kerning; absent = true |
+| `tracking` | float | Optional. Letter-spacing in thousandths of an em; absent = 0 |
+| `anchor` | enum | Optional. `start` / `middle` / `end`; absent = `start` |
+| `writingMode` | enum | Optional. `horizontal-tb` / `vertical-rl` / `vertical-lr`; absent = `horizontal-tb` |
+| `direction` | enum | Optional. `ltr` / `rtl`; absent = `ltr` |
+| `baseline` | enum | Optional. `auto` / `alphabetic` / `middle` / `hanging` / `ideographic` / `central`; absent = `auto` |
+| `placements` | object[] | Optional. Authored per-character slots (`index` plus optional `x` / `y` / `dx` / `dy` / `rotateDegrees`). Glyph positions the host computes stay a cache |
 
-Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md) or [`rig.paint.fill`](../paint/fill.md) on the same entity - do not re-declare colour here. Absent paint means host default (typically black).
+Appearance: [`rig.paint.fill_stroke`](../paint/fill-stroke.md) or [`rig.paint.fill`](../paint/fill.md) on the same entity - do not re-declare colour here. Absent paint means host default (typically black). A run that follows a contour composes [`rig.media.text_path`](text-path.md). A styled child run is another `rig.media.text` entity, not a bag on this one.
 
 ## Axis
 

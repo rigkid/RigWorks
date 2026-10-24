@@ -38,6 +38,73 @@
     },
     "useKerning": {
       "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "tracking": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "anchor": {
+      "type": "string",
+      "enum": [
+        "start",
+        "middle",
+        "end"
+      ]
+    },
+    "writingMode": {
+      "type": "string",
+      "enum": [
+        "horizontal-tb",
+        "vertical-rl",
+        "vertical-lr"
+      ]
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "ltr",
+        "rtl"
+      ]
+    },
+    "baseline": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "alphabetic",
+        "middle",
+        "hanging",
+        "ideographic",
+        "central"
+      ]
+    },
+    "placements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "index"
+        ],
+        "properties": {
+          "index": {
+            "$ref": "./_defs.schema.json#/$defs/int"
+          },
+          "x": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "y": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "dx": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "dy": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "rotateDegrees": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          }
+        }
+      }
     }
   },
   "required": [

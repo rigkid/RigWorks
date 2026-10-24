@@ -38,6 +38,14 @@
     },
     "end": {
       "$ref": "./_defs.schema.json#/$defs/vec2"
+    },
+    "spread": {
+      "type": "string",
+      "enum": [
+        "pad",
+        "repeat",
+        "mirror"
+      ]
     }
   },
   "required": [

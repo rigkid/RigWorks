@@ -21,7 +21,8 @@
               "line-to",
               "cubic-to",
               "quad-to",
-              "close"
+              "close",
+              "arc-to"
             ]
           },
           "point": {
@@ -32,6 +33,21 @@
           },
           "control2": {
             "$ref": "./_defs.schema.json#/$defs/vec2"
+          },
+          "radiusX": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "radiusY": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "xAxisRotationDegrees": {
+            "$ref": "./_defs.schema.json#/$defs/float"
+          },
+          "largeArc": {
+            "$ref": "./_defs.schema.json#/$defs/bool"
+          },
+          "sweep": {
+            "$ref": "./_defs.schema.json#/$defs/bool"
           }
         }
       }

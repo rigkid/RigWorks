@@ -11,5 +11,6 @@ Compose on the same entity as [`rig.paint.fill_stroke`](fill-stroke.md) or [`rig
 | `miterLimit` | float | Optional. Miter cut-off (SVG / canvas); absent = 4. Meaningful when `join` is miter; hosts that do not ship a limiter still accept and ignore it |
 | `dash` | float[] | Optional. On/off lengths in content units; absent or empty = solid |
 | `dashOffset` | float | Optional. Dash phase in content units; absent = 0 |
+| `vectorEffect` | enum | Optional. `none` / `non-scaling-stroke`; absent = `none` |
 
 Do not grow [`rig.paint.fill_stroke`](fill-stroke.md) with these fields. Do not put them on the paint entity ([`rig.paint.solid`](solid.md) / [`rig.paint.gradient`](gradient.md)).

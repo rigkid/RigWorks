@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.paint.filter_step.schema.json",
+  "title": "rig.paint.filter_step",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "blend",
+        "color-matrix",
+        "component-transfer",
+        "composite",
+        "convolve",
+        "diffuse-light",
+        "displacement",
+        "drop-shadow",
+        "flood",
+        "blur",
+        "image",
+        "merge",
+        "morphology",
+        "offset",
+        "specular-light",
+        "tile",
+        "turbulence"
+      ]
+    },
+    "in": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "in2": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "stdDeviation": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "offset": {
+      "$ref": "./_defs.schema.json#/$defs/vec2"
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "$ref": "./_defs.schema.json#/$defs/float"
+      }
+    },
+    "operator": {
+      "type": "string",
+      "enum": [
+        "over",
+        "in",
+        "out",
+        "atop",
+        "xor",
+        "arithmetic",
+        "erode",
+        "dilate"
+      ]
+    },
+    "radius": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "rgba": {
+      "$ref": "./_defs.schema.json#/$defs/rgba"
+    },
+    "asset": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "kind"
+  ]
+}

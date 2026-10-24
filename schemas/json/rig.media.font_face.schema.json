@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.media.font_face.schema.json",
+  "title": "rig.media.font_face",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "family": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "asset": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "weight": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "style": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "italic"
+      ]
+    }
+  },
+  "required": [
+    "family",
+    "asset"
+  ]
+}
