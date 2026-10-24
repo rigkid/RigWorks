@@ -1,5 +1,5 @@
 {
-  "name": "rig-validate",
+  "name": "@rigworks/rig-validate",
   "version": "1.0.0",
   "private": false,
   "description": "Scaffold and validate Rig documents.",

@@ -3,9 +3,9 @@
 Scaffold and validate Rig documents. JSON is the wire format. On disk that is `.rig`, or `.rigz` (a ZIP of one root `.rig` plus a `data/` folder; `data/` may contain further `.rig` files) - [interchange](../../docs/interchange.md#package).
 
 ```bash
-npx rig-validate init my-scene
-npx rig-validate validate my-scene/scene.rig
-npx rig-validate --strict path/to/doc.json
+npx @rigworks/rig-validate init my-scene
+npx @rigworks/rig-validate validate my-scene/scene.rig
+npx @rigworks/rig-validate --strict path/to/doc.json
 ```
 
 ## In CI (GitHub Action)
