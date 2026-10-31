@@ -79,7 +79,7 @@ Rig + UI does **not** require a particular UI pack, dock model, or GPU editor. T
 
 | Pack / host | Role |
 |-------------|------|
-| RigKit + **rigImGui** | Default author UI: dock layout, windows, Properties over `GetProperties()` - a host that speaks Rig, not "the Rig implementation" |
+| RigKit + **rigImGui** | Default author UI: dock layout, windows, Properties over `GetProperties()`. Presents visible `rig.ui.*` (`CUiPanel` / group / control / action). A host that speaks Rig, not "the Rig implementation" |
 | Other UI packs | May implement the same seam |
 | Show / headless | No UI - Rig only |
 

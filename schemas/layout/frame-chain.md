@@ -14,6 +14,9 @@ fields:
   - name: "master"
     ref: "entity"
     meaning: "Optional. rig.layout.master used when auto-adding pages"
+  - name: "fixed"
+    type: "boolean"
+    meaning: "Optional. True = authored frames only: overflow past the last frame stays overset, no pages added"
 ---
 # `rig.layout.frame_chain`
 
@@ -26,6 +29,7 @@ When frames fill, a host may append pages from `master` and add frames. Absent c
 | `story` | entity | [`rig.story.flow`](../story/flow.md) being threaded |
 | `frames` | entity[] | Optional. [`rig.layout.frame`](frame.md) entities in flow order |
 | `master` | entity | Optional. [`rig.layout.master`](master.md) used when auto-adding pages |
+| `fixed` | boolean | Optional. Authored frames only: when the last frame fills the text stays overset and the host adds no page. A fixed layout (an imported cover, a poster) sets it |
 
 Do not store overflow text here - that is fulfillment state. Previous/next pointers are this array, not fields on the frame.
 

@@ -16,6 +16,9 @@
     },
     "master": {
       "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "fixed": {
+      "type": "boolean"
     }
   },
   "required": [
