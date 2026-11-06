@@ -172,7 +172,9 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | [docs/kicad.md](docs/kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*`; round trip merges onto the source file |
 | [docs/openbim.md](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
 | [docs/print.md](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page |
+| [docs/spine.md](docs/spine.md) | Spine skeleton JSON to existing animation / mesh schemas; encodings are fulfillment |
 | [docs/ufo.md](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
+| [docs/usd.md](docs/usd.md) | OpenUSD composed stage to existing spatial / mesh / render schemas; encodings are fulfillment |
 
 | Domain mappings | |
 |-----------------|--|

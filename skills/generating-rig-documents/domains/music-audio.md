@@ -1,6 +1,6 @@
 # Music, audio, animation, modulation
 
-Load for: transport, sequencers, notes, audio buses/voices, analysis, LFO/binding, tweens, clips, skeletons, visualizers. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/music-chord.json`](../../../examples/music-chord.json), [`examples/lfo-binding.json`](../../../examples/lfo-binding.json), [`examples/visualizer.json`](../../../examples/visualizer.json).
+Load for: transport, sequencers, notes, audio buses/voices, analysis, LFO/binding, tweens, clips, skeletons, visualizers. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/music-chord.json`](../../../examples/music-chord.json), [`examples/lfo-binding.json`](../../../examples/lfo-binding.json), [`examples/visualizer.json`](../../../examples/visualizer.json), [`examples/play-scene.json`](../../../examples/play-scene.json). Spine files stay a host encoding: [`docs/spine.md`](../../../docs/spine.md).
 
 ## Compose
 

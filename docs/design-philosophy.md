@@ -29,7 +29,7 @@ This page is the tablet. It states what Rig optimises for and where its boundari
 
 ## Encoding
 
-The portable wire is **JSON** ([`rig.document`](../schemas/document.md), [interchange](interchange.md)). On disk that JSON is a `.rig` file, or a `.rigz` ZIP when sidecar files travel in `data/`. Other on-disk encodings (OpenBIM, UFO, IDML, SVG) are host mappings at the boundary.
+The portable wire is **JSON** ([`rig.document`](../schemas/document.md), [interchange](interchange.md)). On disk that JSON is a `.rig` file, or a `.rigz` ZIP when sidecar files travel in `data/`. Other on-disk encodings (OpenBIM, UFO, IDML, SVG, Spine, OpenUSD) are host mappings at the boundary.
 
 ## Next
 

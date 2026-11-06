@@ -17,7 +17,7 @@ This file is the **router**. Load it, pick **one** domain slice (two only when t
 
 | Task mentions | Load |
 |---|---|
-| scene, shape, drawing, transform, mesh, paint, light, camera | [domains/scene.md](domains/scene.md) |
+| scene, shape, drawing, transform, mesh, paint, light, camera, USD, OpenUSD | [domains/scene.md](domains/scene.md) |
 | page, layout, story, text frame, paragraph style | [domains/layout-story.md](domains/layout-story.md) |
 | font, glyph, UFO, variable font | [domains/font.md](domains/font.md) |
 | music, chord, sequencer, audio, LFO, animation, tween | [domains/music-audio.md](domains/music-audio.md) |

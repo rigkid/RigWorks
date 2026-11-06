@@ -40,7 +40,9 @@ Schemas live in [`../schemas/`](../schemas/); worked documents in [`../examples/
 | [kicad.md](kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*` |
 | [openbim.md](openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
 | [print.md](print.md) | FGF / pellet to `rig.print.*` |
+| [spine.md](spine.md) | Spine skeleton JSON to existing animation / mesh schemas; no `rig.spine.*` |
 | [ufo.md](ufo.md) | UFO / GLIF to `rig.font.*` |
+| [usd.md](usd.md) | OpenUSD composed stage to existing spatial / mesh / render schemas; no `rig.usd.*` |
 
 ## Domain mappings
 

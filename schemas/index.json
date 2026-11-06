@@ -4826,6 +4826,12 @@
           "type": "entity",
           "required": false,
           "meaning": "Optional. rig.layout.master used when auto-adding pages"
+        },
+        {
+          "name": "fixed",
+          "type": "boolean",
+          "required": false,
+          "meaning": "Optional. True = authored frames only: overflow past the last frame stays overset, no pages added"
         }
       ]
     },

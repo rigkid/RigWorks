@@ -37,6 +37,7 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`docs/interchange.md`](docs/interchange.md) | Wire format + `.rig` / `.rigz` package |
 | [`docs/openbim.md`](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
 | [`docs/ufo.md`](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
+| [`docs/usd.md`](docs/usd.md) | OpenUSD composed stage to existing spatial / mesh / render schemas; encodings are fulfillment |
 | [`docs/idml.md`](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
 | [`docs/ros.md`](docs/ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |
 | [`docs/robot.md`](docs/robot.md) | Design, simulate, test, and train robots; solvers and trainers are fulfillment |
@@ -44,6 +45,7 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`docs/dev.md`](docs/dev.md) | Dev machines to `rig.dev.machine` / `rig.dev.op`; fulfillments e.g. [RigDev](https://github.com/rigkid/RigDev) |
 | [`docs/kicad.md`](docs/kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*`; round trip merges onto the source file |
 | [`docs/print.md`](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page |
+| [`docs/spine.md`](docs/spine.md) | Spine skeleton JSON to existing animation / mesh schemas; encodings are fulfillment |
 | [`docs/records.md`](docs/records.md) | Payments, encounters, catalog rows, and case files; encodings are fulfillment |
 | [`docs/terms.md`](docs/terms.md) | Contract vs fulfillment, host, pack, POD |
 | [`docs/versioning.md`](docs/versioning.md) | SemVer ranges + history (`VERSION`) |

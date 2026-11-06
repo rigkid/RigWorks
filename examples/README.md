@@ -56,6 +56,7 @@ node tools/rig-validate/cli.js examples/coverage/pixel-layers.json
 node tools/rig-validate/cli.js examples/layout-grid.json
 node tools/rig-validate/cli.js examples/cad-solids.json
 node tools/rig-validate/cli.js examples/show-control.json
+node tools/rig-validate/cli.js examples/usd-stage.json
 ```
 
 ## SUDE sketch
@@ -248,6 +249,10 @@ Three lamps: directional (local −Z), point with `range`, spot with inner/outer
 
 One image-based light. `hdri` is a [`rig.media.asset_ref`](../schemas/media/asset-ref.md) (`kind` `image`, lat-long Radiance file). Absent `intensity` is 1. Decode and spherical-harmonic coefficients stay in the host.
 
+## `usd-stage.json`
+
+A composed OpenUSD stage as ordinary scene entities: a world vertex, a cube mesh with a PreviewSurface material, a camera, a distant light, a dome, an internal instance of the cube, a hidden locator, and an `asset_ref` (`kind` `model`) for the source `.usda`. Layers, variants, and references stay in that file - [docs/usd.md](../docs/usd.md).
+
 ## `text-path.json`
 
 A canvas run on an `arc-to` baseline, clipped to a rectangle, with `@font-face` as [`rig.media.font_face`](../schemas/media/font-face.md). The path stays its own entity. Colour is paint.
@@ -369,7 +374,7 @@ A stage with a floor polygon, a headset (IPD, refresh, per-eye pixels), and two 
 
 ## `play-scene.json`
 
-A small play scene: a dynamic ball on a hinge, a kinematic hero with health and a walk clip, a navmesh, a particle burst, sticks and a key binding, a spatial voice, a behavior action, an inventory, a spawner, a save slot, a network id, and a HUD bound to health. Contact manifolds, live particles, and the solved path are not in the file.
+A small play scene: a dynamic ball on a hinge, a kinematic hero with health and a walk clip, a navmesh, a particle burst, sticks and a key binding, a spatial voice, a behavior action, an inventory, a spawner, a save slot, a network id, and a HUD bound to health. Contact manifolds, live particles, and the solved path are not in the file. Spine skeleton JSON maps onto the same skeleton / clip / skin ids - [docs/spine.md](../docs/spine.md).
 
 ## `node-graph.json`
 
