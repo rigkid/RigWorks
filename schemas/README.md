@@ -355,6 +355,8 @@ Thin OpenBIM layer - IFC class is a string on `classify`, not one schema per `If
 
 ### Music
 
+Tempo, a key, a chord, and a part, in the words a player uses - [music.md](../docs/music.md). Pitch is a MIDI number (60 is C4). Intervals are semitones from that pitch. The scale names a collection; it does not transpose the steps.
+
 | Id | Doc |
 |----|-----|
 | `rig.music.transport` | [music/transport.md](music/transport.md) |
@@ -366,6 +368,17 @@ Thin OpenBIM layer - IFC class is a string on `classify`, not one schema per `If
 | `rig.music.note` | [music/note.md](music/note.md) |
 | `rig.music.midi_output` | [music/midi-output.md](music/midi-output.md) |
 | `rig.music.midi_input` | [music/midi-input.md](music/midi-input.md) |
+
+### Synth
+
+A voice built from blocks. Each block is its own entity. Audio moves through `input`. Modulation moves through [`rig.mod.binding`](mod/binding.md). The panel is [`rig.modular.*`](modular/module.md). A drawing filter is [`rig.paint.filter`](paint/filter.md). A clip is [`rig.audio.voice`](audio/voice.md). Human words: [music.md](../docs/music.md).
+
+| Id | Doc |
+|----|-----|
+| `rig.synth.oscillator` | [synth/oscillator.md](synth/oscillator.md) |
+| `rig.synth.filter` | [synth/filter.md](synth/filter.md) |
+| `rig.synth.amplifier` | [synth/amplifier.md](synth/amplifier.md) |
+| `rig.synth.envelope` | [synth/envelope.md](synth/envelope.md) |
 
 ### Audio
 
@@ -463,11 +476,26 @@ Electrical meaning - parts, physical terminals, nets - is `rig.circuit.*`, share
 | `rig.pcb.zone` | [pcb/zone.md](pcb/zone.md) |
 | `rig.pcb.keepout` | [pcb/keepout.md](pcb/keepout.md) |
 
+### Modular
+
+Faceplates, patch jacks, and supply rails. EuroSynth and Eurorack are published numbers on these ids - [eurosynth.md](../docs/eurosynth.md). A jack is not a [`rig.circuit.pin`](circuit/pin.md); the power header's contacts are.
+
+| Id | Doc |
+|----|-----|
+| `rig.modular.case` | [modular/case.md](modular/case.md) |
+| `rig.modular.module` | [modular/module.md](modular/module.md) |
+| `rig.modular.port` | [modular/port.md](modular/port.md) |
+| `rig.modular.power` | [modular/power.md](modular/power.md) |
+| `rig.modular.rail` | [modular/rail.md](modular/rail.md) |
+
 ### I/O
 
 | Id | Doc |
 |----|-----|
 | `rig.io.osc` | [io/osc.md](io/osc.md) |
+| `rig.io.wifi` | [io/wifi.md](io/wifi.md) |
+| `rig.io.espnow` | [io/espnow.md](io/espnow.md) |
+| `rig.io.bluetooth` | [io/bluetooth.md](io/bluetooth.md) |
 | `rig.io.serial` | [io/serial.md](io/serial.md) |
 | `rig.io.sacn` | [io/sacn.md](io/sacn.md) |
 | `rig.io.dmx` | [io/dmx.md](io/dmx.md) |
@@ -584,6 +612,8 @@ Hit points, items, spawn, and a save slot. Rules that change them stay in the ho
 
 ### Node graph
 
+An artist patcher. Pure Data and Max map onto these ids - [pd.md](../docs/pd.md). A ROS node, a circuit terminal, a Eurorack jack, and a synth voice are other graphs.
+
 | Id | Doc |
 |----|-----|
 | `rig.node.graph` | [node/graph.md](node/graph.md) |
@@ -605,6 +635,7 @@ Hit points, items, spawn, and a save slot. Rules that change them stay in the ho
 | Tile map | `tileSet` | [`pixel.tile_map`](pixel/tile-map.md) via [`pixel.tile_set`](pixel/tile-set.md) via [`pixel.palette`](pixel/palette.md) |
 | Node editor | `nested` on a node | [`node.node`](node/node.md) + [`node.publish`](node/publish.md) |
 | Song arrangement | frame `patterns` | [`music.arrangement`](music/arrangement.md) via [`music.pattern`](music/pattern.md) (by `lane`) |
+| Synth voice | `input` | [`synth.filter`](synth/filter.md) and [`synth.amplifier`](synth/amplifier.md) read one source. Modulation is [`mod.binding`](mod/binding.md) |
 | Control surface | `panel` / optional `group` | [`ui.panel`](ui/panel.md) + [`ui.group`](ui/group.md) + [`ui.control`](ui/control.md) / [`ui.action`](ui/action.md) |
 | CSG tree | `operands` | [`cad.boolean`](cad/boolean.md) via cad primitives / mesh solids (not `spatial.relationship`) |
 | Story flow | `blocks` | [`story.flow`](story/flow.md) via [`story.paragraph`](story/paragraph.md) / [`story.table`](story/table.md) |

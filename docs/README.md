@@ -36,9 +36,11 @@ Schemas live in [`../schemas/`](../schemas/); worked documents in [`../examples/
 
 | Doc | Mapping |
 |-----|---------|
+| [blender.md](blender.md) | Blender evaluated scene to existing spatial / mesh / render / animation schemas; no `rig.blender.*` |
 | [idml.md](idml.md) | IDML to `rig.layout.frame` + layout / story |
 | [kicad.md](kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*` |
 | [openbim.md](openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
+| [pd.md](pd.md) | Pure Data and Max patches to `rig.node.*`; a `.pd` round trip merges onto the source file |
 | [print.md](print.md) | FGF / pellet to `rig.print.*` |
 | [spine.md](spine.md) | Spine skeleton JSON to existing animation / mesh schemas; no `rig.spine.*` |
 | [ufo.md](ufo.md) | UFO / GLIF to `rig.font.*` |
@@ -49,6 +51,8 @@ Schemas live in [`../schemas/`](../schemas/); worked documents in [`../examples/
 | Doc | Mapping |
 |-----|---------|
 | [dev.md](dev.md) | Dev machines to `rig.dev.machine` / `rig.dev.op` |
+| [eurosynth.md](eurosynth.md) | EuroSynth / Eurorack faceplates, jacks, and supply rails to `rig.modular.*` |
+| [music.md](music.md) | Tempo, key, chord, and part to `rig.music.*`; a voice to `rig.synth.*` |
 | [records.md](records.md) | Payments, encounters, catalog rows, and case files |
 | [robot.md](robot.md) | Design, simulate, test, and train robots |
 | [ros.md](ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |

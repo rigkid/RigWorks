@@ -1,0 +1,77 @@
+{
+  "rig": "1.4.0",
+  "document": {
+    "title": "Vanilla voice"
+  },
+  "entities": [
+    {
+      "id": "patch",
+      "components": {
+        "rig.meta.named": { "name": "Vanilla voice", "stableId": "pd-voice" },
+        "rig.node.graph": {
+          "nodes": [
+            {
+              "id": 0,
+              "typeId": "osc~",
+              "title": "osc~ 65.41",
+              "position": [40, 40],
+              "pins": [
+                { "id": 1, "name": "0", "kind": "in", "type": "float" },
+                { "id": 2, "name": "0", "kind": "out", "type": "float" }
+              ],
+              "params": [
+                { "key": "frequency", "type": "float", "f": 65.41 }
+              ]
+            },
+            {
+              "id": 1,
+              "typeId": "lop~",
+              "title": "lop~ 400",
+              "position": [40, 100],
+              "pins": [
+                { "id": 1, "name": "0", "kind": "in", "type": "float" },
+                { "id": 2, "name": "1", "kind": "in", "type": "float" },
+                { "id": 3, "name": "0", "kind": "out", "type": "float" }
+              ],
+              "params": [
+                { "key": "cutoff", "type": "float", "f": 400 }
+              ]
+            },
+            {
+              "id": 2,
+              "typeId": "*~",
+              "title": "*~ 0",
+              "position": [40, 160],
+              "pins": [
+                { "id": 1, "name": "0", "kind": "in", "type": "float" },
+                { "id": 2, "name": "1", "kind": "in", "type": "float" },
+                { "id": 3, "name": "0", "kind": "out", "type": "float" }
+              ],
+              "params": [
+                { "key": "level", "type": "float", "f": 0 }
+              ]
+            },
+            {
+              "id": 3,
+              "typeId": "dac~",
+              "title": "dac~",
+              "position": [40, 220],
+              "pins": [
+                { "id": 1, "name": "0", "kind": "in", "type": "float" },
+                { "id": 2, "name": "1", "kind": "in", "type": "float" }
+              ],
+              "params": []
+            }
+          ],
+          "links": [
+            { "id": 1, "fromNode": 0, "fromPin": 2, "toNode": 1, "toPin": 1 },
+            { "id": 2, "fromNode": 1, "fromPin": 3, "toNode": 2, "toPin": 1 },
+            { "id": 3, "fromNode": 2, "fromPin": 3, "toNode": 3, "toPin": 1 },
+            { "id": 4, "fromNode": 2, "fromPin": 3, "toNode": 3, "toPin": 2 }
+          ],
+          "nextId": 5
+        }
+      }
+    }
+  ]
+}

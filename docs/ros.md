@@ -2,7 +2,7 @@
 
 A ROS 2 host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). rmw, DDS, launch files, and bags are fulfillment - not this catalog.
 
-Unlike [OpenBIM](openbim.md), there is no `rig.ros2.*` layer. Portable meaning is spatial / I/O / sensor / [SUDE](sude.md). Product protocol names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). ROS-only fields travel as `x.ros2.*` until a second speaker needs the same meaning in the catalog.
+Unlike [OpenBIM](openbim.md), there is no `rig.ros2.*` layer. Portable meaning is spatial / I/O / sensor / [SUDE](sude.md). Product protocol names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). ROS-only fields travel as `x.ros2.*`.
 
 Design, physical simulation, tests, and training are [robot.md](robot.md). This page stays the middleware map.
 
@@ -91,7 +91,3 @@ A scan of who is up is not Contract meaning. RigKit's `x.rigkit.net_scan` / `x.r
 | Topics / services / actions | Pub/sub and RPC in Update; write portable fields from payloads |
 | `x.ros2.*` | Namespace, domain, message type, QoS - travel; do not port |
 | Bags / launch | Replay and process graph stay in the host |
-
-## Honest limit
-
-Two hosts that speak transform + relationship + the joints, drives, and sensors they share can exchange a robot pose tree and a recorded take as `.rig`. Round-tripping every ROS message type, QoS profile, discovery snapshot, and bag is not required. A host that needs the rest keeps it in ROS and maps what it understands.

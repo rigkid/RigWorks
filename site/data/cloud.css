@@ -1,0 +1,356 @@
+/* Data mode. The graph is a WebGL canvas drawn by site/data/cloud.js.
+   This file is the chrome around it: nav, search, the reading card, labels. */
+
+/* Inherits --sans / colour tokens from styles.css. */
+
+body.cloud {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  color-scheme: dark;
+  /* Solid ground — the landing wash would distract under the canvas. */
+  background: var(--bg);
+}
+
+body.cloud .cloud-bar .nav-menu .nav-links {
+  max-height: min(60vh, 24rem);
+  overflow-y: auto;
+}
+
+body.cloud::before { display: none; }
+
+body.cloud nav {
+  max-width: none;
+  margin: 0;
+  padding: 0.8rem 1.25rem 0.15rem;
+}
+
+.cloud-bar {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.cloud-bar::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: -1.6rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(11, 13, 16, 0.94) 62%, rgba(11, 13, 16, 0));
+}
+
+.cloud-bar nav,
+.cloud-bar .cloud-sub { pointer-events: auto; }
+
+.cloud-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.15rem 1.25rem 0;
+}
+
+.cloud-crumbs {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  min-height: 1.7rem;
+  padding-top: 0.45rem;
+  min-width: 0;
+}
+
+.cloud-crumbs a { color: var(--muted); }
+.cloud-crumbs a:hover { color: var(--text); text-decoration: none; }
+.cloud-crumbs .here { color: var(--text); }
+.cloud-crumbs .sep { color: var(--line); padding: 0 0.35rem; }
+
+.cloud-find { position: relative; flex: none; }
+
+.cloud-find input {
+  width: min(18rem, 42vw);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  padding: 0.45rem 0.7rem;
+}
+
+.cloud-find input:focus { outline: none; border-color: var(--accent-dim); }
+.cloud-find input::placeholder { color: #6b7484; }
+
+.cloud-find ul {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  z-index: 4;
+  margin: 0;
+  padding: 0.3rem;
+  list-style: none;
+  background: rgba(18, 21, 27, 0.97);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-width: min(22rem, 80vw);
+  max-width: min(28rem, 86vw);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.cloud-find li a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  padding: 0.38rem 0.5rem;
+  border-radius: 5px;
+  color: var(--text);
+}
+
+.cloud-find li a code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text);
+  font-size: 0.78rem;
+}
+
+.cloud-find li a:hover { background: var(--surface-2); text-decoration: none; }
+.cloud-find .hit-domain { color: var(--muted); font-size: 0.72rem; }
+.cloud-find .hit-none {
+  color: var(--muted);
+  font-size: 0.78rem;
+  padding: 0.4rem 0.5rem;
+}
+
+.cloud-stage { position: absolute; inset: 0; overflow: hidden; }
+
+#plot,
+#labels {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+#plot {
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+
+#labels { pointer-events: none; }
+
+body.cloud-ready #plot,
+body.cloud-ready #labels { opacity: 1; transition: opacity 180ms ease; }
+#plot.is-hot { cursor: pointer; }
+#plot:active { cursor: grabbing; }
+
+.cloud-card {
+  position: absolute;
+  z-index: 2;
+  left: 1rem;
+  bottom: 1rem;
+  width: min(24.5rem, calc(100vw - 2rem));
+  max-height: min(46vh, 28rem);
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+  background: rgba(18, 21, 27, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
+}
+
+.cloud-card h1 {
+  font-size: 1.12rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 620;
+  margin: 0 0 0.4rem;
+}
+
+.cloud-card h1 code,
+.field-rows a code,
+.jump a code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+}
+
+.cloud-card p { max-width: none; margin: 0 0 0.5rem; }
+
+.card-summary { color: #c3ccdb; font-size: 0.92rem; line-height: 1.5; }
+.card-meta, .card-quiet { color: var(--muted); }
+.card-meta { font-family: var(--mono); font-size: 0.74rem; }
+.card-quiet { font-size: 0.84rem; }
+.card-link { margin-top: 0.15rem; }
+.card-seen { color: var(--muted); font-size: 0.84rem; }
+.card-seen a { font-family: var(--mono); font-size: 0.88em; }
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.15rem 0 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+
+.swatch {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(64, 166, 255, 0.16);
+}
+
+.swatch.draft { opacity: 0.62; }
+.swatch.experimental {
+  background: transparent;
+  box-shadow: none;
+  border: 1.5px solid var(--accent);
+}
+
+.cloud-card details { margin-top: 0.35rem; }
+.cloud-card summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+}
+
+.jump {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.75rem;
+  padding: 0.45rem 0 0;
+  margin: 0;
+}
+
+.jump a { font-family: var(--mono); font-size: 0.76rem; }
+
+.field-rows { margin-top: 0.35rem; }
+
+.field-rows a {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.25fr);
+  gap: 0.3rem 0.6rem;
+  align-items: baseline;
+  padding: 0.32rem 0;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.84rem;
+}
+
+.field-rows a span {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  overflow-wrap: anywhere;
+}
+
+.field-rows a:hover,
+.field-rows a.is-on { text-decoration: none; }
+.field-rows a:hover code,
+.field-rows a.is-on code { color: var(--accent); }
+
+.cloud-tip {
+  position: fixed;
+  z-index: 4;
+  pointer-events: none;
+  background: rgba(11, 13, 16, 0.94);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 0.22rem 0.45rem;
+  border-radius: 5px;
+  max-width: min(24rem, 70vw);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: absolute;
+  left: 0.6rem;
+  top: -3rem;
+  z-index: 5;
+  background: var(--accent);
+  color: #04121f;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  pointer-events: auto;
+}
+
+.skip:focus { top: 0.6rem; text-decoration: none; }
+
+.cloud-index {
+  display: none;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 6.5rem 1.4rem 4rem;
+}
+
+.cloud-index h1 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin: 0 0 0.8rem;
+}
+
+.cloud-index h2 {
+  font-size: 1.02rem;
+  margin: 1.5rem 0 0.35rem;
+}
+
+.cloud-index ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.cloud-index li { break-inside: avoid; margin: 0.12rem 0; }
+
+body.cloud-failed { overflow: auto; height: auto; }
+body.cloud-failed .cloud-stage,
+body.cloud-failed .cloud-sub { display: none; }
+body.cloud-failed .cloud-index { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  #plot { transition: none; }
+}
+
+@media (max-width: 52rem) {
+  .cloud-sub { flex-direction: column; align-items: stretch; }
+  .cloud-find input { width: 100%; }
+  .cloud-card { max-height: min(32vh, 16rem); }
+  .cloud-index ul { columns: 1; }
+}

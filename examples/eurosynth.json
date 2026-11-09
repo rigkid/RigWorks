@@ -1,0 +1,310 @@
+{
+  "rig": "1.1.0",
+  "document": {
+    "title": "EuroSynth levels",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "spec",
+      "components": {
+        "rig.meta.named": { "name": "EuroSynth", "stableId": "eurosynth" }
+      }
+    },
+    {
+      "id": "case",
+      "components": {
+        "rig.meta.named": { "name": "Skiff 84", "stableId": "skiff" },
+        "rig.modular.case": {
+          "hp": 84,
+          "pitchMm": 5.08,
+          "widthMm": 426.4,
+          "rows": 1,
+          "depthMm": 60,
+          "fastener": "m3",
+          "spec": "spec"
+        }
+      }
+    },
+    {
+      "id": "rail-pos",
+      "components": {
+        "rig.meta.named": { "name": "+12V", "stableId": "pos-12" },
+        "rig.spatial.relationship": { "parent": "case", "order": 1 },
+        "rig.modular.rail": {
+          "volts": 12,
+          "toleranceMillivolts": 10,
+          "loadRegulationMillivolts": 10,
+          "noiseMillivolts": 10,
+          "noiseMinHertz": 10,
+          "noiseMaxHertz": 10000,
+          "maxImpedanceMilliohm": 10
+        }
+      }
+    },
+    {
+      "id": "rail-neg",
+      "components": {
+        "rig.meta.named": { "name": "-12V", "stableId": "neg-12" },
+        "rig.spatial.relationship": { "parent": "case", "order": 2 },
+        "rig.modular.rail": {
+          "volts": -12,
+          "toleranceMillivolts": 10,
+          "loadRegulationMillivolts": 10,
+          "noiseMillivolts": 10,
+          "noiseMinHertz": 10,
+          "noiseMaxHertz": 10000,
+          "maxImpedanceMilliohm": 10
+        }
+      }
+    },
+    {
+      "id": "rail-zero",
+      "components": {
+        "rig.meta.named": { "name": "0V", "stableId": "zero" },
+        "rig.spatial.relationship": { "parent": "case", "order": 3 },
+        "rig.modular.rail": { "volts": 0, "maxImpedanceMilliohm": 10 }
+      }
+    },
+    {
+      "id": "net-pos",
+      "components": {
+        "rig.meta.named": { "name": "+12V", "stableId": "net-pos-12" },
+        "rig.spatial.relationship": { "parent": "case" },
+        "rig.circuit.net": {}
+      }
+    },
+    {
+      "id": "net-neg",
+      "components": {
+        "rig.meta.named": { "name": "-12V", "stableId": "net-neg-12" },
+        "rig.spatial.relationship": { "parent": "case" },
+        "rig.circuit.net": {}
+      }
+    },
+    {
+      "id": "net-zero",
+      "components": {
+        "rig.meta.named": { "name": "0V", "stableId": "net-0v" },
+        "rig.spatial.relationship": { "parent": "case" },
+        "rig.circuit.net": {}
+      }
+    },
+    {
+      "id": "net-chassis",
+      "components": {
+        "rig.meta.named": { "name": "Chassis", "stableId": "net-chassis" },
+        "rig.spatial.relationship": { "parent": "case" },
+        "rig.circuit.net": {}
+      }
+    },
+    {
+      "id": "module",
+      "components": {
+        "rig.meta.named": { "name": "Levels", "stableId": "levels" },
+        "rig.spatial.relationship": { "parent": "case", "order": 1 },
+        "rig.modular.module": {
+          "hp": 8,
+          "pitchMm": 5.08,
+          "widthMm": 40.3,
+          "thicknessMm": 2.5,
+          "depthMm": 60,
+          "fastener": "m3",
+          "spec": "spec"
+        },
+        "rig.modular.power": { "header": "idc-10" }
+      }
+    },
+    {
+      "id": "header",
+      "components": {
+        "rig.meta.named": { "name": "Power", "stableId": "pwr" },
+        "rig.spatial.relationship": { "parent": "module" },
+        "rig.circuit.part": { "reference": "PWR", "value": "IDC-10" }
+      }
+    },
+    {
+      "id": "pin-1",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 1 },
+        "rig.circuit.pin": { "number": "1", "function": "-12V", "electricalType": "power-in", "net": "net-neg" }
+      }
+    },
+    {
+      "id": "pin-2",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 2 },
+        "rig.circuit.pin": { "number": "2", "function": "-12V", "electricalType": "power-in", "net": "net-neg" }
+      }
+    },
+    {
+      "id": "pin-3",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 3 },
+        "rig.circuit.pin": { "number": "3", "function": "0V", "electricalType": "power-in", "net": "net-zero" }
+      }
+    },
+    {
+      "id": "pin-4",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 4 },
+        "rig.circuit.pin": { "number": "4", "function": "0V", "electricalType": "power-in", "net": "net-zero" }
+      }
+    },
+    {
+      "id": "pin-5",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 5 },
+        "rig.circuit.pin": { "number": "5", "function": "0V", "electricalType": "power-in", "net": "net-zero" }
+      }
+    },
+    {
+      "id": "pin-6",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 6 },
+        "rig.circuit.pin": { "number": "6", "function": "0V", "electricalType": "power-in", "net": "net-zero" }
+      }
+    },
+    {
+      "id": "pin-7",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 7 },
+        "rig.circuit.pin": { "number": "7", "function": "0V", "electricalType": "power-in", "net": "net-zero" }
+      }
+    },
+    {
+      "id": "pin-8",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 8 },
+        "rig.circuit.pin": { "number": "8", "function": "0V", "electricalType": "power-in", "net": "net-zero" }
+      }
+    },
+    {
+      "id": "pin-9",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 9 },
+        "rig.circuit.pin": { "number": "9", "function": "+12V", "electricalType": "power-in", "net": "net-pos" }
+      }
+    },
+    {
+      "id": "pin-10",
+      "components": {
+        "rig.spatial.relationship": { "parent": "header", "order": 10 },
+        "rig.circuit.pin": { "number": "10", "function": "+12V", "electricalType": "power-in", "net": "net-pos" }
+      }
+    },
+    {
+      "id": "cv-in",
+      "components": {
+        "rig.meta.named": { "name": "CV", "stableId": "cv-in" },
+        "rig.spatial.relationship": { "parent": "module", "order": 1 },
+        "rig.modular.port": {
+          "direction": "in",
+          "signal": "cv",
+          "connector": "banana-4mm",
+          "impedanceOhm": 100000,
+          "lowVolts": 0,
+          "highVolts": 5,
+          "tolerance": 0.1,
+          "voltsPerOctave": 1,
+          "referencePitch": 60,
+          "referenceVolts": 2.5,
+          "minHertz": 0
+        },
+        "rig.paint.fill_stroke": { "fillRgba": [0, 0, 1, 1] }
+      }
+    },
+    {
+      "id": "cv-mod",
+      "components": {
+        "rig.meta.named": { "name": "Mod", "stableId": "cv-mod" },
+        "rig.spatial.relationship": { "parent": "module", "order": 2 },
+        "rig.modular.port": {
+          "direction": "in",
+          "signal": "cv",
+          "connector": "banana-4mm",
+          "impedanceOhm": 100000,
+          "lowVolts": -2.5,
+          "highVolts": 2.5,
+          "minHertz": 0
+        },
+        "rig.paint.fill_stroke": { "fillRgba": [0, 0, 1, 1] }
+      }
+    },
+    {
+      "id": "pitch-out",
+      "components": {
+        "rig.meta.named": { "name": "Pitch", "stableId": "pitch-out" },
+        "rig.spatial.relationship": { "parent": "module", "order": 3 },
+        "rig.modular.port": {
+          "direction": "out",
+          "signal": "cv",
+          "connector": "banana-4mm",
+          "impedanceOhm": 50,
+          "lowVolts": 0,
+          "highVolts": 5,
+          "tolerance": 0.01,
+          "voltsPerOctave": 1,
+          "referencePitch": 60,
+          "referenceVolts": 2.5,
+          "minHertz": 0
+        },
+        "rig.paint.fill_stroke": { "fillRgba": [0, 1, 0, 1] }
+      }
+    },
+    {
+      "id": "audio-out",
+      "components": {
+        "rig.meta.named": { "name": "Audio", "stableId": "audio-out" },
+        "rig.spatial.relationship": { "parent": "module", "order": 4 },
+        "rig.modular.port": {
+          "direction": "out",
+          "signal": "audio",
+          "connector": "banana-4mm",
+          "impedanceOhm": 330,
+          "lowVolts": -2.5,
+          "highVolts": 2.5,
+          "minHertz": 16
+        }
+      }
+    },
+    {
+      "id": "gate-in",
+      "components": {
+        "rig.meta.named": { "name": "Gate", "stableId": "gate-in" },
+        "rig.spatial.relationship": { "parent": "module", "order": 5 },
+        "rig.modular.port": {
+          "direction": "in",
+          "signal": "gate",
+          "connector": "banana-4mm",
+          "impedanceOhm": 100000,
+          "lowVolts": 0,
+          "highVolts": 5,
+          "tolerance": 0.1,
+          "thresholdVolts": 1.5,
+          "offBelowVolts": 1,
+          "onAboveVolts": 2,
+          "minHertz": 0
+        },
+        "rig.paint.fill_stroke": { "fillRgba": [1, 0, 0, 1] }
+      }
+    },
+    {
+      "id": "trigger-in",
+      "components": {
+        "rig.meta.named": { "name": "Trigger", "stableId": "trigger-in" },
+        "rig.spatial.relationship": { "parent": "module", "order": 6 },
+        "rig.modular.port": {
+          "direction": "in",
+          "signal": "trigger",
+          "connector": "banana-4mm",
+          "impedanceOhm": 100000,
+          "minSlewVoltsPerMicrosecond": 0.3,
+          "maxTransitionMicroseconds": 10,
+          "minHertz": 0
+        },
+        "rig.paint.fill_stroke": { "fillRgba": [1, 0, 0, 1] }
+      }
+    }
+  ]
+}

@@ -26,10 +26,12 @@ This page is the tablet. It states what Rig optimises for and where its boundari
 2. **Concept over execution.** The [Contract](terms.md) says what a transform *is* and which units it uses. A [fulfillment](terms.md) decides how to draw, play, print, or otherwise execute it this year, on this hardware.
 3. **Ship what you support.** A host that implements six schemas and ignores the rest is still Rig. Grow the catalog when a second host needs the same meaning - not before.
 4. **Portable meaning, private execution.** Portable fields use `rig.<domain>.<name>`. Host-only meaning uses `x.<vendor>.<name>` - see [extension components](../schemas/document.md#extension-components). Do not mirror a Contract component under `x.*` to add one field. Derived values and live state stay [host cache](terms.md), not document data.
+5. **The document is the evaluated picture.** When a source tool stacks up work - modifiers, node trees, composition layers, drivers - the evaluation stays in the source file and the document carries the result. Changing the stack means evaluating the source again, not editing the document into a second source. See [usd.md](usd.md) and [blender.md](blender.md).
+6. **Text is data when text is the artifact.** Scripts, markup, chapters, and registers travel as [`rig.media.code`](../schemas/media/code.md) - text plus a grammar id - not as a private file format beside the document. What a host parses out of the text is cache, or compiled POD with a stated order of truth; the same meaning never travels twice in two competing spellings.
 
 ## Encoding
 
-The portable wire is **JSON** ([`rig.document`](../schemas/document.md), [interchange](interchange.md)). On disk that JSON is a `.rig` file, or a `.rigz` ZIP when sidecar files travel in `data/`. Other on-disk encodings (OpenBIM, UFO, IDML, SVG, Spine, OpenUSD) are host mappings at the boundary.
+The portable wire is **JSON** ([`rig.document`](../schemas/document.md), [interchange](interchange.md)). On disk that JSON is a `.rig` file, or a `.rigz` ZIP when sidecar files travel in `data/`. Other on-disk encodings (OpenBIM, UFO, IDML, SVG, Spine, OpenUSD, Blender) are host mappings at the boundary. JSON is the wire because every host already has a parser for it - a different surface syntax earns its place as a boundary mapping with a lossless converter, not by replacing the envelope.
 
 ## Next
 

@@ -60,6 +60,8 @@
   "rig.meta.named": { "class": "validator", "rules": ["duplicate-stable-id"] },
   "rig.mod.binding": { "class": "fulfillment", "note": "Hosts apply bindings in Update; the document carries source, target, and scale only." },
   "rig.mod.lfo": { "class": "fulfillment", "note": "Hosts advance the oscillator; the document carries rate, shape, and depth only." },
+  "rig.modular.port": { "class": "validator", "rules": ["modular-range"] },
+  "rig.modular.rail": { "class": "validator", "rules": ["modular-range"] },
   "rig.music.clock": { "class": "schema" },
   "rig.music.transport": { "class": "schema" },
   "rig.node.graph": { "class": "schema" },

@@ -1,6 +1,6 @@
 # Why no code
 
-**A no-code creative application framework. Because no code is the best code.**
+**A shared grammar for real work. Because no code is the best code.**
 
 The short tablet - future-proof, host-independent, human-readable - is [design philosophy](design-philosophy.md). This page makes the anti-library argument behind that tablet and names what the choice costs.
 
@@ -38,7 +38,8 @@ Commercial node hosts and patchers are often called "no-code," but they **are co
 scripting, shaders, expressions, and node ABIs under a GUI. Their project formats are
 private. Rig's "no code" means the *framework* ships none - not that authoring never
 involves programming. Those apps are excellent fulfillments; Rig is what two of them
-would need to speak to exchange work.
+would need to speak to exchange work. A Pure Data patch and a Max patch do that on
+the node graph - [pd.md](pd.md).
 
 ## Railway gauge
 

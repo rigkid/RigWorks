@@ -18,7 +18,7 @@ fields:
     meaning: "all-rights-reserved / public-domain / cc0 / cc-by / cc-by-sa / cc-by-nd / cc-by-nc / cc-by-nc-sa / cc-by-nc-nd / other"
   - name: "licenceUri"
     ref: "string"
-    meaning: "Canonical licence URL"
+    meaning: "The publisher's licence URL"
   - name: "rightsStatementUri"
     ref: "string"
     meaning: "RightsStatements.org (or similar) URI"
@@ -37,7 +37,7 @@ Compose onto any entity that needs rights - an artwork, a book, a paper, a photo
 | `copyrightHolder` | entity | Person or organisation that holds copyright |
 | `copyrightYear` | int | Copyright year of this object |
 | `licence` | enum | `all-rights-reserved` / `public-domain` / `cc0` / `cc-by` / `cc-by-sa` / `cc-by-nd` / `cc-by-nc` / `cc-by-nc-sa` / `cc-by-nc-nd` / `other` |
-| `licenceUri` | string | Canonical licence URL |
+| `licenceUri` | string | The publisher's licence URL |
 | `rightsStatementUri` | string | RightsStatements.org (or similar) URI |
 | `creditLine` | string | Required credit / courtesy line |
 

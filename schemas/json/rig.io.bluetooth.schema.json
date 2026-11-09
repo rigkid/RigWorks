@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.io.bluetooth.schema.json",
+  "title": "rig.io.bluetooth",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "x-rig-maturity": "draft"
+}

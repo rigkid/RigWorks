@@ -1,17 +1,17 @@
 # RigWorks
 
 [![GitHub stars](https://img.shields.io/github/stars/rigkid/RigWorks?style=social)](https://github.com/rigkid/RigWorks/stargazers)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](docs/history.md)
+[![Version](https://img.shields.io/badge/version-1.4.0-blue)](docs/history.md)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Sponsor](https://img.shields.io/badge/sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/GitBruno)
 
 ![The geometry vocabulary - examples/minimal-scene.json drawn by the repo's own SVG fulfillment](site/scene.svg)
 
-**A no-code application framework.**  
+**A shared grammar for real work.**  
 *Because no code is the best code.*  
 **Rig** - Readable Independent Grammar.
 
-[RigWorks](https://rig.works) - **Rig** for short, and Rig in all running text - is a shared data vocabulary for applications. It is future-proof, host-independent, and human-readable: open the JSON, change a field, load it in another app. It is a framework you never install - no library to link, no runtime to embed, no API to version. It ships as agreement: a grammar of schema ids and entity/component POD documents. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
+[RigWorks](https://rig.works) - **Rig** for short, and Rig in all running text - is a shared grammar for real work. It is future-proof, host-independent, and human-readable: open the JSON, change a field, load it in another app. It is a framework you never install - no library to link, no runtime to embed, no API to version. It ships as agreement: a grammar of schema ids and entity/component POD documents. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
 
 ## It runs
 
@@ -168,9 +168,11 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 
 | Format mappings | |
 |-----------------|--|
+| [docs/blender.md](docs/blender.md) | Blender evaluated scene to existing spatial / mesh / render / animation schemas; encodings are fulfillment |
 | [docs/idml.md](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
 | [docs/kicad.md](docs/kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*`; round trip merges onto the source file |
 | [docs/openbim.md](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
+| [docs/pd.md](docs/pd.md) | Pure Data and Max patches to `rig.node.*`; a `.pd` round trip merges onto the source file |
 | [docs/print.md](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page |
 | [docs/spine.md](docs/spine.md) | Spine skeleton JSON to existing animation / mesh schemas; encodings are fulfillment |
 | [docs/ufo.md](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
@@ -179,6 +181,8 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | Domain mappings | |
 |-----------------|--|
 | [docs/dev.md](docs/dev.md) | Dev machines to `rig.dev.machine` / `rig.dev.op`; fulfillments e.g. RigDev |
+| [docs/eurosynth.md](docs/eurosynth.md) | EuroSynth / Eurorack faceplates, jacks, and supply rails to `rig.modular.*` |
+| [docs/music.md](docs/music.md) | Tempo, key, chord, and part to `rig.music.*`; a voice to `rig.synth.*` |
 | [docs/records.md](docs/records.md) | Payments, encounters, catalog rows, and case files; encodings are fulfillment |
 | [docs/robot.md](docs/robot.md) | Design, simulate, test, and train robots; solvers and trainers are fulfillment |
 | [docs/ros.md](docs/ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |

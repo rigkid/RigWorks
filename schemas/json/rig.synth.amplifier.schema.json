@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.synth.amplifier.schema.json",
+  "title": "rig.synth.amplifier",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "gain": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "input": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "x-rig-maturity": "draft"
+}

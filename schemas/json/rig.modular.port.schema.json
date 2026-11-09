@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.modular.port.schema.json",
+  "title": "rig.modular.port",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "direction": {
+      "type": "string",
+      "enum": [
+        "in",
+        "out",
+        "bidirectional"
+      ]
+    },
+    "signal": {
+      "type": "string",
+      "enum": [
+        "audio",
+        "cv",
+        "gate",
+        "trigger"
+      ]
+    },
+    "connector": {
+      "type": "string",
+      "enum": [
+        "banana-4mm",
+        "ts-3-5mm"
+      ]
+    },
+    "impedanceOhm": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "lowVolts": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "highVolts": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "tolerance": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "thresholdVolts": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "offBelowVolts": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "onAboveVolts": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "minSlewVoltsPerMicrosecond": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "maxTransitionMicroseconds": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "voltsPerOctave": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "exclusiveMinimum": 0
+    },
+    "decibelsPerVolt": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "referencePitch": {
+      "$ref": "./_defs.schema.json#/$defs/int",
+      "minimum": 0,
+      "maximum": 127
+    },
+    "referenceVolts": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "minHertz": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "direction",
+    "signal",
+    "connector"
+  ],
+  "x-rig-maturity": "draft"
+}

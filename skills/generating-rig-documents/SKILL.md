@@ -17,15 +17,15 @@ This file is the **router**. Load it, pick **one** domain slice (two only when t
 
 | Task mentions | Load |
 |---|---|
-| scene, shape, drawing, transform, mesh, paint, light, camera, USD, OpenUSD | [domains/scene.md](domains/scene.md) |
+| scene, shape, drawing, transform, mesh, paint, light, camera, USD | [domains/scene.md](domains/scene.md) |
 | page, layout, story, text frame, paragraph style | [domains/layout-story.md](domains/layout-story.md) |
 | font, glyph, UFO, variable font | [domains/font.md](domains/font.md) |
-| music, chord, sequencer, audio, LFO, animation, tween | [domains/music-audio.md](domains/music-audio.md) |
+| music, chord, sequencer, audio, LFO, animation, tween, synth | [domains/music-audio.md](domains/music-audio.md) |
 | person, address, contact, calendar, event, plant | [domains/people-calendar.md](domains/people-calendar.md) |
 | price, offer, order, invoice, payment, record, clinic, legal | [domains/commerce-records.md](domains/commerce-records.md) |
 | book, ISBN, paper, citation, artwork, rights | [domains/knowledge.md](domains/knowledge.md) |
 | BIM, IFC, BCF, IDS, CAD, solid, dimension | [domains/bim-cad.md](domains/bim-cad.md) |
-| KiCad, circuit, PCB, print, FGF, dev machine, OSC, serial, DMX | [domains/machines.md](domains/machines.md) |
+| KiCad, circuit, PCB, print, FGF, dev, OSC, serial, DMX, EuroSynth, modular | [domains/machines.md](domains/machines.md) |
 | robot, simulation, physics, VR, game, play, AI policy, ROS | [domains/sim-vr-play.md](domains/sim-vr-play.md) |
 | UI panel, control, node graph, patcher | [domains/ui-node.md](domains/ui-node.md) |
 

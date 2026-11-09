@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.modular.case.schema.json",
+  "title": "rig.modular.case",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "hp": {
+      "$ref": "./_defs.schema.json#/$defs/int",
+      "minimum": 1
+    },
+    "pitchMm": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "exclusiveMinimum": 0
+    },
+    "widthMm": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "rows": {
+      "$ref": "./_defs.schema.json#/$defs/int",
+      "minimum": 1
+    },
+    "rowHeightMm": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "depthMm": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "fastener": {
+      "type": "string",
+      "enum": [
+        "m3",
+        "m2-5"
+      ]
+    },
+    "spec": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "hp"
+  ],
+  "x-rig-maturity": "draft"
+}

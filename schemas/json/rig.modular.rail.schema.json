@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.modular.rail.schema.json",
+  "title": "rig.modular.rail",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "volts": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "toleranceMillivolts": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "loadRegulationMillivolts": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "noiseMillivolts": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "noiseMinHertz": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "noiseMaxHertz": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "maxImpedanceMilliohm": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "volts"
+  ],
+  "x-rig-maturity": "draft"
+}

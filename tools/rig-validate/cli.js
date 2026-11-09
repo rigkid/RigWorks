@@ -218,6 +218,7 @@ const SEMANTIC_RULES = [
   "surface-knots",
   "reference-not-solid",
   "tile-indices",
+  "modular-range",
 ];
 
 // Component that only means something composed with another on the same entity.
@@ -290,6 +291,29 @@ function semanticChecks(data, errors) {
     const ring = comps["rig.geometry.ring"];
     if (ring && typeof ring.innerRadius === "number" && typeof ring.outerRadius === "number" && ring.innerRadius >= ring.outerRadius) {
       errors.push({ level: "error", path: `${base}/rig.geometry.ring/innerRadius`, message: `innerRadius (${ring.innerRadius}) must be smaller than outerRadius (${ring.outerRadius})` });
+    }
+    const port = comps["rig.modular.port"];
+    if (port) {
+      if (typeof port.lowVolts === "number" && typeof port.highVolts === "number" && port.highVolts < port.lowVolts) {
+        errors.push({ level: "error", path: `${base}/rig.modular.port/highVolts`, message: `highVolts (${port.highVolts}) is below lowVolts (${port.lowVolts})` });
+      }
+      if (typeof port.offBelowVolts === "number" && typeof port.onAboveVolts === "number" && port.onAboveVolts < port.offBelowVolts) {
+        errors.push({ level: "error", path: `${base}/rig.modular.port/onAboveVolts`, message: `onAboveVolts (${port.onAboveVolts}) is below offBelowVolts (${port.offBelowVolts})` });
+      }
+      if (typeof port.thresholdVolts === "number" && typeof port.offBelowVolts === "number" && typeof port.onAboveVolts === "number" && (port.thresholdVolts < port.offBelowVolts || port.thresholdVolts > port.onAboveVolts)) {
+        errors.push({ level: "error", path: `${base}/rig.modular.port/thresholdVolts`, message: `thresholdVolts (${port.thresholdVolts}) must lie between offBelowVolts (${port.offBelowVolts}) and onAboveVolts (${port.onAboveVolts})` });
+      }
+      const hasPitch = typeof port.referencePitch === "number";
+      const hasRefV = typeof port.referenceVolts === "number";
+      if (hasPitch !== hasRefV) {
+        errors.push({ level: "error", path: `${base}/rig.modular.port/referenceVolts`, message: "referencePitch and referenceVolts are a pair; state both or neither" });
+      } else if (hasRefV && typeof port.lowVolts === "number" && typeof port.highVolts === "number" && (port.referenceVolts < port.lowVolts || port.referenceVolts > port.highVolts)) {
+        errors.push({ level: "error", path: `${base}/rig.modular.port/referenceVolts`, message: `referenceVolts (${port.referenceVolts}) must lie between lowVolts (${port.lowVolts}) and highVolts (${port.highVolts})` });
+      }
+    }
+    const rail = comps["rig.modular.rail"];
+    if (rail && typeof rail.noiseMinHertz === "number" && typeof rail.noiseMaxHertz === "number" && rail.noiseMaxHertz < rail.noiseMinHertz) {
+      errors.push({ level: "error", path: `${base}/rig.modular.rail/noiseMaxHertz`, message: `noiseMaxHertz (${rail.noiseMaxHertz}) is below noiseMinHertz (${rail.noiseMinHertz})` });
     }
     const axis = comps["rig.font.axis"];
     if (axis && typeof axis.min === "number" && typeof axis.max === "number") {

@@ -59,4 +59,4 @@ One node inside a [`rig.node.graph`](graph.md). Nested POD - not a separate ECS 
 
 Groups nest recursively: nodes inside `nested` may themselves have `nested`.
 
-`typeId` selects evaluation / catalog entry for leaves. Pin and param `type` fields describe **values**, using the Contract property table.
+`typeId` selects evaluation / catalog entry for leaves. Pin and param `type` fields describe **values**, using the Contract property table. They do not describe signal rate versus message rate. That rate belongs to the catalog entry for `typeId`. Pure Data and Max: [pd.md](../../docs/pd.md).

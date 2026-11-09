@@ -1,6 +1,6 @@
 # Scene - spatial, geometry, paint, render
 
-Load for: scenes, shapes, drawings, meshes, lights, cameras. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/minimal-scene.json`](../../../examples/minimal-scene.json), [`examples/lights.json`](../../../examples/lights.json), [`examples/environment.json`](../../../examples/environment.json), [`examples/path3d-spline3d.json`](../../../examples/path3d-spline3d.json), [`examples/usd-stage.json`](../../../examples/usd-stage.json). OpenUSD stages stay a host encoding: [`docs/usd.md`](../../../docs/usd.md).
+Load for: scenes, shapes, drawings, meshes, lights, cameras. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/minimal-scene.json`](../../../examples/minimal-scene.json), [`examples/lights.json`](../../../examples/lights.json), [`examples/environment.json`](../../../examples/environment.json), [`examples/path3d-spline3d.json`](../../../examples/path3d-spline3d.json), [`examples/usd-stage.json`](../../../examples/usd-stage.json). USD / Blender stay encodings: [`docs/usd.md`](../../../docs/usd.md), [`docs/blender.md`](../../../docs/blender.md).
 
 ## Compose
 

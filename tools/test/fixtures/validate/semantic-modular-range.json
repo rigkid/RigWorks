@@ -1,0 +1,38 @@
+{
+  "rig": "1.1.0",
+  "entities": [
+    {
+      "id": "inverted",
+      "components": {
+        "rig.modular.port": {
+          "direction": "in",
+          "signal": "cv",
+          "connector": "banana-4mm",
+          "lowVolts": 5,
+          "highVolts": 0
+        }
+      }
+    },
+    {
+      "id": "half-reference",
+      "components": {
+        "rig.modular.port": {
+          "direction": "out",
+          "signal": "cv",
+          "connector": "banana-4mm",
+          "referencePitch": 60
+        }
+      }
+    },
+    {
+      "id": "noisy",
+      "components": {
+        "rig.modular.rail": {
+          "volts": 12,
+          "noiseMinHertz": 10000,
+          "noiseMaxHertz": 10
+        }
+      }
+    }
+  ]
+}

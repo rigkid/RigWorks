@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.synth.oscillator.schema.json",
+  "title": "rig.synth.oscillator",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "waveform": {
+      "type": "string",
+      "enum": [
+        "sine",
+        "tri",
+        "saw",
+        "square"
+      ]
+    },
+    "pitch": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 127
+    },
+    "pulseWidth": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+  "required": [
+    "waveform"
+  ],
+  "x-rig-maturity": "draft"
+}

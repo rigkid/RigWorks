@@ -1,6 +1,6 @@
 # Examples
 
-Canonical Rig JSON documents. Copy the pattern; validate before you trust the output. Agent distillation of these rules: [`../skills/generating-rig-documents/SKILL.md`](../skills/generating-rig-documents/SKILL.md).
+Worked Rig JSON documents. Every file here validates; the skill distils the rules for agents: [`../skills/generating-rig-documents/SKILL.md`](../skills/generating-rig-documents/SKILL.md).
 
 Two kinds live here. **Teaching examples** (this folder) model one believable document each - copy these. **Coverage specimens** ([`coverage/`](coverage/)) exist to exercise schema ids for the validator and the maturity gate; they are deliberately dense, are not shown in the site gallery, and the skill never links them.
 
@@ -15,6 +15,7 @@ node tools/rig-validate/cli.js examples/cad-boolean.json
 node tools/rig-validate/cli.js examples/cad-dimension.json
 node tools/rig-validate/cli.js examples/cad-reference.json
 node tools/rig-validate/cli.js examples/story-flow.json
+node tools/rig-validate/cli.js examples/story-source.json
 node tools/rig-validate/cli.js examples/story-frames.json
 node tools/rig-validate/cli.js examples/bim-model.json
 node tools/rig-validate/cli.js examples/bim-bcf.json
@@ -38,6 +39,7 @@ node tools/rig-validate/cli.js examples/dev-kvm.json
 node tools/rig-validate/cli.js examples/print-fgf.json
 node tools/rig-validate/cli.js examples/paint-brush.json
 node tools/rig-validate/cli.js examples/kicad-pcb.json
+node tools/rig-validate/cli.js examples/eurosynth.json
 node tools/rig-validate/cli.js examples/visualizer.json
 node tools/rig-validate/cli.js examples/music-chord.json
 node tools/rig-validate/cli.js examples/play-scene.json
@@ -49,14 +51,18 @@ node tools/rig-validate/cli.js examples/record-care.json
 node tools/rig-validate/cli.js examples/record-shop.json
 node tools/rig-validate/cli.js examples/record-civic.json
 node tools/rig-validate/cli.js examples/node-graph.json
+node tools/rig-validate/cli.js examples/pd-voice.json
 node tools/rig-validate/cli.js examples/music-sequencer.json
+node tools/rig-validate/cli.js examples/synth-voice.json
 node tools/rig-validate/cli.js examples/anim-tween.json
 node tools/rig-validate/cli.js examples/coverage/paint-effects.json
 node tools/rig-validate/cli.js examples/coverage/pixel-layers.json
 node tools/rig-validate/cli.js examples/layout-grid.json
 node tools/rig-validate/cli.js examples/cad-solids.json
 node tools/rig-validate/cli.js examples/show-control.json
+node tools/rig-validate/cli.js examples/esp-radio.json
 node tools/rig-validate/cli.js examples/usd-stage.json
+node tools/rig-validate/cli.js examples/blender-scene.json
 ```
 
 ## SUDE sketch
@@ -190,6 +196,10 @@ One entity (the flow):
 ```
 <!-- rig:end -->
 
+## `story-source.json`
+
+The Relay ingest pattern: a Markdown source carried as [`rig.media.code`](../schemas/media/code.md) (`language` `markdown`) with its disk origin as [`rig.media.asset_ref`](../schemas/media/asset-ref.md) on the same entity, beside the [`rig.story.flow`](../schemas/story/flow.md) a layout host compiled from it. After ingest the composed POD is the editable truth; the buffer is provenance, re-parsed only on explicit re-ingest - [code.md Data grammars](../schemas/media/code.md#data-grammars-text-data).
+
 ## `story-frames.json`
 
 Threaded text layout: facing pages, a right master with slug, two document pages, two [`rig.layout.frame`](../schemas/layout/frame.md) boxes (columns / insets / first baseline), and a [`rig.layout.frame_chain`](../schemas/layout/frame-chain.md) that walks them. Visual typography lives on `rig.layout.paragraph_style` / `character_style` (including a character style that is not italic). `.idml` stays a host encoding - [docs/idml.md](../docs/idml.md).
@@ -252,6 +262,10 @@ One image-based light. `hdri` is a [`rig.media.asset_ref`](../schemas/media/asse
 ## `usd-stage.json`
 
 A composed OpenUSD stage as ordinary scene entities: a world vertex, a cube mesh with a PreviewSurface material, a camera, a distant light, a dome, an internal instance of the cube, a hidden locator, and an `asset_ref` (`kind` `model`) for the source `.usda`. Layers, variants, and references stay in that file - [docs/usd.md](../docs/usd.md).
+
+## `blender-scene.json`
+
+An evaluated Blender scene as ordinary scene entities: a scene vertex, a collection, a cube with a Principled material and an instanced copy, a camera, sun and point lights, a world HDRI, a two-bone armature with a skinned flag and a sampled wave clip, a hidden guide, and an `asset_ref` (`kind` `model`) for the source `.blend`. Modifiers, node trees, and library links stay in that file - [docs/blender.md](../docs/blender.md).
 
 ## `text-path.json`
 
@@ -338,7 +352,7 @@ One named brush entity: a size-12 flat with measured ferrule, bristle length, ti
 
 ## `music-chord.json`
 
-A pattern step and a free-time note that each sound C major: `pitch` 60 plus `intervals` `[4, 7]`. The next step is G minor (`[3, 7]` from 67). The last step is C alone. [`rig.audio.analysis`](../schemas/audio/analysis.md) asks for live `chroma`, `key`, and `chord`. Those values are not in the file.
+A pattern step and a free-time note that each sound C major: `pitch` 60 (C4) plus `intervals` `[4, 7]` (semitones, not scale degrees). The next step is G minor (`[3, 7]` from 67). The last step is C alone. `scale` `major` names the collection and does not move the steps. [`rig.audio.analysis`](../schemas/audio/analysis.md) asks for live `chroma`, `key`, and `chord`. Those values are not in the file. Human words: [docs/music.md](../docs/music.md).
 
 ## `visualizer.json`
 
@@ -378,11 +392,19 @@ A small play scene: a dynamic ball on a hinge, a kinematic hero with health and 
 
 ## `node-graph.json`
 
-A two-node graph on one entity: a float constant with a `rig.node.param` value wired from its out pin to a brightness node's in pin. Nodes, pins, and links are nested POD inside `rig.node.graph`, not separate entities.
+A two-node graph on one entity: a float constant with a `rig.node.param` value wired from its out pin to a brightness node's in pin. Nodes, pins, and links are nested POD inside `rig.node.graph`, not separate entities. A Pure Data or Max patch uses this graph - [docs/pd.md](../docs/pd.md).
+
+## `pd-voice.json`
+
+Vanilla Pure Data boxes as one graph: `osc~ 65.41` (C2) into `lop~ 400`, then `*~ 0`, then both `dac~` inlets. Node `id` is the `#X connect` index. Pin `name` is the inlet or outlet number. The saw voice with an envelope is [`synth-voice.json`](synth-voice.json) - [docs/pd.md](../docs/pd.md).
 
 ## `music-sequencer.json`
 
-A transport (120 bpm) with a 96-tick clock, a four-step minor bass pattern (steps are nested `rig.music.step` cells), and a sequencer pointing at both.
+A transport (120 bpm) with a 96-tick clock, a four-step minor bass pattern (steps are nested `rig.music.step` cells), and a sequencer pointing at both. `rootNote` 36 is C2. The scale names the collection. [docs/music.md](../docs/music.md).
+
+## `synth-voice.json`
+
+A saw at MIDI 36 into a 24 dB/octave low-pass, then a level stage written closed (`gain` 0). An exponential envelope opens that level and adds up to 2400 Hz to the 400 Hz cutoff. The running sample stays out of the file. The faceplate is a separate document - [docs/music.md](../docs/music.md).
 
 ## `anim-tween.json`
 
@@ -411,6 +433,14 @@ A revolved vase from a path profile and a sphere knob - the two solid primitives
 ## `show-control.json`
 
 An OSC endpoint (UDP listen/send, TCP framing, multicast) beside a 115200-baud serial line. Endpoints are authored config; sockets are host runtime.
+
+## `esp-radio.json`
+
+A board radio: [`rig.io.wifi`](../schemas/io/wifi.md) in access-point mode, an [`rig.io.espnow`](../schemas/io/espnow.md) peer, and a Classic Bluetooth sink ([`rig.io.bluetooth`](../schemas/io/bluetooth.md)) left off. The join password, link, RSSI, and a pending send stay off the document. ESP32-S3 omits the Bluetooth component.
+
+## `eurosynth.json`
+
+An 84 HP EuroSynth case (finished width 426.4 mm, 60 mm deep, M3) and an 8 HP faceplate (finished width 40.3 mm, 2.5 mm thick). The 10-pin header has pin 1 at -12 V. Six 4 mm jacks publish the control, modulation, pitch, audio, gate, and trigger windows. Chassis is its own net, beside 0 V. [docs/eurosynth.md](../docs/eurosynth.md).
 
 ## `kicad-pcb.json`
 

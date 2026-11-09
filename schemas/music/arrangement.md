@@ -30,6 +30,8 @@ An arrangement **has** frames. A frame **has** patterns. A pattern **has** steps
 
 Omit a lane from `patterns` to leave that channel silent for the frame - no placeholder pattern needed.
 
+A frame has no title. Name the part with [`rig.meta.named`](../meta/named.md) on each pattern. The frame only chooses which patterns play. Verse and chorus are that choice. See [music.md](../../docs/music.md).
+
 ## Arrangement
 
 | Field | Type | Meaning |

@@ -40,11 +40,9 @@ GeometricBounds `(y1, x1, y2, x2)` become position `(x1, y1)` and size `(x2 − 
 
 Do not put InDesign Self strings, story overflow, or composed line breaks in portable components - those are encoding / host cache.
 
-## Honest limit
+## Out of scope for v1
 
-Two hosts that speak `rig.layout.frame` + `frame_chain` + page / master / facing + story styles can exchange a threaded text layout as `.rig`. Round-tripping every InDesign object SimpleIDML can touch is **not required**.
-
-Stay out of v1 (do not invent schemas for these):
+Do not invent schemas for these yet:
 
 - Graphic frames / placed images
 - Groups

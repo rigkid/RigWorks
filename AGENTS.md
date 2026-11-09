@@ -1,6 +1,6 @@
 # AGENTS
 
-RigWorks (Rig for short) is a no-code application framework - a shared data vocabulary for applications. Apps and packs that speak the same schema ids interoperate. It is not a library to link and not another editor; speakers emit/consume entity/component POD JSON. Live hosts also honor SUDE and runtime ECS.
+RigWorks (Rig for short) is a shared grammar for real work: entity/component POD keyed by schema ids. The framework ships no code. Apps and packs that speak the same schema ids interoperate. It is not a library to link and not another editor; speakers emit/consume entity/component POD JSON. Live hosts also honor SUDE and runtime ECS.
 
 ## Before generating Rig data
 
@@ -36,7 +36,9 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`examples/`](examples/) | Reference documents |
 | [`docs/interchange.md`](docs/interchange.md) | Wire format + `.rig` / `.rigz` package |
 | [`docs/openbim.md`](docs/openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
+| [`docs/pd.md`](docs/pd.md) | Pure Data and Max patches to `rig.node.*`; a `.pd` round trip merges onto the source file |
 | [`docs/ufo.md`](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
+| [`docs/blender.md`](docs/blender.md) | Blender evaluated scene to existing spatial / mesh / render / animation schemas; encodings are fulfillment |
 | [`docs/usd.md`](docs/usd.md) | OpenUSD composed stage to existing spatial / mesh / render schemas; encodings are fulfillment |
 | [`docs/idml.md`](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
 | [`docs/ros.md`](docs/ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |
@@ -44,6 +46,8 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`docs/vr.md`](docs/vr.md) | VR to `rig.vr.*` plus camera, transform, and input; runtimes are fulfillment |
 | [`docs/dev.md`](docs/dev.md) | Dev machines to `rig.dev.machine` / `rig.dev.op`; fulfillments e.g. [RigDev](https://github.com/rigkid/RigDev) |
 | [`docs/kicad.md`](docs/kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*`; round trip merges onto the source file |
+| [`docs/eurosynth.md`](docs/eurosynth.md) | EuroSynth / Eurorack faceplates, jacks, and supply rails to `rig.modular.*` |
+| [`docs/music.md`](docs/music.md) | Tempo, key, chord, and part to `rig.music.*` |
 | [`docs/print.md`](docs/print.md) | FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page |
 | [`docs/spine.md`](docs/spine.md) | Spine skeleton JSON to existing animation / mesh schemas; encodings are fulfillment |
 | [`docs/records.md`](docs/records.md) | Payments, encounters, catalog rows, and case files; encodings are fulfillment |

@@ -1,0 +1,211 @@
+{
+  "rig": "1.4.0",
+  "document": {
+    "title": "Blender scene",
+    "defaultUnit": "m"
+  },
+  "entities": [
+    {
+      "id": "scene",
+      "components": {
+        "rig.meta.named": { "name": "Scene", "stableId": "Scene" },
+        "rig.spatial.vertex": {}
+      }
+    },
+    {
+      "id": "rig-collection",
+      "components": {
+        "rig.meta.named": { "name": "Rig", "stableId": "Scene/Rig" },
+        "rig.spatial.relationship": { "parent": "scene" },
+        "rig.spatial.group": {}
+      }
+    },
+    {
+      "id": "cube",
+      "components": {
+        "rig.meta.named": { "name": "Cube", "stableId": "Scene/Rig/Cube" },
+        "rig.spatial.relationship": { "parent": "rig-collection" },
+        "rig.spatial.transform": { "position": [0, 1, 0] },
+        "rig.geometry.mesh": {
+          "positions": [
+            -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1,
+            -1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1
+          ],
+          "indices": [
+            0, 1, 2, 0, 2, 3, 4, 7, 6, 4, 6, 5, 0, 4, 5, 0, 5, 1,
+            1, 5, 6, 1, 6, 2, 2, 6, 7, 2, 7, 3, 3, 7, 4, 3, 4, 0
+          ],
+          "loops": [
+            0, 1, 2, 3, 4, 7, 6, 5, 0, 4, 5, 1, 1, 5, 6, 2, 2, 6, 7, 3, 3, 7, 4, 0
+          ],
+          "loopSizes": [4, 4, 4, 4, 4, 4],
+          "mode": "triangles"
+        },
+        "rig.render.material": {
+          "albedoRgb": [0.8, 0.2, 0.1],
+          "roughness": 0.45
+        }
+      }
+    },
+    {
+      "id": "cube-copy",
+      "components": {
+        "rig.meta.named": { "name": "CubeCopy", "stableId": "Scene/Rig/CubeCopy" },
+        "rig.spatial.relationship": { "parent": "rig-collection" },
+        "rig.spatial.transform": { "position": [3, 1, 0] },
+        "rig.spatial.instance": { "source": "cube" }
+      }
+    },
+    {
+      "id": "camera",
+      "components": {
+        "rig.meta.named": { "name": "Camera", "stableId": "Scene/Rig/Camera" },
+        "rig.spatial.relationship": { "parent": "rig-collection" },
+        "rig.spatial.transform": { "position": [0, 2, 6] },
+        "rig.spatial.camera": { "fovYDegrees": 40, "nearClip": 0.1, "farClip": 100 }
+      }
+    },
+    {
+      "id": "sun",
+      "components": {
+        "rig.meta.named": { "name": "Sun", "stableId": "Scene/Rig/Sun" },
+        "rig.spatial.relationship": { "parent": "rig-collection" },
+        "rig.spatial.transform": {
+          "rotation": [-0.4226, 0, 0, 0.9063]
+        },
+        "rig.render.light": {
+          "type": "directional",
+          "intensity": 3
+        }
+      }
+    },
+    {
+      "id": "bulb",
+      "components": {
+        "rig.meta.named": { "name": "Bulb", "stableId": "Scene/Rig/Bulb" },
+        "rig.spatial.relationship": { "parent": "rig-collection" },
+        "rig.spatial.transform": { "position": [2, 3, 0] },
+        "rig.render.light": {
+          "type": "point",
+          "range": 8,
+          "intensity": 1.2
+        }
+      }
+    },
+    {
+      "id": "sky",
+      "components": {
+        "rig.meta.named": { "name": "Sky", "stableId": "Scene/Rig/Sky" },
+        "rig.spatial.relationship": { "parent": "rig-collection" },
+        "rig.render.environment": {
+          "hdri": "sky-hdr"
+        }
+      }
+    },
+    {
+      "id": "sky-hdr",
+      "components": {
+        "rig.meta.named": { "name": "sky-hdr", "stableId": "sky-hdr" },
+        "rig.media.asset_ref": {
+          "kind": "image",
+          "path": "env/sky.hdr"
+        }
+      }
+    },
+    {
+      "id": "armature",
+      "components": {
+        "rig.meta.named": { "name": "Armature", "stableId": "Scene/Rig/Armature" },
+        "rig.spatial.relationship": { "parent": "rig-collection" },
+        "rig.spatial.transform": { "position": [-3, 0, 0] }
+      }
+    },
+    {
+      "id": "root",
+      "components": {
+        "rig.meta.named": { "name": "Root", "stableId": "Scene/Rig/Armature/Root" },
+        "rig.spatial.relationship": { "parent": "armature" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.anim.skeleton": { "root": "root", "bones": ["root", "tip"] }
+      }
+    },
+    {
+      "id": "tip",
+      "components": {
+        "rig.meta.named": { "name": "Tip", "stableId": "Scene/Rig/Armature/Tip" },
+        "rig.spatial.relationship": { "parent": "root" },
+        "rig.spatial.transform": {
+          "position": [0, 1, 0],
+          "rotation": [0, 0, 0.0995, 0.995]
+        },
+        "rig.anim.bind": { "position": [0, 1, 0] }
+      }
+    },
+    {
+      "id": "flag",
+      "components": {
+        "rig.meta.named": { "name": "Flag", "stableId": "Scene/Rig/Flag" },
+        "rig.spatial.relationship": { "parent": "armature" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.geometry.mesh": {
+          "positions": [-0.5, 0, 0, 0.5, 0, 0, -0.5, 2, 0, 0.5, 2, 0],
+          "texcoords": [0, 0, 1, 0, 0, 1, 1, 1],
+          "indices": [0, 1, 3, 0, 3, 2],
+          "loops": [0, 1, 3, 2],
+          "loopSizes": [4],
+          "mode": "triangles"
+        },
+        "rig.render.material": {
+          "albedoRgb": [0.2, 0.6, 0.9],
+          "roughness": 0.8
+        },
+        "rig.anim.skin": {
+          "skeleton": "root",
+          "joints": ["root", "tip"],
+          "inverseBind": [
+            1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1, 0, 1
+          ],
+          "jointIndices": [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          "jointWeights": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
+        }
+      }
+    },
+    {
+      "id": "wave",
+      "components": {
+        "rig.meta.named": { "name": "Wave", "stableId": "Wave" },
+        "rig.anim.clip": { "duration": 1, "wrap": "loop" }
+      }
+    },
+    {
+      "id": "wave-rot",
+      "components": {
+        "rig.anim.track": {
+          "clip": "wave",
+          "target": "tip",
+          "propertyKey": "rotation",
+          "times": [0, 0.5, 1],
+          "values": [0, 0, 0, 1, 0, 0, 0.3827, 0.9239, 0, 0, 0, 1],
+          "stride": 4
+        }
+      }
+    },
+    {
+      "id": "guide",
+      "components": {
+        "rig.meta.named": { "name": "Guide", "stableId": "Scene/Rig/Guide" },
+        "rig.spatial.relationship": { "parent": "rig-collection" },
+        "rig.spatial.transform": { "position": [0, 0, 0] },
+        "rig.spatial.vertex": {},
+        "rig.render.visibility": { "visible": false }
+      }
+    },
+    {
+      "id": "source",
+      "components": {
+        "rig.media.asset_ref": { "kind": "model", "path": "set.blend" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "rig": "1.4.0",
+  "document": {
+    "title": "Subtractive voice"
+  },
+  "entities": [
+    {
+      "id": "oscillator",
+      "components": {
+        "rig.meta.named": { "name": "Oscillator", "stableId": "oscillator" },
+        "rig.synth.oscillator": {
+          "waveform": "saw",
+          "pitch": 36
+        }
+      }
+    },
+    {
+      "id": "filter",
+      "components": {
+        "rig.meta.named": { "name": "Filter", "stableId": "filter" },
+        "rig.synth.filter": {
+          "mode": "low-pass",
+          "cutoffHertz": 400,
+          "resonance": 0.35,
+          "decibelsPerOctave": 24,
+          "input": "oscillator"
+        }
+      }
+    },
+    {
+      "id": "amplifier",
+      "components": {
+        "rig.meta.named": { "name": "Amplifier", "stableId": "amplifier" },
+        "rig.synth.amplifier": {
+          "gain": 0,
+          "input": "filter"
+        }
+      }
+    },
+    {
+      "id": "envelope",
+      "components": {
+        "rig.meta.named": { "name": "Envelope", "stableId": "envelope" },
+        "rig.synth.envelope": {
+          "attackSeconds": 0.01,
+          "decaySeconds": 0.25,
+          "sustain": 0.6,
+          "releaseSeconds": 0.4,
+          "curve": "exponential"
+        }
+      }
+    },
+    {
+      "id": "env-gain",
+      "components": {
+        "rig.mod.binding": {
+          "source": "envelope",
+          "target": "amplifier",
+          "propertyKey": "gain",
+          "depth": 1,
+          "additive": false
+        }
+      }
+    },
+    {
+      "id": "env-cutoff",
+      "components": {
+        "rig.mod.binding": {
+          "source": "envelope",
+          "target": "filter",
+          "propertyKey": "cutoffHertz",
+          "depth": 2400,
+          "additive": true
+        }
+      }
+    }
+  ]
+}

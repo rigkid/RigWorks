@@ -92,7 +92,7 @@ function fieldLine(f) {
 async function callTool(name, args = {}) {
   switch (name) {
     case "list_schemas": {
-      const limit = Math.min(args.limit ?? 50, 294);
+      const limit = Math.min(args.limit ?? 50, index.schemas.length);
       let list = index.schemas;
       if (args.maturity) list = list.filter((s) => s.maturity === args.maturity);
       if (args.query) {

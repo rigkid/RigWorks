@@ -2,7 +2,7 @@
 
 Rig portable documents are **JSON** using the [`rig.document`](../schemas/document.md) envelope. Component object keys are full schema ids (`rig.spatial.transform`).
 
-On disk that JSON is a **`.rig`** file, or a **`.rigz`** ZIP when sidecar files travel with it. Other on-disk encodings are host mappings at the boundary - including OpenBIM (`.ifc`, `.bcfzip`, `.ids`), UFO (`.ufo`, `.ufoz`), IDML (`.idml`), KiCad (`.kicad_pcb`), Spine (`skeleton.json`, `.atlas`), and OpenUSD (`.usda`, `.usdc`, `.usdz`); see [openbim.md](openbim.md), [ufo.md](ufo.md), [idml.md](idml.md), [kicad.md](kicad.md), [spine.md](spine.md), [usd.md](usd.md), and [design philosophy](design-philosophy.md#encoding).
+On disk that JSON is a **`.rig`** file, or a **`.rigz`** ZIP when sidecar files travel with it. Other on-disk encodings are host mappings at the boundary - including OpenBIM (`.ifc`, `.bcfzip`, `.ids`), UFO (`.ufo`, `.ufoz`), IDML (`.idml`), KiCad (`.kicad_pcb`), Pure Data (`.pd`), Max (`.maxpat`), Spine (`skeleton.json`, `.atlas`), and OpenUSD (`.usda`, `.usdc`, `.usdz`); see [openbim.md](openbim.md), [ufo.md](ufo.md), [idml.md](idml.md), [kicad.md](kicad.md), [pd.md](pd.md), [spine.md](spine.md), [usd.md](usd.md), and [design philosophy](design-philosophy.md#encoding).
 
 ## Package
 

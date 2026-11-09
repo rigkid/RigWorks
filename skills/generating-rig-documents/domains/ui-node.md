@@ -1,6 +1,6 @@
 # UI and node graphs
 
-Load for: control panels, HUDs, actions, node graphs and patchers. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/ui-panel.json`](../../../examples/ui-panel.json), [`examples/portable-tool.json`](../../../examples/portable-tool.json), [`examples/node-graph.json`](../../../examples/node-graph.json). UI contract: [`docs/ui.md`](../../../docs/ui.md).
+Load for: control panels, HUDs, actions, node graphs and patchers, Pure Data, Max. Parent slice: [`SKILL.md`](../SKILL.md). Copy: [`examples/ui-panel.json`](../../../examples/ui-panel.json), [`examples/portable-tool.json`](../../../examples/portable-tool.json), [`examples/node-graph.json`](../../../examples/node-graph.json), [`examples/pd-voice.json`](../../../examples/pd-voice.json). UI contract: [`docs/ui.md`](../../../docs/ui.md). Patch map: [`docs/pd.md`](../../../docs/pd.md).
 
 ## Compose
 
@@ -18,7 +18,8 @@ Load for: control panels, HUDs, actions, node graphs and patchers. Parent slice:
 
 - `rig.ui.*` uses the same document envelope as everything else; there is no second UI scene graph. UI chrome layout is fulfillment - the portable meaning is the panel/group/control/action data.
 - Node-editor groups are `rig.node.node` with `nested`, not `rig.spatial.group`. A ROS node is not a `rig.node.*` node. A circuit terminal (`rig.circuit.pin`) is not a `rig.node.pin`.
-- Pin and param datatypes reuse the property datatype table; do not invent per-graph type systems.
+- Pin and param datatypes reuse the property datatype table; do not invent per-graph type systems. Signal versus message is the host catalog `typeId`, not a pin field. Box position is `rig.node.node` `position`.
+- No `rig.pd.*` and no `rig.max.*`. A Eurorack jack is `rig.modular.port`. A `.pd` trip keeps the file as `rig.media.asset_ref` (`kind` `document`) on the graph entity. Node `id` is the `#X connect` index. `title` is the box text. Pin `name` is the inlet or outlet number. Figures: [`docs/pd.md`](../../../docs/pd.md).
 
 ## Ids in this slice
 

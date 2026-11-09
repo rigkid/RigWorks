@@ -3,22 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RigWorks — a no-code application framework</title>
-<meta name="description" content="A shared data vocabulary for applications. Scene, typeface, building, show, catalog — one document shape. Nothing to link.">
+<title>RigWorks — a shared grammar for real work</title>
+<meta name="description" content="Private files, rotting converters, agents reinventing formats. Rig is a shared grammar so apps and agents agree on the data.">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://rig.works/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="RigWorks — a no-code application framework">
-<meta property="og:description" content="Future-proof, host-independent, human-readable data. Because no code is the best code.">
+<meta property="og:title" content="RigWorks — a shared grammar for real work">
+<meta property="og:description" content="Private files. Rotting converters. Agents reinventing formats. Rig is the shared grammar that ends that.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d10'/%3E%3Cpath d='M7 21 L13 11 L19 21 L25 11' stroke='%2340a6ff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="hero">
+<a class="skip" href="#main">Skip to content</a>
+
+  <!--nav:start-->
   <nav>
-    <span class="wordmark">RigWorks</span>
-    <span class="nav-links">
+    <a class="wordmark" href="index.html">RigWorks</a>
+    <span class="nav-links nav-desktop">
+      <span class="modes" role="group" aria-label="Mode"><span class="here" aria-current="page">Read</span><a href="data/index.html">Data</a></span>
       <a href="schemas/index.html">Schemas</a>
       <a href="docs/index.html">Docs</a>
       <a href="examples/index.html">Examples</a>
@@ -26,126 +29,109 @@
       <a class="sponsor" href="https://github.com/sponsors/GitBruno"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 14.5S1 10.2 1 6.1C1 3.6 3 1.5 5.5 1.5c1 0 1.9.5 2.5 1.2.6-.7 1.5-1.2 2.5-1.2C13 1.5 15 3.6 15 6.1c0 4.1-7 8.4-7 8.4z"/></svg>Sponsor</a>
       <a class="ghost" href="https://github.com/rigkid/RigWorks">GitHub</a>
     </span>
+    <details class="nav-menu">
+      <summary aria-label="Menu">Menu</summary>
+      <span class="nav-links">
+        <span class="modes" role="group" aria-label="Mode"><span class="here" aria-current="page">Read</span><a href="data/index.html">Data</a></span>
+        <a href="schemas/index.html">Schemas</a>
+        <a href="docs/index.html">Docs</a>
+        <a href="examples/index.html">Examples</a>
+        <a href="for-ai/index.html">For AI</a>
+        <a class="sponsor" href="https://github.com/sponsors/GitBruno"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 14.5S1 10.2 1 6.1C1 3.6 3 1.5 5.5 1.5c1 0 1.9.5 2.5 1.2.6-.7 1.5-1.2 2.5-1.2C13 1.5 15 3.6 15 6.1c0 4.1-7 8.4-7 8.4z"/></svg>Sponsor</a>
+        <a class="ghost" href="https://github.com/rigkid/RigWorks">GitHub</a>
+      </span>
+    </details>
   </nav>
+  <!--nav:end-->
 
-  <h1>A no-code <br class="desk-break">application framework.</h1>
-  <p class="tagline">Because no code is the best code.</p>
-  <p class="expansion">Rig — Readable Independent Grammar</p>
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <h1>A shared grammar for apps and agents.</h1>
+      <p class="lede">
+        Private files. Tools that will not travel. Agents reinventing a format
+        every session. Rig is the agreement that replaces all three.
+      </p>
 
-  <p class="lede">
-    A shared vocabulary. No library to link, no runtime to embed, no API
-    to version — it ships as agreement. Write the document once and it can
-    be presented, played, printed, and handed to a model: the meaning
-    travels with the data, not with the app that wrote it.
-  </p>
+      <p class="cta">
+        <a class="btn primary" href="examples/index.html">Explore the examples</a>
+        <a class="btn ghost-btn" href="docs/design-philosophy/index.html">Design philosophy</a>
+      </p>
+      <p class="cta-note">
+        Worked documents and the full schema catalog — no install. Or
+        <a href="https://github.com/rigkid/RigWorks">clone the Contract</a>.
+      </p>
 
-  <p class="cta">
-    <a class="btn primary" href="schemas/index.html">Browse the schemas</a>
-    <a class="btn" href="examples/index.html">See examples</a>
-    <a class="btn" href="https://player.rig.works/">Play one now</a>
-    <a class="btn sponsor-btn" href="https://github.com/sponsors/GitBruno">Sponsor</a>
-  </p>
+      <p class="badges">
+        <span class="badge">v1.4.0 · stable</span>
+        <span class="badge">306 schemas</span>
+        <span class="badge">MIT</span>
+        <span class="badge">nothing to link</span>
+      </p>
+    </div>
 
-  <p class="badges">
-    <span class="badge">v1.0.0 · stable</span>
-    <span class="badge">294 schemas</span>
-    <span class="badge">MIT</span>
-    <span class="badge">nothing to link</span>
-  </p>
+    <aside class="agent-box" aria-label="Prompt for AI agents">
+      <p class="agent-kicker">Give this to your agent</p>
+<pre class="agent-prompt" id="agent-prompt">Read https://rig.works/llms.txt
+Load the skill at https://rig.works/for-ai/
+Make a Rig document that: [what you want]
+Validate until it passes.</pre>
+      <button type="button" class="btn agent-copy" id="copy-agent-prompt">Copy the prompt</button>
+    </aside>
+  </div>
 </header>
 
-<main>
+<main id="main">
 
-<section>
-  <h2>Every tool speaks only to itself</h2>
-  <p>
-    A scene, a typeface, a building, a show, a catalog — each lives in a
-    private file. Moving work means writing a converter, and converters rot.
-    Shared runtimes solve interop by locking the language and the platform.
-  </p>
-  <p>
-    Rig is the vocabulary those tools could share. Not another editor.
-    Not a library. The document is the artifact.
-  </p>
+<section class="pain-solve" aria-label="Three pains and three solutions">
+  <div class="pair-head">
+    <h2 class="pair-label pain-label">Pain</h2>
+    <h2 class="pair-label solve-label">Rig</h2>
+  </div>
+  <ol class="pairs">
+    <li>
+      <div class="pair-pain">
+        <h3>Work locked in the app</h3>
+        <p>A scene, a show, a panel — each lives in a private file. Moving it means a converter. Converters rot.</p>
+      </div>
+      <div class="pair-solve">
+        <h3>The document is the artifact</h3>
+        <p>Plain JSON. Named components on entities. Same schema ids — present, play, or print without a bridge.</p>
+      </div>
+    </li>
+    <li>
+      <div class="pair-pain">
+        <h3>Tools and UI do not travel</h3>
+        <p>Write a control panel for one app and you rebuild it for the next. The knobs stay trapped with the chrome.</p>
+      </div>
+      <div class="pair-solve">
+        <h3>Share the tool — UI moves too</h3>
+        <p>Author a tool in App A. Load the same document in App B. Controls, groups, actions still turn the same fields. The interface is data.</p>
+      </div>
+    </li>
+    <li>
+      <div class="pair-pain">
+        <h3>Agents reinvent the format</h3>
+        <p>Each session invents its own JSON. The next agent burns tokens decoding a private dialect — or starts over.</p>
+      </div>
+      <div class="pair-solve">
+        <h3>Agreement saves tokens</h3>
+        <p>One skill, one catalog, one validator. An agent writes Rig; the next session already accepts it. The cheapest token is the one never spent explaining a private format.</p>
+      </div>
+    </li>
+  </ol>
 </section>
 
 <section>
-  <h2>One grammar. Many domains.</h2>
+  <h2>Example: one entity, drawn.</h2>
   <p>
-    The same composition model — entities with named POD components —
-    wherever two hosts need the same meaning. A host that implements six
-    schemas and ignores the rest is fully Rig. Ship what you support.
+    From <a href="examples/minimal-scene/index.html"><code>minimal-scene.json</code></a>.
+    Any program that knows <code>rig.geometry.rectangle</code> can draw it —
+    this is the same document, drawn by the in-repo SVG fulfillment:
   </p>
-  <ul class="domains">
-    <li><a href="examples/minimal-scene/index.html">Scene</a></li>
-    <li><a href="examples/font-ufo/index.html">Type</a></li>
-    <li><a href="examples/bim-model/index.html">BIM</a></li>
-    <li><a href="examples/cad-boolean/index.html">CAD</a></li>
-    <li><a href="examples/lights/index.html">Show</a></li>
-    <li><a href="examples/story-flow/index.html">Story</a></li>
-    <li><a href="examples/book-isbn/index.html">Book</a></li>
-    <li><a href="examples/art-object/index.html">Art</a></li>
-    <li><a href="examples/calendar-event/index.html">Calendar</a></li>
-    <li><a href="examples/dev-machine/index.html">Machine</a></li>
-    <li><a href="examples/portable-tool/index.html">Tool</a></li>
-    <li><a href="examples/record-bank/index.html">Payment</a></li>
-    <li><a href="examples/record-care/index.html">Encounter</a></li>
-    <li><a href="examples/record-civic/index.html">Case</a></li>
-  </ul>
-  <p class="aside">
-    <a href="schemas/index.html">The whole catalog</a> ·
-    <a href="docs/openbim/index.html">OpenBIM</a> ·
-    <a href="docs/ufo/index.html">UFO</a> ·
-    <a href="docs/records/index.html">Records</a> ·
-    <a href="docs/dev/index.html">Dev machines</a>
-  </p>
-</section>
-
-<section>
-  <h2>Sharing tools should be fun</h2>
-  <p>
-    Take a tool from one app and drop it in another — controls, groups,
-    actions, the working interface. Author the panel in App A. Load the
-    same document in App B. If both speak the same schema ids, the knobs
-    still turn the same fields.
-  </p>
-  <p>
-    The chrome can change. The tool stays the document. That is the point
-    of a shared vocabulary: borrowing a working tool from someone else's
-    app should feel like a gift, not a rewrite.
-  </p>
-  <p class="aside">
-    <a href="examples/portable-tool/index.html">A tool that travels</a> ·
-    <a href="examples/ui-panel/index.html">LED panel</a> ·
-    <a href="docs/ui/index.html">Rig + UI</a>
-  </p>
-</section>
-
-<section id="example">
-  <h2>The document is the artifact</h2>
-  <p>
-    Content is plain data on entities, keyed by schema id. Live hosts also
-    run a four-hook loop:
-  </p>
-
-<pre class="code sude"><code>Setup  → spawn / load entities
-Update → simulate (modulators, transport, …)
-Draw   → present
-Exit   → tear down</code></pre>
-
-  <p>
-    One entity. The picture is that document drawn by a second fulfillment
-    — static SVG, no client JavaScript.
-  </p>
-
   <figure class="scene">
-    <img src="scene.svg" alt="Minimal Rig scene — shapes from examples/minimal-scene.json" width="900" height="356" />
-    <figcaption>
-      <code>examples/minimal-scene.json</code> drawn by the in-repo renderer.
-      Same vocabulary, unrelated to any product host.
-    </figcaption>
+    <img src="scene.svg" alt="Minimal Rig scene drawn from examples/minimal-scene.json" width="900" height="356" />
   </figure>
-
 <pre class="code"><code>{
   "id": "demo-rect",
   "components": {
@@ -154,149 +140,6 @@ Exit   → tear down</code></pre>
     "rig.paint.fill_stroke": { "fillRgba": [0.25, 0.65, 1, 1] }
   }
 }</code></pre>
-  <p class="muted-inline">Excerpt — the full entity is in <a href="examples/minimal-scene/index.html"><code>minimal-scene.json</code></a>.</p>
-
-  <p>
-    Any program that recognises <code>rig.geometry.rectangle</code> can draw
-    that rectangle, in any language, without knowing what wrote it.
-  </p>
-  <p class="aside">
-    <a href="examples/index.html">Reference documents</a> ·
-    <a href="docs/ecs/index.html">Entity / component</a> ·
-    <a href="docs/sude/index.html">SUDE</a> ·
-    <a href="schemas/rig.document/index.html">Document envelope</a>
-  </p>
-</section>
-
-<section>
-  <h2>What the agreement buys you</h2>
-  <p>
-    A file format saves bytes. A shared vocabulary saves the work around
-    the bytes — every converter never written, every host that can open
-    work it has never seen, every tool borrowed instead of rebuilt.
-  </p>
-  <div class="grid two">
-    <div class="card">
-      <h3>Work outlives the app</h3>
-      <p>Plain JSON, no runtime to keep alive and no binary to reverse. A document written today opens in a host written next year, in another language, on another machine — because what was agreed is the meaning, not the code.</p>
-    </div>
-    <div class="card">
-      <h3>No converters</h3>
-      <p>Two hosts that speak the same schema ids interoperate the moment they meet. Interop stops being a pairwise translation project and becomes a shared noun both sides already know.</p>
-    </div>
-    <div class="card">
-      <h3>Tools travel</h3>
-      <p>A control panel is a document like any other. Author it in one app, load it in a second, and the knobs still turn the same fields — the interface is data, so it moves like data.</p>
-    </div>
-    <div class="card">
-      <h3>Machines can author it</h3>
-      <p>A model loads one skill and one example, writes the document, and checks it with a validator that answers in JSON Pointers. The next session — human or model — accepts the same data without a briefing.</p>
-    </div>
-  </div>
-  <p class="aside">
-    And it is checked like code: generated schemas, field-level parity,
-    semantic rules, and a stable tier frozen at 1.0 —
-    <a href="docs/versioning/index.html">what that promises</a>.
-  </p>
-</section>
-
-<section>
-  <h2>It runs</h2>
-  <p>
-    A Rig document is not a diagram of a format. The same JSON presents
-    in one host and plays in another, and neither knows the other exists.
-    Looking and running are different jobs, so they are different hosts:
-  </p>
-  <div class="grid three">
-    <div class="card">
-      <h3><a href="https://github.com/rigkid/RigViewer">RigViewer</a></h3>
-      <p><strong>Presents.</strong> The still document, drawn — scenes and sketches as written, nothing executed. Zero-setup in the browser: drop a <code>.json</code> and look. <a href="https://rigkid.github.io/RigViewer/">Open the viewer</a>.</p>
-    </div>
-    <div class="card accent">
-      <h3><a href="https://github.com/rigkid/RigPlayer">RigPlayer</a></h3>
-      <p><strong>Plays.</strong> The document over time — transport and clock, animation, simulation, sound. SUDE runs it: Setup, Update, Draw, Exit. Zero-setup in the browser: drop a <code>.rig</code>, press play, or share the whole document inside a link. <a href="https://player.rig.works/">Open the player</a>.</p>
-    </div>
-    <div class="card">
-      <h3><a href="https://github.com/rigkid/RigKit">RigKit</a></h3>
-      <p><strong>Builds hosts.</strong> The coded reference host — desktop and Raspberry Pi, packs over a thin core — for writing the next Viewer, Player, or fulfillment of your own.</p>
-    </div>
-  </div>
-  <p class="aside">
-    Also <a href="https://github.com/GitBruno/PicoForge">PicoForge</a> —
-    a <code>.rig</code> compiled to a running PICO-8 cartridge. This page's
-    SVG is another fulfillment of the same document.
-  </p>
-</section>
-
-<section>
-  <h2>Built for people and models</h2>
-  <p>
-    The cheapest token is the one the model never generates. Load the
-    skill and one example. Leave the catalog on disk. The model writes
-    the document, not the system.
-  </p>
-  <p>
-    The real save is the next session. An agent that writes Rig writes
-    data the next agent already accepts. Neither side spends a context
-    window explaining a private format, and neither writes a converter.
-  </p>
-  <p>
-    When execution gets cheap, agreement is the scarce asset. A generated
-    renderer is disposable. A generated vocabulary is a liability — the next
-    session invents a different one. Rig publishes the concept in a form
-    people and models read the same way.
-  </p>
-
-<pre class="code"><code>node tools/rig-validate/cli.js path/to/doc.json</code></pre>
-
-  <p>
-    Every failure names a JSON Pointer, so an agent can correct itself
-    without a human in the loop.
-  </p>
-  <p class="aside">
-    <a href="docs/ai-collaboration/index.html#the-cheapest-token">The cheapest token</a> ·
-    <a href="docs/ai-collaboration/index.html">AI co-coding</a> ·
-    <a href="for-ai/index.html">Agent skill</a> ·
-    <a href="llms.txt">llms.txt</a>
-  </p>
-</section>
-
-<section>
-  <h2>Start</h2>
-  <p>
-    Clone it, check it, read it. There is nothing to install but the
-    validator. 1.0 freezes the stable schema tier — core rules hold;
-    draft and experimental schemas may still shift by their tier rules.
-  </p>
-
-<pre class="code"><code>git clone https://github.com/rigkid/RigWorks
-cd RigWorks
-npm run setup    # installs the validator
-npm run check    # schemas, parity, links, reference documents</code></pre>
-
-  <p class="aside">
-    Being Rig takes the grammar:
-    <a href="docs/ecs/index.html">plain-data components</a>
-    on entities, against
-    <a href="docs/honors/index.html">schemas you support</a>.
-    Live hosts also honor
-    <a href="docs/sude/index.html">the four-hook loop</a>.
-    Everything else is opt-in.
-  </p>
-</section>
-
-<section>
-  <h2>Support the work</h2>
-  <p>
-    RigWorks is MIT-licensed and developed in the open. If the vocabulary
-    saves you a converter — or a format of your own to maintain — sponsorship
-    helps keep the contract reviewed, the validator maintained, and the
-    stable tier stable.
-  </p>
-  <p class="cta">
-    <a class="btn sponsor-btn" href="https://github.com/sponsors/GitBruno">Sponsor on GitHub</a>
-    <a class="btn" href="https://github.com/rigkid/RigWorks">Star the repository</a>
-  </p>
 </section>
 
 </main>
@@ -310,8 +153,30 @@ npm run check    # schemas, parity, links, reference documents</code></pre>
     <a href="docs/versioning/index.html">Versioning</a> ·
     <a href="https://github.com/rigkid/RigWorks/blob/master/LICENSE">MIT</a>
   </p>
-  <p class="muted">A shared data vocabulary for applications. Concept over execution.</p>
+  <p class="muted">A shared grammar for real work. Concept over execution.</p>
 </footer>
+
+<script>
+(function () {
+  var btn = document.getElementById("copy-agent-prompt");
+  var box = document.getElementById("agent-prompt");
+  if (!btn || !box) return;
+  btn.addEventListener("click", function () {
+    var text = box.textContent.replace(/\n+$/, "");
+    var done = function () {
+      btn.textContent = "Copied";
+      setTimeout(function () { btn.textContent = "Copy the prompt"; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () {
+        /* fall through */
+      });
+      return;
+    }
+    done();
+  });
+})();
+</script>
 
 </body>
 </html>

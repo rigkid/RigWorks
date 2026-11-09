@@ -439,8 +439,14 @@
               "rig.interact.selected": {
                 "$ref": "./rig.interact.selected.schema.json"
               },
+              "rig.io.bluetooth": {
+                "$ref": "./rig.io.bluetooth.schema.json"
+              },
               "rig.io.dmx": {
                 "$ref": "./rig.io.dmx.schema.json"
+              },
+              "rig.io.espnow": {
+                "$ref": "./rig.io.espnow.schema.json"
               },
               "rig.io.osc": {
                 "$ref": "./rig.io.osc.schema.json"
@@ -450,6 +456,9 @@
               },
               "rig.io.serial": {
                 "$ref": "./rig.io.serial.schema.json"
+              },
+              "rig.io.wifi": {
+                "$ref": "./rig.io.wifi.schema.json"
               },
               "rig.law.statute": {
                 "$ref": "./rig.law.statute.schema.json"
@@ -528,6 +537,21 @@
               },
               "rig.mod.trigger": {
                 "$ref": "./rig.mod.trigger.schema.json"
+              },
+              "rig.modular.case": {
+                "$ref": "./rig.modular.case.schema.json"
+              },
+              "rig.modular.module": {
+                "$ref": "./rig.modular.module.schema.json"
+              },
+              "rig.modular.port": {
+                "$ref": "./rig.modular.port.schema.json"
+              },
+              "rig.modular.power": {
+                "$ref": "./rig.modular.power.schema.json"
+              },
+              "rig.modular.rail": {
+                "$ref": "./rig.modular.rail.schema.json"
               },
               "rig.music.arrangement": {
                 "$ref": "./rig.music.arrangement.schema.json"
@@ -930,6 +954,18 @@
               },
               "rig.story.table": {
                 "$ref": "./rig.story.table.schema.json"
+              },
+              "rig.synth.amplifier": {
+                "$ref": "./rig.synth.amplifier.schema.json"
+              },
+              "rig.synth.envelope": {
+                "$ref": "./rig.synth.envelope.schema.json"
+              },
+              "rig.synth.filter": {
+                "$ref": "./rig.synth.filter.schema.json"
+              },
+              "rig.synth.oscillator": {
+                "$ref": "./rig.synth.oscillator.schema.json"
               },
               "rig.ui.action": {
                 "$ref": "./rig.ui.action.schema.json"

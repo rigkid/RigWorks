@@ -1,6 +1,7 @@
 /* Generated pages — catalog, schema pages, docs. Extends styles.css tokens.
    The landing page keeps its hero; these pages get a topbar and an optional
-   sidebar. Only the catalog filter uses script, and it degrades to a full list. */
+   sidebar. The catalog filter uses script and degrades to a full list.
+   Data mode is site/data/ and does not use this file. */
 
 /* ---------- topbar ---------- */
 
@@ -17,6 +18,12 @@
   max-width: 84rem;
   margin: 0 auto;
   padding: 0.5rem 1.5rem;
+  flex-wrap: nowrap;
+}
+
+.topbar .nav-menu .nav-links {
+  max-height: min(70vh, 28rem);
+  overflow-y: auto;
 }
 
 .topbar .nav-links a.here { color: var(--accent); }

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.synth.filter.schema.json",
+  "title": "rig.synth.filter",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": [
+        "low-pass",
+        "high-pass",
+        "band-pass"
+      ]
+    },
+    "cutoffHertz": {
+      "type": "number",
+      "minimum": 0
+    },
+    "resonance": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "decibelsPerOctave": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "input": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "required": [
+    "mode",
+    "cutoffHertz"
+  ],
+  "x-rig-maturity": "draft"
+}

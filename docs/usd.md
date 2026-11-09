@@ -2,7 +2,7 @@
 
 A host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). OpenUSD stages (`.usda`, `.usdc`, `.usd`, `.usdz`) are encodings. The OpenUSD library, Hydra, and a writer that merges `over` opinions back onto a layer are fulfillment - not this catalog.
 
-Unlike [OpenBIM](openbim.md), there is no `rig.usd.*` layer. Portable meaning is spatial / geometry / render / animation / simulation. Product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). USD-only fields travel as `x.usd.*` until a second speaker needs the same meaning in the catalog.
+Unlike [OpenBIM](openbim.md), there is no `rig.usd.*` layer. Portable meaning is spatial / geometry / render / animation / simulation. Product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). USD-only fields travel as `x.usd.*`.
 
 The document is the **composed** stage. Sublayers, references, payloads, variant sets, inherits, specializes, and list-editing stay in the USD file. A host composes that file, then writes ordinary entities. Two hosts that never linked OpenUSD can exchange the picture. Switching a variant means composing the USD file again.
 
@@ -100,7 +100,7 @@ A world, a cube with a material, sitting on y = 0:
 | Blend shapes, creases, extra UV sets | Mesh morphs and extra primvars stay encoding until a second host stores them |
 | Primvars other than one UV set plus per-vertex normals | One `texcoords` / `normals` packing on the mesh |
 | Unexpanded point instancers | Expand to `spatial.instance`, or leave them in the USD file |
-| Area lights, D6 joints | No home in the catalog yet |
+| Area lights, D6 joints | Leave them in the USD file |
 | `rig.usd.*` | Product names stay out of schema ids |
 
 ## Encodings (fulfillment)
@@ -111,9 +111,5 @@ A world, a cube with a material, sitting on y = 0:
 | `.usdz` | Packaged stage; textures and payloads travel in the zip. Sidecars that leave with a `.rig` go in `.rigz` `data/` |
 | Source `asset_ref` | `kind` `model`; a writer merges authored transforms and visibility back as `over` opinions, same bargain as [kicad.md](kicad.md#round-trip) |
 | `x.usd.*` | Active variant, purpose, kind, subdivision scheme, double-sided, photometric intensity - travel; do not port |
-
-## Honest limit
-
-Two hosts that speak transform + mesh + camera + light can exchange a composed USD picture as `.rig`. Round-tripping every composition arc, shader graph, and primvar is not required. A host that needs the rest keeps it in the USD file and maps what it understands.
 
 Example: [`examples/usd-stage.json`](../examples/usd-stage.json).

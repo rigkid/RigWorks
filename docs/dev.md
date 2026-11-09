@@ -2,7 +2,7 @@
 
 A development-environment host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). Provider SDKs, interactive login UX, cache stores, and CLI chrome are fulfillment - the Contract still **names** the portable fields those fulfillments read.
 
-Portable meaning lives on [`rig.dev.machine`](../schemas/dev/machine.md) and [`rig.dev.op`](../schemas/dev/op.md). TypeScript workflow graphs, Dockerfiles, and install scripts stay in the host (or as `x.<vendor>.*` until a second speaker needs the same meaning in the catalog).
+Portable meaning lives on [`rig.dev.machine`](../schemas/dev/machine.md) and [`rig.dev.op`](../schemas/dev/op.md). TypeScript workflow graphs, Dockerfiles, and install scripts stay in the host (or as `x.<vendor>.*`).
 
 ## Not these
 

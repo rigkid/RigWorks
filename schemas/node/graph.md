@@ -48,10 +48,10 @@ Also used **inline** as `nested` on a [`rig.node.node`](node.md) for nestable gr
 
 A node with `nested` is a group: it appears as one node on the parent canvas; its interior is another graph. Published pins ([`rig.node.publish`](publish.md)) expose selected interior pins as the group's outer interface. Recursion is allowed.
 
-Editor mirrors (`nodeCount`, ...) and dive UI state are host-only - do not serialize.
+Editor mirrors (`nodeCount`, ...) and dive UI state are host-only - do not serialize. Live pin readouts and selection stay in the host. Canvas position travels on each node as `position`.
 
 ## Fulfillment
 
-[RigKit](https://github.com/rigkid/RigKit)'s node editor over the same PODs - two value nodes into an add node, one link per pin pair. Canvas positions, live pin readouts, and selection are host state; only the fields above travel.
+[RigKit](https://github.com/rigkid/RigKit)'s node editor over the same PODs - two value nodes into an add node, one link per pin pair. Pure Data and Max patches use this same graph - [pd.md](../../docs/pd.md). A signal cord and a message cord are both a link; the rate belongs to the host catalog entry for `typeId`.
 
 ![RigKit node editor - Value A and Value B into an Add node](../../examples/img/node_editor.png)

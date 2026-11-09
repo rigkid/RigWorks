@@ -1,6 +1,6 @@
 # RigWorks (Rig)
 
-> A no-code application framework - a shared data vocabulary for applications. Apps and packs that speak the same schema ids interoperate. Not another editor: the vocabulary editors and agents could share.
+> A shared grammar for real work. The framework ships no code: apps and packs that speak the same schema ids interoperate. Not another editor: the vocabulary editors and agents could share.
 
 Rig defines a grammar of POD schemas (prose + JSON Schema) and entity/component documents. Live hosts also honor SUDE + runtime ECS. Emit JSON documents; validate with rig-validate. Nothing to link into an app.
 
@@ -40,9 +40,11 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 
 ### Format mappings
 
+- [docs/blender.md](docs/blender.md): Blender evaluated scene to existing spatial / mesh / render / animation schemas; encodings are fulfillment
 - [docs/idml.md](docs/idml.md): IDML to `rig.layout.frame` + layout / story; encodings are fulfillment
 - [docs/kicad.md](docs/kicad.md): KiCad board to `rig.circuit.*` / `rig.pcb.*`; `.rigz` round trip merges onto the source file
 - [docs/openbim.md](docs/openbim.md): OpenBIM (IFC / BCF / IDS) to `rig.bim.*`; encodings are fulfillment
+- [docs/pd.md](docs/pd.md): Pure Data and Max patches to `rig.node.*`; a `.pd` round trip merges onto the source file
 - [docs/print.md](docs/print.md): FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page
 - [docs/spine.md](docs/spine.md): Spine skeleton JSON to existing animation / mesh schemas; encodings are fulfillment
 - [docs/ufo.md](docs/ufo.md): UFO / GLIF to `rig.font.*`; encodings are fulfillment
@@ -51,6 +53,8 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 ### Domain mappings
 
 - [docs/dev.md](docs/dev.md): portable dev machines to `rig.dev.machine` / `rig.dev.op`; [RigDev](https://github.com/rigkid/RigDev) fulfills
+- [docs/eurosynth.md](docs/eurosynth.md): EuroSynth / Eurorack faceplates, jacks, and supply rails to `rig.modular.*`; comparators are fulfillment
+- [docs/music.md](docs/music.md): tempo, key, chord, and part to `rig.music.*`; a subtractive voice to `rig.synth.*`
 - [docs/records.md](docs/records.md): payments, encounters, catalog rows, and case files to `rig.record.*` / `rig.finance.*` / `rig.clinic.*` / `rig.commerce.product`; encodings are fulfillment
 - [docs/robot.md](docs/robot.md): design, simulate, test, and train robots on `rig.sim.*` / `rig.sensor.*` / `rig.ai.policy`; solvers and trainers are fulfillment
 - [docs/ros.md](docs/ros.md): ROS 2 to existing spatial / I/O / sensor / SUDE; no `rig.ros2.*`

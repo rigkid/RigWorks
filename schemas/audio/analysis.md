@@ -48,7 +48,7 @@ This describes the analysis to perform, not its results. Band magnitudes, onset 
 
 `key` is a tonic pitch class (0-11, C = 0, the same numbering as `chroma`) plus a mode. The mode uses the [`rig.music.pattern`](../music/pattern.md) `scale` words: `chromatic`, `major`, `minor`, `dorian`, `pentatonic`.
 
-`chord` is a root pitch class plus `intervals`, semitone offsets from that root. A major triad is `[4, 7]`; a minor triad is `[3, 7]`. Omit `0`. The same `intervals` field is authored on [`rig.music.step`](../music/step.md) and [`rig.music.note`](../music/note.md).
+`chord` is a root pitch class plus `intervals`, semitone offsets from that root. A major triad is `[4, 7]`; a minor triad is `[3, 7]`. Omit `0`. The same `intervals` field is authored on [`rig.music.step`](../music/step.md) and [`rig.music.note`](../music/note.md). Pitch class 0 is C, and 60 on an authored note is C4. The scale sets live on the pattern. Human words: [music.md](../../docs/music.md).
 
 `color` is rgba feedback derived from the spectrum (hue + energy). `temperature` is 0 = cold, 1 = warm (bass vs treble). The same two names are used by [`rig.picture.analysis`](../picture/analysis.md).
 

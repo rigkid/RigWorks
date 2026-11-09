@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.modular.power.schema.json",
+  "title": "rig.modular.power",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "header": {
+      "type": "string",
+      "enum": [
+        "idc-10",
+        "idc-16"
+      ]
+    },
+    "positive12MilliAmps": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "negative12MilliAmps": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    },
+    "positive5MilliAmps": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "header"
+  ],
+  "x-rig-maturity": "draft"
+}

@@ -174,6 +174,14 @@ describe("rig-validate", () => {
     assert.match(r.stdout, /innerRadius \(40\) must be smaller than outerRadius \(30\)/);
   });
 
+  it("errors on a modular window, a half pitch reference, and a reversed noise band", () => {
+    const r = run([fix("semantic-modular-range.json")]);
+    assert.equal(r.status, 1);
+    assert.match(r.stdout, /highVolts \(0\) is below lowVolts \(5\)/);
+    assert.match(r.stdout, /referencePitch and referenceVolts are a pair/);
+    assert.match(r.stdout, /noiseMaxHertz \(10\) is below noiseMinHertz \(10000\)/);
+  });
+
   it("errors on an axis whose min is not below its max", () => {
     const r = run([fix("semantic-axis-range.json")]);
     assert.equal(r.status, 1);

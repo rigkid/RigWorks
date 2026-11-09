@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.4.0",
   "generatedBy": "tools/gen-schemas.mjs - do not hand-edit; edit frontmatter in schemas/<domain>/<name>.md",
   "schemas": [
     {
@@ -4351,6 +4351,22 @@
       ]
     },
     {
+      "id": "rig.io.bluetooth",
+      "maturity": "draft",
+      "summary": "Classic Bluetooth audio sink. Format when present. The name phones see is rig.meta.named.",
+      "prose": "schemas/io/bluetooth.md",
+      "schema": "schemas/json/rig.io.bluetooth.schema.json",
+      "fields": [
+        {
+          "name": "enabled",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. Discoverable and able to accept a stream when true; absent = false",
+          "absent": "false"
+        }
+      ]
+    },
+    {
       "id": "rig.io.dmx",
       "maturity": "draft",
       "summary": "DMX512 port. Format when present.",
@@ -4380,6 +4396,43 @@
           "required": false,
           "meaning": "Optional. Port active; absent = true",
           "absent": "true"
+        }
+      ]
+    },
+    {
+      "id": "rig.io.espnow",
+      "maturity": "draft",
+      "summary": "ESP-NOW peer and payload. Format when present. The send itself is an action.",
+      "prose": "schemas/io/espnow.md",
+      "schema": "schemas/json/rig.io.espnow.schema.json",
+      "fields": [
+        {
+          "name": "enabled",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. Stack active when true; absent = false",
+          "absent": "false"
+        },
+        {
+          "name": "peer",
+          "type": "string",
+          "required": false,
+          "meaning": "Optional. Peer MAC, six hex bytes separated by colons. Absent = no peer",
+          "absent": "no peer"
+        },
+        {
+          "name": "channel",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. 2.4 GHz channel 1-14. Absent = the Wi-Fi radio's current channel",
+          "absent": "the Wi-Fi radio's current channel"
+        },
+        {
+          "name": "payload",
+          "type": "string",
+          "required": false,
+          "meaning": "Optional. Bytes to send, as text. Absent = empty",
+          "absent": "empty"
         }
       ]
     },
@@ -4569,6 +4622,49 @@
           "required": false,
           "meaning": "Optional. Open when true; absent = false",
           "absent": "false"
+        }
+      ]
+    },
+    {
+      "id": "rig.io.wifi",
+      "maturity": "draft",
+      "summary": "Wi-Fi radio mode for one interface. Format when present. The join password is host-only.",
+      "prose": "schemas/io/wifi.md",
+      "schema": "schemas/json/rig.io.wifi.schema.json",
+      "fields": [
+        {
+          "name": "mode",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. off, ap, sta, or ap-sta. Absent = off",
+          "absent": "off",
+          "enum": [
+            "off",
+            "ap",
+            "sta",
+            "ap-sta"
+          ]
+        },
+        {
+          "name": "apSsid",
+          "type": "string",
+          "required": false,
+          "meaning": "Optional. Access-point name. Absent = the host default",
+          "absent": "the host default"
+        },
+        {
+          "name": "staSsid",
+          "type": "string",
+          "required": false,
+          "meaning": "Optional. Network to join when mode is sta or ap-sta. Absent = none",
+          "absent": "none"
+        },
+        {
+          "name": "channel",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. 2.4 GHz channel 1-14. Absent = the interface default",
+          "absent": "the interface default"
         }
       ]
     },
@@ -5976,6 +6072,379 @@
       ]
     },
     {
+      "id": "rig.modular.case",
+      "maturity": "draft",
+      "summary": "Rails a modular faceplate mounts in. Format when present.",
+      "prose": "schemas/modular/case.md",
+      "schema": "schemas/json/rig.modular.case.schema.json",
+      "fields": [
+        {
+          "name": "hp",
+          "type": "int",
+          "required": true,
+          "meaning": "Rail capacity in horizontal-pitch units"
+        },
+        {
+          "name": "pitchMm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Millimetres per HP. Absent = 5.08 (Eurocard horizontal pitch)",
+          "absent": "5.08 (Eurocard horizontal pitch)"
+        },
+        {
+          "name": "widthMm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Finished opening width (mm). Absent = unset. hp times pitchMm is the nominal width, which a host computes",
+          "absent": "unset"
+        },
+        {
+          "name": "rows",
+          "type": "int",
+          "required": false,
+          "meaning": "Optional. Module rows. Absent = 1",
+          "absent": "1"
+        },
+        {
+          "name": "rowHeightMm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Clear height of one row (mm). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "depthMm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Usable depth behind the rails (mm). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "fastener",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Rail thread. m3, m2-5 (M2.5). Absent = unset",
+          "absent": "unset",
+          "enum": [
+            "m3",
+            "m2-5"
+          ]
+        },
+        {
+          "name": "spec",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Named spec this case claims. Absent = no claim",
+          "absent": "no claim"
+        }
+      ]
+    },
+    {
+      "id": "rig.modular.module",
+      "maturity": "draft",
+      "summary": "One modular faceplate. Format when present.",
+      "prose": "schemas/modular/module.md",
+      "schema": "schemas/json/rig.modular.module.schema.json",
+      "fields": [
+        {
+          "name": "hp",
+          "type": "int",
+          "required": true,
+          "meaning": "Faceplate width in horizontal-pitch units"
+        },
+        {
+          "name": "pitchMm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Millimetres per HP. Absent = 5.08 (Eurocard horizontal pitch)",
+          "absent": "5.08 (Eurocard horizontal pitch)"
+        },
+        {
+          "name": "widthMm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Finished faceplate width (mm). Absent = unset. hp times pitchMm is the nominal width, which a host computes",
+          "absent": "unset"
+        },
+        {
+          "name": "heightMm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Finished faceplate height (mm). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "thicknessMm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Panel thickness (mm). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "depthMm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Depth from the inside face of the panel to the furthest rear point (mm). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "fastener",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Panel thread. m3, m2-5 (M2.5). Absent = unset",
+          "absent": "unset",
+          "enum": [
+            "m3",
+            "m2-5"
+          ]
+        },
+        {
+          "name": "spec",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Named spec this module claims. Absent = no claim",
+          "absent": "no claim"
+        }
+      ]
+    },
+    {
+      "id": "rig.modular.port",
+      "maturity": "draft",
+      "summary": "One patch jack and the signal window it accepts or produces. Format when present.",
+      "prose": "schemas/modular/port.md",
+      "schema": "schemas/json/rig.modular.port.schema.json",
+      "fields": [
+        {
+          "name": "direction",
+          "type": "enum",
+          "required": true,
+          "meaning": "in, out, bidirectional",
+          "enum": [
+            "in",
+            "out",
+            "bidirectional"
+          ]
+        },
+        {
+          "name": "signal",
+          "type": "enum",
+          "required": true,
+          "meaning": "audio, cv, gate, trigger",
+          "enum": [
+            "audio",
+            "cv",
+            "gate",
+            "trigger"
+          ]
+        },
+        {
+          "name": "connector",
+          "type": "enum",
+          "required": true,
+          "meaning": "banana-4mm, ts-3-5mm (3.5 mm tip-sleeve)",
+          "enum": [
+            "banana-4mm",
+            "ts-3-5mm"
+          ]
+        },
+        {
+          "name": "impedanceOhm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Ohms. Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "lowVolts",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Lower end of the accepted or produced window (V). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "highVolts",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Upper end of the accepted or produced window (V). Absent = unset. Not below lowVolts",
+          "absent": "unset"
+        },
+        {
+          "name": "tolerance",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Fraction of highVolts, 0-1. 0.01 is +/- 1%. Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "thresholdVolts",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Logic trip voltage (V). Absent = unset. When offBelowVolts and onAboveVolts are set, it lies between them",
+          "absent": "unset"
+        },
+        {
+          "name": "offBelowVolts",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. At or below this voltage a logic signal reads off (V). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "onAboveVolts",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. At or above this voltage a logic signal reads on (V). Absent = unset. Not below offBelowVolts",
+          "absent": "unset"
+        },
+        {
+          "name": "minSlewVoltsPerMicrosecond",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Minimum edge slew a trigger input requires (V/us). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "maxTransitionMicroseconds",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Maximum transition time a trigger input accepts (us). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "voltsPerOctave",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Pitch law, volts per octave. Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "decibelsPerVolt",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Level law, decibels per volt. Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "referencePitch",
+          "type": "int",
+          "required": false,
+          "meaning": "Optional. MIDI note that referenceVolts stands for. Middle C is 60. State with referenceVolts, or omit both",
+          "absent": "omit both"
+        },
+        {
+          "name": "referenceVolts",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Voltage at referencePitch (V). State with referencePitch, or omit both. When lowVolts and highVolts are set, it lies between them",
+          "absent": "omit both"
+        },
+        {
+          "name": "minHertz",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Lowest frequency the window is specified at (Hz). Absent = unset. An open upper bound stays omitted",
+          "absent": "unset"
+        }
+      ]
+    },
+    {
+      "id": "rig.modular.power",
+      "maturity": "draft",
+      "summary": "What a module draws, and which header it draws it through. Format when present.",
+      "prose": "schemas/modular/power.md",
+      "schema": "schemas/json/rig.modular.power.schema.json",
+      "fields": [
+        {
+          "name": "header",
+          "type": "enum",
+          "required": true,
+          "meaning": "idc-10, idc-16",
+          "enum": [
+            "idc-10",
+            "idc-16"
+          ]
+        },
+        {
+          "name": "positive12MilliAmps",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Draw from +12 V (mA). Absent = not stated. Absent is not 0",
+          "absent": "not stated"
+        },
+        {
+          "name": "negative12MilliAmps",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Draw from -12 V (mA). Absent = not stated. Absent is not 0",
+          "absent": "not stated"
+        },
+        {
+          "name": "positive5MilliAmps",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Draw from +5 V (mA). Absent = not stated. Absent is not 0",
+          "absent": "not stated"
+        }
+      ]
+    },
+    {
+      "id": "rig.modular.rail",
+      "maturity": "draft",
+      "summary": "One supply rail and the limits it is built to hold. Format when present.",
+      "prose": "schemas/modular/rail.md",
+      "schema": "schemas/json/rig.modular.rail.schema.json",
+      "fields": [
+        {
+          "name": "volts",
+          "type": "float",
+          "required": true,
+          "meaning": "Nominal voltage. Negative for a negative rail. 0 is the 0 V return"
+        },
+        {
+          "name": "toleranceMillivolts",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Allowed departure from volts (mV). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "loadRegulationMillivolts",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Load regulation (mV RMS). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "noiseMillivolts",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Noise bound (mV) over noiseMinHertz to noiseMaxHertz. Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "noiseMinHertz",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Lower end of the noise band (Hz). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "noiseMaxHertz",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Upper end of the noise band (Hz). Absent = unset. Not below noiseMinHertz",
+          "absent": "unset"
+        },
+        {
+          "name": "maxImpedanceMilliohm",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Maximum impedance from a module terminal to the supply, cables included (milliohm). Absent = unset",
+          "absent": "unset"
+        }
+      ]
+    },
+    {
       "id": "rig.music.arrangement",
       "maturity": "draft",
       "summary": "Ordered playback frames - a tracker's order list / a sequencer song chain. Format when present.",
@@ -6144,7 +6613,7 @@
           "name": "pitch",
           "type": "integer",
           "required": true,
-          "meaning": "0-127"
+          "meaning": "MIDI note number 0-127. 60 is C4. Pitch class is pitch modulo 12, C = 0"
         },
         {
           "name": "velocity",
@@ -6182,7 +6651,7 @@
           "name": "intervals",
           "type": "array",
           "required": false,
-          "meaning": "Optional. Semitone offsets from pitch. Absent = pitch alone. Omit 0. A major triad is [4, 7]; a minor triad is [3, 7]",
+          "meaning": "Optional. Semitone offsets in 12-tone equal temperament from pitch, not scale degrees. A major third is 4. Absent = pitch alone. Omit 0. A major triad is [4, 7]; a minor triad is [3, 7]",
           "absent": "pitch alone"
         }
       ]
@@ -6204,14 +6673,14 @@
           "name": "rootNote",
           "type": "integer",
           "required": false,
-          "meaning": "Optional. MIDI pitch 0-127 (scale root); absent = 60",
+          "meaning": "Optional. MIDI pitch 0-127, the scale root. 60 is C4. Absent = 60. With scale, names the collection; does not transpose steps",
           "absent": "60"
         },
         {
           "name": "scale",
           "type": "enum",
           "required": false,
-          "meaning": "Optional. chromatic, major, minor, dorian, pentatonic; absent = chromatic",
+          "meaning": "Optional. chromatic, major, minor, dorian, or pentatonic; absent = chromatic. Semitone sets from rootNote, 12-tone equal temperament: chromatic 0-11, major 0 2 4 5 7 9 11, minor 0 2 3 5 7 8 10 (natural), dorian 0 2 3 5 7 9 10, pentatonic 0 2 4 7 9 (major pentatonic). Does not transpose steps",
           "absent": "chromatic",
           "enum": [
             "chromatic",
@@ -6296,7 +6765,7 @@
           "name": "pitch",
           "type": "integer",
           "required": false,
-          "meaning": "Optional. 0-127; absent = 60",
+          "meaning": "Optional. MIDI note number 0-127; absent = 60. 60 is C4. Same numbering as rig.music.note",
           "absent": "60"
         },
         {
@@ -6317,21 +6786,21 @@
           "name": "waveform",
           "type": "integer",
           "required": false,
-          "meaning": "Optional. 0-255; absent = 0. 0-7 are the portable synth shapes; 8 and up are host instrument slots",
+          "meaning": "Optional. 0-255; absent = 0. 0 sine, 1 tri, 2 saw, 3 square, 4 noise. 5-7 are unassigned. 8 and up are host instrument slots",
           "absent": "0"
         },
         {
           "name": "effect",
           "type": "integer",
           "required": false,
-          "meaning": "Optional. 0-7 note effect id; absent = 0",
+          "meaning": "Optional. 0-7; absent = 0. 0 is no effect. 1-7 are host slots with no shared effect",
           "absent": "0"
         },
         {
           "name": "intervals",
           "type": "array",
           "required": false,
-          "meaning": "Optional. Semitone offsets from pitch. Absent = pitch alone. Omit 0. A major triad is [4, 7]; a minor triad is [3, 7]",
+          "meaning": "Optional. Semitone offsets in 12-tone equal temperament from pitch, not scale degrees. A major third is 4. Absent = pitch alone. Omit 0. A major triad is [4, 7]; a minor triad is [3, 7]",
           "absent": "pitch alone"
         }
       ]
@@ -10003,7 +10472,7 @@
           "name": "licenceUri",
           "type": "string",
           "required": false,
-          "meaning": "Canonical licence URL"
+          "meaning": "The publisher's licence URL"
         },
         {
           "name": "rightsStatementUri",
@@ -11629,6 +12098,166 @@
           "type": "array<any>",
           "required": true,
           "meaning": "Occupied cells"
+        }
+      ]
+    },
+    {
+      "id": "rig.synth.amplifier",
+      "maturity": "draft",
+      "summary": "Level stage in a voice. Format when present.",
+      "prose": "schemas/synth/amplifier.md",
+      "schema": "schemas/json/rig.synth.amplifier.schema.json",
+      "fields": [
+        {
+          "name": "gain",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. 0-1 linear gain at no modulation. Absent = 1. A closed voice writes 0",
+          "absent": "1"
+        },
+        {
+          "name": "input",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Entity whose audio this stage reads. Absent = unset",
+          "absent": "unset"
+        }
+      ]
+    },
+    {
+      "id": "rig.synth.envelope",
+      "maturity": "draft",
+      "summary": "Attack, decay, sustain, release. Format when present.",
+      "prose": "schemas/synth/envelope.md",
+      "schema": "schemas/json/rig.synth.envelope.schema.json",
+      "fields": [
+        {
+          "name": "attackSeconds",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. Seconds from 0 to full when the gate opens. Absent = 0",
+          "absent": "0"
+        },
+        {
+          "name": "decaySeconds",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. Seconds from full to sustain while the gate holds. Absent = 0",
+          "absent": "0"
+        },
+        {
+          "name": "sustain",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. 0-1 level held while the gate stays open. Absent = 1",
+          "absent": "1"
+        },
+        {
+          "name": "releaseSeconds",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. Seconds from the held level to 0 when the gate closes. Absent = 0",
+          "absent": "0"
+        },
+        {
+          "name": "curve",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. linear or exponential. Absent = linear",
+          "absent": "linear",
+          "enum": [
+            "linear",
+            "exponential"
+          ]
+        },
+        {
+          "name": "gate",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Entity that opens this envelope. Absent = the host's playing note",
+          "absent": "the host's playing note"
+        }
+      ]
+    },
+    {
+      "id": "rig.synth.filter",
+      "maturity": "draft",
+      "summary": "Audio filter in a voice. Format when present.",
+      "prose": "schemas/synth/filter.md",
+      "schema": "schemas/json/rig.synth.filter.schema.json",
+      "fields": [
+        {
+          "name": "mode",
+          "type": "enum",
+          "required": true,
+          "meaning": "low-pass, high-pass, band-pass",
+          "enum": [
+            "low-pass",
+            "high-pass",
+            "band-pass"
+          ]
+        },
+        {
+          "name": "cutoffHertz",
+          "type": "number",
+          "required": true,
+          "meaning": "Cutoff (Hz) at no modulation. 0 is closed"
+        },
+        {
+          "name": "resonance",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. 0-1 emphasis at the cutoff. Absent = 0",
+          "absent": "0"
+        },
+        {
+          "name": "decibelsPerOctave",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. Slope (dB/octave). Absent = unset",
+          "absent": "unset"
+        },
+        {
+          "name": "input",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Entity whose audio this filter reads. Absent = unset",
+          "absent": "unset"
+        }
+      ]
+    },
+    {
+      "id": "rig.synth.oscillator",
+      "maturity": "draft",
+      "summary": "Pitched audio oscillator. Format when present.",
+      "prose": "schemas/synth/oscillator.md",
+      "schema": "schemas/json/rig.synth.oscillator.schema.json",
+      "fields": [
+        {
+          "name": "waveform",
+          "type": "enum",
+          "required": true,
+          "meaning": "sine, tri, saw, square. The same four words as rig.mod.lfo",
+          "enum": [
+            "sine",
+            "tri",
+            "saw",
+            "square"
+          ]
+        },
+        {
+          "name": "pitch",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. MIDI note 0-127 at no modulation. 60 is C4. Absent = 60. Same numbering as rig.music.note",
+          "absent": "60"
+        },
+        {
+          "name": "pulseWidth",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. 0-1 duty of a square. Absent = 0.5. Other waveforms ignore it",
+          "absent": "0.5"
         }
       ]
     },

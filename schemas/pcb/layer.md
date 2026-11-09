@@ -18,7 +18,7 @@ fields:
 
 One board layer - what it is for. Format when present.
 
-Compose on a child of the [`rig.pcb.board`](board.md). The canonical layer id (`F.Cu`, `B.SilkS`) is [`rig.meta.named`](../meta/named.md) `stableId`; a user-facing label is `name`. List order and colour are [`rig.spatial.layer`](../spatial/layer.md); show/hide is [`rig.render.visibility`](../render/visibility.md).
+Compose on a child of the [`rig.pcb.board`](board.md). The layer id (`F.Cu`, `B.SilkS`) is [`rig.meta.named`](../meta/named.md) `stableId`; a user-facing label is `name`. List order and colour are [`rig.spatial.layer`](../spatial/layer.md); show/hide is [`rig.render.visibility`](../render/visibility.md).
 
 | Field | Type | Meaning |
 |-------|------|---------|

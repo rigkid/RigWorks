@@ -33,8 +33,4 @@ Do **not** invent `rig.bim.wall` / `rig.bim.door`. One wall and one door use the
 
 Do not put OwnerHistory, Representation item trees, or ObjectPlacement graphs in portable components - those are encoding / host cache.
 
-## Honest limit
-
-Two hosts that speak `rig.bim.classify` + `pset` + `relation` can exchange a building and a BCF thread as `.rig`. Round-tripping every IFC representation item is not required - CAD + optional mesh bake covers the portable subset. A host that needs the rest keeps it in the IFC file and maps what it understands.
-
 Examples: [`examples/bim-model.json`](../examples/bim-model.json), [`bim-bcf.json`](../examples/bim-bcf.json), [`bim-ids.json`](../examples/bim-ids.json).

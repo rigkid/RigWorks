@@ -8,7 +8,8 @@
  *   node tools/site/gen.mjs --check   # write, then fail on a missing page or dead link
  *
  * Pages carry a browse sidebar; the catalog is a grouped list with a filter box
- * that degrades to the full list when script is off.
+ * that degrades to the full list when script is off. Data mode is a WebGL graph
+ * at data/index.html: schemas are nodes, a mention is a line, a click flies in.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -37,6 +38,17 @@ const esc = (s) =>
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+
+/** Prose for the cloud card. Links and emphasis become plain words. */
+function plain(md) {
+  return String(md ?? "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, "$1")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
 /* ---------- schemas ---------- */
 
@@ -180,8 +192,11 @@ function loadSchemas() {
 }
 
 function summarize(entry) {
-  if (entry.prose) {
-    const body = entry.prose.replace(idHeading, "").trim();
+  const parsed = entry.prose ? parseFrontmatter(entry.prose) : null;
+  if (parsed?.data.summary) return String(parsed.data.summary).trim();
+  const source = parsed ? parsed.body : entry.prose;
+  if (source) {
+    const body = source.replace(idHeading, "").trim();
     const para = body
       .split(/\n\s*\n/)
       .find((p) => p && !p.startsWith("|") && !p.startsWith("#"));
@@ -197,12 +212,12 @@ function summarize(entry) {
 const DOC_GROUPS = [
   {
     title: "Why Rig",
-    note: "The argument in three altitudes: the tablet, the anti-library case, and the consequence when models author work.",
+    note: "Design philosophy, the no-code argument, and AI collaboration.",
     slugs: ["design-philosophy", "why-no-code", "ai-collaboration"],
   },
   {
     title: "Contract",
-    note: "The portable rules, the vocabulary for talking about them, and the test for whether something is Rig.",
+    note: "Terms, the minimum bar, ECS, SUDE, UI, versioning, history, and known gaps.",
     slugs: ["terms", "honors", "ecs", "sude", "ui", "versioning", "history", "gaps"],
   },
   {
@@ -213,12 +228,12 @@ const DOC_GROUPS = [
   {
     title: "Format mappings",
     note: "How established file formats map onto Rig schemas at the boundary. Native files and encodings stay fulfillment.",
-    slugs: ["idml", "kicad", "openbim", "print", "spine", "ufo", "usd"],
+    slugs: ["blender", "idml", "kicad", "openbim", "pd", "print", "spine", "ufo", "usd"],
   },
   {
     title: "Domain mappings",
     note: "How established domains and runtimes are expressed with Rig schemas. Solvers, services, and runtimes stay fulfillment.",
-    slugs: ["dev", "records", "robot", "ros", "vr"],
+    slugs: ["dev", "eurosynth", "music", "records", "robot", "ros", "vr"],
   },
 ];
 
@@ -374,7 +389,12 @@ const GROUPS = [
   { title: "Meta / render", domains: ["meta", "render"] },
   { title: "Animation / modulators", domains: ["anim", "mod"] },
   { title: "Music", domains: ["music"] },
-  { title: "Audio", domains: ["audio"] },
+  {
+    title: "Synth",
+    domains: ["synth"],
+    note: "Oscillator, filter, amplifier, and envelope. Audio moves through input. The faceplate is rig.modular.*. A drawing filter is rig.paint.filter.",
+  },
+  { title: "Audio", domains: ["audio", "picture", "visualizer"] },
   { title: "Media", domains: ["media"] },
   { title: "Font (UFO / variable)", domains: ["font"] },
   { title: "Story (semantic copy)", domains: ["story"] },
@@ -390,8 +410,23 @@ const GROUPS = [
     note: "Parts, physical terminals, nets; board layers, pads, tracks, vias, zones. A pad composes on its terminal. .kicad_pcb is a host encoding.",
   },
   {
+    title: "Modular",
+    domains: ["modular"],
+    note: "Faceplate, jacks, and supply rails. EuroSynth and Eurorack are published numbers in these fields.",
+  },
+  {
     title: "I/O",
     domains: ["io", "dmx", "led", "sensor", "input", "light", "calendar"],
+  },
+  {
+    title: "VR",
+    domains: ["vr"],
+    note: "Stereo views, tracked poses, and room bounds. OpenXR, WebXR, and other runtimes are fulfillments.",
+  },
+  {
+    title: "Dev environments",
+    domains: ["dev"],
+    note: "Portable development-machine recipes. Cache fingerprints and credentials stay host-only.",
   },
   { title: "Simulation", domains: ["sim"] },
   { title: "Play", domains: ["play"] },
@@ -431,6 +466,7 @@ const DOCS_OUT = "docs/index.html";
 const EXAMPLES_OUT = "examples/index.html";
 const AI_OUT = "for-ai/index.html";
 const HOME_OUT = "index.html";
+const DATA_OUT = "data/index.html";
 
 const rel = (from, to) => path.posix.relative(path.posix.dirname(from), to) || ".";
 
@@ -518,20 +554,66 @@ function renderMarkdown(md, sourceRel, pageOut, pathMap) {
 
 /* ---------- shell ---------- */
 
-function nav(pageOut, current) {
+const SPONSOR_SVG =
+  '<svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 14.5S1 10.2 1 6.1C1 3.6 3 1.5 5.5 1.5c1 0 1.9.5 2.5 1.2.6-.7 1.5-1.2 2.5-1.2C13 1.5 15 3.6 15 6.1c0 4.1-7 8.4-7 8.4z"/></svg>';
+
+/** Shared top nav — desktop row + mobile disclosure. Landing gets the same
+ *  markup injected at build time so deploy cannot drift from gen pages. */
+function nav(pageOut, current, currentId) {
   const item = (label, to, key) =>
     `<a${current === key ? ' class="here"' : ""} href="${rel(pageOut, to)}">${label}</a>`;
-  return `<nav>
-  <a class="wordmark" href="${rel(pageOut, HOME_OUT)}">RigWorks</a>
-  <span class="nav-links">
+  const schemaId =
+    current === "schemas" && typeof currentId === "string" && currentId.startsWith("rig.")
+      ? currentId
+      : "";
+  const dataHref = rel(pageOut, DATA_OUT) + (schemaId ? `#${schemaId}` : "");
+  // id="mode-read" only once (desktop) — cloud.js updates that link's hash.
+  const modes = (withId) =>
+    current === "data"
+      ? `<span class="modes" role="group" aria-label="Mode"><a${
+          withId ? ' id="mode-read"' : ""
+        } href="${rel(pageOut, HOME_OUT)}">Read</a><span class="here" aria-current="page">Data</span></span>`
+      : `<span class="modes" role="group" aria-label="Mode"><span class="here" aria-current="page">Read</span><a href="${dataHref}">Data</a></span>`;
+  const links = (withModeId) => `${modes(withModeId)}
     ${item("Schemas", CATALOG_OUT, "schemas")}
     ${item("Docs", DOCS_OUT, "docs")}
     ${item("Examples", EXAMPLES_OUT, "examples")}
     ${item("For AI", AI_OUT, "for-ai")}
-    <a class="sponsor" href="https://github.com/sponsors/GitBruno"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 14.5S1 10.2 1 6.1C1 3.6 3 1.5 5.5 1.5c1 0 1.9.5 2.5 1.2.6-.7 1.5-1.2 2.5-1.2C13 1.5 15 3.6 15 6.1c0 4.1-7 8.4-7 8.4z"/></svg>Sponsor</a>
-    <a class="ghost" href="${GITHUB}">GitHub</a>
+    <a class="sponsor" href="https://github.com/sponsors/GitBruno">${SPONSOR_SVG}Sponsor</a>
+    <a class="ghost" href="${GITHUB}">GitHub</a>`;
+  return `<nav>
+  <a class="wordmark" href="${rel(pageOut, HOME_OUT)}">RigWorks</a>
+  <span class="nav-links nav-desktop">
+    ${links(true)}
   </span>
+  <details class="nav-menu">
+    <summary aria-label="Menu">Menu</summary>
+    <span class="nav-links">
+    ${links(false)}
+    </span>
+  </details>
 </nav>`;
+}
+
+/** Replace the landing <!--nav:start-->…<!--nav:end--> block after site/ copy. */
+function syncLandingNav() {
+  const file = path.join(outDir, HOME_OUT);
+  if (!fs.existsSync(file)) return;
+  const html = fs.readFileSync(file, "utf8");
+  const start = "<!--nav:start-->";
+  const end = "<!--nav:end-->";
+  const a = html.indexOf(start);
+  const b = html.indexOf(end);
+  if (a < 0 || b < 0 || b < a) {
+    throw new Error("landing page missing <!--nav:start--> / <!--nav:end--> markers");
+  }
+  const next =
+    html.slice(0, a + start.length) +
+    "\n  " +
+    nav(HOME_OUT, "home").replace(/\n/g, "\n  ") +
+    "\n  " +
+    html.slice(b);
+  fs.writeFileSync(file, next);
 }
 
 function sidebar(pageOut, ctx, currentId) {
@@ -589,13 +671,15 @@ function page({ pageOut, title, description, current, currentId, ctx, body }) {
 </head>
 <body class="doc">
 
+<a class="skip" href="#main">Skip to content</a>
+
 <header class="topbar">
-${nav(pageOut, current)}
+${nav(pageOut, current, currentId)}
 </header>
 
 <div class="shell with-side">
 ${sidebar(pageOut, ctx, currentId)}
-<main class="content">
+<main class="content" id="main">
 ${body}
 </main>
 </div>
@@ -609,7 +693,7 @@ ${body}
     <a href="${GITHUB}">Repository</a> ·
     <a href="${BLOB}/LICENSE">MIT</a>
   </p>
-  <p class="muted">Contract v${version} · ${tierWord}. A shared data vocabulary for applications.</p>
+  <p class="muted">Contract v${version} · ${tierWord}. A shared grammar for real work.</p>
 </footer>
 
 </body>
@@ -868,7 +952,6 @@ ${group.docs.map(card).join("\n")}
     )
     .join("\n");
   const body = `<h1>Docs</h1>
-<p class="lede">What the Contract means, and what counts as Rig. Start with why, then the rules, then the mappings.</p>
 ${sections}`;
   return {
     out: pageOut,
@@ -955,7 +1038,7 @@ function examplesIndex(ctx) {
     .join("\n");
 
   const body = `<h1>Examples</h1>
-<p class="lede">Canonical documents. Copy the pattern; validate before you trust the output.</p>
+<p class="lede">${ctx.examples.list.length} worked documents. Every one validates under <code>npm run check</code>.</p>
 <div class="grid cards">
 ${cards}
 </div>
@@ -1005,11 +1088,196 @@ ${renderMarkdown(ctx.skill.md, ctx.skill.rel, pageOut, ctx.pathMap)}
   };
 }
 
+/* ---------- data mode ---------- */
+
+function cloudPayload(ctx) {
+  const pageOut = DATA_OUT;
+  const count = { schemas: ctx.byId.size, stable: 0, draft: 0, experimental: 0 };
+  for (const entry of ctx.byId.values()) {
+    const maturity = entry.schema["x-rig-maturity"];
+    if (maturity === "stable" || maturity === "draft" || maturity === "experimental") count[maturity]++;
+  }
+  return {
+    version,
+    tier: tierWord,
+    home: rel(pageOut, HOME_OUT),
+    count,
+    links: citeLinks(ctx),
+    groups: ctx.groups.map((g) => ({
+      title: g.title,
+      slug: slugify(g.title),
+      note: plain(g.note),
+      href: `${rel(pageOut, CATALOG_OUT)}#${slugify(g.title)}`,
+      schemas: g.members.map((id) => {
+        const entry = ctx.byId.get(id);
+        const seen = ctx.examples.list
+          .filter((ex) => ex.ids.has(id))
+          .map((ex) => ({ name: ex.name, href: rel(pageOut, exampleOut(ex.slug)) }));
+        return {
+          id,
+          leaf: id.replace(/^rig\.[a-z0-9_]+\./, ""),
+          summary: plain(entry.summary),
+          maturity: entry.schema["x-rig-maturity"] || undefined,
+          union: entry.union || undefined,
+          href: rel(pageOut, schemaOut(id)),
+          seen: seen.length ? seen : undefined,
+          fields: entry.fields.map((f) => ({
+            name: f.name,
+            type: f.type,
+            constraint: f.constraint || undefined,
+            required: f.required,
+            meaning: plain(f.meaning) || undefined,
+          })),
+        };
+      }),
+    })),
+  };
+}
+
+const SCHEMA_ID = /rig\.[a-z0-9_.]+/g;
+
+/** Undirected edges: one schema's prose or field type names another schema. */
+function citeLinks(ctx) {
+  const ids = ctx.byId;
+  const edges = new Set();
+  const add = (a, b) => {
+    if (!a || !b || a === b || !ids.has(a) || !ids.has(b)) return;
+    edges.add(a < b ? `${a} ${b}` : `${b} ${a}`);
+  };
+  for (const entry of ids.values()) {
+    const parsed = entry.prose ? parseFrontmatter(entry.prose) : null;
+    const body = parsed ? parsed.body : entry.prose || "";
+    for (const hit of body.matchAll(SCHEMA_ID)) add(entry.id, hit[0].replace(/\.+$/, ""));
+    for (const field of entry.fields) {
+      for (const hit of String(field.type || "").matchAll(SCHEMA_ID)) {
+        add(entry.id, hit[0].replace(/\.+$/, ""));
+      }
+    }
+  }
+  return [...edges].sort().map((key) => {
+    const [a, b] = key.split(" ");
+    return { a, b };
+  });
+}
+
+function cloudIndex(ctx, pageOut) {
+  return ctx.groups
+    .map((g) => {
+      const items = g.members
+        .map(
+          (id) =>
+            `<li><a href="${esc(rel(pageOut, schemaOut(id)))}"><code>${esc(id)}</code></a></li>`
+        )
+        .join("");
+      return `<section><h2>${esc(g.title)}</h2><ul>${items}</ul></section>`;
+    })
+    .join("\n");
+}
+
+const ICON =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d10'/%3E%3Cpath d='M7 21 L13 11 L19 21 L25 11' stroke='%2340a6ff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E";
+
+function dataPage(ctx) {
+  const pageOut = DATA_OUT;
+  const json = JSON.stringify(cloudPayload(ctx)).replaceAll("<", "\\u003c");
+  const catalogHref = esc(rel(pageOut, CATALOG_OUT));
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data — RigWorks</title>
+<meta name="description" content="The schema catalog as a graph. Each node is a schema, each line a mention. Click a node to fly in.">
+<meta name="theme-color" content="#0b0d10">
+<link rel="canonical" href="https://rig.works/data/">
+<link rel="icon" href="${ICON}">
+<link rel="stylesheet" href="${rel(pageOut, "styles.css")}">
+<link rel="stylesheet" href="cloud.css">
+</head>
+<body class="cloud">
+<a class="skip" href="#card">Skip to the detail</a>
+<header class="cloud-bar">
+${nav(pageOut, "data")}
+<div class="cloud-sub">
+  <nav class="cloud-crumbs" id="crumbs" aria-label="Zoom"></nav>
+  <form class="cloud-find" role="search" onsubmit="return false">
+    <input id="q" type="search" placeholder="Find a schema" autocomplete="off" spellcheck="false" aria-label="Find a schema" aria-controls="hits">
+    <ul id="hits" hidden></ul>
+  </form>
+</div>
+</header>
+<div class="cloud-stage">
+  <canvas id="plot" aria-label="Schema graph. Each node is a schema. A line means one schema names another. Click a node to fly in."></canvas>
+  <article id="card" class="cloud-card"></article>
+  <div id="tip" class="cloud-tip" hidden></div>
+</div>
+<p id="status" class="visually-hidden" aria-live="polite"></p>
+<nav class="cloud-index" aria-label="Schema index">
+  <h1>Schemas</h1>
+  <p>The graph needs JavaScript. The same catalog is <a href="${catalogHref}">a list</a>, and every schema is linked here.</p>
+${cloudIndex(ctx, pageOut)}
+</nav>
+<noscript><style>
+  body.cloud { overflow: auto; height: auto; }
+  .cloud-index { display: block !important; }
+  .cloud-stage, .cloud-sub { display: none !important; }
+</style></noscript>
+<script type="application/json" id="rig-cloud">
+${json}
+</script>
+<script src="../vendor/d3.min.js"></script>
+<script src="cloud.js"></script>
+<script>if (!document.body.classList.contains("cloud-ready")) document.body.classList.add("cloud-failed");</script>
+</body>
+</html>
+`;
+  return { out: pageOut, html };
+}
+
 /* ---------- build ---------- */
+
+/** Windows: a browser or `serve` holding the dest reports EPERM/EBUSY. */
+function sleepMs(ms) {
+  const end = Date.now() + ms;
+  while (Date.now() < end) {
+    /* spin — sync copy path cannot await */
+  }
+}
+
+function withRetries(fn, label, tries = 8, delayMs = 150) {
+  let last;
+  for (let i = 0; i < tries; i++) {
+    try {
+      return fn();
+    } catch (err) {
+      last = err;
+      if (err.code !== "EPERM" && err.code !== "EBUSY" && err.code !== "ENOENT") throw err;
+      sleepMs(delayMs * (i + 1));
+    }
+  }
+  throw new Error(`${label}: ${last?.message ?? last}`);
+}
 
 function copyInto(from, toDir, name = path.basename(from)) {
   fs.mkdirSync(toDir, { recursive: true });
-  fs.copyFileSync(from, path.join(toDir, name));
+  const dest = path.join(toDir, name);
+  withRetries(() => {
+    try {
+      fs.rmSync(dest, { force: true });
+    } catch {
+      /* dest may not exist yet */
+    }
+    fs.copyFileSync(from, dest);
+  }, `copy ${name}`);
+}
+
+function copyTree(fromDir, toDir) {
+  fs.mkdirSync(toDir, { recursive: true });
+  for (const name of fs.readdirSync(fromDir)) {
+    const from = path.join(fromDir, name);
+    if (fs.statSync(from).isDirectory()) copyTree(from, path.join(toDir, name));
+    else copyInto(from, toDir, name);
+  }
 }
 
 function build() {
@@ -1022,6 +1290,7 @@ function build() {
   ctx.pathMap = buildPathMap(ctx);
 
   const pages = [
+    dataPage(ctx),
     catalogPage(ctx),
     docsIndex(ctx),
     examplesIndex(ctx),
@@ -1032,20 +1301,29 @@ function build() {
   ];
 
   // retryDelay: a browser or editor holding a file open makes Windows report
-  // EPERM on the mkdir that follows.
-  fs.rmSync(outDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 150 });
+  // EPERM. An empty directory can stay pinned (a cwd or an indexer) while
+  // still accepting writes, so clear its children and reuse it.
+  try {
+    fs.rmSync(outDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 150 });
+  } catch (err) {
+    if (err.code !== "EPERM" && err.code !== "EBUSY") throw err;
+    for (const name of fs.readdirSync(outDir)) {
+      fs.rmSync(path.join(outDir, name), { recursive: true, force: true, maxRetries: 5, retryDelay: 150 });
+    }
+  }
   for (const { out, html } of pages) {
     const file = path.join(outDir, out);
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, html);
   }
 
-  // site/ is copied verbatim: the hand-written landing page already links to
-  // the pages below (schemas/index.html, docs/terms/index.html, …), so it needs
-  // no rewriting — it only resolves once those pages sit beside it here.
-  for (const name of fs.readdirSync(path.join(root, "site"))) {
-    copyInto(path.join(root, "site", name), outDir);
-  }
+  // site/ is copied verbatim, including data/cloud.js and vendor/d3.min.js.
+  // data/index.html is generated above and is not in site/, so the copy does
+  // not replace it. The landing page links to pages that only exist once they
+  // sit beside it here.
+  copyTree(path.join(root, "site"), outDir);
+  // Keep landing nav identical to generated pages (Read|Data, labels, mobile menu).
+  syncLandingNav();
 
   // Raw payloads readers and tools fetch directly.
   copyInto(path.join(root, "llms.txt"), outDir);
@@ -1070,6 +1348,49 @@ function build() {
 
 function checkOutput({ ctx }) {
   const problems = [];
+
+  const dataFile = path.join(outDir, DATA_OUT);
+  if (!fs.existsSync(dataFile)) problems.push("no data mode page");
+  else {
+    const dataHtml = fs.readFileSync(dataFile, "utf8");
+    const embedded = dataHtml.match(/<script type="application\/json" id="rig-cloud">([\s\S]*?)<\/script>/);
+    if (!embedded) problems.push("data mode page has no cloud payload");
+    else {
+      const cloud = JSON.parse(embedded[1]);
+      const ids = new Set(cloud.groups.flatMap((g) => g.schemas.map((s) => s.id)));
+      if (ids.size !== ctx.byId.size) {
+        problems.push(`cloud has ${ids.size} schemas, catalog has ${ctx.byId.size}`);
+      }
+      for (const id of ctx.byId.keys()) {
+        if (!ids.has(id)) problems.push(`cloud missing ${id}`);
+      }
+      const catalog = fs.readFileSync(path.join(outDir, CATALOG_OUT), "utf8");
+      for (const g of cloud.groups) {
+        if (!catalog.includes(`id="${g.slug}"`)) problems.push(`catalog missing #${g.slug}`);
+      }
+      if (!Array.isArray(cloud.links) || cloud.links.length < 100) {
+        problems.push("cloud is missing schema mention links");
+      } else {
+        for (const link of cloud.links) {
+          if (!ids.has(link.a) || !ids.has(link.b)) {
+            problems.push(`cloud link leaves the catalog: ${link.a} ${link.b}`);
+          }
+        }
+      }
+    }
+    if (!dataHtml.includes('src="../vendor/d3.min.js"') || !dataHtml.includes('src="cloud.js"')) {
+      problems.push("data mode page does not load D3 and cloud.js");
+    }
+  }
+  for (const relPath of ["data/cloud.js", "data/cloud.css", "vendor/d3.min.js"]) {
+    if (!fs.existsSync(path.join(outDir, relPath))) problems.push(`missing ${relPath}`);
+  }
+  const d3src = fs.existsSync(path.join(outDir, "vendor/d3.min.js"))
+    ? fs.readFileSync(path.join(outDir, "vendor/d3.min.js"), "utf8")
+    : "";
+  if (!d3src.includes("v7.9.0") || d3src.length < 200000) {
+    problems.push("vendor/d3.min.js is not the D3 7.9.0 bundle");
+  }
 
   for (const id of ctx.byId.keys()) {
     if (!fs.existsSync(path.join(outDir, schemaOut(id)))) {

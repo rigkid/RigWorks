@@ -1,0 +1,40 @@
+{
+  "rig": "1.3.0",
+  "document": {
+    "title": "ESP radio - Wi-Fi, ESP-NOW, Bluetooth sink",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "radio",
+      "components": {
+        "rig.meta.named": { "name": "Radio", "stableId": "radio" },
+        "rig.io.wifi": {
+          "mode": "ap",
+          "apSsid": "RigKit",
+          "staSsid": "",
+          "channel": 1
+        }
+      }
+    },
+    {
+      "id": "espnow",
+      "components": {
+        "rig.meta.named": { "name": "ESP-NOW", "stableId": "espnow" },
+        "rig.io.espnow": {
+          "enabled": true,
+          "peer": "ff:ff:ff:ff:ff:ff",
+          "channel": 1,
+          "payload": "hello"
+        }
+      }
+    },
+    {
+      "id": "bluetooth",
+      "components": {
+        "rig.meta.named": { "name": "RigKit Audio", "stableId": "bluetooth" },
+        "rig.io.bluetooth": { "enabled": false }
+      }
+    }
+  ]
+}

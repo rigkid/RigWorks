@@ -11,7 +11,7 @@
  *      node tools/gen-schemas.mjs --check  (fail if any output is stale)
  *
  * Outputs:
- *   schemas/json/*.schema.json        (canonical grammar)
+ *   schemas/json/*.schema.json        (generated grammar)
  *   schemas/index.json                (AI/site catalog index)
  * The validator's packaged copy (tools/rig-validate/schemas/) is refreshed
  * from schemas/json/ at pack time by tools/rig-validate/pack.mjs - it is a

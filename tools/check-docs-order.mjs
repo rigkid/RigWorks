@@ -2,11 +2,11 @@
 /**
  * One reading order, four renderings - kept in agreement mechanically.
  *
- * The canonical order is DOC_GROUPS in tools/site/gen.mjs (the site nav).
+ * The one order is DOC_GROUPS in tools/site/gen.mjs (the site nav).
  * README.md, llms.txt, and docs/README.md render the same order for
  * humans and models. This check extracts the docs/*.md link sequence
  * from each rendering and fails when any of them disagrees with the
- * canonical order, so adding a doc means updating all four in one pass.
+ * site nav order, so adding a doc means updating all four in one pass.
  *
  *   node tools/check-docs-order.mjs
  */
@@ -20,10 +20,10 @@ const read = (rel) => fs.readFileSync(path.join(root, rel), "utf8");
 let failed = false;
 const fail = (msg) => { console.error(msg); failed = true; };
 
-// Canonical: the slugs arrays inside DOC_GROUPS in the site generator.
+// The slugs arrays inside DOC_GROUPS in the site generator.
 const genSrc = read("tools/site/gen.mjs");
 const groupsBlock = genSrc.split("const DOC_GROUPS")[1]?.split("];")[0] ?? "";
-const canonical = [...groupsBlock.matchAll(/"([a-z0-9-]+)"/g)]
+const navOrder = [...groupsBlock.matchAll(/"([a-z0-9-]+)"/g)]
   .map((m) => m[1])
   .filter((slug) => fs.existsSync(path.join(root, "docs", `${slug}.md`)));
 
@@ -52,14 +52,14 @@ const renderings = [
 ];
 
 for (const [name, order] of renderings) {
-  const missing = canonical.filter((slug) => !order.includes(slug));
-  const extra = order.filter((slug) => !canonical.includes(slug));
+  const missing = navOrder.filter((slug) => !order.includes(slug));
+  const extra = order.filter((slug) => !navOrder.includes(slug));
   for (const slug of missing) fail(`${name} does not list docs/${slug}.md - the reading order lives in tools/site/gen.mjs (DOC_GROUPS); update every rendering together`);
   for (const slug of extra) fail(`${name} lists docs/${slug}.md, which is not in the site reading order (tools/site/gen.mjs DOC_GROUPS)`);
-  if (!missing.length && !extra.length && order.join(",") !== canonical.join(",")) {
-    fail(`${name} lists the docs in a different order than the site nav (tools/site/gen.mjs DOC_GROUPS):\n  ${name}: ${order.join(", ")}\n  canonical: ${canonical.join(", ")}`);
+  if (!missing.length && !extra.length && order.join(",") !== navOrder.join(",")) {
+    fail(`${name} lists the docs in a different order than the site nav (tools/site/gen.mjs DOC_GROUPS):\n  ${name}: ${order.join(", ")}\n  site nav: ${navOrder.join(", ")}`);
   }
 }
 
-if (!failed) console.log(`docs order ok - ${canonical.length} docs in one order across README.md, llms.txt, docs/README.md, and the site nav`);
+if (!failed) console.log(`docs order ok - ${navOrder.length} docs in one order across README.md, llms.txt, docs/README.md, and the site nav`);
 process.exitCode = failed ? 1 : 0;

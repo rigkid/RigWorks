@@ -1,0 +1,64 @@
+{
+  "rig": "1.4.0",
+  "document": {
+    "title": "Story source"
+  },
+  "entities": [
+    {
+      "id": "chapter-source",
+      "components": {
+        "rig.meta.named": { "name": "chapter.md", "stableId": "chapter-source" },
+        "rig.media.code": {
+          "text": "# Title\n\nHello **world**.\n",
+          "language": "markdown"
+        },
+        "rig.media.asset_ref": { "kind": "document", "path": "chapter.md" }
+      }
+    },
+    {
+      "id": "style-paragraph",
+      "components": {
+        "rig.meta.named": { "name": "Paragraph", "stableId": "style-paragraph" },
+        "rig.story.paragraph_style": {}
+      }
+    },
+    {
+      "id": "style-bold",
+      "components": {
+        "rig.meta.named": { "name": "Bold", "stableId": "style-bold" },
+        "rig.story.character_style": {}
+      }
+    },
+    {
+      "id": "p-title",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "runs": [{ "text": "Title" }]
+        }
+      }
+    },
+    {
+      "id": "p-body",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "runs": [
+            { "text": "Hello " },
+            { "text": "world", "style": "style-bold" },
+            { "text": "." }
+          ]
+        }
+      }
+    },
+    {
+      "id": "story",
+      "components": {
+        "rig.meta.named": { "name": "Main story", "stableId": "story" },
+        "rig.story.flow": {
+          "blocks": ["p-title", "p-body"]
+        }
+      }
+    }
+  ]
+}

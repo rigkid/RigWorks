@@ -38,6 +38,10 @@ One convention for the file. A host with another convention converts at the edge
 
 FGF / pellet jobs are [`rig.print.*`](print/machine.md), not these keys - [print.md](../docs/print.md).
 
+Modular cases, faceplates, jacks, and supply rails are [`rig.modular.*`](modular/module.md). EuroSynth and Eurorack are a host mapping - [eurosynth.md](../docs/eurosynth.md).
+
+A subtractive voice is [`rig.synth.*`](synth/oscillator.md): an oscillator, a filter, an amplifier, and an envelope, patched with [`rig.mod.binding`](mod/binding.md). The faceplate stays `rig.modular.*`.
+
 Print-job keys (optional):
 
 | Field | Meaning |

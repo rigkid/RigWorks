@@ -11,7 +11,7 @@ Do **not** invent `rig.kicad.*` - product names stay out of schema ids. KiCad uu
 | KiCad idea | Rig |
 |------------|-----|
 | Board file | Root entity with [`rig.pcb.board`](../schemas/pcb/board.md) |
-| `(layers ...)` entry | Child entity: [`rig.pcb.layer`](../schemas/pcb/layer.md) + [`rig.spatial.layer`](../schemas/spatial/layer.md) `order` + `meta.named` (`stableId` canonical name, `name` user name) |
+| `(layers ...)` entry | Child entity: [`rig.pcb.layer`](../schemas/pcb/layer.md) + [`rig.spatial.layer`](../schemas/spatial/layer.md) `order` + `meta.named` (`stableId` fixed name, `name` user name) |
 | `(layer ...)` / `(layers ...)` on an item | [`rig.pcb.layer_set`](../schemas/pcb/layer-set.md); `*.Cu` / `*.Mask` expand to explicit layers |
 | `(net N "NAME")` | Entity with [`rig.circuit.net`](../schemas/circuit/net.md) + `meta.named` (`name` and `stableId` = net name). Net 0 (`""`) is no net - `null` |
 | `footprint` | Entity with [`rig.circuit.part`](../schemas/circuit/part.md) (`Reference` / `Value` / `Datasheet` properties) + [`rig.pcb.footprint`](../schemas/pcb/footprint.md) + transform |
@@ -71,8 +71,6 @@ Without `source` (a loose `.rig`, or a board drawn from scratch) a writer emits 
 
 Do not put parser trees, net numbers, render caches, zone fills on new entities, ratsnest, or DRC markers in portable components.
 
-## Honest limit
-
-Two hosts that speak `rig.circuit.*` + `rig.pcb.*` + geometry can exchange a placed and routed board as `.rig`. With `source` in a `.rigz`, KiCad gets the rest of its file back. Without it, round-tripping every KiCad token is **not required**.
+With `source` in a `.rigz`, KiCad gets the rest of its file back. Without it, unmapped KiCad tokens stay in the `.kicad_pcb` file.
 
 Example: [`examples/kicad-pcb.json`](../examples/kicad-pcb.json).

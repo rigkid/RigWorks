@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.synth.envelope.schema.json",
+  "title": "rig.synth.envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "attackSeconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "decaySeconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "sustain": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "releaseSeconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "curve": {
+      "type": "string",
+      "enum": [
+        "linear",
+        "exponential"
+      ]
+    },
+    "gate": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "x-rig-maturity": "draft"
+}

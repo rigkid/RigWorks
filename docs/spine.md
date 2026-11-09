@@ -2,7 +2,7 @@
 
 A host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). Spine skeleton JSON, atlas pages, and compiled playback models are encodings. Compilers, named-assertion gates, and runtimes are fulfillment - not this catalog.
 
-Unlike [OpenBIM](openbim.md), there is no `rig.spine.*` layer. Portable meaning is spatial / animation / mesh / paint. Product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). Spine-only fields travel as `x.spine.*` until a second speaker needs the same meaning in the catalog.
+Unlike [OpenBIM](openbim.md), there is no `rig.spine.*` layer. Portable meaning is spatial / animation / mesh / paint. Product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). Spine-only fields travel as `x.spine.*`.
 
 One compiler that emits Spine 4.3 JSON is [rig-c](https://rig-c.org/). Its `rigc-rig/1` and `rigc-motion/1` specs, `skeleton.model.json`, and `@rig-c/play` stay fulfillment.
 

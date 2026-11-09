@@ -8,7 +8,7 @@ fields:
     minimum: 0
     maximum: 127
     required: true
-    meaning: "0-127"
+    meaning: "MIDI note number 0-127. 60 is C4. Pitch class is pitch modulo 12, C = 0"
   - name: "velocity"
     type: "integer"
     minimum: 0
@@ -34,7 +34,7 @@ fields:
     meaning: "Optional. Parent clip entity; none = unbound"
   - name: "intervals"
     schemaJson: "{\"type\":\"array\",\"items\":{\"type\":\"integer\",\"minimum\":-127,\"maximum\":127},\"uniqueItems\":true}"
-    meaning: "Optional. Semitone offsets from pitch. Absent = pitch alone. Omit 0. A major triad is [4, 7]; a minor triad is [3, 7]"
+    meaning: "Optional. Semitone offsets in 12-tone equal temperament from pitch, not scale degrees. A major third is 4. Absent = pitch alone. Omit 0. A major triad is [4, 7]; a minor triad is [3, 7]"
     absent: "pitch alone"
 ---
 # `rig.music.note`
@@ -45,15 +45,15 @@ Grid cells are [`rig.music.step`](step.md) inside a pattern - not this schema.
 
 | Field | Type | Meaning |
 |-------|------|---------|
-| `pitch` | int | 0-127 |
+| `pitch` | int | MIDI note number 0-127. 60 is C4. Pitch class is `pitch` modulo 12, C = 0 |
 | `velocity` | int | Optional. 0-127; absent = 100 |
 | `channel` | int | Optional. 0-15; absent = 0 |
 | `start` | float | Beats |
 | `duration` | float | Beats; 0 = instantaneous |
 | `clip` | entity | Optional. Parent clip entity; none = unbound |
-| `intervals` | int[] | Optional. Semitone offsets from `pitch`. Absent = `pitch` alone. Omit 0. A major triad is `[4, 7]`; a minor triad is `[3, 7]` |
+| `intervals` | int[] | Optional. Semitone offsets in 12-tone equal temperament from `pitch`, not scale degrees. A major third is 4. Absent = `pitch` alone. Omit 0. A major triad is `[4, 7]`; a minor triad is `[3, 7]` |
 
-The note sounds `pitch` and each `pitch + interval`. Same chord shape as [`rig.music.step`](step.md).
+The note sounds `pitch` and each `pitch + interval`. Same chord shape as [`rig.music.step`](step.md). Letter names and octave words are derived from the number. Human words for the rest of a part: [music.md](../../docs/music.md).
 
 Raw MIDI bytes stay in the host behind [`rig.music.midi_output`](midi-output.md).
 
