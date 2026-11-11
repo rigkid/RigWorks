@@ -1,8 +1,8 @@
 # Records
 
-A host that holds payments, encounters, catalog rows, or case files **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). Search engines, vector stores, and message parsers are fulfillments. The index is not this catalog.
+A host that holds payments, encounters, catalog rows, or case files **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). Search engines, vector stores, message parsers, and the index are fulfillment, not Contract.
 
-Portable meaning is [`rig.record.*`](../schemas/record/mark.md) plus the finance, clinic, commerce, and law components those compose. Product names stay out of schema ids. There is no `rig.fhir.*`, `rig.pacs.*`, `rig.dicom.*`, or `rig.gs1.*`.
+The document carries [`rig.record.*`](../schemas/record/mark.md) plus the finance, clinic, commerce, and law components those compose. Product names stay out of schema ids. There is no `rig.fhir.*`, `rig.pacs.*`, `rig.dicom.*`, or `rig.gs1.*`.
 
 ## Shared record
 

@@ -2,7 +2,7 @@
 
 Rig names editable-font meaning as [`rig.font.*`](../schemas/font/face.md). Unified Font Object **files** stay host mappings at the boundary - same rule as IFC in [openbim.md](openbim.md) and SVG ([design philosophy](design-philosophy.md#encoding)).
 
-The Contract job is entities, POD components, and schema ids. A `.ufo` / `.ufoz` reader (RigKit **rigUfo** or a sibling tool) is fulfillment, not this catalog.
+The Contract job is entities, POD components, and schema ids. A `.ufo` / `.ufoz` reader (RigKit **rigUfo** or a sibling tool) is fulfillment, not Contract.
 
 ## Thin layer
 

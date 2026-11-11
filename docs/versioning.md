@@ -15,7 +15,7 @@ When you bump `VERSION`, add a History row in [history.md](history.md) (release 
 
 Every schema carries a maturity tier (`stable` / `draft` / `experimental`) in its frontmatter, in [`schemas/index.json`](../schemas/index.json), and as `x-rig-maturity` in its JSON Schema - see [schemas/README.md](../schemas/README.md#source-of-truth-and-maturity). Tagging is enforced: a schema without frontmatter or a `stable` schema with no example fails `check:parity`; `rig-validate` notes `experimental` ids in emitted documents; the release tag (`tools/check-tag.mjs`) is required by the local pre-push hook and re-verified server-side by GitHub Actions on master and tag pushes. Tier evidence (worked example, host consumption) is measured by `tools/audit-maturity.mjs`.
 
-The bump rules apply per tier: breaking a `stable` schema after 1.0.0 needs `MAJOR`; tightening a `draft` schema is a `MINOR` with a History note; `experimental` schemas may change in any minor. **1.0.0 freezes the `stable` tier**, not the whole catalog. The additive-validity promise in each History row is scoped to `stable` and `draft` documents, and is tested by the frozen corpus in `tools/test/fixtures/compat/` (`tools/test/compat.test.mjs`), not just asserted.
+The bump rules apply per tier: breaking a `stable` schema after 1.0.0 needs `MAJOR`; tightening a `draft` schema is a `MINOR` with a History note; `experimental` schemas may change in any minor. **1.0.0 freezes the `stable` tier**, not every schema. The additive-validity promise in each History row is scoped to `stable` and `draft` documents, and is tested by the frozen corpus in `tools/test/fixtures/compat/` (`tools/test/compat.test.mjs`), not just asserted.
 
 
 ## History

@@ -1,6 +1,6 @@
 # Robots
 
-An app that designs, simulates, tests, or trains a robot **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). Isaac Sim, Gazebo, MuJoCo, Webots, and the rest are fulfillments. The solver, the trainer, and the renderer are not this catalog.
+An app that designs, simulates, tests, or trains a robot **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). Isaac Sim, Gazebo, MuJoCo, Webots, and the rest are fulfillment - solver, trainer, and renderer included.
 
 ROS 2 middleware stays [ros.md](ros.md). There is no `rig.isaac.*`, `rig.gazebo.*`, or `rig.mujoco.*`.
 

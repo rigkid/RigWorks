@@ -1389,7 +1389,7 @@ void main() {
       text: `${d.schemas.length} schema${d.schemas.length === 1 ? "" : "s"}`,
     }));
     const open = el("p", { class: "card-link" });
-    open.append(el("a", { href: d.href, text: "Open in the catalog" }));
+    open.append(el("a", { href: d.href, text: "Open the schema" }));
     card.append(open);
     card.append(linkList(d.schemas.map((s) => ({ href: "#" + s.hash, text: s.leaf }))));
   }
@@ -1505,7 +1505,7 @@ void main() {
     if (!a) return;
     if (node.kind === "schema") setRead(a, node.href, "Read this schema");
     else if (node.kind === "field") setRead(a, node.schema.href, "Read this schema");
-    else if (node.kind === "domain") setRead(a, node.href, "Read this domain in the catalog");
+    else if (node.kind === "domain") setRead(a, node.href, "Read this domain");
     else setRead(a, payload.home, "");
   }
 

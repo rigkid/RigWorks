@@ -1,10 +1,10 @@
 # Is it Rig?
 
-Rig is a shared vocabulary - **Readable Independent Grammar**: the [schema](../schemas/) catalog (prose + [JSON Schema](../schemas/json/)) and portable **entity + POD component** documents ([`rig.document`](../schemas/document.md)). It is not a library to link into your app.
+Rig is a shared vocabulary - **Readable Independent Grammar**: the [schemas](../schemas/) (prose + [JSON Schema](../schemas/json/)) and portable **entity + POD component** documents ([`rig.document`](../schemas/document.md)). It is not a library to link into your app.
 
 A project **is Rig** when:
 
-1. It speaks portable meaning as entities with POD components keyed by schema ids (`rig.<domain>.<name>`).
+1. It emits entities with POD components keyed by schema ids (`rig.<domain>.<name>`).
 2. It ships the schemas it supports - [ship what you support](../schemas/README.md).
 
 That composition model is the floor. **No entity/component POD, no Rig.** A SUDE loop by itself is a loop convention, not a shared vocabulary.
@@ -17,7 +17,7 @@ A **live host** (a program that runs work over time) typically honors the [SUDE 
 
 ### Rig + UI (optional)
 
-A project is **Rig + UI** when it already **is Rig** and author/tool surfaces edit the same entity POD through a host seam (not a second scene graph). Full checklist: [ui.md](ui.md). Omitting UI remains valid Rig. Layout chrome and UI packs are fulfillment - portable meaning is `rig.ui.*` in the document.
+A project is **Rig + UI** when it already **is Rig** and author/tool surfaces edit the same entity POD through a host seam (not a second scene graph). Full checklist: [ui.md](ui.md). Omitting UI remains valid Rig. Layout chrome and UI packs are fulfillment - the document carries `rig.ui.*`.
 
 ## What you may omit
 

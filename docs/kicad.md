@@ -2,7 +2,7 @@
 
 Rig names electronics meaning as [`rig.circuit.*`](../schemas/circuit/part.md) (parts, terminals, nets - shared by schematic, board, and live hardware) and board fabrication as [`rig.pcb.*`](../schemas/pcb/board.md). KiCad **files** stay host mappings at the boundary - same rule as IFC in [openbim.md](openbim.md) and UFO in [ufo.md](ufo.md).
 
-The Contract job is entities, POD components, and schema ids. A `.kicad_pcb` reader / writer (an openFrameworks addon, a RigKit pack, a script) is fulfillment, not this catalog.
+The Contract job is entities, POD components, and schema ids. A `.kicad_pcb` reader / writer (an openFrameworks addon, a RigKit pack, a script) is fulfillment, not Contract.
 
 ## Thin layer
 

@@ -1,8 +1,8 @@
 # VR
 
-A VR host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). OpenXR, WebXR, and vendor runtimes are fulfillment. The session, the swapchains, and the compositor are not this catalog.
+A VR host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). OpenXR, WebXR, and vendor runtimes are fulfillment - session, swapchains, and compositor included.
 
-Portable meaning is [`rig.vr.*`](../schemas/vr/space.md) plus the spatial, camera, and input components those compose. Product runtime names stay out of schema ids.
+The document carries [`rig.vr.*`](../schemas/vr/space.md) plus the spatial, camera, and input components those compose. Product runtime names stay out of schema ids.
 
 ## Map
 

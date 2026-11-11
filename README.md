@@ -30,7 +30,7 @@ Any app that already has Setup / Update / Draw / Exit can honor the same schemas
 
 **What it costs.** A data framework moves work rather than deleting it. Live hosts write the loop; nothing fails to build when you drift; a schema only pays off once a second host speaks it - [the honest price](docs/why-no-code.md#the-honest-price).
 
-**For agents and editors.** [`tools/rig-mcp`](tools/rig-mcp/) serves the Contract over MCP (`list_schemas`, `get_schema`, `find_examples`, `validate_document`, `get_skill`) so Claude, Cursor, and peers call Rig directly. Editors get autocomplete and inline validation for `.rig` files from the published schema catalog - point `json.schemas` at `https://rig.works/schemas/catalog.json` ([`schemas/catalog.json`](schemas/catalog.json)); this repo's [`.vscode/settings.json`](.vscode/settings.json) shows the local form.
+**For agents and editors.** [`tools/rig-mcp`](tools/rig-mcp/) serves the Contract over MCP (`list_schemas`, `get_schema`, `find_examples`, `validate_document`, `get_skill`) so Claude, Cursor, and peers call Rig directly. Editors get autocomplete and inline validation for `.rig` files from the published schemas - point `json.schemas` at `https://rig.works/schemas/catalog.json` ([`schemas/catalog.json`](schemas/catalog.json)); this repo's [`.vscode/settings.json`](.vscode/settings.json) shows the local form.
 
 ## The framework
 
@@ -120,7 +120,7 @@ More patterns: [`examples/`](examples/). Interchange notes (`.rig` / `.rigz`): [
 
 ## For AI agents
 
-The cheapest token is the one the model never generates. Load the skill, copy one example, emit the document, and validate. Leave the catalog unloaded. A document one agent emits is data the next agent already accepts, so the handoff spends nothing on a private format. The reason: [`docs/ai-collaboration.md`](docs/ai-collaboration.md#the-cheapest-token).
+The cheapest token is the one the model never generates. Load the skill, copy one example, emit the document, and validate. Leave the schemas unloaded. A document one agent emits is data the next agent already accepts, so the handoff spends nothing on a private format. The reason: [`docs/ai-collaboration.md`](docs/ai-collaboration.md#the-cheapest-token).
 
 Load the condensed skill before generating Rig data: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-documents/SKILL.md). Cross-agent onboarding: [`AGENTS.md`](AGENTS.md). Discovery index: [`llms.txt`](llms.txt).
 

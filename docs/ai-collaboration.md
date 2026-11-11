@@ -14,7 +14,7 @@ That inverts the usual priority. A generated renderer is useful and disposable. 
 
 The cheapest token is the one the model never generates.
 
-The Contract is paid once. A later session spells `rig.spatial.transform` the same way, quaternion order included. Load the skill and one example. Leave the catalog on disk. The model writes the document and stops. The host that draws it is a fulfillment, written when someone needs it.
+The Contract is paid once. A later session spells `rig.spatial.transform` the same way, quaternion order included. Load the skill and one example. Leave the schemas on disk. The model writes the document and stops. The host that draws it is a fulfillment, written when someone needs it.
 
 The finished document is both output and artifact. A document one agent emits is data the next agent already accepts, so neither side spends a context window explaining a private format and neither writes a converter. The tokens that format would have cost on every exchange after the first are never generated.
 
@@ -28,7 +28,7 @@ The finished document is both output and artifact. A document one agent emits is
 | Across two different apps | Incompatible | Interoperable |
 | Verifiable | By reading it | By running a validator |
 
-Two agents working in two unrelated applications converge on compatible data - not because they coordinated, but because they read the same catalog. That convergence is the product.
+Two agents working in two unrelated applications converge on compatible data - not because they coordinated, but because they read the same schemas. That convergence is the product.
 
 Rig is not another editor, patcher, or agentic design canvas. Those are fulfillments. Rig is the shared vocabulary their documents could have in common.
 
@@ -44,7 +44,7 @@ read the skill, copy a reference example, emit JSON, validate, fix at the report
 node tools/rig-validate/cli.js path/to/doc.json
 ```
 
-Every failure names a JSON Pointer, so a model can correct itself without a human interpreting the error. `--strict` turns invented schema ids into failures, and the validator suggests the closest catalog ids. That is the check worth running when you suspect confident guessing.
+Every failure names a JSON Pointer, so a model can correct itself without a human interpreting the error. `--strict` turns invented schema ids into failures, and the validator suggests the closest schema ids. That is the check worth running when you suspect confident guessing.
 
 Never deliver an unvalidated document. Eyeballing JSON is exactly the review that looks fine and is wrong.
 

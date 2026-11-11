@@ -2,7 +2,7 @@
 
 Rig names InDesign layout meaning as [`rig.layout.*`](../schemas/layout/page.md) plus [`rig.story.*`](../schemas/story/flow.md). InDesign Markup Language **files** stay host mappings at the boundary - same rule as IFC in [openbim.md](openbim.md) and SVG ([design philosophy](design-philosophy.md#encoding)).
 
-The Contract job is entities, POD components, and schema ids. An `.idml` reader / writer (SimpleIDML, a Pandoc wire, or a sibling pack) is fulfillment, not this catalog.
+The Contract job is entities, POD components, and schema ids. An `.idml` reader / writer (SimpleIDML, a Pandoc wire, or a sibling pack) is fulfillment, not Contract.
 
 ## Thin layer
 
@@ -57,7 +57,7 @@ Do not invent schemas for these yet:
 - XML tags
 - Books (`.indb`)
 
-A compose host that parents a flow to a page and clones pages on overflow is not an IDML layout - InDesign threads frames. Masters, facing, slug, and character styles beyond italic are already in this catalog; honor them at emit time.
+A compose host that parents a flow to a page and clones pages on overflow is not an IDML layout - InDesign threads frames. Masters, facing, slug, and character styles beyond italic are already in the schemas; honor them at emit time.
 
 A Word converter that emits only paragraphs is fine for a novel's `rig.story.*`. It is not a pictured book or a register until tables, lists, images, footnotes, and hyperlinks land in that fulfillment. Tables and list membership are already named here.
 

@@ -15,7 +15,7 @@ We use entity-component composition because we build for change. Composition ove
 
 ## Document composition (Contract floor)
 
-- Portable meaning is **POD / plain data** (numbers, small structs, strings, entity ids).
+- Portable fields are **POD / plain data** (numbers, small structs, strings, entity ids).
 - No window pointers, GPU handles, UI toolkit types, or behavior callbacks in Contract-facing components.
 - No dirty flags, pending queues, or ephemeral edge state (hover/press) in portable components - those stay in the host and are not serialized.
 - One type per field. Host-only resources may exist keyed by opaque ids; they are not Rig portable meaning.

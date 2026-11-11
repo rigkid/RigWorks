@@ -1,8 +1,8 @@
 # Pure Data
 
-A Pure Data patch, and a Max patch, are encodings. A host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). There is no `rig.pd.*` layer and no `rig.max.*` layer. Portable meaning is the [node graph](../schemas/node/graph.md), plus [`rig.music.*`](../schemas/music/transport.md) and [`rig.audio.*`](../schemas/audio/voice.md) when the patch is about time or sound. A subtractive voice inside the patch is [`rig.synth.*`](../schemas/synth/oscillator.md) - [music.md](music.md). Product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). Patcher-only fields travel as `x.pd.*` or `x.max.*`.
+A Pure Data patch and a Max patch are encodings of a [node graph](../schemas/node/graph.md). There is no `rig.pd.*` or `rig.max.*` layer - patcher-only fields travel as `x.pd.*` / `x.max.*`. When the patch is about time or sound, add [`rig.music.*`](../schemas/music/transport.md) and [`rig.audio.*`](../schemas/audio/voice.md). A subtractive voice is [`rig.synth.*`](../schemas/synth/oscillator.md) - [music.md](music.md). Product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)).
 
-`.pd` and `.maxpat` stay the source files. The Contract does not inline either language.
+`.pd` and `.maxpat` stay the source files. The Contract does not inline either language. A host **is Rig** when it emits those entities against schemas it supports ([honors](honors.md)).
 
 ## Map
 

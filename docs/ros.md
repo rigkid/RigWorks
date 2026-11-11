@@ -1,10 +1,8 @@
 # ROS 2
 
-A ROS 2 host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). rmw, DDS, launch files, and bags are fulfillment - not this catalog.
+rmw, DDS, launch files, and bags are fulfillment, not Contract. Land messages on spatial / I/O / sensor / [SUDE](sude.md) - there is no `rig.ros2.*` layer. ROS-only fields travel as `x.ros2.*`. Product protocol names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)).
 
-Unlike [OpenBIM](openbim.md), there is no `rig.ros2.*` layer. Portable meaning is spatial / I/O / sensor / [SUDE](sude.md). Product protocol names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). ROS-only fields travel as `x.ros2.*`.
-
-Design, physical simulation, tests, and training are [robot.md](robot.md). This page stays the middleware map.
+Design, physical simulation, tests, and training are [robot.md](robot.md). This page is the middleware map. A ROS 2 host **is Rig** when it emits those entities against schemas it supports ([honors](honors.md)).
 
 ## Map
 
@@ -32,7 +30,7 @@ Design, physical simulation, tests, and training are [robot.md](robot.md). This 
 
 World pose / TF lookup caches stay in the host - rebuild from local transform + parent, same as any scene graph.
 
-**Do not map ROS nodes onto [`rig.node.*`](../schemas/node/node.md).** That catalog is an artist patcher (`typeId` = host behaviour). Different graph - see [Grouping graphs (do not merge)](../schemas/README.md#grouping-graphs-do-not-merge).
+**Do not map ROS nodes onto [`rig.node.*`](../schemas/node/node.md).** That graph is an artist patcher (`typeId` = host behaviour). Different graph - see [Grouping graphs (do not merge)](../schemas/README.md#grouping-graphs-do-not-merge).
 
 ## TF sketch
 

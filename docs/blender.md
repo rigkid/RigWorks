@@ -1,10 +1,8 @@
 # Blender
 
-A host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). Blender scenes (`.blend`) are encodings. Blender itself, its dependency graph, and an exporter that walks the evaluated scene are fulfillment - not this catalog.
+Blender scenes (`.blend`) are encodings. The dependency graph and an exporter that walks the evaluated scene are fulfillment, not Contract. There is no `rig.blender.*` layer - product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). Blender-only fields travel as `x.blender.*`.
 
-Unlike [OpenBIM](openbim.md), there is no `rig.blender.*` layer. Portable meaning is spatial / geometry / render / animation / simulation. Product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). Blender-only fields travel as `x.blender.*`.
-
-The document is the **evaluated** scene. Modifier stacks, constraints, drivers, Geometry Nodes, library links, and overrides stay in the `.blend` file. An exporter evaluates that file, then writes ordinary entities. Two hosts that never ran Blender can exchange the picture. Changing a modifier means evaluating the `.blend` again.
+The document is the **evaluated** scene: spatial / geometry / render / animation / simulation as ordinary entities. Modifier stacks, constraints, drivers, Geometry Nodes, library links, and overrides stay in the `.blend`. Changing a modifier means evaluating again. Two hosts that never ran Blender can still exchange the picture. A host **is Rig** when it emits those entities against schemas it supports ([honors](honors.md)).
 
 ## Map
 
@@ -123,7 +121,7 @@ A scene, a collection with a cube and a camera, and a sun:
 | Shader node trees, Cycles / Eevee settings | Networks and renderers are fulfillment. Only the Principled base channels port |
 | Shape keys, sculpt / multires detail | Mesh morphs and detail layers stay encoding until a second host stores them |
 | UV maps beyond the active one, split normals per corner | One `texcoords` / `normals` packing on the mesh |
-| Area lights, particle systems | No home in the catalog yet |
+| Area lights, particle systems | No schema yet |
 | `rig.blender.*` | Product names stay out of schema ids |
 
 ## Encodings (fulfillment)

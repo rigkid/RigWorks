@@ -1,10 +1,8 @@
 # OpenUSD
 
-A host **is Rig** when it emits entities with POD components keyed by schema ids it supports ([honors](honors.md)). OpenUSD stages (`.usda`, `.usdc`, `.usd`, `.usdz`) are encodings. The OpenUSD library, Hydra, and a writer that merges `over` opinions back onto a layer are fulfillment - not this catalog.
+OpenUSD stages (`.usda`, `.usdc`, `.usd`, `.usdz`) are encodings. The OpenUSD library, Hydra, and a writer that merges `over` opinions back onto a layer are fulfillment, not Contract. Do not invent `rig.usd.*` - USD-only fields travel as `x.usd.*`. Product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)).
 
-Unlike [OpenBIM](openbim.md), there is no `rig.usd.*` layer. Portable meaning is spatial / geometry / render / animation / simulation. Product names stay out of schema ids (same rule as [`rig.music.clock`](../schemas/music/clock.md)). USD-only fields travel as `x.usd.*`.
-
-The document is the **composed** stage. Sublayers, references, payloads, variant sets, inherits, specializes, and list-editing stay in the USD file. A host composes that file, then writes ordinary entities. Two hosts that never linked OpenUSD can exchange the picture. Switching a variant means composing the USD file again.
+The document is the **composed** stage: spatial / geometry / render / animation / simulation. Sublayers, references, payloads, variant sets, inherits, specializes, and list-editing stay in the USD file. Compose, then write ordinary entities. Switching a variant means composing again. Two hosts that never linked OpenUSD can exchange the picture. A host **is Rig** when it emits those entities against schemas it supports ([honors](honors.md)).
 
 ## Map
 

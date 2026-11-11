@@ -1,6 +1,6 @@
 # UI (optional companion)
 
-**Rig + UI** sits on top of Rig (entity/component POD + schemas). It is still **zero code**, and it stays in this Contract - not a separate named spec. Layout chrome and UI packs are fulfillment; portable meaning is [`rig.ui.*`](../schemas/ui/panel.md) in the document.
+**Rig + UI** sits on top of Rig (entity/component POD + schemas). It is still **zero code**, and it stays in this Contract - not a separate named spec. Layout chrome and UI packs are fulfillment; the document carries [`rig.ui.*`](../schemas/ui/panel.md).
 
 **Litmus:** already Rig, and author/tool surfaces edit entity POD through a host seam (not a second scene graph). Details below.
 

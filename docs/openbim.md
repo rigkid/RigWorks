@@ -2,7 +2,7 @@
 
 Rig names OpenBIM meaning as [`rig.bim.*`](../schemas/bim/classify.md). IFC, BCF, and IDS **files** stay host mappings at the boundary - same rule as SVG ([design philosophy](design-philosophy.md#encoding)).
 
-OpenBIM (buildingSMART) is IFC + BCF + IDS + bSDD. The Contract job is entities, POD components, and schema ids. A converter or Revit/IFC pack is fulfillment ([RigKit](https://github.com/rigkid/RigKit) or a sibling tool), not this catalog.
+OpenBIM (buildingSMART) is IFC + BCF + IDS + bSDD. The Contract job is entities, POD components, and schema ids. A converter or Revit/IFC pack is fulfillment ([RigKit](https://github.com/rigkid/RigKit) or a sibling tool), not Contract.
 
 ## Thin layer
 

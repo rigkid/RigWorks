@@ -74,4 +74,4 @@ node cli.js apply path/to/dev-kvm.json --iso /path/to/ubuntu.iso
 }
 ```
 
-A host that speaks these schemas and ignores the rest of the catalog is fully Rig for this domain - ship what you support.
+A host that speaks these schemas and ignores the rest is fully Rig for this domain - ship what you support.
