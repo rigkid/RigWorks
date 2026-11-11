@@ -2,6 +2,8 @@
 
 Exports the **evaluated** Blender scene as a Rig document (`.rig`), implementing the map in [`docs/blender.md`](../../docs/blender.md). Blender stays the authoring tool; the `.rig` is the portable picture other Rig hosts present and play. Nothing here parses `.blend` files - Blender itself walks its own scene.
 
+Open the `.rig` in RigKit **example-stage**: `--open=path/to/scene.rig` (phase plan: RigKit [`docs/blender-load.md`](../../../../blender-load.md)).
+
 ## Install
 
 1. Zip the `rig_exporter/` folder in this directory (the zip root must contain `rig_exporter/__init__.py`), or in Blender: Preferences > Add-ons > Install and pick that zip.
