@@ -19,10 +19,11 @@ body.cloud .cloud-bar .nav-menu .nav-links {
 
 body.cloud::before { display: none; }
 
+/* Same line bar as landing / .topbar — not the old soft gradient. */
 body.cloud nav {
   max-width: none;
   margin: 0;
-  padding: 0.8rem 1.25rem 0.15rem;
+  padding: 0.65rem 1.25rem;
 }
 
 .cloud-bar {
@@ -31,38 +32,36 @@ body.cloud nav {
   top: 0;
   left: 0;
   right: 0;
+  background: rgba(11, 13, 16, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
   pointer-events: none;
 }
 
-.cloud-bar::before {
-  content: "";
+.cloud-bar nav { pointer-events: auto; }
+
+/* Crumbs → find → card, same width, under the header on the left. */
+.cloud-rail {
   position: absolute;
-  z-index: -1;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: -1.6rem;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(11, 13, 16, 0.94) 62%, rgba(11, 13, 16, 0));
-}
-
-.cloud-bar nav,
-.cloud-bar .cloud-sub { pointer-events: auto; }
-
-.cloud-sub {
+  z-index: 3;
+  top: 4.1rem;
+  left: 1rem;
+  bottom: 1rem;
+  width: min(24.5rem, calc(100vw - 2rem));
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 0.15rem 1.25rem 0;
+  flex-direction: column;
+  gap: 0.55rem;
+  pointer-events: none;
 }
+
+.cloud-rail > * { pointer-events: auto; min-width: 0; }
 
 .cloud-crumbs {
   font-family: var(--mono);
   font-size: 0.78rem;
   color: var(--muted);
-  min-height: 1.7rem;
-  padding-top: 0.45rem;
+  min-height: 1.35rem;
+  padding: 0 0.1rem;
   min-width: 0;
 }
 
@@ -71,10 +70,11 @@ body.cloud nav {
 .cloud-crumbs .here { color: var(--text); }
 .cloud-crumbs .sep { color: var(--line); padding: 0 0.35rem; }
 
-.cloud-find { position: relative; flex: none; }
+.cloud-find { position: relative; flex: none; width: 100%; }
 
 .cloud-find input {
-  width: min(18rem, 42vw);
+  width: 100%;
+  box-sizing: border-box;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -90,6 +90,7 @@ body.cloud nav {
 .cloud-find ul {
   position: absolute;
   top: calc(100% + 0.35rem);
+  left: 0;
   right: 0;
   z-index: 4;
   margin: 0;
@@ -98,8 +99,8 @@ body.cloud nav {
   background: rgba(18, 21, 27, 0.97);
   border: 1px solid var(--line);
   border-radius: 8px;
-  min-width: min(22rem, 80vw);
-  max-width: min(28rem, 86vw);
+  width: 100%;
+  max-width: none;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
@@ -154,12 +155,12 @@ body.cloud-ready #labels { opacity: 1; transition: opacity 180ms ease; }
 #plot:active { cursor: grabbing; }
 
 .cloud-card {
-  position: absolute;
+  position: relative;
   z-index: 2;
-  left: 1rem;
-  bottom: 1rem;
-  width: min(24.5rem, calc(100vw - 2rem));
-  max-height: min(46vh, 28rem);
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
   overflow: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--line) transparent;
@@ -175,7 +176,7 @@ body.cloud-ready #labels { opacity: 1; transition: opacity 180ms ease; }
   font-size: 1.12rem;
   line-height: 1.25;
   letter-spacing: -0.02em;
-  font-weight: 620;
+  font-weight: 500;
   margin: 0 0 0.4rem;
 }
 
@@ -187,7 +188,12 @@ body.cloud-ready #labels { opacity: 1; transition: opacity 180ms ease; }
   padding: 0;
   color: inherit;
   font-size: 0.92em;
+  font-weight: 400;
   overflow-wrap: anywhere;
+}
+
+.field-rows a code {
+  color: #c3ccdb;
 }
 
 .cloud-card p { max-width: none; margin: 0 0 0.5rem; }
@@ -341,7 +347,7 @@ body.cloud-ready #labels { opacity: 1; transition: opacity 180ms ease; }
 
 body.cloud-failed { overflow: auto; height: auto; }
 body.cloud-failed .cloud-stage,
-body.cloud-failed .cloud-sub { display: none; }
+body.cloud-failed .cloud-rail { display: none; }
 body.cloud-failed .cloud-index { display: block; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -349,8 +355,13 @@ body.cloud-failed .cloud-index { display: block; }
 }
 
 @media (max-width: 52rem) {
-  .cloud-sub { flex-direction: column; align-items: stretch; }
-  .cloud-find input { width: 100%; }
-  .cloud-card { max-height: min(32vh, 16rem); }
+  .cloud-rail {
+    top: auto;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+    max-height: min(48vh, 22rem);
+  }
   .cloud-index ul { columns: 1; }
 }

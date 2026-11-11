@@ -554,9 +554,6 @@ function renderMarkdown(md, sourceRel, pageOut, pathMap) {
 
 /* ---------- shell ---------- */
 
-const SPONSOR_SVG =
-  '<svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 14.5S1 10.2 1 6.1C1 3.6 3 1.5 5.5 1.5c1 0 1.9.5 2.5 1.2.6-.7 1.5-1.2 2.5-1.2C13 1.5 15 3.6 15 6.1c0 4.1-7 8.4-7 8.4z"/></svg>';
-
 /** Shared top nav — desktop row + mobile disclosure. Landing gets the same
  *  markup injected at build time so deploy cannot drift from gen pages. */
 function nav(pageOut, current, currentId) {
@@ -579,7 +576,6 @@ function nav(pageOut, current, currentId) {
     ${item("Docs", DOCS_OUT, "docs")}
     ${item("Examples", EXAMPLES_OUT, "examples")}
     ${item("For AI", AI_OUT, "for-ai")}
-    <a class="sponsor" href="https://github.com/sponsors/GitBruno">${SPONSOR_SVG}Sponsor</a>
     <a class="ghost" href="${GITHUB}">GitHub</a>`;
   return `<nav>
   <a class="wordmark" href="${rel(pageOut, HOME_OUT)}">RigWorks</a>
@@ -666,6 +662,8 @@ function page({ pageOut, title, description, current, currentId, ctx, body }) {
 <meta name="description" content="${esc(description ?? "")}">
 <meta name="theme-color" content="#0b0d10">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d10'/%3E%3Cpath d='M7 21 L13 11 L19 21 L25 11' stroke='%2340a6ff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${rel(pageOut, "styles.css")}">
 <link rel="stylesheet" href="${rel(pageOut, "pages.css")}">
 </head>
@@ -678,10 +676,10 @@ ${nav(pageOut, current, currentId)}
 </header>
 
 <div class="shell with-side">
-${sidebar(pageOut, ctx, currentId)}
 <main class="content" id="main">
 ${body}
 </main>
+${sidebar(pageOut, ctx, currentId)}
 </div>
 
 <footer>
@@ -1191,6 +1189,8 @@ function dataPage(ctx) {
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://rig.works/data/">
 <link rel="icon" href="${ICON}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${rel(pageOut, "styles.css")}">
 <link rel="stylesheet" href="cloud.css">
 </head>
@@ -1198,17 +1198,17 @@ function dataPage(ctx) {
 <a class="skip" href="#card">Skip to the detail</a>
 <header class="cloud-bar">
 ${nav(pageOut, "data")}
-<div class="cloud-sub">
+</header>
+<aside class="cloud-rail">
   <nav class="cloud-crumbs" id="crumbs" aria-label="Zoom"></nav>
   <form class="cloud-find" role="search" onsubmit="return false">
     <input id="q" type="search" placeholder="Find a schema" autocomplete="off" spellcheck="false" aria-label="Find a schema" aria-controls="hits">
     <ul id="hits" hidden></ul>
   </form>
-</div>
-</header>
+  <article id="card" class="cloud-card"></article>
+</aside>
 <div class="cloud-stage">
   <canvas id="plot" aria-label="Schema graph. Each node is a schema. A line means one schema names another. Click a node to fly in."></canvas>
-  <article id="card" class="cloud-card"></article>
   <div id="tip" class="cloud-tip" hidden></div>
 </div>
 <p id="status" class="visually-hidden" aria-live="polite"></p>
@@ -1220,7 +1220,7 @@ ${cloudIndex(ctx, pageOut)}
 <noscript><style>
   body.cloud { overflow: auto; height: auto; }
   .cloud-index { display: block !important; }
-  .cloud-stage, .cloud-sub { display: none !important; }
+  .cloud-stage, .cloud-rail { display: none !important; }
 </style></noscript>
 <script type="application/json" id="rig-cloud">
 ${json}

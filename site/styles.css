@@ -3,6 +3,10 @@
    (site/data/) is a WebGL graph of schema mentions. Accent is the fill colour
    from examples/minimal-scene.json: [0.25, 0.65, 1, 1]. */
 
+/* Body / UI: IBM Plex Sans. Wordmark, code, chips: IBM Plex Mono.
+   Weights cover the 400–700 range this sheet already uses. */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap");
+
 :root {
   --bg: #0b0d10;
   --bg-wash: #10141c;
@@ -13,8 +17,8 @@
   --muted: #8d97a8;
   --accent: #40a6ff;
   --accent-dim: #1d4f7d;
-  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --measure: 72ch;
   --page: 68rem;
 }
@@ -82,6 +86,7 @@ a:focus-visible,
 }
 
 em { color: #f2f5fa; font-style: italic; }
+strong { color: #eef2f8; font-weight: 700; }
 
 code {
   font-family: var(--mono);
@@ -99,7 +104,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.35rem 1rem;
   flex-wrap: wrap;
 }
 
@@ -113,10 +118,12 @@ a.wordmark:hover { color: var(--text); text-decoration: none; }
 
 .nav-links {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.15rem 0.25rem;
   align-items: center;
   flex-wrap: wrap;
   font-size: 0.94rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .nav-links a {
@@ -190,6 +197,9 @@ a.wordmark:hover { color: var(--text); text-decoration: none; }
 
 .nav-links .modes a:hover { color: var(--text); text-decoration: none; }
 
+/* The bar already shows every link, wrapping onto its own row when the
+   viewport is too narrow for one line. This disclosure is the same list
+   again, so it stays hidden. */
 .nav-menu {
   display: none;
   position: relative;
@@ -247,13 +257,20 @@ a.wordmark:hover { color: var(--text); text-decoration: none; }
   justify-content: flex-start;
 }
 
-@media (max-width: 52rem) {
-  .nav-desktop { display: none !important; }
-  .nav-menu { display: block; }
-}
+/* Own row under the wordmark once the links no longer fit beside it.
+   ~48rem is the measured width of wordmark + links + page padding. */
+@media (max-width: 48rem) {
+  .nav-desktop {
+    flex: 1 0 100%;
+    justify-content: flex-start;
+    padding-top: 0.2rem;
+    border-top: 1px solid var(--line);
+  }
 
-@media (min-width: 52.01rem) {
-  .nav-menu { display: none !important; }
+  .nav-links a {
+    min-height: 40px;
+    padding: 0.3rem 0.55rem;
+  }
 }
 
 /* ---------- hero ---------- */
@@ -265,16 +282,19 @@ a.wordmark:hover { color: var(--text); text-decoration: none; }
 }
 
 /* Landing header: the nav sits outside the hero so sticky keeps it
-   on screen for the whole page (generated pages use .topbar). */
+   on screen for the whole page (generated pages use .topbar).
+   Full-bleed bar; the inset lines the wordmark up with the page column
+   (main is --page wide, with 1.5rem of padding inside that). */
 body > nav {
   position: sticky;
   top: 0;
   z-index: 10;
-  max-width: var(--page);
-  margin: 0 auto;
-  padding: 0.75rem 1.5rem;
-  background: rgba(11, 13, 16, 0.92);
-  backdrop-filter: blur(8px);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.65rem max(1.5rem, calc((100% - var(--page)) / 2 + 1.5rem));
+  background: rgba(11, 13, 16, 0.94);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -327,7 +347,7 @@ body > nav {
   cursor: pointer;
 }
 
-@media (max-width: 52rem) {
+@media (max-width: 58rem) {
   .hero-grid { grid-template-columns: 1fr; }
 }
 
@@ -501,6 +521,14 @@ section p:last-child { margin-bottom: 0; }
   padding-top: 0.5rem;
 }
 
+.pain-lede {
+  max-width: var(--measure);
+  margin: 0 0 1.4rem;
+  color: #c3ccdb;
+  font-size: 1.06rem;
+  line-height: 1.55;
+}
+
 .pair-head {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -553,7 +581,7 @@ section p:last-child { margin-bottom: 0; }
 
 .pair-solve h3 { color: var(--accent); }
 
-@media (max-width: 48rem) {
+@media (max-width: 56rem) {
   .pair-head,
   .pairs > li {
     grid-template-columns: 1fr;

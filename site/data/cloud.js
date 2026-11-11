@@ -679,8 +679,29 @@ void main() {
     requestAnimationFrame(frame);
   }
 
+  /** Near-camera side of the cloud stays bright; far side falls toward the
+   *  background — even when fully zoomed out, so the mesh keeps depth. */
+  function depthOf(node, eye) {
+    const d = Math.hypot(node.x - eye[0], node.y - eye[1], node.z - eye[2]);
+    const near = cam.dist * 0.55;
+    const far = cam.dist * 1.55;
+    const t = clamp((d - near) / Math.max(far - near, 1), 0, 1);
+    return 1 - 0.62 * t * t;
+  }
+
+  function depthTint(rgb, depth) {
+    const fog = 1 - depth;
+    const bg = [0.043, 0.051, 0.063];
+    return [
+      rgb[0] + (bg[0] - rgb[0]) * fog * 0.85,
+      rgb[1] + (bg[1] - rgb[1]) * fog * 0.85,
+      rgb[2] + (bg[2] - rgb[2]) * fog * 0.85,
+    ];
+  }
+
   function draw() {
     const mvp = viewProjection();
+    const eye = eyeOf();
     const open = focusedSchema(focus);
     const close = 1 - reveal();
     const spots = open && open.fields.length && close > 0.35 ? fieldSpots(open) : [];
@@ -691,14 +712,16 @@ void main() {
       const hot = hoverSchema && (link.a === hoverSchema || link.b === hoverSchema);
       const shown = focusedSchema(focus);
       const incident = shown && (link.a === shown || link.b === shown);
+      const depth = Math.sqrt(depthOf(link.a, eye) * depthOf(link.b, eye));
       let alpha = link.same ? 0.55 : 0.7;
-      alpha *= Math.sqrt(dimOf(link.a) * dimOf(link.b));
+      alpha *= Math.sqrt(dimOf(link.a) * dimOf(link.b)) * (0.42 + 0.58 * depth);
       if (hot || (incident && close > 0.15)) alpha = Math.max(alpha, hot ? 0.95 : 0.55 + 0.4 * close);
       else if ((hoverSchema || shown) && close > 0) alpha *= 1 - 0.72 * close;
       if (alpha < 0.012) continue;
-      const rgb = hot || incident
+      let rgb = hot || incident
         ? lift(ACCENT, 0.35)
         : lift(link.same ? link.a.domain.rgb : ACCENT, 0.32);
+      if (!hot && !incident) rgb = depthTint(rgb, depth);
       pushLine(lines, link.a, link.b, rgb, alpha);
     }
     for (let i = 0; i < spots.length; i++) {
@@ -712,10 +735,13 @@ void main() {
     const points = [];
     for (const schema of allSchemas) {
       const hot = hoverSchema === schema || (open && schema === open);
-      const alpha = Math.min(1, dimOf(schema) * (schema.maturity === "draft" ? 0.72 : 1) * (hot ? 1 : 0.92));
+      const depth = depthOf(schema, eye);
+      let alpha = Math.min(1, dimOf(schema) * (schema.maturity === "draft" ? 0.72 : 1) * (hot ? 1 : 0.92));
+      if (!hot) alpha *= 0.38 + 0.62 * depth;
       if (alpha < 0.02) continue;
-      const size = schema.size * (hot ? 1.45 : 1);
-      pushPoint(points, schema, schema.domain.rgb, size, alpha, schema.maturity === "experimental" ? 1 : 0);
+      const size = schema.size * (hot ? 1.45 : 1) * (hot ? 1 : 0.82 + 0.18 * depth);
+      const rgb = hot ? schema.domain.rgb : depthTint(schema.domain.rgb, depth);
+      pushPoint(points, schema, rgb, size, alpha, schema.maturity === "experimental" ? 1 : 0);
     }
     for (const spot of spots) {
       const hot = hover === spot.field || focus === spot.field;
@@ -777,7 +803,7 @@ void main() {
     ctx.clearRect(0, 0, width, height);
     const mvp = viewProjection();
     const mono = monoFont();
-    ctx.font = `600 12.5px ${mono}`;
+    ctx.font = `400 12px ${mono}`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.lineJoin = "round";
@@ -797,16 +823,25 @@ void main() {
           const q = project(mvp, schema.x, schema.y, schema.z);
           if (q) reach = Math.max(reach, Math.hypot(q.x - p.x, q.y - p.y));
         }
-        if (reach < 16) continue;
-        if (focus.kind === "world" && reach > 520) continue;
-        queue.push({ text: domain.short, x: p.x, y: p.y, font: 12.5, priority: 3 });
+        if (reach < 14) continue;
+        if (focus.kind === "world" && reach > 560) continue;
+        queue.push({ text: domain.short, x: p.x, y: p.y, font: 12, priority: 3, tone: "domain" });
       }
     }
 
     const pushSchema = (schema, priority) => {
       const p = project(mvp, schema.x, schema.y, schema.z);
       if (!p) return;
-      queue.push({ text: schema.leaf, x: p.x, y: p.y - 12, font: 11.5, priority });
+      // Light (low-degree) nodes stay visible — just quieter fill.
+      const tone = schema.degree <= 1 ? "light" : schema.degree <= 3 ? "mid" : "heavy";
+      queue.push({
+        text: schema.leaf,
+        x: p.x,
+        y: p.y - 11,
+        font: 11,
+        priority,
+        tone,
+      });
     };
 
     if (query) {
@@ -822,8 +857,9 @@ void main() {
           text: spot.field.name,
           x: p.x,
           y: p.y - 10,
-          font: 11.5,
+          font: 10.5,
           priority: spot.field === focus ? 5 : 2,
+          tone: "field",
         });
       }
       for (const schema of neighbors.get(open)) pushSchema(schema, 4);
@@ -844,29 +880,33 @@ void main() {
   }
 
   function stamp(ctx, placed, item, mono) {
-    const { text, x, y, font } = item;
+    const { text, x, y, font, tone } = item;
     if (x < -20 || y < -12 || x > width + 20 || y > height + 12) return;
-    ctx.font = `${font > 12 ? 600 : 500} ${font}px ${mono}`;
+    ctx.font = `400 ${font}px ${mono}`;
     const w = ctx.measureText(text).width;
-    const box = { x: x - w / 2 - 4, y: y - font / 2 - 3, w: w + 8, h: font + 6 };
+    const box = { x: x - w / 2 - 3, y: y - font / 2 - 2, w: w + 6, h: font + 4 };
     if (placed.some((p) => overlaps(p, box))) return;
     placed.push(box);
     ctx.strokeStyle = "#0b0d10";
-    ctx.lineWidth = 3.5;
+    ctx.lineWidth = 2.4;
     ctx.strokeText(text, x, y);
-    ctx.fillStyle = "#d5deea";
+    ctx.fillStyle =
+      tone === "light" ? "#8d97a8"
+      : tone === "mid" ? "#b4becc"
+      : tone === "field" ? "#a8b4c4"
+      : "#d5deea";
     ctx.fillText(text, x, y);
   }
 
   function degreeFloor() {
+    // Keep light nodes labeled once you are not fully zoomed out.
     const d = cam.dist / (model.worldDist || 1);
-    if (d > 0.82) return 2;
-    if (d > 0.55) return 1;
+    if (d > 0.92) return 1;
     return 0;
   }
 
   function overlaps(a, b) {
-    const pad = 2;
+    const pad = 1;
     return a.x < b.x + b.w + pad && a.x + a.w + pad > b.x && a.y < b.y + b.h + pad && a.y + a.h + pad > b.y;
   }
 
@@ -1080,14 +1120,27 @@ void main() {
     const px = cam.tx + b.rx * nx * halfW + b.ux * ny * halfH;
     const py = cam.ty + b.ry * nx * halfW + b.uy * ny * halfH;
     const pz = cam.tz + b.rz * nx * halfW + b.uz * ny * halfH;
+    const home = model.worldDist * 0.52;
     const dist = clamp(cam.dist * factor, 22, model.worldDist * 2.2);
     const halfH2 = dist * Math.tan(FOV / 2);
     const halfW2 = halfH2 * (width / height);
     let tx = px - (b.rx * nx * halfW2 + b.ux * ny * halfH2);
     let ty = py - (b.ry * nx * halfW2 + b.uy * ny * halfH2);
     let tz = pz - (b.rz * nx * halfW2 + b.uz * ny * halfH2);
-    const wide = clamp((dist - model.worldDist * 0.62) / (model.worldDist * 0.38), 0, 1);
-    const rest = focusAnchor();
+    // Wide zoom used to snap the look-at back onto the focused schema, so
+    // the far side of the cloud stayed off-screen. Hand framing back to the
+    // world origin as distance leaves the close orbit.
+    let rest = focusAnchor();
+    if (focus && focus.kind !== "world") {
+      const leaveStart = focus.kind === "domain" ? home * 0.65 : 120;
+      const leave = clamp((dist - leaveStart) / Math.max(home - leaveStart, 1), 0, 1);
+      rest = {
+        x: rest.x * (1 - leave),
+        y: rest.y * (1 - leave),
+        z: rest.z * (1 - leave),
+      };
+    }
+    const wide = clamp((dist - home * 0.88) / Math.max(home * 0.55, 1), 0, 1);
     tx += (rest.x - tx) * wide;
     ty += (rest.y - ty) * wide;
     tz += (rest.z - tz) * wide;
@@ -1159,7 +1212,9 @@ void main() {
   function aim(node, immediate) {
     let goal;
     if (!node || node.kind === "world") {
-      goal = { x: 0, y: 0, z: 0, dist: model.worldDist };
+      // Start / Escape inside the framing distance so the mesh has presence
+      // instead of sitting as a distant ball.
+      goal = { x: 0, y: 0, z: 0, dist: model.worldDist * 0.52 };
       if (!dragging) spin = !query;
     } else if (node.kind === "domain") {
       const c = centroid(node.schemas);

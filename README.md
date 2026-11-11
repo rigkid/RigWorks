@@ -11,7 +11,7 @@
 *Because no code is the best code.*  
 **Rig** - Readable Independent Grammar.
 
-[RigWorks](https://rig.works) - **Rig** for short, and Rig in all running text - is a shared grammar for real work. It is future-proof, host-independent, and human-readable: open the JSON, change a field, load it in another app. It is a framework you never install - no library to link, no runtime to embed, no API to version. It ships as agreement: a grammar of schema ids and entity/component POD documents. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
+[RigWorks](https://rig.works) - **Rig** for short, and Rig in all running text - is a **future-proof**, **host-independent**, **human-readable** vocabulary for real work. Open the JSON, change a field, load it in another app. It is a framework you never install - no library to link, no runtime to embed, no API to version. It ships as agreement: a grammar of schema ids and entity/component POD documents. Apps that speak the same schema ids share fields and units, so their content interoperates without either app knowing the other exists.
 
 ## It runs
 

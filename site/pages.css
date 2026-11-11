@@ -9,8 +9,9 @@
   position: sticky;
   top: 0;
   z-index: 5;
-  background: rgba(11, 13, 16, 0.92);
-  backdrop-filter: blur(8px);
+  /* Match landing body > nav and data .cloud-bar (line + blur, not gradient). */
+  background: rgba(11, 13, 16, 0.94);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -18,7 +19,7 @@
   max-width: 84rem;
   margin: 0 auto;
   padding: 0.5rem 1.5rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .topbar .nav-menu .nav-links {
@@ -40,7 +41,9 @@ body.doc::before { display: none; }
 
 .shell.with-side {
   display: grid;
-  grid-template-columns: 15.5rem minmax(0, 1fr);
+  /* Main first in the DOM (reading order); browse sits to the right on
+     wide viewports and drops under the page on narrow ones. */
+  grid-template-columns: minmax(0, 1fr) 15.5rem;
   gap: 2.5rem;
   align-items: start;
 }
@@ -275,9 +278,17 @@ a.card:hover h3 code { color: var(--accent); }
 .prose { margin-top: 1.4rem; }
 .prose > :first-child { margin-top: 0; }
 
+/* Tables in styles.css only set margin-top — without a bottom gap a following
+   paragraph sits flush on the grid, then the next h2 rule looks too far away. */
+.prose .table-wrap {
+  margin-top: 1.2rem;
+  margin-bottom: 1.25rem;
+}
+.prose > .table-wrap:first-child { margin-top: 0; }
+
 .prose h2 {
   font-size: 1.2rem;
-  margin: 2.4rem 0 0.9rem;
+  margin: 1.7rem 0 0.9rem;
   padding-top: 1.2rem;
   border-top: 1px solid var(--line);
   scroll-margin-top: 4.5rem;
@@ -334,17 +345,30 @@ a.card:hover h3 code { color: var(--accent); }
 @media (max-width: 60rem) {
   .shell.with-side { grid-template-columns: minmax(0, 1fr); gap: 0; }
 
+  /* Footer vibe under the page — open, multi-column, no clipped scroller
+     (overflow + CSS columns was drawing a stray scrollbar mid-block). */
   .sidebar {
     position: static;
-    padding: 1rem 0 0;
-    border-bottom: 1px solid var(--line);
+    padding: 1.4rem 0 2rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--line);
+    border-bottom: none;
   }
   .sidebar summary { display: block; }
-  .sidebar details[open] .side-scroll { max-height: 22rem; margin-bottom: 1rem; }
-  .side-scroll { columns: 2; column-gap: 1.4rem; }
+  .sidebar details[open] .side-scroll {
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 0;
+  }
+  .side-scroll {
+    columns: 3;
+    column-gap: 0.7rem;
+  }
 }
 
 @media (max-width: 48rem) {
+  .side-scroll { columns: 2; column-gap: 0.6rem; }
+
   /* styles.css stacks tables into cards using data-label; markdown tables have
      none, so prose keeps a real table and scrolls instead. */
   .prose table,
@@ -380,5 +404,5 @@ a.card:hover h3 code { color: var(--accent); }
 @media (max-width: 34rem) {
   .shell { padding: 0 1.1rem; }
   .topbar nav { padding: 0.4rem 1.1rem; }
-  .side-scroll { columns: 1; }
+  .side-scroll { columns: 1; column-gap: 0; }
 }

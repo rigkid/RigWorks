@@ -1,6 +1,6 @@
 # Design philosophy
 
-Rig is a **future-proof**, **host-independent**, **human-readable** vocabulary for creative work.
+Rig is a **future-proof**, **host-independent**, **human-readable** vocabulary for real work.
 
 **Rig** - Readable Independent Grammar.
 
