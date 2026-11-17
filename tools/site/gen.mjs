@@ -20,8 +20,10 @@ import { parseFrontmatter } from "../schema-source.mjs";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const outDir = path.join(root, "_site");
 const GITHUB = "https://github.com/rigkid/RigWorks";
-const BLOB = `${GITHUB}/blob/master`;
-const TREE = `${GITHUB}/tree/master`;
+const BLOB = `${GITHUB}/blob/main`;
+const TREE = `${GITHUB}/tree/main`;
+const EDIT = `${GITHUB}/edit/main`;
+const RAW = "https://raw.githubusercontent.com/rigkid/RigWorks/main";
 
 marked.setOptions({ gfm: true, breaks: false });
 
@@ -612,45 +614,119 @@ function syncLandingNav() {
   fs.writeFileSync(file, next);
 }
 
+/** Browse tree: sections of collapsible groups. Only the group holding the
+ *  current page starts open; the filter opens every group with a hit. */
 function sidebar(pageOut, ctx, currentId) {
   const { groups, docGroups, examples } = ctx;
-  const link = (to, label, key) =>
-    `<li><a${key === currentId ? ' class="here"' : ""} href="${rel(pageOut, to)}">${esc(
-      label
-    )}</a></li>`;
+  const link = (item) =>
+    `<li data-side="${esc(item.search.toLowerCase())}"><a${
+      item.key === currentId ? ' class="here" aria-current="page"' : ""
+    } href="${rel(pageOut, item.to)}">${esc(item.label)}</a></li>`;
 
-  const block = (title, links) => `<div class="side-group">
+  const block = (title, items) => `<details class="side-group"${
+    items.some((item) => item.key === currentId) ? " open" : ""
+  }>
+  <summary>${esc(title)} <span class="side-count">${items.length}</span></summary>
+  <ul>${items.map(link).join("")}</ul>
+</details>`;
+
+  const section = (title, blocks) => `<div class="side-section">
   <h4>${esc(title)}</h4>
-  <ul>${links.join("")}</ul>
+  ${blocks.join("")}
 </div>`;
 
-  const schemaBlocks = groups
-    .map((g) =>
-      block(
-        g.title,
-        g.members.map((id) => link(schemaOut(id), id.replace(/^rig\.[a-z0-9_]+\./, ""), id))
-      )
+  const schemaBlocks = groups.map((g) =>
+    block(
+      g.title,
+      g.members.map((id) => ({
+        to: schemaOut(id),
+        label: id.replace(/^rig\.[a-z0-9_]+\./, ""),
+        key: id,
+        search: id,
+      }))
     )
-    .join("");
+  );
+  const docBlocks = docGroups.map((group) =>
+    block(
+      group.title,
+      group.docs.map((d) => ({
+        to: docOut(d.slug),
+        label: d.title,
+        key: d.slug,
+        search: `${d.slug} ${d.title}`,
+      }))
+    )
+  );
+  const exampleBlock = block(
+    "All examples",
+    examples.list.map((e) => ({ to: exampleOut(e.slug), label: e.name, key: e.slug, search: e.name }))
+  );
 
   return `<aside class="sidebar">
-  <details open>
+  <form class="side-filter" onsubmit="return false">
+    <input id="side-q" type="search" placeholder="Find (Ctrl+K)" aria-label="Find a schema, doc, or example" autocomplete="off" spellcheck="false">
+  </form>
+  <details class="side-browse" open>
     <summary>Browse the Contract</summary>
     <div class="side-scroll">
-      ${schemaBlocks}
-      ${docGroups
-        .map((group) =>
-          block(
-            `Docs: ${group.title}`,
-            group.docs.map((d) => link(docOut(d.slug), d.title, d.slug))
-          )
-        )
-        .join("")}
-      ${block("Examples", examples.list.map((e) => link(exampleOut(e.slug), e.name, e.slug)))}
+      ${section("Docs", docBlocks)}
+      ${section("Schemas", schemaBlocks)}
+      ${section("Examples", [exampleBlock])}
     </div>
   </details>
 </aside>`;
 }
+
+const SIDEBAR_JS = `<script>
+(function () {
+  var input = document.getElementById("side-q");
+  if (!input) return;
+  var scroller = document.querySelector(".sidebar .side-scroll");
+  var browse = document.querySelector(".sidebar .side-browse");
+  var items = [].slice.call(document.querySelectorAll(".sidebar [data-side]"));
+  var groups = [].slice.call(document.querySelectorAll(".sidebar .side-group"));
+  var sections = [].slice.call(document.querySelectorAll(".sidebar .side-section"));
+  var openAtRest = groups.map(function (g) { return g.open; });
+  var filtering = false;
+  function apply() {
+    var q = input.value.trim().toLowerCase();
+    items.forEach(function (li) {
+      li.hidden = !!q && li.getAttribute("data-side").indexOf(q) === -1;
+    });
+    groups.forEach(function (g, i) {
+      var any = [].some.call(g.querySelectorAll("[data-side]"), function (li) { return !li.hidden; });
+      g.hidden = !any;
+      if (q) g.open = any;
+      else if (filtering) g.open = openAtRest[i];
+    });
+    sections.forEach(function (s) {
+      s.hidden = ![].some.call(s.querySelectorAll(".side-group"), function (g) { return !g.hidden; });
+    });
+    if (q) browse.open = true;
+    filtering = !!q;
+  }
+  input.addEventListener("input", apply);
+  input.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { input.value = ""; apply(); input.blur(); }
+    if (e.key === "Enter") {
+      var hit = items.filter(function (li) { return !li.hidden; })[0];
+      if (hit) location.href = hit.querySelector("a").href;
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
+    if ((e.key === "k" && (e.ctrlKey || e.metaKey)) || (e.key === "/" && !typing)) {
+      e.preventDefault();
+      input.focus();
+      input.select();
+    }
+  });
+  var here = document.querySelector(".sidebar a.here");
+  if (here && scroller.scrollHeight > scroller.clientHeight) {
+    scroller.scrollTop = here.offsetTop - scroller.clientHeight / 2;
+  }
+})();
+</script>`;
 
 function page({ pageOut, title, description, current, currentId, ctx, body }) {
   return `<!DOCTYPE html>
@@ -694,6 +770,7 @@ ${sidebar(pageOut, ctx, currentId)}
   <p class="muted">Contract v${version} · ${tierWord}. A shared grammar for real work.</p>
 </footer>
 
+${SIDEBAR_JS}
 </body>
 </html>
 `;
@@ -735,6 +812,17 @@ const FILTER_JS = `<script>
 </script>`;
 
 /* ---------- pages ---------- */
+
+/** Coloured status for `x-rig-maturity`: stable, draft, or experimental. */
+const maturityBadge = (maturity) =>
+  maturity ? `<span class="badge maturity maturity-${esc(maturity)}">${esc(maturity)}</span>` : "";
+
+/** One row of outbound links under a page title. Falsy entries are skipped. */
+const sourceLinks = (links) =>
+  `<p class="source-links">${links
+    .filter(Boolean)
+    .map(([label, href]) => `<a href="${esc(href)}">${esc(label)}</a>`)
+    .join("")}</p>`;
 
 function fieldTable(entry, pageOut, ctx) {
   const source = entry.proseRel ?? "schemas/README.md";
@@ -806,11 +894,16 @@ function schemaPage(entry, ctx) {
 </p>
 <h1><code class="id">${esc(entry.id)}</code></h1>
 <p class="badges">
-  <span class="badge">v${version} · ${tierWord}</span>
-  ${entry.schema["x-rig-maturity"] ? `<span class="badge">maturity: ${esc(entry.schema["x-rig-maturity"])}</span>` : ""}
+  ${maturityBadge(entry.schema["x-rig-maturity"])}
+  <span class="badge">Contract v${version}</span>
   <span class="badge">${entry.fields.length} field${entry.fields.length === 1 ? "" : "s"}</span>
   <span class="badge">${entry.fields.filter((f) => f.required).length} required</span>
 </p>
+${sourceLinks([
+  entry.proseRel && ["Edit on GitHub", `${EDIT}/${entry.proseRel}`],
+  ["View raw", `${RAW}/schemas/json/${entry.id}.schema.json`],
+  ["Data view", `${rel(pageOut, DATA_OUT)}#${entry.id}`],
+])}
 
 <h2>Fields</h2>
 ${fieldTable(entry, pageOut, ctx)}
@@ -861,6 +954,7 @@ function catalogPage(ctx) {
           return `<li data-search="${esc(search)}">
   <a href="${rel(pageOut, schemaOut(id))}"><code>${esc(id)}</code></a>
   <span class="row-fields">${esc(names.join(", ") || "marker")}</span>
+  ${maturityBadge(entry.schema["x-rig-maturity"])}
 </li>`;
         })
         .join("\n");
@@ -915,6 +1009,10 @@ function docPage(doc, ctx) {
   const body = `<p class="crumbs"><a href="${rel(pageOut, DOCS_OUT)}">Docs</a>${groupCrumb} <span>/</span> ${esc(
     doc.slug
   )}</p>
+${sourceLinks([
+  ["Edit on GitHub", `${EDIT}/${doc.rel}`],
+  ["View raw", `${RAW}/${doc.rel}`],
+])}
 <div class="prose">
 ${renderMarkdown(doc.md, doc.rel, pageOut, ctx.pathMap)}
 </div>`;
@@ -995,6 +1093,10 @@ function examplePage(ex, ctx) {
   <span class="badge">${ex.entities} entities</span>
   <span class="badge">${ex.ids.size} schemas</span>
 </p>
+${sourceLinks([
+  ["Edit on GitHub", `${EDIT}/examples/${ex.name}`],
+  ["View raw", `${RAW}/examples/${ex.name}`],
+])}
 ${note}
 ${figure}
 
