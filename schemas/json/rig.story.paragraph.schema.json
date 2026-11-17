@@ -12,7 +12,9 @@
       "type": "string",
       "enum": [
         "column",
-        "page"
+        "page",
+        "odd",
+        "even"
       ]
     },
     "runs": {

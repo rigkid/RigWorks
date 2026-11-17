@@ -200,6 +200,10 @@ One entity (the flow):
 
 The Relay ingest pattern: a Markdown source carried as [`rig.media.code`](../schemas/media/code.md) (`language` `markdown`) with its disk origin as [`rig.media.asset_ref`](../schemas/media/asset-ref.md) on the same entity, beside the [`rig.story.flow`](../schemas/story/flow.md) a layout host compiled from it. After ingest the composed POD is the editable truth; the buffer is provenance, re-parsed only on explicit re-ingest - [code.md Data grammars](../schemas/media/code.md#data-grammars-text-data).
 
+## `markbreak-chapter.json`
+
+Print-manuscript ingest: Markdown provenance (`language` `markdown`) with YAML `role: chapter` and `//break page`, compiled to a [`rig.story.flow`](../schemas/story/flow.md) with `role` `chapter` and a paragraph `breakType` `page`. `//break` is `breakType` `column`. Odd/even breaks use `breakType` `odd` / `even`. The chapter YAML links `meta` and `layout`. The trade page stays on this layout document: a [`rig.layout.page`](../schemas/layout/page.md) named Trade 6×9 (152.4 × 228.6 mm, margins `[20, 18, 22, 18]`) with [`rig.layout.facing`](../schemas/layout/facing.md) `binding` `left`. Authoring markers stay in the buffer; portable meaning is the story and the page.
+
 ## `story-frames.json`
 
 Threaded text layout: facing pages, a right master with slug, two document pages, two [`rig.layout.frame`](../schemas/layout/frame.md) boxes (columns / insets / first baseline), and a [`rig.layout.frame_chain`](../schemas/layout/frame-chain.md) that walks them. Visual typography lives on `rig.layout.paragraph_style` / `character_style` (including a character style that is not italic). `.idml` stays a host encoding - [docs/idml.md](../docs/idml.md).

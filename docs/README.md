@@ -39,6 +39,7 @@ Schemas live in [`../schemas/`](../schemas/); worked documents in [`../examples/
 | [blender.md](blender.md) | Blender evaluated scene to existing spatial / mesh / render / animation schemas; no `rig.blender.*` |
 | [idml.md](idml.md) | IDML to `rig.layout.frame` + layout / story |
 | [kicad.md](kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*` |
+| [markbreak.md](markbreak.md) | Print-manuscript Markdown profile to story / media (`flow.role`, `breakType`) |
 | [openbim.md](openbim.md) | OpenBIM (IFC / BCF / IDS) to `rig.bim.*` |
 | [pd.md](pd.md) | Pure Data and Max patches to `rig.node.*`; a `.pd` round trip merges onto the source file |
 | [print.md](print.md) | FGF / pellet to `rig.print.*` |

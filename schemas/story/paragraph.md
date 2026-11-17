@@ -9,8 +9,8 @@ fields:
     absent: "no paragraph style"
   - name: "breakType"
     type: "string"
-    enum: ["column","page"]
-    meaning: "Optional. column or page - break after this paragraph. Absent = next paragraph"
+    enum: ["column","page","odd","even"]
+    meaning: "Optional. column, page, odd, or even - break after this paragraph. Absent = next paragraph"
     absent: "next paragraph"
   - name: "runs"
     type: "array"
@@ -22,15 +22,20 @@ fields:
 
 One paragraph in a [`rig.story.flow`](flow.md) (or a table cell). Format when present.
 
-An applied paragraph style, optional column/page break, then character runs. A trailing paragraph break is implied - do not store a sentinel run for it.
+An applied paragraph style, optional column/page/odd/even break, then character runs. A trailing paragraph break is implied - do not store a sentinel run for it.
 
 | Field | Type | Meaning |
 |-------|------|---------|
 | `style` | entity | Optional. [`rig.story.paragraph_style`](paragraph-style.md); absent = no paragraph style |
-| `breakType` | enum | Optional. `column` or `page` - break after this paragraph. Absent = next paragraph |
+| `breakType` | enum | Optional. `column`, `page`, `odd`, or `even` - break after this paragraph. Absent = next paragraph |
 | `runs` | run[] | Ordered character runs; empty is a blank paragraph |
 
-Line breaks inside a paragraph are `\n` in `text`. Column and page breaks are `breakType`, not a run.
+Line breaks inside a paragraph are `\n` in `text`. Flow breaks are `breakType`, not a run.
+
+- `column` — advance to the next column when the layout has columns; otherwise hosts MAY treat as `page`
+- `page` — advance to the next page (default hard break)
+- `odd` — advance so the following content starts on an odd (recto) page
+- `even` — advance so the following content starts on an even (verso) page
 
 ## Run
 

@@ -10,6 +10,21 @@
       "items": {
         "$ref": "./_defs.schema.json#/$defs/entity"
       }
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "dedication",
+        "epigraph",
+        "preface",
+        "part",
+        "chapter",
+        "appendix",
+        "epilog",
+        "afterword",
+        "colophon",
+        "toc"
+      ]
     }
   },
   "required": [

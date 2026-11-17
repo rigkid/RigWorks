@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "generatedBy": "tools/gen-schemas.mjs - do not hand-edit; edit frontmatter in schemas/<domain>/<name>.md",
   "schemas": [
     {
@@ -11975,6 +11975,25 @@
           "type": "array<entity>",
           "required": true,
           "meaning": "Ordered rig.story.paragraph and/or rig.story.table entities"
+        },
+        {
+          "name": "role",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Print matter role for this flow; absent = unmarked",
+          "absent": "unmarked",
+          "enum": [
+            "dedication",
+            "epigraph",
+            "preface",
+            "part",
+            "chapter",
+            "appendix",
+            "epilog",
+            "afterword",
+            "colophon",
+            "toc"
+          ]
         }
       ]
     },
@@ -11996,11 +12015,13 @@
           "name": "breakType",
           "type": "enum",
           "required": false,
-          "meaning": "Optional. column or page - break after this paragraph. Absent = next paragraph",
+          "meaning": "Optional. column, page, odd, or even - break after this paragraph. Absent = next paragraph",
           "absent": "next paragraph",
           "enum": [
             "column",
-            "page"
+            "page",
+            "odd",
+            "even"
           ]
         },
         {

@@ -43,6 +43,7 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 - [docs/blender.md](docs/blender.md): Blender evaluated scene to existing spatial / mesh / render / animation schemas; encodings are fulfillment
 - [docs/idml.md](docs/idml.md): IDML to `rig.layout.frame` + layout / story; encodings are fulfillment
 - [docs/kicad.md](docs/kicad.md): KiCad board to `rig.circuit.*` / `rig.pcb.*`; `.rigz` round trip merges onto the source file
+- [docs/markbreak.md](docs/markbreak.md): Print-manuscript Markdown to story / media (`flow.role`, `breakType`)
 - [docs/openbim.md](docs/openbim.md): OpenBIM (IFC / BCF / IDS) to `rig.bim.*`; encodings are fulfillment
 - [docs/pd.md](docs/pd.md): Pure Data and Max patches to `rig.node.*`; a `.pd` round trip merges onto the source file
 - [docs/print.md](docs/print.md): FGF / pellet to `rig.print.*`; not envelope `pdfX`, not a layout page

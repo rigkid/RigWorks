@@ -1,0 +1,116 @@
+{
+  "rig": "1.5.0",
+  "document": {
+    "title": "MarkBreak chapter sample",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "prefs",
+      "components": {
+        "rig.layout.facing": {
+          "enabled": true,
+          "binding": "left"
+        }
+      }
+    },
+    {
+      "id": "page-trade",
+      "components": {
+        "rig.meta.named": { "name": "Trade 6×9", "stableId": "page-trade" },
+        "rig.layout.page": {
+          "index": 0,
+          "width": 152.4,
+          "height": 228.6,
+          "unit": "mm",
+          "margins": [20, 18, 22, 18]
+        }
+      }
+    },
+    {
+      "id": "chapter-source",
+      "components": {
+        "rig.meta.named": { "name": "01-chapter.md", "stableId": "chapter-source" },
+        "rig.media.code": {
+          "text": "---\nrole: chapter\nmeta: meta.md\nlayout: layout.rig.json\n---\n\n# First chapter\n\nBody before the break.\n\n//break page\n\n## After the break\n\nBody on the next page.\n",
+          "language": "markdown"
+        },
+        "rig.media.asset_ref": { "kind": "document", "path": "01-chapter.md" }
+      }
+    },
+    {
+      "id": "style-paragraph",
+      "components": {
+        "rig.meta.named": { "name": "Paragraph", "stableId": "style-paragraph" },
+        "rig.story.paragraph_style": {}
+      }
+    },
+    {
+      "id": "style-header-1",
+      "components": {
+        "rig.meta.named": { "name": "Header 1", "stableId": "style-header-1" },
+        "rig.story.paragraph_style": {
+          "basedOn": "style-paragraph",
+          "keepWithNext": true
+        }
+      }
+    },
+    {
+      "id": "style-header-2",
+      "components": {
+        "rig.meta.named": { "name": "Header 2", "stableId": "style-header-2" },
+        "rig.story.paragraph_style": {
+          "basedOn": "style-paragraph",
+          "keepWithNext": true
+        }
+      }
+    },
+    {
+      "id": "p-title",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-header-1",
+          "runs": [{ "text": "First chapter" }]
+        }
+      }
+    },
+    {
+      "id": "p-before",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "breakType": "page",
+          "runs": [{ "text": "Body before the break." }]
+        }
+      }
+    },
+    {
+      "id": "p-section",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-header-2",
+          "runs": [{ "text": "After the break" }]
+        }
+      }
+    },
+    {
+      "id": "p-after",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-paragraph",
+          "runs": [{ "text": "Body on the next page." }]
+        }
+      }
+    },
+    {
+      "id": "story",
+      "components": {
+        "rig.meta.named": { "name": "First chapter", "stableId": "story" },
+        "rig.story.flow": {
+          "role": "chapter",
+          "blocks": ["p-title", "p-before", "p-section", "p-after"]
+        }
+      }
+    }
+  ]
+}

@@ -8,6 +8,11 @@ fields:
     itemsRef: "entity"
     required: true
     meaning: "Ordered rig.story.paragraph and/or rig.story.table entities"
+  - name: "role"
+    type: "string"
+    enum: ["dedication","epigraph","preface","part","chapter","appendix","epilog","afterword","colophon","toc"]
+    meaning: "Optional. Print matter role for this flow; absent = unmarked"
+    absent: "unmarked"
 ---
 # `rig.story.flow`
 
@@ -20,6 +25,9 @@ Compose [`rig.meta.named`](../meta/named.md) for the story title. Thread the flo
 | Field | Type | Meaning |
 |-------|------|---------|
 | `blocks` | entity[] | Ordered [`rig.story.paragraph`](paragraph.md) and/or [`rig.story.table`](table.md) entities |
+| `role` | enum | Optional. Print matter role; absent = unmarked |
+
+`role` values: `dedication`, `epigraph`, `preface`, `part`, `chapter`, `appendix`, `epilog`, `afterword`, `colophon`, `toc`. These are publishing vocabulary (front/body/back matter), not visual paragraph styles. A Markdown authoring profile may map YAML `role:` onto this field; the dialect law stays outside Contract.
 
 Do not also list nested table-cell paragraphs here - those live on the cell `blocks` array. Sibling order is this array, not `spatial.relationship.order`.
 
