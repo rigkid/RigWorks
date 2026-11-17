@@ -2,10 +2,12 @@
 
 Rig is a shared vocabulary - **Readable Independent Grammar**: the [schemas](../schemas/) (prose + [JSON Schema](../schemas/json/)) and portable **entity + POD component** documents ([`rig.document`](../schemas/document.md)). It is not a library to link into your app.
 
-A project **is Rig** when:
+MUST, SHOULD, and MAY on this page are [requirement words](terms.md#requirement-words).
 
-1. It emits entities with POD components keyed by schema ids (`rig.<domain>.<name>`).
-2. It ships the schemas it supports - [ship what you support](../schemas/README.md).
+To be Rig, a project:
+
+1. MUST emit entities with POD components keyed by schema ids (`rig.<domain>.<name>`).
+2. MUST ship the schemas it supports - [ship what you support](../schemas/README.md).
 
 That composition model is the floor. **No entity/component POD, no Rig.** A SUDE loop by itself is a loop convention, not a shared vocabulary.
 
@@ -13,15 +15,15 @@ Schemas and UI are optional beyond what you implement. [`rig-validate`](../tools
 
 ### Live hosts
 
-A **live host** (a program that runs work over time) typically honors the [SUDE loop](sude.md) and runtime [ECS](ecs.md) conventions (registry, Update/Draw systems). **[RigKit](https://github.com/rigkid/RigKit)** takes SUDE + ECS as **its** floor - required to be RigKit, not required to be Rig. Validators, converters, and static presenters can be Rig without SUDE. See [ecs.md](ecs.md) for the split between document composition (Contract floor) and runtime systems (live hosts).
+A **live host** (a program that runs work over time) SHOULD honor the [SUDE loop](sude.md) and runtime [ECS](ecs.md) conventions (registry, Update/Draw systems). **[RigKit](https://github.com/rigkid/RigKit)** takes SUDE + ECS as **its** floor - a host MUST honor them to be RigKit, not to be Rig. Validators, converters, and static presenters MAY be Rig without SUDE. See [ecs.md](ecs.md) for the split between document composition (Contract floor) and runtime systems (live hosts).
 
 ### Rig + UI (optional)
 
-A project is **Rig + UI** when it already **is Rig** and author/tool surfaces edit the same entity POD through a host seam (not a second scene graph). Full checklist: [ui.md](ui.md). Omitting UI remains valid Rig. Layout chrome and UI packs are fulfillment - the document carries `rig.ui.*`.
+To be **Rig + UI**, a project MUST already be Rig, and its author/tool surfaces MUST edit the same entity POD through a host seam. They MUST NOT keep a second scene graph. Full checklist: [ui.md](ui.md). Omitting UI remains valid Rig. Layout chrome and UI packs are fulfillment - the document carries `rig.ui.*`.
 
 ## What you may omit
 
-Any host, any [UI](ui.md), any pack, device drivers, render backends, SUDE (unless you are RigKit or another host that claims the loop), and every schema you do not implement.
+A project MAY omit any host, any [UI](ui.md), any pack, device drivers, render backends, SUDE (unless it is RigKit or another host that claims the loop), and every schema it does not implement.
 You do not need a particular implementation to be Rig.
 
 ## Reference fulfillment

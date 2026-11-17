@@ -36,7 +36,19 @@ When a document says a detail is "fulfillment, not Contract", it means: implemen
 | **Component** | A named POD payload attached to an entity, keyed by schema id (`rig.spatial.transform`). |
 | **Schema id** | The stable name of a component layout: `rig.<domain>.<name>`. The unit of interoperability - two hosts that speak the same id share fields and units. |
 | **Portable** | Meaning survives leaving your process. Portable fields get serialized; everything else stays in the host. |
-| **Host cache** | A value a host derives and may keep, but must not serialize - world matrices, Euler angles, polygon winding from vertex order, an LFO's last sample, hover state. |
+| **Host cache** | A value a host derives and MAY keep, but MUST NOT serialize - world matrices, Euler angles, polygon winding from vertex order, an LFO's last sample, hover state. |
+
+## Requirement words
+
+**MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** are requirements only when written in capitals.
+
+| Word | A fulfillment that ignores it |
+|------|-------------------------------|
+| **MUST** / **MUST NOT** | Does not honor the Contract. |
+| **SHOULD** / **SHOULD NOT** | Still honors it, and can name the reason it departs. |
+| **MAY** | Loses nothing. The choice is the fulfillment's. |
+
+Lowercase "must", "should", and "may" are plain English and require nothing.
 
 ## Reading the rules
 
