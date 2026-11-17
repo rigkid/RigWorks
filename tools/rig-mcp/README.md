@@ -32,4 +32,4 @@ Claude Code / Cursor MCP config:
 }
 ```
 
-With the server attached, the generation loop is: `list_schemas` (stable first) → `find_examples` → copy the pattern → emit → `validate_document` until `ok`. The same loop the [skill](../../skills/generating-rig-documents/SKILL.md) teaches, without shelling out.
+With the server attached, the generation loop is: `list_schemas` (stable first), then `find_examples`, copy the pattern, emit, and `validate_document` until `ok`. The same loop the [skill](../../skills/generating-rig-documents/SKILL.md) teaches, without shelling out.

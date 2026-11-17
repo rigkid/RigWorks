@@ -5286,7 +5286,7 @@
           "name": "prefix",
           "type": "string",
           "required": false,
-          "meaning": "Optional. Emitted before the number (A- → A-1, A-2)"
+          "meaning": "Optional. Emitted before the number (A- gives A-1, A-2)"
         },
         {
           "name": "startSide",

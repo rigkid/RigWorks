@@ -40,7 +40,7 @@ body.cloud nav {
 
 .cloud-bar nav { pointer-events: auto; }
 
-/* Crumbs → find → card, same width, under the header on the left. */
+/* Crumbs, then find, then card, same width, under the header on the left. */
 .cloud-rail {
   position: absolute;
   z-index: 3;
