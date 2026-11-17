@@ -2,7 +2,7 @@
 
 **A shared grammar for real work. Because no code is the best code.**
 
-The short tablet - future-proof, host-independent, human-readable - is [design philosophy](design-philosophy.md). This page makes the anti-library argument behind that tablet and names what the choice costs.
+Future-proof, host-independent, and human-readable are [design philosophy](design-philosophy.md). This page makes the anti-library argument behind those claims and names what the choice costs.
 
 ## What "no code" means here
 
@@ -30,7 +30,7 @@ Every line you ship is a liability with a longer life than its usefulness. Code 
 | Fight your build | No headers, flags, ABI, or transitive dependencies |
 | Lock your language | Any language can emit JSON and call four functions |
 
-A library asks you to trust a team's release cadence forever. A contract asks you to read a page once.
+Change in a library you trust is a good thing. A contract means you are not stuck to its implementation.
 
 ## Not the same as a visual programming app
 
@@ -89,4 +89,4 @@ Take a library when you want one implementation, in one language, on one platfor
 
 ## Next
 
-[design-philosophy.md](design-philosophy.md) for the tablet · [terms.md](terms.md) for the vocabulary · [honors.md](honors.md) for the minimum bar · [ai-collaboration.md](ai-collaboration.md) for why this matters more every year
+[design-philosophy.md](design-philosophy.md) for the three claims · [terms.md](terms.md) for the vocabulary · [honors.md](honors.md) for the minimum bar · [ai-collaboration.md](ai-collaboration.md) for why this matters more every year

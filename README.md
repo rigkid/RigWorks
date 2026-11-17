@@ -142,7 +142,7 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 
 | Why Rig | |
 |---------|--|
-| [docs/design-philosophy.md](docs/design-philosophy.md) | Future-proof, host-independent, human-readable - the tablet |
+| [docs/design-philosophy.md](docs/design-philosophy.md) | Future-proof, host-independent, human-readable |
 | [docs/why-no-code.md](docs/why-no-code.md) | Why a framework with no code, and what it costs |
 | [docs/ai-collaboration.md](docs/ai-collaboration.md) | Why shared concepts beat private prompts when models author work |
 

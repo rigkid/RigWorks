@@ -18,7 +18,7 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 
 ### Why Rig
 
-- [docs/design-philosophy.md](docs/design-philosophy.md): future-proof, host-independent, human-readable - the tablet
+- [docs/design-philosophy.md](docs/design-philosophy.md): future-proof, host-independent, human-readable
 - [docs/why-no-code.md](docs/why-no-code.md): why a framework that ships no code, and what it costs
 - [docs/ai-collaboration.md](docs/ai-collaboration.md): why shared concepts beat private prompts when models author work
 

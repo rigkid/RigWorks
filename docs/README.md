@@ -6,7 +6,7 @@ The reading order, grouped. Same order as the root [README](../README.md), [llms
 
 | Doc | What it settles |
 |-----|-----------------|
-| [design-philosophy.md](design-philosophy.md) | Future-proof, host-independent, human-readable - the tablet |
+| [design-philosophy.md](design-philosophy.md) | Future-proof, host-independent, human-readable |
 | [why-no-code.md](why-no-code.md) | Why a framework with no code, and what it costs |
 | [ai-collaboration.md](ai-collaboration.md) | Why shared concepts beat private prompts when models author work |
 

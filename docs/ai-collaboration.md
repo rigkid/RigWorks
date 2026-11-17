@@ -2,7 +2,7 @@
 
 **AI co-coding is here to stay.** Not as a prediction to argue about - as a design constraint we address.
 
-[Design philosophy](design-philosophy.md) states the tablet and [why no code](why-no-code.md) makes the anti-library argument. This page covers the consequence for model-authored work: when execution becomes cheap to generate, agreement becomes the scarce asset.
+[Design philosophy](design-philosophy.md) states what Rig optimises for and [why no code](why-no-code.md) makes the anti-library argument. This page covers the consequence for model-authored work: when execution becomes cheap to generate, agreement becomes the scarce asset.
 
 ## What changes?
 

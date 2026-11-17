@@ -10,7 +10,7 @@ Rig is a **future-proof**, **host-independent**, **human-readable** vocabulary f
 | **Independent** | Of host, runtime, language, and platform |
 | **Grammar** | The schemas - field names, units, ids - and the wire shape that carries them: entities with POD components |
 
-This page is the tablet. It states what Rig optimises for and where its boundaries sit. [Why no code](why-no-code.md) argues for agreement instead of a library and names the cost. [AI co-coding](ai-collaboration.md) follows one consequence: when execution becomes cheap to generate, shared concepts become more valuable, not less.
+[Why no code](why-no-code.md) argues for agreement instead of a library and names the cost. [AI co-coding](ai-collaboration.md) follows one consequence: when execution becomes cheap to generate, shared concepts become more valuable, not less.
 
 ## What the claims mean
 
