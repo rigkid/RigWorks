@@ -1,6 +1,6 @@
 ---
 id: "rig.io.wifi"
-maturity: "draft"
+maturity: "stable"
 summary: "Wi-Fi radio mode for one interface. Format when present. The join password is host-only."
 fields:
   - name: "mode"

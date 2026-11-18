@@ -1,6 +1,6 @@
 ---
 id: "rig.book.publication"
-maturity: "draft"
+maturity: "stable"
 summary: "Publishing detail of a book product. Format when present."
 topJson: "{\"description\":\"Publishing detail. Field meanings follow ONIX PublishingDetail. Publisher is an organisation entity.\",\"minProperties\":1}"
 fields:

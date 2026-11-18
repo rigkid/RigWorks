@@ -58,7 +58,7 @@
     },
     {
       "id": "rig.anim.bind",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Rest pose of one bone. Format when present. Compose on the bone entity.",
       "prose": "schemas/anim/bind.md",
       "schema": "schemas/json/rig.anim.bind.schema.json",
@@ -88,7 +88,7 @@
     },
     {
       "id": "rig.anim.blend",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Blend tree over clips. Format when present.",
       "prose": "schemas/anim/blend.md",
       "schema": "schemas/json/rig.anim.blend.schema.json",
@@ -109,7 +109,7 @@
     },
     {
       "id": "rig.anim.clip",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "A span of sampled motion. Format when present. Compose rig.meta.named for the clip name.",
       "prose": "schemas/anim/clip.md",
       "schema": "schemas/json/rig.anim.clip.schema.json",
@@ -186,7 +186,7 @@
     },
     {
       "id": "rig.anim.skeleton",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Ordered bones. Format when present.",
       "prose": "schemas/anim/skeleton.md",
       "schema": "schemas/json/rig.anim.skeleton.schema.json",
@@ -207,7 +207,7 @@
     },
     {
       "id": "rig.anim.skin",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Skin binding on a mesh entity. Format when present. The drawable is rig.geometry.mesh on the same entity.",
       "prose": "schemas/anim/skin.md",
       "schema": "schemas/json/rig.anim.skin.schema.json",
@@ -246,7 +246,7 @@
     },
     {
       "id": "rig.anim.track",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Sampled keys for one property on one clip. Format when present.",
       "prose": "schemas/anim/track.md",
       "schema": "schemas/json/rig.anim.track.schema.json",
@@ -1296,7 +1296,7 @@
     },
     {
       "id": "rig.book.identifier",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Product identifiers of a book (or other ONIX product). Format when present.",
       "prose": "schemas/book/identifier.md",
       "schema": "schemas/json/rig.book.identifier.schema.json",
@@ -1329,7 +1329,7 @@
     },
     {
       "id": "rig.book.publication",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Publishing detail of a book product. Format when present.",
       "prose": "schemas/book/publication.md",
       "schema": "schemas/json/rig.book.publication.schema.json",
@@ -2839,7 +2839,7 @@
     },
     {
       "id": "rig.dev.machine",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Portable development-environment recipe. Format when present.",
       "prose": "schemas/dev/machine.md",
       "schema": "schemas/json/rig.dev.machine.schema.json",
@@ -2909,7 +2909,7 @@
     },
     {
       "id": "rig.dev.op",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "A named operation on a prepared rig.dev.machine. Edges toward behavior; what the op *does* is fulfillment - the Contract only names which command the surface exposes.",
       "prose": "schemas/dev/op.md",
       "schema": "schemas/json/rig.dev.op.schema.json",
@@ -4220,7 +4220,7 @@
     },
     {
       "id": "rig.input.buttons",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Logical button state for one player. Format when present.",
       "prose": "schemas/input/buttons.md",
       "schema": "schemas/json/rig.input.buttons.schema.json",
@@ -4352,7 +4352,7 @@
     },
     {
       "id": "rig.io.bluetooth",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Classic Bluetooth audio sink. Format when present. The name phones see is rig.meta.named.",
       "prose": "schemas/io/bluetooth.md",
       "schema": "schemas/json/rig.io.bluetooth.schema.json",
@@ -4401,7 +4401,7 @@
     },
     {
       "id": "rig.io.espnow",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "ESP-NOW peer and payload. Format when present. The send itself is an action.",
       "prose": "schemas/io/espnow.md",
       "schema": "schemas/json/rig.io.espnow.schema.json",
@@ -4627,7 +4627,7 @@
     },
     {
       "id": "rig.io.wifi",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Wi-Fi radio mode for one interface. Format when present. The join password is host-only.",
       "prose": "schemas/io/wifi.md",
       "schema": "schemas/json/rig.io.wifi.schema.json",
@@ -6658,7 +6658,7 @@
     },
     {
       "id": "rig.music.pattern",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Ordered steps. Format when present.",
       "prose": "schemas/music/pattern.md",
       "schema": "schemas/json/rig.music.pattern.schema.json",
@@ -6721,7 +6721,7 @@
     },
     {
       "id": "rig.music.sequencer",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "Playhead over a pattern. Format when present.",
       "prose": "schemas/music/sequencer.md",
       "schema": "schemas/json/rig.music.sequencer.schema.json",
@@ -10363,7 +10363,7 @@
     },
     {
       "id": "rig.render.sprite",
-      "maturity": "draft",
+      "maturity": "stable",
       "summary": "A textured quad in the entity's plane. Format when present. Colour is paint on the same entity (rig.paint.fill or rig.paint.fill_stroke), not a second colour here.",
       "prose": "schemas/render/sprite.md",
       "schema": "schemas/json/rig.render.sprite.schema.json",

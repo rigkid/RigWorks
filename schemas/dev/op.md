@@ -1,6 +1,6 @@
 ---
 id: "rig.dev.op"
-maturity: "draft"
+maturity: "stable"
 summary: "A named operation on a prepared rig.dev.machine. Edges toward behavior; what the op *does* is fulfillment - the Contract only names which command the surface exposes."
 fields:
   - name: "machine"

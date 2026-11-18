@@ -1,6 +1,6 @@
 ---
 id: "rig.io.bluetooth"
-maturity: "draft"
+maturity: "stable"
 summary: "Classic Bluetooth audio sink. Format when present. The name phones see is rig.meta.named."
 fields:
   - name: "enabled"

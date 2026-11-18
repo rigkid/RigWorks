@@ -1,6 +1,6 @@
 ---
 id: "rig.input.buttons"
-maturity: "draft"
+maturity: "stable"
 summary: "Logical button state for one player. Format when present."
 fields:
   - name: "player"

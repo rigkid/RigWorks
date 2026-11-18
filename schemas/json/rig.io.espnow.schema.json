@@ -20,5 +20,5 @@
       "$ref": "./_defs.schema.json#/$defs/string"
     }
   },
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

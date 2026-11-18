@@ -20,5 +20,5 @@
   "required": [
     "duration"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

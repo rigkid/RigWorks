@@ -1,6 +1,6 @@
 ---
 id: "rig.music.pattern"
-maturity: "draft"
+maturity: "stable"
 summary: "Ordered steps. Format when present."
 fields:
   - name: "steps"

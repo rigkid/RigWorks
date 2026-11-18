@@ -1,6 +1,6 @@
 ---
 id: "rig.anim.skeleton"
-maturity: "draft"
+maturity: "stable"
 summary: "Ordered bones. Format when present."
 fields:
   - name: "root"

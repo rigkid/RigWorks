@@ -1,6 +1,6 @@
 ---
 id: "rig.render.sprite"
-maturity: "draft"
+maturity: "stable"
 summary: "A textured quad in the entity's plane. Format when present. Colour is paint on the same entity (rig.paint.fill or rig.paint.fill_stroke), not a second colour here."
 fields:
   - name: "texture"

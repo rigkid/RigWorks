@@ -52,5 +52,5 @@
     "root",
     "nodes"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

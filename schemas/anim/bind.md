@@ -1,6 +1,6 @@
 ---
 id: "rig.anim.bind"
-maturity: "draft"
+maturity: "stable"
 summary: "Rest pose of one bone. Format when present. Compose on the bone entity."
 fields:
   - name: "position"

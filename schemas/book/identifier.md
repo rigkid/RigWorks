@@ -1,6 +1,6 @@
 ---
 id: "rig.book.identifier"
-maturity: "draft"
+maturity: "stable"
 summary: "Product identifiers of a book (or other ONIX product). Format when present."
 topJson: "{\"description\":\"Product identifiers. Prefer isbn13 (ISO 2108). Do not invent isbn10 from isbn13.\",\"minProperties\":1}"
 fields:

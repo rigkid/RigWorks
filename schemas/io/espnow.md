@@ -1,6 +1,6 @@
 ---
 id: "rig.io.espnow"
-maturity: "draft"
+maturity: "stable"
 summary: "ESP-NOW peer and payload. Format when present. The send itself is an action."
 fields:
   - name: "enabled"

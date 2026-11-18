@@ -1,6 +1,6 @@
 ---
 id: "rig.anim.track"
-maturity: "draft"
+maturity: "stable"
 summary: "Sampled keys for one property on one clip. Format when present."
 fields:
   - name: "clip"

@@ -1,6 +1,6 @@
 ---
 id: "rig.music.sequencer"
-maturity: "draft"
+maturity: "stable"
 summary: "Playhead over a pattern. Format when present."
 fields:
   - name: "pattern"

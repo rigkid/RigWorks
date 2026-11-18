@@ -1,6 +1,6 @@
 ---
 id: "rig.anim.clip"
-maturity: "draft"
+maturity: "stable"
 summary: "A span of sampled motion. Format when present. Compose rig.meta.named for the clip name."
 fields:
   - name: "duration"

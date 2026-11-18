@@ -1,6 +1,6 @@
 ---
 id: "rig.anim.skin"
-maturity: "draft"
+maturity: "stable"
 summary: "Skin binding on a mesh entity. Format when present. The drawable is rig.geometry.mesh on the same entity."
 fields:
   - name: "skeleton"

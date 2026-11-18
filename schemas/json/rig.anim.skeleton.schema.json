@@ -20,5 +20,5 @@
     "root",
     "bones"
   ],
-  "x-rig-maturity": "draft"
+  "x-rig-maturity": "stable"
 }

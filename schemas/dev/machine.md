@@ -1,6 +1,6 @@
 ---
 id: "rig.dev.machine"
-maturity: "draft"
+maturity: "stable"
 summary: "Portable development-environment recipe. Format when present."
 fields:
   - name: "kind"

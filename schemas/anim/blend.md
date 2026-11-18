@@ -1,6 +1,6 @@
 ---
 id: "rig.anim.blend"
-maturity: "draft"
+maturity: "stable"
 summary: "Blend tree over clips. Format when present."
 fields:
   - name: "root"
