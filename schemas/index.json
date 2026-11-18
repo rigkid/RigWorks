@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "generatedBy": "tools/gen-schemas.mjs - do not hand-edit; edit frontmatter in schemas/<domain>/<name>.md",
   "schemas": [
     {
@@ -4746,7 +4746,7 @@
           "name": "fontSize",
           "type": "float",
           "required": false,
-          "meaning": "Optional. Size override; absent = inherit paragraph",
+          "meaning": "Optional. Size override in points; absent = inherit paragraph",
           "absent": "inherit paragraph"
         },
         {
@@ -4791,7 +4791,7 @@
           "name": "baselineShift",
           "type": "float",
           "required": false,
-          "meaning": "Optional. Vertical shift off the baseline, positive raises; absent = 0",
+          "meaning": "Optional. Vertical shift off the baseline in points, positive raises; absent = 0",
           "absent": "0"
         },
         {
@@ -4806,6 +4806,20 @@
             "lower",
             "small-caps"
           ]
+        },
+        {
+          "name": "underline",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. Line under the run, in the run's paint; absent = false",
+          "absent": "false"
+        },
+        {
+          "name": "strikethrough",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. Line through the run, in the run's paint; absent = false",
+          "absent": "false"
         }
       ]
     },
@@ -5083,7 +5097,7 @@
           "name": "fontSize",
           "type": "float",
           "required": false,
-          "meaning": "Optional. Size in document units (or points when the host documents that)"
+          "meaning": "Optional. Size in points"
         },
         {
           "name": "leading",
@@ -5245,6 +5259,25 @@
           "type": "array<any>",
           "required": false,
           "meaning": "Optional. GREP style rules, applied in order (see below)"
+        },
+        {
+          "name": "flowRole",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Applies only inside a rig.story.flow with this role (see below); absent = every flow",
+          "absent": "every flow",
+          "enum": [
+            "dedication",
+            "epigraph",
+            "preface",
+            "part",
+            "chapter",
+            "appendix",
+            "epilog",
+            "afterword",
+            "colophon",
+            "toc"
+          ]
         }
       ]
     },
@@ -5319,7 +5352,7 @@
           "name": "borderStroke",
           "type": "float",
           "required": false,
-          "meaning": "Optional. Outline stroke; 0 / absent = no outline"
+          "meaning": "Optional. Outline stroke width (pt); 0 / absent = no outline"
         },
         {
           "name": "borderColor",
@@ -5337,13 +5370,13 @@
           "name": "rowStripeFill",
           "type": "entity",
           "required": false,
-          "meaning": "Optional. Paint entity for the alternating body row band"
+          "meaning": "Optional. Paint entity for the alternating body row band: the 2nd, 4th, ... body row"
         },
         {
           "name": "cellInset",
           "type": "float",
           "required": false,
-          "meaning": "Optional. Cell padding"
+          "meaning": "Optional. Cell padding (pt), every side"
         },
         {
           "name": "cellSize",
@@ -5368,6 +5401,54 @@
           "type": "entity",
           "required": false,
           "meaning": "Optional. Paint entity for header row text"
+        }
+      ]
+    },
+    {
+      "id": "rig.layout.text_wrap",
+      "maturity": "draft",
+      "summary": "Text wrap - text in frames on the same page flows around this entity. Format when present.",
+      "prose": "schemas/layout/text-wrap.md",
+      "schema": "schemas/json/rig.layout.text_wrap.schema.json",
+      "fields": [
+        {
+          "name": "shape",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. box (the geometry bounds), contour (the geometry itself), or alpha (the sprite texture's opaque pixels). Absent = box",
+          "absent": "box",
+          "enum": [
+            "box",
+            "contour",
+            "alpha"
+          ]
+        },
+        {
+          "name": "offset",
+          "type": "faceInsets",
+          "required": false,
+          "meaning": "number[1..6]"
+        },
+        {
+          "name": "sides",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Where text may sit beside the wrap area: both, left, right, largest, jump. Absent = both",
+          "absent": "both",
+          "enum": [
+            "both",
+            "left",
+            "right",
+            "largest",
+            "jump"
+          ]
+        },
+        {
+          "name": "alphaThreshold",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. With shape alpha, pixels above this opacity are inside the area; absent = 0",
+          "absent": "0"
         }
       ]
     },
@@ -7829,6 +7910,18 @@
             "none",
             "non-scaling-stroke"
           ]
+        },
+        {
+          "name": "align",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Where the stroke sits on a closed contour: center, inside, outside; absent = center. Open contours are always center",
+          "absent": "center",
+          "enum": [
+            "center",
+            "inside",
+            "outside"
+          ]
         }
       ]
     },
@@ -10232,6 +10325,70 @@
           "required": false,
           "meaning": "Optional. Scale; absent = 1",
           "absent": "1"
+        }
+      ]
+    },
+    {
+      "id": "rig.render.image_fit",
+      "maturity": "draft",
+      "summary": "Fit a sprite's texture into the entity's shape - CSS object-fit and object-position. Format when present.",
+      "prose": "schemas/render/image-fit.md",
+      "schema": "schemas/json/rig.render.image_fit.schema.json",
+      "fields": [
+        {
+          "name": "fit",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. fill, contain, cover, none, or scale-down - the CSS object-fit values. Absent = fill",
+          "absent": "fill",
+          "enum": [
+            "fill",
+            "contain",
+            "cover",
+            "none",
+            "scale-down"
+          ]
+        },
+        {
+          "name": "positionX",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Horizontal alignment as a ratio of the free space; 0 = left, 0.5 = centre, 1 = right. Absent = 0.5",
+          "absent": "0.5"
+        },
+        {
+          "name": "positionY",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Vertical alignment as a ratio of the free space; 0 = top, 0.5 = centre, 1 = bottom. Absent = 0.5",
+          "absent": "0.5"
+        },
+        {
+          "name": "offsetX",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Shift toward the right face in local units, after positionX. Absent = 0",
+          "absent": "0"
+        },
+        {
+          "name": "offsetY",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Shift toward the bottom face in local units, after positionY. Absent = 0",
+          "absent": "0"
+        },
+        {
+          "name": "scale",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Multiplies the fitted content size before alignment. Absent = 1",
+          "absent": "1"
+        },
+        {
+          "name": "insets",
+          "type": "faceInsets",
+          "required": false,
+          "meaning": "number[1..6]"
         }
       ]
     },

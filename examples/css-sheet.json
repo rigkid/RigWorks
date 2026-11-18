@@ -1,0 +1,152 @@
+{
+  "rig": "1.6.0",
+  "document": {
+    "title": "Picture-book page dressed by a style sheet",
+    "defaultUnit": "mm"
+  },
+  "entities": [
+    {
+      "id": "sheet",
+      "components": {
+        "rig.meta.named": { "name": "book.css", "stableId": "sheet" },
+        "rig.media.code": {
+          "language": "css",
+          "text": "@page {\n  size: 250mm 250mm;\n  bleed: 3mm;\n}\n\np {\n  font-size: 18pt;\n  line-height: 24pt;\n  color: #1f1f1f;\n}\n\n[data-role=chapter] p.Body {\n  font-size: 22pt;\n}\n\nspan.Shout {\n  text-decoration: underline;\n}\n\nimg.hero {\n  object-fit: cover;\n  object-position: 30% 0%;\n  border: 1mm solid #ffffff;\n  border-radius: 4mm;\n  padding: 2mm;\n  background-color: #f4efe6;\n  float: left;\n  shape-margin: 5mm;\n}\n\ndiv.story {\n  padding: 4mm;\n  column-count: 2;\n  column-gap: 6mm;\n}\n\ntable {\n  border: 0.5pt solid #1f1f1f;\n}\n\ntbody tr:nth-child(even) {\n  background-color: #f4efe6;\n}\n"
+        }
+      }
+    },
+    {
+      "id": "ink-text",
+      "components": {
+        "rig.meta.named": { "name": "#1f1f1f", "stableId": "ink-text" },
+        "rig.paint.solid": { "rgba": [0.1216, 0.1216, 0.1216, 1] }
+      }
+    },
+    {
+      "id": "ink-white",
+      "components": {
+        "rig.meta.named": { "name": "#ffffff", "stableId": "ink-white" },
+        "rig.paint.solid": { "rgba": [1, 1, 1, 1] }
+      }
+    },
+    {
+      "id": "ink-paper",
+      "components": {
+        "rig.meta.named": { "name": "#f4efe6", "stableId": "ink-paper" },
+        "rig.paint.solid": { "rgba": [0.9569, 0.9373, 0.902, 1] }
+      }
+    },
+    {
+      "id": "style-body",
+      "components": {
+        "rig.meta.named": { "name": "Body", "stableId": "style-body" },
+        "rig.story.paragraph_style": {},
+        "rig.layout.paragraph_style": {
+          "storyStyle": "style-body",
+          "fontSize": 18,
+          "leading": 24,
+          "paint": "ink-text"
+        }
+      }
+    },
+    {
+      "id": "style-body-chapter",
+      "components": {
+        "rig.layout.paragraph_style": {
+          "storyStyle": "style-body",
+          "basedOn": "style-body",
+          "flowRole": "chapter",
+          "fontSize": 22
+        }
+      }
+    },
+    {
+      "id": "style-shout",
+      "components": {
+        "rig.meta.named": { "name": "Shout", "stableId": "style-shout" },
+        "rig.story.character_style": {},
+        "rig.layout.character_style": {
+          "storyStyle": "style-shout",
+          "underline": true
+        }
+      }
+    },
+    {
+      "id": "table-style",
+      "components": {
+        "rig.meta.named": { "name": "Default table", "stableId": "table-style" },
+        "rig.layout.table_style": {
+          "borderStroke": 0.5,
+          "borderColor": "ink-text",
+          "rowStripeFill": "ink-paper"
+        }
+      }
+    },
+    {
+      "id": "p-1",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-body",
+          "runs": [
+            { "text": "The fox stopped. " },
+            { "text": "Snow!", "style": "style-shout" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "story",
+      "components": {
+        "rig.meta.named": { "name": "Chapter one", "stableId": "story" },
+        "rig.story.flow": { "blocks": ["p-1"], "role": "chapter" }
+      }
+    },
+    {
+      "id": "page-1",
+      "components": {
+        "rig.meta.named": { "name": "Page 1", "stableId": "page-1" },
+        "rig.layout.page": { "index": 0, "width": 250, "height": 250, "bleed": 3 },
+        "rig.spatial.transform": { "position": [0, 0, 0] }
+      }
+    },
+    {
+      "id": "art",
+      "components": {
+        "rig.meta.named": { "name": "Fox in the snow", "stableId": "art" },
+        "rig.media.asset_ref": { "kind": "image", "path": "art/fox.jpg" }
+      }
+    },
+    {
+      "id": "hero-frame",
+      "components": {
+        "rig.meta.named": { "name": "Hero", "stableId": "hero-frame" },
+        "rig.meta.tags": { "tags": ["hero"] },
+        "rig.spatial.relationship": { "parent": "page-1", "order": 1 },
+        "rig.spatial.transform": { "position": [20, 20, 0] },
+        "rig.geometry.rectangle": { "x": 0, "y": 0, "width": 100, "height": 140, "cornerRadius": 4 },
+        "rig.render.sprite": { "texture": "art" },
+        "rig.render.image_fit": { "fit": "cover", "positionX": 0.3, "positionY": 0, "insets": 3 },
+        "rig.paint.fill": { "paint": "ink-paper" },
+        "rig.paint.stroke": { "paint": "ink-white", "width": 1 },
+        "rig.paint.stroke_style": { "align": "inside" },
+        "rig.layout.text_wrap": { "sides": "right", "offset": 5 }
+      }
+    },
+    {
+      "id": "text-frame",
+      "components": {
+        "rig.meta.named": { "name": "Story frame", "stableId": "text-frame" },
+        "rig.meta.tags": { "tags": ["story"] },
+        "rig.spatial.relationship": { "parent": "page-1", "order": 0 },
+        "rig.spatial.transform": { "position": [20, 20, 0] },
+        "rig.layout.frame": { "width": 210, "height": 210, "insets": 4, "columnCount": 2, "columnGutter": 6 }
+      }
+    },
+    {
+      "id": "chain",
+      "components": {
+        "rig.layout.frame_chain": { "story": "story", "frames": ["text-frame"] }
+      }
+    }
+  ]
+}

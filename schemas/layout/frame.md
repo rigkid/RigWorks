@@ -37,7 +37,9 @@ Text frame - a box a [`rig.story.flow`](../story/flow.md) flows through. Format 
 
 Bounds, columns, insets, and first baseline. Thread several frames with [`rig.layout.frame_chain`](frame-chain.md). Parent the frame to a [`rig.layout.page`](page.md) (or master) with [`rig.spatial.relationship`](../spatial/relationship.md). Pose is [`rig.spatial.transform`](../spatial/transform.md) - do not put `x` / `y` here.
 
-This is not [`rig.geometry.rectangle`](../geometry/rectangle.md) (a drawable). Graphic frames, object styles, text wrap, and anchored objects stay out - [idml.md](../../docs/idml.md).
+This is not [`rig.geometry.rectangle`](../geometry/rectangle.md) (a drawable). An image frame is geometry plus [`rig.render.image_fit`](../render/image-fit.md), not this schema. Text that flows around another item is [`rig.layout.text_wrap`](text-wrap.md) on that item. Anchored objects stay out - [idml.md](../../docs/idml.md).
+
+A frame's background and border compose on the frame entity, with the box (`width` by `height`) as their contour: [`rig.paint.fill`](../paint/fill.md) draws under the text, [`rig.paint.stroke`](../paint/stroke.md) and [`rig.paint.stroke_style`](../paint/stroke-style.md) over it, and [`rig.render.blend`](../render/blend.md) applies to all three. Insets do not move the stroke.
 
 | Field | Type | Meaning |
 |-------|------|---------|

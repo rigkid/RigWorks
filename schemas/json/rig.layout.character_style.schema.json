@@ -47,6 +47,12 @@
         "lower",
         "small-caps"
       ]
+    },
+    "underline": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "strikethrough": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
     }
   },
   "x-rig-maturity": "stable"

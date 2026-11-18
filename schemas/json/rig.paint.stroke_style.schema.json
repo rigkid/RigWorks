@@ -39,6 +39,14 @@
         "none",
         "non-scaling-stroke"
       ]
+    },
+    "align": {
+      "type": "string",
+      "enum": [
+        "center",
+        "inside",
+        "outside"
+      ]
     }
   },
   "x-rig-maturity": "stable"

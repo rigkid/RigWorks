@@ -1,7 +1,7 @@
 # RigWorks
 
 [![GitHub stars](https://img.shields.io/github/stars/rigkid/RigWorks?style=social)](https://github.com/rigkid/RigWorks/stargazers)
-[![Version](https://img.shields.io/badge/version-1.5.0-blue)](docs/history.md)
+[![Version](https://img.shields.io/badge/version-1.6.0-blue)](docs/history.md)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Sponsor](https://img.shields.io/badge/sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/GitBruno)
 
@@ -169,6 +169,7 @@ See [`VERSION`](VERSION) (SemVer) and [docs/versioning.md](docs/versioning.md).
 | Format mappings | |
 |-----------------|--|
 | [docs/blender.md](docs/blender.md) | Blender evaluated scene to existing spatial / mesh / render / animation schemas; encodings are fulfillment |
+| [docs/css.md](docs/css.md) | CSS style sheet round trip: the sheet travels as `rig.media.code`, selectors compile to styles, pages, fonts, and image fit |
 | [docs/idml.md](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
 | [docs/kicad.md](docs/kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*`; round trip merges onto the source file |
 | [docs/markbreak.md](docs/markbreak.md) | Print-manuscript Markdown to story / media (`flow.role`, `breakType`) |

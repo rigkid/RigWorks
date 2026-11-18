@@ -8,7 +8,9 @@ Load for: pages, masters, text frames, stories, styles, tables. Parent slice: [`
 |---|---|
 | A page | `rig.layout.page` (may override document unit with `unit`) + `rig.spatial.transform` |
 | A master / applied master / facing / section | `rig.layout.master`, `rig.layout.applied_master`, `rig.layout.facing`, `rig.layout.section` |
-| A text or graphic frame | `rig.layout.frame` (`width`/`height` on the frame) + transform; thread frames with `rig.layout.frame_chain` |
+| A text frame | `rig.layout.frame` (`width`/`height` on the frame) + transform; thread frames with `rig.layout.frame_chain` |
+| An image frame | geometry + `rig.render.sprite` + `rig.render.image_fit` on one entity ([scene.md](scene.md)) |
+| A style sheet | `rig.media.code` `language` `css`; compiled into the layout styles ([css.md](../../../docs/css.md)) |
 | Editorial content | `rig.story.flow` holding `rig.story.paragraph` / `rig.story.table` blocks |
 | A named text style (meaning only) | `rig.story.paragraph_style` / `rig.story.character_style` - identity, `basedOn`, nothing visual |
 | The visual map for a story style | `rig.layout.paragraph_style` / `rig.layout.character_style` / `rig.layout.table_style`, keyed by `storyStyle` |
@@ -18,7 +20,7 @@ Load for: pages, masters, text frames, stories, styles, tables. Parent slice: [`
 
 ## Guards
 
-- No `rig.idml.*`, graphic frames, object styles, text wrap, GREP, footnotes, or variables. Map onto `rig.layout.frame` plus layout/story.
+- No `rig.idml.*`, object styles, GREP, footnotes, or variables. Map onto `rig.layout.frame` plus layout/story; image frames onto `rig.render.image_fit`; text wrap onto `rig.layout.text_wrap`.
 - `rig.geometry.rectangle` is a drawable, not a frame. Do not give a frame rectangle geometry to carry its bounds.
 - Do not parent `rig.story.flow` to the page; frames thread with `frame_chain`.
 - Stories carry style identity only: no font, size, colour, bold/italic/underline/strike, super/sub on story or run fields. Unstyled local emphasis becomes a named character style. Text colour is paint ([scene.md](scene.md)).
@@ -26,4 +28,4 @@ Load for: pages, masters, text frames, stories, styles, tables. Parent slice: [`
 
 ## Ids in this slice
 
-`rig.layout.page`, `rig.layout.master`, `rig.layout.applied_master`, `rig.layout.facing`, `rig.layout.section`, `rig.layout.paragraph_style`, `rig.layout.character_style`, `rig.layout.table_style`, `rig.layout.frame`, `rig.layout.frame_chain`, `rig.layout.grid`, `rig.story.flow`, `rig.story.paragraph`, `rig.story.paragraph_style`, `rig.story.character_style`, `rig.story.table`, `rig.media.text`, `rig.media.text_path`, `rig.media.font_face`, `rig.media.code`
+`rig.layout.page`, `rig.layout.master`, `rig.layout.applied_master`, `rig.layout.facing`, `rig.layout.section`, `rig.layout.paragraph_style`, `rig.layout.character_style`, `rig.layout.table_style`, `rig.layout.frame`, `rig.layout.frame_chain`, `rig.layout.text_wrap`, `rig.layout.grid`, `rig.story.flow`, `rig.story.paragraph`, `rig.story.paragraph_style`, `rig.story.character_style`, `rig.story.table`, `rig.media.text`, `rig.media.text_path`, `rig.media.font_face`, `rig.media.code`

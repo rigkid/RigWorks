@@ -15,7 +15,7 @@ fields:
     meaning: "Optional. rig.media.asset_ref kind font"
   - name: "fontSize"
     ref: "float"
-    meaning: "Optional. Size override; absent = inherit paragraph"
+    meaning: "Optional. Size override in points; absent = inherit paragraph"
     absent: "inherit paragraph"
   - name: "paint"
     ref: "entity"
@@ -39,13 +39,21 @@ fields:
     absent: "metrics"
   - name: "baselineShift"
     ref: "float"
-    meaning: "Optional. Vertical shift off the baseline, positive raises; absent = 0"
+    meaning: "Optional. Vertical shift off the baseline in points, positive raises; absent = 0"
     absent: "0"
   - name: "case"
     type: "string"
     enum: ["none","upper","lower","small-caps"]
     meaning: "Optional. none / upper / lower / small-caps. Absent = none"
     absent: "none"
+  - name: "underline"
+    ref: "bool"
+    meaning: "Optional. Line under the run, in the run's paint; absent = false"
+    absent: "false"
+  - name: "strikethrough"
+    ref: "bool"
+    meaning: "Optional. Line through the run, in the run's paint; absent = false"
+    absent: "false"
 ---
 # `rig.layout.character_style`
 
@@ -58,13 +66,17 @@ Story character styles are identity only. Face override, size, paint, and emphas
 | `storyStyle` | entity | Optional. Story character style this map applies to |
 | `basedOn` | entity | Optional. Parent layout character style; absent / `null` = none |
 | `font` | entity | Optional. [`rig.media.asset_ref`](../media/asset-ref.md) kind font |
-| `fontSize` | float | Optional. Size override; absent = inherit paragraph |
+| `fontSize` | float | Optional. Size override in points; absent = inherit paragraph |
 | `paint` | entity | Optional. Paint entity for the run colour |
 | `italic` | bool | Optional. Oblique / italic emphasis; absent = false |
 | `bold` | bool | Optional. Weight emphasis; absent = false |
 | `tracking` | float | Optional. Uniform letterspace in thousandths of an em; absent = `0` |
 | `kerningMode` | enum | Optional. `off` / `metrics` (font kern / GPOS pairs). Absent = `metrics` |
-| `baselineShift` | float | Optional. Vertical shift off the baseline, positive raises; absent = `0` |
+| `baselineShift` | float | Optional. Vertical shift off the baseline in points, positive raises; absent = `0` |
 | `case` | enum | Optional. `none` / `upper` / `lower` / `small-caps`. Absent = `none` |
+| `underline` | bool | Optional. Line under the run, in the run's paint; absent = false |
+| `strikethrough` | bool | Optional. Line through the run, in the run's paint; absent = false |
+
+Lengths are points (1/72 in) whatever the document unit, as in [`rig.layout.paragraph_style`](paragraph-style.md#units). Line position and thickness come from the font's metrics (OpenType `post` / `OS/2`).
 
 Based-on chains stay acyclic. A cycle is a document error. Do not put these fields on `rig.story.*`.

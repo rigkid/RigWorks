@@ -8,7 +8,7 @@ fields:
     meaning: "Optional. Style label"
   - name: "borderStroke"
     ref: "float"
-    meaning: "Optional. Outline stroke; 0 / absent = no outline"
+    meaning: "Optional. Outline stroke width (pt); 0 / absent = no outline"
   - name: "borderColor"
     ref: "entity"
     meaning: "Optional. Paint entity (rig.paint.solid) for the outline"
@@ -17,10 +17,10 @@ fields:
     meaning: "Optional. Paint entity for the header row band"
   - name: "rowStripeFill"
     ref: "entity"
-    meaning: "Optional. Paint entity for the alternating body row band"
+    meaning: "Optional. Paint entity for the alternating body row band: the 2nd, 4th, ... body row"
   - name: "cellInset"
     ref: "float"
-    meaning: "Optional. Cell padding"
+    meaning: "Optional. Cell padding (pt), every side"
   - name: "cellSize"
     ref: "float"
     meaning: "Optional. Body cell type size (pt)"
@@ -43,11 +43,11 @@ Story tables stay content-only (rows + cells). Cell type size, leading, fills, a
 | Field | Type | Meaning |
 |-------|------|---------|
 | `name` | string | Optional. Style label |
-| `borderStroke` | float | Optional. Outline stroke; 0 / absent = no outline |
+| `borderStroke` | float | Optional. Outline stroke width (pt); 0 / absent = no outline |
 | `borderColor` | entity | Optional. Paint entity ([`rig.paint.solid`](../paint/solid.md)) for the outline |
 | `headerFill` | entity | Optional. Paint entity for the header row band |
-| `rowStripeFill` | entity | Optional. Paint entity for the alternating body row band |
-| `cellInset` | float | Optional. Cell padding |
+| `rowStripeFill` | entity | Optional. Paint entity for the alternating body row band: the 2nd, 4th, ... body row |
+| `cellInset` | float | Optional. Cell padding (pt), every side |
 | `cellSize` | float | Optional. Body cell type size (pt) |
 | `cellLeading` | float | Optional. Cell line height / row pitch (pt) |
 | `cellInk` | entity | Optional. Paint entity for body cell text |

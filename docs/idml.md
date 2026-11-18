@@ -27,6 +27,18 @@ Do **not** invent `rig.idml.*`. One story and one frame use the schemas below; I
 | FirstBaselineOffset / MinimumFirstBaselineOffset | frame `firstBaseline` / `firstBaselineMin` |
 | PreviousTextFrame / NextTextFrame / ParentStory | [`rig.layout.frame_chain`](../schemas/layout/frame-chain.md) |
 | Containment (on page or master) | [`rig.spatial.relationship`](../schemas/spatial/relationship.md) `parent` |
+| Rectangle / Oval / Polygon holding an Image | Geometry ([`rig.geometry.rectangle`](../schemas/geometry/rectangle.md), [`ellipse`](../schemas/geometry/ellipse.md), [`path`](../schemas/geometry/path.md)) + [`rig.render.sprite`](../schemas/render/sprite.md) + [`rig.render.image_fit`](../schemas/render/image-fit.md) on one entity |
+| Link `LinkResourceURI` | the sprite texture's [`rig.media.asset_ref`](../schemas/media/asset-ref.md) `path` |
+| FrameFittingOption `FillProportionally` / `Proportionally` / `ContentToFrame` / `CenterContent` | `fit` `cover` / `contain` / `fill` / `none` |
+| Image ItemTransform inside its frame (scale, translate) | `fit` `none`, `positionX` / `positionY` 0, `scale`, `offsetX` / `offsetY` |
+| Image flip | sprite `flipX` / `flipY` |
+| Frame `FillColor` / `StrokeColor` + `StrokeWeight` | [`rig.paint.fill`](../schemas/paint/fill.md) / [`rig.paint.stroke`](../schemas/paint/stroke.md) `paint` + `width`, swatches as [`rig.paint.solid`](../schemas/paint/solid.md) |
+| `StrokeAlignment` `CenterAlignment` / `InsideAlignment` / `OutsideAlignment` | [`rig.paint.stroke_style`](../schemas/paint/stroke-style.md) `align` `center` / `inside` / `outside` |
+| TransparencySetting `Opacity` (0-100) / `BlendMode` | [`rig.render.blend`](../schemas/render/blend.md) `opacity` (0-1) / `blendMode` |
+| CharacterStyle `Underline` / `StrikeThru` | character style `underline` / `strikethrough` |
+| TextWrapPreference `TextWrapMode` `BoundingBoxTextWrap` / `Contour` / `JumpObjectTextWrap` | [`rig.layout.text_wrap`](../schemas/layout/text-wrap.md) `shape` `box` / `contour`, `sides` `jump`; `None` = no component |
+| `TextWrapSide` `BothSides` / `LeftSide` / `RightSide` / `LargestArea` | `sides` `both` / `left` / `right` / `largest` |
+| `TextWrapOffset`; ContourOption `AlphaChannel` | `offset`; `shape` `alpha` |
 
 GeometricBounds `(y1, x1, y2, x2)` become position `(x1, y1)` and size `(x2 − x1, y2 − y1)` in 2D page space (+X right, +Y down). ItemTransform composes onto the same transform. Do not store the IDML matrix as a second pose.
 
@@ -44,10 +56,10 @@ Do not put InDesign Self strings, story overflow, or composed line breaks in por
 
 Do not invent schemas for these yet:
 
-- Graphic frames / placed images
+- Rotated or skewed images inside their frame (bake them), and frames that hold vector art
 - Groups
 - Object styles
-- Text wrap
+- Text wrap sides toward or away from the spine, and `NextColumnTextWrap`
 - Anchored objects
 - Hyphenation and justification settings (alignment `justify` is already on the paragraph style)
 - GREP / nested styles

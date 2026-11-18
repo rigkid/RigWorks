@@ -45,3 +45,5 @@ A textured quad in the entity's plane. Format when present. Colour is paint on t
 | `rows` | uint | Optional. Sheet rows. Required when `columns` is set |
 
 Pose and size are [`rig.spatial.transform`](../spatial/transform.md). A single tiling factor writes the same number in both components of `tiling`. Sheet frames are `columns` by `rows`, row-major, index `frame`.
+
+To fit the texture into the entity's shape instead of stretching it over the quad - an image frame - compose [`rig.render.image_fit`](image-fit.md).

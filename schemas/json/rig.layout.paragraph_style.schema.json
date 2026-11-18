@@ -109,6 +109,21 @@
           }
         }
       }
+    },
+    "flowRole": {
+      "type": "string",
+      "enum": [
+        "dedication",
+        "epigraph",
+        "preface",
+        "part",
+        "chapter",
+        "appendix",
+        "epilog",
+        "afterword",
+        "colophon",
+        "toc"
+      ]
     }
   },
   "x-rig-maturity": "stable"

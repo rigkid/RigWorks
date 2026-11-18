@@ -15,7 +15,7 @@ fields:
     meaning: "Optional. rig.media.asset_ref kind font"
   - name: "fontSize"
     ref: "float"
-    meaning: "Optional. Size in document units (or points when the host documents that)"
+    meaning: "Optional. Size in points"
   - name: "leading"
     ref: "float"
     meaning: "Optional. Line spacing; absent = host default from fontSize"
@@ -102,6 +102,11 @@ fields:
     type: "array"
     itemsSchemaJson: "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"pattern\"],\"properties\":{\"pattern\":{\"type\":\"string\"},\"characterStyle\":{\"$ref\":\"./_defs.schema.json#/$defs/entity\"}}}"
     meaning: "Optional. GREP style rules, applied in order (see below)"
+  - name: "flowRole"
+    type: "string"
+    enum: ["dedication","epigraph","preface","part","chapter","appendix","epilog","afterword","colophon","toc"]
+    meaning: "Optional. Applies only inside a rig.story.flow with this role (see below); absent = every flow"
+    absent: "every flow"
 ---
 # `rig.layout.paragraph_style`
 
@@ -114,7 +119,7 @@ Story styles stay identity-only (name + basedOn + listKind). Font, size, leading
 | `storyStyle` | entity | Optional. Story paragraph style this map applies to |
 | `basedOn` | entity | Optional. Parent layout paragraph style; absent / `null` = none |
 | `font` | entity | Optional. [`rig.media.asset_ref`](../media/asset-ref.md) kind font |
-| `fontSize` | float | Optional. Size in document units (or points when the host documents that) |
+| `fontSize` | float | Optional. Size in points |
 | `leading` | float | Optional. Line spacing; absent = host default from `fontSize` |
 | `alignment` | enum | Optional. `left` / `center` / `right` / `justify`. Absent = `left` |
 | `lastLineAlignment` | enum | Optional. Alignment of a paragraph's last line (a one-line paragraph is its own last line). Same values as `alignment`. Absent = `left` |
@@ -137,8 +142,17 @@ Story styles stay identity-only (name + basedOn + listKind). Font, size, leading
 | `baselineGridFirstLineOnly` | bool | Optional. With `alignToBaselineGrid`, snap only the paragraph's first line; the rest follow `leading`. Absent = `false` |
 | `paint` | entity | Optional. Paint entity (`rig.paint.fill` / `solid`) for the run colour |
 | `grepStyles` | array | Optional. GREP style rules, applied in order (see below) |
+| `flowRole` | enum | Optional. Applies only inside a [`rig.story.flow`](../story/flow.md) with this `role` (see below); absent = every flow |
 
 Based-on chains stay acyclic. A cycle is a document error. Do not put these fields on `rig.story.*`.
+
+## Units
+
+`fontSize`, `leading`, `spaceBefore`, `spaceAfter`, `firstLineIndent`, `leftIndent`, and `rightIndent` are points (1/72 in), whatever `document.defaultUnit` or the page `unit` says. Type is measured in points in every tool that sets it; frames and pages keep the document unit.
+
+## Role variants
+
+A map with `flowRole` is a variant: it dresses its `storyStyle` only in flows whose `role` matches, and wins there over the map without `flowRole`. Set its `basedOn` to that map, so a variant states only what differs - a chapter opening's larger first paragraph, say. At most one map per `storyStyle` and `flowRole` pair; a second is a document error. Without a variant for the flow's role, the plain map applies.
 
 ## GREP styles
 

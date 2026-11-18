@@ -31,6 +31,11 @@ fields:
     enum: ["none","non-scaling-stroke"]
     meaning: "Optional. none / non-scaling-stroke; absent = none"
     absent: "none"
+  - name: "align"
+    type: "string"
+    enum: ["center","inside","outside"]
+    meaning: "Optional. Where the stroke sits on a closed contour: center, inside, outside; absent = center. Open contours are always center"
+    absent: "center"
 ---
 # `rig.paint.stroke_style`
 
@@ -46,5 +51,8 @@ Compose on the same entity as [`rig.paint.fill_stroke`](fill-stroke.md) or [`rig
 | `dash` | float[] | Optional. On/off lengths in content units; absent or empty = solid |
 | `dashOffset` | float | Optional. Dash phase in content units; absent = 0 |
 | `vectorEffect` | enum | Optional. `none` / `non-scaling-stroke`; absent = `none` |
+| `align` | enum | Optional. Where the stroke sits on a closed contour: `center`, `inside`, `outside`; absent = `center`. Open contours are always `center` |
+
+`center` straddles the contour, as SVG and canvas do. `inside` keeps the whole width within the shape - a CSS border, an InDesign inside stroke - and `outside` keeps it beyond. Neither moves the contour, so the shape's size and its fill do not change.
 
 Do not grow [`rig.paint.fill_stroke`](fill-stroke.md) with these fields. Do not put them on the paint entity ([`rig.paint.solid`](solid.md) / [`rig.paint.gradient`](gradient.md)).

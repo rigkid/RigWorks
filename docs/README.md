@@ -37,6 +37,7 @@ Schemas live in [`../schemas/`](../schemas/); worked documents in [`../examples/
 | Doc | Mapping |
 |-----|---------|
 | [blender.md](blender.md) | Blender evaluated scene to existing spatial / mesh / render / animation schemas; no `rig.blender.*` |
+| [css.md](css.md) | CSS style sheet round trip: text as `rig.media.code`, selectors to styles, pages, fonts, and image fit; no `rig.css.*` |
 | [idml.md](idml.md) | IDML to `rig.layout.frame` + layout / story |
 | [kicad.md](kicad.md) | KiCad board to `rig.circuit.*` / `rig.pcb.*` |
 | [markbreak.md](markbreak.md) | Print-manuscript Markdown profile to story / media (`flow.role`, `breakType`) |

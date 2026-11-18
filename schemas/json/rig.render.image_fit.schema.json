@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.render.image_fit.schema.json",
+  "title": "rig.render.image_fit",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "fit": {
+      "type": "string",
+      "enum": [
+        "fill",
+        "contain",
+        "cover",
+        "none",
+        "scale-down"
+      ]
+    },
+    "positionX": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "positionY": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "offsetX": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "offsetY": {
+      "$ref": "./_defs.schema.json#/$defs/float"
+    },
+    "scale": {
+      "$ref": "./_defs.schema.json#/$defs/float",
+      "exclusiveMinimum": 0
+    },
+    "insets": {
+      "$ref": "./_defs.schema.json#/$defs/faceInsets"
+    }
+  },
+  "x-rig-maturity": "draft"
+}

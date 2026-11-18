@@ -275,6 +275,10 @@ An evaluated Blender scene as ordinary scene entities: a scene vertex, a collect
 
 A canvas run on an `arc-to` baseline, clipped to a rectangle, with `@font-face` as [`rig.media.font_face`](../schemas/media/font-face.md). The path stays its own entity. Colour is paint.
 
+## `css-sheet.json`
+
+A picture-book page with a style sheet and what it compiles to - [docs/css.md](../docs/css.md). `@page` sets size and bleed; `p` sets the root paragraph style in points, and `[data-role=chapter] p.Body` a chapter variant of it; `span.Shout` underlines. `img.hero` fits the art with [`rig.render.image_fit`](../schemas/render/image-fit.md) (`cover`, 30% across, inset by border plus padding), dresses the frame with fill, an inside stroke, and corner radius, and wraps the text with [`rig.layout.text_wrap`](../schemas/layout/text-wrap.md). `div.story` gives the text frame padding and two columns; `table` and `tbody tr:nth-child(even)` dress the table style.
+
 ## `font-var.json`
 
 Variable face: one `wght` axis (+ identity `avar`), a stem glyph `I` with default `rig.geometry.path` and a positive-weight [`rig.font.cell`](../schemas/font/cell.md) delta. Design space is first-class - [docs/ufo.md](../docs/ufo.md).

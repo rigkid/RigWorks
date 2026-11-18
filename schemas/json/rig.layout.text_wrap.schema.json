@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.text_wrap.schema.json",
+  "title": "rig.layout.text_wrap",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "shape": {
+      "type": "string",
+      "enum": [
+        "box",
+        "contour",
+        "alpha"
+      ]
+    },
+    "offset": {
+      "$ref": "./_defs.schema.json#/$defs/faceInsets"
+    },
+    "sides": {
+      "type": "string",
+      "enum": [
+        "both",
+        "left",
+        "right",
+        "largest",
+        "jump"
+      ]
+    },
+    "alphaThreshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+  "x-rig-maturity": "draft"
+}

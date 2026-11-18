@@ -41,6 +41,7 @@ The cheapest token is the one the model never generates. Load the skill, copy on
 ### Format mappings
 
 - [docs/blender.md](docs/blender.md): Blender evaluated scene to existing spatial / mesh / render / animation schemas; encodings are fulfillment
+- [docs/css.md](docs/css.md): CSS style sheet round trip: the sheet travels as `rig.media.code`, selectors compile to styles, pages, fonts, and image fit
 - [docs/idml.md](docs/idml.md): IDML to `rig.layout.frame` + layout / story; encodings are fulfillment
 - [docs/kicad.md](docs/kicad.md): KiCad board to `rig.circuit.*` / `rig.pcb.*`; `.rigz` round trip merges onto the source file
 - [docs/markbreak.md](docs/markbreak.md): Print-manuscript Markdown to story / media (`flow.role`, `breakType`)

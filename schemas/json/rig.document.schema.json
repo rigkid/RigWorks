@@ -496,6 +496,9 @@
               "rig.layout.table_style": {
                 "$ref": "./rig.layout.table_style.schema.json"
               },
+              "rig.layout.text_wrap": {
+                "$ref": "./rig.layout.text_wrap.schema.json"
+              },
               "rig.led.uv_map": {
                 "$ref": "./rig.led.uv_map.schema.json"
               },
@@ -834,6 +837,9 @@
               },
               "rig.render.environment": {
                 "$ref": "./rig.render.environment.schema.json"
+              },
+              "rig.render.image_fit": {
+                "$ref": "./rig.render.image_fit.schema.json"
               },
               "rig.render.light": {
                 "$ref": "./rig.render.light.schema.json"
