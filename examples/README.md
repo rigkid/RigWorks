@@ -279,6 +279,10 @@ A canvas run on an `arc-to` baseline, clipped to a rectangle, with `@font-face` 
 
 A picture-book page with a style sheet and what it compiles to - [docs/css.md](../docs/css.md). `@page` sets size and bleed; `p` sets the root paragraph style in points, and `[data-role=chapter] p.Body` a chapter variant of it; `span.Shout` underlines. `img.hero` fits the art with [`rig.render.image_fit`](../schemas/render/image-fit.md) (`cover`, 30% across, inset by border plus padding), dresses the frame with fill, an inside stroke, and corner radius, and wraps the text with [`rig.layout.text_wrap`](../schemas/layout/text-wrap.md). `div.story` gives the text frame padding and two columns; `table` and `tbody tr:nth-child(even)` dress the table style.
 
+## `icml-story.json`
+
+An InCopy story imported for a round trip - [docs/icml.md](../docs/icml.md). The flow entity carries the `.icml` text as [`rig.media.code`](../schemas/media/code.md) (`language` `icml`), the merge base for export. Styles and colours keep their ICML `Self` as `stableId`. A heading keeps with the next paragraph, a page break ends the body paragraph, and a forced line break is `\n`. A bold fox-coloured span and a centred paragraph are local formatting: each is a local style whose `stableId` is the range element it came from.
+
 ## `font-var.json`
 
 Variable face: one `wght` axis (+ identity `avar`), a stem glyph `I` with default `rig.geometry.path` and a positive-weight [`rig.font.cell`](../schemas/font/cell.md) delta. Design space is first-class - [docs/ufo.md](../docs/ufo.md).

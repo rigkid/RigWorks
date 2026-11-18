@@ -13,6 +13,7 @@ How a print-manuscript Markdown profile maps onto Contract schemas. MarkBreak is
 | Heading keep | [`rig.story.paragraph_style`](../schemas/story/paragraph-style.md) `keepWithNext` |
 | `role` | [`rig.story.flow`](../schemas/story/flow.md) `role` |
 | `meta` | `meta.md`: `title`, `subtitle`, `author`, `language`, `isbn13`, `publisher` |
+| InCopy | The flow exports to `.icml` and imports back into the same document, `role` and style ids kept - [icml.md](icml.md#stories-from-another-source) |
 | `layout` | RigWorks layout document: [`rig.layout.page`](../schemas/layout/page.md), [`rig.layout.facing`](../schemas/layout/facing.md), [`rig.layout.paragraph_style`](../schemas/layout/paragraph-style.md) `fontSize` and `leading` |
 
 `margins` are `[top, right, bottom, left]` in the page unit. With facing pages, the left and right channels swap on the verso. Do not add a second inner/outer pair.

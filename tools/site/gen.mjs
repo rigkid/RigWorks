@@ -230,7 +230,7 @@ const DOC_GROUPS = [
   {
     title: "Format mappings",
     note: "How established file formats map onto Rig schemas at the boundary. Native files and encodings stay fulfillment.",
-    slugs: ["blender", "css", "idml", "kicad", "markbreak", "openbim", "pd", "print", "spine", "ufo", "usd"],
+    slugs: ["blender", "css", "icml", "idml", "kicad", "markbreak", "openbim", "pd", "print", "spine", "ufo", "usd"],
   },
   {
     title: "Domain mappings",

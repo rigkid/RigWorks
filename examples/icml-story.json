@@ -1,0 +1,148 @@
+{
+  "rig": "1.7.0",
+  "document": {
+    "title": "InCopy story"
+  },
+  "entities": [
+    {
+      "id": "ink-black",
+      "components": {
+        "rig.meta.named": { "name": "Black", "stableId": "Color/Black" },
+        "rig.paint.solid": { "rgba": [0.14, 0.12, 0.13, 1], "cmyk": [0, 0, 0, 1] }
+      }
+    },
+    {
+      "id": "ink-fox",
+      "components": {
+        "rig.meta.named": { "name": "Fox", "stableId": "Color/Fox" },
+        "rig.paint.solid": { "rgba": [0.9, 0.36, 0, 1], "cmyk": [0, 0.6, 1, 0.1] }
+      }
+    },
+    {
+      "id": "style-basic",
+      "components": {
+        "rig.meta.named": { "name": "[Basic Paragraph]", "stableId": "ParagraphStyle/$ID/NormalParagraphStyle" },
+        "rig.story.paragraph_style": {},
+        "rig.layout.paragraph_style": {
+          "storyStyle": "style-basic",
+          "fontSize": 11,
+          "leading": 14,
+          "paint": "ink-black"
+        }
+      }
+    },
+    {
+      "id": "style-heading",
+      "components": {
+        "rig.meta.named": { "name": "Heading", "stableId": "ParagraphStyle/Heading" },
+        "rig.story.paragraph_style": { "basedOn": "style-basic", "keepWithNext": true },
+        "rig.layout.paragraph_style": {
+          "storyStyle": "style-heading",
+          "basedOn": "style-basic",
+          "fontSize": 18,
+          "leading": 22,
+          "spaceAfter": 8
+        }
+      }
+    },
+    {
+      "id": "style-body",
+      "components": {
+        "rig.meta.named": { "name": "Body", "stableId": "ParagraphStyle/Body" },
+        "rig.story.paragraph_style": { "basedOn": "style-basic" },
+        "rig.layout.paragraph_style": {
+          "storyStyle": "style-body",
+          "basedOn": "style-basic",
+          "alignment": "justify",
+          "firstLineIndent": 12
+        }
+      }
+    },
+    {
+      "id": "style-body-local",
+      "components": {
+        "rig.meta.named": {
+          "name": "Body + Justification",
+          "stableId": "<ParagraphStyleRange AppliedParagraphStyle=\"ParagraphStyle/Body\" Justification=\"CenterAlign\"/>"
+        },
+        "rig.story.paragraph_style": { "basedOn": "style-body" },
+        "rig.layout.paragraph_style": {
+          "storyStyle": "style-body-local",
+          "basedOn": "style-body",
+          "alignment": "center"
+        }
+      }
+    },
+    {
+      "id": "style-emphasis",
+      "components": {
+        "rig.meta.named": { "name": "Emphasis", "stableId": "CharacterStyle/Emphasis" },
+        "rig.story.character_style": {},
+        "rig.layout.character_style": {
+          "storyStyle": "style-emphasis",
+          "italic": true
+        }
+      }
+    },
+    {
+      "id": "style-fox-local",
+      "components": {
+        "rig.meta.named": {
+          "name": "[No character style] + FillColor, FontStyle",
+          "stableId": "<CharacterStyleRange AppliedCharacterStyle=\"CharacterStyle/$ID/[No character style]\" FillColor=\"Color/Fox\" FontStyle=\"Bold\"/>"
+        },
+        "rig.story.character_style": {},
+        "rig.layout.character_style": {
+          "storyStyle": "style-fox-local",
+          "paint": "ink-fox",
+          "bold": true
+        }
+      }
+    },
+    {
+      "id": "p-1",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-heading",
+          "runs": [{ "text": "The fox" }]
+        }
+      }
+    },
+    {
+      "id": "p-2",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-body",
+          "breakType": "page",
+          "runs": [
+            { "text": "Snow fell all night. " },
+            { "text": "Quiet,", "style": "style-emphasis" },
+            { "text": " the fox", "style": "style-fox-local" },
+            { "text": " waited.\nThen it ran." }
+          ]
+        }
+      }
+    },
+    {
+      "id": "p-3",
+      "components": {
+        "rig.story.paragraph": {
+          "style": "style-body-local",
+          "runs": [{ "text": "The end." }]
+        }
+      }
+    },
+    {
+      "id": "story",
+      "components": {
+        "rig.meta.named": { "name": "fox.icml" },
+        "rig.story.flow": { "blocks": ["p-1", "p-2", "p-3"] },
+        "rig.media.asset_ref": { "kind": "document", "path": "fox.icml" },
+        "rig.media.code": {
+          "language": "icml",
+          "text": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<?aid style=\"50\" type=\"snippet\" readerVersion=\"6.0\" featureSet=\"513\" product=\"20.0(80)\" ?>\n<?aid SnippetType=\"InCopyInterchange\"?>\n<Document DOMVersion=\"20.0\" Self=\"d\">\n\t<Color Self=\"Color/Black\" Model=\"Process\" Space=\"CMYK\" ColorValue=\"0 0 0 100\" Name=\"Black\"/>\n\t<Color Self=\"Color/Fox\" Model=\"Process\" Space=\"CMYK\" ColorValue=\"0 60 100 10\" Name=\"Fox\"/>\n\t<RootCharacterStyleGroup Self=\"u77\">\n\t\t<CharacterStyle Self=\"CharacterStyle/$ID/[No character style]\" Name=\"$ID/[No character style]\"/>\n\t\t<CharacterStyle Self=\"CharacterStyle/Emphasis\" Name=\"Emphasis\" FontStyle=\"Italic\"/>\n\t</RootCharacterStyleGroup>\n\t<RootParagraphStyleGroup Self=\"u76\">\n\t\t<ParagraphStyle Self=\"ParagraphStyle/$ID/[No paragraph style]\" Name=\"$ID/[No paragraph style]\"/>\n\t\t<ParagraphStyle Self=\"ParagraphStyle/$ID/NormalParagraphStyle\" Name=\"$ID/NormalParagraphStyle\" PointSize=\"11\" FillColor=\"Color/Black\">\n\t\t\t<Properties><Leading type=\"unit\">14</Leading></Properties>\n\t\t</ParagraphStyle>\n\t\t<ParagraphStyle Self=\"ParagraphStyle/Heading\" Name=\"Heading\" PointSize=\"18\" SpaceAfter=\"8\" KeepWithNext=\"2\">\n\t\t\t<Properties><BasedOn type=\"object\">ParagraphStyle/$ID/NormalParagraphStyle</BasedOn><Leading type=\"unit\">22</Leading></Properties>\n\t\t</ParagraphStyle>\n\t\t<ParagraphStyle Self=\"ParagraphStyle/Body\" Name=\"Body\" Justification=\"LeftJustified\" FirstLineIndent=\"12\">\n\t\t\t<Properties><BasedOn type=\"object\">ParagraphStyle/$ID/NormalParagraphStyle</BasedOn></Properties>\n\t\t</ParagraphStyle>\n\t</RootParagraphStyleGroup>\n\t<Story Self=\"ue5\" StoryTitle=\"$ID/\" TrackChanges=\"false\">\n\t\t<StoryPreference OpticalMarginAlignment=\"false\" FrameType=\"TextFrameType\" StoryOrientation=\"Horizontal\" StoryDirection=\"LeftToRightDirection\"/>\n\t\t<InCopyExportOption IncludeGraphicProxies=\"true\" IncludeAllResources=\"false\"/>\n\t\t<ParagraphStyleRange AppliedParagraphStyle=\"ParagraphStyle/Heading\">\n\t\t\t<CharacterStyleRange AppliedCharacterStyle=\"CharacterStyle/$ID/[No character style]\">\n\t\t\t\t<Content>The fox</Content>\n\t\t\t\t<Br/>\n\t\t\t</CharacterStyleRange>\n\t\t</ParagraphStyleRange>\n\t\t<ParagraphStyleRange AppliedParagraphStyle=\"ParagraphStyle/Body\">\n\t\t\t<CharacterStyleRange AppliedCharacterStyle=\"CharacterStyle/$ID/[No character style]\">\n\t\t\t\t<Content>Snow fell all night. </Content>\n\t\t\t</CharacterStyleRange>\n\t\t\t<CharacterStyleRange AppliedCharacterStyle=\"CharacterStyle/Emphasis\">\n\t\t\t\t<Content>Quiet,</Content>\n\t\t\t</CharacterStyleRange>\n\t\t\t<CharacterStyleRange AppliedCharacterStyle=\"CharacterStyle/$ID/[No character style]\" FillColor=\"Color/Fox\" FontStyle=\"Bold\">\n\t\t\t\t<Content> the fox</Content>\n\t\t\t</CharacterStyleRange>\n\t\t\t<CharacterStyleRange AppliedCharacterStyle=\"CharacterStyle/$ID/[No character style]\">\n\t\t\t\t<Content> waited.&#x2028;Then it ran.</Content>\n\t\t\t</CharacterStyleRange>\n\t\t\t<CharacterStyleRange AppliedCharacterStyle=\"CharacterStyle/$ID/[No character style]\" ParagraphBreakType=\"NextPage\">\n\t\t\t\t<Br/>\n\t\t\t</CharacterStyleRange>\n\t\t</ParagraphStyleRange>\n\t\t<ParagraphStyleRange AppliedParagraphStyle=\"ParagraphStyle/Body\" Justification=\"CenterAlign\">\n\t\t\t<CharacterStyleRange AppliedCharacterStyle=\"CharacterStyle/$ID/[No character style]\">\n\t\t\t\t<Content>The end.</Content>\n\t\t\t</CharacterStyleRange>\n\t\t</ParagraphStyleRange>\n\t</Story>\n</Document>\n"
+        }
+      }
+    }
+  ]
+}

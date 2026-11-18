@@ -15,7 +15,7 @@ Do **not** invent `rig.idml.*`. One story and one frame use the schemas below; I
 | AppliedMaster | [`rig.layout.applied_master`](../schemas/layout/applied-master.md) |
 | FacingPages / BindingLocation | [`rig.layout.facing`](../schemas/layout/facing.md) |
 | MarginPreference / Bleed / Slug | page `margins` / `bleed` / `slug` |
-| Story | [`rig.story.flow`](../schemas/story/flow.md) |
+| Story | [`rig.story.flow`](../schemas/story/flow.md). Story content, styles, local formatting, and tables map as in [icml.md](icml.md) |
 | ParagraphStyle (identity) | [`rig.story.paragraph_style`](../schemas/story/paragraph-style.md) |
 | CharacterStyle (identity) | [`rig.story.character_style`](../schemas/story/character-style.md) |
 | ParagraphStyle (face / size / lead / align / colour) | [`rig.layout.paragraph_style`](../schemas/layout/paragraph-style.md) |
@@ -48,6 +48,7 @@ GeometricBounds `(y1, x1, y2, x2)` become position `(x1, y1)` and size `(x2 − 
 |------|------|
 | `.idml` | ZIP of `designmap.xml` + Spreads / Stories / MasterSpreads / Resources - map into / out of layout + story |
 | `.indt` / `.indd` | InDesign private database - export IDML first |
+| `.icml` | One InCopy story, no pages or frames - [icml.md](icml.md), with a merge-onto-source round trip |
 | Word / `.docx` | Story-only import to `rig.story.*`. Tables land as [`rig.story.table`](../schemas/story/table.md) content; the document's [`rig.layout.table_style`](../schemas/layout/table-style.md) dresses them - Word table formatting does not travel. Not a layout |
 
 Do not put InDesign Self strings, story overflow, or composed line breaks in portable components - those are encoding / host cache.

@@ -40,6 +40,7 @@ Details: [`skills/generating-rig-documents/SKILL.md`](skills/generating-rig-docu
 | [`docs/ufo.md`](docs/ufo.md) | UFO / GLIF to `rig.font.*`; encodings are fulfillment |
 | [`docs/blender.md`](docs/blender.md) | Blender evaluated scene to existing spatial / mesh / render / animation schemas; encodings are fulfillment |
 | [`docs/usd.md`](docs/usd.md) | OpenUSD composed stage to existing spatial / mesh / render schemas; encodings are fulfillment |
+| [`docs/icml.md`](docs/icml.md) | InCopy ICML story to `rig.story.*` + layout styles; round trip merges onto the source file |
 | [`docs/idml.md`](docs/idml.md) | IDML to `rig.layout.frame` + layout / story; encodings are fulfillment |
 | [`docs/ros.md`](docs/ros.md) | ROS 2 to existing schemas; no `rig.ros2.*` |
 | [`docs/robot.md`](docs/robot.md) | Design, simulate, test, and train robots; solvers and trainers are fulfillment |
