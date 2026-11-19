@@ -4,7 +4,7 @@
  *
  *   node tools/check-tag.mjs
  *
- * Rule: before `master`/`main` is pushed, the tag `v<VERSION>` must exist,
+ * Rule: before `main` is pushed, the tag `v<VERSION>` must exist,
  * must name the current VERSION at the tagged commit, and the tagged commit
  * must be an ancestor of HEAD. Tags are how a Contract version stops being
  * a moving branch and becomes citable - an untagged VERSION bump is a
@@ -24,9 +24,9 @@ const git = (args) => execSync(`git ${args}`, { cwd: root, encoding: "utf8" }).t
 
 let branch = "";
 try { branch = git("rev-parse --abbrev-ref HEAD"); } catch { /* not a git tree */ }
-const onReleaseBranch = branch === "master" || branch === "main";
+const onReleaseBranch = branch === "main";
 if (!onReleaseBranch && process.env.RIG_REQUIRE_TAG !== "1") {
-  console.log(`tag check skipped - not on master/main (branch: ${branch || "detached"})`);
+  console.log(`tag check skipped - not on main (branch: ${branch || "detached"})`);
   process.exit(0);
 }
 

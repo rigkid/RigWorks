@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.layer.schema.json",
+  "title": "rig.layout.layer",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "visible": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "locked": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "order": {
+      "$ref": "./_defs.schema.json#/$defs/int"
+    },
+    "color": {
+      "$ref": "./_defs.schema.json#/$defs/rgba"
+    }
+  },
+  "x-rig-maturity": "draft"
+}

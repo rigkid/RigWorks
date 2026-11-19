@@ -19,11 +19,11 @@ body.cloud .cloud-bar .nav-menu .nav-links {
 
 body.cloud::before { display: none; }
 
-/* Same line bar as landing / .topbar — not the old soft gradient. */
+/* Same column and padding as .topbar nav. The bar stays full-bleed. */
 body.cloud nav {
-  max-width: none;
-  margin: 0;
-  padding: 0.65rem 1.25rem;
+  max-width: var(--bar);
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
 }
 
 .cloud-bar {
@@ -40,14 +40,14 @@ body.cloud nav {
 
 .cloud-bar nav { pointer-events: auto; }
 
-/* Crumbs, then find, then card, same width, under the header on the left. */
+/* Crumbs, then find, then card, under the wordmark. */
 .cloud-rail {
   position: absolute;
   z-index: 3;
   top: 4.1rem;
-  left: 1rem;
+  left: max(1.5rem, calc((100% - var(--bar)) / 2 + 1.5rem));
   bottom: 1rem;
-  width: min(24.5rem, calc(100vw - 2rem));
+  width: min(24.5rem, calc(100vw - 3rem));
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
@@ -320,9 +320,9 @@ body.cloud-ready #labels { opacity: 1; transition: opacity 180ms ease; }
 
 .cloud-index {
   display: none;
-  max-width: 64rem;
+  max-width: var(--bar);
   margin: 0 auto;
-  padding: 6.5rem 1.4rem 4rem;
+  padding: 6.5rem 1.5rem 4rem;
 }
 
 .cloud-index h1 {
@@ -358,10 +358,16 @@ body.cloud-failed .cloud-index { display: block; }
   .cloud-rail {
     top: auto;
     bottom: 0.75rem;
-    left: 0.75rem;
-    right: 0.75rem;
+    left: 1.5rem;
+    right: 1.5rem;
     width: auto;
     max-height: min(48vh, 22rem);
   }
   .cloud-index ul { columns: 1; }
+}
+
+@media (max-width: 34rem) {
+  body.cloud nav { padding: 0.4rem 1.1rem; }
+  .cloud-rail { left: 1.1rem; right: 1.1rem; }
+  .cloud-index { padding-left: 1.1rem; padding-right: 1.1rem; }
 }

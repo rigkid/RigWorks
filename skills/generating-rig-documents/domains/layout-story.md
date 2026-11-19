@@ -7,7 +7,8 @@ Load for: pages, masters, text frames, stories, styles, tables. Parent slice: [`
 | Want | Compose |
 |---|---|
 | A page | `rig.layout.page` (may override document unit with `unit`) + `rig.spatial.transform` |
-| A master / applied master / facing / section | `rig.layout.master`, `rig.layout.applied_master`, `rig.layout.facing`, `rig.layout.section` |
+| A master / applied master / facing / section / chrome | `rig.layout.master`, `rig.layout.applied_master`, `rig.layout.facing`, `rig.layout.section`, `rig.layout.chrome` |
+| A document layer | `rig.layout.layer` + `rig.layout.layer_ref` on page items |
 | A text frame | `rig.layout.frame` (`width`/`height` on the frame) + transform; thread frames with `rig.layout.frame_chain` |
 | An image frame | geometry + `rig.render.sprite` + `rig.render.image_fit` on one entity ([scene.md](scene.md)) |
 | A style sheet | `rig.media.code` `language` `css`; compiled into the layout styles ([css.md](../../../docs/css.md)) |
@@ -28,4 +29,4 @@ Load for: pages, masters, text frames, stories, styles, tables. Parent slice: [`
 
 ## Ids in this slice
 
-`rig.layout.page`, `rig.layout.master`, `rig.layout.applied_master`, `rig.layout.facing`, `rig.layout.section`, `rig.layout.paragraph_style`, `rig.layout.character_style`, `rig.layout.table_style`, `rig.layout.frame`, `rig.layout.frame_chain`, `rig.layout.text_wrap`, `rig.layout.grid`, `rig.story.flow`, `rig.story.paragraph`, `rig.story.paragraph_style`, `rig.story.character_style`, `rig.story.table`, `rig.media.text`, `rig.media.text_path`, `rig.media.font_face`, `rig.media.code`
+`rig.layout.page`, `rig.layout.master`, `rig.layout.applied_master`, `rig.layout.facing`, `rig.layout.section`, `rig.layout.chrome`, `rig.layout.layer`, `rig.layout.layer_ref`, `rig.layout.paragraph_style`, `rig.layout.character_style`, `rig.layout.table_style`, `rig.layout.frame`, `rig.layout.frame_chain`, `rig.layout.text_wrap`, `rig.layout.grid`, `rig.story.flow`, `rig.story.paragraph`, `rig.story.paragraph_style`, `rig.story.character_style`, `rig.story.table`, `rig.media.text`, `rig.media.text_path`, `rig.media.font_face`, `rig.media.code`

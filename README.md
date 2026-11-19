@@ -1,7 +1,7 @@
 # RigWorks
 
 [![GitHub stars](https://img.shields.io/github/stars/rigkid/RigWorks?style=social)](https://github.com/rigkid/RigWorks/stargazers)
-[![Version](https://img.shields.io/badge/version-1.7.0-blue)](docs/history.md)
+[![Version](https://img.shields.io/badge/version-1.8.0-blue)](docs/history.md)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Sponsor](https://img.shields.io/badge/sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/GitBruno)
 

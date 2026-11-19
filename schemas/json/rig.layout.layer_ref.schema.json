@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.layer_ref.schema.json",
+  "title": "rig.layout.layer_ref",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "layer": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    }
+  },
+  "x-rig-maturity": "draft"
+}

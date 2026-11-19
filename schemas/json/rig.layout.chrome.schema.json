@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.layout.chrome.schema.json",
+  "title": "rig.layout.chrome",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "runningHead": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "runningHeader": {
+      "$ref": "./_defs.schema.json#/$defs/string"
+    },
+    "pageNumbers": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    },
+    "pageOutline": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
+    }
+  },
+  "x-rig-maturity": "draft"
+}

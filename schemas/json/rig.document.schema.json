@@ -469,6 +469,9 @@
               "rig.layout.character_style": {
                 "$ref": "./rig.layout.character_style.schema.json"
               },
+              "rig.layout.chrome": {
+                "$ref": "./rig.layout.chrome.schema.json"
+              },
               "rig.layout.facing": {
                 "$ref": "./rig.layout.facing.schema.json"
               },
@@ -480,6 +483,12 @@
               },
               "rig.layout.grid": {
                 "$ref": "./rig.layout.grid.schema.json"
+              },
+              "rig.layout.layer": {
+                "$ref": "./rig.layout.layer.schema.json"
+              },
+              "rig.layout.layer_ref": {
+                "$ref": "./rig.layout.layer_ref.schema.json"
               },
               "rig.layout.master": {
                 "$ref": "./rig.layout.master.schema.json"

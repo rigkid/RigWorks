@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "generatedBy": "tools/gen-schemas.mjs - do not hand-edit; edit frontmatter in schemas/<domain>/<name>.md",
   "schemas": [
     {
@@ -4824,9 +4824,45 @@
       ]
     },
     {
+      "id": "rig.layout.chrome",
+      "maturity": "draft",
+      "summary": "Document-wide master chrome preferences. Format when present.",
+      "prose": "schemas/layout/chrome.md",
+      "schema": "schemas/json/rig.layout.chrome.schema.json",
+      "fields": [
+        {
+          "name": "runningHead",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. Show a running head on masters. Absent = false",
+          "absent": "false"
+        },
+        {
+          "name": "runningHeader",
+          "type": "string",
+          "required": false,
+          "meaning": "Optional. Running head text. Absent = empty"
+        },
+        {
+          "name": "pageNumbers",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. Show folio stamps on masters. Absent = true",
+          "absent": "true"
+        },
+        {
+          "name": "pageOutline",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. Show a trim outline on masters (proof chrome). Absent = true",
+          "absent": "true"
+        }
+      ]
+    },
+    {
       "id": "rig.layout.facing",
       "maturity": "stable",
-      "summary": "Facing-pages preference for a document. Format when present.",
+      "summary": "Facing-pages preference for a document. Format when present. Spreads are one or more pages in a row; spanning items stay parented to one page and print on every page of the same spread their footprint crosses.",
       "prose": "schemas/layout/facing.md",
       "schema": "schemas/json/rig.layout.facing.schema.json",
       "fields": [
@@ -4991,6 +5027,64 @@
           "type": "float",
           "required": false,
           "meaning": "Optional. Column gutter in points"
+        }
+      ]
+    },
+    {
+      "id": "rig.layout.layer",
+      "maturity": "draft",
+      "summary": "A named document-wide layer. Format when present. Items point here via rig.layout.layer_ref.",
+      "prose": "schemas/layout/layer.md",
+      "schema": "schemas/json/rig.layout.layer.schema.json",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "meaning": "Optional. Display name. Absent = \"Layer 1\"",
+          "absent": "Layer 1"
+        },
+        {
+          "name": "visible",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. Screen visibility for items on this layer. Absent = true",
+          "absent": "true"
+        },
+        {
+          "name": "locked",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. Prevents edit of items on this layer. Absent = false",
+          "absent": "false"
+        },
+        {
+          "name": "order",
+          "type": "int",
+          "required": false,
+          "meaning": "Optional. Stack order among document layers, ascending back to front. Absent = 0",
+          "absent": "0"
+        },
+        {
+          "name": "color",
+          "type": "rgba",
+          "required": false,
+          "meaning": "Optional. Editor chrome colour for the layer (RGBA). Absent = host default"
+        }
+      ]
+    },
+    {
+      "id": "rig.layout.layer_ref",
+      "maturity": "draft",
+      "summary": "Membership of a page item in a document layer. Format when present.",
+      "prose": "schemas/layout/layer-ref.md",
+      "schema": "schemas/json/rig.layout.layer_ref.schema.json",
+      "fields": [
+        {
+          "name": "layer",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Entity that carries rig.layout.layer. Absent or null = unassigned (hosts treat as visible/unlocked)"
         }
       ]
     },

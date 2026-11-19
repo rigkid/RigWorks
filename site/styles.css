@@ -21,11 +21,18 @@
   --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --measure: 72ch;
   --page: 68rem;
+  /* Doc, catalog, and data header column. Landing stays on --page. */
+  --bar: 84rem;
 }
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Keep the header column in the same place on the data view, which
+     does not scroll, as on the doc pages, which do. */
+  scrollbar-gutter: stable;
+}
 
 .skip {
   position: absolute;

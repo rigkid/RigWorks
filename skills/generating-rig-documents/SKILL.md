@@ -86,7 +86,7 @@ npm run setup    # once per clone / when validate deps change
 npm run check    # the full local gate
 ```
 
-Frontmatter/generator changes need `check:schemas` (stale: `npm run gen`, re-check); skill changes need `check:skill`; push/PR needs the full check. Hooks (`npm run hooks:install`) help locally, but CI re-runs everything server-side, including the release-tag match on master pushes and tag pushes - push releases with `git push --follow-tags`.
+Frontmatter/generator changes need `check:schemas` (stale: `npm run gen`, re-check); skill changes need `check:skill`; push/PR needs the full check. Hooks (`npm run hooks:install`) help locally, but CI re-runs everything server-side, including the release-tag match on main pushes and tag pushes - push releases with `git push --follow-tags`.
 
 ## Guards (all domains)
 
