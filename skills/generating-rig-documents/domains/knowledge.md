@@ -10,6 +10,7 @@ Load for: books and ISBNs, journal articles and citations, artworks. Parent slic
 | The book's title | `rig.meta.named` for the display title; extra title elements (subtitle, original title, edition) are `rig.book.title` |
 | Author / contributor | An entity with `rig.book.contribution`; publisher is `rig.book.publication` (publisher is an entity) |
 | A cover | `rig.book.cover` + `rig.media.asset_ref` |
+| Physical binding and paper | `rig.book.binding` (draft) on the book entity beside `rig.book.publication`: `form`, `paperCaliper`, `caliperUnit`. Spine is computed unless `spineOverride` is set |
 | Subjects | `rig.book.subject` |
 | A paper | `rig.paper.article` in a `rig.paper.issue`; its ids are `rig.paper.identifier` (DOI/PMID/arXiv); the journal's ISSN stays on the journal entity |
 | A citation | `rig.paper.citation` (`citing` / `cited` entities) - never a formatted bibliography string |
@@ -19,8 +20,9 @@ Load for: books and ISBNs, journal articles and citations, artworks. Parent slic
 ## Guards
 
 - No price on a book or art schema; a price is `rig.commerce.price` on an offer for it.
+- Cover panels stay fulfillment. `rig.book.binding` holds the binding inputs; set `spineOverride` only for an authored spine width.
 - The title is not a schema field to re-declare: `rig.book.title` holds only the *extra* ONIX title elements, and the display title is `rig.meta.named`.
 
 ## Ids in this slice
 
-`rig.book.identifier`, `rig.book.title`, `rig.book.publication`, `rig.book.contribution`, `rig.book.cover`, `rig.book.subject`, `rig.paper.identifier`, `rig.paper.article`, `rig.paper.issue`, `rig.paper.citation`, `rig.art.object`, `rig.art.creation`, `rig.art.attribution`, `rig.art.dimensions`, `rig.art.material`, `rig.art.location`, `rig.art.subject`, `rig.art.image`
+`rig.book.identifier`, `rig.book.title`, `rig.book.publication`, `rig.book.contribution`, `rig.book.cover`, `rig.book.binding`, `rig.book.subject`, `rig.paper.identifier`, `rig.paper.article`, `rig.paper.issue`, `rig.paper.citation`, `rig.art.object`, `rig.art.creation`, `rig.art.attribution`, `rig.art.dimensions`, `rig.art.material`, `rig.art.location`, `rig.art.subject`, `rig.art.image`
