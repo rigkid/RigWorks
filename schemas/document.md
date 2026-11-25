@@ -16,7 +16,7 @@ This is the **Contract wire format** (JSON). Field meaning remains POD; vectors 
 | Field | Type | Meaning |
 |-------|------|---------|
 | `rig` | string | Contract version this document targets (`MAJOR.MINOR.PATCH`) |
-| `document` | object | Optional metadata (`title`, `author`, `createdAt`, `modifiedAt`, `defaultUnit`, `colorSpace`, `language`, `timeZone`, `ifcSchema`, `pdfX`, `outputCondition`, `trapped`, ...) |
+| `document` | object | Optional metadata (`title`, `author`, `createdAt`, `modifiedAt`, `defaultUnit`, `colorSpace`, `language`, `timeZone`, `ifcSchema`, `pdfX`, `outputCondition`, `trapped`, `untaggedRgbProfile`, `renderingIntent`, ...) |
 | `entities` | entity[] | Scene / graph contents. An unparented [`rig.spatial.vertex`](spatial/vertex.md) is a scene; without one, unparented entities are the roots. |
 
 `colorSpace` names the colour space every `rgba` / `rgb` value in the file is expressed in; absent = `srgb`. One key for the whole document - per-component colour spaces do not exist.
@@ -49,6 +49,8 @@ Print-job keys (optional):
 | `pdfX` | PDF/X identification string (e.g. `PDF/X-4`). Empty / absent = not a PDF/X job. |
 | `outputCondition` | OutputIntent `OutputConditionIdentifier` (e.g. `FOGRA39`). |
 | `trapped` | `unknown` / `true` / `false` - PDF Info `Trapped`; absent = `unknown`. |
+| `untaggedRgbProfile` | Well-known RGB working-space token for raster that has no embedded ICC (e.g. `srgb`). Absent = `srgb`. Not a host path - hosts map the token to a bundled profile at emit. Distinct from `colorSpace`, which names the space of authored `rgba` / `rgb` values. |
+| `renderingIntent` | ICC rendering intent for colour conversion at emit: `perceptual` / `relative-colorimetric` / `saturation` / `absolute-colorimetric`. Absent = `relative-colorimetric`. |
 
 An ICC `DestOutputProfile` is a host file / asset path at emit time - not a portable envelope blob.
 

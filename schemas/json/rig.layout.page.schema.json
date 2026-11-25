@@ -25,6 +25,9 @@
     },
     "slug": {
       "$ref": "./_defs.schema.json#/$defs/faceInsets"
+    },
+    "keepWithNext": {
+      "$ref": "./_defs.schema.json#/$defs/bool"
     }
   },
   "required": [

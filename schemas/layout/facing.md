@@ -12,6 +12,11 @@ fields:
     enum: ["left","right"]
     meaning: "Optional. left or right - which edge is bound. Absent = left"
     absent: "left"
+  - name: "startSide"
+    type: "string"
+    enum: ["recto","verso"]
+    meaning: "Optional. recto or verso - which side the first document page opens on for default pairing. Absent = recto (page 1 alone on the right under left binding, then pairs)"
+    absent: "recto"
 ---
 # `rig.layout.facing`
 
@@ -23,8 +28,9 @@ Compose on the document envelope entity (or the host project singleton). Absent 
 |-------|------|---------|
 | `enabled` | bool | Optional. Facing on; absent = true when this component is present |
 | `binding` | enum | Optional. `left` or `right` - which edge is bound. Absent = `left` |
+| `startSide` | enum | Optional. `recto` or `verso` - which side the first document page opens on for default pairing. Absent = `recto` (page 1 alone on the right under left binding, then pairs). `verso` pairs from the first page (1\|2, 3\|4, …) |
 
-Recto-first (page 1 alone on the right, then 2\|3, 4\|5, …) is the usual left-binding **default** when the host does not form a longer run. Inner/outer margins are the page's left/right channels, swapped on verso - do not add a second margin pair. Spread membership beyond that default is host presentation until a dedicated field exists.
+Default pairing follows `startSide`. Longer locked runs use [`rig.layout.page`](page.md) `keepWithNext`. Inner/outer margins are the page's left/right channels, swapped on verso - do not add a second margin pair. When facing is on, verso/recto for margins follows the leaf's role in its spread (under left binding: left leaf = verso, right leaf = recto; a singleton follows `startSide`), not folio parity alone.
 
 ## Spanning items (host agreement)
 

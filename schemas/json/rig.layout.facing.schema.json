@@ -14,6 +14,13 @@
         "left",
         "right"
       ]
+    },
+    "startSide": {
+      "type": "string",
+      "enum": [
+        "recto",
+        "verso"
+      ]
     }
   },
   "x-rig-maturity": "stable"

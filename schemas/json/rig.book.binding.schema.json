@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.book.binding.schema.json",
+  "title": "rig.book.binding",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "form": {
+      "type": "string",
+      "enum": [
+        "paperback",
+        "case",
+        "jacket",
+        "saddle"
+      ]
+    },
+    "paperCaliper": {
+      "type": "number",
+      "minimum": 0
+    },
+    "caliperUnit": {
+      "type": "string",
+      "enum": [
+        "mm",
+        "in"
+      ]
+    },
+    "boardThickness": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hinge": {
+      "type": "number",
+      "minimum": 0
+    },
+    "wrap": {
+      "type": "number",
+      "minimum": 0
+    },
+    "flap": {
+      "type": "number",
+      "minimum": 0
+    },
+    "fold": {
+      "type": "number",
+      "minimum": 0
+    },
+    "spineOverride": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "description": "Physical binding and paper. Spine width is computed from pageCount and paperCaliper unless spineOverride is set.",
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
+}

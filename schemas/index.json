@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "generatedBy": "tools/gen-schemas.mjs - do not hand-edit; edit frontmatter in schemas/<domain>/<name>.md",
   "schemas": [
     {
@@ -1233,6 +1233,79 @@
           "type": "array<any>",
           "required": false,
           "meaning": "Optional. Clip planes; each has origin (vec3) and normal (vec3)"
+        }
+      ]
+    },
+    {
+      "id": "rig.book.binding",
+      "maturity": "draft",
+      "summary": "Physical binding and paper for a print book product. Format when present.",
+      "prose": "schemas/book/binding.md",
+      "schema": "schemas/json/rig.book.binding.schema.json",
+      "fields": [
+        {
+          "name": "form",
+          "type": "enum",
+          "required": false,
+          "meaning": "paperback / case / jacket / saddle",
+          "enum": [
+            "paperback",
+            "case",
+            "jacket",
+            "saddle"
+          ]
+        },
+        {
+          "name": "paperCaliper",
+          "type": "number",
+          "required": false,
+          "meaning": "Thickness per leaf in caliperUnit"
+        },
+        {
+          "name": "caliperUnit",
+          "type": "enum",
+          "required": false,
+          "meaning": "Unit of paperCaliper and boardThickness",
+          "enum": [
+            "mm",
+            "in"
+          ]
+        },
+        {
+          "name": "boardThickness",
+          "type": "number",
+          "required": false,
+          "meaning": "Case board thickness (each side); 0 for paperback/saddle"
+        },
+        {
+          "name": "hinge",
+          "type": "number",
+          "required": false,
+          "meaning": "Hinge / score width in caliperUnit"
+        },
+        {
+          "name": "wrap",
+          "type": "number",
+          "required": false,
+          "meaning": "Wrap allowance in caliperUnit"
+        },
+        {
+          "name": "flap",
+          "type": "number",
+          "required": false,
+          "meaning": "Flap width in caliperUnit"
+        },
+        {
+          "name": "fold",
+          "type": "number",
+          "required": false,
+          "meaning": "Fold mark in caliperUnit"
+        },
+        {
+          "name": "spineOverride",
+          "type": "number",
+          "required": false,
+          "meaning": "Optional. Fixed spine width in caliperUnit; absent = compute"
         }
       ]
     },
@@ -4883,6 +4956,17 @@
             "left",
             "right"
           ]
+        },
+        {
+          "name": "startSide",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. recto or verso - which side the first document page opens on for default pairing. Absent = recto (page 1 alone on the right under left binding, then pairs)",
+          "absent": "recto",
+          "enum": [
+            "recto",
+            "verso"
+          ]
         }
       ]
     },
@@ -5158,6 +5242,13 @@
           "type": "faceInsets",
           "required": false,
           "meaning": "number[1..6]"
+        },
+        {
+          "name": "keepWithNext",
+          "type": "bool",
+          "required": false,
+          "meaning": "Optional. When true with facing on, this page and the next stay in the same spread (chains make three or more leaves). Absent = false",
+          "absent": "false"
         }
       ]
     },

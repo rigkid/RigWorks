@@ -27,6 +27,10 @@ fields:
   - name: "slug"
     ref: "faceInsets"
     meaning: "number[1..6]"
+  - name: "keepWithNext"
+    ref: "bool"
+    meaning: "Optional. When true with facing on, this page and the next stay in the same spread (chains make three or more leaves). Absent = false"
+    absent: "false"
 ---
 # `rig.layout.page`
 
@@ -43,6 +47,7 @@ A text frame on the page is [`rig.layout.frame`](frame.md), not this schema.
 | `margins` | number \| number[1..6] | Optional. Face insets **inward** from the local AABB (see below). Absent = no margins |
 | `bleed` | number \| number[1..6] | Optional. Face extents **outward** past trim. Same channel order |
 | `slug` | number \| number[1..6] | Optional. Face extents **outward** past bleed. Same channel order |
+| `keepWithNext` | bool | Optional. When true with facing on, this page and the next stay in the same spread (chains make three or more leaves). Absent = `false` |
 
 `width` and `height` describe the trim size (XY). Bleed and slug extend outward from it; margins inset inward. The three fields address the **same local AABB cuboid** as [`rig.spatial.anchor`](../spatial/anchor.md): the anchor picks which cell is local (0,0,0); inset channels are face offsets on that cuboid and do **not** remap when the origin cell moves (no axis invert).
 

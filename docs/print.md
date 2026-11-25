@@ -6,7 +6,7 @@ Rig names pellet / FGF machine meaning as [`rig.print.*`](../schemas/print/machi
 
 | Nearby id | Why it is different |
 |-----------|---------------------|
-| Envelope `pdfX` / `outputCondition` / `trapped` | Press / PDF/X job - [document.md](../schemas/document.md) |
+| Envelope `pdfX` / `outputCondition` / `trapped` / `untaggedRgbProfile` / `renderingIntent` | Press / PDF/X job - [document.md](../schemas/document.md) |
 | [`rig.layout.page`](../schemas/layout/page.md) / [`frame`](../schemas/layout/frame.md) | Print *spread* (pages, type). Not a bed |
 | [`rig.dev.machine`](../schemas/dev/machine.md) | VM / CI recipe - [dev.md](dev.md) |
 | [`rig.art.material`](../schemas/art/material.md) | CDWA medium / technique |

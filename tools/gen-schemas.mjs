@@ -108,6 +108,22 @@ function buildDocumentSchema(componentIds) {
             enum: ["unknown", "true", "false"],
             description: "PDF Info Trapped; absent = unknown.",
           },
+          untaggedRgbProfile: {
+            type: "string",
+            description:
+              "Well-known RGB working-space token for raster with no embedded ICC (e.g. srgb). Absent = srgb. Not a host path.",
+          },
+          renderingIntent: {
+            type: "string",
+            enum: [
+              "perceptual",
+              "relative-colorimetric",
+              "saturation",
+              "absolute-colorimetric",
+            ],
+            description:
+              "ICC rendering intent for colour conversion at emit. Absent = relative-colorimetric.",
+          },
         },
       },
       entities: {

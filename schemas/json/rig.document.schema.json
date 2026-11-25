@@ -72,6 +72,20 @@
             "false"
           ],
           "description": "PDF Info Trapped; absent = unknown."
+        },
+        "untaggedRgbProfile": {
+          "type": "string",
+          "description": "Well-known RGB working-space token for raster with no embedded ICC (e.g. srgb). Absent = srgb. Not a host path."
+        },
+        "renderingIntent": {
+          "type": "string",
+          "enum": [
+            "perceptual",
+            "relative-colorimetric",
+            "saturation",
+            "absolute-colorimetric"
+          ],
+          "description": "ICC rendering intent for colour conversion at emit. Absent = relative-colorimetric."
         }
       }
     },
@@ -201,6 +215,9 @@
               },
               "rig.bim.viewpoint": {
                 "$ref": "./rig.bim.viewpoint.schema.json"
+              },
+              "rig.book.binding": {
+                "$ref": "./rig.book.binding.schema.json"
               },
               "rig.book.contribution": {
                 "$ref": "./rig.book.contribution.schema.json"
