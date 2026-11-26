@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.vision.device.schema.json",
+  "title": "rig.vision.device",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "backendPreference": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "hailo",
+        "cpu",
+        "gpu"
+      ]
+    }
+  },
+  "x-rig-maturity": "draft"
+}

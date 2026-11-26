@@ -537,6 +537,12 @@
               "rig.light.look": {
                 "$ref": "./rig.light.look.schema.json"
               },
+              "rig.llm.model": {
+                "$ref": "./rig.llm.model.schema.json"
+              },
+              "rig.llm.session": {
+                "$ref": "./rig.llm.session.schema.json"
+              },
               "rig.media.asset_ref": {
                 "$ref": "./rig.media.asset_ref.schema.json"
               },
@@ -1010,6 +1016,21 @@
               },
               "rig.ui.panel": {
                 "$ref": "./rig.ui.panel.schema.json"
+              },
+              "rig.vision.detect": {
+                "$ref": "./rig.vision.detect.schema.json"
+              },
+              "rig.vision.device": {
+                "$ref": "./rig.vision.device.schema.json"
+              },
+              "rig.vision.model": {
+                "$ref": "./rig.vision.model.schema.json"
+              },
+              "rig.vision.pose": {
+                "$ref": "./rig.vision.pose.schema.json"
+              },
+              "rig.vision.segment": {
+                "$ref": "./rig.vision.segment.schema.json"
               },
               "rig.visualizer.deck": {
                 "$ref": "./rig.visualizer.deck.schema.json"

@@ -581,6 +581,27 @@ Hit points, items, spawn, and a save slot. Rules that change them stay in the ho
 | `rig.play.spawner` | [play/spawner.md](play/spawner.md) |
 | `rig.play.save` | [play/save.md](play/save.md) |
 
+
+### Vision (NPU / detect)
+
+Compiled vision models and authored detect / segment / pose requests. Results, masks, and frame pixels are host cache. Fulfillment (Hailo HEF, GPU, CPU) is a host pack - not these schemas.
+
+| Id | Doc |
+|----|-----|
+| `rig.vision.device` | [vision/device.md](vision/device.md) |
+| `rig.vision.model` | [vision/model.md](vision/model.md) |
+| `rig.vision.detect` | [vision/detect.md](vision/detect.md) |
+| `rig.vision.segment` | [vision/segment.md](vision/segment.md) |
+| `rig.vision.pose` | [vision/pose.md](vision/pose.md) |
+
+### LLM (local chat)
+
+Local language-model identity and session knobs. Transcript and the backend actually used are host cache. Tokenizer / transformer stay in the model package and runtime.
+
+| Id | Doc |
+|----|-----|
+| `rig.llm.model` | [llm/model.md](llm/model.md) |
+| `rig.llm.session` | [llm/session.md](llm/session.md) |
 ### AI
 
 | Id | Doc |

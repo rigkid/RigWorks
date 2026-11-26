@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0",
+  "version": "1.10.0",
   "generatedBy": "tools/gen-schemas.mjs - do not hand-edit; edit frontmatter in schemas/<domain>/<name>.md",
   "schemas": [
     {
@@ -5803,6 +5803,114 @@
           "required": false,
           "meaning": "Optional. Auto-release for freeze-style looks; absent = host default",
           "absent": "host default"
+        }
+      ]
+    },
+    {
+      "id": "rig.llm.model",
+      "maturity": "draft",
+      "summary": "Local language-model identity. Format when present. At least one field.",
+      "prose": "schemas/llm/model.md",
+      "schema": "schemas/json/rig.llm.model.schema.json",
+      "fields": [
+        {
+          "name": "asset",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. rig.media.asset_ref of the model package or weights file"
+        },
+        {
+          "name": "modelId",
+          "type": "string",
+          "required": false,
+          "meaning": "Optional. Catalog id the runtime lists (for example qwen2.5:1.5b)"
+        },
+        {
+          "name": "targetArch",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Where this artifact is meant to run. Absent = cpu",
+          "absent": "cpu",
+          "enum": [
+            "hailo10h",
+            "cpu",
+            "gpu",
+            "vulkan",
+            "cuda"
+          ]
+        },
+        {
+          "name": "contextTokens",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Context window in tokens. Absent = host default",
+          "absent": "host default"
+        },
+        {
+          "name": "maxTokens",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Default reply cap in tokens. Absent = host default",
+          "absent": "host default"
+        }
+      ]
+    },
+    {
+      "id": "rig.llm.session",
+      "maturity": "draft",
+      "summary": "Authored local LLM session knobs. Format when present. Transcript is host cache.",
+      "prose": "schemas/llm/session.md",
+      "schema": "schemas/json/rig.llm.session.schema.json",
+      "fields": [
+        {
+          "name": "model",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Entity carrying rig.llm.model. Absent = host default model",
+          "absent": "host default model"
+        },
+        {
+          "name": "backendPreference",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Preferred backend. Absent = auto",
+          "absent": "auto",
+          "enum": [
+            "auto",
+            "hailo",
+            "cpu",
+            "gpu",
+            "vulkan",
+            "cuda"
+          ]
+        },
+        {
+          "name": "temperature",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Sampling temperature. Absent = host default",
+          "absent": "host default"
+        },
+        {
+          "name": "topP",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Nucleus sampling 0-1. Absent = host default",
+          "absent": "host default"
+        },
+        {
+          "name": "maxTokens",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Reply cap in tokens for this session. Absent = model or host default",
+          "absent": "model or host default"
+        },
+        {
+          "name": "contextTokens",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Context window override. Absent = model or host default",
+          "absent": "model or host default"
         }
       ]
     },
@@ -12856,6 +12964,209 @@
           "type": "float",
           "required": false,
           "meaning": "Optional. Advisory height hint; hosts may ignore"
+        }
+      ]
+    },
+    {
+      "id": "rig.vision.detect",
+      "maturity": "draft",
+      "summary": "Authored object-detect request. Format when present. Results are host cache.",
+      "prose": "schemas/vision/detect.md",
+      "schema": "schemas/json/rig.vision.detect.schema.json",
+      "fields": [
+        {
+          "name": "source",
+          "type": "entity",
+          "required": true,
+          "meaning": "Frame to read: a rig.pixel.canvas, raster, image rig.media.asset_ref, or video source"
+        },
+        {
+          "name": "model",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Entity carrying rig.vision.model. Absent = host default model",
+          "absent": "host default model"
+        },
+        {
+          "name": "scoreThreshold",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Minimum score 0-1. Absent = 0.5",
+          "absent": "0.5"
+        },
+        {
+          "name": "maxResults",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Cap on returned boxes. Absent = 32",
+          "absent": "32"
+        }
+      ]
+    },
+    {
+      "id": "rig.vision.device",
+      "maturity": "draft",
+      "summary": "Authored vision backend preference. Format when present. Live device presence is host cache.",
+      "prose": "schemas/vision/device.md",
+      "schema": "schemas/json/rig.vision.device.schema.json",
+      "fields": [
+        {
+          "name": "backendPreference",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Preferred backend. Absent = auto",
+          "absent": "auto",
+          "enum": [
+            "auto",
+            "hailo",
+            "cpu",
+            "gpu"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rig.vision.model",
+      "maturity": "draft",
+      "summary": "Vision model asset and fixed input spec. Format when present. At least one field.",
+      "prose": "schemas/vision/model.md",
+      "schema": "schemas/json/rig.vision.model.schema.json",
+      "fields": [
+        {
+          "name": "asset",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. rig.media.asset_ref of the compiled model file (HEF / RT / other)"
+        },
+        {
+          "name": "task",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Task this artifact runs. Absent = detect",
+          "absent": "detect",
+          "enum": [
+            "detect",
+            "segment",
+            "pose"
+          ]
+        },
+        {
+          "name": "targetArch",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Architecture the artifact was compiled for. Absent = hailo10h",
+          "absent": "hailo10h",
+          "enum": [
+            "hailo10h",
+            "hailo8l",
+            "hailo8",
+            "cpu",
+            "gpu"
+          ]
+        },
+        {
+          "name": "inputWidth",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Fixed input width in pixels. Absent = host default for the model",
+          "absent": "host default for the model"
+        },
+        {
+          "name": "inputHeight",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Fixed input height in pixels. Absent = host default for the model",
+          "absent": "host default for the model"
+        },
+        {
+          "name": "inputChannels",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Channel count. Absent = 3",
+          "absent": "3"
+        },
+        {
+          "name": "inputLayout",
+          "type": "enum",
+          "required": false,
+          "meaning": "Optional. Tensor layout. Absent = nhwc",
+          "absent": "nhwc",
+          "enum": [
+            "nhwc",
+            "nchw"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rig.vision.pose",
+      "maturity": "draft",
+      "summary": "Authored pose / keypoints request. Format when present. Keypoints are host cache.",
+      "prose": "schemas/vision/pose.md",
+      "schema": "schemas/json/rig.vision.pose.schema.json",
+      "fields": [
+        {
+          "name": "source",
+          "type": "entity",
+          "required": true,
+          "meaning": "Frame to read: a rig.pixel.canvas, raster, image rig.media.asset_ref, or video source"
+        },
+        {
+          "name": "model",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Entity carrying rig.vision.model. Absent = host default model",
+          "absent": "host default model"
+        },
+        {
+          "name": "scoreThreshold",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Minimum score 0-1. Absent = 0.5",
+          "absent": "0.5"
+        },
+        {
+          "name": "maxResults",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Cap on returned poses. Absent = 16",
+          "absent": "16"
+        }
+      ]
+    },
+    {
+      "id": "rig.vision.segment",
+      "maturity": "draft",
+      "summary": "Authored segmentation request. Format when present. Masks are host cache.",
+      "prose": "schemas/vision/segment.md",
+      "schema": "schemas/json/rig.vision.segment.schema.json",
+      "fields": [
+        {
+          "name": "source",
+          "type": "entity",
+          "required": true,
+          "meaning": "Frame to read: a rig.pixel.canvas, raster, image rig.media.asset_ref, or video source"
+        },
+        {
+          "name": "model",
+          "type": "entity",
+          "required": false,
+          "meaning": "Optional. Entity carrying rig.vision.model. Absent = host default model",
+          "absent": "host default model"
+        },
+        {
+          "name": "scoreThreshold",
+          "type": "float",
+          "required": false,
+          "meaning": "Optional. Minimum score 0-1. Absent = 0.5",
+          "absent": "0.5"
+        },
+        {
+          "name": "maxResults",
+          "type": "integer",
+          "required": false,
+          "meaning": "Optional. Cap on returned instances. Absent = 16",
+          "absent": "16"
         }
       ]
     },

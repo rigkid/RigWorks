@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rig.works/schemas/rig.vision.model.schema.json",
+  "title": "rig.vision.model",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "asset": {
+      "$ref": "./_defs.schema.json#/$defs/entity"
+    },
+    "task": {
+      "type": "string",
+      "enum": [
+        "detect",
+        "segment",
+        "pose"
+      ]
+    },
+    "targetArch": {
+      "type": "string",
+      "enum": [
+        "hailo10h",
+        "hailo8l",
+        "hailo8",
+        "cpu",
+        "gpu"
+      ]
+    },
+    "inputWidth": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "inputHeight": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "inputChannels": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4
+    },
+    "inputLayout": {
+      "type": "string",
+      "enum": [
+        "nhwc",
+        "nchw"
+      ]
+    }
+  },
+  "minProperties": 1,
+  "x-rig-maturity": "draft"
+}

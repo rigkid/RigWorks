@@ -1,0 +1,114 @@
+{
+  "rig": "1.10.0",
+  "document": {
+    "title": "Vision and LLM lane requests",
+    "defaultUnit": "px"
+  },
+  "entities": [
+    {
+      "id": "cam-frame",
+      "components": {
+        "rig.meta.named": { "name": "cam-frame", "stableId": "cam-frame" },
+        "rig.media.asset_ref": {
+          "kind": "image",
+          "path": "frames/sample.jpg"
+        }
+      }
+    },
+    {
+      "id": "yolo-hef",
+      "components": {
+        "rig.meta.named": { "name": "yolo-hef", "stableId": "yolo-hef" },
+        "rig.media.asset_ref": {
+          "kind": "model",
+          "path": "models/yolov8n_hailo10h.hef"
+        },
+        "rig.vision.model": {
+          "asset": "yolo-hef",
+          "task": "detect",
+          "targetArch": "hailo10h",
+          "inputWidth": 640,
+          "inputHeight": 640,
+          "inputChannels": 3,
+          "inputLayout": "nhwc"
+        }
+      }
+    },
+    {
+      "id": "vision-device",
+      "components": {
+        "rig.meta.named": { "name": "vision-device", "stableId": "vision-device" },
+        "rig.vision.device": {
+          "backendPreference": "hailo"
+        }
+      }
+    },
+    {
+      "id": "detect-people",
+      "components": {
+        "rig.meta.named": { "name": "detect-people", "stableId": "detect-people" },
+        "rig.vision.detect": {
+          "source": "cam-frame",
+          "model": "yolo-hef",
+          "scoreThreshold": 0.45,
+          "maxResults": 24
+        }
+      }
+    },
+    {
+      "id": "segment-stuff",
+      "components": {
+        "rig.meta.named": { "name": "segment-stuff", "stableId": "segment-stuff" },
+        "rig.vision.segment": {
+          "source": "cam-frame",
+          "model": "yolo-hef",
+          "scoreThreshold": 0.5,
+          "maxResults": 8
+        }
+      }
+    },
+    {
+      "id": "pose-body",
+      "components": {
+        "rig.meta.named": { "name": "pose-body", "stableId": "pose-body" },
+        "rig.vision.pose": {
+          "source": "cam-frame",
+          "model": "yolo-hef",
+          "scoreThreshold": 0.4,
+          "maxResults": 4
+        }
+      }
+    },
+    {
+      "id": "qwen-local",
+      "components": {
+        "rig.meta.named": { "name": "qwen-local", "stableId": "qwen-local" },
+        "rig.media.asset_ref": {
+          "kind": "model",
+          "path": "models/qwen2.5-1.5b"
+        },
+        "rig.llm.model": {
+          "asset": "qwen-local",
+          "modelId": "qwen2.5:1.5b",
+          "targetArch": "hailo10h",
+          "contextTokens": 4096,
+          "maxTokens": 512
+        }
+      }
+    },
+    {
+      "id": "chat",
+      "components": {
+        "rig.meta.named": { "name": "chat", "stableId": "chat" },
+        "rig.llm.session": {
+          "model": "qwen-local",
+          "backendPreference": "hailo",
+          "temperature": 0.7,
+          "topP": 0.9,
+          "maxTokens": 512,
+          "contextTokens": 4096
+        }
+      }
+    }
+  ]
+}
